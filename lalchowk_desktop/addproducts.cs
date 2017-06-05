@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.Text.RegularExpressions;
 using System.IO;
+using System.Net;
 
 namespace Veiled_Kashmir_Admin_Panel
 {
@@ -26,8 +27,8 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private container hp = null;
         private mainform mf = null;
+        string filename;
 
-       
 
         public addproducts(Form hpcopy, Form mfcopy)
         {
@@ -93,8 +94,8 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             if (picdialog.ShowDialog() == DialogResult.OK)
             {
-                string s = picdialog.FileName;
-                Image myimage = new Bitmap(s);
+                filename = picdialog.FileName;
+                Image myimage = new Bitmap(filename);
                 pic1.BackgroundImage = myimage;
                 pic1.BackgroundImageLayout = ImageLayout.Stretch;               
             }
@@ -172,9 +173,64 @@ namespace Veiled_Kashmir_Admin_Panel
             readsecond();
 
         }
+
+        public static void UploadFileToFtp(string url, string filePath)
+        {
+            try
+            {
+                var fileName = Path.GetFileName(filePath);
+                var request = (FtpWebRequest)WebRequest.Create(url + fileName);
+
+                request.Method = WebRequestMethods.Ftp.UploadFile;
+                request.Credentials = new NetworkCredential("terminological-hois", "project12345");
+                request.UsePassive = true;
+                request.UseBinary = true;
+                request.KeepAlive = true;
+
+                using (var fileStream = File.OpenRead(filePath))
+                {
+                    using (var requestStream = request.GetRequestStream())
+                    {
+                        fileStream.CopyTo(requestStream);
+                        requestStream.Close();
+                    }
+                }
+
+                var response = (FtpWebResponse)request.GetResponse();
+                MessageBox.Show("Upload done: " + response.StatusDescription, "Upload Successful.");
+
+                response.Close();
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+
+            }
+        }
+
+        private void picbtn_Click(object sender, EventArgs e)
+        {
+           
+
+        }
+
         private void addbtn_Click(object sender, EventArgs e)
         {
-          
+            try
+            {
+                UploadFileToFtp("ftp://files.000webhost.com/public_html/lalchowk/pictures/", filename);
+            }
+            catch (WebException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                pic1.BackgroundImage = null;
+            }
+
             cmd = "insert into products (`supplierid`, `productname`, `categoryid`,`color`, `mrp`, `price`, `discount`, `stock`, `description`, `detailname1`, `detailname2`, `detailname3`, `detailname4`, `detailname5`, `detail1`, `detail2`, `detail3`, `detail4`, `detail5`,`brand`,`size`,`picture`) "+
                   "values ('" + supplierlist.Text + "', '" + nametxt.Text + "', '" + catlbl.Text +"','"+ colourtxt.Text + "','"+mrptxt.Text+ "','" +pricetxt.Text+ "','" +discounttxt.Text+ "','" + stocktxt.Text + "','" + desctxt.Text + "','" + dname1txt.Text+ "','" + dname2txt.Text + "','" + dname3txt.Text + "','" + dname4txt.Text + "','" + dname5txt.Text + "','" + dname1.Text + "','" + dname2.Text + "','" + dname3.Text + "','" + dname4.Text + "','" + dname5.Text + "','" + brandtxt.Text + "','" + sizetxt.Text +  @"','" + nametxt.Text +".jpg')";
             obj.nonQuery(cmd);
@@ -184,12 +240,11 @@ namespace Veiled_Kashmir_Admin_Panel
             
             
             obj.closeConnection();
-            
 
-            //   pic1.BackgroundImage.Save("C:\\Vkashmir\\business\\" + nametxt.Text + ".jpg");
-            
+           
+           
 
-            
+
             addpictures adp = new addpictures(productid);
             adp.ShowDialog();
 

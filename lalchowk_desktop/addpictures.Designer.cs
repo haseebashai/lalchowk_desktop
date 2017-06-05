@@ -38,6 +38,9 @@
             this.picdialog = new System.Windows.Forms.OpenFileDialog();
             this.picbox = new System.Windows.Forms.PictureBox();
             this.proid = new System.Windows.Forms.Label();
+            this.picbtn = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.selectbtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.closebtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picbox)).BeginInit();
             this.SuspendLayout();
@@ -94,7 +97,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Myriad Hebrew", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(5, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(295, 25);
             this.label1.TabIndex = 51;
@@ -105,7 +108,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Myriad Hebrew", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(248, 109);
+            this.label2.Location = new System.Drawing.Point(270, 108);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(206, 25);
             this.label2.TabIndex = 52;
@@ -120,9 +123,10 @@
             // 
             // picbox
             // 
-            this.picbox.Location = new System.Drawing.Point(223, 168);
+            this.picbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picbox.Location = new System.Drawing.Point(265, 147);
             this.picbox.Name = "picbox";
-            this.picbox.Size = new System.Drawing.Size(266, 147);
+            this.picbox.Size = new System.Drawing.Size(224, 202);
             this.picbox.TabIndex = 53;
             this.picbox.TabStop = false;
             // 
@@ -131,11 +135,42 @@
             this.proid.AutoSize = true;
             this.proid.Font = new System.Drawing.Font("Myriad Hebrew", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.proid.ForeColor = System.Drawing.Color.Red;
-            this.proid.Location = new System.Drawing.Point(484, 109);
+            this.proid.Location = new System.Drawing.Point(401, 71);
             this.proid.Name = "proid";
-            this.proid.Size = new System.Drawing.Size(206, 25);
+            this.proid.Size = new System.Drawing.Size(31, 25);
             this.proid.TabIndex = 54;
-            this.proid.Text = "Add Multiple Pictures.";
+            this.proid.Text = "ID";
+            // 
+            // picbtn
+            // 
+            this.picbtn.Location = new System.Drawing.Point(389, 382);
+            this.picbtn.Name = "picbtn";
+            this.picbtn.Size = new System.Drawing.Size(189, 31);
+            this.picbtn.TabIndex = 55;
+            this.picbtn.Text = "Upload Picture";
+            this.picbtn.UseVisualStyleBackColor = true;
+            this.picbtn.Click += new System.EventHandler(this.picbtn_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Myriad Hebrew", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Red;
+            this.label3.Location = new System.Drawing.Point(299, 71);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(105, 25);
+            this.label3.TabIndex = 56;
+            this.label3.Text = "Product ID";
+            // 
+            // selectbtn
+            // 
+            this.selectbtn.Location = new System.Drawing.Point(188, 382);
+            this.selectbtn.Name = "selectbtn";
+            this.selectbtn.Size = new System.Drawing.Size(189, 31);
+            this.selectbtn.TabIndex = 59;
+            this.selectbtn.Text = "Select Picture";
+            this.selectbtn.UseVisualStyleBackColor = true;
+            this.selectbtn.Click += new System.EventHandler(this.selectbtn_Click);
             // 
             // addpictures
             // 
@@ -143,6 +178,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(738, 442);
+            this.Controls.Add(this.selectbtn);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.picbtn);
             this.Controls.Add(this.proid);
             this.Controls.Add(this.picbox);
             this.Controls.Add(this.label2);
@@ -156,7 +194,6 @@
             this.Name = "addpictures";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "forgotpwd";
-            this.Load += new System.EventHandler(this.addpictures_Load);
             ((System.ComponentModel.ISupportInitialize)(this.closebtn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picbox)).EndInit();
             this.ResumeLayout(false);
@@ -173,7 +210,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.OpenFileDialog picdialog;
-        private System.Windows.Forms.PictureBox picbox;
         private System.Windows.Forms.Label proid;
+        private System.Windows.Forms.Button picbtn;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button selectbtn;
+        public System.Windows.Forms.PictureBox picbox;
     }
 }
