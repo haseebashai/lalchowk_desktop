@@ -15,6 +15,8 @@ namespace Veiled_Kashmir_Admin_Panel
     {
         DBConnect obj = new DBConnect();
         String cmd;
+        MySqlConnection con;
+        MySqlDataAdapter adap;
         bool nametxtok, desctxtok, editnametxtok, editdesctxtok;
         MySqlDataReader dr;
         DataTable dt;
@@ -24,8 +26,51 @@ namespace Veiled_Kashmir_Admin_Panel
             readinventory();
         }
 
+       
+
         private container hp = null;
-        
+
+        private void pronametxt_TextChanged(object sender, EventArgs e)
+        {
+            DataView dv = new DataView(dt);
+            dv.RowFilter = string.Format("productname LIKE '%{0}%'", pronametxt.Text);
+            inventorydatagridview.DataSource = dv;
+        }
+
+        private void catidtxt_TextChanged(object sender, EventArgs e)
+        {
+            DataView dv = new DataView(dt);
+            dv.RowFilter = string.Format("categoryid LIKE '%{0}%'", catidtxt.Text);
+            inventorydatagridview.DataSource = dv;
+        }
+
+        private void brandtxt_TextChanged(object sender, EventArgs e)
+        {
+            DataView dv = new DataView(dt);
+            dv.RowFilter = string.Format("brand LIKE '%{0}%'", brandtxt.Text);
+            inventorydatagridview.DataSource = dv;
+        }
+
+        private void inventorydatagridview_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = this.inventorydatagridview.Rows[e.RowIndex];
+                idlbl.Text = "Product ID: " +row.Cells["productid"].Value.ToString();
+                productlbl.Text = "Product Name: " + row.Cells["productname"].Value.ToString();
+                catidlbl.Text = "Category ID: " + row.Cells["categoryid"].Value.ToString();
+                rmvbtn.Visible = true;
+            }
+        }
+
+        private void rmvbtn_Click(object sender, EventArgs e)
+        {
+            cmd = "delete from products where productid='" + idlbl.Text + "' && productname='"+productlbl+"' && categoryid='"+catidlbl+"'";
+            obj.nonQuery(cmd);
+            MessageBox.Show("Product removed successfully.");
+            readinventory();
+        }
+
         public inventory(Form hpcopy)
         {
             hp = hpcopy as container;
@@ -35,17 +80,23 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void readinventory()
         {
-            dr = obj.Query("select * from products");
-            
+            con = new MySqlConnection();
+            con.ConnectionString = "SERVER=182.50.133.91;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah";
+            con.Open();
+            adap = new MySqlDataAdapter("select * from products", con);
             dt = new DataTable();
-            dt.Load(dr);
+            adap.Fill(dt);
             BindingSource bsource = new BindingSource();
-
             bsource.DataSource = dt;
-            inventorydatagridview.DataSource = bsource;
+           inventorydatagridview.DataSource = bsource;
         }
 
-           
+        private void supidtxt_TextChanged(object sender, EventArgs e)
+        {
+            DataView dv = new DataView(dt);
+            dv.RowFilter = string.Format("supplierid LIKE '%{0}%'", supidtxt.Text);
+            inventorydatagridview.DataSource = dv;
+        }
 
         /*    private void rvmfdbtn_Click(object sender, EventArgs e)
             {
