@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.inventorydatagridview = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -43,19 +43,20 @@
             this.productlbl = new System.Windows.Forms.Label();
             this.idlbl = new System.Windows.Forms.Label();
             this.catidlbl = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.inventorydatagridview)).BeginInit();
             this.SuspendLayout();
             // 
             // inventorydatagridview
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.inventorydatagridview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.inventorydatagridview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.inventorydatagridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.inventorydatagridview.Location = new System.Drawing.Point(2, 73);
             this.inventorydatagridview.Name = "inventorydatagridview";
@@ -66,10 +67,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Trajan Pro", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(431, -1);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(221, 24);
+            this.label1.Size = new System.Drawing.Size(156, 24);
             this.label1.TabIndex = 1;
             this.label1.Text = "Product Inventory";
             // 
@@ -159,17 +160,18 @@
             // 
             this.productlbl.AutoSize = true;
             this.productlbl.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.productlbl.Location = new System.Drawing.Point(308, 613);
+            this.productlbl.Location = new System.Drawing.Point(327, 613);
             this.productlbl.Name = "productlbl";
             this.productlbl.Size = new System.Drawing.Size(46, 20);
             this.productlbl.TabIndex = 32;
             this.productlbl.Text = "name";
+            this.productlbl.Click += new System.EventHandler(this.productlbl_Click);
             // 
             // idlbl
             // 
             this.idlbl.AutoSize = true;
             this.idlbl.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.idlbl.Location = new System.Drawing.Point(308, 593);
+            this.idlbl.Location = new System.Drawing.Point(351, 593);
             this.idlbl.Name = "idlbl";
             this.idlbl.Size = new System.Drawing.Size(22, 20);
             this.idlbl.TabIndex = 31;
@@ -185,12 +187,23 @@
             this.catidlbl.TabIndex = 34;
             this.catidlbl.Text = "Cat ID";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(278, 593);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(77, 20);
+            this.label6.TabIndex = 35;
+            this.label6.Text = "Product ID";
+            // 
             // inventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1162, 722);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.catidlbl);
             this.Controls.Add(this.rmvbtn);
             this.Controls.Add(this.productlbl);
@@ -231,5 +244,6 @@
         private System.Windows.Forms.Label productlbl;
         private System.Windows.Forms.Label idlbl;
         private System.Windows.Forms.Label catidlbl;
+        private System.Windows.Forms.Label label6;
     }
 }

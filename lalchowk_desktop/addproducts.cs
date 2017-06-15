@@ -23,11 +23,11 @@ namespace Veiled_Kashmir_Admin_Panel
 
         MySqlDataReader dr,dr2;
 
-        string cmd;
+        string filename, fileaddress;
 
         private container hp = null;
         private mainform mf = null;
-        string filename;
+        string cmd;
 
 
         public addproducts(Form hpcopy, Form mfcopy)
@@ -94,8 +94,9 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             if (picdialog.ShowDialog() == DialogResult.OK)
             {
-                filename = picdialog.FileName;
-                Image myimage = new Bitmap(filename);
+                fileaddress = picdialog.FileName;
+                filename = picdialog.SafeFileName;
+                Image myimage = new Bitmap(fileaddress);
                 pic1.BackgroundImage = myimage;
                 pic1.BackgroundImageLayout = ImageLayout.Stretch;               
             }
@@ -111,6 +112,39 @@ namespace Veiled_Kashmir_Admin_Panel
             supplierlist.DisplayMember = "supplierid";
             supplierlist.DataSource = dt;
         }
+
+        private void clearall()
+        {
+            nametxt.Text = "";
+            desctxt.Text = "";
+            brandtxt.Text = "";
+            colourtxt.Text = "";
+            sizetxt.Text = "";
+            stocktxt.Text = "";
+            dname1.Text = "";
+            dname1txt.Text = "";
+            dname2.Text = "";
+            dname2txt.Text = "";
+            dname3.Text = "";
+            dname3txt.Text = "";
+            dname4.Text = "";
+            dname4txt.Text = "";
+            dname5.Text = "";
+            dname5txt.Text = "";
+            gidtxt.Text = "";
+            mrptxt.Text = "";
+            pricetxt.Text = "";
+            discounttxt.Text = "";
+
+        }
+        private void cancelbtn_Click(object sender, EventArgs e)
+        {
+            clearall();
+            pic1.BackgroundImage = null;
+
+        }
+
+
 
         private void readcategory()
         {
@@ -181,8 +215,8 @@ namespace Veiled_Kashmir_Admin_Panel
                 var fileName = Path.GetFileName(filePath);
                 var request = (FtpWebRequest)WebRequest.Create(url + fileName);
 
-                request.Method = WebRequestMethods.Ftp.UploadFile;
-                request.Credentials = new NetworkCredential("terminological-hois", "project12345");
+                request.Method = WebRequestMethods.Ftp.UploadFile;                
+                request.Credentials = new NetworkCredential("lalchowk", "Lalchowk@123");
                 request.UsePassive = true;
                 request.UseBinary = true;
                 request.KeepAlive = true;
@@ -218,37 +252,39 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void addbtn_Click(object sender, EventArgs e)
         {
-        /*    try
-            {
-                UploadFileToFtp("ftp://files.000webhost.com/public_html/lalchowk/pictures/", filename);
-            }
-            catch (WebException ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-            finally
-            {
-                pic1.BackgroundImage = null;
-            }
-            */
-            cmd = "insert into products (`supplierid`, `productname`, `categoryid`,`color`, `mrp`, `price`, `discount`, `stock`, `description`, `detailname1`, `detailname2`, `detailname3`, `detailname4`, `detailname5`, `detail1`, `detail2`, `detail3`, `detail4`, `detail5`,`brand`,`size`,`picture`) "+
-                  "values ('" + supplierlist.Text + "', '" + nametxt.Text + "', '" + catlbl.Text +"','"+ colourtxt.Text + "','"+mrptxt.Text+ "','" +pricetxt.Text+ "','" +discounttxt.Text+ "','" + stocktxt.Text + "','" + desctxt.Text + "','" + dname1txt.Text+ "','" + dname2txt.Text + "','" + dname3txt.Text + "','" + dname4txt.Text + "','" + dname5txt.Text + "','" + dname1.Text + "','" + dname2.Text + "','" + dname3.Text + "','" + dname4.Text + "','" + dname5.Text + "','" + brandtxt.Text + "','" + sizetxt.Text +  @"','" + nametxt.Text +".jpg')";
+           
+                try
+                {
+                    UploadFileToFtp("ftp://182.50.151.35/lalchowk/pictures/", fileaddress);
+                }
+                catch (WebException ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+                finally
+                {
+                    pic1.BackgroundImage = null;
+                }
+                
+            cmd = "insert into products (`supplierid`, `productname`, `groupid`,`categoryid`,`color`, `mrp`, `price`, `discount`, `stock`, `description`, `detailname1`, `detailname2`, `detailname3`, `detailname4`, `detailname5`, `detail1`, `detail2`, `detail3`, `detail4`, `detail5`,`brand`,`size`,`picture`) " +
+                  "values ('" + supplierlist.Text + "', '" + nametxt.Text + "','"+gidtxt.Text+"', '" + catlbl.Text +"','"+ colourtxt.Text + "','"+mrptxt.Text+ "','" +pricetxt.Text+ "','" +discounttxt.Text+ "','" + stocktxt.Text + "','" + desctxt.Text + "','" + dname1txt.Text+ "','" + dname2txt.Text + "','" + dname3txt.Text + "','" + dname4txt.Text + "','" + dname5txt.Text + "','" + dname1.Text + "','" + dname2.Text + "','" + dname3.Text + "','" + dname4.Text + "','" + dname5.Text + "','" + brandtxt.Text + "','" + sizetxt.Text + @"','" + filename +"')";
             obj.nonQuery(cmd);
 
-            int productid = obj.Count("SELECT LAST_INSERT_ID()");
+            
+         //   int productid = obj.Count("SELECT LAST_INSERT_ID()");
           
             
             
             obj.closeConnection();
 
-           
-           
-
-
-            addpictures adp = new addpictures(productid);
-            adp.ShowDialog();
 
             
+
+
+            addpictures adp = new addpictures(gidtxt.Text);
+            adp.ShowDialog();
+            clearall();
+
 
         }
 

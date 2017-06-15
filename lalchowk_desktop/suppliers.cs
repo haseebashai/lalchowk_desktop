@@ -88,7 +88,7 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             if (e.RowIndex >= 0)
             {
-                
+                rmvbtn.Visible = true;
                 idlbl.Visible = true;
                 supplierlbl.Visible = true;
                 contactlbl.Visible = true;
@@ -110,7 +110,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 if (productcount == 0)
                 {
                     countlbl.Text = "supplier has " + productcount.ToString() + " products listed currently.";
-                    rmvbtn.Visible = true;
+                    
 
                 }
                 else

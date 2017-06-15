@@ -18,11 +18,11 @@ namespace Veiled_Kashmir_Admin_Panel
     public partial class addpictures : Form
     {
         DBConnect obj = new DBConnect();
-        string filename;
-        public addpictures(int productid)
+        string filename, fileaddress,cmd;
+        public addpictures(string gidtxt)
         {
             InitializeComponent();
-            proid.Text = productid.ToString();
+            gid.Text = gidtxt;
 
         }
 
@@ -40,7 +40,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 var request = (FtpWebRequest)WebRequest.Create(url + fileName);
 
                 request.Method = WebRequestMethods.Ftp.UploadFile;
-                request.Credentials = new NetworkCredential("terminological-hois", "project12345");
+                request.Credentials = new NetworkCredential("lalchowk", "Lalchowk@123");
                 request.UsePassive = true;
                 request.UseBinary = true;
                 request.KeepAlive = true;
@@ -68,17 +68,21 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             }
 
+       
+
         private void picbtn_Click(object sender, EventArgs e)
         {
-            try {
-                UploadFileToFtp("ftp://files.000webhost.com/public_html/lalchowk/pictures/", filename);
 
-               
+            cmd = "insert into pictures (`groupid`, `picture`) " +
+                     "values ('" + gid.Text +  @"','" + filename + "')";
+            obj.nonQuery(cmd);
 
-
-
+            obj.closeConnection();
+            try
+            {
+                UploadFileToFtp("ftp://182.50.151.35/lalchowk/pictures/", fileaddress);
             }
-            catch(WebException ex)
+            catch (WebException ex)
             {
                 MessageBox.Show(ex.ToString());
             }
@@ -86,15 +90,16 @@ namespace Veiled_Kashmir_Admin_Panel
             {
                 picbox.BackgroundImage = null;
             }
-           
+
         }
 
         private void selectbtn_Click(object sender, EventArgs e)
         {
             if (picdialog.ShowDialog() == DialogResult.OK)
             {
-                filename = picdialog.FileName;                
-                Image myimage = new Bitmap(filename);
+                fileaddress = picdialog.FileName;
+                filename = picdialog.SafeFileName;
+                Image myimage = new Bitmap(fileaddress);
                 picbox.BackgroundImage = myimage;
                 picbox.BackgroundImageLayout = ImageLayout.Stretch;
             }

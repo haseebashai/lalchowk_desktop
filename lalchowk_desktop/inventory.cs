@@ -56,19 +56,24 @@ namespace Veiled_Kashmir_Admin_Panel
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = this.inventorydatagridview.Rows[e.RowIndex];
-                idlbl.Text = "Product ID: " +row.Cells["productid"].Value.ToString();
-                productlbl.Text = "Product Name: " + row.Cells["productname"].Value.ToString();
-                catidlbl.Text = "Category ID: " + row.Cells["categoryid"].Value.ToString();
+                idlbl.Text = row.Cells["productid"].Value.ToString();
+                productlbl.Text = row.Cells["productname"].Value.ToString();
+                catidlbl.Text = row.Cells["categoryid"].Value.ToString();
                 rmvbtn.Visible = true;
             }
         }
 
         private void rmvbtn_Click(object sender, EventArgs e)
         {
-            cmd = "delete from products where productid='" + idlbl.Text + "' && productname='"+productlbl+"' && categoryid='"+catidlbl+"'";
+            cmd = "delete from products where productid='" + idlbl.Text + "'";
             obj.nonQuery(cmd);
             MessageBox.Show("Product removed successfully.");
             readinventory();
+        }
+
+        private void productlbl_Click(object sender, EventArgs e)
+        {
+
         }
 
         public inventory(Form hpcopy)
