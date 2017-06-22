@@ -150,6 +150,7 @@
             // rmvbtn
             // 
             this.rmvbtn.BackColor = System.Drawing.Color.Red;
+            this.rmvbtn.Enabled = false;
             this.rmvbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rmvbtn.ForeColor = System.Drawing.Color.White;
             this.rmvbtn.Location = new System.Drawing.Point(16, 551);
