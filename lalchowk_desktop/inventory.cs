@@ -90,11 +90,12 @@ namespace Veiled_Kashmir_Admin_Panel
                 StringBuilder s1 = new StringBuilder(desctxtbox.Text);
                 s1.Replace(@"\", @"\\");
                 s1.Replace("'", "\\'");
-                cmd = ("update products set `description`='" + desctxtbox.Text + "' where `productid`='" + idlbl.Text + "'");
+                s1.Replace("‘", "");
+                cmd = ("update products set `description`='" + s1 + "' where `productid`='" + idlbl.Text + "'");
                 obj.nonQuery(cmd);
 
                 MessageBox.Show("Description Updated.");
-                readinventory();
+               // readinventory();
 
                 //   cmdbl = new MySqlCommandBuilder(adap);
                 //   adap.Update(dt);
