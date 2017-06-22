@@ -109,6 +109,13 @@ namespace Veiled_Kashmir_Admin_Panel
             sup.Show();
         }
 
-       
+        private void chkbtn_Click(object sender, EventArgs e)
+        {
+            inventory inv = new inventory(hp);
+            inv.TopLevel = false;
+            cntpnl.Controls.Clear();
+            cntpnl.Controls.Add(inv);
+            inv.Show();
+        }
     }
 }

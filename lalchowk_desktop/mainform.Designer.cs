@@ -41,6 +41,7 @@
             this.navtitle = new System.Windows.Forms.Panel();
             this.navtxt = new System.Windows.Forms.Label();
             this.cntpnl = new System.Windows.Forms.Panel();
+            this.chkbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.navpnl.SuspendLayout();
             this.navtitle.SuspendLayout();
             this.SuspendLayout();
@@ -137,6 +138,7 @@
             // 
             this.navpnl.BackColor = System.Drawing.Color.White;
             this.navpnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.navpnl.Controls.Add(this.chkbtn);
             this.navpnl.Controls.Add(this.signoutlbl);
             this.navpnl.Controls.Add(this.signinlbl);
             this.navpnl.Controls.Add(this.expbtn);
@@ -211,11 +213,11 @@
             // 
             this.navtxt.AutoSize = true;
             this.navtxt.BackColor = System.Drawing.Color.Transparent;
-            this.navtxt.Font = new System.Drawing.Font("Myriad Hebrew", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.navtxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.navtxt.ForeColor = System.Drawing.Color.White;
             this.navtxt.Location = new System.Drawing.Point(51, 1);
             this.navtxt.Name = "navtxt";
-            this.navtxt.Size = new System.Drawing.Size(84, 19);
+            this.navtxt.Size = new System.Drawing.Size(83, 20);
             this.navtxt.TabIndex = 0;
             this.navtxt.Text = "Navigation";
             // 
@@ -226,6 +228,22 @@
             this.cntpnl.Name = "cntpnl";
             this.cntpnl.Size = new System.Drawing.Size(1162, 722);
             this.cntpnl.TabIndex = 12;
+            // 
+            // chkbtn
+            // 
+            this.chkbtn.AutoSize = true;
+            this.chkbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.chkbtn.Depth = 0;
+            this.chkbtn.Location = new System.Drawing.Point(8, 482);
+            this.chkbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.chkbtn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.chkbtn.Name = "chkbtn";
+            this.chkbtn.Primary = false;
+            this.chkbtn.Size = new System.Drawing.Size(119, 36);
+            this.chkbtn.TabIndex = 18;
+            this.chkbtn.Text = "Edit Inventory";
+            this.chkbtn.UseVisualStyleBackColor = true;
+            this.chkbtn.Click += new System.EventHandler(this.chkbtn_Click);
             // 
             // mainform
             // 
@@ -263,5 +281,6 @@
         private System.Windows.Forms.Panel navtitle;
         private System.Windows.Forms.Label navtxt;
         public System.Windows.Forms.Panel cntpnl;
+        private MaterialSkin.Controls.MaterialFlatButton chkbtn;
     }
 }
