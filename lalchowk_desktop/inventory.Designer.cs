@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.inventorydatagridview = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -48,23 +48,24 @@
             this.label7 = new System.Windows.Forms.Label();
             this.updatebtn = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
+            this.upbtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.inventorydatagridview)).BeginInit();
             this.SuspendLayout();
             // 
             // inventorydatagridview
             // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.inventorydatagridview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.inventorydatagridview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.inventorydatagridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.inventorydatagridview.Location = new System.Drawing.Point(2, 73);
             this.inventorydatagridview.Name = "inventorydatagridview";
-            this.inventorydatagridview.Size = new System.Drawing.Size(1160, 382);
+            this.inventorydatagridview.Size = new System.Drawing.Size(1100, 382);
             this.inventorydatagridview.TabIndex = 0;
             this.inventorydatagridview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.inventorydatagridview_CellClick);
             // 
@@ -241,12 +242,23 @@
             this.label8.Text = "Category";
             this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
+            // upbtn
+            // 
+            this.upbtn.Location = new System.Drawing.Point(1102, 200);
+            this.upbtn.Name = "upbtn";
+            this.upbtn.Size = new System.Drawing.Size(60, 122);
+            this.upbtn.TabIndex = 40;
+            this.upbtn.Text = "Update";
+            this.upbtn.UseVisualStyleBackColor = true;
+            this.upbtn.Click += new System.EventHandler(this.upbtn_Click);
+            // 
             // inventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1162, 722);
+            this.Controls.Add(this.upbtn);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.updatebtn);
             this.Controls.Add(this.label7);
@@ -297,5 +309,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button updatebtn;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button upbtn;
     }
 }

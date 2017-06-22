@@ -111,6 +111,20 @@ namespace Veiled_Kashmir_Admin_Panel
 
         }
 
+        private void upbtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                cmdbl = new MySqlCommandBuilder(adap);
+                adap.Update(dt);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
         public inventory(Form hpcopy)
         {
             hp = hpcopy as container;
