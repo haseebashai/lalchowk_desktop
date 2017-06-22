@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.inventorydatagridview = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -44,23 +44,27 @@
             this.idlbl = new System.Windows.Forms.Label();
             this.catidlbl = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.desctxtbox = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.updatebtn = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.inventorydatagridview)).BeginInit();
             this.SuspendLayout();
             // 
             // inventorydatagridview
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.inventorydatagridview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.inventorydatagridview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.inventorydatagridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.inventorydatagridview.Location = new System.Drawing.Point(2, 73);
             this.inventorydatagridview.Name = "inventorydatagridview";
-            this.inventorydatagridview.Size = new System.Drawing.Size(1160, 517);
+            this.inventorydatagridview.Size = new System.Drawing.Size(1160, 382);
             this.inventorydatagridview.TabIndex = 0;
             this.inventorydatagridview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.inventorydatagridview_CellClick);
             // 
@@ -147,7 +151,7 @@
             this.rmvbtn.BackColor = System.Drawing.Color.Red;
             this.rmvbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rmvbtn.ForeColor = System.Drawing.Color.White;
-            this.rmvbtn.Location = new System.Drawing.Point(312, 674);
+            this.rmvbtn.Location = new System.Drawing.Point(16, 551);
             this.rmvbtn.Name = "rmvbtn";
             this.rmvbtn.Size = new System.Drawing.Size(129, 36);
             this.rmvbtn.TabIndex = 33;
@@ -158,11 +162,10 @@
             // 
             // productlbl
             // 
-            this.productlbl.AutoSize = true;
             this.productlbl.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.productlbl.Location = new System.Drawing.Point(327, 613);
+            this.productlbl.Location = new System.Drawing.Point(15, 489);
             this.productlbl.Name = "productlbl";
-            this.productlbl.Size = new System.Drawing.Size(46, 20);
+            this.productlbl.Size = new System.Drawing.Size(261, 59);
             this.productlbl.TabIndex = 32;
             this.productlbl.Text = "name";
             this.productlbl.Click += new System.EventHandler(this.productlbl_Click);
@@ -171,7 +174,7 @@
             // 
             this.idlbl.AutoSize = true;
             this.idlbl.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.idlbl.Location = new System.Drawing.Point(351, 593);
+            this.idlbl.Location = new System.Drawing.Point(85, 469);
             this.idlbl.Name = "idlbl";
             this.idlbl.Size = new System.Drawing.Size(22, 20);
             this.idlbl.TabIndex = 31;
@@ -181,21 +184,62 @@
             // 
             this.catidlbl.AutoSize = true;
             this.catidlbl.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.catidlbl.Location = new System.Drawing.Point(431, 593);
+            this.catidlbl.Location = new System.Drawing.Point(197, 469);
             this.catidlbl.Name = "catidlbl";
             this.catidlbl.Size = new System.Drawing.Size(50, 20);
             this.catidlbl.TabIndex = 34;
             this.catidlbl.Text = "Cat ID";
+            this.catidlbl.Click += new System.EventHandler(this.catidlbl_Click);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(278, 593);
+            this.label6.Location = new System.Drawing.Point(12, 469);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(77, 20);
             this.label6.TabIndex = 35;
             this.label6.Text = "Product ID";
+            // 
+            // desctxtbox
+            // 
+            this.desctxtbox.Location = new System.Drawing.Point(375, 461);
+            this.desctxtbox.Multiline = true;
+            this.desctxtbox.Name = "desctxtbox";
+            this.desctxtbox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.desctxtbox.Size = new System.Drawing.Size(592, 260);
+            this.desctxtbox.TabIndex = 36;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(287, 577);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(83, 20);
+            this.label7.TabIndex = 37;
+            this.label7.Text = "Description";
+            // 
+            // updatebtn
+            // 
+            this.updatebtn.Location = new System.Drawing.Point(973, 527);
+            this.updatebtn.Name = "updatebtn";
+            this.updatebtn.Size = new System.Drawing.Size(177, 122);
+            this.updatebtn.TabIndex = 38;
+            this.updatebtn.Text = "Update";
+            this.updatebtn.UseVisualStyleBackColor = true;
+            this.updatebtn.Click += new System.EventHandler(this.updatebtn_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(125, 469);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(69, 20);
+            this.label8.TabIndex = 39;
+            this.label8.Text = "Category";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // inventory
             // 
@@ -203,6 +247,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1162, 722);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.updatebtn);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.desctxtbox);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.catidlbl);
             this.Controls.Add(this.rmvbtn);
@@ -245,5 +293,9 @@
         private System.Windows.Forms.Label idlbl;
         private System.Windows.Forms.Label catidlbl;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox desctxtbox;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button updatebtn;
+        private System.Windows.Forms.Label label8;
     }
 }

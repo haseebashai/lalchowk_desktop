@@ -20,6 +20,7 @@ namespace Veiled_Kashmir_Admin_Panel
         bool nametxtok, desctxtok, editnametxtok, editdesctxtok;
         MySqlDataReader dr;
         DataTable dt;
+        MySqlCommandBuilder cmdbl;
 
         private void inventory_Load(object sender, EventArgs e)
         {
@@ -59,6 +60,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 idlbl.Text = row.Cells["productid"].Value.ToString();
                 productlbl.Text = row.Cells["productname"].Value.ToString();
                 catidlbl.Text = row.Cells["categoryid"].Value.ToString();
+                desctxtbox.Text = row.Cells["description"].Value.ToString();
                 rmvbtn.Visible = true;
             }
         }
@@ -72,6 +74,39 @@ namespace Veiled_Kashmir_Admin_Panel
         }
 
         private void productlbl_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void catidlbl_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void updatebtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                StringBuilder s1 = new StringBuilder(desctxtbox.Text);
+                s1.Replace(@"\", @"\\");
+                s1.Replace("'", "\\'");
+                cmd = ("update products set `description`='" + desctxtbox.Text + "' where `productid`='" + idlbl.Text + "'");
+                obj.nonQuery(cmd);
+
+                MessageBox.Show("Description Updated.");
+                readinventory();
+
+                //   cmdbl = new MySqlCommandBuilder(adap);
+                //   adap.Update(dt);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void label8_Click(object sender, EventArgs e)
         {
 
         }
