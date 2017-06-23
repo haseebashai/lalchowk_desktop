@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.Text.RegularExpressions;
 
 namespace Veiled_Kashmir_Admin_Panel
 {
@@ -32,6 +33,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void back_Click(object sender, EventArgs e)
         {
+            Close();
             mainform mf = new mainform(hp);
             mf.TopLevel = false;
             hp.mainpnl.Controls.Clear();
@@ -66,7 +68,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void messages_Load(object sender, EventArgs e)
         {
-            readusers();
+        //    readusers();
             
         }
 
@@ -123,6 +125,52 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             else
                 MessageBox.Show("Add reply first.");
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        
+        public static string RemoveSpecialCharacters(string str)
+        {
+            if (!Regex.IsMatch(str, @"[a-zA-Z0-9@#$%&*+\-_(),+':;?.,![\]\s\\/{}]+$"))
+            {
+                MessageBox.Show("abnormal");
+
+            }           
+                return (str);
+            
+            
+        }
+
+    
+    private void btn1_Click(object sender, EventArgs e)
+        {
+
+            if (!Regex.IsMatch(txt1.Text, @"^([a-zA-Z0-9@#$%&*+\-_(),+':;?.,![\]\s\\/{}]+)$"))
+            {
+                MessageBox.Show("abnormal");
+
+            }
+            else
+            {
+                textBox1.Text = txt1.Text;
+                // string sc = RemoveSpecialCharacters(txt1.Text);
+                //  sc.Replace(@"\n",@"\r\n");
+                //  MessageBox.Show(sc);
+                txt2.Text = txt1.Text ;
+            }
+        }
+
+        private void textBox1_TextChanged_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -8,13 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.Text.RegularExpressions;
 
 namespace Veiled_Kashmir_Admin_Panel
 {
     public partial class inventory : Form
     {
         DBConnect obj = new DBConnect();
-        String cmd;
+        String cmd, sc;
         MySqlConnection con;
         MySqlDataAdapter adap;
         bool nametxtok, desctxtok, editnametxtok, editdesctxtok;
@@ -31,25 +32,59 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private container hp = null;
 
+        private void supidtxt_TextChanged(object sender, EventArgs e)
+        {
+            try {
+                DataView dv = new DataView(dt);
+                dv.RowFilter = string.Format("Convert([supplierid],System.String) LIKE '%{0}%'", supidtxt.Text);
+                inventorydatagridview.DataSource = dv;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            }
+
         private void pronametxt_TextChanged(object sender, EventArgs e)
         {
-            DataView dv = new DataView(dt);
-            dv.RowFilter = string.Format("productname LIKE '%{0}%'", pronametxt.Text);
-            inventorydatagridview.DataSource = dv;
+            try {
+                DataView dv = new DataView(dt);
+                dv.RowFilter = string.Format("productname LIKE '%{0}%'", pronametxt.Text);
+                inventorydatagridview.DataSource = dv;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
         }
 
         private void catidtxt_TextChanged(object sender, EventArgs e)
         {
-            DataView dv = new DataView(dt);
-            dv.RowFilter = string.Format("categoryid LIKE '%{0}%'", catidtxt.Text);
-            inventorydatagridview.DataSource = dv;
+            try {
+                DataView dv = new DataView(dt);
+                dv.RowFilter = string.Format("Convert([categoryid],System.String) LIKE '%{0}%'", catidtxt.Text);
+                inventorydatagridview.DataSource = dv;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
         }
 
         private void brandtxt_TextChanged(object sender, EventArgs e)
         {
-            DataView dv = new DataView(dt);
-            dv.RowFilter = string.Format("brand LIKE '%{0}%'", brandtxt.Text);
-            inventorydatagridview.DataSource = dv;
+            try {
+                DataView dv = new DataView(dt);
+                dv.RowFilter = string.Format("brand LIKE '%{0}%'", brandtxt.Text);
+                inventorydatagridview.DataSource = dv;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
         }
 
         private void inventorydatagridview_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -83,22 +118,56 @@ namespace Veiled_Kashmir_Admin_Panel
 
         }
 
+        public static string RemoveSpecialCharacters(string str)
+        {
+
+            if (!Regex.IsMatch(str, @"[a-zA-Z0-9@#$%&*+\-_(),+':;?.,![\]\s\\/{}]+$"))
+            {
+                
+                MessageBox.Show("Abnormal Special Character found, Please remove it and proceed.");
+                
+            }
+            return (str);
+
+
+
+            /*    StringBuilder sb = new StringBuilder();
+                foreach (char c in str)
+                {
+                    if ((c >= '0' && c <= '9') || (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || c == '.' || c == '_' || c == ';' || c == ','
+                         || c == '/' || c == '\n' || c == ' ' || c == '\\' || c == '\'' || c == '{' || c == '}' || c == '[' || c==']'
+                         || c=='@' || c==':' || c=='!'|| c=='#' || c == '$' || c == '%' || c=='(' ||c==')' || c=='=' || c=='+' || c=='-' || c=='&'
+                         ||c=='*' ||c=='"' || c=='<' ||c=='>' ||c=='?')
+                    {
+                        sb.Append(c);
+                    }
+                }
+                return sb.ToString(); */
+        }
+
         private void updatebtn_Click(object sender, EventArgs e)
         {
             try
             {
-                StringBuilder s1 = new StringBuilder(desctxtbox.Text);
-                s1.Replace(@"\", @"\\");
-                s1.Replace("'", "\\'");
-                s1.Replace("‘", "");
-                cmd = ("update products set `description`='" + s1 + "' where `productid`='" + idlbl.Text + "'");
-                obj.nonQuery(cmd);
+                //   StringBuilder s1 = new StringBuilder(desctxtbox.Text);
+                // s1.Replace(@"\", @"\\");
+                //s1.Replace("'", "\\'");
+                //s1.Replace("‘", "");
 
-                MessageBox.Show("Description Updated.");
-               // readinventory();
+                if (!Regex.IsMatch(desctxtbox.Text, @"^([a-zA-Z0-9@#$%&*+\-_(),+':;?.,![\]\s\\/{}""|]+)$"))
+                {
 
-                //   cmdbl = new MySqlCommandBuilder(adap);
-                //   adap.Update(dt);
+                    MessageBox.Show("Abnormal Special Character found, Please remove it and proceed.");
+
+                }
+                else
+                {
+                    cmd = ("update products set `description`='" + desctxtbox.Text + "' where `productid`='" + idlbl.Text + "'");
+                    obj.nonQuery(cmd);
+
+                    MessageBox.Show("Description Updated.");
+                    // readinventory();
+                }
 
             }
             catch (Exception ex)
@@ -156,12 +225,7 @@ namespace Veiled_Kashmir_Admin_Panel
             inventorydatagridview.DataSource = bsource;
         }
 
-        private void supidtxt_TextChanged(object sender, EventArgs e)
-        {
-            DataView dv = new DataView(dt);
-            dv.RowFilter = string.Format("supplierid LIKE '%{0}%'", supidtxt.Text);
-            inventorydatagridview.DataSource = dv;
-        }
+      
 
         /*    private void rvmfdbtn_Click(object sender, EventArgs e)
             {

@@ -117,5 +117,11 @@ namespace Veiled_Kashmir_Admin_Panel
             cntpnl.Controls.Add(inv);
             inv.Show();
         }
+
+        private void sendmsgbtn_Click(object sender, EventArgs e)
+        {
+            messages msg = new messages(this,hp);
+            msg.ShowDialog();
+        }
     }
 }
