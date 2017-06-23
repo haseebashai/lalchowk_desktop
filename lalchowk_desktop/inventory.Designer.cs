@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.inventorydatagridview = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -54,14 +54,14 @@
             // 
             // inventorydatagridview
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.inventorydatagridview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.inventorydatagridview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.inventorydatagridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.inventorydatagridview.Location = new System.Drawing.Point(2, 73);
             this.inventorydatagridview.Name = "inventorydatagridview";
@@ -153,7 +153,7 @@
             this.rmvbtn.Enabled = false;
             this.rmvbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rmvbtn.ForeColor = System.Drawing.Color.White;
-            this.rmvbtn.Location = new System.Drawing.Point(16, 551);
+            this.rmvbtn.Location = new System.Drawing.Point(16, 600);
             this.rmvbtn.Name = "rmvbtn";
             this.rmvbtn.Size = new System.Drawing.Size(129, 36);
             this.rmvbtn.TabIndex = 33;
@@ -165,7 +165,7 @@
             // productlbl
             // 
             this.productlbl.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.productlbl.Location = new System.Drawing.Point(15, 489);
+            this.productlbl.Location = new System.Drawing.Point(15, 522);
             this.productlbl.Name = "productlbl";
             this.productlbl.Size = new System.Drawing.Size(261, 59);
             this.productlbl.TabIndex = 32;
@@ -186,7 +186,7 @@
             // 
             this.catidlbl.AutoSize = true;
             this.catidlbl.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.catidlbl.Location = new System.Drawing.Point(197, 469);
+            this.catidlbl.Location = new System.Drawing.Point(85, 496);
             this.catidlbl.Name = "catidlbl";
             this.catidlbl.Size = new System.Drawing.Size(50, 20);
             this.catidlbl.TabIndex = 34;
@@ -205,18 +205,18 @@
             // 
             // desctxtbox
             // 
-            this.desctxtbox.Location = new System.Drawing.Point(375, 461);
+            this.desctxtbox.Location = new System.Drawing.Point(311, 461);
             this.desctxtbox.Multiline = true;
             this.desctxtbox.Name = "desctxtbox";
             this.desctxtbox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.desctxtbox.Size = new System.Drawing.Size(592, 260);
+            this.desctxtbox.Size = new System.Drawing.Size(499, 260);
             this.desctxtbox.TabIndex = 36;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(287, 577);
+            this.label7.Location = new System.Drawing.Point(223, 577);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(83, 20);
             this.label7.TabIndex = 37;
@@ -224,7 +224,7 @@
             // 
             // updatebtn
             // 
-            this.updatebtn.Location = new System.Drawing.Point(973, 527);
+            this.updatebtn.Location = new System.Drawing.Point(816, 527);
             this.updatebtn.Name = "updatebtn";
             this.updatebtn.Size = new System.Drawing.Size(177, 122);
             this.updatebtn.TabIndex = 38;
@@ -236,7 +236,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(125, 469);
+            this.label8.Location = new System.Drawing.Point(13, 496);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(69, 20);
             this.label8.TabIndex = 39;

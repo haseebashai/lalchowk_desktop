@@ -56,7 +56,6 @@
             this.titlebar.Name = "titlebar";
             this.titlebar.Size = new System.Drawing.Size(1376, 38);
             this.titlebar.TabIndex = 3;
-            this.titlebar.Paint += new System.Windows.Forms.PaintEventHandler(this.titlebar_Paint);
             // 
             // minimize
             // 
@@ -99,10 +98,10 @@
             // title
             // 
             this.title.AutoSize = true;
-            this.title.Font = new System.Drawing.Font("Trajan Pro", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.title.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.title.Location = new System.Drawing.Point(38, 6);
             this.title.Name = "title";
-            this.title.Size = new System.Drawing.Size(300, 24);
+            this.title.Size = new System.Drawing.Size(225, 24);
             this.title.TabIndex = 0;
             this.title.Text = "Lalchowk - Desktop Client";
             // 
@@ -112,16 +111,16 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1366, 1);
+            this.panel1.Size = new System.Drawing.Size(1377, 1);
             this.panel1.TabIndex = 4;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Black;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 767);
+            this.panel2.Location = new System.Drawing.Point(0, 766);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1366, 1);
+            this.panel2.Size = new System.Drawing.Size(1377, 1);
             this.panel2.TabIndex = 5;
             // 
             // panel3
@@ -130,16 +129,16 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(0, 1);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1, 766);
+            this.panel3.Size = new System.Drawing.Size(1, 765);
             this.panel3.TabIndex = 5;
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.Black;
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(1365, 1);
+            this.panel4.Location = new System.Drawing.Point(1376, 1);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1, 766);
+            this.panel4.Size = new System.Drawing.Size(1, 765);
             this.panel4.TabIndex = 5;
             // 
             // mainpnl
@@ -154,16 +153,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1366, 768);
-            this.ControlBox = false;
+            this.ClientSize = new System.Drawing.Size(1362, 741);
             this.Controls.Add(this.mainpnl);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.titlebar);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "container";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

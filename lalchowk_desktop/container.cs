@@ -17,10 +17,6 @@ namespace Veiled_Kashmir_Admin_Panel
             InitializeComponent();
         }
 
-        private void titlebar_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void Homepage_Load(object sender, EventArgs e)
         {

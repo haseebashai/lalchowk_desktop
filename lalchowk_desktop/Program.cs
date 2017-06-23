@@ -73,6 +73,20 @@ namespace Veiled_Kashmir_Admin_Panel
             }
 
         }
+
+  /*      public MySqlDataAdapter AdapterQuery(String command)
+        {
+            if (this.openConnection() == true)
+            {
+                MySqlCommand cmd = new MySqlCommand(command, conn);
+                    cmd.ExecuteNonQuery();
+                this.closeConnection();
+            }
+            return (null);
+
+        } */
+
+
         public MySqlDataReader Query(String command)
         {
             MySqlDataReader datareader;

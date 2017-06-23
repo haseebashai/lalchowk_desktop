@@ -143,7 +143,7 @@ namespace Veiled_Kashmir_Admin_Panel
             adap.Fill(dt);
             BindingSource bsource = new BindingSource();
             bsource.DataSource = dt;
-           inventorydatagridview.DataSource = bsource;
+            inventorydatagridview.DataSource = bsource;
         }
 
         private void supidtxt_TextChanged(object sender, EventArgs e)
