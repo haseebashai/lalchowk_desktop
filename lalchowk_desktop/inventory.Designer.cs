@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.inventorydatagridview = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -54,14 +54,14 @@
             // 
             // inventorydatagridview
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.inventorydatagridview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.inventorydatagridview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.inventorydatagridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.inventorydatagridview.Location = new System.Drawing.Point(2, 73);
             this.inventorydatagridview.Name = "inventorydatagridview";
@@ -164,10 +164,10 @@
             // 
             // productlbl
             // 
-            this.productlbl.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.productlbl.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.productlbl.Location = new System.Drawing.Point(15, 522);
             this.productlbl.Name = "productlbl";
-            this.productlbl.Size = new System.Drawing.Size(261, 59);
+            this.productlbl.Size = new System.Drawing.Size(229, 59);
             this.productlbl.TabIndex = 32;
             this.productlbl.Text = "name";
             this.productlbl.Click += new System.EventHandler(this.productlbl_Click);
@@ -205,28 +205,31 @@
             // 
             // desctxtbox
             // 
-            this.desctxtbox.Location = new System.Drawing.Point(311, 461);
+            this.desctxtbox.AcceptsTab = true;
+            this.desctxtbox.Location = new System.Drawing.Point(234, 461);
             this.desctxtbox.Multiline = true;
             this.desctxtbox.Name = "desctxtbox";
             this.desctxtbox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.desctxtbox.Size = new System.Drawing.Size(499, 260);
+            this.desctxtbox.Size = new System.Drawing.Size(371, 260);
             this.desctxtbox.TabIndex = 36;
+            this.desctxtbox.TextChanged += new System.EventHandler(this.desctxtbox_TextChanged);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(223, 577);
+            this.label7.Location = new System.Drawing.Point(149, 601);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(83, 20);
             this.label7.TabIndex = 37;
             this.label7.Text = "Description";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // updatebtn
             // 
-            this.updatebtn.Location = new System.Drawing.Point(816, 527);
+            this.updatebtn.Location = new System.Drawing.Point(608, 522);
             this.updatebtn.Name = "updatebtn";
-            this.updatebtn.Size = new System.Drawing.Size(177, 122);
+            this.updatebtn.Size = new System.Drawing.Size(61, 122);
             this.updatebtn.TabIndex = 38;
             this.updatebtn.Text = "Update";
             this.updatebtn.UseVisualStyleBackColor = true;

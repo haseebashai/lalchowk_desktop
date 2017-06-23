@@ -126,6 +126,16 @@ namespace Veiled_Kashmir_Admin_Panel
             }
         }
 
+        private void desctxtbox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
         public inventory(Form hpcopy)
         {
             hp = hpcopy as container;
