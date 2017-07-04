@@ -411,8 +411,8 @@
             this.Controls.Add(this.repliesbtn);
             this.Controls.Add(this.topicbtn);
             this.Controls.Add(this.back);
-            this.Controls.Add(this.repliespnl);
             this.Controls.Add(this.addpnl);
+            this.Controls.Add(this.repliespnl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "forum";
             this.Text = "forum";

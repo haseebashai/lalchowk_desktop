@@ -180,11 +180,11 @@
     <Compile Include="inventory.Designer.cs">
       <DependentUpon>inventory.cs</DependentUpon>
     </Compile>
-    <Compile Include="reviews.cs">
+    <Compile Include="terms.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="reviews.Designer.cs">
-      <DependentUpon>reviews.cs</DependentUpon>
+    <Compile Include="terms.Designer.cs">
+      <DependentUpon>terms.cs</DependentUpon>
     </Compile>
     <Compile Include="customers.cs">
       <SubType>Form</SubType>
@@ -244,8 +244,8 @@
     <EmbeddedResource Include="inventory.resx">
       <DependentUpon>inventory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="reviews.resx">
-      <DependentUpon>reviews.cs</DependentUpon>
+    <EmbeddedResource Include="terms.resx">
+      <DependentUpon>terms.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="customers.resx">
       <DependentUpon>customers.cs</DependentUpon>

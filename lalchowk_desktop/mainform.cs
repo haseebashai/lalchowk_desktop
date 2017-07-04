@@ -123,5 +123,36 @@ namespace Veiled_Kashmir_Admin_Panel
             messages msg = new messages(this,hp);
             msg.ShowDialog();
         }
+
+        private void termsbtn_Click(object sender, EventArgs e)
+        {
+            terms tr = new terms(hp);
+            tr.TopLevel = false;
+            cntpnl.Controls.Clear();
+            cntpnl.Controls.Add(tr);
+            tr.Show();
+        }
+
+        private void faqbtn_Click(object sender, EventArgs e)
+        {
+            terms tr = new terms(hp);
+            tr.TopLevel = false;
+            cntpnl.Controls.Clear();
+            tr.faqpnl.Visible = true;
+            cntpnl.Controls.Add(tr);
+            tr.readfaq();
+            tr.Show();
+        }
+
+        private void aboutbtn_Click(object sender, EventArgs e)
+        {
+            terms tr = new terms(hp);
+            tr.TopLevel = false;
+            cntpnl.Controls.Clear();
+            tr.aboutpnl.Visible = true;
+            cntpnl.Controls.Add(tr);
+            tr.readabout();
+            tr.Show();
+        }
     }
 }
