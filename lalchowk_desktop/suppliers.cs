@@ -100,7 +100,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
                 DataGridViewRow row = this.supplierdatagridview.Rows[e.RowIndex];
                 idlbl.Text = row.Cells["supplierid"].Value.ToString();
-                supplierlbl.Text = row.Cells["suppliername"].Value.ToString();
+                supplierlbl.Text = row.Cells["name"].Value.ToString();
                 contactlbl.Text = row.Cells["contactname"].Value.ToString();
                 addresslbl.Text = row.Cells["address"].Value.ToString();
                 phonelbl.Text = row.Cells["phone"].Value.ToString();
@@ -125,7 +125,7 @@ namespace Veiled_Kashmir_Admin_Panel
         private void suppliertxt_TextChanged(object sender, EventArgs e)
         {
             DataView dv = new DataView(dt);
-            dv.RowFilter = string.Format("suppliername LIKE '%{0}%'", suppliertxt.Text);
+            dv.RowFilter = string.Format("name LIKE '%{0}%'", suppliertxt.Text);
             supplierdatagridview.DataSource = dv;
         }
 

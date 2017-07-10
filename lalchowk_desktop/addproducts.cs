@@ -60,7 +60,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void supplierlist_SelectedIndexChanged(object sender, EventArgs e)
         {
-            dr = obj.Query("select suppliername from suppliers where supplierid='" + supplierlist.Text + "'");
+            dr = obj.Query("select name from suppliers where supplierid='" + supplierlist.Text + "'");
             dr.Read();    
             supnametxt.Text = dr[0].ToString();            
             obj.closeConnection();
@@ -178,7 +178,9 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void seccat_SelectedIndexChanged(object sender, EventArgs e)
         {
-            dr = obj.Query("select categoryid from secondcategory where categoryname='" + seccat.Text + "' && firstcategoryid='" +idlbl.Text+"'");
+            StringBuilder sb = new StringBuilder(seccat.Text);
+            sb.Replace("'", "\\'");
+            dr = obj.Query("select categoryid from secondcategory where categoryname='" + sb + "' && firstcategoryid='" +idlbl.Text+"'");
             if (dr.Read())
             {
                 id2lbl.Text = dr[0].ToString();

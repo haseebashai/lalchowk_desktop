@@ -14,9 +14,9 @@ namespace Veiled_Kashmir_Admin_Panel
     public partial class orders : Form
     {
         DBConnect obj = new DBConnect();
-      //  String cmd;
+        String orderid,email,addressid;
         MySqlDataReader dr;
-        DataTable dt;
+        DataTable dt,dt1,dt2,dt3;
         private container hp = null;
      
 
@@ -33,10 +33,12 @@ namespace Veiled_Kashmir_Admin_Panel
 
             dt = new DataTable();
             dt.Load(dr);
+            obj.closeConnection();
             BindingSource bsource = new BindingSource();
 
             bsource.DataSource = dt;
             ordergridview.DataSource = bsource;
+            
         }
 
         private void orders_Load(object sender, EventArgs e)
@@ -44,11 +46,147 @@ namespace Veiled_Kashmir_Admin_Panel
             readorders();
         }
 
-        private void usersearchtxt_TextChanged(object sender, EventArgs e)
+        private void emailtxt_TextChanged(object sender, EventArgs e)
         {
             DataView dv = new DataView(dt);
-            dv.RowFilter = string.Format("email LIKE '%{0}%'", usersearchtxt.Text);
+            dv.RowFilter = string.Format("email LIKE '%{0}%'", emailtxt.Text);
             ordergridview.DataSource = dv;
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void orderpnl_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+       
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void orderdetails()
+        {
+            
+            dr = obj.Query("SELECT * FROM orderdetails where orderid='"+orderid+"'");
+            dt1 = new DataTable();
+            dt1.Load(dr);
+            obj.closeConnection();
+            BindingSource bsource = new BindingSource();
+            bsource.DataSource = dt1;
+            orderdetailview.DataSource = bsource;
+            
+            orderdetailview.Visible = true;
+        }
+
+        private void pic_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void proname_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                dr = obj.Query("select picture from orderdetails where productname='" + proname.Text + "'");
+                dr.Read();
+                pic.BackgroundImage = new Bitmap(dr["picture"].ToString());
+                
+            }
+            catch(Exception ex)
+            {
+                pic.BackgroundImage = null;
+            }
+            obj.closeConnection();
+        }
+
+        private void paymenttxt_TextChanged(object sender, EventArgs e)
+        {
+            DataView dv = new DataView(dt);
+            dv.RowFilter = string.Format("paymenttype LIKE '%{0}%'", paymenttxt.Text);
+            ordergridview.DataSource = dv;
+        }
+
+        private void statustxt_TextChanged(object sender, EventArgs e)
+        {
+            DataView dv = new DataView(dt);
+            dv.RowFilter = string.Format("status LIKE '%{0}%'", statustxt.Text);
+            ordergridview.DataSource = dv;
+        }
+
+        private void readaddress()
+        {
+            try {
+                dr = obj.Query("select * from addresses where addressid='" + addressid + "'");
+                dr.Read();
+                namelbl.Text = dr["name"].ToString();
+                address1lbl.Text = dr["address1"].ToString();
+                address2lbl.Text = dr["address2"].ToString();
+                pinlbl.Text = dr["pincode"].ToString();
+                citylbl.Text = dr["city"].ToString();
+                contactlbl.Text = dr["contact"].ToString();
+                
+
+            }
+           catch(Exception ex)
+           {
+                MessageBox.Show(ex.ToString());
+                
+           }
+            obj.closeConnection();
+        }
+
+        private void readproductid()
+        {
+            dr = obj.Query("SELECT productid FROM orderdetails where orderid='" + orderid + "'");
+            dt2 = new DataTable();
+            dt2.Columns.Add("productid", typeof(String));
+            dt2.Load(dr);
+            obj.closeConnection();
+            proid.DisplayMember = "productid";
+            proid.DataSource = dt2;
+        }
+
+        private void readproductname()
+        {
+            dr = obj.Query("SELECT productname FROM orderdetails where orderid='" + orderid + "'");
+            dt3 = new DataTable();
+            dt3.Columns.Add("productname", typeof(String));
+            dt3.Load(dr);
+            obj.closeConnection();
+            proname.DisplayMember = "productname";
+            proname.DataSource = dt3;
+        }
+
+        private void readamount()
+        {
+            dr = obj.Query("select sum(price) from orderdetails where orderid='" + orderid + "'");
+            dr.Read();
+            amountlbl.Text = dr[0].ToString() +"/-";
+            obj.closeConnection();
+        }
+
+        private void ordergridview_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = this.ordergridview.Rows[e.RowIndex];
+                orderid = row.Cells["orderid"].Value.ToString();
+                email = row.Cells["email"].Value.ToString();
+                addressid = row.Cells["addressid"].Value.ToString();
+                orderlbl.Text = orderid;
+               
+                readaddress();
+                orderdetails();
+                readproductid();
+                readproductname();
+                readamount();
+            }
         }
 
         /*      private void addevbtn_Click(object sender, EventArgs e)

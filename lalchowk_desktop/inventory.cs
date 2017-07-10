@@ -63,7 +63,7 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             try {
                 DataView dv = new DataView(dt);
-                dv.RowFilter = string.Format("Convert([categoryid],System.String) LIKE '%{0}%'", catidtxt.Text);
+                dv.RowFilter = string.Format("Convert([productid],System.String) LIKE '%{0}%'", proidtxt.Text);
                 inventorydatagridview.DataSource = dv;
             }
             catch (Exception ex)
@@ -96,7 +96,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 productlbl.Text = row.Cells["productname"].Value.ToString();
                 catidlbl.Text = row.Cells["categoryid"].Value.ToString();
                 desctxtbox.Text = row.Cells["description"].Value.ToString();
-                rmvbtn.Visible = true;
+               
             }
         }
 
@@ -195,6 +195,8 @@ namespace Veiled_Kashmir_Admin_Panel
             }
         }
 
+        
+
         private void desctxtbox_TextChanged(object sender, EventArgs e)
         {
 
@@ -214,16 +216,22 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void readinventory()
         {
-            con = new MySqlConnection();
-            con.ConnectionString = "SERVER=182.50.133.91;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah";
-            con.Open();
-            adap = new MySqlDataAdapter("select * from products", con);
-            dt = new DataTable();
-            adap.Fill(dt);
-            BindingSource bsource = new BindingSource();
-            bsource.DataSource = dt;
-            inventorydatagridview.DataSource = bsource;
-        }
+            try {
+                con = new MySqlConnection();
+                con.ConnectionString = "SERVER=182.50.133.91;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah";
+                con.Open();
+                adap = new MySqlDataAdapter("select * from products", con);
+                dt = new DataTable();
+                adap.Fill(dt);
+                BindingSource bsource = new BindingSource();
+                bsource.DataSource = dt;
+                inventorydatagridview.DataSource = bsource;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            }
 
       
 

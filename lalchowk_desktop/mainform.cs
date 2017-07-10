@@ -130,6 +130,7 @@ namespace Veiled_Kashmir_Admin_Panel
             tr.TopLevel = false;
             cntpnl.Controls.Clear();
             cntpnl.Controls.Add(tr);
+            tr.readterms();
             tr.Show();
         }
 

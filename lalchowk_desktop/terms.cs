@@ -30,7 +30,7 @@ namespace Veiled_Kashmir_Admin_Panel
             readterms();
         }
 
-        private void readterms()
+        public void readterms()
         {
             con = new MySqlConnection();
             con.ConnectionString = "SERVER=182.50.133.91;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah";

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.inventorydatagridview = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -36,10 +36,9 @@
             this.supidtxt = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.pronametxt = new System.Windows.Forms.TextBox();
-            this.catidtxt = new System.Windows.Forms.TextBox();
+            this.proidtxt = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.brandtxt = new System.Windows.Forms.TextBox();
-            this.rmvbtn = new System.Windows.Forms.Button();
             this.productlbl = new System.Windows.Forms.Label();
             this.idlbl = new System.Windows.Forms.Label();
             this.catidlbl = new System.Windows.Forms.Label();
@@ -54,14 +53,14 @@
             // 
             // inventorydatagridview
             // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.inventorydatagridview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.inventorydatagridview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.inventorydatagridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.inventorydatagridview.Location = new System.Drawing.Point(2, 73);
             this.inventorydatagridview.Name = "inventorydatagridview";
@@ -82,7 +81,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(237, 52);
+            this.label3.Location = new System.Drawing.Point(250, 52);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(114, 13);
             this.label3.TabIndex = 24;
@@ -91,7 +90,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(37, 52);
+            this.label2.Location = new System.Drawing.Point(581, 52);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(98, 13);
             this.label2.TabIndex = 22;
@@ -99,7 +98,7 @@
             // 
             // supidtxt
             // 
-            this.supidtxt.Location = new System.Drawing.Point(141, 45);
+            this.supidtxt.Location = new System.Drawing.Point(685, 45);
             this.supidtxt.Name = "supidtxt";
             this.supidtxt.Size = new System.Drawing.Size(78, 20);
             this.supidtxt.TabIndex = 21;
@@ -108,27 +107,27 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(557, 52);
+            this.label4.Location = new System.Drawing.Point(17, 52);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(102, 13);
+            this.label4.Size = new System.Drawing.Size(94, 13);
             this.label4.TabIndex = 26;
-            this.label4.Text = "Filter by Category ID";
+            this.label4.Text = "Filter by ProductID";
             // 
             // pronametxt
             // 
-            this.pronametxt.Location = new System.Drawing.Point(355, 45);
+            this.pronametxt.Location = new System.Drawing.Point(368, 45);
             this.pronametxt.Name = "pronametxt";
             this.pronametxt.Size = new System.Drawing.Size(187, 20);
             this.pronametxt.TabIndex = 23;
             this.pronametxt.TextChanged += new System.EventHandler(this.pronametxt_TextChanged);
             // 
-            // catidtxt
+            // proidtxt
             // 
-            this.catidtxt.Location = new System.Drawing.Point(665, 45);
-            this.catidtxt.Name = "catidtxt";
-            this.catidtxt.Size = new System.Drawing.Size(107, 20);
-            this.catidtxt.TabIndex = 25;
-            this.catidtxt.TextChanged += new System.EventHandler(this.catidtxt_TextChanged);
+            this.proidtxt.Location = new System.Drawing.Point(125, 45);
+            this.proidtxt.Name = "proidtxt";
+            this.proidtxt.Size = new System.Drawing.Size(107, 20);
+            this.proidtxt.TabIndex = 25;
+            this.proidtxt.TextChanged += new System.EventHandler(this.catidtxt_TextChanged);
             // 
             // label5
             // 
@@ -146,21 +145,6 @@
             this.brandtxt.Size = new System.Drawing.Size(187, 20);
             this.brandtxt.TabIndex = 27;
             this.brandtxt.TextChanged += new System.EventHandler(this.brandtxt_TextChanged);
-            // 
-            // rmvbtn
-            // 
-            this.rmvbtn.BackColor = System.Drawing.Color.Red;
-            this.rmvbtn.Enabled = false;
-            this.rmvbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rmvbtn.ForeColor = System.Drawing.Color.White;
-            this.rmvbtn.Location = new System.Drawing.Point(16, 600);
-            this.rmvbtn.Name = "rmvbtn";
-            this.rmvbtn.Size = new System.Drawing.Size(129, 36);
-            this.rmvbtn.TabIndex = 33;
-            this.rmvbtn.Text = "Remove Product";
-            this.rmvbtn.UseVisualStyleBackColor = false;
-            this.rmvbtn.Visible = false;
-            this.rmvbtn.Click += new System.EventHandler(this.rmvbtn_Click);
             // 
             // productlbl
             // 
@@ -218,7 +202,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(149, 601);
+            this.label7.Location = new System.Drawing.Point(145, 581);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(83, 20);
             this.label7.TabIndex = 37;
@@ -269,13 +253,12 @@
             this.Controls.Add(this.desctxtbox);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.catidlbl);
-            this.Controls.Add(this.rmvbtn);
             this.Controls.Add(this.productlbl);
             this.Controls.Add(this.idlbl);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.brandtxt);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.catidtxt);
+            this.Controls.Add(this.proidtxt);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.pronametxt);
             this.Controls.Add(this.label2);
@@ -301,10 +284,9 @@
         private System.Windows.Forms.TextBox supidtxt;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox pronametxt;
-        private System.Windows.Forms.TextBox catidtxt;
+        private System.Windows.Forms.TextBox proidtxt;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox brandtxt;
-        private System.Windows.Forms.Button rmvbtn;
         private System.Windows.Forms.Label productlbl;
         private System.Windows.Forms.Label idlbl;
         private System.Windows.Forms.Label catidlbl;

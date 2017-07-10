@@ -22,9 +22,12 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             hp = hpcopy as container;
             InitializeComponent();
+            readordersplaced();
+            readordersdelivered();
+            readpurchasecost();
         }
 
-        private void readfood()
+     /*   private void readfood()
         {
             dr = obj.Query("select name from food");
             DataTable dt = new DataTable();
@@ -494,20 +497,42 @@ namespace Veiled_Kashmir_Admin_Panel
                 status = true;
 
             }
+        } */
+
+        private void readordersdelivered()
+        {
+            dr = obj.Query("SELECT count(status),sum(amount+shipping) FROM orders where status='delivered'");
+            dr.Read();
+            ordersdlbl.Text = dr[0].ToString();
+            ordersdvlbl.Text = "Rs. " + dr[1].ToString() + "/-";
+            obj.closeConnection();
         }
+
+        private void readordersplaced()
+        {
+            dr = obj.Query("SELECT count(status),sum(amount+shipping) FROM lalchowk.orders where status='placed';");
+            dr.Read();
+            ordersplbl.Text = dr[0].ToString();
+            orderspvlbl.Text = "Rs. " + dr[1].ToString() + "/-";
+            obj.closeConnection();
+        }
+
+
+        private void readpurchasecost()
+        {
+            dr = obj.Query("SELECT *,sum(dealerprice) as purchased FROM `products` WHERE productid in (SELECT productid from orderdetails WHERE orderid='147');");
+            dr.Read();
+            purlbl.Text = dr["purchased"].ToString();
+            
+            obj.closeConnection();
+        }
+
 
         private void culture_Load(object sender, EventArgs e)
         {
-            readfood();
+            
         }
 
-        private void back_Click(object sender, EventArgs e)
-        {
-            mainform mf = new mainform(hp);
-            mf.TopLevel = false;
-            hp.mainpnl.Controls.Clear();
-            hp.mainpnl.Controls.Add(mf);
-            mf.Show();
-        }
+      
     }
 }

@@ -35,6 +35,8 @@
             this.sendmsgbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.signinlbl = new System.Windows.Forms.Label();
             this.navpnl = new System.Windows.Forms.Panel();
+            this.aboutbtn = new MaterialSkin.Controls.MaterialFlatButton();
+            this.faqbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.termsbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.chkbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.expbtn = new MaterialSkin.Controls.MaterialFlatButton();
@@ -43,8 +45,6 @@
             this.navtitle = new System.Windows.Forms.Panel();
             this.navtxt = new System.Windows.Forms.Label();
             this.cntpnl = new System.Windows.Forms.Panel();
-            this.faqbtn = new MaterialSkin.Controls.MaterialFlatButton();
-            this.aboutbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.navpnl.SuspendLayout();
             this.navtitle.SuspendLayout();
             this.SuspendLayout();
@@ -141,7 +141,6 @@
             // navpnl
             // 
             this.navpnl.BackColor = System.Drawing.Color.White;
-            this.navpnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.navpnl.Controls.Add(this.aboutbtn);
             this.navpnl.Controls.Add(this.faqbtn);
             this.navpnl.Controls.Add(this.termsbtn);
@@ -159,6 +158,38 @@
             this.navpnl.Name = "navpnl";
             this.navpnl.Size = new System.Drawing.Size(200, 711);
             this.navpnl.TabIndex = 10;
+            // 
+            // aboutbtn
+            // 
+            this.aboutbtn.AutoSize = true;
+            this.aboutbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.aboutbtn.Depth = 0;
+            this.aboutbtn.Location = new System.Drawing.Point(12, 468);
+            this.aboutbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.aboutbtn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.aboutbtn.Name = "aboutbtn";
+            this.aboutbtn.Primary = false;
+            this.aboutbtn.Size = new System.Drawing.Size(89, 36);
+            this.aboutbtn.TabIndex = 21;
+            this.aboutbtn.Text = "About edit";
+            this.aboutbtn.UseVisualStyleBackColor = true;
+            this.aboutbtn.Click += new System.EventHandler(this.aboutbtn_Click);
+            // 
+            // faqbtn
+            // 
+            this.faqbtn.AutoSize = true;
+            this.faqbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.faqbtn.Depth = 0;
+            this.faqbtn.Location = new System.Drawing.Point(10, 516);
+            this.faqbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.faqbtn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.faqbtn.Name = "faqbtn";
+            this.faqbtn.Primary = false;
+            this.faqbtn.Size = new System.Drawing.Size(70, 36);
+            this.faqbtn.TabIndex = 20;
+            this.faqbtn.Text = "FAQ edit";
+            this.faqbtn.UseVisualStyleBackColor = true;
+            this.faqbtn.Click += new System.EventHandler(this.faqbtn_Click);
             // 
             // termsbtn
             // 
@@ -267,38 +298,6 @@
             this.cntpnl.Name = "cntpnl";
             this.cntpnl.Size = new System.Drawing.Size(1162, 722);
             this.cntpnl.TabIndex = 12;
-            // 
-            // faqbtn
-            // 
-            this.faqbtn.AutoSize = true;
-            this.faqbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.faqbtn.Depth = 0;
-            this.faqbtn.Location = new System.Drawing.Point(10, 516);
-            this.faqbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.faqbtn.MouseState = MaterialSkin.MouseState.HOVER;
-            this.faqbtn.Name = "faqbtn";
-            this.faqbtn.Primary = false;
-            this.faqbtn.Size = new System.Drawing.Size(70, 36);
-            this.faqbtn.TabIndex = 20;
-            this.faqbtn.Text = "FAQ edit";
-            this.faqbtn.UseVisualStyleBackColor = true;
-            this.faqbtn.Click += new System.EventHandler(this.faqbtn_Click);
-            // 
-            // aboutbtn
-            // 
-            this.aboutbtn.AutoSize = true;
-            this.aboutbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.aboutbtn.Depth = 0;
-            this.aboutbtn.Location = new System.Drawing.Point(12, 468);
-            this.aboutbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.aboutbtn.MouseState = MaterialSkin.MouseState.HOVER;
-            this.aboutbtn.Name = "aboutbtn";
-            this.aboutbtn.Primary = false;
-            this.aboutbtn.Size = new System.Drawing.Size(89, 36);
-            this.aboutbtn.TabIndex = 21;
-            this.aboutbtn.Text = "About edit";
-            this.aboutbtn.UseVisualStyleBackColor = true;
-            this.aboutbtn.Click += new System.EventHandler(this.aboutbtn_Click);
             // 
             // mainform
             // 

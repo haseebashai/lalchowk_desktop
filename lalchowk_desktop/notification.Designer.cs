@@ -28,231 +28,237 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.back = new System.Windows.Forms.PictureBox();
-            this.cancelbtn = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.sendbtn = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.addevpnl = new System.Windows.Forms.Panel();
-            this.inclblem = new System.Windows.Forms.Label();
-            this.inclblm = new System.Windows.Forms.Label();
-            this.msgupdatebtn = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.msgbox = new System.Windows.Forms.ComboBox();
-            this.msgcancelbtn = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.msgboxtxt = new System.Windows.Forms.TextBox();
-            this.rvmbtn = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.msgtxt = new System.Windows.Forms.TextBox();
+            this.close = new System.Windows.Forms.PictureBox();
+            this.namelbl = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.back)).BeginInit();
-            this.addevpnl.SuspendLayout();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.emailtxt = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.titletxt = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.subtxt = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.sendbtn = new System.Windows.Forms.Button();
+            this.orderidbox = new System.Windows.Forms.ComboBox();
+            ((System.ComponentModel.ISupportInitialize)(this.close)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // back
+            // close
             // 
-            this.back.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources._9895;
-            this.back.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.back.Location = new System.Drawing.Point(12, 11);
-            this.back.Name = "back";
-            this.back.Size = new System.Drawing.Size(64, 64);
-            this.back.TabIndex = 27;
-            this.back.TabStop = false;
-            this.back.Click += new System.EventHandler(this.back_Click);
+            this.close.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.turn_on;
+            this.close.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.close.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.close.ImageLocation = "";
+            this.close.Location = new System.Drawing.Point(538, 9);
+            this.close.Name = "close";
+            this.close.Size = new System.Drawing.Size(25, 25);
+            this.close.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.close.TabIndex = 5;
+            this.close.TabStop = false;
+            this.close.Click += new System.EventHandler(this.close_Click);
             // 
-            // cancelbtn
+            // namelbl
             // 
-            this.cancelbtn.Depth = 0;
-            this.cancelbtn.Location = new System.Drawing.Point(80, 301);
-            this.cancelbtn.MouseState = MaterialSkin.MouseState.HOVER;
-            this.cancelbtn.Name = "cancelbtn";
-            this.cancelbtn.Primary = true;
-            this.cancelbtn.Size = new System.Drawing.Size(143, 35);
-            this.cancelbtn.TabIndex = 3;
-            this.cancelbtn.Text = "cancel";
-            this.cancelbtn.UseVisualStyleBackColor = true;
-            this.cancelbtn.Click += new System.EventHandler(this.cancelbtn_Click);
+            this.namelbl.AutoSize = true;
+            this.namelbl.BackColor = System.Drawing.Color.White;
+            this.namelbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.namelbl.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.namelbl.Location = new System.Drawing.Point(12, 9);
+            this.namelbl.Name = "namelbl";
+            this.namelbl.Size = new System.Drawing.Size(175, 25);
+            this.namelbl.TabIndex = 34;
+            this.namelbl.Text = "Send Notification";
             // 
-            // sendbtn
+            // panel1
             // 
-            this.sendbtn.Depth = 0;
-            this.sendbtn.Location = new System.Drawing.Point(229, 301);
-            this.sendbtn.MouseState = MaterialSkin.MouseState.HOVER;
-            this.sendbtn.Name = "sendbtn";
-            this.sendbtn.Primary = true;
-            this.sendbtn.Size = new System.Drawing.Size(143, 35);
-            this.sendbtn.TabIndex = 2;
-            this.sendbtn.Text = "send";
-            this.sendbtn.UseVisualStyleBackColor = true;
-            this.sendbtn.Click += new System.EventHandler(this.sendbtn_Click);
+            this.panel1.BackColor = System.Drawing.Color.DodgerBlue;
+            this.panel1.Location = new System.Drawing.Point(0, -20);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1, 461);
+            this.panel1.TabIndex = 54;
             // 
-            // addevpnl
+            // panel3
             // 
-            this.addevpnl.Controls.Add(this.inclblem);
-            this.addevpnl.Controls.Add(this.inclblm);
-            this.addevpnl.Controls.Add(this.msgupdatebtn);
-            this.addevpnl.Controls.Add(this.msgbox);
-            this.addevpnl.Controls.Add(this.msgcancelbtn);
-            this.addevpnl.Controls.Add(this.msgboxtxt);
-            this.addevpnl.Controls.Add(this.rvmbtn);
-            this.addevpnl.Controls.Add(this.label2);
-            this.addevpnl.Controls.Add(this.label1);
-            this.addevpnl.Controls.Add(this.msgtxt);
-            this.addevpnl.Controls.Add(this.panel1);
-            this.addevpnl.Controls.Add(this.cancelbtn);
-            this.addevpnl.Controls.Add(this.sendbtn);
-            this.addevpnl.Location = new System.Drawing.Point(12, 128);
-            this.addevpnl.Name = "addevpnl";
-            this.addevpnl.Size = new System.Drawing.Size(998, 420);
-            this.addevpnl.TabIndex = 30;
+            this.panel3.BackColor = System.Drawing.Color.DodgerBlue;
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(0, 419);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(573, 1);
+            this.panel3.TabIndex = 53;
             // 
-            // inclblem
+            // panel2
             // 
-            this.inclblem.AutoSize = true;
-            this.inclblem.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inclblem.ForeColor = System.Drawing.Color.Red;
-            this.inclblem.Location = new System.Drawing.Point(795, 339);
-            this.inclblem.Name = "inclblem";
-            this.inclblem.Size = new System.Drawing.Size(136, 20);
-            this.inclblem.TabIndex = 71;
-            this.inclblem.Text = "incomplete details";
-            this.inclblem.Visible = false;
+            this.panel2.BackColor = System.Drawing.Color.DodgerBlue;
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel2.Location = new System.Drawing.Point(573, 1);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1, 419);
+            this.panel2.TabIndex = 52;
             // 
-            // inclblm
+            // panel5
             // 
-            this.inclblm.AutoSize = true;
-            this.inclblm.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inclblm.ForeColor = System.Drawing.Color.Red;
-            this.inclblm.Location = new System.Drawing.Point(236, 339);
-            this.inclblm.Name = "inclblm";
-            this.inclblm.Size = new System.Drawing.Size(136, 20);
-            this.inclblm.TabIndex = 70;
-            this.inclblm.Text = "incomplete details";
-            this.inclblm.Visible = false;
+            this.panel5.BackColor = System.Drawing.Color.DodgerBlue;
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel5.Location = new System.Drawing.Point(0, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(574, 1);
+            this.panel5.TabIndex = 51;
             // 
-            // msgupdatebtn
+            // emailtxt
             // 
-            this.msgupdatebtn.Depth = 0;
-            this.msgupdatebtn.Location = new System.Drawing.Point(788, 301);
-            this.msgupdatebtn.MouseState = MaterialSkin.MouseState.HOVER;
-            this.msgupdatebtn.Name = "msgupdatebtn";
-            this.msgupdatebtn.Primary = true;
-            this.msgupdatebtn.Size = new System.Drawing.Size(143, 35);
-            this.msgupdatebtn.TabIndex = 6;
-            this.msgupdatebtn.Text = "update ";
-            this.msgupdatebtn.UseVisualStyleBackColor = true;
-            this.msgupdatebtn.Click += new System.EventHandler(this.msgupdatebtn_Click);
-            // 
-            // msgbox
-            // 
-            this.msgbox.FormattingEnabled = true;
-            this.msgbox.Location = new System.Drawing.Point(544, 31);
-            this.msgbox.Name = "msgbox";
-            this.msgbox.Size = new System.Drawing.Size(387, 21);
-            this.msgbox.TabIndex = 4;
-            this.msgbox.SelectedIndexChanged += new System.EventHandler(this.msgbox_SelectedIndexChanged);
-            // 
-            // msgcancelbtn
-            // 
-            this.msgcancelbtn.Depth = 0;
-            this.msgcancelbtn.Location = new System.Drawing.Point(639, 301);
-            this.msgcancelbtn.MouseState = MaterialSkin.MouseState.HOVER;
-            this.msgcancelbtn.Name = "msgcancelbtn";
-            this.msgcancelbtn.Primary = true;
-            this.msgcancelbtn.Size = new System.Drawing.Size(143, 35);
-            this.msgcancelbtn.TabIndex = 7;
-            this.msgcancelbtn.Text = "cancel";
-            this.msgcancelbtn.UseVisualStyleBackColor = true;
-            this.msgcancelbtn.Click += new System.EventHandler(this.msgcancelbtn_Click);
-            // 
-            // msgboxtxt
-            // 
-            this.msgboxtxt.Location = new System.Drawing.Point(544, 70);
-            this.msgboxtxt.Multiline = true;
-            this.msgboxtxt.Name = "msgboxtxt";
-            this.msgboxtxt.Size = new System.Drawing.Size(387, 187);
-            this.msgboxtxt.TabIndex = 5;
-            // 
-            // rvmbtn
-            // 
-            this.rvmbtn.Depth = 0;
-            this.rvmbtn.Location = new System.Drawing.Point(544, 301);
-            this.rvmbtn.MouseState = MaterialSkin.MouseState.HOVER;
-            this.rvmbtn.Name = "rvmbtn";
-            this.rvmbtn.Primary = true;
-            this.rvmbtn.Size = new System.Drawing.Size(65, 35);
-            this.rvmbtn.TabIndex = 8;
-            this.rvmbtn.Text = "remove";
-            this.rvmbtn.UseVisualStyleBackColor = true;
-            this.rvmbtn.Click += new System.EventHandler(this.rvmbtn_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(688, 10);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(83, 13);
-            this.label2.TabIndex = 14;
-            this.label2.Text = "Select Message";
+            this.emailtxt.Enabled = false;
+            this.emailtxt.Location = new System.Drawing.Point(70, 94);
+            this.emailtxt.Name = "emailtxt";
+            this.emailtxt.Size = new System.Drawing.Size(296, 20);
+            this.emailtxt.TabIndex = 55;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(193, 39);
+            this.label1.Location = new System.Drawing.Point(17, 101);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(78, 13);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "Send Message";
+            this.label1.Size = new System.Drawing.Size(32, 13);
+            this.label1.TabIndex = 56;
+            this.label1.Text = "Email";
             // 
-            // msgtxt
+            // label2
             // 
-            this.msgtxt.Location = new System.Drawing.Point(39, 70);
-            this.msgtxt.Multiline = true;
-            this.msgtxt.Name = "msgtxt";
-            this.msgtxt.Size = new System.Drawing.Size(387, 187);
-            this.msgtxt.TabIndex = 1;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(17, 141);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(27, 13);
+            this.label2.TabIndex = 58;
+            this.label2.Text = "Title";
             // 
-            // panel1
+            // titletxt
             // 
-            this.panel1.BackColor = System.Drawing.Color.Black;
-            this.panel1.Location = new System.Drawing.Point(476, 10);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1, 397);
-            this.panel1.TabIndex = 10;
+            this.titletxt.Location = new System.Drawing.Point(70, 134);
+            this.titletxt.Multiline = true;
+            this.titletxt.Name = "titletxt";
+            this.titletxt.Size = new System.Drawing.Size(296, 20);
+            this.titletxt.TabIndex = 57;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(17, 179);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(42, 13);
+            this.label3.TabIndex = 60;
+            this.label3.Text = "Subtitle";
+            // 
+            // subtxt
+            // 
+            this.subtxt.Location = new System.Drawing.Point(70, 172);
+            this.subtxt.Multiline = true;
+            this.subtxt.Name = "subtxt";
+            this.subtxt.Size = new System.Drawing.Size(296, 20);
+            this.subtxt.TabIndex = 59;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(17, 287);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(40, 13);
+            this.label4.TabIndex = 61;
+            this.label4.Text = "Picture";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox1.Location = new System.Drawing.Point(65, 229);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(186, 132);
+            this.pictureBox1.TabIndex = 62;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(273, 236);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(44, 13);
+            this.label5.TabIndex = 64;
+            this.label5.Text = "OrderID";
+            // 
+            // sendbtn
+            // 
+            this.sendbtn.Location = new System.Drawing.Point(446, 366);
+            this.sendbtn.Name = "sendbtn";
+            this.sendbtn.Size = new System.Drawing.Size(102, 33);
+            this.sendbtn.TabIndex = 65;
+            this.sendbtn.Text = "&Send";
+            this.sendbtn.UseVisualStyleBackColor = true;
+            this.sendbtn.Click += new System.EventHandler(this.sendbtn_Click_1);
+            // 
+            // orderidbox
+            // 
+            this.orderidbox.FormattingEnabled = true;
+            this.orderidbox.Location = new System.Drawing.Point(324, 227);
+            this.orderidbox.Name = "orderidbox";
+            this.orderidbox.Size = new System.Drawing.Size(121, 21);
+            this.orderidbox.TabIndex = 66;
             // 
             // notification
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1022, 558);
-            this.Controls.Add(this.back);
-            this.Controls.Add(this.addevpnl);
+            this.ClientSize = new System.Drawing.Size(574, 420);
+            this.Controls.Add(this.orderidbox);
+            this.Controls.Add(this.sendbtn);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.subtxt);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.titletxt);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.emailtxt);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel5);
+            this.Controls.Add(this.namelbl);
+            this.Controls.Add(this.close);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "notification";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "notification";
             this.Load += new System.EventHandler(this.notification_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.back)).EndInit();
-            this.addevpnl.ResumeLayout(false);
-            this.addevpnl.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.close)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.PictureBox back;
-        private MaterialSkin.Controls.MaterialRaisedButton cancelbtn;
-        private MaterialSkin.Controls.MaterialRaisedButton sendbtn;
-        private System.Windows.Forms.Panel addevpnl;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox msgtxt;
+        private System.Windows.Forms.PictureBox close;
+        private System.Windows.Forms.Label namelbl;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.TextBox emailtxt;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox msgboxtxt;
-        private MaterialSkin.Controls.MaterialRaisedButton rvmbtn;
-        private MaterialSkin.Controls.MaterialRaisedButton msgcancelbtn;
-        private System.Windows.Forms.ComboBox msgbox;
-        private MaterialSkin.Controls.MaterialRaisedButton msgupdatebtn;
-        private System.Windows.Forms.Label inclblm;
-        private System.Windows.Forms.Label inclblem;
+        private System.Windows.Forms.TextBox titletxt;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox subtxt;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button sendbtn;
+        private System.Windows.Forms.ComboBox orderidbox;
     }
 }
