@@ -14,16 +14,11 @@ namespace Veiled_Kashmir_Admin_Panel
     public partial class notification : Form
     {
         DBConnect obj = new DBConnect();
-
-        private mainform mf = null;
-        private container hp = null;
-
         MySqlDataReader dr;
 
         public notification(string email)
         {
-          //  mf = mfcopy as mainform;
-          //  hp = hpcopy as container;
+         
 
             InitializeComponent();
             

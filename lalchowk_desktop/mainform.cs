@@ -120,8 +120,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void sendmsgbtn_Click(object sender, EventArgs e)
         {
-            messages msg = new messages(this,hp);
-            msg.ShowDialog();
+           
         }
 
         private void termsbtn_Click(object sender, EventArgs e)
