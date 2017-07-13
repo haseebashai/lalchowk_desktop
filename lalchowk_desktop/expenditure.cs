@@ -18,13 +18,19 @@ namespace Veiled_Kashmir_Admin_Panel
         bool status, nametxtok, desctxtok, editnametxtok, editdesctxtok, wordtxtok, meaningtxtok, editwordtxtok, editmeaningtxtok, phrasetxtok, phraseentxtok, editphrasetxtok, editphraseentxtok;
         MySqlDataReader dr, dr2, dr3;
         private container hp = null;
-        public expenditure(Form hpcopy)
+        private mainform mf = null;
+        public expenditure(Form mfcopy,Form hpcopy)
         {
+            mf = mfcopy as mainform;
             hp = hpcopy as container;
+
             InitializeComponent();
             readordersplaced();
             readordersdelivered();
             readpurchasecost();
+            readshipping();
+            readprofit();
+            
         }
 
      /*   private void readfood()
@@ -504,7 +510,7 @@ namespace Veiled_Kashmir_Admin_Panel
             dr = obj.Query("SELECT count(status),sum(amount+shipping) FROM orders where status='delivered'");
             dr.Read();
             ordersdlbl.Text = dr[0].ToString();
-            ordersdvlbl.Text = "Rs. " + dr[1].ToString() + "/-";
+            ordersdvlbl.Text = dr[1].ToString();
             obj.closeConnection();
         }
 
@@ -513,26 +519,93 @@ namespace Veiled_Kashmir_Admin_Panel
             dr = obj.Query("SELECT count(status),sum(amount+shipping) FROM lalchowk.orders where status='placed';");
             dr.Read();
             ordersplbl.Text = dr[0].ToString();
-            orderspvlbl.Text = "Rs. " + dr[1].ToString() + "/-";
+            orderspvlbl.Text = dr[1].ToString();
             obj.closeConnection();
         }
 
 
         private void readpurchasecost()
         {
-            dr = obj.Query("SELECT *,sum(dealerprice) as purchased FROM `products` WHERE productid in (SELECT productid from orderdetails WHERE orderid='147');");
+            dr = obj.Query("select sum(dealerprice*quantity) from lalchowk.orderdetails where productid in (SELECT productid FROM lalchowk.orderdetails where orderid in (SELECT orderid FROM lalchowk.orders where status = 'delivered'));");
             dr.Read();
-            purlbl.Text = dr["purchased"].ToString();
+            purlbl.Text = dr[0].ToString();
             
             obj.closeConnection();
         }
 
+        private void readshipping()
+        {
+            dr = obj.Query("select sum(shipping) from lalchowk.orders where status ='delivered'");
+            dr.Read();
+            shiplbl.Text = dr[0].ToString();
+
+            obj.closeConnection();
+        }
+
+        private void readprofit()
+        {
+          /*  int a = Int32.Parse(ordersdvlbl.Text);
+            int b = Int32.Parse(purlbl.Text);
+            int c = Int32.Parse(shiplbl.Text);
+            profitlbl.Text = (a-b).ToString(); */
+            profitlbl.Text= ((int.Parse(ordersdvlbl.Text) - int.Parse(purlbl.Text)) - int.Parse(shiplbl.Text)).ToString();
+        }
 
         private void culture_Load(object sender, EventArgs e)
         {
             
         }
 
-      
+        private void orderslbl_Click(object sender, EventArgs e)
+        {
+            ordersdetails od = new ordersdetails(mf);
+            od.TopLevel = false;
+            mf.cntpnl.Controls.Clear();
+           
+            od.orderslbl.Text = "Orders Placed";
+            od.readordersplaced();
+            mf.cntpnl.Controls.Add(od);
+            od.Show();
+        }
+        private void orderslbl2_Click(object sender, EventArgs e)
+        {
+            ordersdetails od = new ordersdetails(mf);
+            od.TopLevel = false;
+            mf.cntpnl.Controls.Clear();
+            od.readordersdelivered();
+            mf.cntpnl.Controls.Add(od);
+            od.Show();
+        }
+
+        private void costlbl_Click(object sender, EventArgs e)
+        {
+            ordersdetails od = new ordersdetails(mf);
+            od.TopLevel = false;
+            mf.cntpnl.Controls.Clear();
+            od.orderslbl.Text = "Purchased Products Cost";
+            od.readpurchasecost();
+            mf.cntpnl.Controls.Add(od);
+            od.Show();
+        }
+        private void profitlbl2_Click(object sender, EventArgs e)
+        {
+            ordersdetails od = new ordersdetails(mf);
+            od.TopLevel = false;
+            mf.cntpnl.Controls.Clear();
+            od.orderslbl.Text = "Profit Earned from these Orders";
+            od.readprofit();
+            mf.cntpnl.Controls.Add(od);
+            od.Show();
+        }
+        private void ship_Click(object sender, EventArgs e)
+        {
+            ordersdetails od = new ordersdetails(mf);
+            od.TopLevel = false;
+            mf.cntpnl.Controls.Clear();
+            od.orderslbl.Text = "Shipping Charges";
+            od.readshipping();
+            mf.cntpnl.Controls.Add(od);
+            od.Show();
+        }
     }
 }

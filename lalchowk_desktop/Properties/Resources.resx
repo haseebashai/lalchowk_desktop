@@ -139,6 +139,9 @@
   <data name="logoW1wwhite" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logoW1wwhite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="logoW2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logoW2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="video-chat" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\video-chat.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -157,7 +160,7 @@
   <data name="user-20" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\user-20.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="logoW2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\logoW2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="industrial-safety-1492046_640" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\industrial-safety-1492046_640.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

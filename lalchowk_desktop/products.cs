@@ -18,7 +18,7 @@ namespace Veiled_Kashmir_Admin_Panel
         DBConnect obj = new DBConnect();
         bool fnameok, lnameok, usernameok, emailok, passwordok, confirmok, phoneok, dobok;
 
-        
+       
 
         private mainform mf = null;
         private container hp = null;
@@ -45,6 +45,24 @@ namespace Veiled_Kashmir_Admin_Panel
             inv.Show();
         }
 
+        private void products_Load(object sender, EventArgs e)
+        {
+            dr = obj.Query("select count(productid) from products");
+            dr.Read();
+            tplbl.Text = "Total Products currently added: " + dr[0].ToString();
+            obj.closeConnection();
+
+            dr=obj.Query("Select count(productid) from products where categoryid ='t1'");
+            dr.Read();
+            eleclbl.Text = "Total Electronic Items currently added: " + dr[0].ToString();
+            obj.closeConnection();
+
+            dr = obj.Query("Select count(productid) from products where supplierid ='4'");
+            dr.Read();
+            clothlbl.Text = "Total Clothing Items currently added: " + dr[0].ToString();
+            obj.closeConnection();
+
+        }
         /*     private void signupbtn_Click(object sender, EventArgs e)
              {
                  if (fnameok && lnameok && usernameok && emailok && passwordok && confirmok && phoneok && dobok && tcbox.Checked == true)

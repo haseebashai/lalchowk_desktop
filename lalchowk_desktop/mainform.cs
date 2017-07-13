@@ -7,28 +7,88 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace Veiled_Kashmir_Admin_Panel
 {
+
     public partial class mainform : Form
     {
+        DBConnect obj = new DBConnect();
+        MySqlConnection con;
+        MySqlDataAdapter adap;
+        DataTable dt;
+        MySqlDataReader dr;
+
         private container hp = null;
         public mainform(Form hpcopy)
         {
             hp = hpcopy as container;
             InitializeComponent();
+            
         }
 
         private void mainform_Load(object sender, EventArgs e)
         {
+
+            
+
             if (userinfo.loggedin == true)
                 signout();
                 changelabel("Welcome, " + userinfo.username +"");
 
+            readordersplaced();
+            readordersshipped();
+            readordersdelivered();
         }
 
-   
-   
+        
+
+        private void readordersplaced()
+        {
+            con = new MySqlConnection();
+            con.ConnectionString = "SERVER=182.50.133.91;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah";
+            con.Open();
+            adap = new MySqlDataAdapter("select * from orders where status='placed'", con);
+            dt = new DataTable();
+            adap.Fill(dt);
+            BindingSource bsource = new BindingSource();
+            bsource.DataSource = dt;
+            placeddataview.DataSource = bsource;
+
+            dr = obj.Query("Select count(status) from orders where status='placed'");
+            dr.Read();
+            attentionlbl.Text = "> "+ dr[0].ToString() + " Order(s) need your Attention ASAP!";
+            obj.closeConnection();
+
+            dr=obj.Query("select sum(dealerprice*quantity) from orderdetails where productid in (SELECT productid FROM orderdetails where orderid in (SELECT orderid FROM orders where status = 'placed'))");
+            dr.Read();
+            costlbl.Text = "> Will cost Rs. " + dr[0].ToString() +"/-";
+            obj.closeConnection();
+        }
+
+        private void readordersshipped()
+        {
+            con = new MySqlConnection();
+            con.ConnectionString = "SERVER=182.50.133.91;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah";
+            con.Open();
+            adap = new MySqlDataAdapter("select * from orders where status='shipped'", con);
+            dt = new DataTable();
+            adap.Fill(dt);
+            BindingSource bsource = new BindingSource();
+            bsource.DataSource = dt;
+            shippeddataview.DataSource = bsource;
+        }
+
+        private void readordersdelivered()
+        {
+            dr = obj.Query("SELECT count(status) FROM orders where status='delivered'");
+            dr.Read();
+           
+            ordersdlbl.Text = dr[0].ToString();
+            obj.closeConnection();
+        }
+
         private void ordersbtn_Click(object sender, EventArgs e)
         {
             orders or = new orders(hp);
@@ -93,7 +153,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void expbtn_Click(object sender, EventArgs e)
         {
-            expenditure exp = new expenditure(hp);
+            expenditure exp = new expenditure(this,hp);
             exp.TopLevel = false;
             cntpnl.Controls.Clear();
             cntpnl.Controls.Add(exp);
@@ -153,6 +213,37 @@ namespace Veiled_Kashmir_Admin_Panel
             cntpnl.Controls.Add(tr);
             tr.readabout();
             tr.Show();
+        }
+
+        private void navtxt_Click(object sender, EventArgs e)
+        {
+            mainform mf = new mainform(hp);
+            hp.mainpnl.Controls.Clear();
+            mf.TopLevel = false;
+            hp.mainpnl.Controls.Add(mf);
+            mf.Show();
+        }
+
+        private void orderslbl_Click(object sender, EventArgs e)
+        {
+            ordersdetails od = new ordersdetails(hp);
+            cntpnl.Controls.Clear();
+            od.TopLevel = false;
+            od.readordersdelivered();
+            cntpnl.Controls.Add(od);
+            od.Show();
+        }
+
+        private void placedlbl_Click(object sender, EventArgs e)
+        {
+            ordersdetails od = new ordersdetails(hp);
+            od.TopLevel = false;
+            cntpnl.Controls.Clear();
+
+            od.orderslbl.Text = "Orders Placed";
+            od.readordersplaced();
+            cntpnl.Controls.Add(od);
+            od.Show();
         }
     }
 }

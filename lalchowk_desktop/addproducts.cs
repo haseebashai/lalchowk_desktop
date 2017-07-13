@@ -23,7 +23,8 @@ namespace Veiled_Kashmir_Admin_Panel
 
         MySqlDataReader dr,dr2;
 
-        string filename, fileaddress;
+        string filename, fileaddress, categoryid;
+
 
         private container hp = null;
         private mainform mf = null;
@@ -145,19 +146,49 @@ namespace Veiled_Kashmir_Admin_Panel
         }
 
 
-
         private void readcategory()
         {
             if (id3lbl.Text == "0")
                 catlbl.Text = id2lbl.Text;
             else
+            {
                 catlbl.Text = id3lbl.Text;
+                
+            }
+        }
+
+        private void fillbtn_Click(object sender, EventArgs e)
+        {
+            readdetails();
+        }
+
+        
+
+        private void catlbl_TextChanged(object sender, EventArgs e)
+        {
+           //  MessageBox.Show(catlbl.Text.ToString());
+            //   readdetails();
+           
         }
 
         private void profile_Load(object sender, EventArgs e)
         {
+           
+
+        }
+
+        private void readdetails()
+        {
+            dr = obj.Query("select detailname1,detailname2,detailname3,detailname4,detailname5 from products where categoryid='"+catlbl.Text+"'");
+            dr.Read();
             
-            
+            dname1txt.Text = dr["detailname1"].ToString();
+            dname2txt.Text = dr["detailname2"].ToString();
+            dname3txt.Text = dr["detailname3"].ToString();
+            dname4txt.Text = dr["detailname4"].ToString();
+            dname5txt.Text = dr["detailname5"].ToString();
+            obj.closeConnection();
+
         }
 
         private void thirdcat_SelectedIndexChanged(object sender, EventArgs e)
@@ -165,7 +196,8 @@ namespace Veiled_Kashmir_Admin_Panel
             dr = obj.Query("select categoryid from thirdcategory where categoryname='" + thirdcat.Text + "' && secondcategoryid='" + id2lbl.Text + "'");
             if (dr.Read())
             {
-                id3lbl.Text = dr[0].ToString();               
+                id3lbl.Text = dr[0].ToString();
+                      
             }
            else 
             {
@@ -173,7 +205,7 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             obj.closeConnection();
             readcategory();
-
+            
         }
 
         private void seccat_SelectedIndexChanged(object sender, EventArgs e)
@@ -193,7 +225,8 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             readthird();
             readcategory();
-            
+           
+
         }
 
         private void firstcat_SelectedIndexChanged(object sender, EventArgs e)
@@ -207,6 +240,7 @@ namespace Veiled_Kashmir_Admin_Panel
             foreach (DataRowView items in seccat.Items)
                 seccat.Items.Remove(items);
             readsecond();
+            
 
         }
 

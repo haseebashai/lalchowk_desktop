@@ -93,6 +93,16 @@ namespace Veiled_Kashmir_Admin_Panel.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap industrial_safety_1492046_640 {
+            get {
+                object obj = ResourceManager.GetObject("industrial-safety-1492046_640", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap LIFECLICKS {
             get {
                 object obj = ResourceManager.GetObject("LIFECLICKS", resourceCulture);

@@ -154,11 +154,11 @@
     <Compile Include="mainform.Designer.cs">
       <DependentUpon>mainform.cs</DependentUpon>
     </Compile>
-    <Compile Include="messages.cs">
+    <Compile Include="ordersdetails.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="messages.Designer.cs">
-      <DependentUpon>messages.cs</DependentUpon>
+    <Compile Include="ordersdetails.Designer.cs">
+      <DependentUpon>ordersdetails.cs</DependentUpon>
     </Compile>
     <Compile Include="notification.cs">
       <SubType>Form</SubType>
@@ -222,8 +222,8 @@
     <EmbeddedResource Include="mainform.resx">
       <DependentUpon>mainform.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="messages.resx">
-      <DependentUpon>messages.cs</DependentUpon>
+    <EmbeddedResource Include="ordersdetails.resx">
+      <DependentUpon>ordersdetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="notification.resx">
       <DependentUpon>notification.cs</DependentUpon>
@@ -323,6 +323,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\logoW2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\industrial-safety-1492046_640.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
