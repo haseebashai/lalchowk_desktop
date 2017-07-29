@@ -105,7 +105,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void readsuppliers()
         {
-            dr = obj.Query("select distinct supplierid from products");
+            dr = obj.Query("select distinct supplierid from suppliers");
             DataTable dt = new DataTable();
             dt.Columns.Add("supplierid", typeof(String));
             dt.Load(dr);
