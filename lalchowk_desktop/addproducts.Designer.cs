@@ -53,7 +53,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.pricetxt = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.discounttxt = new System.Windows.Forms.TextBox();
+            this.dealertxt = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.desctxt = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -91,6 +91,8 @@
             this.pic1 = new System.Windows.Forms.PictureBox();
             this.label26 = new System.Windows.Forms.Label();
             this.pidtxt = new System.Windows.Forms.TextBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.pictxt = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pic1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -299,9 +301,9 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(709, 491);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(39, 13);
+            this.label10.Size = new System.Drawing.Size(66, 13);
             this.label10.TabIndex = 23;
-            this.label10.Text = "PRICE";
+            this.label10.Text = "OUR PRICE";
             // 
             // pricetxt
             // 
@@ -315,16 +317,16 @@
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(709, 541);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(63, 13);
+            this.label11.Size = new System.Drawing.Size(85, 13);
             this.label11.TabIndex = 25;
-            this.label11.Text = "DISCOUNT";
+            this.label11.Text = "DEALER PRICE";
             // 
-            // discounttxt
+            // dealertxt
             // 
-            this.discounttxt.Location = new System.Drawing.Point(709, 557);
-            this.discounttxt.Name = "discounttxt";
-            this.discounttxt.Size = new System.Drawing.Size(134, 20);
-            this.discounttxt.TabIndex = 24;
+            this.dealertxt.Location = new System.Drawing.Point(709, 557);
+            this.dealertxt.Name = "dealertxt";
+            this.dealertxt.Size = new System.Drawing.Size(134, 20);
+            this.dealertxt.TabIndex = 24;
             // 
             // label12
             // 
@@ -591,7 +593,7 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(514, 491);
+            this.label25.Location = new System.Drawing.Point(458, 491);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(50, 13);
             this.label25.TabIndex = 57;
@@ -599,7 +601,7 @@
             // 
             // gidtxt
             // 
-            this.gidtxt.Location = new System.Drawing.Point(515, 507);
+            this.gidtxt.Location = new System.Drawing.Point(459, 507);
             this.gidtxt.Name = "gidtxt";
             this.gidtxt.Size = new System.Drawing.Size(134, 20);
             this.gidtxt.TabIndex = 56;
@@ -650,12 +652,30 @@
             this.pidtxt.Size = new System.Drawing.Size(134, 20);
             this.pidtxt.TabIndex = 60;
             // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(460, 541);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(71, 13);
+            this.label27.TabIndex = 63;
+            this.label27.Text = "Picture Name";
+            // 
+            // pictxt
+            // 
+            this.pictxt.Location = new System.Drawing.Point(461, 557);
+            this.pictxt.Name = "pictxt";
+            this.pictxt.Size = new System.Drawing.Size(210, 20);
+            this.pictxt.TabIndex = 62;
+            // 
             // addproducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1162, 722);
+            this.Controls.Add(this.label27);
+            this.Controls.Add(this.pictxt);
             this.Controls.Add(this.label26);
             this.Controls.Add(this.pidtxt);
             this.Controls.Add(this.fillbtn);
@@ -693,7 +713,7 @@
             this.Controls.Add(this.label12);
             this.Controls.Add(this.desctxt);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.discounttxt);
+            this.Controls.Add(this.dealertxt);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.pricetxt);
             this.Controls.Add(this.label9);
@@ -755,7 +775,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox pricetxt;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox discounttxt;
+        private System.Windows.Forms.TextBox dealertxt;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox desctxt;
         private System.Windows.Forms.Label label13;
@@ -793,5 +813,7 @@
         private System.Windows.Forms.Button fillbtn;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.TextBox pidtxt;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.TextBox pictxt;
     }
 }
