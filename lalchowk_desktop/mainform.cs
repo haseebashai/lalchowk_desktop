@@ -47,7 +47,7 @@ namespace Veiled_Kashmir_Admin_Panel
         private void readordersplaced()
         {
             con = new MySqlConnection();
-            con.ConnectionString = "SERVER=182.50.133.91;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah";
+            con.ConnectionString = "SERVER=182.50.133.78;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah";
             con.Open();
             adap = new MySqlDataAdapter("select * from orders where status='placed'", con);
             dt = new DataTable();
@@ -70,7 +70,7 @@ namespace Veiled_Kashmir_Admin_Panel
         private void readordersshipped()
         {
             con = new MySqlConnection();
-            con.ConnectionString = "SERVER=182.50.133.91;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah";
+            con.ConnectionString = "SERVER=182.50.133.78;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah";
             con.Open();
             adap = new MySqlDataAdapter("select * from orders where status='shipped'", con);
             dt = new DataTable();

@@ -35,7 +35,7 @@ namespace Veiled_Kashmir_Admin_Panel
         {
 
             con = new MySqlConnection();
-            con.ConnectionString = "SERVER=182.50.133.91;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah";
+            con.ConnectionString = "SERVER=182.50.133.78;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah";
             con.Open();
             adap = new MySqlDataAdapter("select * from suppliers", con);
             dt = new DataTable();

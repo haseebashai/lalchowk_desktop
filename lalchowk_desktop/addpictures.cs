@@ -80,7 +80,7 @@ namespace Veiled_Kashmir_Admin_Panel
             obj.closeConnection();
             try
             {
-                UploadFileToFtp("ftp://182.50.151.35/lalchowk/pictures/", fileaddress);
+                UploadFileToFtp("ftp://182.50.151.83/lalchowk/pictures/", fileaddress);
             }
             catch (WebException ex)
             {

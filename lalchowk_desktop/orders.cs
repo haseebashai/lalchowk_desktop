@@ -89,21 +89,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         }
 
-        private void proname_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                dr = obj.Query("select picture from orderdetails where productname='" + proname.Text + "'");
-                dr.Read();
-                pic.BackgroundImage = new Bitmap(dr["picture"].ToString());
-                
-            }
-            catch(Exception ex)
-            {
-                pic.BackgroundImage = null;
-            }
-            obj.closeConnection();
-        }
+        
 
         private void paymenttxt_TextChanged(object sender, EventArgs e)
         {

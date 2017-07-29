@@ -39,7 +39,7 @@ namespace Veiled_Kashmir_Admin_Panel
         public void readordersdelivered()
         {
             con = new MySqlConnection();
-            con.ConnectionString = "SERVER=182.50.133.91;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah";
+            con.ConnectionString = "SERVER=182.50.133.78;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah";
             con.Open();
             adap = new MySqlDataAdapter("select * from orders where status='delivered'", con);
             dt = new DataTable();
@@ -52,7 +52,7 @@ namespace Veiled_Kashmir_Admin_Panel
         public void readordersplaced()
         {
             con = new MySqlConnection();
-            con.ConnectionString = "SERVER=182.50.133.91;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah";
+            con.ConnectionString = "SERVER=182.50.133.78;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah";
             con.Open();
             adap = new MySqlDataAdapter("select * from orders where status='placed'", con);
             dt = new DataTable();
@@ -65,7 +65,7 @@ namespace Veiled_Kashmir_Admin_Panel
         public void readpurchasecost()
         {
             con = new MySqlConnection();
-            con.ConnectionString = "SERVER=182.50.133.91;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah";
+            con.ConnectionString = "SERVER=182.50.133.78;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah";
             con.Open();
             adap = new MySqlDataAdapter("select * from lalchowk.orderdetails where productid in (SELECT productid FROM lalchowk.orderdetails where orderid in (SELECT orderid FROM lalchowk.orders where status = 'delivered'))", con);
             dt = new DataTable();
@@ -78,7 +78,7 @@ namespace Veiled_Kashmir_Admin_Panel
         public void readprofit()
         {
             con = new MySqlConnection();
-            con.ConnectionString = "SERVER=182.50.133.91;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah";
+            con.ConnectionString = "SERVER=182.50.133.78;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah";
             con.Open();
             adap = new MySqlDataAdapter("select orderdetailid,orderid,productid,productname,price,quantity,dealerprice,size from orderdetails where orderid in (SELECT orderid FROM orders where status = 'delivered')", con);
             dt = new DataTable();
@@ -91,7 +91,7 @@ namespace Veiled_Kashmir_Admin_Panel
         public void readshipping()
         {
             con = new MySqlConnection();
-            con.ConnectionString = "SERVER=182.50.133.91;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah";
+            con.ConnectionString = "SERVER=182.50.133.78;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah";
             con.Open();
             adap = new MySqlDataAdapter("select orderid, email, shipdate,shipping from lalchowk.orders where status ='delivered'",con);
             dt = new DataTable();

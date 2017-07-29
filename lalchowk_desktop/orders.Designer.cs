@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.statustxt = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.paymenttxt = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -53,7 +55,6 @@
             this.label10 = new System.Windows.Forms.Label();
             this.amountlbl = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.pic = new System.Windows.Forms.PictureBox();
             this.proid = new System.Windows.Forms.ListBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
@@ -61,11 +62,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.orderdetailview = new System.Windows.Forms.DataGridView();
             this.ordergridview = new System.Windows.Forms.DataGridView();
-            this.statustxt = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.orderpnl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderdetailview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ordergridview)).BeginInit();
             this.SuspendLayout();
@@ -83,6 +81,23 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1162, 49);
             this.panel1.TabIndex = 0;
+            // 
+            // statustxt
+            // 
+            this.statustxt.Location = new System.Drawing.Point(758, 22);
+            this.statustxt.Name = "statustxt";
+            this.statustxt.Size = new System.Drawing.Size(215, 20);
+            this.statustxt.TabIndex = 9;
+            this.statustxt.TextChanged += new System.EventHandler(this.statustxt_TextChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(755, 5);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(40, 13);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Status:";
             // 
             // paymenttxt
             // 
@@ -148,7 +163,6 @@
             this.orderpnl.Controls.Add(this.label10);
             this.orderpnl.Controls.Add(this.amountlbl);
             this.orderpnl.Controls.Add(this.label8);
-            this.orderpnl.Controls.Add(this.pic);
             this.orderpnl.Controls.Add(this.proid);
             this.orderpnl.Controls.Add(this.panel2);
             this.orderpnl.Controls.Add(this.label7);
@@ -334,16 +348,6 @@
             this.label8.TabIndex = 8;
             this.label8.Text = "Grand Total";
             // 
-            // pic
-            // 
-            this.pic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pic.Location = new System.Drawing.Point(514, 502);
-            this.pic.Name = "pic";
-            this.pic.Size = new System.Drawing.Size(141, 132);
-            this.pic.TabIndex = 7;
-            this.pic.TabStop = false;
-            this.pic.Click += new System.EventHandler(this.pic_Click);
-            // 
             // proid
             // 
             this.proid.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -413,23 +417,6 @@
             this.ordergridview.TabIndex = 0;
             this.ordergridview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ordergridview_CellClick);
             // 
-            // statustxt
-            // 
-            this.statustxt.Location = new System.Drawing.Point(758, 22);
-            this.statustxt.Name = "statustxt";
-            this.statustxt.Size = new System.Drawing.Size(215, 20);
-            this.statustxt.TabIndex = 9;
-            this.statustxt.TextChanged += new System.EventHandler(this.statustxt_TextChanged);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(755, 5);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(40, 13);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Status:";
-            // 
             // orders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -446,7 +433,6 @@
             this.panel1.PerformLayout();
             this.orderpnl.ResumeLayout(false);
             this.orderpnl.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderdetailview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ordergridview)).EndInit();
             this.ResumeLayout(false);
@@ -476,7 +462,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label amountlbl;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.PictureBox pic;
         private System.Windows.Forms.ListBox proid;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.ListBox proname;

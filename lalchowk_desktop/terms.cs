@@ -33,7 +33,7 @@ namespace Veiled_Kashmir_Admin_Panel
         public void readterms()
         {
             con = new MySqlConnection();
-            con.ConnectionString = "SERVER=182.50.133.91;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah";
+            con.ConnectionString = "SERVER=182.50.133.78;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah";
             con.Open();
             adap = new MySqlDataAdapter("select * from terms", con);
             dt = new DataTable();
@@ -46,7 +46,7 @@ namespace Veiled_Kashmir_Admin_Panel
         public void readfaq()
         {
             con = new MySqlConnection();
-            con.ConnectionString = "SERVER=182.50.133.91;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah";
+            con.ConnectionString = "SERVER=182.50.133.78;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah";
             con.Open();
             adap = new MySqlDataAdapter("select * from faq", con);
             dt = new DataTable();
@@ -59,7 +59,7 @@ namespace Veiled_Kashmir_Admin_Panel
         public void readabout()
         {
             con = new MySqlConnection();
-            con.ConnectionString = "SERVER=182.50.133.91;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah";
+            con.ConnectionString = "SERVER=182.50.133.78;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah";
             con.Open();
             adap = new MySqlDataAdapter("select * from about", con);
             dt = new DataTable();
