@@ -289,7 +289,7 @@ namespace Veiled_Kashmir_Admin_Panel
         private void addbtn_Click(object sender, EventArgs e)
         {
            
-                try
+            /*    try
                 {
                     UploadFileToFtp("ftp://182.50.151.83/lalchowk/pictures/", fileaddress);
                 }
@@ -301,9 +301,9 @@ namespace Veiled_Kashmir_Admin_Panel
                 {
                     pic1.BackgroundImage = null;
                 }
-                
-            cmd = "insert into products (`supplierid`, `productname`, `groupid`,`categoryid`,`color`, `mrp`, `price`, `discount`, `stock`, `description`, `detailname1`, `detailname2`, `detailname3`, `detailname4`, `detailname5`, `detail1`, `detail2`, `detail3`, `detail4`, `detail5`,`brand`,`size`,`picture`) " +
-                  "values ('" + supplierlist.Text + "', '" + nametxt.Text + "','"+gidtxt.Text+"', '" + catlbl.Text +"','"+ colourtxt.Text + "','"+mrptxt.Text+ "','" +pricetxt.Text+ "','" +discounttxt.Text+ "','" + stocktxt.Text + "','" + desctxt.Text + "','" + dname1txt.Text+ "','" + dname2txt.Text + "','" + dname3txt.Text + "','" + dname4txt.Text + "','" + dname5txt.Text + "','" + dname1.Text + "','" + dname2.Text + "','" + dname3.Text + "','" + dname4.Text + "','" + dname5.Text + "','" + brandtxt.Text + "','" + sizetxt.Text + @"','" + filename +"')";
+                */
+            cmd = "insert into products (`productid`, `supplierid`, `productname`, `groupid`,`categoryid`,`color`, `mrp`, `price`, `discount`, `stock`, `description`, `detailname1`, `detailname2`, `detailname3`, `detailname4`, `detailname5`, `detail1`, `detail2`, `detail3`, `detail4`, `detail5`,`brand`,`size`,`picture`) " +
+                  "values ('"+pidtxt.Text+"','" + supplierlist.Text + "', '" + nametxt.Text + "','"+gidtxt.Text+"', '" + catlbl.Text +"','"+ colourtxt.Text + "','"+mrptxt.Text+ "','" +pricetxt.Text+ "','" +discounttxt.Text+ "','" + stocktxt.Text + "','" + desctxt.Text + "','" + dname1txt.Text+ "','" + dname2txt.Text + "','" + dname3txt.Text + "','" + dname4txt.Text + "','" + dname5txt.Text + "','" + dname1.Text + "','" + dname2.Text + "','" + dname3.Text + "','" + dname4.Text + "','" + dname5.Text + "','" + brandtxt.Text + "','" + sizetxt.Text + @"','" + filename +"')";
             obj.nonQuery(cmd);
 
             
@@ -317,8 +317,8 @@ namespace Veiled_Kashmir_Admin_Panel
             
 
 
-            addpictures adp = new addpictures(gidtxt.Text);
-            adp.ShowDialog();
+         //   addpictures adp = new addpictures(gidtxt.Text);
+         //   adp.ShowDialog();
             clearall();
 
 

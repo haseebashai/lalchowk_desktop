@@ -52,7 +52,7 @@ namespace Veiled_Kashmir_Admin_Panel
             tplbl.Text = "Total Products currently added: " + dr[0].ToString();
             obj.closeConnection();
 
-            dr=obj.Query("Select count(productid) from products where categoryid ='t1'");
+            dr=obj.Query("Select count(productid) from products where categoryid ='t1' or categoryid =''");
             dr.Read();
             eleclbl.Text = "Total Electronic Items currently added: " + dr[0].ToString();
             obj.closeConnection();

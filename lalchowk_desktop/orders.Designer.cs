@@ -263,7 +263,6 @@
             this.proname.Name = "proname";
             this.proname.Size = new System.Drawing.Size(256, 208);
             this.proname.TabIndex = 17;
-            this.proname.SelectedIndexChanged += new System.EventHandler(this.proname_SelectedIndexChanged);
             // 
             // label11
             // 

@@ -89,6 +89,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.fillbtn = new System.Windows.Forms.Button();
             this.pic1 = new System.Windows.Forms.PictureBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.pidtxt = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pic1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -226,7 +228,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(267, 149);
+            this.label6.Location = new System.Drawing.Point(267, 217);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(79, 16);
             this.label6.TabIndex = 14;
@@ -236,7 +238,7 @@
             // 
             this.catlbl.AutoSize = true;
             this.catlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.catlbl.Location = new System.Drawing.Point(267, 172);
+            this.catlbl.Location = new System.Drawing.Point(267, 240);
             this.catlbl.Name = "catlbl";
             this.catlbl.Size = new System.Drawing.Size(79, 16);
             this.catlbl.TabIndex = 15;
@@ -510,7 +512,7 @@
             // sizel
             // 
             this.sizel.AutoSize = true;
-            this.sizel.Location = new System.Drawing.Point(230, 253);
+            this.sizel.Location = new System.Drawing.Point(189, 308);
             this.sizel.Name = "sizel";
             this.sizel.Size = new System.Drawing.Size(27, 13);
             this.sizel.TabIndex = 51;
@@ -518,7 +520,7 @@
             // 
             // sizetxt
             // 
-            this.sizetxt.Location = new System.Drawing.Point(230, 269);
+            this.sizetxt.Location = new System.Drawing.Point(189, 324);
             this.sizetxt.Name = "sizetxt";
             this.sizetxt.Size = new System.Drawing.Size(68, 20);
             this.sizetxt.TabIndex = 50;
@@ -632,12 +634,30 @@
             this.pic1.TabStop = false;
             this.pic1.Click += new System.EventHandler(this.pic1_Click);
             // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(269, 149);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(58, 13);
+            this.label26.TabIndex = 61;
+            this.label26.Text = "Product ID";
+            // 
+            // pidtxt
+            // 
+            this.pidtxt.Location = new System.Drawing.Point(270, 165);
+            this.pidtxt.Name = "pidtxt";
+            this.pidtxt.Size = new System.Drawing.Size(134, 20);
+            this.pidtxt.TabIndex = 60;
+            // 
             // addproducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1162, 722);
+            this.Controls.Add(this.label26);
+            this.Controls.Add(this.pidtxt);
             this.Controls.Add(this.fillbtn);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label25);
@@ -771,5 +791,7 @@
         private System.Windows.Forms.TextBox gidtxt;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button fillbtn;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.TextBox pidtxt;
     }
 }
