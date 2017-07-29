@@ -345,6 +345,7 @@
             this.desctxt.Name = "desctxt";
             this.desctxt.Size = new System.Drawing.Size(265, 217);
             this.desctxt.TabIndex = 26;
+            this.desctxt.Leave += new System.EventHandler(this.desctxt_Leave);
             // 
             // label13
             // 

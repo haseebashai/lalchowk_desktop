@@ -162,7 +162,17 @@ namespace Veiled_Kashmir_Admin_Panel
             readdetails();
         }
 
-        
+        private void desctxt_Leave(object sender, EventArgs e)
+        {
+            
+                if (!Regex.IsMatch(desctxt.Text, @"^([a-zA-Z0-9@#$%&*+\-_(),+':;?.,![\]\s\\/{}""|]+)$"))
+                {
+
+                    MessageBox.Show("Abnormal Special Character found, Please remove it and proceed.");
+
+                }
+    
+        }
 
         private void catlbl_TextChanged(object sender, EventArgs e)
         {
@@ -302,6 +312,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     pic1.BackgroundImage = null;
                 }
                 */
+
             cmd = "insert into products (`productid`, `supplierid`, `productname`, `groupid`,`categoryid`,`color`, `mrp`, `price`, `dealerprice`, `stock`, `description`, `detailname1`, `detailname2`, `detailname3`, `detailname4`, `detailname5`, `detail1`, `detail2`, `detail3`, `detail4`, `detail5`,`brand`,`size`,`picture`) " +
                   "values ('"+pidtxt.Text+"','" + supplierlist.Text + "', '" + nametxt.Text + "','"+gidtxt.Text+"', '" + catlbl.Text +"','"+ colourtxt.Text + "','"+mrptxt.Text+ "','" +pricetxt.Text+ "','" +dealertxt.Text+ "','" + stocktxt.Text + "','" + desctxt.Text + "','" + dname1txt.Text+ "','" + dname2txt.Text + "','" + dname3txt.Text + "','" + dname4txt.Text + "','" + dname5txt.Text + "','" + dname1.Text + "','" + dname2.Text + "','" + dname3.Text + "','" + dname4.Text + "','" + dname5.Text + "','" + brandtxt.Text + "','" + sizetxt.Text + "','" + pictxt.Text +"')";
             obj.nonQuery(cmd);
