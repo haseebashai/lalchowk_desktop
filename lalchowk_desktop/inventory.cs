@@ -187,6 +187,7 @@ namespace Veiled_Kashmir_Admin_Panel
             {
                 cmdbl = new MySqlCommandBuilder(adap);
                 adap.Update(dt);
+                MessageBox.Show("Updated.");
 
             }
             catch (Exception ex)

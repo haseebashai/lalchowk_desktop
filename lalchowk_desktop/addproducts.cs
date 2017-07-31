@@ -136,6 +136,8 @@ namespace Veiled_Kashmir_Admin_Panel
             mrptxt.Text = "";
             pricetxt.Text = "";
             dealertxt.Text = "";
+            pidtxt.Text = "";
+            pictxt.Text = "";
 
         }
         private void cancelbtn_Click(object sender, EventArgs e)
@@ -298,7 +300,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void addbtn_Click(object sender, EventArgs e)
         {
-           
+
             /*    try
                 {
                     UploadFileToFtp("ftp://182.50.151.83/lalchowk/pictures/", fileaddress);
@@ -312,28 +314,42 @@ namespace Veiled_Kashmir_Admin_Panel
                     pic1.BackgroundImage = null;
                 }
                 */
+            try {
 
-            cmd = "insert into products (`productid`, `supplierid`, `productname`, `groupid`,`categoryid`,`color`, `mrp`, `price`, `dealerprice`, `stock`, `description`, `detailname1`, `detailname2`, `detailname3`, `detailname4`, `detailname5`, `detail1`, `detail2`, `detail3`, `detail4`, `detail5`,`brand`,`size`,`picture`) " +
-                  "values ('"+pidtxt.Text+"','" + supplierlist.Text + "', '" + nametxt.Text + "','"+gidtxt.Text+"', '" + catlbl.Text +"','"+ colourtxt.Text + "','"+mrptxt.Text+ "','" +pricetxt.Text+ "','" +dealertxt.Text+ "','" + stocktxt.Text + "','" + desctxt.Text + "','" + dname1txt.Text+ "','" + dname2txt.Text + "','" + dname3txt.Text + "','" + dname4txt.Text + "','" + dname5txt.Text + "','" + dname1.Text + "','" + dname2.Text + "','" + dname3.Text + "','" + dname4.Text + "','" + dname5.Text + "','" + brandtxt.Text + "','" + sizetxt.Text + "','" + pictxt.Text +"')";
-            obj.nonQuery(cmd);
+                if (sizetxt.Text == "")
+                {
+                    cmd = "insert into products (`productid`, `supplierid`, `productname`, `groupid`,`categoryid`,`color`, `mrp`, `price`, `dealerprice`, `stock`, `description`, `detailname1`, `detailname2`, `detailname3`, `detailname4`, `detailname5`, `detail1`, `detail2`, `detail3`, `detail4`, `detail5`,`brand`,`picture`) " +
+                       "values ('" + pidtxt.Text + "','" + supplierlist.Text + "', '" + nametxt.Text + "','" + gidtxt.Text + "', '" + catlbl.Text + "','" + colourtxt.Text + "','" + mrptxt.Text + "','" + pricetxt.Text + "','" + dealertxt.Text + "','" + stocktxt.Text + "','" + desctxt.Text + "','" + dname1txt.Text + "','" + dname2txt.Text + "','" + dname3txt.Text + "','" + dname4txt.Text + "','" + dname5txt.Text + "','" + dname1.Text + "','" + dname2.Text + "','" + dname3.Text + "','" + dname4.Text + "','" + dname5.Text + "','" + brandtxt.Text + "','" + pictxt.Text + "')";
+                    obj.nonQuery(cmd);
+                }
+                else
+                {
+                    cmd = "insert into products (`productid`, `supplierid`, `productname`, `groupid`,`categoryid`,`color`, `mrp`, `price`, `dealerprice`, `stock`, `description`, `detailname1`, `detailname2`, `detailname3`, `detailname4`, `detailname5`, `detail1`, `detail2`, `detail3`, `detail4`, `detail5`,`brand`,`size`,`picture`) " +
+                          "values ('" + pidtxt.Text + "','" + supplierlist.Text + "', '" + nametxt.Text + "','" + gidtxt.Text + "', '" + catlbl.Text + "','" + colourtxt.Text + "','" + mrptxt.Text + "','" + pricetxt.Text + "','" + dealertxt.Text + "','" + stocktxt.Text + "','" + desctxt.Text + "','" + dname1txt.Text + "','" + dname2txt.Text + "','" + dname3txt.Text + "','" + dname4txt.Text + "','" + dname5txt.Text + "','" + dname1.Text + "','" + dname2.Text + "','" + dname3.Text + "','" + dname4.Text + "','" + dname5.Text + "','" + brandtxt.Text + "','" + sizetxt.Text + "','" + pictxt.Text + "')";
+                    obj.nonQuery(cmd);
+                }
 
-            
-         //   int productid = obj.Count("SELECT LAST_INSERT_ID()");
-          
-            
-            
-            obj.closeConnection();
-
-
-            
-
-
-         //   addpictures adp = new addpictures(gidtxt.Text);
-         //   adp.ShowDialog();
-            clearall();
+                //   int productid = obj.Count("SELECT LAST_INSERT_ID()");
 
 
-        }
+
+                obj.closeConnection();
+                MessageBox.Show("Product successfully added.");
+
+
+
+
+                //   addpictures adp = new addpictures(gidtxt.Text);
+                //   adp.ShowDialog();
+                //clearall();
+
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            }
 
 
         /*    private void fnametxt_Leave(object sender, EventArgs e)
