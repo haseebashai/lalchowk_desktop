@@ -64,7 +64,22 @@ namespace Veiled_Kashmir_Admin_Panel
 
             dr = obj.Query("Select count(productid) from products where supplierid ='6'");
             dr.Read();
-            footlbl.Text = "Total footwear Items currently added: " + dr[0].ToString();
+            footlbl.Text = "Total Footwear Items currently added: " + dr[0].ToString();
+            obj.closeConnection();
+
+            dr = obj.Query("Select count(productid) from products where supplierid ='1'");
+            dr.Read();
+            mobilelbl.Text = "Total Mobile Phones currently added: " + dr[0].ToString();
+            obj.closeConnection();
+
+            dr = obj.Query("Select count(productid) from products where supplierid ='2' or supplierid ='5'");
+            dr.Read();
+            complbl.Text = "Total Computers/Laptops currently added: " + dr[0].ToString();
+            obj.closeConnection();
+
+            dr = obj.Query("Select count(productid) from products where supplierid ='3'");
+            dr.Read();
+            cacclbl.Text = "Total Computer Accessories currently added: " + dr[0].ToString();
             obj.closeConnection();
 
         }
