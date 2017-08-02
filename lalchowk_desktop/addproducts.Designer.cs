@@ -39,7 +39,7 @@
             this.id3lbl = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.supplierlist = new System.Windows.Forms.ComboBox();
-            this.supnametxt = new System.Windows.Forms.Label();
+            this.supidtxt = new System.Windows.Forms.Label();
             this.nametxt = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -131,7 +131,7 @@
             this.seccat.Location = new System.Drawing.Point(408, 25);
             this.seccat.Name = "seccat";
             this.seccat.Size = new System.Drawing.Size(205, 21);
-            this.seccat.TabIndex = 2;
+            this.seccat.TabIndex = 0;
             this.seccat.SelectedIndexChanged += new System.EventHandler(this.seccat_SelectedIndexChanged);
             // 
             // idlbl
@@ -159,7 +159,7 @@
             this.thirdcat.Location = new System.Drawing.Point(692, 25);
             this.thirdcat.Name = "thirdcat";
             this.thirdcat.Size = new System.Drawing.Size(205, 21);
-            this.thirdcat.TabIndex = 5;
+            this.thirdcat.TabIndex = 0;
             this.thirdcat.SelectedIndexChanged += new System.EventHandler(this.thirdcat_SelectedIndexChanged);
             // 
             // id2lbl
@@ -186,35 +186,35 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(426, 69);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(74, 16);
+            this.label4.Size = new System.Drawing.Size(98, 16);
             this.label4.TabIndex = 10;
-            this.label4.Text = "Supplier ID";
+            this.label4.Text = "Supplier Name";
             // 
             // supplierlist
             // 
             this.supplierlist.FormattingEnabled = true;
             this.supplierlist.Location = new System.Drawing.Point(426, 89);
             this.supplierlist.Name = "supplierlist";
-            this.supplierlist.Size = new System.Drawing.Size(109, 21);
-            this.supplierlist.TabIndex = 9;
+            this.supplierlist.Size = new System.Drawing.Size(152, 21);
+            this.supplierlist.TabIndex = 0;
             this.supplierlist.SelectedIndexChanged += new System.EventHandler(this.supplierlist_SelectedIndexChanged);
             // 
-            // supnametxt
+            // supidtxt
             // 
-            this.supnametxt.AutoSize = true;
-            this.supnametxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.supnametxt.Location = new System.Drawing.Point(539, 97);
-            this.supnametxt.Name = "supnametxt";
-            this.supnametxt.Size = new System.Drawing.Size(98, 16);
-            this.supnametxt.TabIndex = 11;
-            this.supnametxt.Text = "Supplier Name";
+            this.supidtxt.AutoSize = true;
+            this.supidtxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.supidtxt.Location = new System.Drawing.Point(584, 94);
+            this.supidtxt.Name = "supidtxt";
+            this.supidtxt.Size = new System.Drawing.Size(74, 16);
+            this.supidtxt.TabIndex = 11;
+            this.supidtxt.Text = "Supplier ID";
             // 
             // nametxt
             // 
             this.nametxt.Location = new System.Drawing.Point(26, 165);
             this.nametxt.Name = "nametxt";
             this.nametxt.Size = new System.Drawing.Size(205, 20);
-            this.nametxt.TabIndex = 12;
+            this.nametxt.TabIndex = 1;
             // 
             // label5
             // 
@@ -261,7 +261,7 @@
             this.colourtxt.Location = new System.Drawing.Point(26, 269);
             this.colourtxt.Name = "colourtxt";
             this.colourtxt.Size = new System.Drawing.Size(134, 20);
-            this.colourtxt.TabIndex = 16;
+            this.colourtxt.TabIndex = 4;
             // 
             // label8
             // 
@@ -278,7 +278,7 @@
             this.stocktxt.Location = new System.Drawing.Point(26, 324);
             this.stocktxt.Name = "stocktxt";
             this.stocktxt.Size = new System.Drawing.Size(73, 20);
-            this.stocktxt.TabIndex = 18;
+            this.stocktxt.TabIndex = 5;
             // 
             // label9
             // 
@@ -294,7 +294,7 @@
             this.mrptxt.Location = new System.Drawing.Point(709, 456);
             this.mrptxt.Name = "mrptxt";
             this.mrptxt.Size = new System.Drawing.Size(134, 20);
-            this.mrptxt.TabIndex = 20;
+            this.mrptxt.TabIndex = 14;
             // 
             // label10
             // 
@@ -310,7 +310,7 @@
             this.pricetxt.Location = new System.Drawing.Point(709, 507);
             this.pricetxt.Name = "pricetxt";
             this.pricetxt.Size = new System.Drawing.Size(134, 20);
-            this.pricetxt.TabIndex = 22;
+            this.pricetxt.TabIndex = 15;
             // 
             // label11
             // 
@@ -326,7 +326,7 @@
             this.dealertxt.Location = new System.Drawing.Point(709, 557);
             this.dealertxt.Name = "dealertxt";
             this.dealertxt.Size = new System.Drawing.Size(134, 20);
-            this.dealertxt.TabIndex = 24;
+            this.dealertxt.TabIndex = 16;
             // 
             // label12
             // 
@@ -378,7 +378,7 @@
             this.dname1.Multiline = true;
             this.dname1.Name = "dname1";
             this.dname1.Size = new System.Drawing.Size(146, 37);
-            this.dname1.TabIndex = 30;
+            this.dname1.TabIndex = 7;
             // 
             // label15
             // 
@@ -395,7 +395,7 @@
             this.dname2.Multiline = true;
             this.dname2.Name = "dname2";
             this.dname2.Size = new System.Drawing.Size(146, 37);
-            this.dname2.TabIndex = 34;
+            this.dname2.TabIndex = 8;
             // 
             // label16
             // 
@@ -428,7 +428,7 @@
             this.dname3.Multiline = true;
             this.dname3.Name = "dname3";
             this.dname3.Size = new System.Drawing.Size(149, 37);
-            this.dname3.TabIndex = 38;
+            this.dname3.TabIndex = 9;
             // 
             // label18
             // 
@@ -461,7 +461,7 @@
             this.dname4.Multiline = true;
             this.dname4.Name = "dname4";
             this.dname4.Size = new System.Drawing.Size(149, 37);
-            this.dname4.TabIndex = 42;
+            this.dname4.TabIndex = 10;
             // 
             // label20
             // 
@@ -494,7 +494,7 @@
             this.dname5.Multiline = true;
             this.dname5.Name = "dname5";
             this.dname5.Size = new System.Drawing.Size(149, 37);
-            this.dname5.TabIndex = 46;
+            this.dname5.TabIndex = 11;
             // 
             // label22
             // 
@@ -526,7 +526,7 @@
             this.sizetxt.Location = new System.Drawing.Point(189, 324);
             this.sizetxt.Name = "sizetxt";
             this.sizetxt.Size = new System.Drawing.Size(68, 20);
-            this.sizetxt.TabIndex = 50;
+            this.sizetxt.TabIndex = 6;
             // 
             // label24
             // 
@@ -542,7 +542,7 @@
             this.brandtxt.Location = new System.Drawing.Point(26, 217);
             this.brandtxt.Name = "brandtxt";
             this.brandtxt.Size = new System.Drawing.Size(134, 20);
-            this.brandtxt.TabIndex = 48;
+            this.brandtxt.TabIndex = 3;
             // 
             // picdialog
             // 
@@ -605,7 +605,7 @@
             this.gidtxt.Location = new System.Drawing.Point(459, 507);
             this.gidtxt.Name = "gidtxt";
             this.gidtxt.Size = new System.Drawing.Size(134, 20);
-            this.gidtxt.TabIndex = 56;
+            this.gidtxt.TabIndex = 12;
             // 
             // panel1
             // 
@@ -651,7 +651,7 @@
             this.pidtxt.Location = new System.Drawing.Point(270, 165);
             this.pidtxt.Name = "pidtxt";
             this.pidtxt.Size = new System.Drawing.Size(134, 20);
-            this.pidtxt.TabIndex = 60;
+            this.pidtxt.TabIndex = 2;
             // 
             // label27
             // 
@@ -667,7 +667,7 @@
             this.pictxt.Location = new System.Drawing.Point(461, 557);
             this.pictxt.Name = "pictxt";
             this.pictxt.Size = new System.Drawing.Size(210, 20);
-            this.pictxt.TabIndex = 62;
+            this.pictxt.TabIndex = 13;
             // 
             // addproducts
             // 
@@ -727,7 +727,7 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.nametxt);
-            this.Controls.Add(this.supnametxt);
+            this.Controls.Add(this.supidtxt);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.supplierlist);
             this.Controls.Add(this.id3lbl);
@@ -762,7 +762,7 @@
         private System.Windows.Forms.Label id3lbl;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox supplierlist;
-        private System.Windows.Forms.Label supnametxt;
+        private System.Windows.Forms.Label supidtxt;
         private System.Windows.Forms.TextBox nametxt;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;

@@ -61,9 +61,9 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void supplierlist_SelectedIndexChanged(object sender, EventArgs e)
         {
-            dr = obj.Query("select name from suppliers where supplierid='" + supplierlist.Text + "'");
+            dr = obj.Query("select supplierid from suppliers where name='" + supplierlist.Text + "'");
             dr.Read();    
-            supnametxt.Text = dr[0].ToString();            
+            supidtxt.Text = dr[0].ToString();            
             obj.closeConnection();
         }
 
@@ -105,12 +105,12 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void readsuppliers()
         {
-            dr = obj.Query("select distinct supplierid from suppliers");
+            dr = obj.Query("select distinct name from suppliers");
             DataTable dt = new DataTable();
-            dt.Columns.Add("supplierid", typeof(String));
+            dt.Columns.Add("name", typeof(String));
             dt.Load(dr);
             obj.closeConnection();
-            supplierlist.DisplayMember = "supplierid";
+            supplierlist.DisplayMember = "name";
             supplierlist.DataSource = dt;
         }
 
@@ -316,16 +316,16 @@ namespace Veiled_Kashmir_Admin_Panel
                 */
             try {
 
-                if (sizetxt.Text == "")
+                if (sizetxt.Text == "" || dname5txt.Text=="" || dname5.Text=="")
                 {
-                    cmd = "insert into products (`productid`, `supplierid`, `productname`, `groupid`,`categoryid`,`color`, `mrp`, `price`, `dealerprice`, `stock`, `description`, `detailname1`, `detailname2`, `detailname3`, `detailname4`, `detailname5`, `detail1`, `detail2`, `detail3`, `detail4`, `detail5`,`brand`,`picture`) " +
-                       "values ('" + pidtxt.Text + "','" + supplierlist.Text + "', '" + nametxt.Text + "','" + gidtxt.Text + "', '" + catlbl.Text + "','" + colourtxt.Text + "','" + mrptxt.Text + "','" + pricetxt.Text + "','" + dealertxt.Text + "','" + stocktxt.Text + "','" + desctxt.Text + "','" + dname1txt.Text + "','" + dname2txt.Text + "','" + dname3txt.Text + "','" + dname4txt.Text + "','" + dname5txt.Text + "','" + dname1.Text + "','" + dname2.Text + "','" + dname3.Text + "','" + dname4.Text + "','" + dname5.Text + "','" + brandtxt.Text + "','" + pictxt.Text + "')";
+                    cmd = "insert into products (`productid`, `supplierid`, `productname`, `groupid`,`categoryid`,`color`, `mrp`, `price`, `dealerprice`, `stock`, `description`, `detailname1`, `detailname2`, `detailname3`, `detailname4`, `detail1`, `detail2`, `detail3`, `detail4`,`brand`,`requeststatus`,`picture`) " +
+                       "values ('" + pidtxt.Text + "','" + supidtxt.Text + "', '" + nametxt.Text + "','" + gidtxt.Text + "', '" + catlbl.Text + "','" + colourtxt.Text + "','" + mrptxt.Text + "','" + pricetxt.Text + "','" + dealertxt.Text + "','" + stocktxt.Text + "','" + desctxt.Text + "','" + dname1txt.Text + "','" + dname2txt.Text + "','" + dname3txt.Text + "','" + dname4txt.Text + "','" + dname1.Text + "','" + dname2.Text + "','" + dname3.Text + "','" + dname4.Text + "','" + brandtxt.Text + "','Approved','" + pictxt.Text + "')";
                     obj.nonQuery(cmd);
                 }
                 else
                 {
-                    cmd = "insert into products (`productid`, `supplierid`, `productname`, `groupid`,`categoryid`,`color`, `mrp`, `price`, `dealerprice`, `stock`, `description`, `detailname1`, `detailname2`, `detailname3`, `detailname4`, `detailname5`, `detail1`, `detail2`, `detail3`, `detail4`, `detail5`,`brand`,`size`,`picture`) " +
-                          "values ('" + pidtxt.Text + "','" + supplierlist.Text + "', '" + nametxt.Text + "','" + gidtxt.Text + "', '" + catlbl.Text + "','" + colourtxt.Text + "','" + mrptxt.Text + "','" + pricetxt.Text + "','" + dealertxt.Text + "','" + stocktxt.Text + "','" + desctxt.Text + "','" + dname1txt.Text + "','" + dname2txt.Text + "','" + dname3txt.Text + "','" + dname4txt.Text + "','" + dname5txt.Text + "','" + dname1.Text + "','" + dname2.Text + "','" + dname3.Text + "','" + dname4.Text + "','" + dname5.Text + "','" + brandtxt.Text + "','" + sizetxt.Text + "','" + pictxt.Text + "')";
+                    cmd = "insert into products (`productid`, `supplierid`, `productname`, `groupid`,`categoryid`,`color`, `mrp`, `price`, `dealerprice`, `stock`, `description`, `detailname1`, `detailname2`, `detailname3`, `detailname4`, `detailname5`, `detail1`, `detail2`, `detail3`, `detail4`, `detail5`,`brand`,`size`,`requeststatus`,`picture`) " +
+                          "values ('" + pidtxt.Text + "','" + supidtxt.Text + "', '" + nametxt.Text + "','" + gidtxt.Text + "', '" + catlbl.Text + "','" + colourtxt.Text + "','" + mrptxt.Text + "','" + pricetxt.Text + "','" + dealertxt.Text + "','" + stocktxt.Text + "','" + desctxt.Text + "','" + dname1txt.Text + "','" + dname2txt.Text + "','" + dname3txt.Text + "','" + dname4txt.Text + "','" + dname5txt.Text + "','" + dname1.Text + "','" + dname2.Text + "','" + dname3.Text + "','" + dname4.Text + "','" + dname5.Text + "','" + brandtxt.Text + "','" + sizetxt.Text + "','Approved','" + pictxt.Text + "')";
                     obj.nonQuery(cmd);
                 }
 
@@ -348,6 +348,7 @@ namespace Veiled_Kashmir_Admin_Panel
             catch(Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+                obj.closeConnection();
             }
             }
 

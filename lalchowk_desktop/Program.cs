@@ -30,17 +30,22 @@ namespace Veiled_Kashmir_Admin_Panel
     class DBConnect
     {
         MySqlConnection conn;
+       
         public DBConnect()
         {
             //  conn = new MySqlConnection("SERVER=localhost;DATABASE=lalchowk;USER=root;PASSWORD=password1;");
 
               conn = new MySqlConnection("SERVER=182.50.133.78;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah;");
+              
         }
+
+
         public bool openConnection()
         {
             try
             {
                 conn.Open();
+                
                 return true;
             }
             catch (MySqlException)
@@ -53,6 +58,7 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             try
             {
+               
                 conn.Close();
                 return true;
             }
@@ -74,17 +80,19 @@ namespace Veiled_Kashmir_Admin_Panel
 
         }
 
-  /*      public MySqlDataAdapter AdapterQuery(String command)
-        {
-            if (this.openConnection() == true)
-            {
-                MySqlCommand cmd = new MySqlCommand(command, conn);
-                    cmd.ExecuteNonQuery();
-                this.closeConnection();
-            }
-            return (null);
+       
 
-        } */
+        /*      public MySqlDataAdapter AdapterQuery(String command)
+              {
+                  if (this.openConnection() == true)
+                  {
+                      MySqlCommand cmd = new MySqlCommand(command, conn);
+                          cmd.ExecuteNonQuery();
+                      this.closeConnection();
+                  }
+                  return (null);
+
+              } */
 
 
         public MySqlDataReader Query(String command)

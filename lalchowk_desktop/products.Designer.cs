@@ -34,6 +34,7 @@
             this.tplbl = new System.Windows.Forms.Label();
             this.eleclbl = new System.Windows.Forms.Label();
             this.clothlbl = new System.Windows.Forms.Label();
+            this.footlbl = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // chkbtn
@@ -106,12 +107,23 @@
             this.clothlbl.TabIndex = 19;
             this.clothlbl.Text = "total clothing";
             // 
+            // footlbl
+            // 
+            this.footlbl.AutoSize = true;
+            this.footlbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.footlbl.Location = new System.Drawing.Point(92, 555);
+            this.footlbl.Name = "footlbl";
+            this.footlbl.Size = new System.Drawing.Size(67, 13);
+            this.footlbl.TabIndex = 20;
+            this.footlbl.Text = "total clothing";
+            // 
             // products
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1162, 722);
+            this.Controls.Add(this.footlbl);
             this.Controls.Add(this.clothlbl);
             this.Controls.Add(this.eleclbl);
             this.Controls.Add(this.tplbl);
@@ -135,5 +147,6 @@
         private System.Windows.Forms.Label tplbl;
         private System.Windows.Forms.Label eleclbl;
         private System.Windows.Forms.Label clothlbl;
+        private System.Windows.Forms.Label footlbl;
     }
 }

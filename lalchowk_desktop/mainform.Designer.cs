@@ -44,13 +44,17 @@
             this.aboutbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.faqbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.termsbtn = new MaterialSkin.Controls.MaterialFlatButton();
-            this.chkbtn = new MaterialSkin.Controls.MaterialFlatButton();
+            this.accbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.expbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.rptbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.ordersbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.navtitle = new System.Windows.Forms.Panel();
             this.navtxt = new System.Windows.Forms.Label();
             this.cntpnl = new System.Windows.Forms.Panel();
+            this.placedlbl = new System.Windows.Forms.Label();
+            this.attention = new System.Windows.Forms.PictureBox();
+            this.costlbl = new System.Windows.Forms.Label();
+            this.attentionlbl = new System.Windows.Forms.Label();
             this.orderslbl = new System.Windows.Forms.Label();
             this.ordersdlbl = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -58,16 +62,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.placeddataview = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
-            this.attentionlbl = new System.Windows.Forms.Label();
-            this.costlbl = new System.Windows.Forms.Label();
-            this.attention = new System.Windows.Forms.PictureBox();
-            this.placedlbl = new System.Windows.Forms.Label();
             this.navpnl.SuspendLayout();
             this.navtitle.SuspendLayout();
             this.cntpnl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.attention)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.shippeddataview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.placeddataview)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.attention)).BeginInit();
             this.SuspendLayout();
             // 
             // signoutlbl
@@ -165,7 +165,7 @@
             this.navpnl.Controls.Add(this.aboutbtn);
             this.navpnl.Controls.Add(this.faqbtn);
             this.navpnl.Controls.Add(this.termsbtn);
-            this.navpnl.Controls.Add(this.chkbtn);
+            this.navpnl.Controls.Add(this.accbtn);
             this.navpnl.Controls.Add(this.signoutlbl);
             this.navpnl.Controls.Add(this.signinlbl);
             this.navpnl.Controls.Add(this.expbtn);
@@ -228,21 +228,21 @@
             this.termsbtn.UseVisualStyleBackColor = true;
             this.termsbtn.Click += new System.EventHandler(this.termsbtn_Click);
             // 
-            // chkbtn
+            // accbtn
             // 
-            this.chkbtn.AutoSize = true;
-            this.chkbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.chkbtn.Depth = 0;
-            this.chkbtn.Location = new System.Drawing.Point(8, 397);
-            this.chkbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.chkbtn.MouseState = MaterialSkin.MouseState.HOVER;
-            this.chkbtn.Name = "chkbtn";
-            this.chkbtn.Primary = false;
-            this.chkbtn.Size = new System.Drawing.Size(119, 36);
-            this.chkbtn.TabIndex = 18;
-            this.chkbtn.Text = "Edit Inventory";
-            this.chkbtn.UseVisualStyleBackColor = true;
-            this.chkbtn.Click += new System.EventHandler(this.chkbtn_Click);
+            this.accbtn.AutoSize = true;
+            this.accbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.accbtn.Depth = 0;
+            this.accbtn.Location = new System.Drawing.Point(8, 397);
+            this.accbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.accbtn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.accbtn.Name = "accbtn";
+            this.accbtn.Primary = false;
+            this.accbtn.Size = new System.Drawing.Size(84, 36);
+            this.accbtn.TabIndex = 18;
+            this.accbtn.Text = "Accounts";
+            this.accbtn.UseVisualStyleBackColor = true;
+            this.accbtn.Click += new System.EventHandler(this.chkbtn_Click);
             // 
             // expbtn
             // 
@@ -332,6 +332,51 @@
             this.cntpnl.Name = "cntpnl";
             this.cntpnl.Size = new System.Drawing.Size(1162, 722);
             this.cntpnl.TabIndex = 12;
+            // 
+            // placedlbl
+            // 
+            this.placedlbl.AutoSize = true;
+            this.placedlbl.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.placedlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.placedlbl.ForeColor = System.Drawing.Color.Black;
+            this.placedlbl.Location = new System.Drawing.Point(99, 585);
+            this.placedlbl.Name = "placedlbl";
+            this.placedlbl.Size = new System.Drawing.Size(82, 16);
+            this.placedlbl.TabIndex = 40;
+            this.placedlbl.Text = "View Details";
+            this.placedlbl.Click += new System.EventHandler(this.placedlbl_Click);
+            // 
+            // attention
+            // 
+            this.attention.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.industrial_safety_1492046_640;
+            this.attention.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.attention.Location = new System.Drawing.Point(19, 540);
+            this.attention.Name = "attention";
+            this.attention.Size = new System.Drawing.Size(73, 65);
+            this.attention.TabIndex = 39;
+            this.attention.TabStop = false;
+            // 
+            // costlbl
+            // 
+            this.costlbl.AutoSize = true;
+            this.costlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.costlbl.ForeColor = System.Drawing.Color.Red;
+            this.costlbl.Location = new System.Drawing.Point(98, 560);
+            this.costlbl.Name = "costlbl";
+            this.costlbl.Size = new System.Drawing.Size(39, 20);
+            this.costlbl.TabIndex = 38;
+            this.costlbl.Text = "cost";
+            // 
+            // attentionlbl
+            // 
+            this.attentionlbl.AutoSize = true;
+            this.attentionlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.attentionlbl.ForeColor = System.Drawing.Color.Red;
+            this.attentionlbl.Location = new System.Drawing.Point(98, 537);
+            this.attentionlbl.Name = "attentionlbl";
+            this.attentionlbl.Size = new System.Drawing.Size(72, 20);
+            this.attentionlbl.TabIndex = 37;
+            this.attentionlbl.Text = "attention";
             // 
             // orderslbl
             // 
@@ -450,51 +495,6 @@
             this.label2.TabIndex = 10;
             this.label2.Text = "Orders currently PLACED:";
             // 
-            // attentionlbl
-            // 
-            this.attentionlbl.AutoSize = true;
-            this.attentionlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.attentionlbl.ForeColor = System.Drawing.Color.Red;
-            this.attentionlbl.Location = new System.Drawing.Point(98, 537);
-            this.attentionlbl.Name = "attentionlbl";
-            this.attentionlbl.Size = new System.Drawing.Size(72, 20);
-            this.attentionlbl.TabIndex = 37;
-            this.attentionlbl.Text = "attention";
-            // 
-            // costlbl
-            // 
-            this.costlbl.AutoSize = true;
-            this.costlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.costlbl.ForeColor = System.Drawing.Color.Red;
-            this.costlbl.Location = new System.Drawing.Point(98, 560);
-            this.costlbl.Name = "costlbl";
-            this.costlbl.Size = new System.Drawing.Size(39, 20);
-            this.costlbl.TabIndex = 38;
-            this.costlbl.Text = "cost";
-            // 
-            // attention
-            // 
-            this.attention.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.industrial_safety_1492046_640;
-            this.attention.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.attention.Location = new System.Drawing.Point(19, 540);
-            this.attention.Name = "attention";
-            this.attention.Size = new System.Drawing.Size(73, 65);
-            this.attention.TabIndex = 39;
-            this.attention.TabStop = false;
-            // 
-            // placedlbl
-            // 
-            this.placedlbl.AutoSize = true;
-            this.placedlbl.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.placedlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.placedlbl.ForeColor = System.Drawing.Color.Black;
-            this.placedlbl.Location = new System.Drawing.Point(99, 585);
-            this.placedlbl.Name = "placedlbl";
-            this.placedlbl.Size = new System.Drawing.Size(82, 16);
-            this.placedlbl.TabIndex = 40;
-            this.placedlbl.Text = "View Details";
-            this.placedlbl.Click += new System.EventHandler(this.placedlbl_Click);
-            // 
             // mainform
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -514,9 +514,9 @@
             this.navtitle.PerformLayout();
             this.cntpnl.ResumeLayout(false);
             this.cntpnl.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.attention)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.shippeddataview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.placeddataview)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.attention)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -536,7 +536,7 @@
         private System.Windows.Forms.Panel navtitle;
         private System.Windows.Forms.Label navtxt;
         public System.Windows.Forms.Panel cntpnl;
-        private MaterialSkin.Controls.MaterialFlatButton chkbtn;
+        private MaterialSkin.Controls.MaterialFlatButton accbtn;
         private MaterialSkin.Controls.MaterialFlatButton termsbtn;
         private MaterialSkin.Controls.MaterialFlatButton faqbtn;
         private MaterialSkin.Controls.MaterialFlatButton aboutbtn;

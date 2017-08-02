@@ -130,11 +130,11 @@
     <Compile Include="addpictures.Designer.cs">
       <DependentUpon>addpictures.cs</DependentUpon>
     </Compile>
-    <Compile Include="forum.cs">
+    <Compile Include="accounts.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="forum.Designer.cs">
-      <DependentUpon>forum.cs</DependentUpon>
+    <Compile Include="accounts.Designer.cs">
+      <DependentUpon>accounts.cs</DependentUpon>
     </Compile>
     <Compile Include="container.cs">
       <SubType>Form</SubType>
@@ -210,8 +210,8 @@
     <EmbeddedResource Include="addpictures.resx">
       <DependentUpon>addpictures.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="forum.resx">
-      <DependentUpon>forum.cs</DependentUpon>
+    <EmbeddedResource Include="accounts.resx">
+      <DependentUpon>accounts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="container.resx">
       <DependentUpon>container.cs</DependentUpon>

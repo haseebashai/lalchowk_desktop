@@ -52,7 +52,7 @@ namespace Veiled_Kashmir_Admin_Panel
             tplbl.Text = "Total Products currently added: " + dr[0].ToString();
             obj.closeConnection();
 
-            dr=obj.Query("Select count(productid) from products where categoryid ='t1' or categoryid ='t11'");
+            dr=obj.Query("Select count(productid) from products where supplierid ='1' or supplierid ='2' or supplierid='3' or supplierid='5'");
             dr.Read();
             eleclbl.Text = "Total Electronic Items currently added: " + dr[0].ToString();
             obj.closeConnection();
@@ -60,6 +60,11 @@ namespace Veiled_Kashmir_Admin_Panel
             dr = obj.Query("Select count(productid) from products where supplierid ='4'");
             dr.Read();
             clothlbl.Text = "Total Clothing Items currently added: " + dr[0].ToString();
+            obj.closeConnection();
+
+            dr = obj.Query("Select count(productid) from products where supplierid ='6'");
+            dr.Read();
+            footlbl.Text = "Total footwear Items currently added: " + dr[0].ToString();
             obj.closeConnection();
 
         }

@@ -37,9 +37,9 @@ namespace Veiled_Kashmir_Admin_Panel
                 signout();
                 changelabel("Welcome, " + userinfo.username +"");
 
-            readordersplaced();
-            readordersshipped();
-            readordersdelivered();
+         //   readordersplaced();
+          //  readordersshipped();
+          //  readordersdelivered();
         }
 
         
@@ -171,11 +171,12 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void chkbtn_Click(object sender, EventArgs e)
         {
-            inventory inv = new inventory(hp);
-            inv.TopLevel = false;
+            accounts acc = new accounts(hp);
+            acc.TopLevel = false;
             cntpnl.Controls.Clear();
-            cntpnl.Controls.Add(inv);
-            inv.Show();
+            cntpnl.Controls.Add(acc);
+            acc.readexpenses();
+            acc.Show();
         }
 
         private void sendmsgbtn_Click(object sender, EventArgs e)
