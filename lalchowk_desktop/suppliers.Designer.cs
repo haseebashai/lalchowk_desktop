@@ -49,6 +49,7 @@
             // 
             // supplierdatagridview
             // 
+            this.supplierdatagridview.BackgroundColor = System.Drawing.Color.White;
             this.supplierdatagridview.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -69,10 +70,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Trajan Pro", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(486, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(242, 24);
+            this.label1.Size = new System.Drawing.Size(177, 24);
             this.label1.TabIndex = 1;
             this.label1.Text = "Supplier Information";
             // 

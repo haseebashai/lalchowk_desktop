@@ -82,6 +82,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1, 461);
             this.panel1.TabIndex = 54;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // panel3
             // 
@@ -109,6 +110,7 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(574, 1);
             this.panel5.TabIndex = 51;
+            this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.panel5_Paint);
             // 
             // emailtxt
             // 

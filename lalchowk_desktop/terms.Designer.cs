@@ -34,12 +34,12 @@
             this.headingtxt = new System.Windows.Forms.TextBox();
             this.termsidlbl = new System.Windows.Forms.Label();
             this.faqpnl = new System.Windows.Forms.Panel();
+            this.upbtn = new System.Windows.Forms.Button();
             this.faqid = new System.Windows.Forms.Label();
             this.qtxt = new System.Windows.Forms.TextBox();
             this.faqupdbtn = new System.Windows.Forms.Button();
             this.anstxt = new System.Windows.Forms.TextBox();
             this.faqdataview = new System.Windows.Forms.DataGridView();
-            this.upbtn = new System.Windows.Forms.Button();
             this.aboutpnl = new System.Windows.Forms.Panel();
             this.updbtn = new System.Windows.Forms.Button();
             this.aboutid = new System.Windows.Forms.Label();
@@ -117,6 +117,16 @@
             this.faqpnl.TabIndex = 43;
             this.faqpnl.Visible = false;
             // 
+            // upbtn
+            // 
+            this.upbtn.Location = new System.Drawing.Point(941, 104);
+            this.upbtn.Name = "upbtn";
+            this.upbtn.Size = new System.Drawing.Size(100, 122);
+            this.upbtn.TabIndex = 48;
+            this.upbtn.Text = "Update";
+            this.upbtn.UseVisualStyleBackColor = true;
+            this.upbtn.Click += new System.EventHandler(this.upbtn_Click);
+            // 
             // faqid
             // 
             this.faqid.AutoSize = true;
@@ -164,16 +174,6 @@
             this.faqdataview.Size = new System.Drawing.Size(925, 332);
             this.faqdataview.TabIndex = 43;
             this.faqdataview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.faqdataview_CellClick);
-            // 
-            // upbtn
-            // 
-            this.upbtn.Location = new System.Drawing.Point(941, 104);
-            this.upbtn.Name = "upbtn";
-            this.upbtn.Size = new System.Drawing.Size(100, 122);
-            this.upbtn.TabIndex = 48;
-            this.upbtn.Text = "Update";
-            this.upbtn.UseVisualStyleBackColor = true;
-            this.upbtn.Click += new System.EventHandler(this.upbtn_Click);
             // 
             // aboutpnl
             // 
@@ -241,6 +241,7 @@
             // 
             // aboutdataview
             // 
+            this.aboutdataview.BackgroundColor = System.Drawing.Color.White;
             this.aboutdataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.aboutdataview.Location = new System.Drawing.Point(10, 8);
             this.aboutdataview.Name = "aboutdataview";

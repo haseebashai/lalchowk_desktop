@@ -38,7 +38,7 @@
             this.productsbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.customersbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.suppliersbtn = new MaterialSkin.Controls.MaterialFlatButton();
-            this.sendmsgbtn = new MaterialSkin.Controls.MaterialFlatButton();
+            this.approvebtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.signinlbl = new System.Windows.Forms.Label();
             this.navpnl = new System.Windows.Forms.Panel();
             this.aboutbtn = new MaterialSkin.Controls.MaterialFlatButton();
@@ -132,21 +132,21 @@
             this.suppliersbtn.UseVisualStyleBackColor = true;
             this.suppliersbtn.Click += new System.EventHandler(this.suppliersbtn_Click);
             // 
-            // sendmsgbtn
+            // approvebtn
             // 
-            this.sendmsgbtn.AutoSize = true;
-            this.sendmsgbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.sendmsgbtn.Depth = 0;
-            this.sendmsgbtn.Location = new System.Drawing.Point(8, 259);
-            this.sendmsgbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.sendmsgbtn.MouseState = MaterialSkin.MouseState.HOVER;
-            this.sendmsgbtn.Name = "sendmsgbtn";
-            this.sendmsgbtn.Primary = false;
-            this.sendmsgbtn.Size = new System.Drawing.Size(143, 36);
-            this.sendmsgbtn.TabIndex = 15;
-            this.sendmsgbtn.Text = "send Notification";
-            this.sendmsgbtn.UseVisualStyleBackColor = true;
-            this.sendmsgbtn.Click += new System.EventHandler(this.sendmsgbtn_Click);
+            this.approvebtn.AutoSize = true;
+            this.approvebtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.approvebtn.Depth = 0;
+            this.approvebtn.Location = new System.Drawing.Point(8, 259);
+            this.approvebtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.approvebtn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.approvebtn.Name = "approvebtn";
+            this.approvebtn.Primary = false;
+            this.approvebtn.Size = new System.Drawing.Size(168, 36);
+            this.approvebtn.TabIndex = 15;
+            this.approvebtn.Text = "approve dealer price";
+            this.approvebtn.UseVisualStyleBackColor = true;
+            this.approvebtn.Click += new System.EventHandler(this.approvebtn_Click);
             // 
             // signinlbl
             // 
@@ -171,7 +171,7 @@
             this.navpnl.Controls.Add(this.expbtn);
             this.navpnl.Controls.Add(this.rptbtn);
             this.navpnl.Controls.Add(this.productsbtn);
-            this.navpnl.Controls.Add(this.sendmsgbtn);
+            this.navpnl.Controls.Add(this.approvebtn);
             this.navpnl.Controls.Add(this.customersbtn);
             this.navpnl.Controls.Add(this.suppliersbtn);
             this.navpnl.Controls.Add(this.ordersbtn);
@@ -384,7 +384,7 @@
             this.orderslbl.Cursor = System.Windows.Forms.Cursors.Hand;
             this.orderslbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.orderslbl.ForeColor = System.Drawing.Color.Black;
-            this.orderslbl.Location = new System.Drawing.Point(986, 589);
+            this.orderslbl.Location = new System.Drawing.Point(682, 589);
             this.orderslbl.Name = "orderslbl";
             this.orderslbl.Size = new System.Drawing.Size(82, 16);
             this.orderslbl.TabIndex = 36;
@@ -396,7 +396,7 @@
             this.ordersdlbl.AutoSize = true;
             this.ordersdlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ordersdlbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.ordersdlbl.Location = new System.Drawing.Point(985, 556);
+            this.ordersdlbl.Location = new System.Drawing.Point(681, 556);
             this.ordersdlbl.Name = "ordersdlbl";
             this.ordersdlbl.Size = new System.Drawing.Size(29, 24);
             this.ordersdlbl.TabIndex = 35;
@@ -407,7 +407,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label3.Location = new System.Drawing.Point(985, 537);
+            this.label3.Location = new System.Drawing.Point(681, 537);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(148, 16);
             this.label3.TabIndex = 34;
@@ -527,7 +527,7 @@
         private MaterialSkin.Controls.MaterialFlatButton productsbtn;
         private MaterialSkin.Controls.MaterialFlatButton suppliersbtn;
         private MaterialSkin.Controls.MaterialFlatButton customersbtn;
-        private MaterialSkin.Controls.MaterialFlatButton sendmsgbtn;
+        private MaterialSkin.Controls.MaterialFlatButton approvebtn;
         private System.Windows.Forms.Label signinlbl;
         private System.Windows.Forms.Panel navpnl;
         private MaterialSkin.Controls.MaterialFlatButton ordersbtn;

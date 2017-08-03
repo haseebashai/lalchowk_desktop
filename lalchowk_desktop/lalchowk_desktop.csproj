@@ -100,6 +100,12 @@
     <Compile Include="products.Designer.cs">
       <DependentUpon>products.cs</DependentUpon>
     </Compile>
+    <Compile Include="receipt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="receipt.Designer.cs">
+      <DependentUpon>receipt.cs</DependentUpon>
+    </Compile>
     <Compile Include="suppliers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,11 +118,11 @@
     <Compile Include="expenditure.Designer.cs">
       <DependentUpon>expenditure.cs</DependentUpon>
     </Compile>
-    <Compile Include="destinations.cs">
+    <Compile Include="approveprice.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="destinations.Designer.cs">
-      <DependentUpon>destinations.cs</DependentUpon>
+    <Compile Include="approveprice.Designer.cs">
+      <DependentUpon>approveprice.cs</DependentUpon>
     </Compile>
     <Compile Include="orders.cs">
       <SubType>Form</SubType>
@@ -195,14 +201,18 @@
     <EmbeddedResource Include="products.resx">
       <DependentUpon>products.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="receipt.resx">
+      <DependentUpon>receipt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="suppliers.resx">
       <DependentUpon>suppliers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="expenditure.resx">
       <DependentUpon>expenditure.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="destinations.resx">
-      <DependentUpon>destinations.cs</DependentUpon>
+    <EmbeddedResource Include="approveprice.resx">
+      <DependentUpon>approveprice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="orders.resx">
       <DependentUpon>orders.cs</DependentUpon>

@@ -14,7 +14,7 @@ namespace Veiled_Kashmir_Admin_Panel
     public partial class orders : Form
     {
         DBConnect obj = new DBConnect();
-        String orderid,email,addressid;
+        String orderid,email,addressid,cmd;
         MySqlDataReader dr;
         DataTable dt,dt1,dt2,dt3;
         private container hp = null;
@@ -24,6 +24,7 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             hp = hpcopy as container;
             InitializeComponent();
+            readorders();
         }
 
 
@@ -41,10 +42,7 @@ namespace Veiled_Kashmir_Admin_Panel
             
         }
 
-        private void orders_Load(object sender, EventArgs e)
-        {
-            readorders();
-        }
+        
 
         private void emailtxt_TextChanged(object sender, EventArgs e)
         {
@@ -105,6 +103,25 @@ namespace Veiled_Kashmir_Admin_Panel
             ordergridview.DataSource = dv;
         }
 
+        private void cnfbtn_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Sure you want to confirm and Ship the order ?", "Confirm", MessageBoxButtons.YesNo);
+            if (dr == DialogResult.Yes)
+            {
+                cmd = "update orders set status='Shipped' where orderid='" + orderlbl.Text + "'";
+                obj.nonQuery(cmd);
+                dpnl.Visible = false;
+                orderdetailview.Visible = false;
+                
+            }
+
+            receipt rc = new receipt();
+            rc.ShowDialog();
+            readorders();
+
+
+        }
+
         private void readaddress()
         {
             try {
@@ -159,6 +176,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void ordergridview_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            Cursor = Cursors.WaitCursor;
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = this.ordergridview.Rows[e.RowIndex];
@@ -166,6 +184,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 email = row.Cells["email"].Value.ToString();
                 addressid = row.Cells["addressid"].Value.ToString();
                 orderlbl.Text = orderid;
+                dpnl.Visible = true;
                
                 readaddress();
                 orderdetails();
@@ -173,6 +192,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 readproductname();
                 readamount();
             }
+            Cursor = Cursors.Arrow;
         }
 
         /*      private void addevbtn_Click(object sender, EventArgs e)

@@ -15,7 +15,7 @@ namespace Veiled_Kashmir_Admin_Panel
     public partial class mainform : Form
     {
         DBConnect obj = new DBConnect();
-        MySqlConnection con;
+        MySqlConnection con =new MySqlConnection("SERVER=182.50.133.78;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah");
         MySqlDataAdapter adap;
         DataTable dt;
         MySqlDataReader dr;
@@ -25,33 +25,35 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             hp = hpcopy as container;
             InitializeComponent();
+
             
+
         }
 
         private void mainform_Load(object sender, EventArgs e)
         {
 
-            
-
             if (userinfo.loggedin == true)
                 signout();
                 changelabel("Welcome, " + userinfo.username +"");
 
-         //   readordersplaced();
-          //  readordersshipped();
-          //  readordersdelivered();
+        //    Cursor = Cursors.WaitCursor;
+        //    readordersplaced();
+        //    readordersshipped();
+        //    readordersdelivered();
+        //    Cursor = Cursors.Arrow;
         }
 
         
 
         private void readordersplaced()
         {
-            con = new MySqlConnection();
-            con.ConnectionString = "SERVER=182.50.133.78;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah";
+            
             con.Open();
             adap = new MySqlDataAdapter("select * from orders where status='placed'", con);
             dt = new DataTable();
             adap.Fill(dt);
+            con.Close();
             BindingSource bsource = new BindingSource();
             bsource.DataSource = dt;
             placeddataview.DataSource = bsource;
@@ -69,12 +71,11 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void readordersshipped()
         {
-            con = new MySqlConnection();
-            con.ConnectionString = "SERVER=182.50.133.78;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah";
             con.Open();
             adap = new MySqlDataAdapter("select * from orders where status='shipped'", con);
             dt = new DataTable();
             adap.Fill(dt);
+            con.Close();
             BindingSource bsource = new BindingSource();
             bsource.DataSource = dt;
             shippeddataview.DataSource = bsource;
@@ -91,11 +92,13 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void ordersbtn_Click(object sender, EventArgs e)
         {
+            Cursor = Cursors.WaitCursor;
             orders or = new orders(hp);
             or.TopLevel = false;
             cntpnl.Controls.Clear();
             cntpnl.Controls.Add(or);           
             or.Show();
+            Cursor = Cursors.Arrow;
         }
         public void changelabel(String welcome)
         {
@@ -130,22 +133,26 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void productsbtn_Click(object sender, EventArgs e)
         {
+            Cursor = Cursors.WaitCursor;
             products pr = new products(hp,this);
             pr.TopLevel = false;
             cntpnl.Controls.Clear();
             cntpnl.Controls.Add(pr);           
             pr.Show();
+            Cursor = Cursors.Arrow;
         }
 
        
 
         private void customersbtn_Click(object sender, EventArgs e)
         {
+            Cursor = Cursors.WaitCursor;
             customers cus = new customers(hp);
             cus.TopLevel = false;
             cntpnl.Controls.Clear();
             cntpnl.Controls.Add(cus);
             cus.Show();
+            Cursor = Cursors.Arrow;
         }
 
         
@@ -153,49 +160,64 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void expbtn_Click(object sender, EventArgs e)
         {
+            Cursor = Cursors.WaitCursor;
             expenditure exp = new expenditure(this,hp);
             exp.TopLevel = false;
             cntpnl.Controls.Clear();
             cntpnl.Controls.Add(exp);
             exp.Show();
+            Cursor = Cursors.Arrow;
         }
 
         private void suppliersbtn_Click(object sender, EventArgs e)
         {
+            Cursor = Cursors.WaitCursor;
             suppliers sup = new suppliers(hp);
             sup.TopLevel = false;
             cntpnl.Controls.Clear();
             cntpnl.Controls.Add(sup);
             sup.Show();
+            Cursor = Cursors.Arrow;
         }
 
         private void chkbtn_Click(object sender, EventArgs e)
         {
+            Cursor = Cursors.WaitCursor;
             accounts acc = new accounts(hp);
             acc.TopLevel = false;
             cntpnl.Controls.Clear();
             cntpnl.Controls.Add(acc);
             acc.readexpenses();
             acc.Show();
+            Cursor = Cursors.Arrow;
         }
 
-        private void sendmsgbtn_Click(object sender, EventArgs e)
+        private void approvebtn_Click(object sender, EventArgs e)
         {
-           
+            Cursor = Cursors.WaitCursor;
+            approveprice ap = new approveprice(hp);
+            cntpnl.Controls.Clear();
+            ap.TopLevel = false;
+            cntpnl.Controls.Add(ap);
+            ap.Show();
+            Cursor = Cursors.Arrow;
         }
 
         private void termsbtn_Click(object sender, EventArgs e)
         {
+            Cursor = Cursors.WaitCursor;
             terms tr = new terms(hp);
             tr.TopLevel = false;
             cntpnl.Controls.Clear();
             cntpnl.Controls.Add(tr);
             tr.readterms();
             tr.Show();
+            Cursor = Cursors.Arrow;
         }
 
         private void faqbtn_Click(object sender, EventArgs e)
         {
+            Cursor = Cursors.WaitCursor;
             terms tr = new terms(hp);
             tr.TopLevel = false;
             cntpnl.Controls.Clear();
@@ -203,10 +225,12 @@ namespace Veiled_Kashmir_Admin_Panel
             cntpnl.Controls.Add(tr);
             tr.readfaq();
             tr.Show();
+            Cursor = Cursors.Arrow;
         }
 
         private void aboutbtn_Click(object sender, EventArgs e)
         {
+            Cursor = Cursors.WaitCursor;
             terms tr = new terms(hp);
             tr.TopLevel = false;
             cntpnl.Controls.Clear();
@@ -214,37 +238,45 @@ namespace Veiled_Kashmir_Admin_Panel
             cntpnl.Controls.Add(tr);
             tr.readabout();
             tr.Show();
+            Cursor = Cursors.Arrow;
         }
 
         private void navtxt_Click(object sender, EventArgs e)
         {
+            Cursor = Cursors.WaitCursor;
             mainform mf = new mainform(hp);
             hp.mainpnl.Controls.Clear();
             mf.TopLevel = false;
             hp.mainpnl.Controls.Add(mf);
             mf.Show();
+            Cursor = Cursors.Arrow;
         }
 
         private void orderslbl_Click(object sender, EventArgs e)
         {
+            Cursor = Cursors.WaitCursor;
             ordersdetails od = new ordersdetails(hp);
             cntpnl.Controls.Clear();
             od.TopLevel = false;
             od.readordersdelivered();
             cntpnl.Controls.Add(od);
             od.Show();
+            Cursor = Cursors.Arrow;
         }
 
         private void placedlbl_Click(object sender, EventArgs e)
         {
+            Cursor = Cursors.WaitCursor;
             ordersdetails od = new ordersdetails(hp);
             od.TopLevel = false;
             cntpnl.Controls.Clear();
-
             od.orderslbl.Text = "Orders Placed";
             od.readordersplaced();
             cntpnl.Controls.Add(od);
             od.Show();
+            Cursor = Cursors.Arrow;
         }
+
+        
     }
 }

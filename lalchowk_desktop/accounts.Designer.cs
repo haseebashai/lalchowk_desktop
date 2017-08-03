@@ -34,6 +34,10 @@
             this.miscbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.accountdataview = new System.Windows.Forms.DataGridView();
             this.exppnl = new System.Windows.Forms.Panel();
+            this.reasontxt1 = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.baltxt = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.updatebtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.datetxt = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -70,10 +74,10 @@
             this.nametxt4 = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.updbtn = new System.Windows.Forms.Button();
-            this.baltxt = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.reasontxt1 = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
+            this.costlbl = new System.Windows.Forms.Label();
+            this.moneylbl = new System.Windows.Forms.Label();
+            this.ballbl = new System.Windows.Forms.Label();
+            this.banklbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.accountdataview)).BeginInit();
             this.exppnl.SuspendLayout();
             this.moneypnl.SuspendLayout();
@@ -86,7 +90,7 @@
             this.expbtn.AutoSize = true;
             this.expbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.expbtn.Depth = 0;
-            this.expbtn.Location = new System.Drawing.Point(201, 8);
+            this.expbtn.Location = new System.Drawing.Point(7, 9);
             this.expbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.expbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.expbtn.Name = "expbtn";
@@ -102,7 +106,7 @@
             this.moneybtn.AutoSize = true;
             this.moneybtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.moneybtn.Depth = 0;
-            this.moneybtn.Location = new System.Drawing.Point(413, 8);
+            this.moneybtn.Location = new System.Drawing.Point(117, 9);
             this.moneybtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.moneybtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.moneybtn.Name = "moneybtn";
@@ -118,7 +122,7 @@
             this.bankbtn.AutoSize = true;
             this.bankbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.bankbtn.Depth = 0;
-            this.bankbtn.Location = new System.Drawing.Point(632, 8);
+            this.bankbtn.Location = new System.Drawing.Point(238, 9);
             this.bankbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.bankbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.bankbtn.Name = "bankbtn";
@@ -134,7 +138,7 @@
             this.miscbtn.AutoSize = true;
             this.miscbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.miscbtn.Depth = 0;
-            this.miscbtn.Location = new System.Drawing.Point(854, 8);
+            this.miscbtn.Location = new System.Drawing.Point(372, 9);
             this.miscbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.miscbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.miscbtn.Name = "miscbtn";
@@ -149,9 +153,9 @@
             // 
             this.accountdataview.BackgroundColor = System.Drawing.Color.White;
             this.accountdataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.accountdataview.Location = new System.Drawing.Point(7, 263);
+            this.accountdataview.Location = new System.Drawing.Point(7, 219);
             this.accountdataview.Name = "accountdataview";
-            this.accountdataview.Size = new System.Drawing.Size(1009, 453);
+            this.accountdataview.Size = new System.Drawing.Size(1009, 400);
             this.accountdataview.TabIndex = 20;
             // 
             // exppnl
@@ -169,15 +173,48 @@
             this.exppnl.Controls.Add(this.label1);
             this.exppnl.Location = new System.Drawing.Point(7, 54);
             this.exppnl.Name = "exppnl";
-            this.exppnl.Size = new System.Drawing.Size(1148, 208);
+            this.exppnl.Size = new System.Drawing.Size(1148, 164);
             this.exppnl.TabIndex = 21;
+            // 
+            // reasontxt1
+            // 
+            this.reasontxt1.Location = new System.Drawing.Point(278, 74);
+            this.reasontxt1.Multiline = true;
+            this.reasontxt1.Name = "reasontxt1";
+            this.reasontxt1.Size = new System.Drawing.Size(204, 74);
+            this.reasontxt1.TabIndex = 21;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(275, 57);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(44, 13);
+            this.label16.TabIndex = 20;
+            this.label16.Text = "Reason";
+            // 
+            // baltxt
+            // 
+            this.baltxt.Location = new System.Drawing.Point(278, 25);
+            this.baltxt.Name = "baltxt";
+            this.baltxt.Size = new System.Drawing.Size(204, 20);
+            this.baltxt.TabIndex = 19;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(275, 8);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(46, 13);
+            this.label13.TabIndex = 18;
+            this.label13.Text = "Balance";
             // 
             // updatebtn
             // 
             this.updatebtn.AutoSize = true;
             this.updatebtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.updatebtn.Depth = 0;
-            this.updatebtn.Location = new System.Drawing.Point(546, 94);
+            this.updatebtn.Location = new System.Drawing.Point(546, 65);
             this.updatebtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.updatebtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.updatebtn.Name = "updatebtn";
@@ -190,7 +227,7 @@
             // 
             // datetxt
             // 
-            this.datetxt.Location = new System.Drawing.Point(5, 157);
+            this.datetxt.Location = new System.Drawing.Point(5, 128);
             this.datetxt.Name = "datetxt";
             this.datetxt.Size = new System.Drawing.Size(204, 20);
             this.datetxt.TabIndex = 5;
@@ -198,7 +235,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(2, 140);
+            this.label3.Location = new System.Drawing.Point(2, 111);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(155, 13);
             this.label3.TabIndex = 4;
@@ -206,7 +243,7 @@
             // 
             // amounttxt
             // 
-            this.amounttxt.Location = new System.Drawing.Point(5, 103);
+            this.amounttxt.Location = new System.Drawing.Point(5, 74);
             this.amounttxt.Name = "amounttxt";
             this.amounttxt.Size = new System.Drawing.Size(204, 20);
             this.amounttxt.TabIndex = 3;
@@ -214,7 +251,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(2, 86);
+            this.label2.Location = new System.Drawing.Point(2, 57);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(43, 13);
             this.label2.TabIndex = 2;
@@ -222,7 +259,7 @@
             // 
             // itemtxt
             // 
-            this.itemtxt.Location = new System.Drawing.Point(5, 54);
+            this.itemtxt.Location = new System.Drawing.Point(5, 25);
             this.itemtxt.Name = "itemtxt";
             this.itemtxt.Size = new System.Drawing.Size(204, 20);
             this.itemtxt.TabIndex = 1;
@@ -230,7 +267,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(2, 37);
+            this.label1.Location = new System.Drawing.Point(2, 8);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(81, 13);
             this.label1.TabIndex = 0;
@@ -249,13 +286,13 @@
             this.moneypnl.Controls.Add(this.label6);
             this.moneypnl.Location = new System.Drawing.Point(7, 54);
             this.moneypnl.Name = "moneypnl";
-            this.moneypnl.Size = new System.Drawing.Size(1148, 208);
+            this.moneypnl.Size = new System.Drawing.Size(1148, 164);
             this.moneypnl.TabIndex = 22;
             this.moneypnl.Visible = false;
             // 
             // reasontxt
             // 
-            this.reasontxt.Location = new System.Drawing.Point(278, 54);
+            this.reasontxt.Location = new System.Drawing.Point(278, 25);
             this.reasontxt.Multiline = true;
             this.reasontxt.Name = "reasontxt";
             this.reasontxt.Size = new System.Drawing.Size(204, 123);
@@ -264,7 +301,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(275, 37);
+            this.label7.Location = new System.Drawing.Point(275, 8);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(44, 13);
             this.label7.TabIndex = 18;
@@ -275,7 +312,7 @@
             this.addbtn.AutoSize = true;
             this.addbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.addbtn.Depth = 0;
-            this.addbtn.Location = new System.Drawing.Point(521, 94);
+            this.addbtn.Location = new System.Drawing.Point(521, 65);
             this.addbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.addbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.addbtn.Name = "addbtn";
@@ -288,7 +325,7 @@
             // 
             // datetxt2
             // 
-            this.datetxt2.Location = new System.Drawing.Point(5, 157);
+            this.datetxt2.Location = new System.Drawing.Point(5, 128);
             this.datetxt2.Name = "datetxt2";
             this.datetxt2.Size = new System.Drawing.Size(204, 20);
             this.datetxt2.TabIndex = 5;
@@ -296,7 +333,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(2, 140);
+            this.label4.Location = new System.Drawing.Point(2, 111);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(131, 13);
             this.label4.TabIndex = 4;
@@ -304,7 +341,7 @@
             // 
             // amounttxt2
             // 
-            this.amounttxt2.Location = new System.Drawing.Point(5, 103);
+            this.amounttxt2.Location = new System.Drawing.Point(5, 74);
             this.amounttxt2.Name = "amounttxt2";
             this.amounttxt2.Size = new System.Drawing.Size(204, 20);
             this.amounttxt2.TabIndex = 3;
@@ -312,7 +349,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(2, 86);
+            this.label5.Location = new System.Drawing.Point(2, 57);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(43, 13);
             this.label5.TabIndex = 2;
@@ -320,7 +357,7 @@
             // 
             // nametxt
             // 
-            this.nametxt.Location = new System.Drawing.Point(5, 54);
+            this.nametxt.Location = new System.Drawing.Point(5, 25);
             this.nametxt.Name = "nametxt";
             this.nametxt.Size = new System.Drawing.Size(204, 20);
             this.nametxt.TabIndex = 1;
@@ -328,7 +365,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(2, 37);
+            this.label6.Location = new System.Drawing.Point(2, 8);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(72, 13);
             this.label6.TabIndex = 0;
@@ -347,13 +384,13 @@
             this.bankpnl.Controls.Add(this.label11);
             this.bankpnl.Location = new System.Drawing.Point(7, 54);
             this.bankpnl.Name = "bankpnl";
-            this.bankpnl.Size = new System.Drawing.Size(1148, 208);
+            this.bankpnl.Size = new System.Drawing.Size(1148, 164);
             this.bankpnl.TabIndex = 23;
             this.bankpnl.Visible = false;
             // 
             // reasontxt2
             // 
-            this.reasontxt2.Location = new System.Drawing.Point(278, 54);
+            this.reasontxt2.Location = new System.Drawing.Point(278, 25);
             this.reasontxt2.Multiline = true;
             this.reasontxt2.Name = "reasontxt2";
             this.reasontxt2.Size = new System.Drawing.Size(204, 123);
@@ -362,7 +399,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(275, 37);
+            this.label8.Location = new System.Drawing.Point(275, 8);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(44, 13);
             this.label8.TabIndex = 18;
@@ -373,7 +410,7 @@
             this.addbbtn.AutoSize = true;
             this.addbbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.addbbtn.Depth = 0;
-            this.addbbtn.Location = new System.Drawing.Point(521, 94);
+            this.addbbtn.Location = new System.Drawing.Point(521, 65);
             this.addbbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.addbbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.addbbtn.Name = "addbbtn";
@@ -386,7 +423,7 @@
             // 
             // cbaltxt
             // 
-            this.cbaltxt.Location = new System.Drawing.Point(5, 157);
+            this.cbaltxt.Location = new System.Drawing.Point(5, 128);
             this.cbaltxt.Name = "cbaltxt";
             this.cbaltxt.Size = new System.Drawing.Size(204, 20);
             this.cbaltxt.TabIndex = 5;
@@ -394,7 +431,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(2, 140);
+            this.label9.Location = new System.Drawing.Point(2, 111);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(83, 13);
             this.label9.TabIndex = 4;
@@ -402,7 +439,7 @@
             // 
             // obaltxt
             // 
-            this.obaltxt.Location = new System.Drawing.Point(5, 103);
+            this.obaltxt.Location = new System.Drawing.Point(5, 74);
             this.obaltxt.Name = "obaltxt";
             this.obaltxt.Size = new System.Drawing.Size(204, 20);
             this.obaltxt.TabIndex = 3;
@@ -410,7 +447,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(2, 86);
+            this.label10.Location = new System.Drawing.Point(2, 57);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(89, 13);
             this.label10.TabIndex = 2;
@@ -418,7 +455,7 @@
             // 
             // datetxt3
             // 
-            this.datetxt3.Location = new System.Drawing.Point(5, 54);
+            this.datetxt3.Location = new System.Drawing.Point(5, 25);
             this.datetxt3.Name = "datetxt3";
             this.datetxt3.Size = new System.Drawing.Size(204, 20);
             this.datetxt3.TabIndex = 1;
@@ -426,7 +463,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(2, 37);
+            this.label11.Location = new System.Drawing.Point(2, 8);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(30, 13);
             this.label11.TabIndex = 0;
@@ -443,13 +480,13 @@
             this.miscpnl.Controls.Add(this.label15);
             this.miscpnl.Location = new System.Drawing.Point(7, 54);
             this.miscpnl.Name = "miscpnl";
-            this.miscpnl.Size = new System.Drawing.Size(1148, 208);
+            this.miscpnl.Size = new System.Drawing.Size(1148, 161);
             this.miscpnl.TabIndex = 24;
             this.miscpnl.Visible = false;
             // 
             // reasontxt4
             // 
-            this.reasontxt4.Location = new System.Drawing.Point(278, 54);
+            this.reasontxt4.Location = new System.Drawing.Point(278, 25);
             this.reasontxt4.Multiline = true;
             this.reasontxt4.Name = "reasontxt4";
             this.reasontxt4.Size = new System.Drawing.Size(204, 123);
@@ -458,7 +495,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(275, 37);
+            this.label12.Location = new System.Drawing.Point(275, 8);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(44, 13);
             this.label12.TabIndex = 18;
@@ -469,7 +506,7 @@
             this.addmbtn.AutoSize = true;
             this.addmbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.addmbtn.Depth = 0;
-            this.addmbtn.Location = new System.Drawing.Point(521, 94);
+            this.addmbtn.Location = new System.Drawing.Point(521, 65);
             this.addmbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.addmbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.addmbtn.Name = "addmbtn";
@@ -482,7 +519,7 @@
             // 
             // amounttxt4
             // 
-            this.amounttxt4.Location = new System.Drawing.Point(5, 103);
+            this.amounttxt4.Location = new System.Drawing.Point(5, 74);
             this.amounttxt4.Name = "amounttxt4";
             this.amounttxt4.Size = new System.Drawing.Size(204, 20);
             this.amounttxt4.TabIndex = 3;
@@ -490,7 +527,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(2, 86);
+            this.label14.Location = new System.Drawing.Point(2, 57);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(43, 13);
             this.label14.TabIndex = 2;
@@ -498,7 +535,7 @@
             // 
             // nametxt4
             // 
-            this.nametxt4.Location = new System.Drawing.Point(5, 54);
+            this.nametxt4.Location = new System.Drawing.Point(5, 25);
             this.nametxt4.Name = "nametxt4";
             this.nametxt4.Size = new System.Drawing.Size(204, 20);
             this.nametxt4.TabIndex = 1;
@@ -506,7 +543,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(2, 37);
+            this.label15.Location = new System.Drawing.Point(2, 8);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(35, 13);
             this.label15.TabIndex = 0;
@@ -514,7 +551,7 @@
             // 
             // updbtn
             // 
-            this.updbtn.Location = new System.Drawing.Point(1022, 414);
+            this.updbtn.Location = new System.Drawing.Point(1022, 342);
             this.updbtn.Name = "updbtn";
             this.updbtn.Size = new System.Drawing.Size(120, 112);
             this.updbtn.TabIndex = 25;
@@ -522,38 +559,49 @@
             this.updbtn.UseVisualStyleBackColor = true;
             this.updbtn.Click += new System.EventHandler(this.updbtn_Click);
             // 
-            // baltxt
+            // costlbl
             // 
-            this.baltxt.Location = new System.Drawing.Point(278, 54);
-            this.baltxt.Name = "baltxt";
-            this.baltxt.Size = new System.Drawing.Size(204, 20);
-            this.baltxt.TabIndex = 19;
+            this.costlbl.AutoSize = true;
+            this.costlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.costlbl.ForeColor = System.Drawing.Color.Blue;
+            this.costlbl.Location = new System.Drawing.Point(10, 662);
+            this.costlbl.Name = "costlbl";
+            this.costlbl.Size = new System.Drawing.Size(105, 16);
+            this.costlbl.TabIndex = 26;
+            this.costlbl.Text = "Total Cost spent";
             // 
-            // label13
+            // moneylbl
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(275, 37);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(46, 13);
-            this.label13.TabIndex = 18;
-            this.label13.Text = "Balance";
+            this.moneylbl.AutoSize = true;
+            this.moneylbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.moneylbl.ForeColor = System.Drawing.Color.Blue;
+            this.moneylbl.Location = new System.Drawing.Point(10, 633);
+            this.moneylbl.Name = "moneylbl";
+            this.moneylbl.Size = new System.Drawing.Size(129, 16);
+            this.moneylbl.TabIndex = 27;
+            this.moneylbl.Text = "Total Money pooled";
             // 
-            // reasontxt1
+            // ballbl
             // 
-            this.reasontxt1.Location = new System.Drawing.Point(278, 103);
-            this.reasontxt1.Multiline = true;
-            this.reasontxt1.Name = "reasontxt1";
-            this.reasontxt1.Size = new System.Drawing.Size(204, 74);
-            this.reasontxt1.TabIndex = 21;
+            this.ballbl.AutoSize = true;
+            this.ballbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ballbl.ForeColor = System.Drawing.Color.Blue;
+            this.ballbl.Location = new System.Drawing.Point(10, 691);
+            this.ballbl.Name = "ballbl";
+            this.ballbl.Size = new System.Drawing.Size(120, 16);
+            this.ballbl.TabIndex = 28;
+            this.ballbl.Text = "Balance remaining";
             // 
-            // label16
+            // banklbl
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(275, 86);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(44, 13);
-            this.label16.TabIndex = 20;
-            this.label16.Text = "Reason";
+            this.banklbl.AutoSize = true;
+            this.banklbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.banklbl.ForeColor = System.Drawing.Color.Blue;
+            this.banklbl.Location = new System.Drawing.Point(359, 633);
+            this.banklbl.Name = "banklbl";
+            this.banklbl.Size = new System.Drawing.Size(92, 16);
+            this.banklbl.TabIndex = 29;
+            this.banklbl.Text = "Bank Balance";
             // 
             // accounts
             // 
@@ -561,16 +609,20 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1162, 722);
+            this.Controls.Add(this.banklbl);
+            this.Controls.Add(this.ballbl);
+            this.Controls.Add(this.moneylbl);
+            this.Controls.Add(this.costlbl);
             this.Controls.Add(this.updbtn);
             this.Controls.Add(this.accountdataview);
             this.Controls.Add(this.miscbtn);
             this.Controls.Add(this.bankbtn);
             this.Controls.Add(this.moneybtn);
             this.Controls.Add(this.expbtn);
+            this.Controls.Add(this.moneypnl);
             this.Controls.Add(this.exppnl);
             this.Controls.Add(this.miscpnl);
             this.Controls.Add(this.bankpnl);
-            this.Controls.Add(this.moneypnl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "accounts";
             this.Text = "forum";
@@ -636,5 +688,9 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox baltxt;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label costlbl;
+        private System.Windows.Forms.Label moneylbl;
+        private System.Windows.Forms.Label ballbl;
+        private System.Windows.Forms.Label banklbl;
     }
 }

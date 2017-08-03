@@ -15,9 +15,9 @@ namespace Veiled_Kashmir_Admin_Panel
     {
         DBConnect obj = new DBConnect();
         MySqlConnection con;
-        MySqlCommand mysqlcmd;
+        MySqlCommand mysqlcmd, cmd;
         DataTable dt;
-        string cmd;
+        MySqlDataReader dr;
         MySqlCommandBuilder cmdbl;
         MySqlDataAdapter adap;
         MySqlConnection aconn = new MySqlConnection("SERVER=182.50.133.78;DATABASE=lalchowk_ac;USER=lalchowkac;PASSWORD=Lalchowk@123uzmah");
@@ -28,16 +28,17 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             hp = hpcopy as container;
             InitializeComponent();
+            readdetails();
+            
         }
 
         public void readexpenses()
         {
-            con = new MySqlConnection();
-            con.ConnectionString = "SERVER=182.50.133.78;DATABASE=lalchowk_ac;USER=lalchowkac;PASSWORD=Lalchowk@123uzmah";
-            con.Open();
-            adap = new MySqlDataAdapter("select * from expenses", con);
+            aconn.Open();
+            adap = new MySqlDataAdapter("select * from expenses", aconn);
             dt = new DataTable();
             adap.Fill(dt);
+            aconn.Close();
             BindingSource bsource = new BindingSource();
             bsource.DataSource = dt;
             accountdataview.DataSource = bsource;
@@ -45,12 +46,11 @@ namespace Veiled_Kashmir_Admin_Panel
 
         public void readmoneypool()
         {
-            con = new MySqlConnection();
-            con.ConnectionString = "SERVER=182.50.133.78;DATABASE=lalchowk_ac;USER=lalchowkac;PASSWORD=Lalchowk@123uzmah";
-            con.Open();
-            adap = new MySqlDataAdapter("select * from moneypool", con);
+            aconn.Open();
+            adap = new MySqlDataAdapter("select * from moneypool", aconn);
             dt = new DataTable();
             adap.Fill(dt);
+            aconn.Close();
             BindingSource bsource = new BindingSource();
             bsource.DataSource = dt;
             accountdataview.DataSource = bsource;
@@ -58,12 +58,11 @@ namespace Veiled_Kashmir_Admin_Panel
 
         public void readbank()
         {
-            con = new MySqlConnection();
-            con.ConnectionString = "SERVER=182.50.133.78;DATABASE=lalchowk_ac;USER=lalchowkac;PASSWORD=Lalchowk@123uzmah";
-            con.Open();
-            adap = new MySqlDataAdapter("select * from bankdetails", con);
+            aconn.Open();
+            adap = new MySqlDataAdapter("select * from bankdetails", aconn);
             dt = new DataTable();
             adap.Fill(dt);
+            aconn.Close();
             BindingSource bsource = new BindingSource();
             bsource.DataSource = dt;
             accountdataview.DataSource = bsource;
@@ -71,19 +70,59 @@ namespace Veiled_Kashmir_Admin_Panel
 
         public void readmisc()
         {
-            con = new MySqlConnection();
-            con.ConnectionString = "SERVER=182.50.133.78;DATABASE=lalchowk_ac;USER=lalchowkac;PASSWORD=Lalchowk@123uzmah";
-            con.Open();
-            adap = new MySqlDataAdapter("select * from misc", con);
+            aconn.Open();
+            adap = new MySqlDataAdapter("select * from misc", aconn);
             dt = new DataTable();
             adap.Fill(dt);
+            aconn.Close();
             BindingSource bsource = new BindingSource();
             bsource.DataSource = dt;
             accountdataview.DataSource = bsource;
         }
 
+        private void readdetails()
+        {
+            aconn.Open();
+            cmd = new MySqlCommand("select sum(amount)-3000 from moneypool",aconn);
+            dr = cmd.ExecuteReader();
+            dr.Read();
+            moneylbl.Text = "Total Money pooled: Rs. " + dr[0].ToString(); 
+            aconn.Close();
+
+            aconn.Open();
+            cmd = new MySqlCommand("select sum(amount) from expenses", aconn);
+            dr = cmd.ExecuteReader();
+            dr.Read();
+            costlbl.Text = "Total Cost spent: Rs. " + dr[0].ToString();
+            aconn.Close();
+
+            aconn.Open();
+            cmd = new MySqlCommand("select sum(amount) from expenses", aconn);
+            dr = cmd.ExecuteReader();
+            dr.Read();
+            costlbl.Text = "Total Cost spent: Rs. " + dr[0].ToString();
+            aconn.Close();
+
+            aconn.Open();
+            cmd = new MySqlCommand(" SELECT balance FROM expenses ORDER BY eid DESC LIMIT 1", aconn);
+            dr = cmd.ExecuteReader();
+            dr.Read();
+            ballbl.Text = "Balance in hand: Rs. " + dr[0].ToString();
+            aconn.Close();
+
+            aconn.Open();
+            cmd = new MySqlCommand(" SELECT closingbal FROM bankdetails ORDER BY bid DESC LIMIT 1", aconn);
+            dr = cmd.ExecuteReader();
+            dr.Read();
+            banklbl.Text = "Bank balance: Rs. " + dr[0].ToString();
+            aconn.Close();
+        }
+
+       
         private void expbtn_Click(object sender, EventArgs e)
         {
+            readdetails();
+            
             readexpenses();
             exppnl.Visible = true;
             moneypnl.Visible = false;
@@ -93,6 +132,8 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void moneybtn_Click(object sender, EventArgs e)
         {
+            readdetails();
+            
             readmoneypool();
             moneypnl.Visible = true;
             exppnl.Visible = false;
@@ -102,6 +143,8 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void bankbtn_Click(object sender, EventArgs e)
         {
+            readdetails();
+            
             readbank();
             bankpnl.Visible = true;
             moneypnl.Visible = false;
@@ -111,6 +154,8 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void miscbtn_Click(object sender, EventArgs e)
         {
+            readdetails();
+            
             readmisc();
             miscpnl.Visible = true;
             bankpnl.Visible = false;
@@ -188,5 +233,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        
     }
 }

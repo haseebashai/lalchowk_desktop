@@ -63,5 +63,15 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             readorderid();
         }
+
+        private void panel5_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
