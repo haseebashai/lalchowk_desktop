@@ -37,11 +37,11 @@ namespace Veiled_Kashmir_Admin_Panel
                 signout();
                 changelabel("Welcome, " + userinfo.username +"");
 
-        //    Cursor = Cursors.WaitCursor;
-        //    readordersplaced();
-        //    readordersshipped();
-        //    readordersdelivered();
-        //    Cursor = Cursors.Arrow;
+            Cursor = Cursors.WaitCursor;
+            readordersplaced();
+            readordersshipped();
+            readordersdelivered();
+            Cursor = Cursors.Arrow;
         }
 
         

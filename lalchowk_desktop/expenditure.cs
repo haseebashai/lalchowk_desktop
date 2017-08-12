@@ -544,12 +544,17 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void readprofit()
         {
-          /*  int a = Int32.Parse(ordersdvlbl.Text);
-            int b = Int32.Parse(purlbl.Text);
-            int c = Int32.Parse(shiplbl.Text);
-            profitlbl.Text = (a-b).ToString(); */
-            profitlbl.Text= ((int.Parse(ordersdvlbl.Text) - int.Parse(purlbl.Text)) - int.Parse(shiplbl.Text)).ToString();
-        }
+            /*  int a = Int32.Parse(ordersdvlbl.Text);
+              int b = Int32.Parse(purlbl.Text);
+              int c = Int32.Parse(shiplbl.Text);
+              profitlbl.Text = (a-b).ToString(); */
+            try {
+                profitlbl.Text = ((int.Parse(ordersdvlbl.Text) - int.Parse(purlbl.Text)) - int.Parse(shiplbl.Text)).ToString();
+            } catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            }
 
         private void culture_Load(object sender, EventArgs e)
         {

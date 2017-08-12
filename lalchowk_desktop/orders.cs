@@ -30,7 +30,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
            private void readorders()
             {
-            dr = obj.Query("SELECT orderid, email, shipdate, deliverdate, amount, shipping, itemcount, paymenttype, transanctionid, paymentconfirmed, status, addressid FROM orders");
+            dr = obj.Query("SELECT orderid, email, shipdate, deliverdate, amount, shipping, itemcount, paymenttype, transanctionid, paymentconfirmed, status, name, address1, address2, pincode, contact, city FROM orders");
 
             dt = new DataTable();
             dt.Load(dr);
@@ -182,11 +182,16 @@ namespace Veiled_Kashmir_Admin_Panel
                 DataGridViewRow row = this.ordergridview.Rows[e.RowIndex];
                 orderid = row.Cells["orderid"].Value.ToString();
                 email = row.Cells["email"].Value.ToString();
-                addressid = row.Cells["addressid"].Value.ToString();
+                namelbl.Text = row.Cells["name"].Value.ToString();
+                address1lbl.Text = row.Cells["address1"].Value.ToString();
+                address2lbl.Text = row.Cells["address2"].Value.ToString();
+                pinlbl.Text = row.Cells["pincode"].Value.ToString();
+                citylbl.Text = row.Cells["city"].Value.ToString();
+                contactlbl.Text = row.Cells["contact"].Value.ToString();
                 orderlbl.Text = orderid;
                 dpnl.Visible = true;
                
-                readaddress();
+           //     readaddress();
                 orderdetails();
                 readproductid();
                 readproductname();
