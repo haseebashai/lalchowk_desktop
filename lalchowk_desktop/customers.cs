@@ -55,13 +55,20 @@ namespace Veiled_Kashmir_Admin_Panel
             customerlist.DataSource = dt; */
         }
 
-
+        private void readcount()
+        {
+            dr = obj.Query("select count(*) from customer");
+            dr.Read();
+            countlbl.Text = "Total Registered Customers: " + dr[0].ToString();
+            obj.closeConnection();
+        }
        
 
 
         private void customers_Load(object sender, EventArgs e)
         {
             readcustomers();
+            readcount();
         }
 
 
@@ -183,7 +190,7 @@ namespace Veiled_Kashmir_Admin_Panel
         private void emailtxt_TextChanged(object sender, EventArgs e)
         {
             DataView dv = new DataView(dt1);
-            dv.RowFilter = string.Format("email LIKE '%{0}%'", emailtxt.Text);
+            dv.RowFilter = string.Format("mail LIKE '%{0}%'", emailtxt.Text);
             customerdataview.DataSource = dv;
         }
 

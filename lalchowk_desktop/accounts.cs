@@ -80,6 +80,30 @@ namespace Veiled_Kashmir_Admin_Panel
             accountdataview.DataSource = bsource;
         }
 
+        public void readbilling()
+        {
+            aconn.Open();
+            adap = new MySqlDataAdapter("select * from billing", aconn);
+            dt = new DataTable();
+            adap.Fill(dt);
+            aconn.Close();
+            BindingSource bsource = new BindingSource();
+            bsource.DataSource = dt;
+            accountdataview.DataSource = bsource;
+        }
+
+        public void readdeliveries()
+        {
+            aconn.Open();
+            adap = new MySqlDataAdapter("select * from deliveries", aconn);
+            dt = new DataTable();
+            adap.Fill(dt);
+            aconn.Close();
+            BindingSource bsource = new BindingSource();
+            bsource.DataSource = dt;
+            accountdataview.DataSource = bsource;
+        }
+
         private void readdetails()
         {
             aconn.Open();
@@ -217,6 +241,63 @@ namespace Veiled_Kashmir_Admin_Panel
             reasontxt2.Text = "";
             readbank();
 
+        }
+
+        private void billbtn_Click(object sender, EventArgs e)
+        {
+
+            readdetails();
+            readbilling();
+
+            billpnl.Visible = true;
+            miscpnl.Visible = false;
+            bankpnl.Visible = false;
+            moneypnl.Visible = false;
+            exppnl.Visible = false;
+        }
+
+        private void billaddbtn_Click(object sender, EventArgs e)
+        {
+            aconn.Open();
+            mysqlcmd = new MySqlCommand("insert into billing(`orderid`, `user`, `amount`,`deliverydate`,`billno`) values ('" + otxt.Text + "','" + utxt.Text + "','" + atxt.Text + "','" + dtxt.Text + "','bill" + btxt.Text + "')", aconn);
+            mysqlcmd.ExecuteNonQuery();
+            MessageBox.Show("Entry added.");
+            aconn.Close();
+            atxt.Text = "";
+            btxt.Text = "";
+            dtxt.Text = "";
+            utxt.Text = "";
+            otxt.Text = "";
+            readbilling();
+        }
+
+        private void delbtn_Click(object sender, EventArgs e)
+        {
+            readdetails();
+
+            readdeliveries();
+            delpnl.Visible = true;
+            exppnl.Visible = false;
+            moneypnl.Visible = false;
+            bankpnl.Visible = false;
+            miscpnl.Visible = false;
+            billpnl.Visible = false;
+
+        }
+
+        private void adddbtn_Click(object sender, EventArgs e)
+        {
+            aconn.Open();
+            mysqlcmd = new MySqlCommand("insert into deliveries(`orderid`, `email`, `amount`,`status`) values ('" + otxt2.Text + "','" + etxt2.Text + "','" + atxt2.Text + "','" + stxt.Text + "')", aconn);
+            mysqlcmd.ExecuteNonQuery();
+            MessageBox.Show("Entry added.");
+            aconn.Close();
+            otxt2.Text = "";
+            etxt2.Text = "";
+            atxt2.Text = "";
+            stxt.Text = "";
+            
+            readdeliveries();
         }
 
         private void updbtn_Click(object sender, EventArgs e)

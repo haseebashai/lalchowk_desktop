@@ -59,6 +59,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.usertxt = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.countlbl = new System.Windows.Forms.Label();
             this.pnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ordersdataview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.addressdataview)).BeginInit();
@@ -69,6 +70,7 @@
             // 
             // pnl
             // 
+            this.pnl.Controls.Add(this.countlbl);
             this.pnl.Controls.Add(this.label6);
             this.pnl.Controls.Add(this.ordersdataview);
             this.pnl.Controls.Add(this.notbtn);
@@ -92,7 +94,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(258, 514);
+            this.label6.Location = new System.Drawing.Point(258, 534);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(85, 13);
             this.label6.TabIndex = 39;
@@ -110,7 +112,7 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.ordersdataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.ordersdataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ordersdataview.Location = new System.Drawing.Point(3, 530);
+            this.ordersdataview.Location = new System.Drawing.Point(3, 550);
             this.ordersdataview.Name = "ordersdataview";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
@@ -120,7 +122,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.ordersdataview.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.ordersdataview.Size = new System.Drawing.Size(610, 153);
+            this.ordersdataview.Size = new System.Drawing.Size(610, 133);
             this.ordersdataview.TabIndex = 38;
             // 
             // notbtn
@@ -355,6 +357,17 @@
             this.label5.TabIndex = 31;
             this.label5.Text = "Edit Address Details";
             // 
+            // countlbl
+            // 
+            this.countlbl.AutoSize = true;
+            this.countlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.countlbl.ForeColor = System.Drawing.Color.Blue;
+            this.countlbl.Location = new System.Drawing.Point(3, 515);
+            this.countlbl.Name = "countlbl";
+            this.countlbl.Size = new System.Drawing.Size(176, 16);
+            this.countlbl.TabIndex = 40;
+            this.countlbl.Text = "Total Registered Customers";
+            // 
             // customers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -405,5 +418,6 @@
         private System.Windows.Forms.Label emaillbl;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridView ordersdataview;
+        private System.Windows.Forms.Label countlbl;
     }
 }

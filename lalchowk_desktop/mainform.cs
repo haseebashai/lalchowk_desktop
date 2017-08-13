@@ -277,6 +277,15 @@ namespace Veiled_Kashmir_Admin_Panel
             Cursor = Cursors.Arrow;
         }
 
-        
+        private void cobtn_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            cancelorders co = new cancelorders();
+            cntpnl.Controls.Clear();
+            co.TopLevel = false;
+            cntpnl.Controls.Add(co);
+            co.Show();
+            Cursor = Cursors.Arrow;
+        }
     }
 }

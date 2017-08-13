@@ -14,7 +14,7 @@ namespace Veiled_Kashmir_Admin_Panel
     public partial class orders : Form
     {
         DBConnect obj = new DBConnect();
-        String orderid,email,addressid,cmd;
+        String orderid,email, addressid,cmd;
         MySqlDataReader dr;
         DataTable dt,dt1,dt2,dt3;
         private container hp = null;
@@ -30,7 +30,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
            private void readorders()
             {
-            dr = obj.Query("SELECT orderid, email, shipdate, deliverdate, amount, shipping, itemcount, paymenttype, transanctionid, paymentconfirmed, status, name, address1, address2, pincode, contact, city FROM orders");
+            dr = obj.Query("SELECT customer.mail,orders.*  FROM lalchowk.orders inner join customer on customer.email=orders.email;");
 
             dt = new DataTable();
             dt.Load(dr);
@@ -47,7 +47,7 @@ namespace Veiled_Kashmir_Admin_Panel
         private void emailtxt_TextChanged(object sender, EventArgs e)
         {
             DataView dv = new DataView(dt);
-            dv.RowFilter = string.Format("email LIKE '%{0}%'", emailtxt.Text);
+            dv.RowFilter = string.Format("mail LIKE '%{0}%'", emailtxt.Text);
             ordergridview.DataSource = dv;
         }
 

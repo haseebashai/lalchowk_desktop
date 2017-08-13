@@ -78,11 +78,37 @@
             this.moneylbl = new System.Windows.Forms.Label();
             this.ballbl = new System.Windows.Forms.Label();
             this.banklbl = new System.Windows.Forms.Label();
+            this.billbtn = new MaterialSkin.Controls.MaterialFlatButton();
+            this.delbtn = new MaterialSkin.Controls.MaterialFlatButton();
+            this.billpnl = new System.Windows.Forms.Panel();
+            this.btxt = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.dtxt = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.billaddbtn = new MaterialSkin.Controls.MaterialFlatButton();
+            this.atxt = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.utxt = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.otxt = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.delpnl = new System.Windows.Forms.Panel();
+            this.stxt = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.adddbtn = new MaterialSkin.Controls.MaterialFlatButton();
+            this.atxt2 = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.etxt2 = new System.Windows.Forms.TextBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.otxt2 = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.accountdataview)).BeginInit();
             this.exppnl.SuspendLayout();
             this.moneypnl.SuspendLayout();
             this.bankpnl.SuspendLayout();
             this.miscpnl.SuspendLayout();
+            this.billpnl.SuspendLayout();
+            this.delpnl.SuspendLayout();
             this.SuspendLayout();
             // 
             // expbtn
@@ -138,7 +164,7 @@
             this.miscbtn.AutoSize = true;
             this.miscbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.miscbtn.Depth = 0;
-            this.miscbtn.Location = new System.Drawing.Point(372, 9);
+            this.miscbtn.Location = new System.Drawing.Point(378, 9);
             this.miscbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.miscbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.miscbtn.Name = "miscbtn";
@@ -603,12 +629,264 @@
             this.banklbl.TabIndex = 29;
             this.banklbl.Text = "Bank Balance";
             // 
+            // billbtn
+            // 
+            this.billbtn.AutoSize = true;
+            this.billbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.billbtn.Depth = 0;
+            this.billbtn.Location = new System.Drawing.Point(458, 9);
+            this.billbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.billbtn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.billbtn.Name = "billbtn";
+            this.billbtn.Primary = false;
+            this.billbtn.Size = new System.Drawing.Size(62, 36);
+            this.billbtn.TabIndex = 30;
+            this.billbtn.Text = "Billing";
+            this.billbtn.UseVisualStyleBackColor = true;
+            this.billbtn.Click += new System.EventHandler(this.billbtn_Click);
+            // 
+            // delbtn
+            // 
+            this.delbtn.AutoSize = true;
+            this.delbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.delbtn.Depth = 0;
+            this.delbtn.Location = new System.Drawing.Point(553, 9);
+            this.delbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.delbtn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.delbtn.Name = "delbtn";
+            this.delbtn.Primary = false;
+            this.delbtn.Size = new System.Drawing.Size(85, 36);
+            this.delbtn.TabIndex = 31;
+            this.delbtn.Text = "Deliveries";
+            this.delbtn.UseVisualStyleBackColor = true;
+            this.delbtn.Click += new System.EventHandler(this.delbtn_Click);
+            // 
+            // billpnl
+            // 
+            this.billpnl.Controls.Add(this.btxt);
+            this.billpnl.Controls.Add(this.label21);
+            this.billpnl.Controls.Add(this.dtxt);
+            this.billpnl.Controls.Add(this.label17);
+            this.billpnl.Controls.Add(this.billaddbtn);
+            this.billpnl.Controls.Add(this.atxt);
+            this.billpnl.Controls.Add(this.label18);
+            this.billpnl.Controls.Add(this.utxt);
+            this.billpnl.Controls.Add(this.label19);
+            this.billpnl.Controls.Add(this.otxt);
+            this.billpnl.Controls.Add(this.label20);
+            this.billpnl.Location = new System.Drawing.Point(7, 54);
+            this.billpnl.Name = "billpnl";
+            this.billpnl.Size = new System.Drawing.Size(1148, 164);
+            this.billpnl.TabIndex = 32;
+            this.billpnl.Visible = false;
+            // 
+            // btxt
+            // 
+            this.btxt.Location = new System.Drawing.Point(278, 73);
+            this.btxt.Multiline = true;
+            this.btxt.Name = "btxt";
+            this.btxt.Size = new System.Drawing.Size(204, 20);
+            this.btxt.TabIndex = 21;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(275, 56);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(40, 13);
+            this.label21.TabIndex = 20;
+            this.label21.Text = "Bill No.";
+            // 
+            // dtxt
+            // 
+            this.dtxt.Location = new System.Drawing.Point(278, 25);
+            this.dtxt.Multiline = true;
+            this.dtxt.Name = "dtxt";
+            this.dtxt.Size = new System.Drawing.Size(204, 20);
+            this.dtxt.TabIndex = 19;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(275, 8);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(148, 13);
+            this.label17.TabIndex = 18;
+            this.label17.Text = "Delivery Date (DD-MM-YYYY)";
+            // 
+            // billaddbtn
+            // 
+            this.billaddbtn.AutoSize = true;
+            this.billaddbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.billaddbtn.Depth = 0;
+            this.billaddbtn.Location = new System.Drawing.Point(521, 65);
+            this.billaddbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.billaddbtn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.billaddbtn.Name = "billaddbtn";
+            this.billaddbtn.Primary = false;
+            this.billaddbtn.Size = new System.Drawing.Size(85, 36);
+            this.billaddbtn.TabIndex = 17;
+            this.billaddbtn.Text = "ADD Entry";
+            this.billaddbtn.UseVisualStyleBackColor = true;
+            this.billaddbtn.Click += new System.EventHandler(this.billaddbtn_Click);
+            // 
+            // atxt
+            // 
+            this.atxt.Location = new System.Drawing.Point(5, 128);
+            this.atxt.Name = "atxt";
+            this.atxt.Size = new System.Drawing.Size(204, 20);
+            this.atxt.TabIndex = 5;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(2, 111);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(43, 13);
+            this.label18.TabIndex = 4;
+            this.label18.Text = "Amount";
+            // 
+            // utxt
+            // 
+            this.utxt.Location = new System.Drawing.Point(5, 74);
+            this.utxt.Name = "utxt";
+            this.utxt.Size = new System.Drawing.Size(204, 20);
+            this.utxt.TabIndex = 3;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(2, 57);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(29, 13);
+            this.label19.TabIndex = 2;
+            this.label19.Text = "User";
+            // 
+            // otxt
+            // 
+            this.otxt.Location = new System.Drawing.Point(5, 25);
+            this.otxt.Name = "otxt";
+            this.otxt.Size = new System.Drawing.Size(204, 20);
+            this.otxt.TabIndex = 1;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(2, 8);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(47, 13);
+            this.label20.TabIndex = 0;
+            this.label20.Text = "Order ID";
+            // 
+            // delpnl
+            // 
+            this.delpnl.Controls.Add(this.stxt);
+            this.delpnl.Controls.Add(this.label22);
+            this.delpnl.Controls.Add(this.adddbtn);
+            this.delpnl.Controls.Add(this.atxt2);
+            this.delpnl.Controls.Add(this.label24);
+            this.delpnl.Controls.Add(this.etxt2);
+            this.delpnl.Controls.Add(this.label25);
+            this.delpnl.Controls.Add(this.otxt2);
+            this.delpnl.Controls.Add(this.label26);
+            this.delpnl.Location = new System.Drawing.Point(7, 54);
+            this.delpnl.Name = "delpnl";
+            this.delpnl.Size = new System.Drawing.Size(1148, 164);
+            this.delpnl.TabIndex = 33;
+            this.delpnl.Visible = false;
+            // 
+            // stxt
+            // 
+            this.stxt.Location = new System.Drawing.Point(278, 73);
+            this.stxt.Multiline = true;
+            this.stxt.Name = "stxt";
+            this.stxt.Size = new System.Drawing.Size(204, 20);
+            this.stxt.TabIndex = 21;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(275, 56);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(37, 13);
+            this.label22.TabIndex = 20;
+            this.label22.Text = "Status";
+            // 
+            // adddbtn
+            // 
+            this.adddbtn.AutoSize = true;
+            this.adddbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.adddbtn.Depth = 0;
+            this.adddbtn.Location = new System.Drawing.Point(521, 65);
+            this.adddbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.adddbtn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.adddbtn.Name = "adddbtn";
+            this.adddbtn.Primary = false;
+            this.adddbtn.Size = new System.Drawing.Size(85, 36);
+            this.adddbtn.TabIndex = 17;
+            this.adddbtn.Text = "ADD Entry";
+            this.adddbtn.UseVisualStyleBackColor = true;
+            this.adddbtn.Click += new System.EventHandler(this.adddbtn_Click);
+            // 
+            // atxt2
+            // 
+            this.atxt2.Location = new System.Drawing.Point(5, 128);
+            this.atxt2.Name = "atxt2";
+            this.atxt2.Size = new System.Drawing.Size(204, 20);
+            this.atxt2.TabIndex = 5;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(2, 111);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(43, 13);
+            this.label24.TabIndex = 4;
+            this.label24.Text = "Amount";
+            // 
+            // etxt2
+            // 
+            this.etxt2.BackColor = System.Drawing.Color.White;
+            this.etxt2.Location = new System.Drawing.Point(5, 74);
+            this.etxt2.Name = "etxt2";
+            this.etxt2.Size = new System.Drawing.Size(204, 20);
+            this.etxt2.TabIndex = 3;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(2, 57);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(32, 13);
+            this.label25.TabIndex = 2;
+            this.label25.Text = "Email";
+            // 
+            // otxt2
+            // 
+            this.otxt2.Location = new System.Drawing.Point(5, 25);
+            this.otxt2.Name = "otxt2";
+            this.otxt2.Size = new System.Drawing.Size(204, 20);
+            this.otxt2.TabIndex = 1;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(2, 8);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(47, 13);
+            this.label26.TabIndex = 0;
+            this.label26.Text = "Order ID";
+            // 
             // accounts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1162, 722);
+            this.Controls.Add(this.delpnl);
+            this.Controls.Add(this.billpnl);
+            this.Controls.Add(this.delbtn);
+            this.Controls.Add(this.billbtn);
             this.Controls.Add(this.banklbl);
             this.Controls.Add(this.ballbl);
             this.Controls.Add(this.moneylbl);
@@ -635,6 +913,10 @@
             this.bankpnl.PerformLayout();
             this.miscpnl.ResumeLayout(false);
             this.miscpnl.PerformLayout();
+            this.billpnl.ResumeLayout(false);
+            this.billpnl.PerformLayout();
+            this.delpnl.ResumeLayout(false);
+            this.delpnl.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -692,5 +974,29 @@
         private System.Windows.Forms.Label moneylbl;
         private System.Windows.Forms.Label ballbl;
         private System.Windows.Forms.Label banklbl;
+        private MaterialSkin.Controls.MaterialFlatButton billbtn;
+        private MaterialSkin.Controls.MaterialFlatButton delbtn;
+        public System.Windows.Forms.Panel billpnl;
+        private System.Windows.Forms.TextBox btxt;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox dtxt;
+        private System.Windows.Forms.Label label17;
+        private MaterialSkin.Controls.MaterialFlatButton billaddbtn;
+        private System.Windows.Forms.TextBox atxt;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox utxt;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TextBox otxt;
+        private System.Windows.Forms.Label label20;
+        public System.Windows.Forms.Panel delpnl;
+        private System.Windows.Forms.TextBox stxt;
+        private System.Windows.Forms.Label label22;
+        private MaterialSkin.Controls.MaterialFlatButton adddbtn;
+        private System.Windows.Forms.TextBox atxt2;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.TextBox etxt2;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.TextBox otxt2;
+        private System.Windows.Forms.Label label26;
     }
 }

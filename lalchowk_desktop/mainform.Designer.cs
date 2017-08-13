@@ -46,7 +46,7 @@
             this.termsbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.accbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.expbtn = new MaterialSkin.Controls.MaterialFlatButton();
-            this.rptbtn = new MaterialSkin.Controls.MaterialFlatButton();
+            this.cobtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.ordersbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.navtitle = new System.Windows.Forms.Panel();
             this.navtxt = new System.Windows.Forms.Label();
@@ -169,7 +169,7 @@
             this.navpnl.Controls.Add(this.signoutlbl);
             this.navpnl.Controls.Add(this.signinlbl);
             this.navpnl.Controls.Add(this.expbtn);
-            this.navpnl.Controls.Add(this.rptbtn);
+            this.navpnl.Controls.Add(this.cobtn);
             this.navpnl.Controls.Add(this.productsbtn);
             this.navpnl.Controls.Add(this.approvebtn);
             this.navpnl.Controls.Add(this.customersbtn);
@@ -260,20 +260,21 @@
             this.expbtn.UseVisualStyleBackColor = true;
             this.expbtn.Click += new System.EventHandler(this.expbtn_Click);
             // 
-            // rptbtn
+            // cobtn
             // 
-            this.rptbtn.AutoSize = true;
-            this.rptbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.rptbtn.Depth = 0;
-            this.rptbtn.Location = new System.Drawing.Point(8, 307);
-            this.rptbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.rptbtn.MouseState = MaterialSkin.MouseState.HOVER;
-            this.rptbtn.Name = "rptbtn";
-            this.rptbtn.Primary = false;
-            this.rptbtn.Size = new System.Drawing.Size(144, 36);
-            this.rptbtn.TabIndex = 17;
-            this.rptbtn.Text = "Generate Reports";
-            this.rptbtn.UseVisualStyleBackColor = true;
+            this.cobtn.AutoSize = true;
+            this.cobtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.cobtn.Depth = 0;
+            this.cobtn.Location = new System.Drawing.Point(8, 307);
+            this.cobtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.cobtn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.cobtn.Name = "cobtn";
+            this.cobtn.Primary = false;
+            this.cobtn.Size = new System.Drawing.Size(119, 36);
+            this.cobtn.TabIndex = 17;
+            this.cobtn.Text = "Cancel Orders";
+            this.cobtn.UseVisualStyleBackColor = true;
+            this.cobtn.Click += new System.EventHandler(this.cobtn_Click);
             // 
             // ordersbtn
             // 
@@ -532,7 +533,7 @@
         private System.Windows.Forms.Panel navpnl;
         private MaterialSkin.Controls.MaterialFlatButton ordersbtn;
         private MaterialSkin.Controls.MaterialFlatButton expbtn;
-        private MaterialSkin.Controls.MaterialFlatButton rptbtn;
+        private MaterialSkin.Controls.MaterialFlatButton cobtn;
         private System.Windows.Forms.Panel navtitle;
         private System.Windows.Forms.Label navtxt;
         public System.Windows.Forms.Panel cntpnl;
