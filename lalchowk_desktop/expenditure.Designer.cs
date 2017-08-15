@@ -154,7 +154,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label2.Location = new System.Drawing.Point(458, 26);
+            this.label2.Location = new System.Drawing.Point(13, 549);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(142, 16);
             this.label2.TabIndex = 9;
@@ -165,7 +165,7 @@
             this.purlbl.AutoSize = true;
             this.purlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.purlbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.purlbl.Location = new System.Drawing.Point(457, 53);
+            this.purlbl.Location = new System.Drawing.Point(12, 576);
             this.purlbl.Name = "purlbl";
             this.purlbl.Size = new System.Drawing.Size(24, 20);
             this.purlbl.TabIndex = 10;
@@ -211,7 +211,7 @@
             this.costlbl.Cursor = System.Windows.Forms.Cursors.Hand;
             this.costlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.costlbl.ForeColor = System.Drawing.Color.Black;
-            this.costlbl.Location = new System.Drawing.Point(458, 89);
+            this.costlbl.Location = new System.Drawing.Point(13, 612);
             this.costlbl.Name = "costlbl";
             this.costlbl.Size = new System.Drawing.Size(82, 16);
             this.costlbl.TabIndex = 39;
@@ -267,7 +267,7 @@
             this.ship.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ship.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ship.ForeColor = System.Drawing.Color.Black;
-            this.ship.Location = new System.Drawing.Point(13, 617);
+            this.ship.Location = new System.Drawing.Point(458, 91);
             this.ship.Name = "ship";
             this.ship.Size = new System.Drawing.Size(82, 16);
             this.ship.TabIndex = 46;
@@ -279,7 +279,7 @@
             this.shiplbl.AutoSize = true;
             this.shiplbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.shiplbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.shiplbl.Location = new System.Drawing.Point(12, 572);
+            this.shiplbl.Location = new System.Drawing.Point(457, 46);
             this.shiplbl.Name = "shiplbl";
             this.shiplbl.Size = new System.Drawing.Size(24, 20);
             this.shiplbl.TabIndex = 45;
@@ -290,7 +290,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label9.Location = new System.Drawing.Point(13, 552);
+            this.label9.Location = new System.Drawing.Point(458, 26);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(126, 16);
             this.label9.TabIndex = 44;

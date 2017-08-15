@@ -93,6 +93,8 @@
             this.pidtxt = new System.Windows.Forms.TextBox();
             this.label27 = new System.Windows.Forms.Label();
             this.pictxt = new System.Windows.Forms.TextBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.tagstxt = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pic1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -669,12 +671,30 @@
             this.pictxt.Size = new System.Drawing.Size(210, 20);
             this.pictxt.TabIndex = 13;
             // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(458, 440);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(31, 13);
+            this.label28.TabIndex = 65;
+            this.label28.Text = "Tags";
+            // 
+            // tagstxt
+            // 
+            this.tagstxt.Location = new System.Drawing.Point(459, 456);
+            this.tagstxt.Name = "tagstxt";
+            this.tagstxt.Size = new System.Drawing.Size(212, 20);
+            this.tagstxt.TabIndex = 64;
+            // 
             // addproducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1162, 722);
+            this.Controls.Add(this.label28);
+            this.Controls.Add(this.tagstxt);
             this.Controls.Add(this.label27);
             this.Controls.Add(this.pictxt);
             this.Controls.Add(this.label26);
@@ -816,5 +836,7 @@
         private System.Windows.Forms.TextBox pidtxt;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.TextBox pictxt;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.TextBox tagstxt;
     }
 }

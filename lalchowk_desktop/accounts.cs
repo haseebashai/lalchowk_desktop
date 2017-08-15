@@ -104,6 +104,18 @@ namespace Veiled_Kashmir_Admin_Panel
             accountdataview.DataSource = bsource;
         }
 
+        public void readdealings()
+        {
+            aconn.Open();
+            adap = new MySqlDataAdapter("select * from dealing", aconn);
+            dt = new DataTable();
+            adap.Fill(dt);
+            aconn.Close();
+            BindingSource bsource = new BindingSource();
+            bsource.DataSource = dt;
+            accountdataview.DataSource = bsource;
+        }
+
         private void readdetails()
         {
             aconn.Open();
@@ -298,6 +310,64 @@ namespace Veiled_Kashmir_Admin_Panel
             stxt.Text = "";
             
             readdeliveries();
+        }
+
+        private void dealbtn_Click(object sender, EventArgs e)
+        {
+            readdetails();
+
+            readdealings();
+            dealpnl.Visible = true;
+            delpnl.Visible = false;
+            exppnl.Visible = false;
+            moneypnl.Visible = false;
+            bankpnl.Visible = false;
+            miscpnl.Visible = false;
+            billpnl.Visible = false;
+        }
+
+        private void dealaddbtn_Click(object sender, EventArgs e)
+        {
+            if (yes.Checked)
+            {
+                aconn.Open();
+                mysqlcmd = new MySqlCommand("insert into dealing(`supplierid`, `suppliername`, `productid`,`productname`,`size`,`count`,`amount`,`pickupdate`,`paymentdone`,`paymentdate`,`comments`) values ('" + suptxt.Text + "','" + supnametxt.Text + "','" + proidtxt.Text + "','" + pronametxt.Text + "','" + sizetxt.Text + "','" + counttxt.Text + "','" + atxt3.Text + "','" + pickuptxt.Text + "','1','" + paymentdatetxt.Text + "','" + commentstxt.Text + "')", aconn);
+                mysqlcmd.ExecuteNonQuery();
+                MessageBox.Show("Entry added.");
+                aconn.Close();
+            }
+            else
+            {
+                aconn.Open();
+                mysqlcmd = new MySqlCommand("insert into dealing(`supplierid`, `suppliername`, `productid`,`productname`,`size`,`count`,`amount`,`pickupdate`,`paymentdone`,`paymentdate`,`comments`) values ('" + suptxt.Text + "','" + supnametxt.Text + "','" + proidtxt.Text + "','" + pronametxt.Text + "','" + sizetxt.Text + "','" + counttxt.Text + "','" + atxt3.Text + "','" + pickuptxt.Text + "','0','" + paymentdatetxt.Text + "','" + commentstxt.Text + "')", aconn);
+                mysqlcmd.ExecuteNonQuery();
+                MessageBox.Show("Entry added.");
+                aconn.Close();
+            }
+            suptxt.Text = "";
+            supnametxt.Text = "";
+            proidtxt.Text = "";
+            pronametxt.Text = "";
+            sizetxt.Text = "";
+            counttxt.Text = "";
+            atxt3.Text = "";
+            pickuptxt.Text = "";
+            paymentdatetxt.Text = "";
+            paymentdatetxt.Text = "";
+            commentstxt.Text = "";
+            readdealings();
+        }
+
+        private void yes_CheckedChanged(object sender, EventArgs e)
+        {
+            if (yes.Checked)
+                no.Checked = false;
+        }
+
+        private void no_CheckedChanged(object sender, EventArgs e)
+        {
+            if (no.Checked)
+                yes.Checked = false;
         }
 
         private void updbtn_Click(object sender, EventArgs e)

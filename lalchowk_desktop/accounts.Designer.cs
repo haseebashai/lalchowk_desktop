@@ -102,6 +102,32 @@
             this.label25 = new System.Windows.Forms.Label();
             this.otxt2 = new System.Windows.Forms.TextBox();
             this.label26 = new System.Windows.Forms.Label();
+            this.dealpnl = new System.Windows.Forms.Panel();
+            this.dealaddbtn = new MaterialSkin.Controls.MaterialFlatButton();
+            this.commentstxt = new System.Windows.Forms.TextBox();
+            this.label35 = new System.Windows.Forms.Label();
+            this.paymentdatetxt = new System.Windows.Forms.TextBox();
+            this.label36 = new System.Windows.Forms.Label();
+            this.counttxt = new System.Windows.Forms.TextBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.sizetxt = new System.Windows.Forms.TextBox();
+            this.label33 = new System.Windows.Forms.Label();
+            this.pronametxt = new System.Windows.Forms.TextBox();
+            this.label34 = new System.Windows.Forms.Label();
+            this.no = new System.Windows.Forms.CheckBox();
+            this.yes = new System.Windows.Forms.CheckBox();
+            this.pickuptxt = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.atxt3 = new System.Windows.Forms.TextBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.proidtxt = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.supnametxt = new System.Windows.Forms.TextBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.suptxt = new System.Windows.Forms.TextBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.dealbtn = new MaterialSkin.Controls.MaterialFlatButton();
             ((System.ComponentModel.ISupportInitialize)(this.accountdataview)).BeginInit();
             this.exppnl.SuspendLayout();
             this.moneypnl.SuspendLayout();
@@ -109,6 +135,7 @@
             this.miscpnl.SuspendLayout();
             this.billpnl.SuspendLayout();
             this.delpnl.SuspendLayout();
+            this.dealpnl.SuspendLayout();
             this.SuspendLayout();
             // 
             // expbtn
@@ -877,14 +904,289 @@
             this.label26.TabIndex = 0;
             this.label26.Text = "Order ID";
             // 
+            // dealpnl
+            // 
+            this.dealpnl.Controls.Add(this.dealaddbtn);
+            this.dealpnl.Controls.Add(this.commentstxt);
+            this.dealpnl.Controls.Add(this.label35);
+            this.dealpnl.Controls.Add(this.paymentdatetxt);
+            this.dealpnl.Controls.Add(this.label36);
+            this.dealpnl.Controls.Add(this.counttxt);
+            this.dealpnl.Controls.Add(this.label32);
+            this.dealpnl.Controls.Add(this.sizetxt);
+            this.dealpnl.Controls.Add(this.label33);
+            this.dealpnl.Controls.Add(this.pronametxt);
+            this.dealpnl.Controls.Add(this.label34);
+            this.dealpnl.Controls.Add(this.no);
+            this.dealpnl.Controls.Add(this.yes);
+            this.dealpnl.Controls.Add(this.pickuptxt);
+            this.dealpnl.Controls.Add(this.label23);
+            this.dealpnl.Controls.Add(this.label27);
+            this.dealpnl.Controls.Add(this.atxt3);
+            this.dealpnl.Controls.Add(this.label28);
+            this.dealpnl.Controls.Add(this.proidtxt);
+            this.dealpnl.Controls.Add(this.label29);
+            this.dealpnl.Controls.Add(this.supnametxt);
+            this.dealpnl.Controls.Add(this.label30);
+            this.dealpnl.Controls.Add(this.suptxt);
+            this.dealpnl.Controls.Add(this.label31);
+            this.dealpnl.Location = new System.Drawing.Point(7, 54);
+            this.dealpnl.Name = "dealpnl";
+            this.dealpnl.Size = new System.Drawing.Size(1148, 164);
+            this.dealpnl.TabIndex = 34;
+            this.dealpnl.Visible = false;
+            // 
+            // dealaddbtn
+            // 
+            this.dealaddbtn.AutoSize = true;
+            this.dealaddbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.dealaddbtn.Depth = 0;
+            this.dealaddbtn.Location = new System.Drawing.Point(840, 88);
+            this.dealaddbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.dealaddbtn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.dealaddbtn.Name = "dealaddbtn";
+            this.dealaddbtn.Primary = false;
+            this.dealaddbtn.Size = new System.Drawing.Size(164, 36);
+            this.dealaddbtn.TabIndex = 117;
+            this.dealaddbtn.Text = "add Product dealing";
+            this.dealaddbtn.UseVisualStyleBackColor = true;
+            this.dealaddbtn.Click += new System.EventHandler(this.dealaddbtn_Click);
+            // 
+            // commentstxt
+            // 
+            this.commentstxt.Location = new System.Drawing.Point(800, 28);
+            this.commentstxt.Multiline = true;
+            this.commentstxt.Name = "commentstxt";
+            this.commentstxt.Size = new System.Drawing.Size(204, 21);
+            this.commentstxt.TabIndex = 116;
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.ForeColor = System.Drawing.Color.Black;
+            this.label35.Location = new System.Drawing.Point(797, 11);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(56, 13);
+            this.label35.TabIndex = 115;
+            this.label35.Text = "Comments";
+            // 
+            // paymentdatetxt
+            // 
+            this.paymentdatetxt.Location = new System.Drawing.Point(538, 134);
+            this.paymentdatetxt.Multiline = true;
+            this.paymentdatetxt.Name = "paymentdatetxt";
+            this.paymentdatetxt.Size = new System.Drawing.Size(204, 20);
+            this.paymentdatetxt.TabIndex = 114;
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.ForeColor = System.Drawing.Color.Black;
+            this.label36.Location = new System.Drawing.Point(535, 117);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(74, 13);
+            this.label36.TabIndex = 113;
+            this.label36.Text = "Payment Date";
+            // 
+            // counttxt
+            // 
+            this.counttxt.Location = new System.Drawing.Point(411, 81);
+            this.counttxt.Multiline = true;
+            this.counttxt.Name = "counttxt";
+            this.counttxt.Size = new System.Drawing.Size(55, 20);
+            this.counttxt.TabIndex = 112;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.ForeColor = System.Drawing.Color.Black;
+            this.label32.Location = new System.Drawing.Point(408, 64);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(35, 13);
+            this.label32.TabIndex = 111;
+            this.label32.Text = "Count";
+            // 
+            // sizetxt
+            // 
+            this.sizetxt.Location = new System.Drawing.Point(262, 81);
+            this.sizetxt.Multiline = true;
+            this.sizetxt.Name = "sizetxt";
+            this.sizetxt.Size = new System.Drawing.Size(55, 20);
+            this.sizetxt.TabIndex = 110;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.ForeColor = System.Drawing.Color.Black;
+            this.label33.Location = new System.Drawing.Point(259, 64);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(27, 13);
+            this.label33.TabIndex = 109;
+            this.label33.Text = "Size";
+            // 
+            // pronametxt
+            // 
+            this.pronametxt.Location = new System.Drawing.Point(262, 28);
+            this.pronametxt.Multiline = true;
+            this.pronametxt.Name = "pronametxt";
+            this.pronametxt.Size = new System.Drawing.Size(204, 20);
+            this.pronametxt.TabIndex = 108;
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.ForeColor = System.Drawing.Color.Black;
+            this.label34.Location = new System.Drawing.Point(259, 11);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(75, 13);
+            this.label34.TabIndex = 107;
+            this.label34.Text = "Product Name";
+            // 
+            // no
+            // 
+            this.no.AutoSize = true;
+            this.no.ForeColor = System.Drawing.Color.Black;
+            this.no.Location = new System.Drawing.Point(588, 84);
+            this.no.Name = "no";
+            this.no.Size = new System.Drawing.Size(40, 17);
+            this.no.TabIndex = 106;
+            this.no.Text = "No";
+            this.no.UseVisualStyleBackColor = true;
+            this.no.CheckedChanged += new System.EventHandler(this.no_CheckedChanged);
+            // 
+            // yes
+            // 
+            this.yes.AutoSize = true;
+            this.yes.ForeColor = System.Drawing.Color.Black;
+            this.yes.Location = new System.Drawing.Point(538, 84);
+            this.yes.Name = "yes";
+            this.yes.Size = new System.Drawing.Size(44, 17);
+            this.yes.TabIndex = 105;
+            this.yes.Text = "Yes";
+            this.yes.UseVisualStyleBackColor = true;
+            this.yes.CheckedChanged += new System.EventHandler(this.yes_CheckedChanged);
+            // 
+            // pickuptxt
+            // 
+            this.pickuptxt.Location = new System.Drawing.Point(538, 28);
+            this.pickuptxt.Multiline = true;
+            this.pickuptxt.Name = "pickuptxt";
+            this.pickuptxt.Size = new System.Drawing.Size(204, 20);
+            this.pickuptxt.TabIndex = 104;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.ForeColor = System.Drawing.Color.Black;
+            this.label23.Location = new System.Drawing.Point(535, 11);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(66, 13);
+            this.label23.TabIndex = 103;
+            this.label23.Text = "Pickup Date";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.ForeColor = System.Drawing.Color.Black;
+            this.label27.Location = new System.Drawing.Point(535, 64);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(86, 13);
+            this.label27.TabIndex = 102;
+            this.label27.Text = "Payment Done ?";
+            // 
+            // atxt3
+            // 
+            this.atxt3.Location = new System.Drawing.Point(262, 134);
+            this.atxt3.Multiline = true;
+            this.atxt3.Name = "atxt3";
+            this.atxt3.Size = new System.Drawing.Size(204, 20);
+            this.atxt3.TabIndex = 101;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.ForeColor = System.Drawing.Color.Black;
+            this.label28.Location = new System.Drawing.Point(259, 117);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(43, 13);
+            this.label28.TabIndex = 100;
+            this.label28.Text = "Amount";
+            // 
+            // proidtxt
+            // 
+            this.proidtxt.Location = new System.Drawing.Point(6, 134);
+            this.proidtxt.Name = "proidtxt";
+            this.proidtxt.Size = new System.Drawing.Size(204, 20);
+            this.proidtxt.TabIndex = 99;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.ForeColor = System.Drawing.Color.Black;
+            this.label29.Location = new System.Drawing.Point(3, 117);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(58, 13);
+            this.label29.TabIndex = 98;
+            this.label29.Text = "Product ID";
+            // 
+            // supnametxt
+            // 
+            this.supnametxt.Location = new System.Drawing.Point(6, 81);
+            this.supnametxt.Name = "supnametxt";
+            this.supnametxt.Size = new System.Drawing.Size(204, 20);
+            this.supnametxt.TabIndex = 97;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.ForeColor = System.Drawing.Color.Black;
+            this.label30.Location = new System.Drawing.Point(3, 64);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(76, 13);
+            this.label30.TabIndex = 96;
+            this.label30.Text = "Supplier Name";
+            // 
+            // suptxt
+            // 
+            this.suptxt.Location = new System.Drawing.Point(6, 28);
+            this.suptxt.Name = "suptxt";
+            this.suptxt.Size = new System.Drawing.Size(56, 20);
+            this.suptxt.TabIndex = 95;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.ForeColor = System.Drawing.Color.Black;
+            this.label31.Location = new System.Drawing.Point(3, 11);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(59, 13);
+            this.label31.TabIndex = 94;
+            this.label31.Text = "Supplier ID";
+            // 
+            // dealbtn
+            // 
+            this.dealbtn.AutoSize = true;
+            this.dealbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.dealbtn.Depth = 0;
+            this.dealbtn.Location = new System.Drawing.Point(667, 9);
+            this.dealbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.dealbtn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.dealbtn.Name = "dealbtn";
+            this.dealbtn.Primary = false;
+            this.dealbtn.Size = new System.Drawing.Size(77, 36);
+            this.dealbtn.TabIndex = 35;
+            this.dealbtn.Text = "Dealings";
+            this.dealbtn.UseVisualStyleBackColor = true;
+            this.dealbtn.Click += new System.EventHandler(this.dealbtn_Click);
+            // 
             // accounts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1162, 722);
-            this.Controls.Add(this.delpnl);
-            this.Controls.Add(this.billpnl);
+            this.Controls.Add(this.dealbtn);
+            this.Controls.Add(this.dealpnl);
             this.Controls.Add(this.delbtn);
             this.Controls.Add(this.billbtn);
             this.Controls.Add(this.banklbl);
@@ -897,6 +1199,8 @@
             this.Controls.Add(this.bankbtn);
             this.Controls.Add(this.moneybtn);
             this.Controls.Add(this.expbtn);
+            this.Controls.Add(this.delpnl);
+            this.Controls.Add(this.billpnl);
             this.Controls.Add(this.moneypnl);
             this.Controls.Add(this.exppnl);
             this.Controls.Add(this.miscpnl);
@@ -917,6 +1221,8 @@
             this.billpnl.PerformLayout();
             this.delpnl.ResumeLayout(false);
             this.delpnl.PerformLayout();
+            this.dealpnl.ResumeLayout(false);
+            this.dealpnl.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -998,5 +1304,31 @@
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.TextBox otxt2;
         private System.Windows.Forms.Label label26;
+        public System.Windows.Forms.Panel dealpnl;
+        private MaterialSkin.Controls.MaterialFlatButton dealbtn;
+        private System.Windows.Forms.CheckBox no;
+        private System.Windows.Forms.CheckBox yes;
+        private System.Windows.Forms.TextBox pickuptxt;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.TextBox atxt3;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.TextBox proidtxt;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.TextBox supnametxt;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.TextBox suptxt;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.TextBox counttxt;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.TextBox sizetxt;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.TextBox pronametxt;
+        private System.Windows.Forms.Label label34;
+        private MaterialSkin.Controls.MaterialFlatButton dealaddbtn;
+        private System.Windows.Forms.TextBox commentstxt;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.TextBox paymentdatetxt;
+        private System.Windows.Forms.Label label36;
     }
 }

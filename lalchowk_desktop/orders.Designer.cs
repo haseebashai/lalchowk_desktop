@@ -38,6 +38,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.orderpnl = new System.Windows.Forms.Panel();
             this.dpnl = new System.Windows.Forms.Panel();
+            this.billbtn = new System.Windows.Forms.Button();
             this.cnfbtn = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -63,6 +64,7 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.orderdetailview = new System.Windows.Forms.DataGridView();
             this.ordergridview = new System.Windows.Forms.DataGridView();
+            this.con = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.orderpnl.SuspendLayout();
             this.dpnl.SuspendLayout();
@@ -158,6 +160,8 @@
             // 
             // dpnl
             // 
+            this.dpnl.Controls.Add(this.con);
+            this.dpnl.Controls.Add(this.billbtn);
             this.dpnl.Controls.Add(this.cnfbtn);
             this.dpnl.Controls.Add(this.label6);
             this.dpnl.Controls.Add(this.label5);
@@ -187,13 +191,23 @@
             this.dpnl.TabIndex = 26;
             this.dpnl.Visible = false;
             // 
+            // billbtn
+            // 
+            this.billbtn.Location = new System.Drawing.Point(944, 166);
+            this.billbtn.Name = "billbtn";
+            this.billbtn.Size = new System.Drawing.Size(152, 32);
+            this.billbtn.TabIndex = 26;
+            this.billbtn.Text = "Confirm Delivery and Add Bill";
+            this.billbtn.UseVisualStyleBackColor = true;
+            this.billbtn.Click += new System.EventHandler(this.billbtn_Click);
+            // 
             // cnfbtn
             // 
-            this.cnfbtn.Location = new System.Drawing.Point(944, 81);
+            this.cnfbtn.Location = new System.Drawing.Point(944, 69);
             this.cnfbtn.Name = "cnfbtn";
-            this.cnfbtn.Size = new System.Drawing.Size(152, 108);
+            this.cnfbtn.Size = new System.Drawing.Size(152, 89);
             this.cnfbtn.TabIndex = 15;
-            this.cnfbtn.Text = "Confirm and Print Reciept";
+            this.cnfbtn.Text = "Ship and Print Reciept";
             this.cnfbtn.UseVisualStyleBackColor = true;
             this.cnfbtn.Click += new System.EventHandler(this.cnfbtn_Click);
             // 
@@ -239,8 +253,8 @@
             // contactlbl
             // 
             this.contactlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.contactlbl.ForeColor = System.Drawing.Color.Blue;
-            this.contactlbl.Location = new System.Drawing.Point(682, 202);
+            this.contactlbl.ForeColor = System.Drawing.Color.Red;
+            this.contactlbl.Location = new System.Drawing.Point(681, 169);
             this.contactlbl.Name = "contactlbl";
             this.contactlbl.Size = new System.Drawing.Size(150, 29);
             this.contactlbl.TabIndex = 23;
@@ -260,7 +274,7 @@
             // 
             this.citylbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.citylbl.ForeColor = System.Drawing.Color.Blue;
-            this.citylbl.Location = new System.Drawing.Point(769, 166);
+            this.citylbl.Location = new System.Drawing.Point(768, 198);
             this.citylbl.Name = "citylbl";
             this.citylbl.Size = new System.Drawing.Size(123, 29);
             this.citylbl.TabIndex = 22;
@@ -278,7 +292,7 @@
             // 
             this.pinlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pinlbl.ForeColor = System.Drawing.Color.Blue;
-            this.pinlbl.Location = new System.Drawing.Point(682, 166);
+            this.pinlbl.Location = new System.Drawing.Point(681, 198);
             this.pinlbl.Name = "pinlbl";
             this.pinlbl.Size = new System.Drawing.Size(71, 29);
             this.pinlbl.TabIndex = 21;
@@ -301,9 +315,9 @@
             // 
             this.namelbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.namelbl.ForeColor = System.Drawing.Color.Blue;
-            this.namelbl.Location = new System.Drawing.Point(682, 33);
+            this.namelbl.Location = new System.Drawing.Point(682, 47);
             this.namelbl.Name = "namelbl";
-            this.namelbl.Size = new System.Drawing.Size(210, 36);
+            this.namelbl.Size = new System.Drawing.Size(210, 20);
             this.namelbl.TabIndex = 20;
             this.namelbl.Text = "name";
             // 
@@ -320,7 +334,7 @@
             // address2lbl
             // 
             this.address2lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.address2lbl.ForeColor = System.Drawing.Color.Blue;
+            this.address2lbl.ForeColor = System.Drawing.Color.Red;
             this.address2lbl.Location = new System.Drawing.Point(681, 126);
             this.address2lbl.Name = "address2lbl";
             this.address2lbl.Size = new System.Drawing.Size(210, 37);
@@ -400,7 +414,7 @@
             // address1lbl
             // 
             this.address1lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.address1lbl.ForeColor = System.Drawing.Color.Blue;
+            this.address1lbl.ForeColor = System.Drawing.Color.Red;
             this.address1lbl.Location = new System.Drawing.Point(682, 72);
             this.address1lbl.Name = "address1lbl";
             this.address1lbl.Size = new System.Drawing.Size(210, 49);
@@ -424,6 +438,7 @@
             this.orderdetailview.Size = new System.Drawing.Size(1156, 169);
             this.orderdetailview.TabIndex = 1;
             this.orderdetailview.Visible = false;
+            this.orderdetailview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.orderdetailview_CellClick);
             // 
             // ordergridview
             // 
@@ -434,6 +449,16 @@
             this.ordergridview.Size = new System.Drawing.Size(1156, 231);
             this.ordergridview.TabIndex = 0;
             this.ordergridview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ordergridview_CellClick);
+            // 
+            // con
+            // 
+            this.con.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.con.ForeColor = System.Drawing.Color.Blue;
+            this.con.Location = new System.Drawing.Point(987, 198);
+            this.con.Name = "con";
+            this.con.Size = new System.Drawing.Size(123, 17);
+            this.con.TabIndex = 27;
+            this.con.Text = "Select product from list";
             // 
             // orders
             // 
@@ -494,5 +519,7 @@
         private System.Windows.Forms.TextBox statustxt;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel dpnl;
+        private System.Windows.Forms.Button billbtn;
+        private System.Windows.Forms.Label con;
     }
 }

@@ -14,9 +14,12 @@ namespace Veiled_Kashmir_Admin_Panel
     public partial class orders : Form
     {
         DBConnect obj = new DBConnect();
-        String orderid,email, addressid,cmd;
+        String orderid,email, addressid,cmd, productid, productname, price, quantity, size;
         MySqlDataReader dr;
         DataTable dt,dt1,dt2,dt3;
+        MySqlCommand mysqlcmd;
+
+
         private container hp = null;
      
 
@@ -103,9 +106,31 @@ namespace Veiled_Kashmir_Admin_Panel
             ordergridview.DataSource = dv;
         }
 
+        private void billbtn_Click(object sender, EventArgs e)
+        {
+            addbill ab = new addbill(orderlbl.Text,email,amountlbl.Text,productid,productname,price,quantity,size);
+            ab.ShowDialog();
+           
+        }
+
+        private void orderdetailview_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = this.orderdetailview.Rows[e.RowIndex];
+                productid = row.Cells["productid"].Value.ToString();
+                productname = row.Cells["productname"].Value.ToString();
+                price = row.Cells["price"].Value.ToString();
+                quantity = row.Cells["quantity"].Value.ToString();
+                size = row.Cells["size"].Value.ToString();
+
+                
+            }
+        }
+
         private void cnfbtn_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Sure you want to confirm and Ship the order ?", "Confirm", MessageBoxButtons.YesNo);
+            DialogResult dr = MessageBox.Show("Sure you want to confirm and print the receipt ?", "Confirm", MessageBoxButtons.YesNo);
             if (dr == DialogResult.Yes)
             {
                 cmd = "update orders set status='Shipped' where orderid='" + orderlbl.Text + "'";
@@ -170,7 +195,7 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             dr = obj.Query("select sum(price) from orderdetails where orderid='" + orderid + "'");
             dr.Read();
-            amountlbl.Text = dr[0].ToString() +"/-";
+            amountlbl.Text = dr[0].ToString();
             obj.closeConnection();
         }
 
@@ -181,7 +206,7 @@ namespace Veiled_Kashmir_Admin_Panel
             {
                 DataGridViewRow row = this.ordergridview.Rows[e.RowIndex];
                 orderid = row.Cells["orderid"].Value.ToString();
-                email = row.Cells["email"].Value.ToString();
+                email = row.Cells["mail"].Value.ToString();
                 namelbl.Text = row.Cells["name"].Value.ToString();
                 address1lbl.Text = row.Cells["address1"].Value.ToString();
                 address2lbl.Text = row.Cells["address2"].Value.ToString();
