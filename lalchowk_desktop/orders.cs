@@ -14,7 +14,7 @@ namespace Veiled_Kashmir_Admin_Panel
     public partial class orders : Form
     {
         DBConnect obj = new DBConnect();
-        String orderid,email, addressid,cmd, productid, productname, price, quantity, size;
+        String orderid,email, addressid,cmd, productid, productname, price, quantity, size,dealerprice,shipping;
         MySqlDataReader dr;
         DataTable dt,dt1,dt2,dt3;
         MySqlCommand mysqlcmd;
@@ -108,7 +108,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void billbtn_Click(object sender, EventArgs e)
         {
-            addbill ab = new addbill(orderlbl.Text,email,amountlbl.Text,productid,productname,price,quantity,size);
+            addbill ab = new addbill(orderlbl.Text,email,amountlbl.Text,productid,productname,price,quantity,size,dealerprice,shipping);
             ab.ShowDialog();
            
         }
@@ -123,6 +123,8 @@ namespace Veiled_Kashmir_Admin_Panel
                 price = row.Cells["price"].Value.ToString();
                 quantity = row.Cells["quantity"].Value.ToString();
                 size = row.Cells["size"].Value.ToString();
+                dealerprice = row.Cells["dealerprice"].Value.ToString();
+
 
                 
             }
@@ -207,6 +209,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 DataGridViewRow row = this.ordergridview.Rows[e.RowIndex];
                 orderid = row.Cells["orderid"].Value.ToString();
                 email = row.Cells["mail"].Value.ToString();
+                shipping = row.Cells["shipping"].Value.ToString();
                 namelbl.Text = row.Cells["name"].Value.ToString();
                 address1lbl.Text = row.Cells["address1"].Value.ToString();
                 address2lbl.Text = row.Cells["address2"].Value.ToString();

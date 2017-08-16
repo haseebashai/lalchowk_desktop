@@ -128,6 +128,7 @@
             this.suptxt = new System.Windows.Forms.TextBox();
             this.label31 = new System.Windows.Forms.Label();
             this.dealbtn = new MaterialSkin.Controls.MaterialFlatButton();
+            this.refresh = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.accountdataview)).BeginInit();
             this.exppnl.SuspendLayout();
             this.moneypnl.SuspendLayout();
@@ -248,6 +249,7 @@
             // 
             // baltxt
             // 
+            this.baltxt.Enabled = false;
             this.baltxt.Location = new System.Drawing.Point(278, 25);
             this.baltxt.Name = "baltxt";
             this.baltxt.Size = new System.Drawing.Size(204, 20);
@@ -300,6 +302,7 @@
             this.amounttxt.Name = "amounttxt";
             this.amounttxt.Size = new System.Drawing.Size(204, 20);
             this.amounttxt.TabIndex = 3;
+            this.amounttxt.Leave += new System.EventHandler(this.amounttxt_Leave);
             // 
             // label2
             // 
@@ -1179,14 +1182,27 @@
             this.dealbtn.UseVisualStyleBackColor = true;
             this.dealbtn.Click += new System.EventHandler(this.dealbtn_Click);
             // 
+            // refresh
+            // 
+            this.refresh.AutoSize = true;
+            this.refresh.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.refresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.refresh.ForeColor = System.Drawing.Color.Gray;
+            this.refresh.Location = new System.Drawing.Point(359, 673);
+            this.refresh.Name = "refresh";
+            this.refresh.Size = new System.Drawing.Size(100, 16);
+            this.refresh.TabIndex = 36;
+            this.refresh.Text = "Refresh Details";
+            this.refresh.Click += new System.EventHandler(this.refresh_Click);
+            // 
             // accounts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1162, 722);
+            this.Controls.Add(this.refresh);
             this.Controls.Add(this.dealbtn);
-            this.Controls.Add(this.dealpnl);
             this.Controls.Add(this.delbtn);
             this.Controls.Add(this.billbtn);
             this.Controls.Add(this.banklbl);
@@ -1199,12 +1215,13 @@
             this.Controls.Add(this.bankbtn);
             this.Controls.Add(this.moneybtn);
             this.Controls.Add(this.expbtn);
-            this.Controls.Add(this.delpnl);
-            this.Controls.Add(this.billpnl);
-            this.Controls.Add(this.moneypnl);
             this.Controls.Add(this.exppnl);
             this.Controls.Add(this.miscpnl);
             this.Controls.Add(this.bankpnl);
+            this.Controls.Add(this.dealpnl);
+            this.Controls.Add(this.delpnl);
+            this.Controls.Add(this.billpnl);
+            this.Controls.Add(this.moneypnl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "accounts";
             this.Text = "forum";
@@ -1330,5 +1347,6 @@
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.TextBox paymentdatetxt;
         private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Label refresh;
     }
 }

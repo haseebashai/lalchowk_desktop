@@ -42,6 +42,13 @@ namespace Veiled_Kashmir_Admin_Panel
             BindingSource bsource = new BindingSource();
             bsource.DataSource = dt;
             accountdataview.DataSource = bsource;
+
+            aconn.Open();
+            cmd = new MySqlCommand("SELECT balance FROM lalchowk_ac.expenses order by eid desc limit 1", aconn);
+            dr = cmd.ExecuteReader();
+            dr.Read();
+            baltxt.Text = dr[0].ToString();
+            aconn.Close();
         }
 
         public void readmoneypool()
@@ -210,7 +217,10 @@ namespace Veiled_Kashmir_Admin_Panel
             itemtxt.Text = "";
             amounttxt.Text="";
             datetxt.Text = "";
+            baltxt.Text = "";
+            
             readexpenses();
+            
         }
 
         private void addbtn_Click(object sender, EventArgs e)
@@ -260,12 +270,13 @@ namespace Veiled_Kashmir_Admin_Panel
 
             readdetails();
             readbilling();
-
             billpnl.Visible = true;
+            dealpnl.Visible = false;           
             miscpnl.Visible = false;
             bankpnl.Visible = false;
             moneypnl.Visible = false;
             exppnl.Visible = false;
+            delpnl.Visible = false;
         }
 
         private void billaddbtn_Click(object sender, EventArgs e)
@@ -289,6 +300,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
             readdeliveries();
             delpnl.Visible = true;
+            dealpnl.Visible = false;
             exppnl.Visible = false;
             moneypnl.Visible = false;
             bankpnl.Visible = false;
@@ -368,6 +380,25 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             if (no.Checked)
                 yes.Checked = false;
+        }
+
+        private void amounttxt_Leave(object sender, EventArgs e)
+        {
+            try {
+                int amount = int.Parse(amounttxt.Text);
+                int balance = int.Parse(baltxt.Text);
+                baltxt.Text = (balance - amount).ToString();
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            }
+
+        private void refresh_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            readdetails();
+            Cursor = Cursors.Arrow;
         }
 
         private void updbtn_Click(object sender, EventArgs e)

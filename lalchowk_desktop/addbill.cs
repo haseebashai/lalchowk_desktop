@@ -21,17 +21,19 @@ namespace Veiled_Kashmir_Admin_Panel
 
 
 
-        public addbill(string orderlbl,string email,string amount,string productid,string productname,string price,string quantity,string size)
+        public addbill(string orderlbl,string email,string amount,string productid,string productname,string price,string quantity,string size,string dealerprice,string shipping)
         {
             InitializeComponent();
             otxt.Text = orderlbl;
             utxt.Text = email;
-            atxt.Text = amount;
+            int total = int.Parse(amount) + int.Parse(shipping);
+            atxt.Text = total.ToString();
             proidtxt.Text = productid;
             pronametxt.Text = productname;
             sizetxt.Text = size;
             counttxt.Text = quantity;
-            amounttxt.Text = price;
+            amounttxt.Text = total.ToString();
+            dptxt.Text = dealerprice;
             
         }
 
@@ -68,18 +70,18 @@ namespace Veiled_Kashmir_Admin_Panel
                 if (yes.Checked)
                 {
                     aconn.Open();
-                    mysqlcmd = new MySqlCommand("insert into dealing(`supplierid`, `suppliername`, `productid`,`productname`,`size`,`count`,`amount`,`pickupdate`,`paymentdone`,`paymentdate`,`comments`) values ('" + supidtxt.Text + "','" + supnametxt.Text + "','" + proidtxt.Text + "','" + pronametxt.Text + "','" + sizetxt.Text + "','" + counttxt.Text + "','" + amounttxt.Text + "','" + pickuptxt.Text + "','1','" + paymenttxt.Text + "','" + commentstxt.Text + "')", aconn);
+                    mysqlcmd = new MySqlCommand("insert into dealing(`supplierid`, `suppliername`, `productid`,`productname`,`size`,`count`,`amount`,`dealerprice`,`pickupdate`,`paymentdone`,`paymentdate`,`comments`) values ('" + supidtxt.Text + "','" + supnametxt.Text + "','" + proidtxt.Text + "','" + pronametxt.Text + "','" + sizetxt.Text + "','" + counttxt.Text + "','" + amounttxt.Text + "','"+dptxt.Text+"','" + pickuptxt.Text + "','1','" + paymenttxt.Text + "','" + commentstxt.Text + "')", aconn);
                     mysqlcmd.ExecuteNonQuery();
                     aconn.Close();
                 }
                 else
                 {
                     aconn.Open();
-                    mysqlcmd = new MySqlCommand("insert into dealing(`supplierid`, `suppliername`, `productid`,`productname`,`size`,`count`,`amount`,`pickupdate`,`paymentdone`,`paymentdate`,`comments`) values ('" + supidtxt.Text + "','" + supnametxt.Text + "','" + proidtxt.Text + "','" + pronametxt.Text + "','" + sizetxt.Text + "','" + counttxt.Text + "','" + amounttxt.Text + "','" + pickuptxt.Text + "','0','" + paymenttxt.Text + "','" + commentstxt.Text + "')", aconn);
+                    mysqlcmd = new MySqlCommand("insert into dealing(`supplierid`, `suppliername`, `productid`,`productname`,`size`,`count`,`amount`,`dealerprice`,`pickupdate`,`paymentdone`,`paymentdate`,`comments`) values ('" + supidtxt.Text + "','" + supnametxt.Text + "','" + proidtxt.Text + "','" + pronametxt.Text + "','" + sizetxt.Text + "','" + counttxt.Text + "','" + amounttxt.Text + "','"+dptxt.Text+"','" + pickuptxt.Text + "','0','" + paymenttxt.Text + "','" + commentstxt.Text + "')", aconn);
                     mysqlcmd.ExecuteNonQuery();
                     aconn.Close();
                 }
-                MessageBox.Show("Product Added.");
+                MessageBox.Show("Product bill Added.");
             }
         }
 

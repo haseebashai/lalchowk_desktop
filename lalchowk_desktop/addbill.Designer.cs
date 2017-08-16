@@ -72,6 +72,8 @@
             this.label19 = new System.Windows.Forms.Label();
             this.addsupbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.label13 = new System.Windows.Forms.Label();
+            this.dptxt = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.closebtn)).BeginInit();
             this.SuspendLayout();
             // 
@@ -176,7 +178,6 @@
             // 
             // atxt
             // 
-            this.atxt.Enabled = false;
             this.atxt.Location = new System.Drawing.Point(85, 569);
             this.atxt.Name = "atxt";
             this.atxt.Size = new System.Drawing.Size(204, 20);
@@ -258,11 +259,10 @@
             // 
             // amounttxt
             // 
-            this.amounttxt.Enabled = false;
             this.amounttxt.Location = new System.Drawing.Point(341, 71);
             this.amounttxt.Multiline = true;
             this.amounttxt.Name = "amounttxt";
-            this.amounttxt.Size = new System.Drawing.Size(204, 20);
+            this.amounttxt.Size = new System.Drawing.Size(83, 20);
             this.amounttxt.TabIndex = 76;
             // 
             // label3
@@ -506,12 +506,32 @@
             this.label13.TabIndex = 95;
             this.label13.Text = "Confirm Delivery";
             // 
+            // dptxt
+            // 
+            this.dptxt.Location = new System.Drawing.Point(462, 71);
+            this.dptxt.Multiline = true;
+            this.dptxt.Name = "dptxt";
+            this.dptxt.Size = new System.Drawing.Size(83, 20);
+            this.dptxt.TabIndex = 97;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.ForeColor = System.Drawing.Color.Black;
+            this.label14.Location = new System.Drawing.Point(459, 54);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(22, 13);
+            this.label14.TabIndex = 96;
+            this.label14.Text = "DP";
+            // 
             // addbill
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(642, 661);
+            this.Controls.Add(this.dptxt);
+            this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.addsupbtn);
             this.Controls.Add(this.no);
@@ -613,5 +633,7 @@
         private System.Windows.Forms.Label label19;
         private MaterialSkin.Controls.MaterialFlatButton addsupbtn;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox dptxt;
+        private System.Windows.Forms.Label label14;
     }
 }

@@ -8,12 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.Threading;
+
 
 namespace Veiled_Kashmir_Admin_Panel
 {
 
     public partial class mainform : Form
     {
+        
         DBConnect obj = new DBConnect();
         MySqlConnection con =new MySqlConnection("SERVER=182.50.133.78;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah");
         MySqlDataAdapter adap;
@@ -25,27 +28,27 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             hp = hpcopy as container;
             InitializeComponent();
-
             
-
         }
 
+        
+        
         private void mainform_Load(object sender, EventArgs e)
         {
-
+            
             if (userinfo.loggedin == true)
                 signout();
                 changelabel("Welcome, " + userinfo.username +"");
 
             Cursor = Cursors.WaitCursor;
-            readordersplaced();
             readordersshipped();
+            readordersplaced();
             readordersdelivered();
             Cursor = Cursors.Arrow;
         }
 
         
-
+      
         private void readordersplaced()
         {
             
@@ -81,11 +84,10 @@ namespace Veiled_Kashmir_Admin_Panel
             shippeddataview.DataSource = bsource;
         }
 
-        private void readordersdelivered()
+       private void readordersdelivered()
         {
             dr = obj.Query("SELECT count(status) FROM orders where status='delivered'");
             dr.Read();
-           
             ordersdlbl.Text = dr[0].ToString();
             obj.closeConnection();
         }
