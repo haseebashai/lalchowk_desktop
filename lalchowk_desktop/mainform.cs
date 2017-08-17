@@ -31,20 +31,29 @@ namespace Veiled_Kashmir_Admin_Panel
             
         }
 
-        
-        
+
+
         private void mainform_Load(object sender, EventArgs e)
         {
-            
+
             if (userinfo.loggedin == true)
                 signout();
-                changelabel("Welcome, " + userinfo.username +"");
+            changelabel("Welcome, " + userinfo.username + "");
 
+            Form loading = new Form();
+            loading.Size = new Size(50, 50);
+            loading.FormBorderStyle = FormBorderStyle.FixedDialog;
+            loading.ControlBox = false;
+            loading.BackColor = Color.White;
+            loading.StartPosition = FormStartPosition.CenterScreen;
+            loading.Controls.Add(new Label() { Text = "LOADING...",Font=new Font("Ariel",Font.Size,FontStyle.Bold)});
+            loading.Show();
             Cursor = Cursors.WaitCursor;
             readordersshipped();
             readordersplaced();
             readordersdelivered();
             Cursor = Cursors.Arrow;
+            loading.Close();
         }
 
         
@@ -288,6 +297,19 @@ namespace Veiled_Kashmir_Admin_Panel
             cntpnl.Controls.Add(co);
             co.Show();
             Cursor = Cursors.Arrow;
+        }
+
+        private void msgbtn_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            messages msg = new messages();
+            cntpnl.Controls.Clear();
+            msg.TopLevel = false;
+            cntpnl.Controls.Add(msg);
+            msg.Show();
+            Cursor = Cursors.Arrow;
+            
+
         }
     }
 }

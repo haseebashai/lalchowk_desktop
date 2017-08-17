@@ -52,7 +52,6 @@
             this.navtxt = new System.Windows.Forms.Label();
             this.cntpnl = new System.Windows.Forms.Panel();
             this.placedlbl = new System.Windows.Forms.Label();
-            this.attention = new System.Windows.Forms.PictureBox();
             this.costlbl = new System.Windows.Forms.Label();
             this.attentionlbl = new System.Windows.Forms.Label();
             this.orderslbl = new System.Windows.Forms.Label();
@@ -62,12 +61,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.placeddataview = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
+            this.attention = new System.Windows.Forms.PictureBox();
+            this.msgbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.navpnl.SuspendLayout();
             this.navtitle.SuspendLayout();
             this.cntpnl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.attention)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.shippeddataview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.placeddataview)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.attention)).BeginInit();
             this.SuspendLayout();
             // 
             // signoutlbl
@@ -162,6 +163,7 @@
             // navpnl
             // 
             this.navpnl.BackColor = System.Drawing.Color.White;
+            this.navpnl.Controls.Add(this.msgbtn);
             this.navpnl.Controls.Add(this.aboutbtn);
             this.navpnl.Controls.Add(this.faqbtn);
             this.navpnl.Controls.Add(this.termsbtn);
@@ -265,7 +267,7 @@
             this.cobtn.AutoSize = true;
             this.cobtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.cobtn.Depth = 0;
-            this.cobtn.Location = new System.Drawing.Point(8, 307);
+            this.cobtn.Location = new System.Drawing.Point(8, 301);
             this.cobtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.cobtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.cobtn.Name = "cobtn";
@@ -346,16 +348,6 @@
             this.placedlbl.TabIndex = 40;
             this.placedlbl.Text = "View Details";
             this.placedlbl.Click += new System.EventHandler(this.placedlbl_Click);
-            // 
-            // attention
-            // 
-            this.attention.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.industrial_safety_1492046_640;
-            this.attention.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.attention.Location = new System.Drawing.Point(19, 540);
-            this.attention.Name = "attention";
-            this.attention.Size = new System.Drawing.Size(73, 65);
-            this.attention.TabIndex = 39;
-            this.attention.TabStop = false;
             // 
             // costlbl
             // 
@@ -496,6 +488,32 @@
             this.label2.TabIndex = 10;
             this.label2.Text = "Orders currently PLACED:";
             // 
+            // attention
+            // 
+            this.attention.BackgroundImage = global::Lalchowk.Properties.Resources.industrial_safety_1492046_640;
+            this.attention.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.attention.Location = new System.Drawing.Point(19, 540);
+            this.attention.Name = "attention";
+            this.attention.Size = new System.Drawing.Size(73, 65);
+            this.attention.TabIndex = 39;
+            this.attention.TabStop = false;
+            // 
+            // msgbtn
+            // 
+            this.msgbtn.AutoSize = true;
+            this.msgbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.msgbtn.Depth = 0;
+            this.msgbtn.Location = new System.Drawing.Point(8, 349);
+            this.msgbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.msgbtn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.msgbtn.Name = "msgbtn";
+            this.msgbtn.Primary = false;
+            this.msgbtn.Size = new System.Drawing.Size(130, 36);
+            this.msgbtn.TabIndex = 22;
+            this.msgbtn.Text = "Check Messages";
+            this.msgbtn.UseVisualStyleBackColor = true;
+            this.msgbtn.Click += new System.EventHandler(this.msgbtn_Click);
+            // 
             // mainform
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -515,9 +533,9 @@
             this.navtitle.PerformLayout();
             this.cntpnl.ResumeLayout(false);
             this.cntpnl.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.attention)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.shippeddataview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.placeddataview)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.attention)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -552,5 +570,6 @@
         private System.Windows.Forms.Label costlbl;
         private System.Windows.Forms.PictureBox attention;
         private System.Windows.Forms.Label placedlbl;
+        private MaterialSkin.Controls.MaterialFlatButton msgbtn;
     }
 }

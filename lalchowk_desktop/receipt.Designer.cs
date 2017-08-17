@@ -38,7 +38,7 @@
             // 
             // close
             // 
-            this.close.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.turn_on;
+            this.close.BackgroundImage = global::Lalchowk.Properties.Resources.turn_on;
             this.close.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.close.Cursor = System.Windows.Forms.Cursors.Hand;
             this.close.ImageLocation = "";

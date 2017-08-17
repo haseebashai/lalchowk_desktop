@@ -7,8 +7,8 @@
     <ProjectGuid>{F09536DD-11C6-4F33-95D6-5E49FE32F60E}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Veiled_Kashmir_Admin_Panel</RootNamespace>
-    <AssemblyName>Veiled Kashmir Admin Panel</AssemblyName>
+    <RootNamespace>Lalchowk</RootNamespace>
+    <AssemblyName>Lalchowk Admin Panel</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -111,6 +111,12 @@
     </Compile>
     <Compile Include="mail.Designer.cs">
       <DependentUpon>mail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="messages.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="messages.Designer.cs">
+      <DependentUpon>messages.cs</DependentUpon>
     </Compile>
     <Compile Include="products.cs">
       <SubType>Form</SubType>
@@ -224,6 +230,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="mail.resx">
       <DependentUpon>mail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="messages.resx">
+      <DependentUpon>messages.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="products.resx">
       <DependentUpon>products.cs</DependentUpon>
