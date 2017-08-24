@@ -28,7 +28,21 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             hp = hpcopy as container;
             InitializeComponent();
-            
+
+            Form loading = new Form();
+            loading.Size = new Size(50, 50);
+            loading.FormBorderStyle = FormBorderStyle.FixedDialog;
+            loading.ControlBox = false;
+            loading.BackColor = Color.LightBlue;
+            loading.StartPosition = FormStartPosition.CenterScreen;
+            loading.Controls.Add(new Label() { Text = "LOADING...", Font = new Font("trajan pro",Font.Size, FontStyle.Bold) });
+            loading.Show();
+            Cursor = Cursors.WaitCursor;
+            readordersshipped();
+            readordersplaced();
+            readordersdelivered();
+            Cursor = Cursors.Arrow;
+            loading.Close();
         }
 
 
@@ -40,20 +54,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 signout();
             changelabel("Welcome, " + userinfo.username + "");
 
-            Form loading = new Form();
-            loading.Size = new Size(50, 50);
-            loading.FormBorderStyle = FormBorderStyle.FixedDialog;
-            loading.ControlBox = false;
-            loading.BackColor = Color.White;
-            loading.StartPosition = FormStartPosition.CenterScreen;
-            loading.Controls.Add(new Label() { Text = "LOADING...",Font=new Font("Ariel",Font.Size,FontStyle.Bold)});
-            loading.Show();
-            Cursor = Cursors.WaitCursor;
-            readordersshipped();
-            readordersplaced();
-            readordersdelivered();
-            Cursor = Cursors.Arrow;
-            loading.Close();
+            
         }
 
         

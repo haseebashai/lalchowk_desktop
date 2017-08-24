@@ -34,15 +34,18 @@ namespace Veiled_Kashmir_Admin_Panel
            private void readorders()
             {
             dr = obj.Query("SELECT customer.mail,orders.*  FROM lalchowk.orders inner join customer on customer.email=orders.email;");
-
             dt = new DataTable();
             dt.Load(dr);
             obj.closeConnection();
             BindingSource bsource = new BindingSource();
-
             bsource.DataSource = dt;
             ordergridview.DataSource = bsource;
-            
+
+            dr = obj.Query("select count(orderid) from orderdetails");
+            dr.Read();
+            orlbl.Text = dr[0].ToString();
+            obj.closeConnection();
+
         }
 
         
@@ -54,22 +57,6 @@ namespace Veiled_Kashmir_Admin_Panel
             ordergridview.DataSource = dv;
         }
 
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void orderpnl_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-       
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void orderdetails()
         {
@@ -84,12 +71,7 @@ namespace Veiled_Kashmir_Admin_Panel
             
             orderdetailview.Visible = true;
         }
-
-        private void pic_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        
         
 
         private void paymenttxt_TextChanged(object sender, EventArgs e)
@@ -108,13 +90,18 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void billbtn_Click(object sender, EventArgs e)
         {
-            addbill ab = new addbill(orderlbl.Text,email,amountlbl.Text,productid,productname,price,quantity,size,dealerprice,shipping);
-            ab.ShowDialog();
-           
+            if (productid == null)
+                con.Visible = true;
+            else
+            {
+                addbill ab = new addbill(orderlbl.Text, email, amountlbl.Text, productid, productname, price, quantity, size, dealerprice, shipping);
+                ab.ShowDialog();
+            }
         }
 
         private void orderdetailview_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            con.Visible = false;
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = this.orderdetailview.Rows[e.RowIndex];
@@ -171,7 +158,7 @@ namespace Veiled_Kashmir_Admin_Panel
             obj.closeConnection();
         }
 
-        private void readproductid()
+        private void readproduct()
         {
             dr = obj.Query("SELECT productid FROM orderdetails where orderid='" + orderid + "'");
             dt2 = new DataTable();
@@ -180,10 +167,7 @@ namespace Veiled_Kashmir_Admin_Panel
             obj.closeConnection();
             proid.DisplayMember = "productid";
             proid.DataSource = dt2;
-        }
 
-        private void readproductname()
-        {
             dr = obj.Query("SELECT productname FROM orderdetails where orderid='" + orderid + "'");
             dt3 = new DataTable();
             dt3.Columns.Add("productname", typeof(String));
@@ -191,15 +175,13 @@ namespace Veiled_Kashmir_Admin_Panel
             obj.closeConnection();
             proname.DisplayMember = "productname";
             proname.DataSource = dt3;
-        }
 
-        private void readamount()
-        {
             dr = obj.Query("select sum(price) from orderdetails where orderid='" + orderid + "'");
             dr.Read();
             amountlbl.Text = dr[0].ToString();
             obj.closeConnection();
         }
+           
 
         private void ordergridview_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -221,9 +203,7 @@ namespace Veiled_Kashmir_Admin_Panel
                
            //     readaddress();
                 orderdetails();
-                readproductid();
-                readproductname();
-                readamount();
+                readproduct();
             }
             Cursor = Cursors.Arrow;
         }

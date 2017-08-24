@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.orlbl = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.statustxt = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.paymenttxt = new System.Windows.Forms.TextBox();
@@ -38,6 +40,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.orderpnl = new System.Windows.Forms.Panel();
             this.dpnl = new System.Windows.Forms.Panel();
+            this.con = new System.Windows.Forms.Label();
             this.billbtn = new System.Windows.Forms.Button();
             this.cnfbtn = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -64,7 +67,6 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.orderdetailview = new System.Windows.Forms.DataGridView();
             this.ordergridview = new System.Windows.Forms.DataGridView();
-            this.con = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.orderpnl.SuspendLayout();
             this.dpnl.SuspendLayout();
@@ -74,6 +76,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.orlbl);
+            this.panel1.Controls.Add(this.label12);
             this.panel1.Controls.Add(this.statustxt);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.paymenttxt);
@@ -85,6 +89,28 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1162, 49);
             this.panel1.TabIndex = 0;
+            // 
+            // orlbl
+            // 
+            this.orlbl.AutoSize = true;
+            this.orlbl.BackColor = System.Drawing.Color.Transparent;
+            this.orlbl.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.orlbl.Location = new System.Drawing.Point(72, 22);
+            this.orlbl.Name = "orlbl";
+            this.orlbl.Size = new System.Drawing.Size(16, 13);
+            this.orlbl.TabIndex = 11;
+            this.orlbl.Text = "or";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label12.Location = new System.Drawing.Point(3, 22);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(68, 13);
+            this.label12.TabIndex = 10;
+            this.label12.Text = "Total Orders:";
             // 
             // statustxt
             // 
@@ -156,7 +182,6 @@
             this.orderpnl.Name = "orderpnl";
             this.orderpnl.Size = new System.Drawing.Size(1162, 671);
             this.orderpnl.TabIndex = 1;
-            this.orderpnl.Paint += new System.Windows.Forms.PaintEventHandler(this.orderpnl_Paint);
             // 
             // dpnl
             // 
@@ -190,6 +215,17 @@
             this.dpnl.Size = new System.Drawing.Size(1156, 258);
             this.dpnl.TabIndex = 26;
             this.dpnl.Visible = false;
+            // 
+            // con
+            // 
+            this.con.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.con.ForeColor = System.Drawing.Color.Red;
+            this.con.Location = new System.Drawing.Point(987, 198);
+            this.con.Name = "con";
+            this.con.Size = new System.Drawing.Size(123, 17);
+            this.con.TabIndex = 27;
+            this.con.Text = "Select product from list";
+            this.con.Visible = false;
             // 
             // billbtn
             // 
@@ -450,16 +486,6 @@
             this.ordergridview.TabIndex = 0;
             this.ordergridview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ordergridview_CellClick);
             // 
-            // con
-            // 
-            this.con.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.con.ForeColor = System.Drawing.Color.Blue;
-            this.con.Location = new System.Drawing.Point(987, 198);
-            this.con.Name = "con";
-            this.con.Size = new System.Drawing.Size(123, 17);
-            this.con.TabIndex = 27;
-            this.con.Text = "Select product from list";
-            // 
             // orders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -521,5 +547,7 @@
         private System.Windows.Forms.Panel dpnl;
         private System.Windows.Forms.Button billbtn;
         private System.Windows.Forms.Label con;
+        private System.Windows.Forms.Label orlbl;
+        private System.Windows.Forms.Label label12;
     }
 }
