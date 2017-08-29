@@ -129,6 +129,8 @@
             this.label31 = new System.Windows.Forms.Label();
             this.dealbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.refresh = new System.Windows.Forms.Label();
+            this.fsuptxt = new System.Windows.Forms.TextBox();
+            this.label37 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.accountdataview)).BeginInit();
             this.exppnl.SuspendLayout();
             this.moneypnl.SuspendLayout();
@@ -1195,12 +1197,32 @@
             this.refresh.Text = "Refresh Details";
             this.refresh.Click += new System.EventHandler(this.refresh_Click);
             // 
+            // fsuptxt
+            // 
+            this.fsuptxt.Enabled = false;
+            this.fsuptxt.Location = new System.Drawing.Point(1022, 309);
+            this.fsuptxt.Name = "fsuptxt";
+            this.fsuptxt.Size = new System.Drawing.Size(120, 20);
+            this.fsuptxt.TabIndex = 38;
+            this.fsuptxt.TextChanged += new System.EventHandler(this.fsuptxt_TextChanged);
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(1019, 292);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(84, 13);
+            this.label37.TabIndex = 37;
+            this.label37.Text = "Filter by Supplier";
+            // 
             // accounts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1162, 722);
+            this.Controls.Add(this.fsuptxt);
+            this.Controls.Add(this.label37);
             this.Controls.Add(this.refresh);
             this.Controls.Add(this.dealbtn);
             this.Controls.Add(this.delbtn);
@@ -1348,5 +1370,7 @@
         private System.Windows.Forms.TextBox paymentdatetxt;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.Label refresh;
+        private System.Windows.Forms.TextBox fsuptxt;
+        private System.Windows.Forms.Label label37;
     }
 }

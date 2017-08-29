@@ -329,6 +329,8 @@ namespace Veiled_Kashmir_Admin_Panel
             readdetails();
 
             readdealings();
+
+            fsuptxt.Enabled = true;
             dealpnl.Visible = true;
             delpnl.Visible = false;
             exppnl.Visible = false;
@@ -399,6 +401,13 @@ namespace Veiled_Kashmir_Admin_Panel
             Cursor = Cursors.WaitCursor;
             readdetails();
             Cursor = Cursors.Arrow;
+        }
+
+        private void fsuptxt_TextChanged(object sender, EventArgs e)
+        {
+            DataView dv = new DataView(dt);
+            dv.RowFilter = string.Format("suppliername LIKE '%{0}%'", fsuptxt.Text);
+            accountdataview.DataSource = dv;
         }
 
         private void updbtn_Click(object sender, EventArgs e)
