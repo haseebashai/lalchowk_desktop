@@ -96,6 +96,7 @@ namespace Veiled_Kashmir_Admin_Panel
             {
                 addbill ab = new addbill(orderlbl.Text, email, amountlbl.Text, productid, productname, price, quantity, size, dealerprice, shipping);
                 ab.ShowDialog();
+                productid = null;
             }
         }
 

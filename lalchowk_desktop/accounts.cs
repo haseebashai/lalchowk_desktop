@@ -97,6 +97,14 @@ namespace Veiled_Kashmir_Admin_Panel
             BindingSource bsource = new BindingSource();
             bsource.DataSource = dt;
             accountdataview.DataSource = bsource;
+
+            aconn.Open();
+            cmd = new MySqlCommand("select count(bid) from billing", aconn);
+            dr = cmd.ExecuteReader();
+            dr.Read();
+            totallbl.Text = "Total bills: " + dr[0].ToString();
+            totallbl.Visible = true;
+            aconn.Close();
         }
 
         public void readdeliveries()
@@ -109,6 +117,14 @@ namespace Veiled_Kashmir_Admin_Panel
             BindingSource bsource = new BindingSource();
             bsource.DataSource = dt;
             accountdataview.DataSource = bsource;
+
+            aconn.Open();
+            cmd = new MySqlCommand("select count(did) from deliveries", aconn);
+            dr = cmd.ExecuteReader();
+            dr.Read();
+            totallbl.Text = "Total deliveries: " + dr[0].ToString();
+            totallbl.Visible = true;
+            aconn.Close();
         }
 
         public void readdealings()
@@ -121,6 +137,14 @@ namespace Veiled_Kashmir_Admin_Panel
             BindingSource bsource = new BindingSource();
             bsource.DataSource = dt;
             accountdataview.DataSource = bsource;
+
+            aconn.Open();
+            cmd = new MySqlCommand("select count(did) from dealing", aconn);
+            dr = cmd.ExecuteReader();
+            dr.Read();
+            totallbl.Text = "Total dealings: " + dr[0].ToString();
+            totallbl.Visible = true;
+            aconn.Close();
         }
 
         private void readdetails()
@@ -167,6 +191,7 @@ namespace Veiled_Kashmir_Admin_Panel
             readdetails();
             
             readexpenses();
+            fsuptxt.Enabled = false;
             exppnl.Visible = true;
             moneypnl.Visible = false;
             bankpnl.Visible = false;
@@ -178,6 +203,7 @@ namespace Veiled_Kashmir_Admin_Panel
             readdetails();
             
             readmoneypool();
+            fsuptxt.Enabled = false;
             moneypnl.Visible = true;
             exppnl.Visible = false;
             bankpnl.Visible = false;
@@ -189,6 +215,7 @@ namespace Veiled_Kashmir_Admin_Panel
             readdetails();
             
             readbank();
+            fsuptxt.Enabled = false;
             bankpnl.Visible = true;
             moneypnl.Visible = false;
             exppnl.Visible = false;
@@ -200,6 +227,7 @@ namespace Veiled_Kashmir_Admin_Panel
             readdetails();
             
             readmisc();
+            fsuptxt.Enabled = false;
             miscpnl.Visible = true;
             bankpnl.Visible = false;
             moneypnl.Visible = false;
@@ -270,6 +298,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
             readdetails();
             readbilling();
+            fsuptxt.Enabled = false;
             billpnl.Visible = true;
             dealpnl.Visible = false;           
             miscpnl.Visible = false;
@@ -299,6 +328,7 @@ namespace Veiled_Kashmir_Admin_Panel
             readdetails();
 
             readdeliveries();
+            fsuptxt.Enabled = false;
             delpnl.Visible = true;
             dealpnl.Visible = false;
             exppnl.Visible = false;

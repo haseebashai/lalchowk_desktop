@@ -131,6 +131,7 @@
             this.refresh = new System.Windows.Forms.Label();
             this.fsuptxt = new System.Windows.Forms.TextBox();
             this.label37 = new System.Windows.Forms.Label();
+            this.totallbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.accountdataview)).BeginInit();
             this.exppnl.SuspendLayout();
             this.moneypnl.SuspendLayout();
@@ -1215,12 +1216,23 @@
             this.label37.TabIndex = 37;
             this.label37.Text = "Filter by Supplier";
             // 
+            // totallbl
+            // 
+            this.totallbl.AutoSize = true;
+            this.totallbl.Location = new System.Drawing.Point(1022, 606);
+            this.totallbl.Name = "totallbl";
+            this.totallbl.Size = new System.Drawing.Size(27, 13);
+            this.totallbl.TabIndex = 39;
+            this.totallbl.Text = "total";
+            this.totallbl.Visible = false;
+            // 
             // accounts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1162, 722);
+            this.Controls.Add(this.totallbl);
             this.Controls.Add(this.fsuptxt);
             this.Controls.Add(this.label37);
             this.Controls.Add(this.refresh);
@@ -1372,5 +1384,6 @@
         private System.Windows.Forms.Label refresh;
         private System.Windows.Forms.TextBox fsuptxt;
         private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Label totallbl;
     }
 }
