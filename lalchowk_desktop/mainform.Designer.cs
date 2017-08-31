@@ -41,6 +41,7 @@
             this.approvebtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.signinlbl = new System.Windows.Forms.Label();
             this.navpnl = new System.Windows.Forms.Panel();
+            this.msgbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.aboutbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.faqbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.termsbtn = new MaterialSkin.Controls.MaterialFlatButton();
@@ -52,6 +53,7 @@
             this.navtxt = new System.Windows.Forms.Label();
             this.cntpnl = new System.Windows.Forms.Panel();
             this.placedlbl = new System.Windows.Forms.Label();
+            this.attention = new System.Windows.Forms.PictureBox();
             this.costlbl = new System.Windows.Forms.Label();
             this.attentionlbl = new System.Windows.Forms.Label();
             this.orderslbl = new System.Windows.Forms.Label();
@@ -61,14 +63,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.placeddataview = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
-            this.attention = new System.Windows.Forms.PictureBox();
-            this.msgbtn = new MaterialSkin.Controls.MaterialFlatButton();
+            this.homepagebtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.navpnl.SuspendLayout();
             this.navtitle.SuspendLayout();
             this.cntpnl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.attention)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.shippeddataview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.placeddataview)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.attention)).BeginInit();
             this.SuspendLayout();
             // 
             // signoutlbl
@@ -163,6 +164,7 @@
             // navpnl
             // 
             this.navpnl.BackColor = System.Drawing.Color.White;
+            this.navpnl.Controls.Add(this.homepagebtn);
             this.navpnl.Controls.Add(this.msgbtn);
             this.navpnl.Controls.Add(this.aboutbtn);
             this.navpnl.Controls.Add(this.faqbtn);
@@ -182,12 +184,28 @@
             this.navpnl.Size = new System.Drawing.Size(200, 711);
             this.navpnl.TabIndex = 10;
             // 
+            // msgbtn
+            // 
+            this.msgbtn.AutoSize = true;
+            this.msgbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.msgbtn.Depth = 0;
+            this.msgbtn.Location = new System.Drawing.Point(8, 349);
+            this.msgbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.msgbtn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.msgbtn.Name = "msgbtn";
+            this.msgbtn.Primary = false;
+            this.msgbtn.Size = new System.Drawing.Size(130, 36);
+            this.msgbtn.TabIndex = 22;
+            this.msgbtn.Text = "Check Messages";
+            this.msgbtn.UseVisualStyleBackColor = true;
+            this.msgbtn.Click += new System.EventHandler(this.msgbtn_Click);
+            // 
             // aboutbtn
             // 
             this.aboutbtn.AutoSize = true;
             this.aboutbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.aboutbtn.Depth = 0;
-            this.aboutbtn.Location = new System.Drawing.Point(10, 468);
+            this.aboutbtn.Location = new System.Drawing.Point(10, 530);
             this.aboutbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.aboutbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.aboutbtn.Name = "aboutbtn";
@@ -203,7 +221,7 @@
             this.faqbtn.AutoSize = true;
             this.faqbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.faqbtn.Depth = 0;
-            this.faqbtn.Location = new System.Drawing.Point(10, 516);
+            this.faqbtn.Location = new System.Drawing.Point(10, 578);
             this.faqbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.faqbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.faqbtn.Name = "faqbtn";
@@ -219,7 +237,7 @@
             this.termsbtn.AutoSize = true;
             this.termsbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.termsbtn.Depth = 0;
-            this.termsbtn.Location = new System.Drawing.Point(8, 564);
+            this.termsbtn.Location = new System.Drawing.Point(8, 626);
             this.termsbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.termsbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.termsbtn.Name = "termsbtn";
@@ -348,6 +366,16 @@
             this.placedlbl.TabIndex = 40;
             this.placedlbl.Text = "View Details";
             this.placedlbl.Click += new System.EventHandler(this.placedlbl_Click);
+            // 
+            // attention
+            // 
+            this.attention.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.industrial_safety_1492046_640;
+            this.attention.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.attention.Location = new System.Drawing.Point(19, 540);
+            this.attention.Name = "attention";
+            this.attention.Size = new System.Drawing.Size(73, 65);
+            this.attention.TabIndex = 39;
+            this.attention.TabStop = false;
             // 
             // costlbl
             // 
@@ -488,31 +516,21 @@
             this.label2.TabIndex = 10;
             this.label2.Text = "Orders currently PLACED:";
             // 
-            // attention
+            // homepagebtn
             // 
-            this.attention.BackgroundImage = global::Lalchowk.Properties.Resources.industrial_safety_1492046_640;
-            this.attention.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.attention.Location = new System.Drawing.Point(19, 540);
-            this.attention.Name = "attention";
-            this.attention.Size = new System.Drawing.Size(73, 65);
-            this.attention.TabIndex = 39;
-            this.attention.TabStop = false;
-            // 
-            // msgbtn
-            // 
-            this.msgbtn.AutoSize = true;
-            this.msgbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.msgbtn.Depth = 0;
-            this.msgbtn.Location = new System.Drawing.Point(8, 349);
-            this.msgbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.msgbtn.MouseState = MaterialSkin.MouseState.HOVER;
-            this.msgbtn.Name = "msgbtn";
-            this.msgbtn.Primary = false;
-            this.msgbtn.Size = new System.Drawing.Size(130, 36);
-            this.msgbtn.TabIndex = 22;
-            this.msgbtn.Text = "Check Messages";
-            this.msgbtn.UseVisualStyleBackColor = true;
-            this.msgbtn.Click += new System.EventHandler(this.msgbtn_Click);
+            this.homepagebtn.AutoSize = true;
+            this.homepagebtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.homepagebtn.Depth = 0;
+            this.homepagebtn.Location = new System.Drawing.Point(8, 445);
+            this.homepagebtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.homepagebtn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.homepagebtn.Name = "homepagebtn";
+            this.homepagebtn.Primary = false;
+            this.homepagebtn.Size = new System.Drawing.Size(118, 36);
+            this.homepagebtn.TabIndex = 23;
+            this.homepagebtn.Text = "Edit Homepage";
+            this.homepagebtn.UseVisualStyleBackColor = true;
+            this.homepagebtn.Click += new System.EventHandler(this.homepagebtn_Click);
             // 
             // mainform
             // 
@@ -533,9 +551,9 @@
             this.navtitle.PerformLayout();
             this.cntpnl.ResumeLayout(false);
             this.cntpnl.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.attention)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.shippeddataview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.placeddataview)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.attention)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -571,5 +589,6 @@
         private System.Windows.Forms.PictureBox attention;
         private System.Windows.Forms.Label placedlbl;
         private MaterialSkin.Controls.MaterialFlatButton msgbtn;
+        private MaterialSkin.Controls.MaterialFlatButton homepagebtn;
     }
 }

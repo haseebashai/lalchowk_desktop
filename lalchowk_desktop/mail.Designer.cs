@@ -85,7 +85,7 @@
             // 
             // closebtn
             // 
-            this.closebtn.BackgroundImage = global::Lalchowk.Properties.Resources.turn_on;
+            this.closebtn.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.turn_on;
             this.closebtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.closebtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.closebtn.Location = new System.Drawing.Point(591, 12);
@@ -245,6 +245,7 @@
             this.Controls.Add(this.panel5);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "mail";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "mail";
             this.Load += new System.EventHandler(this.mail_Load);
             ((System.ComponentModel.ISupportInitialize)(this.closebtn)).EndInit();

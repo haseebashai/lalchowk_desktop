@@ -59,7 +59,7 @@
             // 
             // minimize
             // 
-            this.minimize.BackgroundImage = global::Lalchowk.Properties.Resources.diminish;
+            this.minimize.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.diminish;
             this.minimize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.minimize.Cursor = System.Windows.Forms.Cursors.Hand;
             this.minimize.ImageLocation = "";
@@ -73,7 +73,7 @@
             // 
             // pictureBox3
             // 
-            this.pictureBox3.BackgroundImage = global::Lalchowk.Properties.Resources.logoW2;
+            this.pictureBox3.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.logoW2;
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox3.Location = new System.Drawing.Point(3, 1);
             this.pictureBox3.Name = "pictureBox3";
@@ -83,7 +83,7 @@
             // 
             // close
             // 
-            this.close.BackgroundImage = global::Lalchowk.Properties.Resources.turn_on;
+            this.close.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.turn_on;
             this.close.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.close.Cursor = System.Windows.Forms.Cursors.Hand;
             this.close.ImageLocation = "";

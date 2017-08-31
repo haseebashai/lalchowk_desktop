@@ -57,9 +57,9 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void sendbtn_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Does not work yet.");
-          //  mail ml = new mail(emaillbl.Text,sublbl.Text,msgtxt.Text,midlbl.Text);
-          //  ml.ShowDialog();
+          //  MessageBox.Show("Does not work yet.");
+            mail ml = new mail(emaillbl.Text,sublbl.Text,msgtxt.Text,midlbl.Text);
+            ml.ShowDialog();
         }
     }
 }

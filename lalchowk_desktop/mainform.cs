@@ -312,5 +312,16 @@ namespace Veiled_Kashmir_Admin_Panel
             
 
         }
+
+        private void homepagebtn_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            apphomepage aph = new apphomepage();
+            cntpnl.Controls.Clear();
+            aph.TopLevel = false;
+            cntpnl.Controls.Add(aph);
+            aph.Show();
+            Cursor = Cursors.Arrow;
+        }
     }
 }
