@@ -138,6 +138,7 @@ namespace Veiled_Kashmir_Admin_Panel
             dealertxt.Text = "";
             pidtxt.Text = "";
             pictxt.Text = "";
+            catbox.Text = "";
 
         }
         private void cancelbtn_Click(object sender, EventArgs e)
@@ -150,12 +151,13 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void readcategory()
         {
-            if (id3lbl.Text == "0")
-                catlbl.Text = id2lbl.Text;
+            if (id3lbl.Text == "0" || id3lbl.Text=="id" || id2lbl.Text=="0" || id2lbl.Text=="id")
+            //    catlbl.Text = id2lbl.Text;
+                catbox.Text = id2lbl.Text;
             else
             {
-                catlbl.Text = id3lbl.Text;
-                
+              //  catlbl.Text = id3lbl.Text;
+                catbox.Text = id3lbl.Text;
             }
         }
 
@@ -191,7 +193,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void readdetails()
         {
-            dr = obj.Query("select detailname1,detailname2,detailname3,detailname4,detailname5 from products where categoryid='"+catlbl.Text+"'");
+            dr = obj.Query("select detailname1,detailname2,detailname3,detailname4,detailname5 from products where categoryid='"+catbox.Text+"'");
             dr.Read();
             
             dname1txt.Text = dr["detailname1"].ToString();
@@ -319,13 +321,13 @@ namespace Veiled_Kashmir_Admin_Panel
                 if (sizetxt.Text == "" || dname5txt.Text=="" || dname5.Text=="")
                 {
                     cmd = "insert into products (`productid`, `supplierid`, `productname`,`tags`, `groupid`,`categoryid`,`color`, `mrp`, `price`, `dealerprice`, `stock`, `description`, `detailname1`, `detailname2`, `detailname3`, `detailname4`, `detail1`, `detail2`, `detail3`, `detail4`,`brand`,`requeststatus`,`picture`) " +
-                       "values ('" + pidtxt.Text + "','" + supidtxt.Text + "', '" + nametxt.Text + "','"+ nametxt.Text + " " +tagstxt.Text+"','" + gidtxt.Text + "', '" + catlbl.Text + "','" + colourtxt.Text + "','" + mrptxt.Text + "','" + pricetxt.Text + "','" + dealertxt.Text + "','" + stocktxt.Text + "','" + desctxt.Text + "','" + dname1txt.Text + "','" + dname2txt.Text + "','" + dname3txt.Text + "','" + dname4txt.Text + "','" + dname1.Text + "','" + dname2.Text + "','" + dname3.Text + "','" + dname4.Text + "','" + brandtxt.Text + "','Approved','" + pictxt.Text + "')";
+                       "values ('" + pidtxt.Text + "','" + supidtxt.Text + "', '" + nametxt.Text + "','"+ nametxt.Text + " " +tagstxt.Text+"','" + gidtxt.Text + "', '" + catbox.Text + "','" + colourtxt.Text + "','" + mrptxt.Text + "','" + pricetxt.Text + "','" + dealertxt.Text + "','" + stocktxt.Text + "','" + desctxt.Text + "','" + dname1txt.Text + "','" + dname2txt.Text + "','" + dname3txt.Text + "','" + dname4txt.Text + "','" + dname1.Text + "','" + dname2.Text + "','" + dname3.Text + "','" + dname4.Text + "','" + brandtxt.Text + "','Approved','" + pictxt.Text + "')";
                     obj.nonQuery(cmd);
                 }
                 else
                 {
                     cmd = "insert into products (`productid`, `supplierid`, `productname`,`tags`, `groupid`,`categoryid`,`color`, `mrp`, `price`, `dealerprice`, `stock`, `description`, `detailname1`, `detailname2`, `detailname3`, `detailname4`, `detailname5`, `detail1`, `detail2`, `detail3`, `detail4`, `detail5`,`brand`,`size`,`requeststatus`,`picture`) " +
-                          "values ('" + pidtxt.Text + "','" + supidtxt.Text + "', '" + nametxt.Text + "','" + nametxt.Text + " " + tagstxt.Text + "','" + gidtxt.Text + "', '" + catlbl.Text + "','" + colourtxt.Text + "','" + mrptxt.Text + "','" + pricetxt.Text + "','" + dealertxt.Text + "','" + stocktxt.Text + "','" + desctxt.Text + "','" + dname1txt.Text + "','" + dname2txt.Text + "','" + dname3txt.Text + "','" + dname4txt.Text + "','" + dname5txt.Text + "','" + dname1.Text + "','" + dname2.Text + "','" + dname3.Text + "','" + dname4.Text + "','" + dname5.Text + "','" + brandtxt.Text + "','" + sizetxt.Text + "','Approved','" + pictxt.Text + "')";
+                          "values ('" + pidtxt.Text + "','" + supidtxt.Text + "', '" + nametxt.Text + "','" + nametxt.Text + " " + tagstxt.Text + "','" + gidtxt.Text + "', '" + catbox.Text + "','" + colourtxt.Text + "','" + mrptxt.Text + "','" + pricetxt.Text + "','" + dealertxt.Text + "','" + stocktxt.Text + "','" + desctxt.Text + "','" + dname1txt.Text + "','" + dname2txt.Text + "','" + dname3txt.Text + "','" + dname4txt.Text + "','" + dname5txt.Text + "','" + dname1.Text + "','" + dname2.Text + "','" + dname3.Text + "','" + dname4.Text + "','" + dname5.Text + "','" + brandtxt.Text + "','" + sizetxt.Text + "','Approved','" + pictxt.Text + "')";
                     obj.nonQuery(cmd);
                 }
 

@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.offersdataview = new System.Windows.Forms.DataGridView();
-            this.offbtn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.leftpic = new System.Windows.Forms.PictureBox();
@@ -82,7 +80,9 @@
             this.u2 = new System.Windows.Forms.Label();
             this.u3 = new System.Windows.Forms.Label();
             this.u4 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.offersdataview)).BeginInit();
+            this.offersdataview = new System.Windows.Forms.DataGridView();
+            this.updoffers = new System.Windows.Forms.Button();
+            this.rowdelbtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.leftpic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rightpic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.categorydataview)).BeginInit();
@@ -92,6 +92,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.p4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.p3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemsdataview)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.offersdataview)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -104,26 +105,6 @@
             this.label1.Size = new System.Drawing.Size(131, 24);
             this.label1.TabIndex = 0;
             this.label1.Text = "Change Offers";
-            // 
-            // offersdataview
-            // 
-            this.offersdataview.BackgroundColor = System.Drawing.Color.White;
-            this.offersdataview.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.offersdataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.offersdataview.Location = new System.Drawing.Point(17, 40);
-            this.offersdataview.Name = "offersdataview";
-            this.offersdataview.Size = new System.Drawing.Size(473, 166);
-            this.offersdataview.TabIndex = 2;
-            // 
-            // offbtn
-            // 
-            this.offbtn.Location = new System.Drawing.Point(496, 90);
-            this.offbtn.Name = "offbtn";
-            this.offbtn.Size = new System.Drawing.Size(82, 60);
-            this.offbtn.TabIndex = 3;
-            this.offbtn.Text = "Update Offers";
-            this.offbtn.UseVisualStyleBackColor = true;
-            this.offbtn.Click += new System.EventHandler(this.offbtn_Click);
             // 
             // label2
             // 
@@ -596,12 +577,45 @@
             this.u4.Text = "Update";
             this.u4.Click += new System.EventHandler(this.u4_Click);
             // 
+            // offersdataview
+            // 
+            this.offersdataview.BackgroundColor = System.Drawing.Color.White;
+            this.offersdataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.offersdataview.Location = new System.Drawing.Point(17, 40);
+            this.offersdataview.Name = "offersdataview";
+            this.offersdataview.Size = new System.Drawing.Size(413, 166);
+            this.offersdataview.TabIndex = 98;
+            this.offersdataview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.offersdataview_CellClick);
+            // 
+            // updoffers
+            // 
+            this.updoffers.Location = new System.Drawing.Point(436, 93);
+            this.updoffers.Name = "updoffers";
+            this.updoffers.Size = new System.Drawing.Size(75, 62);
+            this.updoffers.TabIndex = 99;
+            this.updoffers.Text = "Update Offers";
+            this.updoffers.UseVisualStyleBackColor = true;
+            this.updoffers.Click += new System.EventHandler(this.updoffers_Click);
+            // 
+            // rowdelbtn
+            // 
+            this.rowdelbtn.Location = new System.Drawing.Point(436, 187);
+            this.rowdelbtn.Name = "rowdelbtn";
+            this.rowdelbtn.Size = new System.Drawing.Size(75, 19);
+            this.rowdelbtn.TabIndex = 100;
+            this.rowdelbtn.Text = "Delete Row";
+            this.rowdelbtn.UseVisualStyleBackColor = true;
+            this.rowdelbtn.Click += new System.EventHandler(this.rowdelbtn_Click);
+            // 
             // apphomepage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1162, 722);
+            this.Controls.Add(this.rowdelbtn);
+            this.Controls.Add(this.updoffers);
+            this.Controls.Add(this.offersdataview);
             this.Controls.Add(this.u4);
             this.Controls.Add(this.u3);
             this.Controls.Add(this.u2);
@@ -653,13 +667,10 @@
             this.Controls.Add(this.leftpic);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.offbtn);
-            this.Controls.Add(this.offersdataview);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "apphomepage";
             this.Text = "apphomepage";
-            ((System.ComponentModel.ISupportInitialize)(this.offersdataview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.leftpic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rightpic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.categorydataview)).EndInit();
@@ -669,6 +680,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.p4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.p3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemsdataview)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.offersdataview)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -677,8 +689,6 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView offersdataview;
-        private System.Windows.Forms.Button offbtn;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.PictureBox leftpic;
@@ -730,5 +740,8 @@
         private System.Windows.Forms.Label u2;
         private System.Windows.Forms.Label u3;
         private System.Windows.Forms.Label u4;
+        private System.Windows.Forms.DataGridView offersdataview;
+        private System.Windows.Forms.Button updoffers;
+        private System.Windows.Forms.Button rowdelbtn;
     }
 }

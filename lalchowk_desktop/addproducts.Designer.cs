@@ -43,7 +43,6 @@
             this.nametxt = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.catlbl = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.colourtxt = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -95,6 +94,7 @@
             this.pictxt = new System.Windows.Forms.TextBox();
             this.label28 = new System.Windows.Forms.Label();
             this.tagstxt = new System.Windows.Forms.TextBox();
+            this.catbox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pic1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -237,17 +237,6 @@
             this.label6.Size = new System.Drawing.Size(79, 16);
             this.label6.TabIndex = 14;
             this.label6.Text = "Category ID";
-            // 
-            // catlbl
-            // 
-            this.catlbl.AutoSize = true;
-            this.catlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.catlbl.Location = new System.Drawing.Point(267, 240);
-            this.catlbl.Name = "catlbl";
-            this.catlbl.Size = new System.Drawing.Size(79, 16);
-            this.catlbl.TabIndex = 15;
-            this.catlbl.Text = "Category ID";
-            this.catlbl.TextChanged += new System.EventHandler(this.catlbl_TextChanged);
             // 
             // label7
             // 
@@ -687,12 +676,20 @@
             this.tagstxt.Size = new System.Drawing.Size(212, 20);
             this.tagstxt.TabIndex = 64;
             // 
+            // catbox
+            // 
+            this.catbox.Location = new System.Drawing.Point(270, 236);
+            this.catbox.Name = "catbox";
+            this.catbox.Size = new System.Drawing.Size(76, 20);
+            this.catbox.TabIndex = 66;
+            // 
             // addproducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1162, 722);
+            this.Controls.Add(this.catbox);
             this.Controls.Add(this.label28);
             this.Controls.Add(this.tagstxt);
             this.Controls.Add(this.label27);
@@ -743,7 +740,6 @@
             this.Controls.Add(this.stocktxt);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.colourtxt);
-            this.Controls.Add(this.catlbl);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.nametxt);
@@ -786,7 +782,6 @@
         private System.Windows.Forms.TextBox nametxt;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label catlbl;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox colourtxt;
         private System.Windows.Forms.Label label8;
@@ -838,5 +833,6 @@
         private System.Windows.Forms.TextBox pictxt;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.TextBox tagstxt;
+        private System.Windows.Forms.TextBox catbox;
     }
 }

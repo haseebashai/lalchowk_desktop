@@ -45,7 +45,7 @@
             this.chkbtn.AutoSize = true;
             this.chkbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.chkbtn.Depth = 0;
-            this.chkbtn.Location = new System.Drawing.Point(547, 182);
+            this.chkbtn.Location = new System.Drawing.Point(662, 182);
             this.chkbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.chkbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.chkbtn.Name = "chkbtn";
@@ -61,7 +61,7 @@
             this.newbtn.AutoSize = true;
             this.newbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.newbtn.Depth = 0;
-            this.newbtn.Location = new System.Drawing.Point(95, 182);
+            this.newbtn.Location = new System.Drawing.Point(210, 182);
             this.newbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.newbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.newbtn.Name = "newbtn";
@@ -75,7 +75,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Silver;
-            this.panel1.Location = new System.Drawing.Point(395, 172);
+            this.panel1.Location = new System.Drawing.Point(510, 172);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1, 100);
             this.panel1.TabIndex = 16;
@@ -84,7 +84,7 @@
             // 
             this.tplbl.AutoSize = true;
             this.tplbl.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.tplbl.Location = new System.Drawing.Point(329, 455);
+            this.tplbl.Location = new System.Drawing.Point(429, 455);
             this.tplbl.Name = "tplbl";
             this.tplbl.Size = new System.Drawing.Size(104, 13);
             this.tplbl.TabIndex = 17;
@@ -94,7 +94,7 @@
             // 
             this.eleclbl.AutoSize = true;
             this.eleclbl.ForeColor = System.Drawing.Color.Gray;
-            this.eleclbl.Location = new System.Drawing.Point(92, 512);
+            this.eleclbl.Location = new System.Drawing.Point(207, 512);
             this.eleclbl.Name = "eleclbl";
             this.eleclbl.Size = new System.Drawing.Size(84, 13);
             this.eleclbl.TabIndex = 18;
@@ -104,7 +104,7 @@
             // 
             this.clothlbl.AutoSize = true;
             this.clothlbl.ForeColor = System.Drawing.Color.Gray;
-            this.clothlbl.Location = new System.Drawing.Point(92, 534);
+            this.clothlbl.Location = new System.Drawing.Point(207, 534);
             this.clothlbl.Name = "clothlbl";
             this.clothlbl.Size = new System.Drawing.Size(67, 13);
             this.clothlbl.TabIndex = 19;
@@ -114,7 +114,7 @@
             // 
             this.footlbl.AutoSize = true;
             this.footlbl.ForeColor = System.Drawing.Color.Gray;
-            this.footlbl.Location = new System.Drawing.Point(92, 555);
+            this.footlbl.Location = new System.Drawing.Point(207, 555);
             this.footlbl.Name = "footlbl";
             this.footlbl.Size = new System.Drawing.Size(71, 13);
             this.footlbl.TabIndex = 20;
@@ -124,7 +124,7 @@
             // 
             this.mobilelbl.AutoSize = true;
             this.mobilelbl.ForeColor = System.Drawing.Color.Gray;
-            this.mobilelbl.Location = new System.Drawing.Point(487, 512);
+            this.mobilelbl.Location = new System.Drawing.Point(602, 512);
             this.mobilelbl.Name = "mobilelbl";
             this.mobilelbl.Size = new System.Drawing.Size(65, 13);
             this.mobilelbl.TabIndex = 21;
@@ -134,7 +134,7 @@
             // 
             this.complbl.AutoSize = true;
             this.complbl.ForeColor = System.Drawing.Color.Gray;
-            this.complbl.Location = new System.Drawing.Point(487, 534);
+            this.complbl.Location = new System.Drawing.Point(602, 534);
             this.complbl.Name = "complbl";
             this.complbl.Size = new System.Drawing.Size(79, 13);
             this.complbl.TabIndex = 22;
@@ -144,7 +144,7 @@
             // 
             this.cacclbl.AutoSize = true;
             this.cacclbl.ForeColor = System.Drawing.Color.Gray;
-            this.cacclbl.Location = new System.Drawing.Point(487, 555);
+            this.cacclbl.Location = new System.Drawing.Point(602, 555);
             this.cacclbl.Name = "cacclbl";
             this.cacclbl.Size = new System.Drawing.Size(86, 13);
             this.cacclbl.TabIndex = 23;

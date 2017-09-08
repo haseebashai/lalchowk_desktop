@@ -16,10 +16,11 @@ namespace Veiled_Kashmir_Admin_Panel
 
         DBConnect obj = new DBConnect();
         string cmd;
-        MySqlDataAdapter adap;
-        DataTable dt,dt1;
-        MySqlCommandBuilder cmdbl;
+        MySqlDataAdapter adap,adap1;
+        DataTable dt,dt1,dt5;
+        MySqlCommandBuilder cmdbl,cmdbl1;
         MySqlDataReader dr;
+        string oid;
         MySqlConnection con = new MySqlConnection("SERVER=182.50.133.78;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah");
         string url = "http://lalchowk.in/lalchowk/pictures/";
 
@@ -31,21 +32,32 @@ namespace Veiled_Kashmir_Admin_Panel
         }
 
        
-
         private void readoffers()
         {
-
             con.Open();
-            adap = new MySqlDataAdapter("SELECT * FROM lalchowk.offers", con);
-            dt = new DataTable();
-            adap.Fill(dt);
+            adap1 = new MySqlDataAdapter("SELECT * FROM offers", con);
+            dt5 = new DataTable();
+            adap1.Fill(dt5);
             con.Close();
             BindingSource bsource = new BindingSource();
-            bsource.DataSource = dt;
+            bsource.DataSource = dt5;
             offersdataview.DataSource = bsource;
 
+        }
 
+        private void updoffers_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                cmdbl = new MySqlCommandBuilder(adap1);
+                adap1.Update(dt5);
+                MessageBox.Show("Offers Updated.");
 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
 
@@ -63,7 +75,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
 
             con.Open();
-            adap = new MySqlDataAdapter("SELECT productid, productname, picture, stock, categoryid FROM products", con);
+            adap = new MySqlDataAdapter("SELECT productid, productname, picture, stock, price, categoryid FROM products", con);
             dt = new DataTable();
             adap.Fill(dt);
             con.Close();
@@ -149,20 +161,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         }
 
-        private void offbtn_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                cmdbl = new MySqlCommandBuilder(adap);
-                adap.Update(dt);
-                MessageBox.Show("Offers Updated.");
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-        }
+      
 
         private void fcattxt_TextChanged(object sender, EventArgs e)
         {
@@ -206,26 +205,50 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             cmd = "update homepage2 set title='" + p1title.Text + "',subtitle='"+p1sub.Text+"',picture='"+p1pic.Text+"',link='" + p1link.Text + "' where homeid='3'";
             obj.nonQuery(cmd);
+            MessageBox.Show("Updated.");
         }
 
         private void u2_Click(object sender, EventArgs e)
         {
             cmd = "update homepage2 set title='" + p2title.Text + "',subtitle='" + p2sub.Text + "',picture='" + p2pic.Text + "',link='" + p2link.Text + "' where homeid='4'";
             obj.nonQuery(cmd);
+            MessageBox.Show("Updated.");
+        }
+
+        private void offersdataview_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = this.offersdataview.Rows[e.RowIndex];
+                oid = row.Cells["offerid"].Value.ToString();
+            }
+        }
+
+        private void rowdelbtn_Click(object sender, EventArgs e)
+        {
+            cmd = "delete from offers where offerid='"+oid+"'";
+            obj.nonQuery(cmd);
+            MessageBox.Show("Deleted sucessfully.");
+            Cursor = Cursors.WaitCursor;
+            readoffers();
+            Cursor = Cursors.Arrow;
         }
 
         private void u3_Click(object sender, EventArgs e)
         {
             cmd = "update homepage2 set title='" + p3title.Text + "',subtitle='" + p3sub.Text + "',picture='" + p3pic.Text + "',link='" + p3link.Text + "' where homeid='5'";
             obj.nonQuery(cmd);
+            MessageBox.Show("Updated.");
         }
 
         private void u4_Click(object sender, EventArgs e)
         {
             cmd = "update homepage2 set title='" + p4title.Text + "',subtitle='" + p4sub.Text + "',picture='" + p4pic.Text + "',link='" + p4link.Text + "' where homeid='6'";
             obj.nonQuery(cmd);
+            MessageBox.Show("Updated.");
         }
 
+       
         private void upd4btn_Click(object sender, EventArgs e)
         {
             cmd = "update homepage2 set title='" + p1title.Text + "',subtitle='" + p1sub.Text + "',picture='" + p1pic.Text + "',link='" + p1link.Text + "' where homeid='3'";
