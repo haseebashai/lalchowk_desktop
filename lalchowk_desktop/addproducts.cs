@@ -317,17 +317,23 @@ namespace Veiled_Kashmir_Admin_Panel
                 }
                 */
             try {
-
-                if (sizetxt.Text == "" || dname5txt.Text=="" || dname5.Text=="")
+                StringBuilder s = new StringBuilder(nametxt.Text);
+                s.Replace(@"\", @"\\");
+                s.Replace("'", "\\'");
+                StringBuilder s1 = new StringBuilder(brandtxt.Text);
+                s1.Replace(@"\", @"\\");
+                s1.Replace("'", "\\'");
+                
+                if (sizetxt.Text ==null || dname5txt.Text==null || dname5.Text==null)
                 {
                     cmd = "insert into products (`productid`, `supplierid`, `productname`,`tags`, `groupid`,`categoryid`,`color`, `mrp`, `price`, `dealerprice`, `stock`, `description`, `detailname1`, `detailname2`, `detailname3`, `detailname4`, `detail1`, `detail2`, `detail3`, `detail4`,`brand`,`requeststatus`,`picture`) " +
-                       "values ('" + pidtxt.Text + "','" + supidtxt.Text + "', '" + nametxt.Text + "','"+ nametxt.Text + " " +tagstxt.Text+"','" + gidtxt.Text + "', '" + catbox.Text + "','" + colourtxt.Text + "','" + mrptxt.Text + "','" + pricetxt.Text + "','" + dealertxt.Text + "','" + stocktxt.Text + "','" + desctxt.Text + "','" + dname1txt.Text + "','" + dname2txt.Text + "','" + dname3txt.Text + "','" + dname4txt.Text + "','" + dname1.Text + "','" + dname2.Text + "','" + dname3.Text + "','" + dname4.Text + "','" + brandtxt.Text + "','Approved','" + pictxt.Text + "')";
+                       "values ('" + pidtxt.Text + "','" + supidtxt.Text + "', '" + s + "','"+ s + " " +tagstxt.Text+"','" + gidtxt.Text + "', '" + catbox.Text + "','" + colourtxt.Text + "','" + mrptxt.Text + "','" + pricetxt.Text + "','" + dealertxt.Text + "','" + stocktxt.Text + "','" + desctxt.Text + "','" + dname1txt.Text + "','" + dname2txt.Text + "','" + dname3txt.Text + "','" + dname4txt.Text + "','" + dname1.Text + "','" + dname2.Text + "','" + dname3.Text + "','" + dname4.Text + "','" + s1 + "','Approved','" + pictxt.Text + "')";
                     obj.nonQuery(cmd);
                 }
                 else
                 {
                     cmd = "insert into products (`productid`, `supplierid`, `productname`,`tags`, `groupid`,`categoryid`,`color`, `mrp`, `price`, `dealerprice`, `stock`, `description`, `detailname1`, `detailname2`, `detailname3`, `detailname4`, `detailname5`, `detail1`, `detail2`, `detail3`, `detail4`, `detail5`,`brand`,`size`,`requeststatus`,`picture`) " +
-                          "values ('" + pidtxt.Text + "','" + supidtxt.Text + "', '" + nametxt.Text + "','" + nametxt.Text + " " + tagstxt.Text + "','" + gidtxt.Text + "', '" + catbox.Text + "','" + colourtxt.Text + "','" + mrptxt.Text + "','" + pricetxt.Text + "','" + dealertxt.Text + "','" + stocktxt.Text + "','" + desctxt.Text + "','" + dname1txt.Text + "','" + dname2txt.Text + "','" + dname3txt.Text + "','" + dname4txt.Text + "','" + dname5txt.Text + "','" + dname1.Text + "','" + dname2.Text + "','" + dname3.Text + "','" + dname4.Text + "','" + dname5.Text + "','" + brandtxt.Text + "','" + sizetxt.Text + "','Approved','" + pictxt.Text + "')";
+                          "values ('" + pidtxt.Text + "','" + supidtxt.Text + "', '" + s + "','" + s + " " + tagstxt.Text + "','" + gidtxt.Text + "', '" + catbox.Text + "','" + colourtxt.Text + "','" + mrptxt.Text + "','" + pricetxt.Text + "','" + dealertxt.Text + "','" + stocktxt.Text + "','" + desctxt.Text + "','" + dname1txt.Text + "','" + dname2txt.Text + "','" + dname3txt.Text + "','" + dname4txt.Text + "','" + dname5txt.Text + "','" + dname1.Text + "','" + dname2.Text + "','" + dname3.Text + "','" + dname4.Text + "','" + dname5.Text + "','" + s1 + "','" + sizetxt.Text + "','Approved','" + pictxt.Text + "')";
                     obj.nonQuery(cmd);
                 }
 
