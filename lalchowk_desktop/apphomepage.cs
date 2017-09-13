@@ -52,6 +52,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 cmdbl = new MySqlCommandBuilder(adap1);
                 adap1.Update(dt5);
                 MessageBox.Show("Offers Updated.");
+                readoffers();
 
             }
             catch (Exception ex)
@@ -177,17 +178,17 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void p2pic_TextChanged(object sender, EventArgs e)
         {
-            p2.ImageLocation = (url + p1pic.Text);
+            p2.ImageLocation = (url + p2pic.Text);
         }
 
         private void p3pic_TextChanged(object sender, EventArgs e)
         {
-            p3.ImageLocation = (url + p1pic.Text);
+            p3.ImageLocation = (url + p3pic.Text);
         }
 
         private void p4pic_TextChanged(object sender, EventArgs e)
         {
-            p4.ImageLocation = (url + p1pic.Text);
+            p4.ImageLocation = (url + p4pic.Text);
         }
 
         private void upddpbtn_Click(object sender, EventArgs e)
@@ -259,6 +260,7 @@ namespace Veiled_Kashmir_Admin_Panel
             obj.nonQuery(cmd);
             cmd = "update homepage2 set title='" + p4title.Text + "',subtitle='" + p4sub.Text + "',picture='" + p4pic.Text + "',link='" + p4link.Text + "' where homeid='6'";
             obj.nonQuery(cmd);
+            MessageBox.Show("Updated.");
         }
 
         private void updbbtn_Click(object sender, EventArgs e)

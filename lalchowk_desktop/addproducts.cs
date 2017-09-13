@@ -326,8 +326,8 @@ namespace Veiled_Kashmir_Admin_Panel
                 
                 if (sizetxt.Text ==null || dname5txt.Text==null || dname5.Text==null)
                 {
-                    cmd = "insert into products (`productid`, `supplierid`, `productname`,`tags`, `groupid`,`categoryid`,`color`, `mrp`, `price`, `dealerprice`, `stock`, `description`, `detailname1`, `detailname2`, `detailname3`, `detailname4`, `detail1`, `detail2`, `detail3`, `detail4`,`brand`,`requeststatus`,`picture`) " +
-                       "values ('" + pidtxt.Text + "','" + supidtxt.Text + "', '" + s + "','"+ s + " " +tagstxt.Text+"','" + gidtxt.Text + "', '" + catbox.Text + "','" + colourtxt.Text + "','" + mrptxt.Text + "','" + pricetxt.Text + "','" + dealertxt.Text + "','" + stocktxt.Text + "','" + desctxt.Text + "','" + dname1txt.Text + "','" + dname2txt.Text + "','" + dname3txt.Text + "','" + dname4txt.Text + "','" + dname1.Text + "','" + dname2.Text + "','" + dname3.Text + "','" + dname4.Text + "','" + s1 + "','Approved','" + pictxt.Text + "')";
+                    cmd = "insert into products (`productid`, `supplierid`, `productname`,`tags`, `groupid`,`categoryid`,`color`, `mrp`, `price`, `dealerprice`, `stock`, `description`, `detailname1`, `detailname2`, `detailname3`, `detailname4`, `detail1`, `detail2`, `detail3`, `detail4`,`brand`,`size`,`requeststatus`,`picture`) " +
+                       "values ('" + pidtxt.Text + "','" + supidtxt.Text + "', '" + s + "','"+ s + " " +tagstxt.Text+"','" + gidtxt.Text + "', '" + catbox.Text + "','" + colourtxt.Text + "','" + mrptxt.Text + "','" + pricetxt.Text + "','" + dealertxt.Text + "','" + stocktxt.Text + "','" + desctxt.Text + "','" + dname1txt.Text + "','" + dname2txt.Text + "','" + dname3txt.Text + "','" + dname4txt.Text + "','" + dname1.Text + "','" + dname2.Text + "','" + dname3.Text + "','" + dname4.Text + "','" + s1 + "',null,'Approved','" + pictxt.Text + "')";
                     obj.nonQuery(cmd);
                 }
                 else

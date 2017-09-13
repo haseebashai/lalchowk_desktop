@@ -246,6 +246,7 @@ namespace Veiled_Kashmir_Admin_Panel
             amounttxt.Text="";
             datetxt.Text = "";
             baltxt.Text = "";
+            reasontxt1.Text = "";
             
             readexpenses();
             
