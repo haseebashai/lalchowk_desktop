@@ -526,7 +526,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void readpurchasecost()
         {
-            dr = obj.Query("select sum(dealerprice*quantity) from lalchowk.orderdetails where productid in (SELECT productid FROM lalchowk.orderdetails where orderid in (SELECT orderid FROM lalchowk.orders where status = 'delivered'));");
+            dr = obj.Query("select sum(dealerprice * quantity) from lalchowk.orderdetails where orderid in (SELECT orderid FROM lalchowk.orders where status = 'delivered');");                             
             dr.Read();
             purlbl.Text = dr[0].ToString();
             

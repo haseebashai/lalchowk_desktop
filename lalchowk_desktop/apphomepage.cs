@@ -66,16 +66,6 @@ namespace Veiled_Kashmir_Admin_Panel
         {
 
             con.Open();
-            adap = new MySqlDataAdapter("SELECT * FROM secondcategory", con);
-            dt = new DataTable();
-            adap.Fill(dt);
-            con.Close();
-            BindingSource bsource = new BindingSource();
-            bsource.DataSource = dt;
-            categorydataview.DataSource = bsource;
-
-
-            con.Open();
             adap = new MySqlDataAdapter("SELECT productid, productname, picture, stock, price, categoryid FROM products", con);
             dt = new DataTable();
             adap.Fill(dt);
@@ -233,6 +223,16 @@ namespace Veiled_Kashmir_Admin_Panel
             Cursor = Cursors.WaitCursor;
             readoffers();
             Cursor = Cursors.Arrow;
+        }
+
+        private void productsdataview_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = this.productsdataview.Rows[e.RowIndex];
+                string ppiclocation = row.Cells["picture"].Value.ToString();
+                ppic.ImageLocation = (url + ppiclocation);
+            }
         }
 
         private void u3_Click(object sender, EventArgs e)

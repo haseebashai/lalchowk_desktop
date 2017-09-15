@@ -132,6 +132,25 @@
             this.fsuptxt = new System.Windows.Forms.TextBox();
             this.label37 = new System.Windows.Forms.Label();
             this.totallbl = new System.Windows.Forms.Label();
+            this.revbtn = new MaterialSkin.Controls.MaterialFlatButton();
+            this.rpnl = new System.Windows.Forms.Panel();
+            this.gprofittxt = new System.Windows.Forms.TextBox();
+            this.label44 = new System.Windows.Forms.Label();
+            this.ireasontxt = new System.Windows.Forms.TextBox();
+            this.label43 = new System.Windows.Forms.Label();
+            this.investedtxt = new System.Windows.Forms.TextBox();
+            this.label38 = new System.Windows.Forms.Label();
+            this.profittxt = new System.Windows.Forms.TextBox();
+            this.label39 = new System.Windows.Forms.Label();
+            this.addrbtn = new MaterialSkin.Controls.MaterialFlatButton();
+            this.saletxt = new System.Windows.Forms.TextBox();
+            this.label40 = new System.Windows.Forms.Label();
+            this.yeartxt = new System.Windows.Forms.TextBox();
+            this.label41 = new System.Windows.Forms.Label();
+            this.monthtxt = new System.Windows.Forms.TextBox();
+            this.label42 = new System.Windows.Forms.Label();
+            this.pcosttxt = new System.Windows.Forms.TextBox();
+            this.label45 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.accountdataview)).BeginInit();
             this.exppnl.SuspendLayout();
             this.moneypnl.SuspendLayout();
@@ -140,6 +159,7 @@
             this.billpnl.SuspendLayout();
             this.delpnl.SuspendLayout();
             this.dealpnl.SuspendLayout();
+            this.rpnl.SuspendLayout();
             this.SuspendLayout();
             // 
             // expbtn
@@ -1174,7 +1194,7 @@
             this.dealbtn.AutoSize = true;
             this.dealbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.dealbtn.Depth = 0;
-            this.dealbtn.Location = new System.Drawing.Point(667, 9);
+            this.dealbtn.Location = new System.Drawing.Point(669, 9);
             this.dealbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.dealbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.dealbtn.Name = "dealbtn";
@@ -1226,12 +1246,204 @@
             this.totallbl.Text = "total";
             this.totallbl.Visible = false;
             // 
+            // revbtn
+            // 
+            this.revbtn.AutoSize = true;
+            this.revbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.revbtn.Depth = 0;
+            this.revbtn.Location = new System.Drawing.Point(781, 9);
+            this.revbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.revbtn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.revbtn.Name = "revbtn";
+            this.revbtn.Primary = false;
+            this.revbtn.Size = new System.Drawing.Size(71, 36);
+            this.revbtn.TabIndex = 40;
+            this.revbtn.Text = "Revenue";
+            this.revbtn.UseVisualStyleBackColor = true;
+            this.revbtn.Click += new System.EventHandler(this.revbtn_Click);
+            // 
+            // rpnl
+            // 
+            this.rpnl.Controls.Add(this.pcosttxt);
+            this.rpnl.Controls.Add(this.label45);
+            this.rpnl.Controls.Add(this.gprofittxt);
+            this.rpnl.Controls.Add(this.label44);
+            this.rpnl.Controls.Add(this.ireasontxt);
+            this.rpnl.Controls.Add(this.label43);
+            this.rpnl.Controls.Add(this.investedtxt);
+            this.rpnl.Controls.Add(this.label38);
+            this.rpnl.Controls.Add(this.profittxt);
+            this.rpnl.Controls.Add(this.label39);
+            this.rpnl.Controls.Add(this.addrbtn);
+            this.rpnl.Controls.Add(this.saletxt);
+            this.rpnl.Controls.Add(this.label40);
+            this.rpnl.Controls.Add(this.yeartxt);
+            this.rpnl.Controls.Add(this.label41);
+            this.rpnl.Controls.Add(this.monthtxt);
+            this.rpnl.Controls.Add(this.label42);
+            this.rpnl.Location = new System.Drawing.Point(7, 54);
+            this.rpnl.Name = "rpnl";
+            this.rpnl.Size = new System.Drawing.Size(1148, 164);
+            this.rpnl.TabIndex = 41;
+            this.rpnl.Visible = false;
+            // 
+            // gprofittxt
+            // 
+            this.gprofittxt.Location = new System.Drawing.Point(521, 26);
+            this.gprofittxt.Multiline = true;
+            this.gprofittxt.Name = "gprofittxt";
+            this.gprofittxt.Size = new System.Drawing.Size(204, 19);
+            this.gprofittxt.TabIndex = 25;
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Location = new System.Drawing.Point(518, 9);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(61, 13);
+            this.label44.TabIndex = 24;
+            this.label44.Text = "Gross Profit";
+            // 
+            // ireasontxt
+            // 
+            this.ireasontxt.Location = new System.Drawing.Point(521, 75);
+            this.ireasontxt.Multiline = true;
+            this.ireasontxt.Name = "ireasontxt";
+            this.ireasontxt.Size = new System.Drawing.Size(204, 73);
+            this.ireasontxt.TabIndex = 23;
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Location = new System.Drawing.Point(518, 58);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(44, 13);
+            this.label43.TabIndex = 22;
+            this.label43.Text = "Reason";
+            // 
+            // investedtxt
+            // 
+            this.investedtxt.Location = new System.Drawing.Point(278, 129);
+            this.investedtxt.Multiline = true;
+            this.investedtxt.Name = "investedtxt";
+            this.investedtxt.Size = new System.Drawing.Size(204, 19);
+            this.investedtxt.TabIndex = 21;
+            this.investedtxt.TextChanged += new System.EventHandler(this.investedtxt_TextChanged);
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(275, 111);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(76, 13);
+            this.label38.TabIndex = 20;
+            this.label38.Text = "Invested Back";
+            // 
+            // profittxt
+            // 
+            this.profittxt.Location = new System.Drawing.Point(278, 74);
+            this.profittxt.Name = "profittxt";
+            this.profittxt.Size = new System.Drawing.Size(204, 20);
+            this.profittxt.TabIndex = 19;
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(275, 57);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(31, 13);
+            this.label39.TabIndex = 18;
+            this.label39.Text = "Profit";
+            // 
+            // addrbtn
+            // 
+            this.addrbtn.AutoSize = true;
+            this.addrbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.addrbtn.Depth = 0;
+            this.addrbtn.Location = new System.Drawing.Point(774, 112);
+            this.addrbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.addrbtn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.addrbtn.Name = "addrbtn";
+            this.addrbtn.Primary = false;
+            this.addrbtn.Size = new System.Drawing.Size(85, 36);
+            this.addrbtn.TabIndex = 17;
+            this.addrbtn.Text = "ADD Entry";
+            this.addrbtn.UseVisualStyleBackColor = true;
+            this.addrbtn.Click += new System.EventHandler(this.addrbtn_Click);
+            // 
+            // saletxt
+            // 
+            this.saletxt.Location = new System.Drawing.Point(5, 128);
+            this.saletxt.Name = "saletxt";
+            this.saletxt.Size = new System.Drawing.Size(204, 20);
+            this.saletxt.TabIndex = 5;
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(2, 111);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(28, 13);
+            this.label40.TabIndex = 4;
+            this.label40.Text = "Sale";
+            // 
+            // yeartxt
+            // 
+            this.yeartxt.Location = new System.Drawing.Point(5, 74);
+            this.yeartxt.Name = "yeartxt";
+            this.yeartxt.Size = new System.Drawing.Size(204, 20);
+            this.yeartxt.TabIndex = 3;
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Location = new System.Drawing.Point(2, 57);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(29, 13);
+            this.label41.TabIndex = 2;
+            this.label41.Text = "Year";
+            // 
+            // monthtxt
+            // 
+            this.monthtxt.Location = new System.Drawing.Point(5, 25);
+            this.monthtxt.Name = "monthtxt";
+            this.monthtxt.Size = new System.Drawing.Size(204, 20);
+            this.monthtxt.TabIndex = 1;
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Location = new System.Drawing.Point(2, 8);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(37, 13);
+            this.label42.TabIndex = 0;
+            this.label42.Text = "Month";
+            // 
+            // pcosttxt
+            // 
+            this.pcosttxt.Location = new System.Drawing.Point(278, 25);
+            this.pcosttxt.Name = "pcosttxt";
+            this.pcosttxt.Size = new System.Drawing.Size(204, 20);
+            this.pcosttxt.TabIndex = 27;
+            this.pcosttxt.TextChanged += new System.EventHandler(this.pcosttxt_TextChanged);
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Location = new System.Drawing.Point(275, 8);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(76, 13);
+            this.label45.TabIndex = 26;
+            this.label45.Text = "Purchase Cost";
+            // 
             // accounts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1162, 722);
+            this.Controls.Add(this.rpnl);
+            this.Controls.Add(this.revbtn);
             this.Controls.Add(this.totallbl);
             this.Controls.Add(this.fsuptxt);
             this.Controls.Add(this.label37);
@@ -1274,6 +1486,8 @@
             this.delpnl.PerformLayout();
             this.dealpnl.ResumeLayout(false);
             this.dealpnl.PerformLayout();
+            this.rpnl.ResumeLayout(false);
+            this.rpnl.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1385,5 +1599,24 @@
         private System.Windows.Forms.TextBox fsuptxt;
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.Label totallbl;
+        private MaterialSkin.Controls.MaterialFlatButton revbtn;
+        public System.Windows.Forms.Panel rpnl;
+        private System.Windows.Forms.TextBox gprofittxt;
+        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.TextBox ireasontxt;
+        private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.TextBox investedtxt;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.TextBox profittxt;
+        private System.Windows.Forms.Label label39;
+        private MaterialSkin.Controls.MaterialFlatButton addrbtn;
+        private System.Windows.Forms.TextBox saletxt;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.TextBox yeartxt;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.TextBox monthtxt;
+        private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.TextBox pcosttxt;
+        private System.Windows.Forms.Label label45;
     }
 }

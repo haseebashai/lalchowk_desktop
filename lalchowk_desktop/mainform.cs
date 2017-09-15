@@ -16,9 +16,9 @@ namespace Veiled_Kashmir_Admin_Panel
 
     public partial class mainform : Form
     {
-        
+
         DBConnect obj = new DBConnect();
-        MySqlConnection con =new MySqlConnection("SERVER=182.50.133.78;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah");
+        MySqlConnection con = new MySqlConnection("SERVER=182.50.133.78;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah");
         MySqlDataAdapter adap;
         DataTable dt;
         MySqlDataReader dr;
@@ -35,7 +35,7 @@ namespace Veiled_Kashmir_Admin_Panel
             loading.ControlBox = false;
             loading.BackColor = Color.LightBlue;
             loading.StartPosition = FormStartPosition.CenterScreen;
-            loading.Controls.Add(new Label() { Text = "LOADING...", Font = new Font("trajan pro",Font.Size, FontStyle.Bold) });
+            loading.Controls.Add(new Label() { Text = "LOADING...", Font = new Font("trajan pro", Font.Size, FontStyle.Bold) });
             loading.Show();
             Cursor = Cursors.WaitCursor;
             readordersshipped();
@@ -54,14 +54,14 @@ namespace Veiled_Kashmir_Admin_Panel
                 signout();
             changelabel("Welcome, " + userinfo.username + "");
 
-            
+
         }
 
-        
-      
+
+
         private void readordersplaced()
         {
-            
+            try { 
             con.Open();
             adap = new MySqlDataAdapter("select * from orders where status='placed'", con);
             dt = new DataTable();
@@ -73,34 +73,51 @@ namespace Veiled_Kashmir_Admin_Panel
 
             dr = obj.Query("Select count(status) from orders where status='placed'");
             dr.Read();
-            attentionlbl.Text = "> "+ dr[0].ToString() + " Order(s) need your Attention ASAP!";
+            attentionlbl.Text = "> " + dr[0].ToString() + " Order(s) need your Attention ASAP!";
             obj.closeConnection();
 
-            dr=obj.Query("select sum(dealerprice*quantity) from orderdetails where productid in (SELECT productid FROM orderdetails where orderid in (SELECT orderid FROM orders where status = 'placed'))");
+            dr = obj.Query("select sum(dealerprice*quantity) from orderdetails where productid in (SELECT productid FROM orderdetails where orderid in (SELECT orderid FROM orders where status = 'placed'))");
             dr.Read();
-            costlbl.Text = "> Will cost Rs. " + dr[0].ToString() +"/-";
+            costlbl.Text = "> Will cost Rs. " + dr[0].ToString() + "/-";
             obj.closeConnection();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
+    
 
         private void readordersshipped()
         {
-            con.Open();
-            adap = new MySqlDataAdapter("select * from orders where status='shipped'", con);
-            dt = new DataTable();
-            adap.Fill(dt);
-            con.Close();
-            BindingSource bsource = new BindingSource();
-            bsource.DataSource = dt;
-            shippeddataview.DataSource = bsource;
+            try {
+                con.Open();
+                adap = new MySqlDataAdapter("select * from orders where status='shipped'", con);
+                dt = new DataTable();
+                adap.Fill(dt);
+                con.Close();
+                BindingSource bsource = new BindingSource();
+                bsource.DataSource = dt;
+                shippeddataview.DataSource = bsource;
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
-       private void readordersdelivered()
+        private void readordersdelivered()
         {
-            dr = obj.Query("SELECT count(status) FROM orders where status='delivered'");
-            dr.Read();
-            ordersdlbl.Text = dr[0].ToString();
-            obj.closeConnection();
+            try {
+                dr = obj.Query("SELECT count(status) FROM orders where status='delivered'");
+                dr.Read();
+                ordersdlbl.Text = dr[0].ToString();
+                obj.closeConnection();
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
+    
 
         private void ordersbtn_Click(object sender, EventArgs e)
         {

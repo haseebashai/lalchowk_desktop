@@ -147,6 +147,19 @@ namespace Veiled_Kashmir_Admin_Panel
             aconn.Close();
         }
 
+        public void readrevenue()
+        {
+            aconn.Open();
+            adap = new MySqlDataAdapter("select * from revenue", aconn);
+            dt = new DataTable();
+            adap.Fill(dt);
+            aconn.Close();
+            BindingSource bsource = new BindingSource();
+            bsource.DataSource = dt;
+            accountdataview.DataSource = bsource;
+        }
+
+
         private void readdetails()
         {
             aconn.Open();
@@ -154,13 +167,6 @@ namespace Veiled_Kashmir_Admin_Panel
             dr = cmd.ExecuteReader();
             dr.Read();
             moneylbl.Text = "Total Money pooled: Rs. " + dr[0].ToString(); 
-            aconn.Close();
-
-            aconn.Open();
-            cmd = new MySqlCommand("select sum(amount) from expenses", aconn);
-            dr = cmd.ExecuteReader();
-            dr.Read();
-            costlbl.Text = "Total Cost spent: Rs. " + dr[0].ToString();
             aconn.Close();
 
             aconn.Open();
@@ -196,6 +202,8 @@ namespace Veiled_Kashmir_Admin_Panel
             moneypnl.Visible = false;
             bankpnl.Visible = false;
             miscpnl.Visible = false;
+            rpnl.Visible = false;
+            totallbl.Visible = false;
         }
 
         private void moneybtn_Click(object sender, EventArgs e)
@@ -208,6 +216,8 @@ namespace Veiled_Kashmir_Admin_Panel
             exppnl.Visible = false;
             bankpnl.Visible = false;
             miscpnl.Visible = false;
+            rpnl.Visible = false;
+            totallbl.Visible = false;
         }
 
         private void bankbtn_Click(object sender, EventArgs e)
@@ -220,6 +230,8 @@ namespace Veiled_Kashmir_Admin_Panel
             moneypnl.Visible = false;
             exppnl.Visible = false;
             miscpnl.Visible = false;
+            rpnl.Visible = false;
+            totallbl.Visible = false;
         }
 
         private void miscbtn_Click(object sender, EventArgs e)
@@ -232,6 +244,8 @@ namespace Veiled_Kashmir_Admin_Panel
             bankpnl.Visible = false;
             moneypnl.Visible = false;
             exppnl.Visible = false;
+            rpnl.Visible = false;
+            totallbl.Visible = false;
         }
 
 
@@ -307,6 +321,7 @@ namespace Veiled_Kashmir_Admin_Panel
             moneypnl.Visible = false;
             exppnl.Visible = false;
             delpnl.Visible = false;
+            rpnl.Visible = false;
         }
 
         private void billaddbtn_Click(object sender, EventArgs e)
@@ -337,6 +352,7 @@ namespace Veiled_Kashmir_Admin_Panel
             bankpnl.Visible = false;
             miscpnl.Visible = false;
             billpnl.Visible = false;
+            rpnl.Visible = false;
 
         }
 
@@ -369,6 +385,7 @@ namespace Veiled_Kashmir_Admin_Panel
             bankpnl.Visible = false;
             miscpnl.Visible = false;
             billpnl.Visible = false;
+            rpnl.Visible = false;
         }
 
         private void dealaddbtn_Click(object sender, EventArgs e)
@@ -440,6 +457,62 @@ namespace Veiled_Kashmir_Admin_Panel
             dv.RowFilter = string.Format("suppliername LIKE '%{0}%'", fsuptxt.Text);
             accountdataview.DataSource = dv;
         }
+
+        private void revbtn_Click(object sender, EventArgs e)
+        {
+            readdetails();
+
+            readrevenue();
+            fsuptxt.Enabled = false;
+            rpnl.Visible = true;
+            delpnl.Visible = false;
+            dealpnl.Visible = false;
+            exppnl.Visible = false;
+            moneypnl.Visible = false;
+            bankpnl.Visible = false;
+            miscpnl.Visible = false;
+            billpnl.Visible = false;
+            totallbl.Visible = false;
+        }
+
+        private void addrbtn_Click(object sender, EventArgs e)
+        {
+            aconn.Open();
+            mysqlcmd = new MySqlCommand("insert into revenue(`month`, `year`,`sale`,`profit`,`invested`,`reason`,`gross_profit`,`purchase_cost`) values ('" + monthtxt.Text + "','" + yeartxt.Text + "','" + saletxt.Text + "','" + profittxt.Text + "','"+investedtxt.Text+"','"+reasontxt.Text+"','"+gprofittxt.Text+"','"+pcosttxt.Text+"')", aconn);
+            mysqlcmd.ExecuteNonQuery();
+            MessageBox.Show("Entry added.");
+            aconn.Close();
+            monthtxt.Text = "";
+            yeartxt.Text = "";
+            saletxt.Text = "";
+            profittxt.Text = "";
+            investedtxt.Text = "";
+            reasontxt.Text = "";
+            gprofittxt.Text = "";
+            pcosttxt.Text = "";
+
+            readrevenue();
+        }
+
+        private void investedtxt_TextChanged(object sender, EventArgs e)
+        {
+            try {
+            gprofittxt.Text = (int.Parse(profittxt.Text) - int.Parse(investedtxt.Text)).ToString();
+        } catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+}
+
+        private void pcosttxt_TextChanged(object sender, EventArgs e)
+        {
+            try {
+            profittxt.Text= (int.Parse(saletxt.Text) - int.Parse(pcosttxt.Text)).ToString();
+        } catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+}
 
         private void updbtn_Click(object sender, EventArgs e)
         {

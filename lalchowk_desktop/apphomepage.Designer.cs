@@ -35,8 +35,6 @@
             this.rightpic = new System.Windows.Forms.PictureBox();
             this.lefttxt = new System.Windows.Forms.TextBox();
             this.righttxt = new System.Windows.Forms.TextBox();
-            this.categorydataview = new System.Windows.Forms.DataGridView();
-            this.label3 = new System.Windows.Forms.Label();
             this.rightlink = new System.Windows.Forms.TextBox();
             this.leftlink = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -83,9 +81,11 @@
             this.offersdataview = new System.Windows.Forms.DataGridView();
             this.updoffers = new System.Windows.Forms.Button();
             this.rowdelbtn = new System.Windows.Forms.Button();
+            this.ppic = new System.Windows.Forms.PictureBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.leftpic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rightpic)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.categorydataview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productsdataview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.p2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.p1)).BeginInit();
@@ -93,6 +93,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.p3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemsdataview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.offersdataview)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ppic)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -157,26 +158,6 @@
             this.righttxt.Size = new System.Drawing.Size(112, 20);
             this.righttxt.TabIndex = 45;
             // 
-            // categorydataview
-            // 
-            this.categorydataview.BackgroundColor = System.Drawing.Color.White;
-            this.categorydataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.categorydataview.Location = new System.Drawing.Point(638, 28);
-            this.categorydataview.Name = "categorydataview";
-            this.categorydataview.Size = new System.Drawing.Size(518, 166);
-            this.categorydataview.TabIndex = 46;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label3.Location = new System.Drawing.Point(856, 8);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(91, 17);
-            this.label3.TabIndex = 47;
-            this.label3.Text = "Category List";
-            // 
             // rightlink
             // 
             this.rightlink.Location = new System.Drawing.Point(135, 426);
@@ -216,17 +197,18 @@
             // 
             this.productsdataview.BackgroundColor = System.Drawing.Color.White;
             this.productsdataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.productsdataview.Location = new System.Drawing.Point(732, 226);
+            this.productsdataview.Location = new System.Drawing.Point(735, 40);
             this.productsdataview.Name = "productsdataview";
-            this.productsdataview.Size = new System.Drawing.Size(424, 484);
+            this.productsdataview.Size = new System.Drawing.Size(424, 670);
             this.productsdataview.TabIndex = 52;
+            this.productsdataview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.productsdataview_CellClick);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label5.Location = new System.Drawing.Point(729, 206);
+            this.label5.Location = new System.Drawing.Point(732, 20);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(64, 17);
             this.label5.TabIndex = 53;
@@ -237,7 +219,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label6.Location = new System.Drawing.Point(892, 206);
+            this.label6.Location = new System.Drawing.Point(895, 20);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(119, 17);
             this.label6.TabIndex = 54;
@@ -245,7 +227,7 @@
             // 
             // fcattxt
             // 
-            this.fcattxt.Location = new System.Drawing.Point(1009, 203);
+            this.fcattxt.Location = new System.Drawing.Point(1012, 17);
             this.fcattxt.Name = "fcattxt";
             this.fcattxt.Size = new System.Drawing.Size(147, 20);
             this.fcattxt.TabIndex = 55;
@@ -544,7 +526,7 @@
             this.u2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.u2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.u2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.u2.Location = new System.Drawing.Point(688, 454);
+            this.u2.Location = new System.Drawing.Point(676, 454);
             this.u2.Name = "u2";
             this.u2.Size = new System.Drawing.Size(41, 13);
             this.u2.TabIndex = 95;
@@ -570,7 +552,7 @@
             this.u4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.u4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.u4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.u4.Location = new System.Drawing.Point(688, 659);
+            this.u4.Location = new System.Drawing.Point(676, 659);
             this.u4.Name = "u4";
             this.u4.Size = new System.Drawing.Size(41, 13);
             this.u4.TabIndex = 97;
@@ -607,12 +589,44 @@
             this.rowdelbtn.UseVisualStyleBackColor = true;
             this.rowdelbtn.Click += new System.EventHandler(this.rowdelbtn_Click);
             // 
+            // ppic
+            // 
+            this.ppic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ppic.Location = new System.Drawing.Point(567, 40);
+            this.ppic.Name = "ppic";
+            this.ppic.Size = new System.Drawing.Size(162, 130);
+            this.ppic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ppic.TabIndex = 101;
+            this.ppic.TabStop = false;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Silver;
+            this.panel1.Location = new System.Drawing.Point(348, 245);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1, 249);
+            this.panel1.TabIndex = 102;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label3.Location = new System.Drawing.Point(553, 243);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(106, 18);
+            this.label3.TabIndex = 103;
+            this.label3.Text = "Featured Items";
+            // 
             // apphomepage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1162, 722);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.ppic);
             this.Controls.Add(this.rowdelbtn);
             this.Controls.Add(this.updoffers);
             this.Controls.Add(this.offersdataview);
@@ -659,8 +673,6 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.rightlink);
             this.Controls.Add(this.leftlink);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.categorydataview);
             this.Controls.Add(this.righttxt);
             this.Controls.Add(this.lefttxt);
             this.Controls.Add(this.rightpic);
@@ -673,7 +685,6 @@
             this.Text = "apphomepage";
             ((System.ComponentModel.ISupportInitialize)(this.leftpic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rightpic)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.categorydataview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productsdataview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.p2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.p1)).EndInit();
@@ -681,6 +692,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.p3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemsdataview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.offersdataview)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ppic)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -695,8 +707,6 @@
         private System.Windows.Forms.PictureBox rightpic;
         private System.Windows.Forms.TextBox lefttxt;
         private System.Windows.Forms.TextBox righttxt;
-        private System.Windows.Forms.DataGridView categorydataview;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox rightlink;
         private System.Windows.Forms.TextBox leftlink;
         private System.Windows.Forms.Label label4;
@@ -743,5 +753,8 @@
         private System.Windows.Forms.DataGridView offersdataview;
         private System.Windows.Forms.Button updoffers;
         private System.Windows.Forms.Button rowdelbtn;
+        private System.Windows.Forms.PictureBox ppic;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label3;
     }
 }
