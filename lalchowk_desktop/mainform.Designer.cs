@@ -89,7 +89,7 @@
             this.productsbtn.AutoSize = true;
             this.productsbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.productsbtn.Depth = 0;
-            this.productsbtn.Location = new System.Drawing.Point(10, 67);
+            this.productsbtn.Location = new System.Drawing.Point(5, 55);
             this.productsbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.productsbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.productsbtn.Name = "productsbtn";
@@ -105,7 +105,7 @@
             this.customersbtn.AutoSize = true;
             this.customersbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.customersbtn.Depth = 0;
-            this.customersbtn.Location = new System.Drawing.Point(8, 115);
+            this.customersbtn.Location = new System.Drawing.Point(5, 93);
             this.customersbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.customersbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.customersbtn.Name = "customersbtn";
@@ -121,7 +121,7 @@
             this.suppliersbtn.AutoSize = true;
             this.suppliersbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.suppliersbtn.Depth = 0;
-            this.suppliersbtn.Location = new System.Drawing.Point(8, 163);
+            this.suppliersbtn.Location = new System.Drawing.Point(4, 130);
             this.suppliersbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.suppliersbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.suppliersbtn.Name = "suppliersbtn";
@@ -137,7 +137,7 @@
             this.approvebtn.AutoSize = true;
             this.approvebtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.approvebtn.Depth = 0;
-            this.approvebtn.Location = new System.Drawing.Point(8, 256);
+            this.approvebtn.Location = new System.Drawing.Point(5, 206);
             this.approvebtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.approvebtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.approvebtn.Name = "approvebtn";
@@ -185,7 +185,7 @@
             this.caboutbtn.AutoSize = true;
             this.caboutbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.caboutbtn.Depth = 0;
-            this.caboutbtn.Location = new System.Drawing.Point(10, 558);
+            this.caboutbtn.Location = new System.Drawing.Point(5, 392);
             this.caboutbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.caboutbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.caboutbtn.Name = "caboutbtn";
@@ -201,7 +201,7 @@
             this.homepagebtn.AutoSize = true;
             this.homepagebtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.homepagebtn.Depth = 0;
-            this.homepagebtn.Location = new System.Drawing.Point(8, 445);
+            this.homepagebtn.Location = new System.Drawing.Point(4, 355);
             this.homepagebtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.homepagebtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.homepagebtn.Name = "homepagebtn";
@@ -217,7 +217,7 @@
             this.msgbtn.AutoSize = true;
             this.msgbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.msgbtn.Depth = 0;
-            this.msgbtn.Location = new System.Drawing.Point(8, 349);
+            this.msgbtn.Location = new System.Drawing.Point(5, 281);
             this.msgbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.msgbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.msgbtn.Name = "msgbtn";
@@ -233,7 +233,7 @@
             this.accbtn.AutoSize = true;
             this.accbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.accbtn.Depth = 0;
-            this.accbtn.Location = new System.Drawing.Point(8, 397);
+            this.accbtn.Location = new System.Drawing.Point(5, 318);
             this.accbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.accbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.accbtn.Name = "accbtn";
@@ -249,7 +249,7 @@
             this.expbtn.AutoSize = true;
             this.expbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.expbtn.Depth = 0;
-            this.expbtn.Location = new System.Drawing.Point(8, 211);
+            this.expbtn.Location = new System.Drawing.Point(5, 169);
             this.expbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.expbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.expbtn.Name = "expbtn";
@@ -265,7 +265,7 @@
             this.cobtn.AutoSize = true;
             this.cobtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.cobtn.Depth = 0;
-            this.cobtn.Location = new System.Drawing.Point(8, 301);
+            this.cobtn.Location = new System.Drawing.Point(4, 244);
             this.cobtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.cobtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.cobtn.Name = "cobtn";
@@ -281,7 +281,7 @@
             this.ordersbtn.AutoSize = true;
             this.ordersbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ordersbtn.Depth = 0;
-            this.ordersbtn.Location = new System.Drawing.Point(8, 19);
+            this.ordersbtn.Location = new System.Drawing.Point(5, 19);
             this.ordersbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.ordersbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.ordersbtn.Name = "ordersbtn";
