@@ -49,10 +49,11 @@
             // orderslbl
             // 
             this.orderslbl.AutoSize = true;
-            this.orderslbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.orderslbl.Location = new System.Drawing.Point(12, 13);
+            this.orderslbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.orderslbl.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.orderslbl.Location = new System.Drawing.Point(12, 3);
             this.orderslbl.Name = "orderslbl";
-            this.orderslbl.Size = new System.Drawing.Size(127, 20);
+            this.orderslbl.Size = new System.Drawing.Size(153, 24);
             this.orderslbl.TabIndex = 2;
             this.orderslbl.Text = "Orders Delivered";
             // 

@@ -44,6 +44,7 @@
             this.stocklbl = new System.Windows.Forms.Label();
             this.apbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ordergridview)).BeginInit();
             this.apnl.SuspendLayout();
             this.SuspendLayout();
@@ -227,12 +228,24 @@
             this.label1.TabIndex = 31;
             this.label1.Text = "Select One Product from the list";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label3.Location = new System.Drawing.Point(12, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(123, 24);
+            this.label3.TabIndex = 32;
+            this.label3.Text = "Cancel Order";
+            // 
             // cancelorders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1162, 722);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.apnl);
             this.Controls.Add(this.ordergridview);
@@ -265,5 +278,6 @@
         private System.Windows.Forms.Label stocklbl;
         private MaterialSkin.Controls.MaterialFlatButton apbtn;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
     }
 }

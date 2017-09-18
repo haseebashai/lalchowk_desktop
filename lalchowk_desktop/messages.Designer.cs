@@ -31,6 +31,8 @@
             this.messagesdataview = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.mpnl = new System.Windows.Forms.Panel();
+            this.msgtxt = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.midlbl = new System.Windows.Forms.Label();
             this.emaillbl = new System.Windows.Forms.Label();
             this.sublbl = new System.Windows.Forms.Label();
@@ -38,8 +40,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.sendbtn = new MaterialSkin.Controls.MaterialFlatButton();
-            this.label2 = new System.Windows.Forms.Label();
-            this.msgtxt = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.messagesdataview)).BeginInit();
             this.mpnl.SuspendLayout();
             this.SuspendLayout();
@@ -48,19 +48,20 @@
             // 
             this.messagesdataview.BackgroundColor = System.Drawing.Color.White;
             this.messagesdataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.messagesdataview.Location = new System.Drawing.Point(3, 30);
+            this.messagesdataview.Location = new System.Drawing.Point(12, 30);
             this.messagesdataview.Name = "messagesdataview";
-            this.messagesdataview.Size = new System.Drawing.Size(1156, 414);
+            this.messagesdataview.Size = new System.Drawing.Size(1147, 414);
             this.messagesdataview.TabIndex = 1;
             this.messagesdataview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.messagesdataview_CellClick);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(517, 7);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label1.Location = new System.Drawing.Point(12, 2);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(120, 20);
+            this.label1.Size = new System.Drawing.Size(140, 24);
             this.label1.TabIndex = 2;
             this.label1.Text = "User Messages";
             // 
@@ -80,6 +81,26 @@
             this.mpnl.Size = new System.Drawing.Size(1156, 249);
             this.mpnl.TabIndex = 30;
             this.mpnl.Visible = false;
+            // 
+            // msgtxt
+            // 
+            this.msgtxt.Location = new System.Drawing.Point(305, 45);
+            this.msgtxt.Multiline = true;
+            this.msgtxt.Name = "msgtxt";
+            this.msgtxt.ReadOnly = true;
+            this.msgtxt.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.msgtxt.Size = new System.Drawing.Size(344, 183);
+            this.msgtxt.TabIndex = 25;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.Blue;
+            this.label2.Location = new System.Drawing.Point(452, 25);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(50, 13);
+            this.label2.TabIndex = 24;
+            this.label2.Text = "Message";
             // 
             // midlbl
             // 
@@ -155,26 +176,6 @@
             this.sendbtn.Text = "Send Reply mail";
             this.sendbtn.UseVisualStyleBackColor = true;
             this.sendbtn.Click += new System.EventHandler(this.sendbtn_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.Blue;
-            this.label2.Location = new System.Drawing.Point(452, 25);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(50, 13);
-            this.label2.TabIndex = 24;
-            this.label2.Text = "Message";
-            // 
-            // msgtxt
-            // 
-            this.msgtxt.Location = new System.Drawing.Point(305, 45);
-            this.msgtxt.Multiline = true;
-            this.msgtxt.Name = "msgtxt";
-            this.msgtxt.ReadOnly = true;
-            this.msgtxt.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.msgtxt.Size = new System.Drawing.Size(344, 183);
-            this.msgtxt.TabIndex = 25;
             // 
             // messages
             // 
