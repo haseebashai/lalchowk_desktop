@@ -29,6 +29,11 @@ namespace Veiled_Kashmir_Admin_Panel
             hp = hpcopy as container;
             InitializeComponent();
 
+            loadingform();
+        }
+
+        private void loadingform()
+        {
             Form loading = new Form();
             loading.Size = new Size(50, 50);
             loading.FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -36,16 +41,26 @@ namespace Veiled_Kashmir_Admin_Panel
             loading.BackColor = Color.LightBlue;
             loading.StartPosition = FormStartPosition.CenterScreen;
             loading.Controls.Add(new Label() { Text = "LOADING...", Font = new Font("trajan pro", Font.Size, FontStyle.Bold) });
-            loading.Show();
-            Cursor = Cursors.WaitCursor;
-            readordersshipped();
-            readordersplaced();
-            readordersdelivered();
-            Cursor = Cursors.Arrow;
-            loading.Close();
+
+            try
+            {
+                loading.Show();
+                Cursor = Cursors.WaitCursor;
+                readordersshipped();
+                readordersplaced();
+                readordersdelivered();
+                Cursor = Cursors.Arrow;
+                loading.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            finally {
+                loading.Close();
+            }
+
         }
-
-
 
         private void mainform_Load(object sender, EventArgs e)
         {
@@ -63,7 +78,7 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             try { 
             con.Open();
-            adap = new MySqlDataAdapter("select * from orders where status='placed'", con);
+            adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='placed';", con);
             dt = new DataTable();
             adap.Fill(dt);
             con.Close();
@@ -92,7 +107,7 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             try {
                 con.Open();
-                adap = new MySqlDataAdapter("select * from orders where status='shipped'", con);
+                adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='shipped';", con);
                 dt = new DataTable();
                 adap.Fill(dt);
                 con.Close();
@@ -232,44 +247,6 @@ namespace Veiled_Kashmir_Admin_Panel
             Cursor = Cursors.Arrow;
         }
 
-        private void termsbtn_Click(object sender, EventArgs e)
-        {
-            Cursor = Cursors.WaitCursor;
-            terms tr = new terms(hp);
-            tr.TopLevel = false;
-            cntpnl.Controls.Clear();
-            cntpnl.Controls.Add(tr);
-            tr.readterms();
-            tr.Show();
-            Cursor = Cursors.Arrow;
-        }
-
-        private void faqbtn_Click(object sender, EventArgs e)
-        {
-            Cursor = Cursors.WaitCursor;
-            terms tr = new terms(hp);
-            tr.TopLevel = false;
-            cntpnl.Controls.Clear();
-            tr.faqpnl.Visible = true;
-            cntpnl.Controls.Add(tr);
-            tr.readfaq();
-            tr.Show();
-            Cursor = Cursors.Arrow;
-        }
-
-        private void aboutbtn_Click(object sender, EventArgs e)
-        {
-            Cursor = Cursors.WaitCursor;
-            terms tr = new terms(hp);
-            tr.TopLevel = false;
-            cntpnl.Controls.Clear();
-            tr.aboutpnl.Visible = true;
-            cntpnl.Controls.Add(tr);
-            tr.readabout();
-            tr.Show();
-            Cursor = Cursors.Arrow;
-        }
-
         private void navtxt_Click(object sender, EventArgs e)
         {
             Cursor = Cursors.WaitCursor;
@@ -340,5 +317,20 @@ namespace Veiled_Kashmir_Admin_Panel
             aph.Show();
             Cursor = Cursors.Arrow;
         }
+
+        private void caboutbtn_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            terms tr = new terms(hp);
+            tr.TopLevel = false;
+            cntpnl.Controls.Clear();
+            tr.termspnl.Visible = true;
+            cntpnl.Controls.Add(tr);
+            tr.readterms();
+            tr.Show();
+            Cursor = Cursors.Arrow;
+        }
+
+        
     }
 }

@@ -30,7 +30,7 @@
         {
             this.ordersdataview = new System.Windows.Forms.DataGridView();
             this.orderslbl = new System.Windows.Forms.Label();
-            this.prolbl = new System.Windows.Forms.Label();
+            this.upbtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ordersdataview)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,16 +56,15 @@
             this.orderslbl.TabIndex = 2;
             this.orderslbl.Text = "Orders Delivered";
             // 
-            // prolbl
+            // upbtn
             // 
-            this.prolbl.AutoSize = true;
-            this.prolbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.prolbl.Location = new System.Drawing.Point(572, 622);
-            this.prolbl.Name = "prolbl";
-            this.prolbl.Size = new System.Drawing.Size(45, 20);
-            this.prolbl.TabIndex = 3;
-            this.prolbl.Text = "profit";
-            this.prolbl.Visible = false;
+            this.upbtn.Location = new System.Drawing.Point(1007, 622);
+            this.upbtn.Name = "upbtn";
+            this.upbtn.Size = new System.Drawing.Size(118, 48);
+            this.upbtn.TabIndex = 4;
+            this.upbtn.Text = "Update";
+            this.upbtn.UseVisualStyleBackColor = true;
+            this.upbtn.Click += new System.EventHandler(this.upbtn_Click);
             // 
             // ordersdetails
             // 
@@ -73,7 +72,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1162, 722);
-            this.Controls.Add(this.prolbl);
+            this.Controls.Add(this.upbtn);
             this.Controls.Add(this.orderslbl);
             this.Controls.Add(this.ordersdataview);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -89,6 +88,6 @@
 
         private System.Windows.Forms.DataGridView ordersdataview;
         public System.Windows.Forms.Label orderslbl;
-        public System.Windows.Forms.Label prolbl;
+        private System.Windows.Forms.Button upbtn;
     }
 }

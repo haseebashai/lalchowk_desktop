@@ -19,10 +19,10 @@ namespace Veiled_Kashmir_Admin_Panel
     {
         DBConnect obj = new DBConnect();
         string filename, fileaddress,cmd;
-        public addpictures(string gidtxt)
+        public addpictures()
         {
             InitializeComponent();
-            gid.Text = gidtxt;
+       //     gid.Text = gidtxt;
 
         }
 

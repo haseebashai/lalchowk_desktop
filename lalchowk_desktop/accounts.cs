@@ -197,7 +197,8 @@ namespace Veiled_Kashmir_Admin_Panel
             readdetails();
             
             readexpenses();
-            fsuptxt.Enabled = false;
+            fsuptxt.Visible = false;
+            fsuplbl.Visible = false;
             exppnl.Visible = true;
             moneypnl.Visible = false;
             bankpnl.Visible = false;
@@ -211,7 +212,8 @@ namespace Veiled_Kashmir_Admin_Panel
             readdetails();
             
             readmoneypool();
-            fsuptxt.Enabled = false;
+            fsuptxt.Visible = false;
+            fsuplbl.Visible = false;
             moneypnl.Visible = true;
             exppnl.Visible = false;
             bankpnl.Visible = false;
@@ -225,7 +227,8 @@ namespace Veiled_Kashmir_Admin_Panel
             readdetails();
             
             readbank();
-            fsuptxt.Enabled = false;
+            fsuptxt.Visible = false;
+            fsuplbl.Visible = false;
             bankpnl.Visible = true;
             moneypnl.Visible = false;
             exppnl.Visible = false;
@@ -239,7 +242,8 @@ namespace Veiled_Kashmir_Admin_Panel
             readdetails();
             
             readmisc();
-            fsuptxt.Enabled = false;
+            fsuptxt.Visible = false;
+            fsuplbl.Visible = false;
             miscpnl.Visible = true;
             bankpnl.Visible = false;
             moneypnl.Visible = false;
@@ -313,7 +317,8 @@ namespace Veiled_Kashmir_Admin_Panel
 
             readdetails();
             readbilling();
-            fsuptxt.Enabled = false;
+            fsuptxt.Visible = false;
+            fsuplbl.Visible = false;
             billpnl.Visible = true;
             dealpnl.Visible = false;           
             miscpnl.Visible = false;
@@ -344,7 +349,8 @@ namespace Veiled_Kashmir_Admin_Panel
             readdetails();
 
             readdeliveries();
-            fsuptxt.Enabled = false;
+            fsuptxt.Visible = false;
+            fsuplbl.Visible = false;
             delpnl.Visible = true;
             dealpnl.Visible = false;
             exppnl.Visible = false;
@@ -377,7 +383,8 @@ namespace Veiled_Kashmir_Admin_Panel
 
             readdealings();
 
-            fsuptxt.Enabled = true;
+            fsuptxt.Visible = true;
+            fsuplbl.Visible = true;
             dealpnl.Visible = true;
             delpnl.Visible = false;
             exppnl.Visible = false;
@@ -463,7 +470,8 @@ namespace Veiled_Kashmir_Admin_Panel
             readdetails();
 
             readrevenue();
-            fsuptxt.Enabled = false;
+            fsuptxt.Visible = false;
+            fsuplbl.Visible = false;
             rpnl.Visible = true;
             delpnl.Visible = false;
             dealpnl.Visible = false;

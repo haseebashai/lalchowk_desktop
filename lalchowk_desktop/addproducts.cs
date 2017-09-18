@@ -23,7 +23,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         MySqlDataReader dr,dr2;
 
-        string filename, fileaddress, categoryid;
+        string filename, fileaddress, fullpath, directory, uploaddir, categoryid;
 
 
         private container hp = null;
@@ -91,17 +91,8 @@ namespace Veiled_Kashmir_Admin_Panel
             thirdcat.DataSource = dt;
         }
 
-        private void pic1_Click(object sender, EventArgs e)
-        {
-            if (picdialog.ShowDialog() == DialogResult.OK)
-            {
-                fileaddress = picdialog.FileName;
-                filename = picdialog.SafeFileName;
-                Image myimage = new Bitmap(fileaddress);
-                pic1.BackgroundImage = myimage;
-                pic1.BackgroundImageLayout = ImageLayout.Stretch;               
-            }
-        }
+        
+
 
         private void readsuppliers()
         {
@@ -145,19 +136,267 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             clearall();
             pic1.BackgroundImage = null;
-
+            pic2.BackgroundImage = null;
+            pic3.BackgroundImage = null;
+            pic4.BackgroundImage = null;
+            pic5.BackgroundImage = null;
         }
 
 
         private void readcategory()
         {
             if (id3lbl.Text == "0" || id3lbl.Text=="id" || id2lbl.Text=="0" || id2lbl.Text=="id")
-            //    catlbl.Text = id2lbl.Text;
                 catbox.Text = id2lbl.Text;
             else
             {
-              //  catlbl.Text = id3lbl.Text;
                 catbox.Text = id3lbl.Text;
+            }
+        }
+
+        private void pic1_Click(object sender, EventArgs e)
+        {
+            if (picdialog.ShowDialog() == DialogResult.OK)
+            {
+                fileaddress = picdialog.FileName;
+                filename = picdialog.SafeFileName;
+                Image myimage = new Bitmap(fileaddress);
+                pic1.BackgroundImage = myimage;
+                pic1.BackgroundImageLayout = ImageLayout.Stretch;
+                fullpath = Path.GetFullPath(fileaddress).TrimEnd(Path.DirectorySeparatorChar);
+                directory = Path.GetDirectoryName(fullpath) + "\\";
+                pictxt.Text = Path.GetFileName(fullpath);
+
+
+            }
+        }
+
+        private void up1_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            try
+            {
+                pic1.BackgroundImage.Dispose();
+                File.Move(fileaddress, directory + pictxt.Text);
+                uploaddir = directory + pictxt.Text;
+
+                cmd = "update products set picture='" + pictxt.Text + "' where productid='" + pidtxt.Text + "'";
+                obj.nonQuery(cmd);
+                
+
+
+                UploadFileToFtp("ftp://182.50.151.83/httpdocs/lalchowk/pictures/", uploaddir);
+
+            }
+            catch (WebException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            Cursor = Cursors.Arrow;
+
+        }
+
+
+        private void pic2_Click(object sender, EventArgs e)
+        {
+            if (picdialog.ShowDialog() == DialogResult.OK)
+            {
+                fileaddress = picdialog.FileName;
+                filename = picdialog.SafeFileName;
+                Image myimage = new Bitmap(fileaddress);
+                pic2.BackgroundImage = myimage;
+                pic2.BackgroundImageLayout = ImageLayout.Stretch;
+                fullpath = Path.GetFullPath(fileaddress).TrimEnd(Path.DirectorySeparatorChar);
+                directory = Path.GetDirectoryName(fullpath) + "\\";
+                p2txt.Text = Path.GetFileName(fullpath);
+
+            }
+        }
+
+        private void up2_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            try
+            {
+                pic2.BackgroundImage.Dispose();
+                File.Move(fileaddress, directory + p2txt.Text);
+                uploaddir = directory + p2txt.Text;
+
+                UploadFileToFtp("ftp://182.50.151.83/httpdocs/lalchowk/pictures/", uploaddir);
+
+                cmd = "insert into pictures (`groupid`, `picture`) " +
+                     "values ('" + gidtxt.Text + @"','" + p2txt.Text + "')";
+                obj.nonQuery(cmd);
+
+                obj.closeConnection();
+
+            }
+            catch (WebException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            Cursor = Cursors.Arrow;
+        }
+
+        private void pic3_Click(object sender, EventArgs e)
+        {
+            if (picdialog.ShowDialog() == DialogResult.OK)
+            {
+                fileaddress = picdialog.FileName;
+                filename = picdialog.SafeFileName;
+                Image myimage = new Bitmap(fileaddress);
+                pic3.BackgroundImage = myimage;
+                pic3.BackgroundImageLayout = ImageLayout.Stretch;
+                fullpath = Path.GetFullPath(fileaddress).TrimEnd(Path.DirectorySeparatorChar);
+                directory = Path.GetDirectoryName(fullpath) + "\\";
+                p3txt.Text = Path.GetFileName(fullpath);
+
+            }
+        }
+
+        private void up3_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            try
+            {
+                pic3.BackgroundImage.Dispose();
+                File.Move(fileaddress, directory + p3txt.Text);
+                uploaddir = directory + p3txt.Text;
+
+                UploadFileToFtp("ftp://182.50.151.83/httpdocs/lalchowk/pictures/", uploaddir);
+
+                cmd = "insert into pictures (`groupid`, `picture`) " +
+                     "values ('" + gidtxt.Text + @"','" + p3txt.Text + "')";
+                obj.nonQuery(cmd);
+
+                obj.closeConnection();
+
+            }
+            catch (WebException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            Cursor = Cursors.Arrow;
+        }
+
+        private void pic4_Click(object sender, EventArgs e)
+        {
+            if (picdialog.ShowDialog() == DialogResult.OK)
+            {
+                fileaddress = picdialog.FileName;
+                filename = picdialog.SafeFileName;
+                Image myimage = new Bitmap(fileaddress);
+                pic4.BackgroundImage = myimage;
+                pic4.BackgroundImageLayout = ImageLayout.Stretch;
+                fullpath = Path.GetFullPath(fileaddress).TrimEnd(Path.DirectorySeparatorChar);
+                directory = Path.GetDirectoryName(fullpath) + "\\";
+                p4txt.Text = Path.GetFileName(fullpath);
+
+            }
+        }
+
+        private void up4_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            try
+            {
+                pic4.BackgroundImage.Dispose();
+                File.Move(fileaddress, directory + p4txt.Text);
+                uploaddir = directory + p4txt.Text;
+
+                UploadFileToFtp("ftp://182.50.151.83/httpdocs/lalchowk/pictures/", uploaddir);
+
+                cmd = "insert into pictures (`groupid`, `picture`) " +
+                     "values ('" + gidtxt.Text + @"','" + p4txt.Text + "')";
+                obj.nonQuery(cmd);
+
+                obj.closeConnection();
+
+            }
+            catch (WebException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            Cursor = Cursors.Arrow;
+        }
+
+       
+
+        private void pic5_Click(object sender, EventArgs e)
+        {
+            if (picdialog.ShowDialog() == DialogResult.OK)
+            {
+                fileaddress = picdialog.FileName;
+                filename = picdialog.SafeFileName;
+                Image myimage = new Bitmap(fileaddress);
+                pic5.BackgroundImage = myimage;
+                pic5.BackgroundImageLayout = ImageLayout.Stretch;
+                fullpath = Path.GetFullPath(fileaddress).TrimEnd(Path.DirectorySeparatorChar);
+                directory = Path.GetDirectoryName(fullpath) + "\\";
+                p5txt.Text = Path.GetFileName(fullpath);
+
+            }
+        }
+
+
+        private void up5_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            try
+            {
+                pic5.BackgroundImage.Dispose();
+                File.Move(fileaddress, directory + p5txt.Text);
+                uploaddir = directory + p5txt.Text;
+
+                UploadFileToFtp("ftp://182.50.151.83/httpdocs/lalchowk/pictures/", uploaddir);
+
+                cmd = "insert into pictures (`groupid`, `picture`) " +
+                     "values ('" + gidtxt.Text + @"','" + p5txt.Text + "')";
+                obj.nonQuery(cmd);
+
+                obj.closeConnection();
+
+            }
+            catch (WebException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            Cursor = Cursors.Arrow;
+        }
+
+
+        public static void UploadFileToFtp(string url, string filePath)
+        {
+            try
+            {
+                var fileName = Path.GetFileName(filePath);
+                var request = (FtpWebRequest)WebRequest.Create(url + fileName);
+
+                request.Method = WebRequestMethods.Ftp.UploadFile;
+                request.Credentials = new NetworkCredential("lalchowk", "Lalchowk@123");
+                request.UsePassive = true;
+                request.UseBinary = true;
+                request.KeepAlive = true;
+
+                using (var fileStream = File.OpenRead(filePath))
+                {
+                    using (var requestStream = request.GetRequestStream())
+                    {
+                        fileStream.CopyTo(requestStream);
+                        requestStream.Close();
+                    }
+                }
+
+                var response = (FtpWebResponse)request.GetResponse();
+                MessageBox.Show("Upload done: " + response.StatusDescription, "Upload Successful.");
+
+                response.Close();
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+
             }
         }
 
@@ -169,7 +408,7 @@ namespace Veiled_Kashmir_Admin_Panel
         private void desctxt_Leave(object sender, EventArgs e)
         {
             
-                if (!Regex.IsMatch(desctxt.Text, @"^([a-zA-Z0-9@#$%&*+\-_(),+':;?.,![\]\s\\/{}""|]+)$"))
+                if (!Regex.IsMatch(desctxt.Text, @"^([a-zA-Z0-9@#$%&*+\-_(),+':;?.,![\]\s\\/{}""|]+)$")&& desctxt.Text!="")
                 {
 
                     MessageBox.Show("Abnormal Special Character found, Please remove it and proceed.");
@@ -178,6 +417,7 @@ namespace Veiled_Kashmir_Admin_Panel
     
         }
 
+        
         private void catlbl_TextChanged(object sender, EventArgs e)
         {
            //  MessageBox.Show(catlbl.Text.ToString());
@@ -258,41 +498,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         }
 
-        public static void UploadFileToFtp(string url, string filePath)
-        {
-            try
-            {
-                var fileName = Path.GetFileName(filePath);
-                var request = (FtpWebRequest)WebRequest.Create(url + fileName);
-
-                request.Method = WebRequestMethods.Ftp.UploadFile;                
-                request.Credentials = new NetworkCredential("lalchowk", "Lalchowk@123");
-                request.UsePassive = true;
-                request.UseBinary = true;
-                request.KeepAlive = true;
-
-                using (var fileStream = File.OpenRead(filePath))
-                {
-                    using (var requestStream = request.GetRequestStream())
-                    {
-                        fileStream.CopyTo(requestStream);
-                        requestStream.Close();
-                    }
-                }
-
-                var response = (FtpWebResponse)request.GetResponse();
-                MessageBox.Show("Upload done: " + response.StatusDescription, "Upload Successful.");
-
-                response.Close();
-
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-
-            }
-        }
+      
 
         private void picbtn_Click(object sender, EventArgs e)
         {
@@ -303,20 +509,9 @@ namespace Veiled_Kashmir_Admin_Panel
         private void addbtn_Click(object sender, EventArgs e)
         {
 
-            /*    try
-                {
-                    UploadFileToFtp("ftp://182.50.151.83/lalchowk/pictures/", fileaddress);
-                }
-                catch (WebException ex)
-                {
-                    MessageBox.Show(ex.ToString());
-                }
-                finally
-                {
-                    pic1.BackgroundImage = null;
-                }
-                */
-            try {
+           
+            try
+            {
                 StringBuilder s = new StringBuilder(nametxt.Text);
                 s.Replace(@"\", @"\\");
                 s.Replace("'", "\\'");
@@ -324,10 +519,16 @@ namespace Veiled_Kashmir_Admin_Panel
                 s1.Replace(@"\", @"\\");
                 s1.Replace("'", "\\'");
                 
-                if (sizetxt.Text ==null || dname5txt.Text==null || dname5.Text==null)
+                if (sizetxt.Text ==null)
                 {
-                    cmd = "insert into products (`productid`, `supplierid`, `productname`,`tags`, `groupid`,`categoryid`,`color`, `mrp`, `price`, `dealerprice`, `stock`, `description`, `detailname1`, `detailname2`, `detailname3`, `detailname4`, `detail1`, `detail2`, `detail3`, `detail4`,`brand`,`size`,`requeststatus`,`picture`) " +
-                       "values ('" + pidtxt.Text + "','" + supidtxt.Text + "', '" + s + "','"+ s + " " +tagstxt.Text+"','" + gidtxt.Text + "', '" + catbox.Text + "','" + colourtxt.Text + "','" + mrptxt.Text + "','" + pricetxt.Text + "','" + dealertxt.Text + "','" + stocktxt.Text + "','" + desctxt.Text + "','" + dname1txt.Text + "','" + dname2txt.Text + "','" + dname3txt.Text + "','" + dname4txt.Text + "','" + dname1.Text + "','" + dname2.Text + "','" + dname3.Text + "','" + dname4.Text + "','" + s1 + "',null,'Approved','" + pictxt.Text + "')";
+                    cmd = "insert into products (`productid`, `supplierid`, `productname`,`tags`, `groupid`,`categoryid`,`color`, `mrp`, `price`, `dealerprice`, `stock`, `description`, `detailname1`, `detailname2`, `detailname3`, `detailname4`,`detailname5`, `detail1`, `detail2`, `detail3`, `detail4`,`detail5`,`brand`,`size`,`requeststatus`,`picture`) " +
+                       "values ('" + pidtxt.Text + "','" + supidtxt.Text + "', '" + s + "','"+ s + " " +tagstxt.Text+"','" + gidtxt.Text + "', '" + catbox.Text + "','" + colourtxt.Text + "','" + mrptxt.Text + "','" + pricetxt.Text + "','" + dealertxt.Text + "','" + stocktxt.Text + "','" + desctxt.Text + "','" + dname1txt.Text + "','" + dname2txt.Text + "','" + dname3txt.Text + "','" + dname4txt.Text + "','"+dname5txt.Text+"','" + dname1.Text + "','" + dname2.Text + "','" + dname3.Text + "','" + dname4.Text + "','"+dname5.Text+"','" + s1 + "',null,'Approved','" + pictxt.Text + "')";
+                    obj.nonQuery(cmd);
+                }
+                else if(dname5txt.Text == null || dname5.Text == null)
+                {
+                    cmd = "insert into products (`productid`, `supplierid`, `productname`,`tags`, `groupid`,`categoryid`,`color`, `mrp`, `price`, `dealerprice`, `stock`, `description`, `detailname1`, `detailname2`, `detailname3`, `detailname4`,`detailname5`, `detail1`, `detail2`, `detail3`, `detail4`,`detail5`,`brand`,`size`,`requeststatus`,`picture`) " +
+                       "values ('" + pidtxt.Text + "','" + supidtxt.Text + "', '" + s + "','" + s + " " + tagstxt.Text + "','" + gidtxt.Text + "', '" + catbox.Text + "','" + colourtxt.Text + "','" + mrptxt.Text + "','" + pricetxt.Text + "','" + dealertxt.Text + "','" + stocktxt.Text + "','" + desctxt.Text + "','" + dname1txt.Text + "','" + dname2txt.Text + "','" + dname3txt.Text + "','" + dname4txt.Text + "',null,'" + dname1.Text + "','" + dname2.Text + "','" + dname3.Text + "','" + dname4.Text + "',null,'" + s1 + "','" + sizetxt.Text + "','Approved','" + pictxt.Text + "')";
                     obj.nonQuery(cmd);
                 }
                 else

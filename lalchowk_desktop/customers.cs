@@ -25,6 +25,12 @@ namespace Veiled_Kashmir_Admin_Panel
 
 
         private container hp = null;
+
+        private void mailbtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
         DataTable dt,dt1;
 
         public customers(Form hpcopy)
@@ -176,7 +182,7 @@ namespace Veiled_Kashmir_Admin_Panel
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = this.customerdataview.Rows[e.RowIndex];               
-                email = row.Cells["email"].Value.ToString();
+                email = row.Cells["mail"].Value.ToString();
                 emaillbl.Text= row.Cells["mail"].Value.ToString();
                 namelbl.Text= row.Cells["name"].Value.ToString();
                 contactlbl.Text= row.Cells["contact"].Value.ToString();

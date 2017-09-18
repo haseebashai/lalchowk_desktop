@@ -18,7 +18,7 @@ namespace Veiled_Kashmir_Admin_Panel
         string cmd;
         
         MySqlDataReader dr;
-        MySqlConnection con;
+        MySqlConnection con = new MySqlConnection("SERVER=182.50.133.78;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah");
         MySqlDataAdapter adap;
         DataTable dt;
         MySqlCommandBuilder cmdbl;
@@ -32,12 +32,11 @@ namespace Veiled_Kashmir_Admin_Panel
 
         public void readterms()
         {
-            con = new MySqlConnection();
-            con.ConnectionString = "SERVER=182.50.133.78;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah";
             con.Open();
             adap = new MySqlDataAdapter("select * from terms", con);
             dt = new DataTable();
             adap.Fill(dt);
+            con.Close();
             BindingSource bsource = new BindingSource();
             bsource.DataSource = dt;
             termsdataview.DataSource = bsource;
@@ -45,12 +44,11 @@ namespace Veiled_Kashmir_Admin_Panel
 
         public void readfaq()
         {
-            con = new MySqlConnection();
-            con.ConnectionString = "SERVER=182.50.133.78;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah";
             con.Open();
             adap = new MySqlDataAdapter("select * from faq", con);
             dt = new DataTable();
             adap.Fill(dt);
+            con.Close();
             BindingSource bsource = new BindingSource();
             bsource.DataSource = dt;
             faqdataview.DataSource = bsource;
@@ -58,12 +56,11 @@ namespace Veiled_Kashmir_Admin_Panel
 
         public void readabout()
         {
-            con = new MySqlConnection();
-            con.ConnectionString = "SERVER=182.50.133.78;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah";
             con.Open();
             adap = new MySqlDataAdapter("select * from about", con);
             dt = new DataTable();
             adap.Fill(dt);
+            con.Close();
             BindingSource bsource = new BindingSource();
             bsource.DataSource = dt;
             aboutdataview.DataSource = bsource;
@@ -76,11 +73,11 @@ namespace Veiled_Kashmir_Admin_Panel
                 DataGridViewRow row = this.termsdataview.Rows[e.RowIndex];
                 headingtxt.Text = row.Cells["heading"].Value.ToString();
                 desctxt.Text = row.Cells["description"].Value.ToString();
-                termsidlbl.Text = row.Cells["termsid"].Value.ToString();
+                termsidlbl.Text = row.Cells["termsid"].Value.ToString()+".";
             }
         }
 
-        private void updatebtn_Click(object sender, EventArgs e)
+        private void tupdbtn_Click(object sender, EventArgs e)
         {
             try
             {
@@ -108,10 +105,7 @@ namespace Veiled_Kashmir_Admin_Panel
             }
         }
 
-        private void desctxt_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void faqdataview_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -120,7 +114,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 DataGridViewRow row = this.faqdataview.Rows[e.RowIndex];
                 qtxt.Text = row.Cells["question"].Value.ToString();
                 anstxt.Text = row.Cells["answer"].Value.ToString();
-                faqid.Text = row.Cells["faqid"].Value.ToString();
+                faqid.Text = row.Cells["faqid"].Value.ToString()+".";
             }
         }
 
@@ -152,19 +146,7 @@ namespace Veiled_Kashmir_Admin_Panel
             }
         }
 
-        private void upbtn_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                cmdbl = new MySqlCommandBuilder(adap);
-                adap.Update(dt);
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-        }
+       
 
         private void aboutdataview_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -173,7 +155,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 DataGridViewRow row = this.aboutdataview.Rows[e.RowIndex];
                 headingtxtbox.Text = row.Cells["heading"].Value.ToString();
                 desctxtbox.Text = row.Cells["description"].Value.ToString();
-                aboutid.Text = row.Cells["aboutid"].Value.ToString();
+                aboutid.Text = row.Cells["aboutid"].Value.ToString()+".";
             }
         }
 
@@ -205,18 +187,30 @@ namespace Veiled_Kashmir_Admin_Panel
             }
         }
 
-        private void updbtn_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                cmdbl = new MySqlCommandBuilder(adap);
-                adap.Update(dt);
+        
 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
+        private void termsbtn_Click(object sender, EventArgs e)
+        {
+            termspnl.Visible = true;
+            faqpnl.Visible = false;
+            aboutpnl.Visible = false;
+            readterms();
+        }
+
+        private void faqbtn_Click(object sender, EventArgs e)
+        {
+            termspnl.Visible = false;
+            faqpnl.Visible = true;
+            aboutpnl.Visible = false;
+            readfaq();
+        }
+
+        private void aboutbtn_Click(object sender, EventArgs e)
+        {
+            termspnl.Visible = false;
+            faqpnl.Visible = false;
+            aboutpnl.Visible = true;
+            readabout();
         }
     }
 }

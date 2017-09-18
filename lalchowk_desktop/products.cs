@@ -82,6 +82,12 @@ namespace Veiled_Kashmir_Admin_Panel
             cacclbl.Text = "Total Computer Accessories currently added: " + dr[0].ToString();
             obj.closeConnection();
 
+            dr = obj.Query("Select count(productid) from products where supplierid ='11'");
+            dr.Read();
+            coslbl.Text = "Total Cosmetics Items currently added: " + dr[0].ToString();
+            obj.closeConnection();
+
+
         }
         /*     private void signupbtn_Click(object sender, EventArgs e)
              {

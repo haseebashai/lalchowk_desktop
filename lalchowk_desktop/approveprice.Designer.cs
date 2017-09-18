@@ -66,6 +66,7 @@
             // 
             // reqdataview
             // 
+            this.reqdataview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.reqdataview.BackgroundColor = System.Drawing.Color.White;
             this.reqdataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.reqdataview.Location = new System.Drawing.Point(12, 50);

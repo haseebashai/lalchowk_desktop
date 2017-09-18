@@ -130,10 +130,12 @@
             this.dealbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.refresh = new System.Windows.Forms.Label();
             this.fsuptxt = new System.Windows.Forms.TextBox();
-            this.label37 = new System.Windows.Forms.Label();
+            this.fsuplbl = new System.Windows.Forms.Label();
             this.totallbl = new System.Windows.Forms.Label();
             this.revbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.rpnl = new System.Windows.Forms.Panel();
+            this.pcosttxt = new System.Windows.Forms.TextBox();
+            this.label45 = new System.Windows.Forms.Label();
             this.gprofittxt = new System.Windows.Forms.TextBox();
             this.label44 = new System.Windows.Forms.Label();
             this.ireasontxt = new System.Windows.Forms.TextBox();
@@ -149,8 +151,6 @@
             this.label41 = new System.Windows.Forms.Label();
             this.monthtxt = new System.Windows.Forms.TextBox();
             this.label42 = new System.Windows.Forms.Label();
-            this.pcosttxt = new System.Windows.Forms.TextBox();
-            this.label45 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.accountdataview)).BeginInit();
             this.exppnl.SuspendLayout();
             this.moneypnl.SuspendLayout();
@@ -1220,21 +1220,22 @@
             // 
             // fsuptxt
             // 
-            this.fsuptxt.Enabled = false;
             this.fsuptxt.Location = new System.Drawing.Point(1022, 309);
             this.fsuptxt.Name = "fsuptxt";
             this.fsuptxt.Size = new System.Drawing.Size(120, 20);
             this.fsuptxt.TabIndex = 38;
+            this.fsuptxt.Visible = false;
             this.fsuptxt.TextChanged += new System.EventHandler(this.fsuptxt_TextChanged);
             // 
-            // label37
+            // fsuplbl
             // 
-            this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(1019, 292);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(84, 13);
-            this.label37.TabIndex = 37;
-            this.label37.Text = "Filter by Supplier";
+            this.fsuplbl.AutoSize = true;
+            this.fsuplbl.Location = new System.Drawing.Point(1019, 292);
+            this.fsuplbl.Name = "fsuplbl";
+            this.fsuplbl.Size = new System.Drawing.Size(84, 13);
+            this.fsuplbl.TabIndex = 37;
+            this.fsuplbl.Text = "Filter by Supplier";
+            this.fsuplbl.Visible = false;
             // 
             // totallbl
             // 
@@ -1286,6 +1287,23 @@
             this.rpnl.Size = new System.Drawing.Size(1148, 164);
             this.rpnl.TabIndex = 41;
             this.rpnl.Visible = false;
+            // 
+            // pcosttxt
+            // 
+            this.pcosttxt.Location = new System.Drawing.Point(278, 25);
+            this.pcosttxt.Name = "pcosttxt";
+            this.pcosttxt.Size = new System.Drawing.Size(204, 20);
+            this.pcosttxt.TabIndex = 27;
+            this.pcosttxt.TextChanged += new System.EventHandler(this.pcosttxt_TextChanged);
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Location = new System.Drawing.Point(275, 8);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(76, 13);
+            this.label45.TabIndex = 26;
+            this.label45.Text = "Purchase Cost";
             // 
             // gprofittxt
             // 
@@ -1419,23 +1437,6 @@
             this.label42.TabIndex = 0;
             this.label42.Text = "Month";
             // 
-            // pcosttxt
-            // 
-            this.pcosttxt.Location = new System.Drawing.Point(278, 25);
-            this.pcosttxt.Name = "pcosttxt";
-            this.pcosttxt.Size = new System.Drawing.Size(204, 20);
-            this.pcosttxt.TabIndex = 27;
-            this.pcosttxt.TextChanged += new System.EventHandler(this.pcosttxt_TextChanged);
-            // 
-            // label45
-            // 
-            this.label45.AutoSize = true;
-            this.label45.Location = new System.Drawing.Point(275, 8);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(76, 13);
-            this.label45.TabIndex = 26;
-            this.label45.Text = "Purchase Cost";
-            // 
             // accounts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1446,7 +1447,7 @@
             this.Controls.Add(this.revbtn);
             this.Controls.Add(this.totallbl);
             this.Controls.Add(this.fsuptxt);
-            this.Controls.Add(this.label37);
+            this.Controls.Add(this.fsuplbl);
             this.Controls.Add(this.refresh);
             this.Controls.Add(this.dealbtn);
             this.Controls.Add(this.delbtn);
@@ -1597,7 +1598,7 @@
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.Label refresh;
         private System.Windows.Forms.TextBox fsuptxt;
-        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Label fsuplbl;
         private System.Windows.Forms.Label totallbl;
         private MaterialSkin.Controls.MaterialFlatButton revbtn;
         public System.Windows.Forms.Panel rpnl;

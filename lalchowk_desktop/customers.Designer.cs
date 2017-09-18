@@ -39,6 +39,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnl = new System.Windows.Forms.Panel();
+            this.countlbl = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.ordersdataview = new System.Windows.Forms.DataGridView();
             this.notbtn = new System.Windows.Forms.Button();
@@ -59,7 +60,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.usertxt = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.countlbl = new System.Windows.Forms.Label();
             this.pnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ordersdataview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.addressdataview)).BeginInit();
@@ -90,6 +90,17 @@
             this.pnl.Name = "pnl";
             this.pnl.Size = new System.Drawing.Size(1161, 686);
             this.pnl.TabIndex = 11;
+            // 
+            // countlbl
+            // 
+            this.countlbl.AutoSize = true;
+            this.countlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.countlbl.ForeColor = System.Drawing.Color.Blue;
+            this.countlbl.Location = new System.Drawing.Point(3, 515);
+            this.countlbl.Name = "countlbl";
+            this.countlbl.Size = new System.Drawing.Size(176, 16);
+            this.countlbl.TabIndex = 40;
+            this.countlbl.Text = "Total Registered Customers";
             // 
             // label6
             // 
@@ -143,6 +154,7 @@
             this.mailbtn.TabIndex = 36;
             this.mailbtn.Text = "Send Mail";
             this.mailbtn.UseVisualStyleBackColor = true;
+            this.mailbtn.Click += new System.EventHandler(this.mailbtn_Click);
             // 
             // panel1
             // 
@@ -356,17 +368,6 @@
             this.label5.Size = new System.Drawing.Size(101, 13);
             this.label5.TabIndex = 31;
             this.label5.Text = "Edit Address Details";
-            // 
-            // countlbl
-            // 
-            this.countlbl.AutoSize = true;
-            this.countlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.countlbl.ForeColor = System.Drawing.Color.Blue;
-            this.countlbl.Location = new System.Drawing.Point(3, 515);
-            this.countlbl.Name = "countlbl";
-            this.countlbl.Size = new System.Drawing.Size(176, 16);
-            this.countlbl.TabIndex = 40;
-            this.countlbl.Text = "Total Registered Customers";
             // 
             // customers
             // 

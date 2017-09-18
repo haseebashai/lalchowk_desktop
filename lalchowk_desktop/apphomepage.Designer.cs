@@ -594,7 +594,7 @@
             this.ppic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ppic.Location = new System.Drawing.Point(567, 40);
             this.ppic.Name = "ppic";
-            this.ppic.Size = new System.Drawing.Size(162, 130);
+            this.ppic.Size = new System.Drawing.Size(162, 166);
             this.ppic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ppic.TabIndex = 101;
             this.ppic.TabStop = false;

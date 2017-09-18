@@ -15,7 +15,7 @@ namespace Veiled_Kashmir_Admin_Panel
     public partial class ordersdetails : Form
     {
 
-        
+        MySqlCommandBuilder cmdbl;
         MySqlDataAdapter adap;
         DataTable dt;
         DBConnect obj= new DBConnect();
@@ -76,6 +76,21 @@ namespace Veiled_Kashmir_Admin_Panel
             BindingSource bsource = new BindingSource();
             bsource.DataSource = dt;
             ordersdataview.DataSource = bsource;
+        }
+
+        private void upbtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                cmdbl = new MySqlCommandBuilder(adap);
+                adap.Update(dt);
+                MessageBox.Show("Entry Updated.");
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         public void readshipping()
