@@ -556,7 +556,7 @@
             // 
             // picdialog
             // 
-            this.picdialog.Filter = "JPG|*.jpg|PNG|*.png|All Files|*.*";
+            this.picdialog.Filter = "All Files|*.*|JPG|*.jpg|PNG|*.png|JPEG|*.jpeg";
             this.picdialog.Title = "Select Image";
             // 
             // label23

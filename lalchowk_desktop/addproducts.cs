@@ -130,16 +130,21 @@ namespace Veiled_Kashmir_Admin_Panel
             pidtxt.Text = "";
             pictxt.Text = "";
             catbox.Text = "";
-
-        }
-        private void cancelbtn_Click(object sender, EventArgs e)
-        {
-            clearall();
             pic1.BackgroundImage = null;
             pic2.BackgroundImage = null;
             pic3.BackgroundImage = null;
             pic4.BackgroundImage = null;
             pic5.BackgroundImage = null;
+            p2txt.Text = "";
+            p3txt.Text = "";
+            p4txt.Text = "";
+            p5txt.Text = "";
+
+        }
+        private void cancelbtn_Click(object sender, EventArgs e)
+        {
+            clearall();
+            
         }
 
 
@@ -172,27 +177,40 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void up1_Click(object sender, EventArgs e)
         {
-            Cursor = Cursors.WaitCursor;
-            try
+            if (pidtxt.Text == "")
             {
-                pic1.BackgroundImage.Dispose();
-                File.Move(fileaddress, directory + pictxt.Text);
-                uploaddir = directory + pictxt.Text;
-
-                cmd = "update products set picture='" + pictxt.Text + "' where productid='" + pidtxt.Text + "'";
-                obj.nonQuery(cmd);
-                
-
-
-                UploadFileToFtp("ftp://182.50.151.83/httpdocs/lalchowk/pictures/", uploaddir);
-
+                MessageBox.Show("Product undefined!");
             }
-            catch (WebException ex)
+            else
             {
-                MessageBox.Show(ex.ToString());
-            }
-            Cursor = Cursors.Arrow;
+                if (pic1.BackgroundImage == null)
+                {
+                    MessageBox.Show("Select Image first.");
+                }
+                else
+                {
+                    Cursor = Cursors.WaitCursor;
+                    try
+                    {
+                        pic1.BackgroundImage.Dispose();
+                        File.Move(fileaddress, directory + pictxt.Text);
+                        uploaddir = directory + pictxt.Text;
 
+                        cmd = "update products set picture='" + pictxt.Text + "' where productid='" + pidtxt.Text + "'";
+                        obj.nonQuery(cmd);
+
+
+
+                        UploadFileToFtp("ftp://182.50.151.83/httpdocs/lalchowk/pictures/", uploaddir);
+
+                    }
+                    catch (WebException ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+                    }
+                    Cursor = Cursors.Arrow;
+                }
+            }   
         }
 
 
@@ -214,27 +232,42 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void up2_Click(object sender, EventArgs e)
         {
-            Cursor = Cursors.WaitCursor;
-            try
+            if (gidtxt.Text == "")
             {
-                pic2.BackgroundImage.Dispose();
-                File.Move(fileaddress, directory + p2txt.Text);
-                uploaddir = directory + p2txt.Text;
-
-                UploadFileToFtp("ftp://182.50.151.83/httpdocs/lalchowk/pictures/", uploaddir);
-
-                cmd = "insert into pictures (`groupid`, `picture`) " +
-                     "values ('" + gidtxt.Text + @"','" + p2txt.Text + "')";
-                obj.nonQuery(cmd);
-
-                obj.closeConnection();
-
+                MessageBox.Show("Product undefined!");
             }
-            catch (WebException ex)
+            else
             {
-                MessageBox.Show(ex.ToString());
+                if (pic2.BackgroundImage == null)
+                {
+                    MessageBox.Show("Select Image first.");
+                }
+                else
+                {
+                    Cursor = Cursors.WaitCursor;
+                    try
+                    {
+                        pic2.BackgroundImage.Dispose();
+                        File.Move(fileaddress, directory + p2txt.Text);
+                        uploaddir = directory + p2txt.Text;
+
+                        UploadFileToFtp("ftp://182.50.151.83/httpdocs/lalchowk/pictures/", uploaddir);
+
+                        cmd = "insert into pictures (`groupid`, `picture`) " +
+                             "values ('" + gidtxt.Text + @"','" + p2txt.Text + "')";
+                        obj.nonQuery(cmd);
+
+                        obj.closeConnection();
+
+                    }
+                    catch (WebException ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+                    }
+                    Cursor = Cursors.Arrow;
+                }
             }
-            Cursor = Cursors.Arrow;
+                
         }
 
         private void pic3_Click(object sender, EventArgs e)
@@ -255,27 +288,41 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void up3_Click(object sender, EventArgs e)
         {
-            Cursor = Cursors.WaitCursor;
-            try
+            if (gidtxt.Text == "")
             {
-                pic3.BackgroundImage.Dispose();
-                File.Move(fileaddress, directory + p3txt.Text);
-                uploaddir = directory + p3txt.Text;
-
-                UploadFileToFtp("ftp://182.50.151.83/httpdocs/lalchowk/pictures/", uploaddir);
-
-                cmd = "insert into pictures (`groupid`, `picture`) " +
-                     "values ('" + gidtxt.Text + @"','" + p3txt.Text + "')";
-                obj.nonQuery(cmd);
-
-                obj.closeConnection();
-
+                MessageBox.Show("Product undefined!");
             }
-            catch (WebException ex)
+            else
             {
-                MessageBox.Show(ex.ToString());
-            }
-            Cursor = Cursors.Arrow;
+                if (pic3.BackgroundImage == null)
+                {
+                    MessageBox.Show("Select Image first.");
+                }
+                else
+                {
+                    Cursor = Cursors.WaitCursor;
+                    try
+                    {
+                        pic3.BackgroundImage.Dispose();
+                        File.Move(fileaddress, directory + p3txt.Text);
+                        uploaddir = directory + p3txt.Text;
+
+                        UploadFileToFtp("ftp://182.50.151.83/httpdocs/lalchowk/pictures/", uploaddir);
+
+                        cmd = "insert into pictures (`groupid`, `picture`) " +
+                             "values ('" + gidtxt.Text + @"','" + p3txt.Text + "')";
+                        obj.nonQuery(cmd);
+
+                        obj.closeConnection();
+
+                    }
+                    catch (WebException ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+                    }
+                    Cursor = Cursors.Arrow;
+                }
+            }  
         }
 
         private void pic4_Click(object sender, EventArgs e)
@@ -296,27 +343,41 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void up4_Click(object sender, EventArgs e)
         {
-            Cursor = Cursors.WaitCursor;
-            try
+            if (gidtxt.Text == "")
             {
-                pic4.BackgroundImage.Dispose();
-                File.Move(fileaddress, directory + p4txt.Text);
-                uploaddir = directory + p4txt.Text;
-
-                UploadFileToFtp("ftp://182.50.151.83/httpdocs/lalchowk/pictures/", uploaddir);
-
-                cmd = "insert into pictures (`groupid`, `picture`) " +
-                     "values ('" + gidtxt.Text + @"','" + p4txt.Text + "')";
-                obj.nonQuery(cmd);
-
-                obj.closeConnection();
-
+                MessageBox.Show("Product undefined!");
             }
-            catch (WebException ex)
+            else
             {
-                MessageBox.Show(ex.ToString());
-            }
-            Cursor = Cursors.Arrow;
+                if (pic2.BackgroundImage == null)
+                {
+                    MessageBox.Show("Select Image first.");
+                }
+                else
+                {
+                    Cursor = Cursors.WaitCursor;
+                    try
+                    {
+                        pic4.BackgroundImage.Dispose();
+                        File.Move(fileaddress, directory + p4txt.Text);
+                        uploaddir = directory + p4txt.Text;
+
+                        UploadFileToFtp("ftp://182.50.151.83/httpdocs/lalchowk/pictures/", uploaddir);
+
+                        cmd = "insert into pictures (`groupid`, `picture`) " +
+                             "values ('" + gidtxt.Text + @"','" + p4txt.Text + "')";
+                        obj.nonQuery(cmd);
+
+                        obj.closeConnection();
+
+                    }
+                    catch (WebException ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+                    }
+                    Cursor = Cursors.Arrow;
+                }
+            }    
         }
 
        
@@ -340,27 +401,41 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void up5_Click(object sender, EventArgs e)
         {
-            Cursor = Cursors.WaitCursor;
-            try
+            if (gidtxt.Text == "")
             {
-                pic5.BackgroundImage.Dispose();
-                File.Move(fileaddress, directory + p5txt.Text);
-                uploaddir = directory + p5txt.Text;
-
-                UploadFileToFtp("ftp://182.50.151.83/httpdocs/lalchowk/pictures/", uploaddir);
-
-                cmd = "insert into pictures (`groupid`, `picture`) " +
-                     "values ('" + gidtxt.Text + @"','" + p5txt.Text + "')";
-                obj.nonQuery(cmd);
-
-                obj.closeConnection();
-
+                MessageBox.Show("Product undefined!");
             }
-            catch (WebException ex)
+            else
             {
-                MessageBox.Show(ex.ToString());
-            }
-            Cursor = Cursors.Arrow;
+                if (pic2.BackgroundImage == null)
+                {
+                    MessageBox.Show("Select Image first.");
+                }
+                else
+                {
+                    Cursor = Cursors.WaitCursor;
+                    try
+                    {
+                        pic5.BackgroundImage.Dispose();
+                        File.Move(fileaddress, directory + p5txt.Text);
+                        uploaddir = directory + p5txt.Text;
+
+                        UploadFileToFtp("ftp://182.50.151.83/httpdocs/lalchowk/pictures/", uploaddir);
+
+                        cmd = "insert into pictures (`groupid`, `picture`) " +
+                             "values ('" + gidtxt.Text + @"','" + p5txt.Text + "')";
+                        obj.nonQuery(cmd);
+
+                        obj.closeConnection();
+
+                    }
+                    catch (WebException ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+                    }
+                    Cursor = Cursors.Arrow;
+                }
+            }     
         }
 
 

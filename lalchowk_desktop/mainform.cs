@@ -91,7 +91,7 @@ namespace Veiled_Kashmir_Admin_Panel
             attentionlbl.Text = "> " + dr[0].ToString() + " Order(s) need your Attention ASAP!";
             obj.closeConnection();
 
-            dr = obj.Query("select sum(dealerprice*quantity) from orderdetails where productid in (SELECT productid FROM orderdetails where orderid in (SELECT orderid FROM orders where status = 'placed'))");
+            dr = obj.Query("select sum(dealerprice*quantity) from orderdetails where orderid in(SELECT orderid FROM orders where status = 'placed');");
             dr.Read();
             costlbl.Text = "> Will cost Rs. " + dr[0].ToString() + "/-";
             obj.closeConnection();
