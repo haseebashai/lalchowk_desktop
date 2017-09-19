@@ -127,14 +127,14 @@ namespace Veiled_Kashmir_Admin_Panel
             mrptxt.Text = "";
             pricetxt.Text = "";
             dealertxt.Text = "";
-            pidtxt.Text = "";
-            pictxt.Text = "";
+            pidtxt.Text = "";           
             catbox.Text = "";
             pic1.BackgroundImage = null;
             pic2.BackgroundImage = null;
             pic3.BackgroundImage = null;
             pic4.BackgroundImage = null;
             pic5.BackgroundImage = null;
+            pictxt.Text = "";
             p2txt.Text = "";
             p3txt.Text = "";
             p4txt.Text = "";

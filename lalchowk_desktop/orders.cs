@@ -123,15 +123,15 @@ namespace Veiled_Kashmir_Admin_Panel
             DialogResult dr = MessageBox.Show("Sure you want to confirm and print the receipt ?", "Confirm", MessageBoxButtons.YesNo);
             if (dr == DialogResult.Yes)
             {
-                cmd = "update orders set status='Shipped' where orderid='" + orderlbl.Text + "'";
-                obj.nonQuery(cmd);
+                
                 dpnl.Visible = false;
                 orderdetailview.Visible = false;
-                
+                receipt rc = new receipt(orderid);
+                rc.ShowDialog();
+
             }
 
-            receipt rc = new receipt();
-            rc.ShowDialog();
+            
             readorders();
 
 
