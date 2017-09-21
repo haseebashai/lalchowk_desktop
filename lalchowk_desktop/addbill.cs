@@ -51,7 +51,7 @@ namespace Veiled_Kashmir_Admin_Panel
             aconn.Open();
             mysqlcmd = new MySqlCommand("insert into billing(`orderid`, `user`, `amount`,`deliverydate`,`billno`) values ('" + otxt.Text + "','" + utxt.Text + "','" + atxt.Text + "','" + dtxt.Text + "','bill" + btxt.Text + "')", aconn);
             mysqlcmd.ExecuteNonQuery();           
-            mysqlcmd = new MySqlCommand("insert into deliveries(`orderid`, `email`, `amount`,`status`) values ('" + otxt.Text + "','" + utxt.Text + "','" + atxt.Text + "','Delivered')", aconn);
+            mysqlcmd = new MySqlCommand("insert into deliveries(`orderid`, `email`, `amount`,`status`,`date`) values ('" + otxt.Text + "','" + utxt.Text + "','" + atxt.Text + "','Delivered','"+dtxt.Text+"')", aconn);
             mysqlcmd.ExecuteNonQuery();
             aconn.Close();
 

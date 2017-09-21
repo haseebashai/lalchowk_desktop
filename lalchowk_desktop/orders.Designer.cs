@@ -66,6 +66,7 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.orderdetailview = new System.Windows.Forms.DataGridView();
             this.ordergridview = new System.Windows.Forms.DataGridView();
+            this.updbtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.orderpnl.SuspendLayout();
             this.dpnl.SuspendLayout();
@@ -75,6 +76,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.updbtn);
             this.panel1.Controls.Add(this.orlbl);
             this.panel1.Controls.Add(this.label12);
             this.panel1.Controls.Add(this.statustxt);
@@ -475,6 +477,16 @@
             this.ordergridview.TabIndex = 0;
             this.ordergridview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ordergridview_CellClick);
             // 
+            // updbtn
+            // 
+            this.updbtn.Location = new System.Drawing.Point(1075, 19);
+            this.updbtn.Name = "updbtn";
+            this.updbtn.Size = new System.Drawing.Size(75, 23);
+            this.updbtn.TabIndex = 12;
+            this.updbtn.Text = "Update";
+            this.updbtn.UseVisualStyleBackColor = true;
+            this.updbtn.Click += new System.EventHandler(this.updbtn_Click);
+            // 
             // orders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -537,5 +549,6 @@
         private System.Windows.Forms.Label con;
         private System.Windows.Forms.Label orlbl;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button updbtn;
     }
 }

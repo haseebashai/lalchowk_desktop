@@ -17,11 +17,11 @@ namespace Veiled_Kashmir_Admin_Panel
         MySqlConnection con;
         MySqlCommand mysqlcmd, cmd;
         DataTable dt;
-        MySqlDataReader dr;
+        MySqlDataReader dr,dr1;
         MySqlCommandBuilder cmdbl;
-        MySqlDataAdapter adap;
+        MySqlDataAdapter adap,adap1;
         MySqlConnection aconn = new MySqlConnection("SERVER=182.50.133.78;DATABASE=lalchowk_ac;USER=lalchowkac;PASSWORD=Lalchowk@123uzmah");
-
+        string date, month;
 
         private container hp = null;
         public accounts(Form hpcopy)
@@ -147,6 +147,7 @@ namespace Veiled_Kashmir_Admin_Panel
             aconn.Close();
         }
 
+        
         public void readrevenue()
         {
             aconn.Open();
@@ -157,6 +158,15 @@ namespace Veiled_Kashmir_Admin_Panel
             BindingSource bsource = new BindingSource();
             bsource.DataSource = dt;
             accountdataview.DataSource = bsource;
+
+            aconn.Open();
+            cmd = new MySqlCommand("SELECT date FROM lalchowk_ac.deliveries ORDER BY did DESC LIMIT 1;", aconn);
+            dr = cmd.ExecuteReader();
+            dr.Read();
+            date = dr[0].ToString();
+            aconn.Close();
+            month = date.Substring(3, 2);
+            
         }
 
 
@@ -481,6 +491,66 @@ namespace Veiled_Kashmir_Admin_Panel
             miscpnl.Visible = false;
             billpnl.Visible = false;
             totallbl.Visible = false;
+
+            switch(month)
+            {
+                case "01":
+                    monlbl.Text = "January";
+                    break;
+                case "02":
+                    monlbl.Text = "February";
+                    break;
+                case "03":
+                    monlbl.Text = "March";
+                    break;
+                case "04":
+                    monlbl.Text = "April";
+                    break;
+                case "05":
+                    monlbl.Text = "May";
+                    break;
+                case "06":
+                    monlbl.Text = "June";
+                    break;
+                case "07":
+                    monlbl.Text = "July";
+                    break;
+                case "08":
+                    monlbl.Text = "August";
+                    break;
+                case "09":
+                    monlbl.Text = "September";
+                    break;
+                case "10":
+                    monlbl.Text = "October";
+                    break;
+                case "11":
+                    monlbl.Text = "November";
+                    break;
+                case "12":
+                    monlbl.Text = "December";
+                    break;
+                default:
+                    monlbl.Visible = false;
+                    break;
+            }
+
+            aconn.Open();
+            cmd = new MySqlCommand(" SELECT sum(amount) from deliveries where status='delivered' and date like '%-"+month+"-%'", aconn);
+            dr = cmd.ExecuteReader();
+            dr.Read();
+            salebox.Text = dr[0].ToString();
+            aconn.Close();
+
+            aconn.Open();
+            cmd = new MySqlCommand(" SELECT sum(dealerprice) from dealing where pickupdate like '%-" + month + "-%'", aconn);
+            dr = cmd.ExecuteReader();
+            dr.Read();
+            purchasebox.Text = dr[0].ToString();
+            aconn.Close();
+
+            profitbox.Text = (int.Parse(salebox.Text) - int.Parse(purchasebox.Text)).ToString();
+
         }
 
         private void addrbtn_Click(object sender, EventArgs e)
@@ -521,6 +591,12 @@ namespace Veiled_Kashmir_Admin_Panel
                 MessageBox.Show(ex.ToString());
             }
 }
+
+        private void monbox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            MessageBox.Show(month.ToString());
+          
+        }
 
         private void updbtn_Click(object sender, EventArgs e)
         {

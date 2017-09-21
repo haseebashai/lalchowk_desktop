@@ -8,16 +8,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.Diagnostics;
 
 namespace Veiled_Kashmir_Admin_Panel
 {
     public partial class orders : Form
     {
         DBConnect obj = new DBConnect();
-        String orderid,email, addressid,cmd, productid, productname, price, quantity, size,dealerprice,shipping;
+        String orderid,email, addressid,cmd, productid, productname, price, quantity, size,dealerprice,shipping, filename;
         MySqlDataReader dr;
         DataTable dt,dt1,dt2,dt3;
         MySqlCommand mysqlcmd;
+        MySqlDataAdapter adap;
+        MySqlConnection conn =new MySqlConnection("SERVER = 182.50.133.78; DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah");
+        MySqlCommandBuilder cmdbl;
 
 
         private container hp = null;
@@ -33,9 +37,9 @@ namespace Veiled_Kashmir_Admin_Panel
 
            private void readorders()
             {
-            dr = obj.Query("SELECT customer.mail,orders.*  FROM lalchowk.orders inner join customer on customer.email=orders.email;");
+            adap = new MySqlDataAdapter("SELECT customer.mail,orders.*  FROM lalchowk.orders inner join customer on customer.email=orders.email;",conn);
             dt = new DataTable();
-            dt.Load(dr);
+            adap.Fill(dt);
             obj.closeConnection();
             BindingSource bsource = new BindingSource();
             bsource.DataSource = dt;
@@ -48,7 +52,19 @@ namespace Veiled_Kashmir_Admin_Panel
 
         }
 
-        
+        private void updbtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                cmdbl = new MySqlCommandBuilder(adap);
+                adap.Update(dt);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
 
         private void emailtxt_TextChanged(object sender, EventArgs e)
         {
@@ -120,14 +136,29 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void cnfbtn_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Sure you want to confirm and print the receipt ?", "Confirm", MessageBoxButtons.YesNo);
+            DialogResult dr = MessageBox.Show("Open the bill format file and print the bill.\n Change the status to Shipped.", "Confirm", MessageBoxButtons.YesNo);
             if (dr == DialogResult.Yes)
             {
                 
                 dpnl.Visible = false;
                 orderdetailview.Visible = false;
-                receipt rc = new receipt(orderid);
-                rc.ShowDialog();
+
+                OpenFileDialog bill = new OpenFileDialog();
+                bill.Filter = "All Files (*.*)|*.*";
+                bill.FilterIndex = 1;
+
+                if (bill.ShowDialog() == DialogResult.OK)
+                {
+                    filename = bill.FileName;
+                }
+                Process.Start(filename);
+
+                cmd = "update orders set status='Shipped' where orderid='" + orderid + "'";
+                obj.nonQuery(cmd);
+
+
+                //  receipt rc = new receipt(orderid);
+                // rc.ShowDialog();
 
             }
 

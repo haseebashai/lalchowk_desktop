@@ -134,6 +134,9 @@
             this.totallbl = new System.Windows.Forms.Label();
             this.revbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.rpnl = new System.Windows.Forms.Panel();
+            this.monlbl = new System.Windows.Forms.Label();
+            this.revlbl = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
             this.pcosttxt = new System.Windows.Forms.TextBox();
             this.label45 = new System.Windows.Forms.Label();
             this.gprofittxt = new System.Windows.Forms.TextBox();
@@ -151,6 +154,11 @@
             this.label41 = new System.Windows.Forms.Label();
             this.monthtxt = new System.Windows.Forms.TextBox();
             this.label42 = new System.Windows.Forms.Label();
+            this.salebox = new System.Windows.Forms.TextBox();
+            this.profitbox = new System.Windows.Forms.TextBox();
+            this.purchasebox = new System.Windows.Forms.TextBox();
+            this.label46 = new System.Windows.Forms.Label();
+            this.label47 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.accountdataview)).BeginInit();
             this.exppnl.SuspendLayout();
             this.moneypnl.SuspendLayout();
@@ -1265,6 +1273,14 @@
             // 
             // rpnl
             // 
+            this.rpnl.Controls.Add(this.label47);
+            this.rpnl.Controls.Add(this.label46);
+            this.rpnl.Controls.Add(this.purchasebox);
+            this.rpnl.Controls.Add(this.profitbox);
+            this.rpnl.Controls.Add(this.salebox);
+            this.rpnl.Controls.Add(this.monlbl);
+            this.rpnl.Controls.Add(this.revlbl);
+            this.rpnl.Controls.Add(this.label37);
             this.rpnl.Controls.Add(this.pcosttxt);
             this.rpnl.Controls.Add(this.label45);
             this.rpnl.Controls.Add(this.gprofittxt);
@@ -1287,6 +1303,33 @@
             this.rpnl.Size = new System.Drawing.Size(1148, 164);
             this.rpnl.TabIndex = 41;
             this.rpnl.Visible = false;
+            // 
+            // monlbl
+            // 
+            this.monlbl.AutoSize = true;
+            this.monlbl.Location = new System.Drawing.Point(949, 13);
+            this.monlbl.Name = "monlbl";
+            this.monlbl.Size = new System.Drawing.Size(37, 13);
+            this.monlbl.TabIndex = 31;
+            this.monlbl.Text = "monlbl";
+            // 
+            // revlbl
+            // 
+            this.revlbl.AutoSize = true;
+            this.revlbl.Location = new System.Drawing.Point(861, 41);
+            this.revlbl.Name = "revlbl";
+            this.revlbl.Size = new System.Drawing.Size(31, 13);
+            this.revlbl.TabIndex = 30;
+            this.revlbl.Text = "Sale:";
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(788, 13);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(164, 13);
+            this.label37.TabIndex = 29;
+            this.label37.Text = " Current numbers for the month of";
             // 
             // pcosttxt
             // 
@@ -1327,7 +1370,7 @@
             this.ireasontxt.Location = new System.Drawing.Point(521, 75);
             this.ireasontxt.Multiline = true;
             this.ireasontxt.Name = "ireasontxt";
-            this.ireasontxt.Size = new System.Drawing.Size(204, 73);
+            this.ireasontxt.Size = new System.Drawing.Size(204, 39);
             this.ireasontxt.TabIndex = 23;
             // 
             // label43
@@ -1378,7 +1421,7 @@
             this.addrbtn.AutoSize = true;
             this.addrbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.addrbtn.Depth = 0;
-            this.addrbtn.Location = new System.Drawing.Point(774, 112);
+            this.addrbtn.Location = new System.Drawing.Point(640, 120);
             this.addrbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.addrbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.addrbtn.Name = "addrbtn";
@@ -1436,6 +1479,51 @@
             this.label42.Size = new System.Drawing.Size(37, 13);
             this.label42.TabIndex = 0;
             this.label42.Text = "Month";
+            // 
+            // salebox
+            // 
+            this.salebox.Location = new System.Drawing.Point(906, 38);
+            this.salebox.Multiline = true;
+            this.salebox.Name = "salebox";
+            this.salebox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.salebox.Size = new System.Drawing.Size(98, 19);
+            this.salebox.TabIndex = 32;
+            // 
+            // profitbox
+            // 
+            this.profitbox.Location = new System.Drawing.Point(906, 88);
+            this.profitbox.Multiline = true;
+            this.profitbox.Name = "profitbox";
+            this.profitbox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.profitbox.Size = new System.Drawing.Size(98, 19);
+            this.profitbox.TabIndex = 33;
+            // 
+            // purchasebox
+            // 
+            this.purchasebox.Location = new System.Drawing.Point(906, 63);
+            this.purchasebox.Multiline = true;
+            this.purchasebox.Name = "purchasebox";
+            this.purchasebox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.purchasebox.Size = new System.Drawing.Size(98, 19);
+            this.purchasebox.TabIndex = 34;
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Location = new System.Drawing.Point(861, 66);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(31, 13);
+            this.label46.TabIndex = 35;
+            this.label46.Text = "Cost:";
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.Location = new System.Drawing.Point(861, 91);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(34, 13);
+            this.label47.TabIndex = 36;
+            this.label47.Text = "Profit:";
             // 
             // accounts
             // 
@@ -1619,5 +1707,13 @@
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.TextBox pcosttxt;
         private System.Windows.Forms.Label label45;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Label revlbl;
+        private System.Windows.Forms.Label monlbl;
+        private System.Windows.Forms.TextBox purchasebox;
+        private System.Windows.Forms.TextBox profitbox;
+        private System.Windows.Forms.TextBox salebox;
+        private System.Windows.Forms.Label label47;
+        private System.Windows.Forms.Label label46;
     }
 }

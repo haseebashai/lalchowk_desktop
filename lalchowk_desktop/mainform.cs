@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.Threading;
-
+using System.Diagnostics;
 
 namespace Veiled_Kashmir_Admin_Panel
 {
@@ -331,6 +331,17 @@ namespace Veiled_Kashmir_Admin_Panel
             Cursor = Cursors.Arrow;
         }
 
-        
+        private void shippedlbl_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            ordersdetails od = new ordersdetails(hp);
+            od.TopLevel = false;
+            cntpnl.Controls.Clear();
+            od.orderslbl.Text = "Orders Shipped";
+            od.readordershipped();
+            cntpnl.Controls.Add(od);
+            od.Show();
+            Cursor = Cursors.Arrow;
+        }
     }
 }

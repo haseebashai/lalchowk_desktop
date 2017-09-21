@@ -56,6 +56,17 @@ namespace Veiled_Kashmir_Admin_Panel
             ordersdataview.DataSource = bsource;
         }
 
+        public void readordershipped()
+        {
+            con.Open();
+            adap = new MySqlDataAdapter("select * from orders where status='shipped'", con);
+            dt = new DataTable();
+            adap.Fill(dt);
+            BindingSource bsource = new BindingSource();
+            bsource.DataSource = dt;
+            ordersdataview.DataSource = bsource;
+        }
+
         public void readpurchasecost()
         {
             con.Open();
