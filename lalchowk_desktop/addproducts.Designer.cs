@@ -110,6 +110,9 @@
             this.up5 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label33 = new System.Windows.Forms.Label();
+            this.up6 = new System.Windows.Forms.Label();
+            this.p6txt = new System.Windows.Forms.TextBox();
+            this.label30 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pic1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic3)).BeginInit();
@@ -696,7 +699,7 @@
             // 
             // p2txt
             // 
-            this.p2txt.Location = new System.Drawing.Point(859, 480);
+            this.p2txt.Location = new System.Drawing.Point(859, 464);
             this.p2txt.Name = "p2txt";
             this.p2txt.Size = new System.Drawing.Size(95, 20);
             this.p2txt.TabIndex = 67;
@@ -708,7 +711,7 @@
             this.pic2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pic2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pic2.Image = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.industrial_safety_1492046_640;
-            this.pic2.Location = new System.Drawing.Point(859, 391);
+            this.pic2.Location = new System.Drawing.Point(859, 375);
             this.pic2.Name = "pic2";
             this.pic2.Size = new System.Drawing.Size(95, 82);
             this.pic2.TabIndex = 68;
@@ -717,7 +720,7 @@
             // 
             // p3txt
             // 
-            this.p3txt.Location = new System.Drawing.Point(985, 480);
+            this.p3txt.Location = new System.Drawing.Point(985, 464);
             this.p3txt.Name = "p3txt";
             this.p3txt.Size = new System.Drawing.Size(95, 20);
             this.p3txt.TabIndex = 69;
@@ -729,7 +732,7 @@
             this.pic3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pic3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pic3.Image = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.industrial_safety_1492046_640;
-            this.pic3.Location = new System.Drawing.Point(985, 391);
+            this.pic3.Location = new System.Drawing.Point(985, 375);
             this.pic3.Name = "pic3";
             this.pic3.Size = new System.Drawing.Size(95, 82);
             this.pic3.TabIndex = 70;
@@ -743,7 +746,7 @@
             this.pic5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pic5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pic5.Image = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.industrial_safety_1492046_640;
-            this.pic5.Location = new System.Drawing.Point(985, 532);
+            this.pic5.Location = new System.Drawing.Point(985, 505);
             this.pic5.Name = "pic5";
             this.pic5.Size = new System.Drawing.Size(95, 82);
             this.pic5.TabIndex = 74;
@@ -752,14 +755,14 @@
             // 
             // p5txt
             // 
-            this.p5txt.Location = new System.Drawing.Point(985, 623);
+            this.p5txt.Location = new System.Drawing.Point(985, 596);
             this.p5txt.Name = "p5txt";
             this.p5txt.Size = new System.Drawing.Size(95, 20);
             this.p5txt.TabIndex = 73;
             // 
             // p4txt
             // 
-            this.p4txt.Location = new System.Drawing.Point(859, 623);
+            this.p4txt.Location = new System.Drawing.Point(859, 596);
             this.p4txt.Name = "p4txt";
             this.p4txt.Size = new System.Drawing.Size(95, 20);
             this.p4txt.TabIndex = 71;
@@ -771,7 +774,7 @@
             this.pic4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pic4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pic4.Image = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.industrial_safety_1492046_640;
-            this.pic4.Location = new System.Drawing.Point(859, 532);
+            this.pic4.Location = new System.Drawing.Point(859, 505);
             this.pic4.Name = "pic4";
             this.pic4.Size = new System.Drawing.Size(95, 82);
             this.pic4.TabIndex = 72;
@@ -807,7 +810,7 @@
             this.up2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.up2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.up2.ForeColor = System.Drawing.Color.DarkGray;
-            this.up2.Location = new System.Drawing.Point(812, 457);
+            this.up2.Location = new System.Drawing.Point(812, 441);
             this.up2.Name = "up2";
             this.up2.Size = new System.Drawing.Size(41, 13);
             this.up2.TabIndex = 77;
@@ -820,7 +823,7 @@
             this.up3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.up3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.up3.ForeColor = System.Drawing.Color.DarkGray;
-            this.up3.Location = new System.Drawing.Point(1086, 457);
+            this.up3.Location = new System.Drawing.Point(1086, 441);
             this.up3.Name = "up3";
             this.up3.Size = new System.Drawing.Size(41, 13);
             this.up3.TabIndex = 78;
@@ -833,7 +836,7 @@
             this.up4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.up4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.up4.ForeColor = System.Drawing.Color.DarkGray;
-            this.up4.Location = new System.Drawing.Point(812, 598);
+            this.up4.Location = new System.Drawing.Point(812, 571);
             this.up4.Name = "up4";
             this.up4.Size = new System.Drawing.Size(41, 13);
             this.up4.TabIndex = 79;
@@ -846,7 +849,7 @@
             this.up5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.up5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.up5.ForeColor = System.Drawing.Color.DarkGray;
-            this.up5.Location = new System.Drawing.Point(1086, 598);
+            this.up5.Location = new System.Drawing.Point(1086, 571);
             this.up5.Name = "up5";
             this.up5.Size = new System.Drawing.Size(41, 13);
             this.up5.TabIndex = 80;
@@ -873,12 +876,46 @@
             this.label33.TabIndex = 82;
             this.label33.Text = "add product first";
             // 
+            // up6
+            // 
+            this.up6.AutoSize = true;
+            this.up6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.up6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.up6.ForeColor = System.Drawing.Color.DarkGray;
+            this.up6.Location = new System.Drawing.Point(1086, 651);
+            this.up6.Name = "up6";
+            this.up6.Size = new System.Drawing.Size(41, 13);
+            this.up6.TabIndex = 84;
+            this.up6.Text = "Upload";
+            this.up6.Click += new System.EventHandler(this.up6_Click);
+            // 
+            // p6txt
+            // 
+            this.p6txt.Location = new System.Drawing.Point(906, 648);
+            this.p6txt.Name = "p6txt";
+            this.p6txt.Size = new System.Drawing.Size(174, 20);
+            this.p6txt.TabIndex = 83;
+            this.p6txt.Click += new System.EventHandler(this.p6txt_Click);
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.Location = new System.Drawing.Point(812, 655);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(93, 13);
+            this.label30.TabIndex = 85;
+            this.label30.Text = "Add more Pictures";
+            // 
             // addproducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1162, 722);
+            this.Controls.Add(this.label30);
+            this.Controls.Add(this.up6);
+            this.Controls.Add(this.p6txt);
             this.Controls.Add(this.label33);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.up5);
@@ -1058,5 +1095,8 @@
         private System.Windows.Forms.Label up5;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label up6;
+        private System.Windows.Forms.TextBox p6txt;
+        private System.Windows.Forms.Label label30;
     }
 }

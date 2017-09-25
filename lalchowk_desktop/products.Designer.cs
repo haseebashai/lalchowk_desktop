@@ -40,6 +40,8 @@
             this.cacclbl = new System.Windows.Forms.Label();
             this.coslbl = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.addpics = new MaterialSkin.Controls.MaterialFlatButton();
             this.SuspendLayout();
             // 
             // chkbtn
@@ -47,7 +49,7 @@
             this.chkbtn.AutoSize = true;
             this.chkbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.chkbtn.Depth = 0;
-            this.chkbtn.Location = new System.Drawing.Point(491, 112);
+            this.chkbtn.Location = new System.Drawing.Point(302, 112);
             this.chkbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.chkbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.chkbtn.Name = "chkbtn";
@@ -77,7 +79,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Silver;
-            this.panel1.Location = new System.Drawing.Point(339, 102);
+            this.panel1.Location = new System.Drawing.Point(244, 102);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1, 50);
             this.panel1.TabIndex = 16;
@@ -173,12 +175,38 @@
             this.label1.TabIndex = 25;
             this.label1.Text = "Inventory";
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Silver;
+            this.panel2.Location = new System.Drawing.Point(482, 102);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1, 50);
+            this.panel2.TabIndex = 27;
+            // 
+            // addpics
+            // 
+            this.addpics.AutoSize = true;
+            this.addpics.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.addpics.Depth = 0;
+            this.addpics.Location = new System.Drawing.Point(542, 112);
+            this.addpics.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.addpics.MouseState = MaterialSkin.MouseState.HOVER;
+            this.addpics.Name = "addpics";
+            this.addpics.Primary = false;
+            this.addpics.Size = new System.Drawing.Size(106, 36);
+            this.addpics.TabIndex = 26;
+            this.addpics.Text = "add pictures";
+            this.addpics.UseVisualStyleBackColor = true;
+            this.addpics.Click += new System.EventHandler(this.addpics_Click);
+            // 
             // products
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1162, 722);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.addpics);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.coslbl);
             this.Controls.Add(this.cacclbl);
@@ -214,5 +242,7 @@
         private System.Windows.Forms.Label cacclbl;
         private System.Windows.Forms.Label coslbl;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel2;
+        private MaterialSkin.Controls.MaterialFlatButton addpics;
     }
 }

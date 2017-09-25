@@ -18,24 +18,43 @@ namespace Veiled_Kashmir_Admin_Panel
     public partial class addpictures : Form
     {
         DBConnect obj = new DBConnect();
-        string filename, fileaddress,cmd;
+        string cmd, filename, fileaddress, fullpath, directory, uploaddir;
+        MySqlConnection con = new MySqlConnection("SERVER= 182.50.133.78; DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah");
+        MySqlDataAdapter adap;
+        DataTable dt;
+        MySqlCommandBuilder cmdbl;
+
+
         public addpictures()
         {
             InitializeComponent();
-       //     gid.Text = gidtxt;
+            readpictures();
 
         }
 
-        private void closebtn_Click(object sender, EventArgs e)
+       
+
+        private void pic_Click(object sender, EventArgs e)
         {
-            Close();
+            if (picdialog.ShowDialog() == DialogResult.OK)
+            {
+                fileaddress = picdialog.FileName;
+                filename = picdialog.SafeFileName;
+                Image myimage = new Bitmap(fileaddress);
+                pic.BackgroundImage = myimage;
+                pic.BackgroundImageLayout = ImageLayout.Stretch;
+                fullpath = Path.GetFullPath(fileaddress).TrimEnd(Path.DirectorySeparatorChar);
+                directory = Path.GetDirectoryName(fullpath) + "\\";
+                ptxt.Text = Path.GetFileName(fullpath);
+
+            }
         }
 
-        
 
         public static void UploadFileToFtp(string url, string filePath)
         {
-            try {
+            try
+            {
                 var fileName = Path.GetFileName(filePath);
                 var request = (FtpWebRequest)WebRequest.Create(url + fileName);
 
@@ -49,63 +68,98 @@ namespace Veiled_Kashmir_Admin_Panel
                 {
                     using (var requestStream = request.GetRequestStream())
                     {
-                        fileStream.CopyTo(requestStream);                        
+                        fileStream.CopyTo(requestStream);
                         requestStream.Close();
                     }
                 }
 
                 var response = (FtpWebResponse)request.GetResponse();
-                MessageBox.Show("Upload done: " +response.StatusDescription,"Upload Successful.");
-                
+                MessageBox.Show("Upload done: " + response.StatusDescription, "Upload Successful.");
+
                 response.Close();
-               
+
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
-                
-            }
-            }
 
-       
+            }
+        }
 
-        private void picbtn_Click(object sender, EventArgs e)
+        private void addbtn_Click(object sender, EventArgs e)
         {
+            if (gidtxt.Text == "")
+            {
+                MessageBox.Show("Product undefined!, Enter GroupdID.");
+            }
+            else
+            {
+                if (pic.BackgroundImage == null)
+                {
+                    MessageBox.Show("Select Image first.");
+                }
+                else
+                {
+                    Cursor = Cursors.WaitCursor;
+                    try
+                    {
+                        pic.BackgroundImage.Dispose();
+                        File.Move(fileaddress, directory + ptxt.Text);
+                        uploaddir = directory + ptxt.Text;
 
-            cmd = "insert into pictures (`groupid`, `picture`) " +
-                     "values ('" + gid.Text +  @"','" + filename + "')";
-            obj.nonQuery(cmd);
+                        UploadFileToFtp("ftp://182.50.151.83/httpdocs/lalchowk/pictures/", uploaddir);
 
-            obj.closeConnection();
+                        cmd = "insert into pictures (`groupid`, `picture`) " +
+                             "values ('" + gidtxt.Text + @"','" + ptxt.Text + "')";
+                        obj.nonQuery(cmd);
+
+                        obj.closeConnection();
+                        ptxt.Text = "";
+                        gidtxt.Text = "";
+                        readpictures();
+                    }
+                    catch (WebException ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+                    }
+                    Cursor = Cursors.Arrow;
+                   
+                }
+            }
+        }
+
+        private void closebtn_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void readpictures()
+        {
+            con.Open();
+            adap = new MySqlDataAdapter("select * from pictures", con);
+            dt = new DataTable();
+            adap.Fill(dt);
+            con.Close();
+            BindingSource bsource = new BindingSource();
+            bsource.DataSource = dt;
+            picturesdataview.DataSource = bsource;
+        }
+
+        private void updbtn_Click(object sender, EventArgs e)
+        {
             try
             {
-                UploadFileToFtp("ftp://182.50.151.83/lalchowk/pictures/", fileaddress);
+                cmdbl = new MySqlCommandBuilder(adap);
+                adap.Update(dt);
+
             }
-            catch (WebException ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
-            finally
-            {
-                picbox.BackgroundImage = null;
-            }
-
         }
 
-        private void selectbtn_Click(object sender, EventArgs e)
-        {
-            if (picdialog.ShowDialog() == DialogResult.OK)
-            {
-                fileaddress = picdialog.FileName;
-                filename = picdialog.SafeFileName;
-                Image myimage = new Bitmap(fileaddress);
-                picbox.BackgroundImage = myimage;
-                picbox.BackgroundImageLayout = ImageLayout.Stretch;
-            }
-        }
-
-     
     }
 
         

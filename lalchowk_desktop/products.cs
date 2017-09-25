@@ -18,7 +18,7 @@ namespace Veiled_Kashmir_Admin_Panel
         DBConnect obj = new DBConnect();
         bool fnameok, lnameok, usernameok, emailok, passwordok, confirmok, phoneok, dobok;
 
-       
+      
 
         private mainform mf = null;
         private container hp = null;
@@ -44,6 +44,18 @@ namespace Veiled_Kashmir_Admin_Panel
             mf.cntpnl.Controls.Add(inv);
             inv.Show();
         }
+
+        private void addpics_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            addpictures ap = new addpictures();
+            ap.TopLevel = false;
+            mf.cntpnl.Controls.Clear();
+            mf.cntpnl.Controls.Add(ap);
+            ap.Show();
+            Cursor = Cursors.Arrow;
+        }
+
 
         private void products_Load(object sender, EventArgs e)
         {
@@ -89,6 +101,8 @@ namespace Veiled_Kashmir_Admin_Panel
 
 
         }
+
+
         /*     private void signupbtn_Click(object sender, EventArgs e)
              {
                  if (fnameok && lnameok && usernameok && emailok && passwordok && confirmok && phoneok && dobok && tcbox.Checked == true)

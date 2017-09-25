@@ -349,7 +349,7 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             else
             {
-                if (pic2.BackgroundImage == null)
+                if (pic4.BackgroundImage == null)
                 {
                     MessageBox.Show("Select Image first.");
                 }
@@ -398,6 +398,7 @@ namespace Veiled_Kashmir_Admin_Panel
             }
         }
 
+       
 
         private void up5_Click(object sender, EventArgs e)
         {
@@ -407,7 +408,7 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             else
             {
-                if (pic2.BackgroundImage == null)
+                if (pic5.BackgroundImage == null)
                 {
                     MessageBox.Show("Select Image first.");
                 }
@@ -436,6 +437,56 @@ namespace Veiled_Kashmir_Admin_Panel
                     Cursor = Cursors.Arrow;
                 }
             }     
+        }
+
+        private void p6txt_Click(object sender, EventArgs e)
+        {
+            if (p6txt.Text == "") {
+                if (picdialog.ShowDialog() == DialogResult.OK)
+                {
+                    fileaddress = picdialog.FileName;
+                    filename = picdialog.SafeFileName;
+                    fullpath = Path.GetFullPath(fileaddress).TrimEnd(Path.DirectorySeparatorChar);
+                    directory = Path.GetDirectoryName(fullpath) + "\\";
+                    p6txt.Text = Path.GetFileName(fullpath);
+                }
+                else
+                {
+                    p6txt.Focus();
+                }
+            }
+        }
+
+        private void up6_Click(object sender, EventArgs e)
+        {
+            if (gidtxt.Text == "")
+            {
+                MessageBox.Show("Product undefined!");
+            }
+            else
+            {
+                    Cursor = Cursors.WaitCursor;
+                    try
+                    {
+                        File.Move(fileaddress, directory + p6txt.Text);
+                        uploaddir = directory + p6txt.Text;
+
+                        UploadFileToFtp("ftp://182.50.151.83/httpdocs/lalchowk/pictures/", uploaddir);
+
+                        cmd = "insert into pictures (`groupid`, `picture`) " +
+                             "values ('" + gidtxt.Text + @"','" + p6txt.Text + "')";
+                        obj.nonQuery(cmd);
+
+                        obj.closeConnection();
+                    
+                    }
+                    catch (WebException ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+                    }
+                    Cursor = Cursors.Arrow;
+                p6txt.Text = "";
+            }          
         }
 
 
