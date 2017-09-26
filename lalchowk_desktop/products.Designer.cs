@@ -42,6 +42,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.addpics = new MaterialSkin.Controls.MaterialFlatButton();
+            this.viewpbtn = new MaterialSkin.Controls.MaterialFlatButton();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // chkbtn
@@ -54,9 +56,9 @@
             this.chkbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.chkbtn.Name = "chkbtn";
             this.chkbtn.Primary = false;
-            this.chkbtn.Size = new System.Drawing.Size(123, 36);
+            this.chkbtn.Size = new System.Drawing.Size(119, 36);
             this.chkbtn.TabIndex = 14;
-            this.chkbtn.Text = "View Inventory";
+            this.chkbtn.Text = "Edit Inventory";
             this.chkbtn.UseVisualStyleBackColor = true;
             this.chkbtn.Click += new System.EventHandler(this.chkbtn_Click);
             // 
@@ -199,12 +201,38 @@
             this.addpics.UseVisualStyleBackColor = true;
             this.addpics.Click += new System.EventHandler(this.addpics_Click);
             // 
+            // viewpbtn
+            // 
+            this.viewpbtn.AutoSize = true;
+            this.viewpbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.viewpbtn.Depth = 0;
+            this.viewpbtn.Location = new System.Drawing.Point(302, 223);
+            this.viewpbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.viewpbtn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.viewpbtn.Name = "viewpbtn";
+            this.viewpbtn.Primary = false;
+            this.viewpbtn.Size = new System.Drawing.Size(118, 36);
+            this.viewpbtn.TabIndex = 28;
+            this.viewpbtn.Text = "View Products";
+            this.viewpbtn.UseVisualStyleBackColor = true;
+            this.viewpbtn.Click += new System.EventHandler(this.viewpbtn_Click);
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.Silver;
+            this.panel3.Location = new System.Drawing.Point(318, 190);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(85, 1);
+            this.panel3.TabIndex = 29;
+            // 
             // products
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1162, 722);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.viewpbtn);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.addpics);
             this.Controls.Add(this.label1);
@@ -244,5 +272,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
         private MaterialSkin.Controls.MaterialFlatButton addpics;
+        private MaterialSkin.Controls.MaterialFlatButton viewpbtn;
+        private System.Windows.Forms.Panel panel3;
     }
 }

@@ -17,9 +17,6 @@ namespace Veiled_Kashmir_Admin_Panel
         MySqlDataReader dr,dr2;
         DBConnect obj = new DBConnect();
         bool fnameok, lnameok, usernameok, emailok, passwordok, confirmok, phoneok, dobok;
-
-      
-
         private mainform mf = null;
         private container hp = null;
         public products(Form hpcopy,Form mfcopy)
@@ -101,6 +98,18 @@ namespace Veiled_Kashmir_Admin_Panel
 
 
         }
+
+        private void viewpbtn_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            viewproducts vp = new viewproducts();
+            vp.TopLevel = false;
+            mf.cntpnl.Controls.Clear();
+            mf.cntpnl.Controls.Add(vp);
+            vp.Show();
+            Cursor = Cursors.Arrow;
+        }
+
 
 
         /*     private void signupbtn_Click(object sender, EventArgs e)

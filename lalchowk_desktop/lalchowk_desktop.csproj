@@ -232,6 +232,12 @@
     <Compile Include="customers.Designer.cs">
       <DependentUpon>customers.cs</DependentUpon>
     </Compile>
+    <Compile Include="viewproducts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="viewproducts.Designer.cs">
+      <DependentUpon>viewproducts.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="addbill.resx">
       <DependentUpon>addbill.cs</DependentUpon>
     </EmbeddedResource>
@@ -308,6 +314,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="customers.resx">
       <DependentUpon>customers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="viewproducts.resx">
+      <DependentUpon>viewproducts.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
