@@ -136,13 +136,28 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void ordersbtn_Click(object sender, EventArgs e)
         {
-            Cursor = Cursors.WaitCursor;
-            orders or = new orders(hp);
-            or.TopLevel = false;
-            cntpnl.Controls.Clear();
-            cntpnl.Controls.Add(or);           
-            or.Show();
-            Cursor = Cursors.Arrow;
+
+            if (cntpnl.Contains(placeddataview))
+            {
+                Cursor = Cursors.WaitCursor;
+                orders or = new orders(hp);
+                or.TopLevel = false;
+                cntpnl.Controls.Clear();
+                cntpnl.Controls.Add(or);
+                or.Show();
+                Cursor = Cursors.Arrow;
+            }
+            else
+            {
+                orders or = new orders(hp);
+                or.TopLevel = false;
+                dialogcontainer dg = new dialogcontainer();
+                dg.dialogpnl.Controls.Add(or);
+                dg.lbl.Text = "Orders";
+
+                dg.Show();
+                or.Show();
+            }
         }
         public void changelabel(String welcome)
         {
@@ -177,75 +192,159 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void productsbtn_Click(object sender, EventArgs e)
         {
-            Cursor = Cursors.WaitCursor;
-            products pr = new products(hp,this);
-            pr.TopLevel = false;
-            cntpnl.Controls.Clear();
-            cntpnl.Controls.Add(pr);           
-            pr.Show();
-            Cursor = Cursors.Arrow;
+            if (cntpnl.Contains(placeddataview))
+            {
+                Cursor = Cursors.WaitCursor;
+                products pr = new products(hp, this);
+                pr.TopLevel = false;
+                cntpnl.Controls.Clear();
+                cntpnl.Controls.Add(pr);
+                pr.Show();
+                Cursor = Cursors.Arrow;
+            }
+            else
+            {
+                products pr  = new products(hp,this);
+                pr.TopLevel = false;
+                dialogcontainer dg = new dialogcontainer();
+                dg.dialogpnl.Controls.Add(pr);
+                dg.lbl.Text = "";
+
+                dg.Show();
+                pr.Show();
+            }
         }
 
-       
 
         private void customersbtn_Click(object sender, EventArgs e)
         {
-            Cursor = Cursors.WaitCursor;
-            customers cus = new customers(hp);
-            cus.TopLevel = false;
-            cntpnl.Controls.Clear();
-            cntpnl.Controls.Add(cus);
-            cus.Show();
-            Cursor = Cursors.Arrow;
+            if (cntpnl.Contains(placeddataview))
+            {
+                Cursor = Cursors.WaitCursor;
+                customers cus = new customers(hp);
+                cus.TopLevel = false;
+                cntpnl.Controls.Clear();
+                cntpnl.Controls.Add(cus);
+                cus.Show();
+                Cursor = Cursors.Arrow;
+            }
+            else
+            {
+                customers cus = new customers(hp);
+                cus.TopLevel = false;
+                dialogcontainer dg = new dialogcontainer();
+                dg.dialogpnl.Controls.Add(cus);
+                dg.lbl.Text = "";
+
+                dg.Show();
+                cus.Show();
+            }
         }
 
-        
 
 
         private void expbtn_Click(object sender, EventArgs e)
         {
-            Cursor = Cursors.WaitCursor;
-            expenditure exp = new expenditure(this,hp);
-            exp.TopLevel = false;
-            cntpnl.Controls.Clear();
-            cntpnl.Controls.Add(exp);
-            exp.Show();
-            Cursor = Cursors.Arrow;
+            if (cntpnl.Contains(placeddataview))
+            {
+                Cursor = Cursors.WaitCursor;
+                expenditure exp = new expenditure(this, hp);
+                exp.TopLevel = false;
+                cntpnl.Controls.Clear();
+                cntpnl.Controls.Add(exp);
+                exp.Show();
+                Cursor = Cursors.Arrow;
+            }
+            else
+            {
+                expenditure exp = new expenditure(this, hp);
+                exp.TopLevel = false;
+                dialogcontainer dg = new dialogcontainer();
+                dg.dialogpnl.Controls.Add(exp);
+                dg.lbl.Text = "";
+
+                dg.Show();
+                exp.Show();
+            }
         }
 
         private void suppliersbtn_Click(object sender, EventArgs e)
         {
-            Cursor = Cursors.WaitCursor;
-            suppliers sup = new suppliers(hp);
-            sup.TopLevel = false;
-            cntpnl.Controls.Clear();
-            cntpnl.Controls.Add(sup);
-            sup.Show();
-            Cursor = Cursors.Arrow;
+            if (cntpnl.Contains(placeddataview))
+            {
+                Cursor = Cursors.WaitCursor;
+                suppliers sup = new suppliers(hp);
+                sup.TopLevel = false;
+                cntpnl.Controls.Clear();
+                cntpnl.Controls.Add(sup);
+                sup.Show();
+                Cursor = Cursors.Arrow;
+            }
+            else
+            {
+                suppliers sup = new suppliers(hp);
+                sup.TopLevel = false;
+                dialogcontainer dg = new dialogcontainer();
+                dg.dialogpnl.Controls.Add(sup);
+                dg.lbl.Text = "";
+
+                dg.Show();
+                sup.Show();
+            }
+
         }
 
         private void chkbtn_Click(object sender, EventArgs e)
         {
-            Cursor = Cursors.WaitCursor;
-            accounts acc = new accounts(hp);
-            acc.TopLevel = false;
-            cntpnl.Controls.Clear();
-            cntpnl.Controls.Add(acc);
-            acc.readexpenses();
-            acc.Show();
-            Cursor = Cursors.Arrow;
+            if (cntpnl.Contains(placeddataview))
+            {
+                Cursor = Cursors.WaitCursor;
+                accounts acc = new accounts(hp);
+                acc.TopLevel = false;
+                cntpnl.Controls.Clear();
+                cntpnl.Controls.Add(acc);
+                acc.readexpenses();
+                acc.Show();
+                Cursor = Cursors.Arrow;
+            }
+            else
+            {
+                accounts acc = new accounts(hp);
+                acc.TopLevel = false;
+                dialogcontainer dg = new dialogcontainer();
+                dg.dialogpnl.Controls.Add(acc);
+                dg.lbl.Text = "";
+
+                dg.Show();
+                acc.Show();
+            }
         }
 
         private void approvebtn_Click(object sender, EventArgs e)
         {
-            Cursor = Cursors.WaitCursor;
-            approveprice ap = new approveprice(hp);
-            cntpnl.Controls.Clear();
-            ap.TopLevel = false;
-            cntpnl.Controls.Add(ap);
-            ap.Show();
-            Cursor = Cursors.Arrow;
+            if (cntpnl.Contains(placeddataview))
+            {
+                Cursor = Cursors.WaitCursor;
+                approveprice ap = new approveprice(hp);
+                cntpnl.Controls.Clear();
+                ap.TopLevel = false;
+                cntpnl.Controls.Add(ap);
+                ap.Show();
+                Cursor = Cursors.Arrow;
+            }
+            else
+            {
+                approveprice ap = new approveprice(hp);
+                ap.TopLevel = false;
+                dialogcontainer dg = new dialogcontainer();
+                dg.dialogpnl.Controls.Add(ap);
+                dg.lbl.Text = "";
+
+                dg.Show();
+                ap.Show();
+            }
         }
+
 
         private void navtxt_Click(object sender, EventArgs e)
         {
@@ -285,50 +384,105 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void cobtn_Click(object sender, EventArgs e)
         {
-            Cursor = Cursors.WaitCursor;
-            cancelorders co = new cancelorders();
-            cntpnl.Controls.Clear();
-            co.TopLevel = false;
-            cntpnl.Controls.Add(co);
-            co.Show();
-            Cursor = Cursors.Arrow;
+            if (cntpnl.Contains(placeddataview))
+            {
+                Cursor = Cursors.WaitCursor;
+                cancelorders co = new cancelorders();
+                cntpnl.Controls.Clear();
+                co.TopLevel = false;
+                cntpnl.Controls.Add(co);
+                co.Show();
+                Cursor = Cursors.Arrow;
+            }
+            else
+            {
+                cancelorders co = new cancelorders();
+                co.TopLevel = false;
+                dialogcontainer dg = new dialogcontainer();
+                dg.dialogpnl.Controls.Add(co);
+                dg.lbl.Text = "";
+
+                dg.Show();
+                co.Show();
+            }
         }
 
         private void msgbtn_Click(object sender, EventArgs e)
         {
-            Cursor = Cursors.WaitCursor;
-            messages msg = new messages();
-            cntpnl.Controls.Clear();
-            msg.TopLevel = false;
-            cntpnl.Controls.Add(msg);
-            msg.Show();
-            Cursor = Cursors.Arrow;
-            
+            if (cntpnl.Contains(placeddataview))
+            {
+                Cursor = Cursors.WaitCursor;
+                messages msg = new messages();
+                cntpnl.Controls.Clear();
+                msg.TopLevel = false;
+                cntpnl.Controls.Add(msg);
+                msg.Show();
+                Cursor = Cursors.Arrow;
+            }
+            else
+            {
+                messages msg = new messages();
+                msg.TopLevel = false;
+                dialogcontainer dg = new dialogcontainer();
+                dg.dialogpnl.Controls.Add(msg);
+                dg.lbl.Text = "";
+
+                dg.Show();
+                msg.Show();
+            }
 
         }
 
         private void homepagebtn_Click(object sender, EventArgs e)
         {
-            Cursor = Cursors.WaitCursor;
-            apphomepage aph = new apphomepage();
-            cntpnl.Controls.Clear();
-            aph.TopLevel = false;
-            cntpnl.Controls.Add(aph);
-            aph.Show();
-            Cursor = Cursors.Arrow;
+            if (cntpnl.Contains(placeddataview))
+            {
+                Cursor = Cursors.WaitCursor;
+                apphomepage aph = new apphomepage();
+                cntpnl.Controls.Clear();
+                aph.TopLevel = false;
+                cntpnl.Controls.Add(aph);
+                aph.Show();
+                Cursor = Cursors.Arrow;
+            }
+            else
+            {
+                apphomepage aph = new apphomepage();
+                aph.TopLevel = false;
+                dialogcontainer dg = new dialogcontainer();
+                dg.dialogpnl.Controls.Add(aph);
+                dg.lbl.Text = "";
+
+                dg.Show();
+                aph.Show();
+            }
         }
 
         private void caboutbtn_Click(object sender, EventArgs e)
         {
-            Cursor = Cursors.WaitCursor;
-            terms tr = new terms(hp);
-            tr.TopLevel = false;
-            cntpnl.Controls.Clear();
-            tr.termspnl.Visible = true;
-            cntpnl.Controls.Add(tr);
-            tr.readterms();
-            tr.Show();
-            Cursor = Cursors.Arrow;
+            if (cntpnl.Contains(placeddataview))
+            {
+                Cursor = Cursors.WaitCursor;
+                terms tr = new terms(hp);
+                tr.TopLevel = false;
+                cntpnl.Controls.Clear();
+                tr.termspnl.Visible = true;
+                cntpnl.Controls.Add(tr);
+                tr.readterms();
+                tr.Show();
+                Cursor = Cursors.Arrow;
+            }
+            else
+            {
+                terms tr = new terms(hp);
+                tr.TopLevel = false;
+                dialogcontainer dg = new dialogcontainer();
+                dg.dialogpnl.Controls.Add(tr);
+                dg.lbl.Text = "";
+
+                dg.Show();
+                tr.Show();
+            }
         }
 
         private void shippedlbl_Click(object sender, EventArgs e)

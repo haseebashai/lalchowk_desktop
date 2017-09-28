@@ -27,32 +27,55 @@ namespace Veiled_Kashmir_Admin_Panel
         }
         private void newbtn_Click(object sender, EventArgs e)
         {
+            dialogcontainer dg = new dialogcontainer();
+            dg.lbl.Text = "";        
             addproducts apr = new addproducts(hp,this);
             apr.TopLevel = false;
-            mf.cntpnl.Controls.Clear();
-            mf.cntpnl.Controls.Add(apr);
+            dg.dialogpnl.Controls.Clear();
+            dg.dialogpnl.Controls.Add(apr);
+            dg.Show();
             apr.Show();
         }
         private void chkbtn_Click(object sender, EventArgs e)
         {
+            dialogcontainer dg = new dialogcontainer();
+            dg.lbl.Text = "";
             inventory inv = new inventory(hp);
             inv.TopLevel = false;
-            mf.cntpnl.Controls.Clear();
-            mf.cntpnl.Controls.Add(inv);
+            dg.dialogpnl.Controls.Clear();
+            dg.dialogpnl.Controls.Add(inv);
+            dg.Show();
             inv.Show();
+
         }
 
         private void addpics_Click(object sender, EventArgs e)
         {
             Cursor = Cursors.WaitCursor;
+            dialogcontainer dg = new dialogcontainer();
+            dg.lbl.Text = "";
             addpictures ap = new addpictures();
             ap.TopLevel = false;
-            mf.cntpnl.Controls.Clear();
-            mf.cntpnl.Controls.Add(ap);
+            dg.dialogpnl.Controls.Clear();
+            dg.dialogpnl.Controls.Add(ap);
+            dg.Show();
             ap.Show();
             Cursor = Cursors.Arrow;
         }
 
+        private void viewpbtn_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            dialogcontainer dg = new dialogcontainer();
+            dg.lbl.Text = "";
+            viewproducts vp = new viewproducts();
+            vp.TopLevel = false;
+            mf.cntpnl.Controls.Clear();
+            dg.dialogpnl.Controls.Add(vp);
+            dg.Show();
+            vp.Show();
+            Cursor = Cursors.Arrow;
+        }
 
         private void products_Load(object sender, EventArgs e)
         {
@@ -99,16 +122,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         }
 
-        private void viewpbtn_Click(object sender, EventArgs e)
-        {
-            Cursor = Cursors.WaitCursor;
-            viewproducts vp = new viewproducts();
-            vp.TopLevel = false;
-            mf.cntpnl.Controls.Clear();
-            mf.cntpnl.Controls.Add(vp);
-            vp.Show();
-            Cursor = Cursors.Arrow;
-        }
+     
 
 
 

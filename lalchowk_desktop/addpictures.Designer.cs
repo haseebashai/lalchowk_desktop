@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.picdialog = new System.Windows.Forms.OpenFileDialog();
             this.updbtn = new System.Windows.Forms.Button();
@@ -39,6 +39,7 @@
             this.pic = new System.Windows.Forms.PictureBox();
             this.gidtxt = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.delbtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picturesdataview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic)).BeginInit();
             this.SuspendLayout();
@@ -84,20 +85,21 @@
             // 
             this.picturesdataview.BackgroundColor = System.Drawing.Color.White;
             this.picturesdataview.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.picturesdataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.picturesdataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.picturesdataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.picturesdataview.GridColor = System.Drawing.SystemColors.Control;
             this.picturesdataview.Location = new System.Drawing.Point(250, 29);
             this.picturesdataview.Name = "picturesdataview";
             this.picturesdataview.Size = new System.Drawing.Size(657, 485);
             this.picturesdataview.TabIndex = 60;
+            this.picturesdataview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.picturesdataview_CellClick);
             // 
             // label30
             // 
@@ -148,12 +150,23 @@
             this.label2.TabIndex = 90;
             this.label2.Text = "Group ID";
             // 
+            // delbtn
+            // 
+            this.delbtn.Location = new System.Drawing.Point(250, 520);
+            this.delbtn.Name = "delbtn";
+            this.delbtn.Size = new System.Drawing.Size(125, 23);
+            this.delbtn.TabIndex = 91;
+            this.delbtn.Text = "Delete";
+            this.delbtn.UseVisualStyleBackColor = true;
+            this.delbtn.Click += new System.EventHandler(this.delbtn_Click);
+            // 
             // addpictures
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1162, 722);
+            this.Controls.Add(this.delbtn);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.gidtxt);
             this.Controls.Add(this.pic);
@@ -185,5 +198,6 @@
         private System.Windows.Forms.PictureBox pic;
         private System.Windows.Forms.TextBox gidtxt;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button delbtn;
     }
 }

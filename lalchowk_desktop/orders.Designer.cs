@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.delbtn = new System.Windows.Forms.Button();
             this.orlbl = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.statustxt = new System.Windows.Forms.TextBox();
@@ -66,7 +67,6 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.orderdetailview = new System.Windows.Forms.DataGridView();
             this.ordergridview = new System.Windows.Forms.DataGridView();
-            this.updbtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.orderpnl.SuspendLayout();
             this.dpnl.SuspendLayout();
@@ -76,7 +76,7 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.updbtn);
+            this.panel1.Controls.Add(this.delbtn);
             this.panel1.Controls.Add(this.orlbl);
             this.panel1.Controls.Add(this.label12);
             this.panel1.Controls.Add(this.statustxt);
@@ -89,6 +89,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1162, 49);
             this.panel1.TabIndex = 0;
+            // 
+            // delbtn
+            // 
+            this.delbtn.Location = new System.Drawing.Point(1060, 22);
+            this.delbtn.Name = "delbtn";
+            this.delbtn.Size = new System.Drawing.Size(75, 23);
+            this.delbtn.TabIndex = 13;
+            this.delbtn.Text = "Delete";
+            this.delbtn.UseVisualStyleBackColor = true;
+            this.delbtn.Click += new System.EventHandler(this.delbtn_Click);
             // 
             // orlbl
             // 
@@ -114,7 +124,7 @@
             // 
             // statustxt
             // 
-            this.statustxt.Location = new System.Drawing.Point(758, 22);
+            this.statustxt.Location = new System.Drawing.Point(713, 22);
             this.statustxt.Name = "statustxt";
             this.statustxt.Size = new System.Drawing.Size(215, 20);
             this.statustxt.TabIndex = 9;
@@ -123,7 +133,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(755, 5);
+            this.label3.Location = new System.Drawing.Point(710, 5);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(40, 13);
             this.label3.TabIndex = 8;
@@ -131,7 +141,7 @@
             // 
             // paymenttxt
             // 
-            this.paymenttxt.Location = new System.Drawing.Point(486, 22);
+            this.paymenttxt.Location = new System.Drawing.Point(441, 22);
             this.paymenttxt.Name = "paymenttxt";
             this.paymenttxt.Size = new System.Drawing.Size(215, 20);
             this.paymenttxt.TabIndex = 7;
@@ -140,7 +150,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(483, 5);
+            this.label4.Location = new System.Drawing.Point(438, 5);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(74, 13);
             this.label4.TabIndex = 6;
@@ -150,7 +160,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Location = new System.Drawing.Point(223, 6);
+            this.label2.Location = new System.Drawing.Point(178, 6);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 13);
             this.label2.TabIndex = 2;
@@ -158,7 +168,7 @@
             // 
             // emailtxt
             // 
-            this.emailtxt.Location = new System.Drawing.Point(224, 22);
+            this.emailtxt.Location = new System.Drawing.Point(179, 22);
             this.emailtxt.Name = "emailtxt";
             this.emailtxt.Size = new System.Drawing.Size(215, 20);
             this.emailtxt.TabIndex = 1;
@@ -477,16 +487,6 @@
             this.ordergridview.TabIndex = 0;
             this.ordergridview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ordergridview_CellClick);
             // 
-            // updbtn
-            // 
-            this.updbtn.Location = new System.Drawing.Point(1075, 19);
-            this.updbtn.Name = "updbtn";
-            this.updbtn.Size = new System.Drawing.Size(75, 23);
-            this.updbtn.TabIndex = 12;
-            this.updbtn.Text = "Update";
-            this.updbtn.UseVisualStyleBackColor = true;
-            this.updbtn.Click += new System.EventHandler(this.updbtn_Click);
-            // 
             // orders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -549,6 +549,6 @@
         private System.Windows.Forms.Label con;
         private System.Windows.Forms.Label orlbl;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Button updbtn;
+        private System.Windows.Forms.Button delbtn;
     }
 }

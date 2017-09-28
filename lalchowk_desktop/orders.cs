@@ -24,6 +24,7 @@ namespace Veiled_Kashmir_Admin_Panel
         MySqlCommandBuilder cmdbl;
 
 
+
         private container hp = null;
      
 
@@ -52,19 +53,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         }
 
-        private void updbtn_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                cmdbl = new MySqlCommandBuilder(adap);
-                adap.Update(dt);
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-        }
+       
 
         private void emailtxt_TextChanged(object sender, EventArgs e)
         {
@@ -114,6 +103,12 @@ namespace Veiled_Kashmir_Admin_Panel
                 ab.ShowDialog();
                 productid = null;
             }
+        }
+
+        private void delbtn_Click(object sender, EventArgs e)
+        {
+            cmd = "Delete from orders where orderid='" + orderid + "'";
+            obj.nonQuery(cmd);
         }
 
         private void orderdetailview_CellClick(object sender, DataGridViewCellEventArgs e)

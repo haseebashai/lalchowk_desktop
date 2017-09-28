@@ -563,54 +563,78 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void orderslbl_Click(object sender, EventArgs e)
         {
-            ordersdetails od = new ordersdetails(mf);
-            od.TopLevel = false;
-            mf.cntpnl.Controls.Clear();
            
-            od.orderslbl.Text = "Orders Placed";
-            od.readordersplaced();
-            mf.cntpnl.Controls.Add(od);
-            od.Show();
+                ordersdetails od = new ordersdetails(mf);
+                od.TopLevel = false;
+                dialogcontainer dg = new dialogcontainer();
+                dg.dialogpnl.Controls.Add(od);
+                dg.lbl.Text = "";
+                od.readordersplaced();
+                od.orderslbl.Text = "Orders Placed";
+                dg.Show();
+                od.Show();
+               
+            
         }
         private void orderslbl2_Click(object sender, EventArgs e)
         {
-            ordersdetails od = new ordersdetails(mf);
-            od.TopLevel = false;
-            mf.cntpnl.Controls.Clear();
-            od.readordersdelivered();
-            mf.cntpnl.Controls.Add(od);
-            od.Show();
+           
+                ordersdetails od = new ordersdetails(mf);
+                od.TopLevel = false;
+                dialogcontainer dg = new dialogcontainer();
+                dg.dialogpnl.Controls.Add(od);
+                dg.lbl.Text = "";
+                od.readordersdelivered();
+
+                dg.Show();
+                od.Show();
+
+            
         }
 
         private void costlbl_Click(object sender, EventArgs e)
         {
-            ordersdetails od = new ordersdetails(mf);
-            od.TopLevel = false;
-            mf.cntpnl.Controls.Clear();
-            od.orderslbl.Text = "Purchased Products Cost";
-            od.readpurchasecost();
-            mf.cntpnl.Controls.Add(od);
-            od.Show();
+                ordersdetails od = new ordersdetails(mf);
+                od.TopLevel = false;
+                dialogcontainer dg = new dialogcontainer();
+                dg.dialogpnl.Controls.Add(od);
+                dg.lbl.Text = "";
+                od.orderslbl.Text = "Purchased Products Cost";
+                od.readpurchasecost();
+                dg.Show();
+                od.Show();
+
+            
         }
+
         private void profitlbl2_Click(object sender, EventArgs e)
         {
+           
             ordersdetails od = new ordersdetails(mf);
             od.TopLevel = false;
-            mf.cntpnl.Controls.Clear();
+            dialogcontainer dg = new dialogcontainer();
+            dg.dialogpnl.Controls.Add(od);
+            dg.lbl.Text = "";
             od.orderslbl.Text = "Profit Earned from these Orders";
             od.readprofit();
-            mf.cntpnl.Controls.Add(od);
+            dg.Show();
             od.Show();
         }
+
         private void ship_Click(object sender, EventArgs e)
         {
-            ordersdetails od = new ordersdetails(mf);
-            od.TopLevel = false;
-            mf.cntpnl.Controls.Clear();
-            od.orderslbl.Text = "Shipping Charges";
-            od.readshipping();
-            mf.cntpnl.Controls.Add(od);
-            od.Show();
+           
+                ordersdetails od = new ordersdetails(mf);
+                od.TopLevel = false;
+                dialogcontainer dg = new dialogcontainer();
+                dg.dialogpnl.Controls.Add(od);
+                dg.lbl.Text = "";
+                od.orderslbl.Text = "Shipping Charges";
+                od.readshipping();
+                dg.Show();
+                od.Show();
+
+            
         }
     }
 }

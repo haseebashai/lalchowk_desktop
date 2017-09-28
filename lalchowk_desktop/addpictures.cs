@@ -18,7 +18,7 @@ namespace Veiled_Kashmir_Admin_Panel
     public partial class addpictures : Form
     {
         DBConnect obj = new DBConnect();
-        string cmd, filename, fileaddress, fullpath, directory, uploaddir;
+        string cmd, filename, fileaddress, fullpath, directory, uploaddir,pid;
         MySqlConnection con = new MySqlConnection("SERVER= 182.50.133.78; DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah");
         MySqlDataAdapter adap;
         DataTable dt;
@@ -50,7 +50,24 @@ namespace Veiled_Kashmir_Admin_Panel
             }
         }
 
-      
+        private void delbtn_Click(object sender, EventArgs e)
+        {
+            cmd=("delete from pictures where pictureid='"+pid+"'");
+            obj.nonQuery(cmd);
+            MessageBox.Show("Picture Deleted.");
+            readpictures();
+        }
+
+        private void picturesdataview_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = this.picturesdataview.Rows[e.RowIndex];
+                pid = row.Cells["pictureid"].Value.ToString();
+
+            }
+        }
+
         public static void UploadFileToFtp(string url, string filePath)
         {
             try
@@ -117,6 +134,7 @@ namespace Veiled_Kashmir_Admin_Panel
                         obj.closeConnection();
                         ptxt.Text = "";
                         gidtxt.Text = "";
+                        pic.BackgroundImage = null;
                         readpictures();
                     }
                     catch (WebException ex)
@@ -152,7 +170,7 @@ namespace Veiled_Kashmir_Admin_Panel
             {
                 cmdbl = new MySqlCommandBuilder(adap);
                 adap.Update(dt);
-
+                MessageBox.Show("Updated.");
             }
             catch (Exception ex)
             {

@@ -235,6 +235,16 @@ namespace Veiled_Kashmir_Admin_Panel
             }
         }
 
+        private void lefttxt_TextChanged(object sender, EventArgs e)
+        {
+            leftpic.ImageLocation = (url + lefttxt.Text);
+        }
+
+        private void righttxt_TextChanged(object sender, EventArgs e)
+        {
+            rightpic.ImageLocation = (url + righttxt.Text);
+        }
+
         private void u3_Click(object sender, EventArgs e)
         {
             cmd = "update homepage2 set title='" + p3title.Text + "',subtitle='" + p3sub.Text + "',picture='" + p3pic.Text + "',link='" + p3link.Text + "' where homeid='5'";

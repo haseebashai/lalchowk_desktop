@@ -36,6 +36,7 @@
             // 
             // ordersdataview
             // 
+            this.ordersdataview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.ordersdataview.BackgroundColor = System.Drawing.Color.White;
             this.ordersdataview.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ordersdataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;

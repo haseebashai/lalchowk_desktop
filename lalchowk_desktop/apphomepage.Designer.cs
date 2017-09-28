@@ -150,6 +150,7 @@
             this.lefttxt.Name = "lefttxt";
             this.lefttxt.Size = new System.Drawing.Size(112, 20);
             this.lefttxt.TabIndex = 44;
+            this.lefttxt.TextChanged += new System.EventHandler(this.lefttxt_TextChanged);
             // 
             // righttxt
             // 
@@ -157,6 +158,7 @@
             this.righttxt.Name = "righttxt";
             this.righttxt.Size = new System.Drawing.Size(112, 20);
             this.righttxt.TabIndex = 45;
+            this.righttxt.TextChanged += new System.EventHandler(this.righttxt_TextChanged);
             // 
             // rightlink
             // 

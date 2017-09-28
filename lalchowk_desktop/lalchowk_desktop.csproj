@@ -116,6 +116,12 @@
     <Compile Include="cancelorders.Designer.cs">
       <DependentUpon>cancelorders.cs</DependentUpon>
     </Compile>
+    <Compile Include="dialogcontainer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialogcontainer.Designer.cs">
+      <DependentUpon>dialogcontainer.cs</DependentUpon>
+    </Compile>
     <Compile Include="mail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -246,6 +252,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="cancelorders.resx">
       <DependentUpon>cancelorders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dialogcontainer.resx">
+      <DependentUpon>dialogcontainer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="mail.resx">
       <DependentUpon>mail.cs</DependentUpon>

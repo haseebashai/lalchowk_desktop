@@ -23,7 +23,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         MySqlDataReader dr,dr2;
 
-        string filename, fileaddress, fullpath, directory, uploaddir, categoryid;
+        string filename, fileaddress, file1,file2,file3,file4,file5,fullpath, directory, uploaddir, categoryid;
 
 
         private container hp = null;
@@ -157,286 +157,131 @@ namespace Veiled_Kashmir_Admin_Panel
                 catbox.Text = id3lbl.Text;
             }
         }
+        
+        private string picturedialog(Control name, Control image)
+        {
+            try {
+                if (picdialog.ShowDialog() == DialogResult.OK)
+                {
+                    fileaddress = picdialog.FileName;
+                    filename = picdialog.SafeFileName;
+                    Image myimage = new Bitmap(fileaddress);
+                    image.BackgroundImage = myimage;
+                    image.BackgroundImageLayout = ImageLayout.Stretch;
+                    fullpath = Path.GetFullPath(fileaddress).TrimEnd(Path.DirectorySeparatorChar);
+                    directory = Path.GetDirectoryName(fullpath) + "\\";
+                    name.Text = Path.GetFileName(fullpath);
+
+                    return (fileaddress);
+                }
+                return null;
+             
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                return null;
+            }
+
+        }
+
+        private void uploadpic(Control name, Control image, string fileaddress)
+        {
+            try
+            {
+                if (pidtxt.Text == "")
+            {
+                MessageBox.Show("Product undefined!");
+            }
+            else
+            {
+                if (image.BackgroundImage == null)
+                {
+                    MessageBox.Show("Select Image first.");
+                }
+                else
+                {
+                    Cursor = Cursors.WaitCursor;
+                    
+                        image.BackgroundImage.Dispose();
+                        File.Move(fileaddress, directory + name.Text);
+                        uploaddir = directory + name.Text;
+
+                        cmd = "update products set picture='" + name.Text + "' where productid='" + pidtxt.Text + "'";
+                        obj.nonQuery(cmd);
+
+                        UploadFileToFtp("ftp://182.50.151.83/httpdocs/lalchowk/pictures/", uploaddir);
+
+                    
+                    Cursor = Cursors.Arrow;
+                }
+            }
+            }
+            catch (WebException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
 
         private void pic1_Click(object sender, EventArgs e)
         {
-            if (picdialog.ShowDialog() == DialogResult.OK)
-            {
-                fileaddress = picdialog.FileName;
-                filename = picdialog.SafeFileName;
-                Image myimage = new Bitmap(fileaddress);
-                pic1.BackgroundImage = myimage;
-                pic1.BackgroundImageLayout = ImageLayout.Stretch;
-                fullpath = Path.GetFullPath(fileaddress).TrimEnd(Path.DirectorySeparatorChar);
-                directory = Path.GetDirectoryName(fullpath) + "\\";
-                pictxt.Text = Path.GetFileName(fullpath);
 
-
-            }
+            file1=picturedialog(pictxt, pic1);
+                     
         }
 
         private void up1_Click(object sender, EventArgs e)
         {
-            if (pidtxt.Text == "")
-            {
-                MessageBox.Show("Product undefined!");
-            }
-            else
-            {
-                if (pic1.BackgroundImage == null)
-                {
-                    MessageBox.Show("Select Image first.");
-                }
-                else
-                {
-                    Cursor = Cursors.WaitCursor;
-                    try
-                    {
-                        pic1.BackgroundImage.Dispose();
-                        File.Move(fileaddress, directory + pictxt.Text);
-                        uploaddir = directory + pictxt.Text;
 
-                        cmd = "update products set picture='" + pictxt.Text + "' where productid='" + pidtxt.Text + "'";
-                        obj.nonQuery(cmd);
-
-
-
-                        UploadFileToFtp("ftp://182.50.151.83/httpdocs/lalchowk/pictures/", uploaddir);
-
-                    }
-                    catch (WebException ex)
-                    {
-                        MessageBox.Show(ex.ToString());
-                    }
-                    Cursor = Cursors.Arrow;
-                }
-            }   
+            uploadpic(pictxt, pic1,file1);
+            
         }
-
+        
 
         private void pic2_Click(object sender, EventArgs e)
         {
-            if (picdialog.ShowDialog() == DialogResult.OK)
-            {
-                fileaddress = picdialog.FileName;
-                filename = picdialog.SafeFileName;
-                Image myimage = new Bitmap(fileaddress);
-                pic2.BackgroundImage = myimage;
-                pic2.BackgroundImageLayout = ImageLayout.Stretch;
-                fullpath = Path.GetFullPath(fileaddress).TrimEnd(Path.DirectorySeparatorChar);
-                directory = Path.GetDirectoryName(fullpath) + "\\";
-                p2txt.Text = Path.GetFileName(fullpath);
 
-            }
+
+            file2= picturedialog(p2txt, pic2);
+
+           
         }
 
         private void up2_Click(object sender, EventArgs e)
         {
-            if (gidtxt.Text == "")
-            {
-                MessageBox.Show("Product undefined!");
-            }
-            else
-            {
-                if (pic2.BackgroundImage == null)
-                {
-                    MessageBox.Show("Select Image first.");
-                }
-                else
-                {
-                    Cursor = Cursors.WaitCursor;
-                    try
-                    {
-                        pic2.BackgroundImage.Dispose();
-                        File.Move(fileaddress, directory + p2txt.Text);
-                        uploaddir = directory + p2txt.Text;
+            uploadpic(p2txt, pic2,file2);
 
-                        UploadFileToFtp("ftp://182.50.151.83/httpdocs/lalchowk/pictures/", uploaddir);
-
-                        cmd = "insert into pictures (`groupid`, `picture`) " +
-                             "values ('" + gidtxt.Text + @"','" + p2txt.Text + "')";
-                        obj.nonQuery(cmd);
-
-                        obj.closeConnection();
-
-                    }
-                    catch (WebException ex)
-                    {
-                        MessageBox.Show(ex.ToString());
-                    }
-                    Cursor = Cursors.Arrow;
-                }
-            }
-                
         }
 
         private void pic3_Click(object sender, EventArgs e)
         {
-            if (picdialog.ShowDialog() == DialogResult.OK)
-            {
-                fileaddress = picdialog.FileName;
-                filename = picdialog.SafeFileName;
-                Image myimage = new Bitmap(fileaddress);
-                pic3.BackgroundImage = myimage;
-                pic3.BackgroundImageLayout = ImageLayout.Stretch;
-                fullpath = Path.GetFullPath(fileaddress).TrimEnd(Path.DirectorySeparatorChar);
-                directory = Path.GetDirectoryName(fullpath) + "\\";
-                p3txt.Text = Path.GetFileName(fullpath);
-
-            }
+            file3=picturedialog(p3txt, pic3);
         }
 
         private void up3_Click(object sender, EventArgs e)
         {
-            if (gidtxt.Text == "")
-            {
-                MessageBox.Show("Product undefined!");
-            }
-            else
-            {
-                if (pic3.BackgroundImage == null)
-                {
-                    MessageBox.Show("Select Image first.");
-                }
-                else
-                {
-                    Cursor = Cursors.WaitCursor;
-                    try
-                    {
-                        pic3.BackgroundImage.Dispose();
-                        File.Move(fileaddress, directory + p3txt.Text);
-                        uploaddir = directory + p3txt.Text;
-
-                        UploadFileToFtp("ftp://182.50.151.83/httpdocs/lalchowk/pictures/", uploaddir);
-
-                        cmd = "insert into pictures (`groupid`, `picture`) " +
-                             "values ('" + gidtxt.Text + @"','" + p3txt.Text + "')";
-                        obj.nonQuery(cmd);
-
-                        obj.closeConnection();
-
-                    }
-                    catch (WebException ex)
-                    {
-                        MessageBox.Show(ex.ToString());
-                    }
-                    Cursor = Cursors.Arrow;
-                }
-            }  
+            uploadpic(p3txt, pic3,file3);
         }
 
         private void pic4_Click(object sender, EventArgs e)
         {
-            if (picdialog.ShowDialog() == DialogResult.OK)
-            {
-                fileaddress = picdialog.FileName;
-                filename = picdialog.SafeFileName;
-                Image myimage = new Bitmap(fileaddress);
-                pic4.BackgroundImage = myimage;
-                pic4.BackgroundImageLayout = ImageLayout.Stretch;
-                fullpath = Path.GetFullPath(fileaddress).TrimEnd(Path.DirectorySeparatorChar);
-                directory = Path.GetDirectoryName(fullpath) + "\\";
-                p4txt.Text = Path.GetFileName(fullpath);
-
-            }
+           file4= picturedialog(p4txt, pic4);
         }
 
         private void up4_Click(object sender, EventArgs e)
         {
-            if (gidtxt.Text == "")
-            {
-                MessageBox.Show("Product undefined!");
-            }
-            else
-            {
-                if (pic4.BackgroundImage == null)
-                {
-                    MessageBox.Show("Select Image first.");
-                }
-                else
-                {
-                    Cursor = Cursors.WaitCursor;
-                    try
-                    {
-                        pic4.BackgroundImage.Dispose();
-                        File.Move(fileaddress, directory + p4txt.Text);
-                        uploaddir = directory + p4txt.Text;
-
-                        UploadFileToFtp("ftp://182.50.151.83/httpdocs/lalchowk/pictures/", uploaddir);
-
-                        cmd = "insert into pictures (`groupid`, `picture`) " +
-                             "values ('" + gidtxt.Text + @"','" + p4txt.Text + "')";
-                        obj.nonQuery(cmd);
-
-                        obj.closeConnection();
-
-                    }
-                    catch (WebException ex)
-                    {
-                        MessageBox.Show(ex.ToString());
-                    }
-                    Cursor = Cursors.Arrow;
-                }
-            }    
+            uploadpic(p4txt, pic4,file4);
         }
-
-       
 
         private void pic5_Click(object sender, EventArgs e)
         {
-            if (picdialog.ShowDialog() == DialogResult.OK)
-            {
-                fileaddress = picdialog.FileName;
-                filename = picdialog.SafeFileName;
-                Image myimage = new Bitmap(fileaddress);
-                pic5.BackgroundImage = myimage;
-                pic5.BackgroundImageLayout = ImageLayout.Stretch;
-                fullpath = Path.GetFullPath(fileaddress).TrimEnd(Path.DirectorySeparatorChar);
-                directory = Path.GetDirectoryName(fullpath) + "\\";
-                p5txt.Text = Path.GetFileName(fullpath);
-
-            }
+           file5= picturedialog(p5txt, pic5);
         }
-
-       
 
         private void up5_Click(object sender, EventArgs e)
         {
-            if (gidtxt.Text == "")
-            {
-                MessageBox.Show("Product undefined!");
-            }
-            else
-            {
-                if (pic5.BackgroundImage == null)
-                {
-                    MessageBox.Show("Select Image first.");
-                }
-                else
-                {
-                    Cursor = Cursors.WaitCursor;
-                    try
-                    {
-                        pic5.BackgroundImage.Dispose();
-                        File.Move(fileaddress, directory + p5txt.Text);
-                        uploaddir = directory + p5txt.Text;
-
-                        UploadFileToFtp("ftp://182.50.151.83/httpdocs/lalchowk/pictures/", uploaddir);
-
-                        cmd = "insert into pictures (`groupid`, `picture`) " +
-                             "values ('" + gidtxt.Text + @"','" + p5txt.Text + "')";
-                        obj.nonQuery(cmd);
-
-                        obj.closeConnection();
-
-                    }
-                    catch (WebException ex)
-                    {
-                        MessageBox.Show(ex.ToString());
-                    }
-                    Cursor = Cursors.Arrow;
-                }
-            }     
+            uploadpic(p5txt, pic5,file5);
         }
 
         private void p6txt_Click(object sender, EventArgs e)
@@ -471,9 +316,9 @@ namespace Veiled_Kashmir_Admin_Panel
                         File.Move(fileaddress, directory + p6txt.Text);
                         uploaddir = directory + p6txt.Text;
 
-                        UploadFileToFtp("ftp://182.50.151.83/httpdocs/lalchowk/pictures/", uploaddir);
+                    //        UploadFileToFtp("ftp://182.50.151.83/httpdocs/lalchowk/pictures/", uploaddir);
 
-                        cmd = "insert into pictures (`groupid`, `picture`) " +
+                    cmd = "insert into pictures (`groupid`, `picture`) " +
                              "values ('" + gidtxt.Text + @"','" + p6txt.Text + "')";
                         obj.nonQuery(cmd);
 
@@ -674,8 +519,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
 
 
-                //   addpictures adp = new addpictures(gidtxt.Text);
-                //   adp.ShowDialog();
+                
                 //clearall();
 
 

@@ -17,6 +17,7 @@ namespace Veiled_Kashmir_Admin_Panel
         MySqlDataAdapter adap;
         DataTable dt;
         string url = "http://lalchowk.in/lalchowk/pictures/";
+        MySqlCommandBuilder cmdbl;
 
 
 
@@ -47,6 +48,35 @@ namespace Veiled_Kashmir_Admin_Panel
                 pic.SizeMode = PictureBoxSizeMode.StretchImage;
                 pic.ImageLocation = (url + piclocation);
             }
+        }
+
+        private void updbtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                cmdbl = new MySqlCommandBuilder(adap);
+                adap.Update(dt);
+                MessageBox.Show("Updated.");
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void idtxt_TextChanged(object sender, EventArgs e)
+        {
+            DataView dv = new DataView(dt);
+            dv.RowFilter = string.Format("Convert([productid],System.String) LIKE '%{0}%'", idtxt.Text);
+            productsdataview.DataSource = dv;
+        }
+
+        private void nametxt_TextChanged(object sender, EventArgs e)
+        {
+            DataView dv = new DataView(dt);
+            dv.RowFilter = string.Format("productname LIKE '%{0}%'", nametxt.Text);
+            productsdataview.DataSource = dv;
         }
     }
 }
