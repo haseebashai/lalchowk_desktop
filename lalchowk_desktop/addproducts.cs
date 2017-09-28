@@ -237,7 +237,49 @@ namespace Veiled_Kashmir_Admin_Panel
             uploadpic(pictxt, pic1,file1);
             
         }
-        
+
+
+
+        private void uploadpictable(Control name, Control image, string fileaddress)
+        {
+            try
+            {
+                if (pidtxt.Text == "")
+                {
+                    MessageBox.Show("Product undefined!");
+                }
+                else
+                {
+                    if (image.BackgroundImage == null)
+                    {
+                        MessageBox.Show("Select Image first.");
+                    }
+                    else
+                    {
+                        Cursor = Cursors.WaitCursor;
+
+                        image.BackgroundImage.Dispose();
+                  
+                        File.Move(fileaddress, directory + name.Text);
+                        uploaddir = directory + name.Text;
+
+                        cmd = "insert into pictures (`groupid`, `picture`) " +
+                             "values ('" + gidtxt.Text + @"','" + name.Text + "')";
+                        obj.nonQuery(cmd);
+
+                        UploadFileToFtp("ftp://182.50.151.83/httpdocs/lalchowk/pictures/", uploaddir);
+
+
+                        Cursor = Cursors.Arrow;
+                    }
+                }
+            }
+            catch (WebException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
 
         private void pic2_Click(object sender, EventArgs e)
         {
@@ -250,7 +292,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void up2_Click(object sender, EventArgs e)
         {
-            uploadpic(p2txt, pic2,file2);
+            uploadpictable(p2txt, pic2,file2);
 
         }
 
@@ -261,7 +303,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void up3_Click(object sender, EventArgs e)
         {
-            uploadpic(p3txt, pic3,file3);
+            uploadpictable(p3txt, pic3,file3);
         }
 
         private void pic4_Click(object sender, EventArgs e)
@@ -271,7 +313,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void up4_Click(object sender, EventArgs e)
         {
-            uploadpic(p4txt, pic4,file4);
+            uploadpictable(p4txt, pic4,file4);
         }
 
         private void pic5_Click(object sender, EventArgs e)
@@ -281,7 +323,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void up5_Click(object sender, EventArgs e)
         {
-            uploadpic(p5txt, pic5,file5);
+            uploadpictable(p5txt, pic5,file5);
         }
 
         private void p6txt_Click(object sender, EventArgs e)
