@@ -45,7 +45,6 @@
             this.cnfbtn = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.panel6 = new System.Windows.Forms.Panel();
             this.orderlbl = new System.Windows.Forms.Label();
             this.contactlbl = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -191,7 +190,6 @@
             this.dpnl.Controls.Add(this.cnfbtn);
             this.dpnl.Controls.Add(this.label6);
             this.dpnl.Controls.Add(this.label5);
-            this.dpnl.Controls.Add(this.panel6);
             this.dpnl.Controls.Add(this.orderlbl);
             this.dpnl.Controls.Add(this.contactlbl);
             this.dpnl.Controls.Add(this.label7);
@@ -268,14 +266,6 @@
             this.label5.TabIndex = 2;
             this.label5.Text = "OrderID";
             // 
-            // panel6
-            // 
-            this.panel6.BackColor = System.Drawing.Color.Black;
-            this.panel6.Location = new System.Drawing.Point(479, 157);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(163, 1);
-            this.panel6.TabIndex = 24;
-            // 
             // orderlbl
             // 
             this.orderlbl.AutoSize = true;
@@ -319,7 +309,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.Black;
+            this.panel2.BackColor = System.Drawing.Color.LightGray;
             this.panel2.Location = new System.Drawing.Point(94, 50);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1, 178);
@@ -383,7 +373,7 @@
             this.amountlbl.AutoSize = true;
             this.amountlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.amountlbl.ForeColor = System.Drawing.Color.Red;
-            this.amountlbl.Location = new System.Drawing.Point(520, 120);
+            this.amountlbl.Location = new System.Drawing.Point(524, 120);
             this.amountlbl.Name = "amountlbl";
             this.amountlbl.Size = new System.Drawing.Size(85, 25);
             this.amountlbl.TabIndex = 9;
@@ -391,7 +381,7 @@
             // 
             // panel5
             // 
-            this.panel5.BackColor = System.Drawing.Color.Black;
+            this.panel5.BackColor = System.Drawing.Color.LightGray;
             this.panel5.Location = new System.Drawing.Point(461, 50);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1, 178);
@@ -401,7 +391,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(493, 127);
+            this.label10.Location = new System.Drawing.Point(497, 127);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(28, 16);
             this.label10.TabIndex = 10;
@@ -422,7 +412,7 @@
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.Black;
+            this.panel3.BackColor = System.Drawing.Color.LightGray;
             this.panel3.Location = new System.Drawing.Point(654, 50);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1, 178);
@@ -460,7 +450,7 @@
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.Color.Black;
+            this.panel4.BackColor = System.Drawing.Color.LightGray;
             this.panel4.Location = new System.Drawing.Point(922, 50);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1, 178);
@@ -539,7 +529,6 @@
         private System.Windows.Forms.Label contactlbl;
         private System.Windows.Forms.Label citylbl;
         private System.Windows.Forms.Label pinlbl;
-        private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox paymenttxt;
         private System.Windows.Forms.TextBox statustxt;

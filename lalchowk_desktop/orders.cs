@@ -15,7 +15,7 @@ namespace Veiled_Kashmir_Admin_Panel
     public partial class orders : Form
     {
         DBConnect obj = new DBConnect();
-        String orderid,email, addressid,cmd, productid, productname, price, quantity, size,dealerprice,shipping, filename;
+        String orderid,email, addressid,cmd, productid, productname, price, quantity, size,dealerprice,shipping, filename,amount;
         MySqlDataReader dr;
         DataTable dt,dt1,dt2,dt3;
         MySqlCommand mysqlcmd;
@@ -107,8 +107,18 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void delbtn_Click(object sender, EventArgs e)
         {
-            cmd = "Delete from orders where orderid='" + orderid + "'";
-            obj.nonQuery(cmd);
+            DialogResult dr = MessageBox.Show("Delete order and all its details ?", "Confirm", MessageBoxButtons.YesNo);
+            if (dr == DialogResult.Yes)
+            {
+                cmd = "Delete from orders where orderid='" + orderid + "'";
+                obj.nonQuery(cmd);
+                cmd = "Delete from orderdetails where orderid='" + orderid + "'";
+                obj.nonQuery(cmd);
+                MessageBox.Show("Order deleted.");
+                readorders();
+            }
+
+
         }
 
         private void orderdetailview_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -122,10 +132,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 price = row.Cells["price"].Value.ToString();
                 quantity = row.Cells["quantity"].Value.ToString();
                 size = row.Cells["size"].Value.ToString();
-                dealerprice = row.Cells["dealerprice"].Value.ToString();
-
-
-                
+                dealerprice = row.Cells["dealerprice"].Value.ToString();       
             }
         }
 
@@ -203,7 +210,7 @@ namespace Veiled_Kashmir_Admin_Panel
             proname.DisplayMember = "productname";
             proname.DataSource = dt3;
 
-            dr = obj.Query("select sum(price) from orderdetails where orderid='" + orderid + "'");
+            dr = obj.Query("select amount from orders where orderid='" + orderid + "'");
             dr.Read();
             amountlbl.Text = dr[0].ToString();
             obj.closeConnection();

@@ -32,8 +32,10 @@ namespace Veiled_Kashmir_Admin_Panel
             pronametxt.Text = productname;
             sizetxt.Text = size;
             counttxt.Text = quantity;
-            amounttxt.Text = total.ToString();
-            dptxt.Text = dealerprice;
+            int am = int.Parse(price)*int.Parse(counttxt.Text);
+            amounttxt.Text = am.ToString();
+            int dp = int.Parse(dealerprice) * int.Parse(counttxt.Text);
+            dptxt.Text = dp.ToString();
             
         }
 
