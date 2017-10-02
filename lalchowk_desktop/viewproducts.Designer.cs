@@ -37,6 +37,7 @@
             this.nametxt = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.idtxt = new System.Windows.Forms.TextBox();
+            this.delbtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.productsdataview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic)).BeginInit();
             this.SuspendLayout();
@@ -78,13 +79,13 @@
             this.pic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pic.Location = new System.Drawing.Point(868, 66);
             this.pic.Name = "pic";
-            this.pic.Size = new System.Drawing.Size(261, 339);
+            this.pic.Size = new System.Drawing.Size(243, 318);
             this.pic.TabIndex = 63;
             this.pic.TabStop = false;
             // 
             // updbtn
             // 
-            this.updbtn.Location = new System.Drawing.Point(868, 433);
+            this.updbtn.Location = new System.Drawing.Point(868, 390);
             this.updbtn.Name = "updbtn";
             this.updbtn.Size = new System.Drawing.Size(157, 118);
             this.updbtn.TabIndex = 64;
@@ -126,6 +127,16 @@
             this.idtxt.TabIndex = 65;
             this.idtxt.TextChanged += new System.EventHandler(this.idtxt_TextChanged);
             // 
+            // delbtn
+            // 
+            this.delbtn.Location = new System.Drawing.Point(868, 528);
+            this.delbtn.Name = "delbtn";
+            this.delbtn.Size = new System.Drawing.Size(54, 23);
+            this.delbtn.TabIndex = 92;
+            this.delbtn.Text = "Delete";
+            this.delbtn.UseVisualStyleBackColor = true;
+            this.delbtn.Click += new System.EventHandler(this.delbtn_Click);
+            // 
             // viewproducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -133,6 +144,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1162, 722);
             this.ControlBox = false;
+            this.Controls.Add(this.delbtn);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.nametxt);
             this.Controls.Add(this.label2);
@@ -161,5 +173,6 @@
         private System.Windows.Forms.TextBox nametxt;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox idtxt;
+        private System.Windows.Forms.Button delbtn;
     }
 }

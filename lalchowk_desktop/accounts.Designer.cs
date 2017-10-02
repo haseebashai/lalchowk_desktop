@@ -134,6 +134,11 @@
             this.totallbl = new System.Windows.Forms.Label();
             this.revbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.rpnl = new System.Windows.Forms.Panel();
+            this.label47 = new System.Windows.Forms.Label();
+            this.label46 = new System.Windows.Forms.Label();
+            this.purchasebox = new System.Windows.Forms.TextBox();
+            this.profitbox = new System.Windows.Forms.TextBox();
+            this.salebox = new System.Windows.Forms.TextBox();
             this.monlbl = new System.Windows.Forms.Label();
             this.revlbl = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
@@ -154,11 +159,8 @@
             this.label41 = new System.Windows.Forms.Label();
             this.monthtxt = new System.Windows.Forms.TextBox();
             this.label42 = new System.Windows.Forms.Label();
-            this.salebox = new System.Windows.Forms.TextBox();
-            this.profitbox = new System.Windows.Forms.TextBox();
-            this.purchasebox = new System.Windows.Forms.TextBox();
-            this.label46 = new System.Windows.Forms.Label();
-            this.label47 = new System.Windows.Forms.Label();
+            this.label48 = new System.Windows.Forms.Label();
+            this.investbox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.accountdataview)).BeginInit();
             this.exppnl.SuspendLayout();
             this.moneypnl.SuspendLayout();
@@ -236,6 +238,7 @@
             // 
             // accountdataview
             // 
+            this.accountdataview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.accountdataview.BackgroundColor = System.Drawing.Color.White;
             this.accountdataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.accountdataview.Location = new System.Drawing.Point(7, 219);
@@ -1273,6 +1276,8 @@
             // 
             // rpnl
             // 
+            this.rpnl.Controls.Add(this.label48);
+            this.rpnl.Controls.Add(this.investbox);
             this.rpnl.Controls.Add(this.label47);
             this.rpnl.Controls.Add(this.label46);
             this.rpnl.Controls.Add(this.purchasebox);
@@ -1304,6 +1309,51 @@
             this.rpnl.TabIndex = 41;
             this.rpnl.Visible = false;
             // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.Location = new System.Drawing.Point(861, 91);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(34, 13);
+            this.label47.TabIndex = 36;
+            this.label47.Text = "Profit:";
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Location = new System.Drawing.Point(861, 66);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(31, 13);
+            this.label46.TabIndex = 35;
+            this.label46.Text = "Cost:";
+            // 
+            // purchasebox
+            // 
+            this.purchasebox.Location = new System.Drawing.Point(906, 63);
+            this.purchasebox.Multiline = true;
+            this.purchasebox.Name = "purchasebox";
+            this.purchasebox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.purchasebox.Size = new System.Drawing.Size(98, 19);
+            this.purchasebox.TabIndex = 34;
+            // 
+            // profitbox
+            // 
+            this.profitbox.Location = new System.Drawing.Point(906, 88);
+            this.profitbox.Multiline = true;
+            this.profitbox.Name = "profitbox";
+            this.profitbox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.profitbox.Size = new System.Drawing.Size(98, 19);
+            this.profitbox.TabIndex = 33;
+            // 
+            // salebox
+            // 
+            this.salebox.Location = new System.Drawing.Point(906, 38);
+            this.salebox.Multiline = true;
+            this.salebox.Name = "salebox";
+            this.salebox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.salebox.Size = new System.Drawing.Size(98, 19);
+            this.salebox.TabIndex = 32;
+            // 
             // monlbl
             // 
             this.monlbl.AutoSize = true;
@@ -1325,11 +1375,11 @@
             // label37
             // 
             this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(788, 13);
+            this.label37.Location = new System.Drawing.Point(826, 13);
             this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(164, 13);
+            this.label37.Size = new System.Drawing.Size(126, 13);
             this.label37.TabIndex = 29;
-            this.label37.Text = " Current numbers for the month of";
+            this.label37.Text = "Numbers for the month of";
             // 
             // pcosttxt
             // 
@@ -1480,50 +1530,23 @@
             this.label42.TabIndex = 0;
             this.label42.Text = "Month";
             // 
-            // salebox
+            // label48
             // 
-            this.salebox.Location = new System.Drawing.Point(906, 38);
-            this.salebox.Multiline = true;
-            this.salebox.Name = "salebox";
-            this.salebox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.salebox.Size = new System.Drawing.Size(98, 19);
-            this.salebox.TabIndex = 32;
+            this.label48.AutoSize = true;
+            this.label48.Location = new System.Drawing.Point(844, 116);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(51, 13);
+            this.label48.TabIndex = 38;
+            this.label48.Text = "Invested:";
             // 
-            // profitbox
+            // investbox
             // 
-            this.profitbox.Location = new System.Drawing.Point(906, 88);
-            this.profitbox.Multiline = true;
-            this.profitbox.Name = "profitbox";
-            this.profitbox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.profitbox.Size = new System.Drawing.Size(98, 19);
-            this.profitbox.TabIndex = 33;
-            // 
-            // purchasebox
-            // 
-            this.purchasebox.Location = new System.Drawing.Point(906, 63);
-            this.purchasebox.Multiline = true;
-            this.purchasebox.Name = "purchasebox";
-            this.purchasebox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.purchasebox.Size = new System.Drawing.Size(98, 19);
-            this.purchasebox.TabIndex = 34;
-            // 
-            // label46
-            // 
-            this.label46.AutoSize = true;
-            this.label46.Location = new System.Drawing.Point(861, 66);
-            this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(31, 13);
-            this.label46.TabIndex = 35;
-            this.label46.Text = "Cost:";
-            // 
-            // label47
-            // 
-            this.label47.AutoSize = true;
-            this.label47.Location = new System.Drawing.Point(861, 91);
-            this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(34, 13);
-            this.label47.TabIndex = 36;
-            this.label47.Text = "Profit:";
+            this.investbox.Location = new System.Drawing.Point(906, 113);
+            this.investbox.Multiline = true;
+            this.investbox.Name = "investbox";
+            this.investbox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.investbox.Size = new System.Drawing.Size(98, 19);
+            this.investbox.TabIndex = 37;
             // 
             // accounts
             // 
@@ -1715,5 +1738,7 @@
         private System.Windows.Forms.TextBox salebox;
         private System.Windows.Forms.Label label47;
         private System.Windows.Forms.Label label46;
+        private System.Windows.Forms.Label label48;
+        private System.Windows.Forms.TextBox investbox;
     }
 }

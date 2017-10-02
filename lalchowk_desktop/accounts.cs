@@ -551,12 +551,19 @@ namespace Veiled_Kashmir_Admin_Panel
 
             profitbox.Text = (int.Parse(salebox.Text) - int.Parse(purchasebox.Text)).ToString();
 
+
+            aconn.Open();
+            cmd = new MySqlCommand(" SELECT sum(amount) from expenses where purchasedate like '%-" + month + "-%'", aconn);
+            dr = cmd.ExecuteReader();
+            dr.Read();
+            investbox.Text = dr[0].ToString();
+            aconn.Close();
         }
 
         private void addrbtn_Click(object sender, EventArgs e)
         {
             aconn.Open();
-            mysqlcmd = new MySqlCommand("insert into revenue(`month`, `year`,`sale`,`profit`,`invested`,`reason`,`gross_profit`,`purchase_cost`) values ('" + monthtxt.Text + "','" + yeartxt.Text + "','" + saletxt.Text + "','" + profittxt.Text + "','"+investedtxt.Text+"','"+reasontxt.Text+"','"+gprofittxt.Text+"','"+pcosttxt.Text+"')", aconn);
+            mysqlcmd = new MySqlCommand("insert into revenue(`month`, `year`,`sale`,`profit`,`invested`,`reason`,`gross_profit`,`purchase_cost`) values ('" + monthtxt.Text + "','" + yeartxt.Text + "','" + saletxt.Text + "','" + profittxt.Text + "','"+investedtxt.Text+"','"+ireasontxt.Text+"','"+gprofittxt.Text+"','"+pcosttxt.Text+"')", aconn);
             mysqlcmd.ExecuteNonQuery();
             MessageBox.Show("Entry added.");
             aconn.Close();
@@ -565,30 +572,50 @@ namespace Veiled_Kashmir_Admin_Panel
             saletxt.Text = "";
             profittxt.Text = "";
             investedtxt.Text = "";
-            reasontxt.Text = "";
+            ireasontxt.Text = "";
             gprofittxt.Text = "";
             pcosttxt.Text = "";
 
             readrevenue();
         }
 
+
+
         private void investedtxt_TextChanged(object sender, EventArgs e)
         {
-            try {
-            gprofittxt.Text = (int.Parse(profittxt.Text) - int.Parse(investedtxt.Text)).ToString();
-        } catch(Exception ex)
+            if (investedtxt.Text != null)
             {
-                MessageBox.Show(ex.ToString());
+                try
+                {
+                    gprofittxt.Text = (int.Parse(profittxt.Text) - int.Parse(investedtxt.Text)).ToString();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
             }
-}
+            else
+            {
+                investedtxt.Focus();
+            }
+        }
 
         private void pcosttxt_TextChanged(object sender, EventArgs e)
         {
-            try {
-            profittxt.Text= (int.Parse(saletxt.Text) - int.Parse(pcosttxt.Text)).ToString();
-        } catch(Exception ex)
+            if (pcosttxt.Text != null)
             {
-                MessageBox.Show(ex.ToString());
+                try
+                {
+                    profittxt.Text = (int.Parse(saletxt.Text) - int.Parse(pcosttxt.Text)).ToString();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+            else
+            {
+                pcosttxt.Focus();
             }
 }
 

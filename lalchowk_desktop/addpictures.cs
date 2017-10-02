@@ -52,10 +52,15 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void delbtn_Click(object sender, EventArgs e)
         {
-            cmd=("delete from pictures where pictureid='"+pid+"'");
-            obj.nonQuery(cmd);
-            MessageBox.Show("Picture Deleted.");
-            readpictures();
+            DialogResult dr = MessageBox.Show("Do you want to delete the selected picture ?.", "Confirm", MessageBoxButtons.YesNo);
+            if (dr == DialogResult.Yes)
+            {
+
+                cmd = ("delete from pictures where pictureid='" + pid + "'");
+                obj.nonQuery(cmd);
+                MessageBox.Show("Picture Deleted.");
+                readpictures();
+            }
         }
 
         private void picturesdataview_CellClick(object sender, DataGridViewCellEventArgs e)

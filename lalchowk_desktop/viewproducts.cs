@@ -16,9 +16,9 @@ namespace Veiled_Kashmir_Admin_Panel
         MySqlConnection con = new MySqlConnection("SERVER= 182.50.133.78; DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah");
         MySqlDataAdapter adap;
         DataTable dt;
-        string url = "http://lalchowk.in/lalchowk/pictures/";
+        string pid, cmd, url = "http://lalchowk.in/lalchowk/pictures/";
         MySqlCommandBuilder cmdbl;
-
+        DBConnect obj=new DBConnect();
 
 
         public viewproducts()
@@ -45,6 +45,7 @@ namespace Veiled_Kashmir_Admin_Panel
             {
                 DataGridViewRow row = this.productsdataview.Rows[e.RowIndex];
                 string piclocation = row.Cells["picture"].Value.ToString();
+                pid = row.Cells["productid"].Value.ToString();
                 pic.SizeMode = PictureBoxSizeMode.StretchImage;
                 pic.ImageLocation = (url + piclocation);
             }
@@ -77,6 +78,19 @@ namespace Veiled_Kashmir_Admin_Panel
             DataView dv = new DataView(dt);
             dv.RowFilter = string.Format("productname LIKE '%{0}%'", nametxt.Text);
             productsdataview.DataSource = dv;
+        }
+
+        private void delbtn_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Do you want to delete the selected picture ?.", "Confirm", MessageBoxButtons.YesNo);
+            if (dr == DialogResult.Yes)
+            {
+
+                cmd = ("delete from products where productid='" + pid + "'");
+                obj.nonQuery(cmd);
+                MessageBox.Show("Product Deleted.");
+                readproducts();
+            }
         }
     }
 }

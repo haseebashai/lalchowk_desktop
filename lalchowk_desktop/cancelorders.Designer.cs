@@ -74,7 +74,7 @@
             this.apnl.Controls.Add(this.label9);
             this.apnl.Controls.Add(this.stocklbl);
             this.apnl.Controls.Add(this.apbtn);
-            this.apnl.Location = new System.Drawing.Point(110, 434);
+            this.apnl.Location = new System.Drawing.Point(4, 434);
             this.apnl.Name = "apnl";
             this.apnl.Size = new System.Drawing.Size(949, 162);
             this.apnl.TabIndex = 30;
