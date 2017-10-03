@@ -314,7 +314,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 dialogcontainer dg = new dialogcontainer();
                 dg.dialogpnl.Controls.Add(acc);
                 dg.lbl.Text = "";
-
+                acc.readexpenses();
                 dg.Show();
                 acc.Show();
             }
@@ -479,7 +479,8 @@ namespace Veiled_Kashmir_Admin_Panel
                 dialogcontainer dg = new dialogcontainer();
                 dg.dialogpnl.Controls.Add(tr);
                 dg.lbl.Text = "";
-
+                tr.termspnl.Visible = true;
+                tr.readterms();
                 dg.Show();
                 tr.Show();
             }

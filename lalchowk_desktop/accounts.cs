@@ -560,6 +560,8 @@ namespace Veiled_Kashmir_Admin_Panel
             aconn.Close();
         }
 
+       
+
         private void addrbtn_Click(object sender, EventArgs e)
         {
             aconn.Open();
@@ -583,8 +585,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void investedtxt_TextChanged(object sender, EventArgs e)
         {
-            if (investedtxt.Text != null)
-            {
+           
                 try
                 {
                     gprofittxt.Text = (int.Parse(profittxt.Text) - int.Parse(investedtxt.Text)).ToString();
@@ -593,17 +594,12 @@ namespace Veiled_Kashmir_Admin_Panel
                 {
                     MessageBox.Show(ex.ToString());
                 }
-            }
-            else
-            {
-                investedtxt.Focus();
-            }
+                       
         }
 
         private void pcosttxt_TextChanged(object sender, EventArgs e)
         {
-            if (pcosttxt.Text != null)
-            {
+            
                 try
                 {
                     profittxt.Text = (int.Parse(saletxt.Text) - int.Parse(pcosttxt.Text)).ToString();
@@ -612,18 +608,10 @@ namespace Veiled_Kashmir_Admin_Panel
                 {
                     MessageBox.Show(ex.ToString());
                 }
-            }
-            else
-            {
-                pcosttxt.Focus();
-            }
-}
-
-        private void monbox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            MessageBox.Show(month.ToString());
+            
           
-        }
+         }
+
 
         private void updbtn_Click(object sender, EventArgs e)
         {

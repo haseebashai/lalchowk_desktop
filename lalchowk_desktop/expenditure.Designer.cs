@@ -93,9 +93,9 @@
             this.label3.ForeColor = System.Drawing.SystemColors.Highlight;
             this.label3.Location = new System.Drawing.Point(13, 26);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(132, 16);
+            this.label3.Size = new System.Drawing.Size(153, 16);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Total Orders Placed:";
+            this.label3.Text = "Orders Placed Currently:";
             // 
             // orderspvlbl
             // 

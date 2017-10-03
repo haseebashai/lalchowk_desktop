@@ -134,6 +134,8 @@
             this.totallbl = new System.Windows.Forms.Label();
             this.revbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.rpnl = new System.Windows.Forms.Panel();
+            this.label48 = new System.Windows.Forms.Label();
+            this.investbox = new System.Windows.Forms.TextBox();
             this.label47 = new System.Windows.Forms.Label();
             this.label46 = new System.Windows.Forms.Label();
             this.purchasebox = new System.Windows.Forms.TextBox();
@@ -159,8 +161,6 @@
             this.label41 = new System.Windows.Forms.Label();
             this.monthtxt = new System.Windows.Forms.TextBox();
             this.label42 = new System.Windows.Forms.Label();
-            this.label48 = new System.Windows.Forms.Label();
-            this.investbox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.accountdataview)).BeginInit();
             this.exppnl.SuspendLayout();
             this.moneypnl.SuspendLayout();
@@ -1309,6 +1309,24 @@
             this.rpnl.TabIndex = 41;
             this.rpnl.Visible = false;
             // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Location = new System.Drawing.Point(844, 116);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(51, 13);
+            this.label48.TabIndex = 38;
+            this.label48.Text = "Invested:";
+            // 
+            // investbox
+            // 
+            this.investbox.Location = new System.Drawing.Point(906, 113);
+            this.investbox.Multiline = true;
+            this.investbox.Name = "investbox";
+            this.investbox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.investbox.Size = new System.Drawing.Size(98, 19);
+            this.investbox.TabIndex = 37;
+            // 
             // label47
             // 
             this.label47.AutoSize = true;
@@ -1357,7 +1375,7 @@
             // monlbl
             // 
             this.monlbl.AutoSize = true;
-            this.monlbl.Location = new System.Drawing.Point(949, 13);
+            this.monlbl.Location = new System.Drawing.Point(957, 13);
             this.monlbl.Name = "monlbl";
             this.monlbl.Size = new System.Drawing.Size(37, 13);
             this.monlbl.TabIndex = 31;
@@ -1375,7 +1393,7 @@
             // label37
             // 
             this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(826, 13);
+            this.label37.Location = new System.Drawing.Point(834, 13);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(126, 13);
             this.label37.TabIndex = 29;
@@ -1529,24 +1547,6 @@
             this.label42.Size = new System.Drawing.Size(37, 13);
             this.label42.TabIndex = 0;
             this.label42.Text = "Month";
-            // 
-            // label48
-            // 
-            this.label48.AutoSize = true;
-            this.label48.Location = new System.Drawing.Point(844, 116);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(51, 13);
-            this.label48.TabIndex = 38;
-            this.label48.Text = "Invested:";
-            // 
-            // investbox
-            // 
-            this.investbox.Location = new System.Drawing.Point(906, 113);
-            this.investbox.Multiline = true;
-            this.investbox.Name = "investbox";
-            this.investbox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.investbox.Size = new System.Drawing.Size(98, 19);
-            this.investbox.TabIndex = 37;
             // 
             // accounts
             // 
