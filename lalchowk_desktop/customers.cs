@@ -182,7 +182,7 @@ namespace Veiled_Kashmir_Admin_Panel
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = this.customerdataview.Rows[e.RowIndex];               
-                email = row.Cells["mail"].Value.ToString();
+                email = row.Cells["email"].Value.ToString();
                 emaillbl.Text= row.Cells["mail"].Value.ToString();
                 namelbl.Text= row.Cells["name"].Value.ToString();
                 contactlbl.Text= row.Cells["contact"].Value.ToString();
