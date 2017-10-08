@@ -153,5 +153,29 @@ namespace Veiled_Kashmir_Admin_Panel
         {
 
         }
+
+        private void addbtn_Click(object sender, EventArgs e)
+        {
+            if (supemailtxt.Text == "" || suppwdtxt.Text == "")
+            {
+                MessageBox.Show("Add details first!");
+            }
+            else
+            {
+                cmd = "insert into suppliers (`name`,`email`,`password`,`contactname`,`address`,`postalcode`,`phone`,`description`) values" +
+                "('" + supnametxt.Text + "','" + supemailtxt.Text + "','" + suppwdtxt.Text + "','" + contxt.Text + "','" + conaddtxt.Text + "','" + posttxt.Text + "','" + phonetxt.Text + "','" + desctxt.Text + "')";
+                obj.nonQuery(cmd);
+                MessageBox.Show("Supplier added.");
+                supnametxt.Text = "";
+                supemailtxt.Text = "";
+                suppwdtxt.Text = "";
+                contxt.Text = "";
+                conaddtxt.Text = "";
+                posttxt.Text = "";
+                phonetxt.Text = "";
+                desctxt.Text = "";
+                readsuppliers();
+            }
+        }
     }
 }

@@ -44,6 +44,7 @@
             this.addpics = new MaterialSkin.Controls.MaterialFlatButton();
             this.viewpbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.booklbl = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // chkbtn
@@ -225,12 +226,23 @@
             this.panel3.Size = new System.Drawing.Size(85, 1);
             this.panel3.TabIndex = 29;
             // 
+            // booklbl
+            // 
+            this.booklbl.AutoSize = true;
+            this.booklbl.ForeColor = System.Drawing.Color.Gray;
+            this.booklbl.Location = new System.Drawing.Point(36, 529);
+            this.booklbl.Name = "booklbl";
+            this.booklbl.Size = new System.Drawing.Size(59, 13);
+            this.booklbl.TabIndex = 30;
+            this.booklbl.Text = "total books";
+            // 
             // products
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1162, 722);
+            this.Controls.Add(this.booklbl);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.viewpbtn);
             this.Controls.Add(this.panel2);
@@ -274,5 +286,6 @@
         private MaterialSkin.Controls.MaterialFlatButton addpics;
         private MaterialSkin.Controls.MaterialFlatButton viewpbtn;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label booklbl;
     }
 }

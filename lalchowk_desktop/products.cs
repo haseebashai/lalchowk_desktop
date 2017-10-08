@@ -119,6 +119,11 @@ namespace Veiled_Kashmir_Admin_Panel
             coslbl.Text = "Total Cosmetics Items currently added: " + dr[0].ToString();
             obj.closeConnection();
 
+            dr = obj.Query("select count(productid) from products where supplierid='12'");
+            dr.Read();
+            booklbl.Text = "Total Books currently added: " + dr[0].ToString();
+            obj.closeConnection();
+
 
         }
 

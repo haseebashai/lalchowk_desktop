@@ -306,6 +306,19 @@ namespace Veiled_Kashmir_Admin_Panel
             uploadpictable(p3txt, pic3,file3);
         }
 
+        private void inclbl_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int inc = int.Parse(pidtxt.Text) + 1;
+                pidtxt.Text = inc.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Enter id first \n\n" + ex.ToString());               
+            }
+        }
+
         private void pic4_Click(object sender, EventArgs e)
         {
            file4= picturedialog(p4txt, pic4);
@@ -532,13 +545,13 @@ namespace Veiled_Kashmir_Admin_Panel
                 s1.Replace(@"\", @"\\");
                 s1.Replace("'", "\\'");
                 
-                if (sizetxt.Text ==null)
+                if (sizetxt.Text =="")
                 {
                     cmd = "insert into products (`productid`, `supplierid`, `productname`,`tags`, `groupid`,`categoryid`,`color`, `mrp`, `price`, `dealerprice`, `stock`, `description`, `detailname1`, `detailname2`, `detailname3`, `detailname4`,`detailname5`, `detail1`, `detail2`, `detail3`, `detail4`,`detail5`,`brand`,`size`,`requeststatus`,`picture`) " +
                        "values ('" + pidtxt.Text + "','" + supidtxt.Text + "', '" + s + "','"+ s + " " +tagstxt.Text+"','" + gidtxt.Text + "', '" + catbox.Text + "','" + colourtxt.Text + "','" + mrptxt.Text + "','" + pricetxt.Text + "','" + dealertxt.Text + "','" + stocktxt.Text + "','" + desctxt.Text + "','" + dname1txt.Text + "','" + dname2txt.Text + "','" + dname3txt.Text + "','" + dname4txt.Text + "','"+dname5txt.Text+"','" + dname1.Text + "','" + dname2.Text + "','" + dname3.Text + "','" + dname4.Text + "','"+dname5.Text+"','" + s1 + "',null,'Approved','" + pictxt.Text + "')";
                     obj.nonQuery(cmd);
                 }
-                else if(dname5txt.Text == null || dname5.Text == null)
+                else if(dname5txt.Text == "" || dname5.Text == "")
                 {
                     cmd = "insert into products (`productid`, `supplierid`, `productname`,`tags`, `groupid`,`categoryid`,`color`, `mrp`, `price`, `dealerprice`, `stock`, `description`, `detailname1`, `detailname2`, `detailname3`, `detailname4`,`detailname5`, `detail1`, `detail2`, `detail3`, `detail4`,`detail5`,`brand`,`size`,`requeststatus`,`picture`) " +
                        "values ('" + pidtxt.Text + "','" + supidtxt.Text + "', '" + s + "','" + s + " " + tagstxt.Text + "','" + gidtxt.Text + "', '" + catbox.Text + "','" + colourtxt.Text + "','" + mrptxt.Text + "','" + pricetxt.Text + "','" + dealertxt.Text + "','" + stocktxt.Text + "','" + desctxt.Text + "','" + dname1txt.Text + "','" + dname2txt.Text + "','" + dname3txt.Text + "','" + dname4txt.Text + "',null,'" + dname1.Text + "','" + dname2.Text + "','" + dname3.Text + "','" + dname4.Text + "',null,'" + s1 + "','" + sizetxt.Text + "','Approved','" + pictxt.Text + "')";

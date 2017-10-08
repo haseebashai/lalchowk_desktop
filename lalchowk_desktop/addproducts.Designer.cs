@@ -113,6 +113,7 @@
             this.up6 = new System.Windows.Forms.Label();
             this.p6txt = new System.Windows.Forms.TextBox();
             this.label30 = new System.Windows.Forms.Label();
+            this.inclbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pic1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic3)).BeginInit();
@@ -907,6 +908,21 @@
             this.label30.TabIndex = 85;
             this.label30.Text = "Add more Pictures";
             // 
+            // inclbl
+            // 
+            this.inclbl.AutoSize = true;
+            this.inclbl.BackColor = System.Drawing.Color.Transparent;
+            this.inclbl.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.inclbl.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inclbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inclbl.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.inclbl.Location = new System.Drawing.Point(285, 159);
+            this.inclbl.Name = "inclbl";
+            this.inclbl.Size = new System.Drawing.Size(30, 31);
+            this.inclbl.TabIndex = 86;
+            this.inclbl.Text = "+";
+            this.inclbl.Click += new System.EventHandler(this.inclbl_Click);
+            // 
             // addproducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -997,6 +1013,7 @@
             this.Controls.Add(this.seccat);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.firstcat);
+            this.Controls.Add(this.inclbl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "addproducts";
             this.Text = "profile";
@@ -1098,5 +1115,6 @@
         private System.Windows.Forms.Label up6;
         private System.Windows.Forms.TextBox p6txt;
         private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label inclbl;
     }
 }

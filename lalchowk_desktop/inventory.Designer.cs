@@ -152,7 +152,7 @@
             this.productlbl.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.productlbl.Location = new System.Drawing.Point(15, 522);
             this.productlbl.Name = "productlbl";
-            this.productlbl.Size = new System.Drawing.Size(229, 59);
+            this.productlbl.Size = new System.Drawing.Size(213, 59);
             this.productlbl.TabIndex = 32;
             this.productlbl.Text = "name";
             this.productlbl.Click += new System.EventHandler(this.productlbl_Click);
@@ -163,9 +163,8 @@
             this.idlbl.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.idlbl.Location = new System.Drawing.Point(85, 469);
             this.idlbl.Name = "idlbl";
-            this.idlbl.Size = new System.Drawing.Size(22, 20);
+            this.idlbl.Size = new System.Drawing.Size(0, 20);
             this.idlbl.TabIndex = 31;
-            this.idlbl.Text = "ID";
             // 
             // catidlbl
             // 
@@ -173,9 +172,8 @@
             this.catidlbl.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.catidlbl.Location = new System.Drawing.Point(85, 496);
             this.catidlbl.Name = "catidlbl";
-            this.catidlbl.Size = new System.Drawing.Size(50, 20);
+            this.catidlbl.Size = new System.Drawing.Size(0, 20);
             this.catidlbl.TabIndex = 34;
-            this.catidlbl.Text = "Cat ID";
             this.catidlbl.Click += new System.EventHandler(this.catidlbl_Click);
             // 
             // label6
