@@ -187,6 +187,7 @@
             this.frombox.Name = "frombox";
             this.frombox.Size = new System.Drawing.Size(191, 21);
             this.frombox.TabIndex = 67;
+            this.frombox.SelectedIndexChanged += new System.EventHandler(this.frombox_SelectedIndexChanged);
             // 
             // label5
             // 

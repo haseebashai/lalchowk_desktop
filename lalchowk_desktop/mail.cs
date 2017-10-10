@@ -9,15 +9,19 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
 using System.Net.Mail;
+using System.Collections;
+using MySql.Data.MySqlClient;
 
 namespace Veiled_Kashmir_Admin_Panel
 {
     public partial class mail : Form
     {
         DBConnect obj = new DBConnect();
-        String email,cmd,msgid;
+        String email, cmd, msgid, sendername, emails;
+        MySqlDataReader dr;
+        MySqlCommand mysqlcmd, mycmd;
 
-        public mail(string emailto,string subject,string message,string mid)
+        public mail(string emailto, string subject, string message, string mid)
         {
             InitializeComponent();
             totxt.Text = emailto;
@@ -32,11 +36,13 @@ namespace Veiled_Kashmir_Admin_Panel
             Close();
         }
 
+
+
         private void sendmail()
         {
-            string password = "Lalchowk@123uzmah";
-                try
-                {
+            Cursor = Cursors.WaitCursor;
+            try
+            {
 
 
                 StringBuilder s = new StringBuilder(bodytxt.Text);
@@ -46,46 +52,67 @@ namespace Veiled_Kashmir_Admin_Panel
                 s1.Replace(@"\", @"\\");
                 s1.Replace("'", "\\'");
 
-                MailMessage mail = new MailMessage();
+
+
                 SmtpClient Smtpobj = new SmtpClient();
-                Smtpobj.Host = "smtpout.secureserver.net";
-                Smtpobj.Port = 25;
-                mail.From = new MailAddress("support@lalchowk.in");
-                mail.To.Add(email);
-                
-                mail.Subject = "Reply: "+ s1;
-                mail.Body = s + Environment.NewLine + Environment.NewLine + "Regards,"+Environment.NewLine+"Lalchowk";
-
+                Smtpobj.Host = "smtp.zoho.com";
+                Smtpobj.Port = 587;
                 Smtpobj.UseDefaultCredentials = false;
-
-                Smtpobj.EnableSsl = false;
-                
-                
-               Smtpobj.Credentials = new NetworkCredential("support@lalchowk.in", "Lalchowk@123uzmah");
-
+                Smtpobj.EnableSsl = true;
+                Smtpobj.Credentials = new NetworkCredential(frombox.Text, "Lalchowk@123");
                 Smtpobj.DeliveryMethod = SmtpDeliveryMethod.Network;
+
                 
+                MailMessage mail = new MailMessage(frombox.Text, totxt.Text);
+                mail.From = new MailAddress(frombox.Text, sendername);
+                mail.Subject = s1.ToString();
+                mail.Body = s.ToString();
+                mail.IsBodyHtml = true;
+
                 Smtpobj.Send(mail);
-                
+                Cursor = Cursors.Arrow;
+
                 MessageBox.Show("Mail Sent.");
-                this.Close();
-
-
+                obj.closeConnection();
             }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.ToString());
-                }
-
+                           
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
             }
+            
+        }
+    
+
+        private void frombox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (frombox.Text)
+            {
+                case "support@lalchowk.in":
+                    sendername = "Lalchowk Support";
+                    break;
+                case "feedback@lalchowk.in":
+                    sendername = "Lalchowk Feedback";
+                    break;
+                case "info@lalchowk.in":
+                    sendername = "Lalchowk Info";
+                    break;
+                case "hr@lalchowk.in":
+                    sendername = "Human Resources";
+                    break;
+                default:
+                    MessageBox.Show("select a valid email.");
+                    break;
+            }
+        }
 
         private void sendbtn_Click(object sender, EventArgs e)
         {
             sendmail();
+            cmd = "UPDATE `lalchowk`.`messages` SET `reply`='" + bodytxt.Text + "' WHERE `messageid`='" + msgid + "'";
+            obj.nonQuery(cmd);
             this.Close();
-
-        //    cmd = "UPDATE `lalchowk`.`messages` SET `reply`='" + bodytxt.Text + "' WHERE `messageid`='"+ msgid+"'";
-          //  obj.nonQuery(cmd);
+           
         }
 
         private void mail_Load(object sender, EventArgs e)
@@ -94,7 +121,10 @@ namespace Veiled_Kashmir_Admin_Panel
             var items = new[]
             {
                 new {Text="support@lalchowk.in"},
-                new {Text="feedback@lalchowk.in"}
+                new {Text="feedback@lalchowk.in"},
+                new {Text="info@lalchowk.in"},
+                new {Text="hr@lalchowk.in"}
+
             };
             frombox.DataSource = items;
         }

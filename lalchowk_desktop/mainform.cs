@@ -46,15 +46,14 @@ namespace Veiled_Kashmir_Admin_Panel
             {
                 loading.Show();
                 Cursor = Cursors.WaitCursor;
-                readordersshipped();
-                readordersplaced();
-                readordersdelivered();
+                readorders();
                 Cursor = Cursors.Arrow;
                 loading.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+                loading.Close();
             }
             finally {
                 loading.Close();
@@ -74,7 +73,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
 
 
-        private void readordersplaced()
+        private void readorders()
         {
             try { 
             con.Open();
@@ -95,6 +94,22 @@ namespace Veiled_Kashmir_Admin_Panel
             dr.Read();
             costlbl.Text = "> Will cost Rs. " + dr[0].ToString() + "/-";
             obj.closeConnection();
+
+
+                dr = obj.Query("SELECT count(status) FROM orders where status='delivered'");
+                dr.Read();
+                ordersdlbl.Text = dr[0].ToString();
+                obj.closeConnection();
+
+                con.Open();
+                adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='shipped';", con);
+                dt = new DataTable();
+                adap.Fill(dt);
+                con.Close();
+                BindingSource bsource2 = new BindingSource();
+                bsource2.DataSource = dt;
+                shippeddataview.DataSource = bsource2;
+
             }
             catch (Exception ex)
             {
@@ -103,36 +118,8 @@ namespace Veiled_Kashmir_Admin_Panel
         }
     
 
-        private void readordersshipped()
-        {
-            try {
-                con.Open();
-                adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='shipped';", con);
-                dt = new DataTable();
-                adap.Fill(dt);
-                con.Close();
-                BindingSource bsource = new BindingSource();
-                bsource.DataSource = dt;
-                shippeddataview.DataSource = bsource;
-            } catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-        }
-
-        private void readordersdelivered()
-        {
-            try {
-                dr = obj.Query("SELECT count(status) FROM orders where status='delivered'");
-                dr.Read();
-                ordersdlbl.Text = dr[0].ToString();
-                obj.closeConnection();
-            } catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-        }
-    
+       
+      
 
         private void ordersbtn_Click(object sender, EventArgs e)
         {
@@ -496,6 +483,25 @@ namespace Veiled_Kashmir_Admin_Panel
             od.readordershipped();
             cntpnl.Controls.Add(od);
             od.Show();
+            Cursor = Cursors.Arrow;
+
+
+        }
+
+        private void sendmailbtn_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            promomail pm = new promomail("");
+            pm.TopLevel = false;
+            pm.readlist();
+            pm.emaillist.Visible = true;
+            dialogcontainer dg = new dialogcontainer();
+            dg.dialogpnl.Controls.Add(pm);
+            dg.lbl.Text = "";
+
+            dg.Show();
+
+            pm.Show();
             Cursor = Cursors.Arrow;
         }
     }

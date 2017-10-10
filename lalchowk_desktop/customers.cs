@@ -25,12 +25,6 @@ namespace Veiled_Kashmir_Admin_Panel
 
 
         private container hp = null;
-
-        private void mailbtn_Click(object sender, EventArgs e)
-        {
-
-        }
-
         DataTable dt,dt1;
 
         public customers(Form hpcopy)
@@ -60,6 +54,21 @@ namespace Veiled_Kashmir_Admin_Panel
             customerlist.DisplayMember = "email";
             customerlist.DataSource = dt; */
         }
+
+        private void mailbtn_Click(object sender, EventArgs e)
+        {
+            promomail pm = new promomail(emaillbl.Text);
+            pm.TopLevel = false;
+            pm.label1.Text = "Send Mail";
+            dialogcontainer dg = new dialogcontainer();
+            dg.dialogpnl.Controls.Add(pm);
+            dg.lbl.Text = "";
+
+            dg.Show();
+
+            pm.Show();
+        }
+
 
         private void readcount()
         {

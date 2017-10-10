@@ -33,7 +33,7 @@ namespace Veiled_Kashmir_Admin_Panel
        
         public DBConnect()
         {
-            //  conn = new MySqlConnection("SERVER=localhost;DATABASE=lalchowk;USER=root;PASSWORD=password1;");
+           //   conn = new MySqlConnection("SERVER=localhost;DATABASE=lalchowklocal;USER=root;PASSWORD=password1;");
 
               conn = new MySqlConnection("SERVER=182.50.133.78;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah;");
               

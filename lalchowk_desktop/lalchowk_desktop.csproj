@@ -140,6 +140,12 @@
     <Compile Include="products.Designer.cs">
       <DependentUpon>products.cs</DependentUpon>
     </Compile>
+    <Compile Include="promomail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="promomail.Designer.cs">
+      <DependentUpon>promomail.cs</DependentUpon>
+    </Compile>
     <Compile Include="receipt.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -264,6 +270,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="products.resx">
       <DependentUpon>products.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="promomail.resx">
+      <DependentUpon>promomail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="receipt.resx">
       <DependentUpon>receipt.cs</DependentUpon>

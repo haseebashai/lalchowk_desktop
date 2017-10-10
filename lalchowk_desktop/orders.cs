@@ -115,6 +115,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 cmd = "Delete from orderdetails where orderid='" + orderid + "'";
                 obj.nonQuery(cmd);
                 MessageBox.Show("Order deleted.");
+                dpnl.Visible = false;
                 readorders();
             }
 
