@@ -125,6 +125,21 @@ namespace Veiled_Kashmir_Admin_Panel
            
         }
 
-     
+        private void materialRaisedButton1_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            promomail pm = new promomail("");
+            pm.TopLevel = false;
+            pm.readlist();
+            pm.emaillist.Visible = true;
+            dialogcontainer dg = new dialogcontainer();
+            dg.dialogpnl.Controls.Add(pm);
+            dg.lbl.Text = "";
+
+            dg.Show();
+
+            pm.Show();
+            Cursor = Cursors.Arrow;
+        }
     }   
 }

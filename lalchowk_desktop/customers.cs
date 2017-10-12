@@ -60,6 +60,7 @@ namespace Veiled_Kashmir_Admin_Panel
             promomail pm = new promomail(emaillbl.Text);
             pm.TopLevel = false;
             pm.label1.Text = "Send Mail";
+            pm.elistlbl.Text = "";
             dialogcontainer dg = new dialogcontainer();
             dg.dialogpnl.Controls.Add(pm);
             dg.lbl.Text = "";

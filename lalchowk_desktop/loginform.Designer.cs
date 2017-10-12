@@ -36,6 +36,7 @@
             this.error = new System.Windows.Forms.Label();
             this.namelbl = new System.Windows.Forms.Label();
             this.pwdlbl = new System.Windows.Forms.Label();
+            this.materialRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
             this.SuspendLayout();
             // 
             // usernametxt
@@ -146,6 +147,19 @@
             this.pwdlbl.TabIndex = 10;
             this.pwdlbl.Text = "Password";
             // 
+            // materialRaisedButton1
+            // 
+            this.materialRaisedButton1.Depth = 0;
+            this.materialRaisedButton1.Location = new System.Drawing.Point(813, 340);
+            this.materialRaisedButton1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialRaisedButton1.Name = "materialRaisedButton1";
+            this.materialRaisedButton1.Primary = true;
+            this.materialRaisedButton1.Size = new System.Drawing.Size(75, 23);
+            this.materialRaisedButton1.TabIndex = 11;
+            this.materialRaisedButton1.Text = "login";
+            this.materialRaisedButton1.UseVisualStyleBackColor = true;
+            this.materialRaisedButton1.Click += new System.EventHandler(this.materialRaisedButton1_Click);
+            // 
             // loginform
             // 
             this.AcceptButton = this.loginbtn;
@@ -153,6 +167,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1198, 608);
+            this.Controls.Add(this.materialRaisedButton1);
             this.Controls.Add(this.pwdlbl);
             this.Controls.Add(this.namelbl);
             this.Controls.Add(this.error);
@@ -179,5 +194,6 @@
         private System.Windows.Forms.Label error;
         private System.Windows.Forms.Label namelbl;
         private System.Windows.Forms.Label pwdlbl;
+        private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton1;
     }
 }

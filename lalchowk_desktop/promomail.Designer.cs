@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.frombox = new System.Windows.Forms.ComboBox();
@@ -42,6 +43,9 @@
             this.totxt = new System.Windows.Forms.TextBox();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.tolbl = new System.Windows.Forms.Label();
+            this.timer = new System.Windows.Forms.Timer(this.components);
+            this.sendinglbl = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -142,12 +146,13 @@
             // elistlbl
             // 
             this.elistlbl.AutoSize = true;
-            this.elistlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.elistlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.elistlbl.ForeColor = System.Drawing.SystemColors.Highlight;
             this.elistlbl.Location = new System.Drawing.Point(12, 51);
             this.elistlbl.Name = "elistlbl";
-            this.elistlbl.Size = new System.Drawing.Size(0, 15);
+            this.elistlbl.Size = new System.Drawing.Size(288, 13);
             this.elistlbl.TabIndex = 77;
+            this.elistlbl.Text = "Send email to 90 customers today or enter a single email ID.";
             // 
             // label2
             // 
@@ -181,9 +186,34 @@
             // 
             this.progressBar1.Location = new System.Drawing.Point(342, 623);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(587, 42);
+            this.progressBar1.Size = new System.Drawing.Size(587, 20);
             this.progressBar1.Step = 1;
             this.progressBar1.TabIndex = 80;
+            // 
+            // tolbl
+            // 
+            this.tolbl.AutoSize = true;
+            this.tolbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tolbl.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.tolbl.Location = new System.Drawing.Point(339, 647);
+            this.tolbl.Name = "tolbl";
+            this.tolbl.Size = new System.Drawing.Size(0, 16);
+            this.tolbl.TabIndex = 81;
+            // 
+            // timer
+            // 
+            this.timer.Interval = 1000;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
+            // sendinglbl
+            // 
+            this.sendinglbl.AutoSize = true;
+            this.sendinglbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sendinglbl.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.sendinglbl.Location = new System.Drawing.Point(339, 604);
+            this.sendinglbl.Name = "sendinglbl";
+            this.sendinglbl.Size = new System.Drawing.Size(0, 16);
+            this.sendinglbl.TabIndex = 82;
             // 
             // promomail
             // 
@@ -191,6 +221,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1162, 722);
+            this.Controls.Add(this.sendinglbl);
+            this.Controls.Add(this.tolbl);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.totxt);
@@ -222,12 +254,15 @@
         private System.Windows.Forms.TextBox bodytxt;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox subtxt;
-        private System.Windows.Forms.Label elistlbl;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox totxt;
         private System.ComponentModel.BackgroundWorker bgworker;
         private System.Windows.Forms.ProgressBar progressBar1;
         public System.Windows.Forms.ListBox emaillist;
         public System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label tolbl;
+        private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.Label sendinglbl;
+        public System.Windows.Forms.Label elistlbl;
     }
 }

@@ -54,7 +54,7 @@
             this.titlebar.Controls.Add(this.title);
             this.titlebar.Location = new System.Drawing.Point(0, 1);
             this.titlebar.Name = "titlebar";
-            this.titlebar.Size = new System.Drawing.Size(1376, 45);
+            this.titlebar.Size = new System.Drawing.Size(1376, 34);
             this.titlebar.TabIndex = 3;
             // 
             // minimize
@@ -144,9 +144,9 @@
             // mainpnl
             // 
             this.mainpnl.BackColor = System.Drawing.Color.White;
-            this.mainpnl.Location = new System.Drawing.Point(1, 41);
+            this.mainpnl.Location = new System.Drawing.Point(1, 38);
             this.mainpnl.Name = "mainpnl";
-            this.mainpnl.Size = new System.Drawing.Size(1363, 736);
+            this.mainpnl.Size = new System.Drawing.Size(1363, 739);
             this.mainpnl.TabIndex = 6;
             // 
             // container
