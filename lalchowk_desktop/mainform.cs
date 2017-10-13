@@ -22,17 +22,22 @@ namespace Veiled_Kashmir_Admin_Panel
         MySqlDataAdapter adap;
         DataTable dt;
         MySqlDataReader dr;
+        BindingSource bsource, bsource2;
+        string order, cost, atten;
 
         private container hp = null;
         public mainform(Form hpcopy)
         {
             hp = hpcopy as container;
             InitializeComponent();
+            timer.Start();
+            loadinglbl.Visible = true;
 
-            loadingform();
+            bgworker.RunWorkerAsync();
+            //     loadingform();
         }
 
-        private void loadingform()
+    /*    private void loadingform()
         {
             Form loading = new Form();
             loading.Size = new Size(50, 50);
@@ -45,10 +50,7 @@ namespace Veiled_Kashmir_Admin_Panel
             try
             {
                 loading.Show();
-                Cursor = Cursors.WaitCursor;
-                readorders();
-                Cursor = Cursors.Arrow;
-                loading.Close();
+               
             }
             catch (Exception ex)
             {
@@ -59,7 +61,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 loading.Close();
             }
 
-        }
+        }*/
 
         private void mainform_Load(object sender, EventArgs e)
         {
@@ -81,34 +83,36 @@ namespace Veiled_Kashmir_Admin_Panel
             dt = new DataTable();
             adap.Fill(dt);
             con.Close();
-            BindingSource bsource = new BindingSource();
+            bsource = new BindingSource();
             bsource.DataSource = dt;
-            placeddataview.DataSource = bsource;
 
-            dr = obj.Query("Select count(status) from orders where status='placed'");
-            dr.Read();
-            attentionlbl.Text = "> " + dr[0].ToString() + " Order(s) need your Attention ASAP!";
-            obj.closeConnection();
-
-            dr = obj.Query("select sum(dealerprice*quantity) from orderdetails where orderid in(SELECT orderid FROM orders where status = 'placed');");
-            dr.Read();
-            costlbl.Text = "> Will cost Rs. " + dr[0].ToString() + "/-";
-            obj.closeConnection();
-
-
-                dr = obj.Query("SELECT count(status) FROM orders where status='delivered'");
-                dr.Read();
-                ordersdlbl.Text = dr[0].ToString();
-                obj.closeConnection();
 
                 con.Open();
                 adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='shipped';", con);
                 dt = new DataTable();
                 adap.Fill(dt);
                 con.Close();
-                BindingSource bsource2 = new BindingSource();
+                bsource2 = new BindingSource();
                 bsource2.DataSource = dt;
-                shippeddataview.DataSource = bsource2;
+
+                dr = obj.Query("Select count(status) from orders where status='placed'");
+            dr.Read();
+                atten = dr[0].ToString();
+            obj.closeConnection();
+
+            dr = obj.Query("select sum(dealerprice*quantity) from orderdetails where orderid in(SELECT orderid FROM orders where status = 'placed');");
+            dr.Read();
+                cost = dr[0].ToString();
+            obj.closeConnection();
+
+
+                dr = obj.Query("SELECT count(status) FROM orders where status='delivered'");
+                dr.Read();
+                order = dr[0].ToString();
+                obj.closeConnection();
+
+                
+                
 
             }
             catch (Exception ex)
@@ -488,13 +492,31 @@ namespace Veiled_Kashmir_Admin_Panel
 
         }
 
+
+        int numberOfPoints = 0;
+        private void timer_Tick(object sender, EventArgs e)
+        {
+
+
+           
+            int maxPoints = 3;
+            loadinglbl.BorderStyle = BorderStyle.FixedSingle;
+            loadinglbl.Text = "Loading" + new string('.', numberOfPoints);
+            numberOfPoints = (numberOfPoints + 1) % (maxPoints + 1);
+        
+    }
+
+        
+
         private void sendmailbtn_Click(object sender, EventArgs e)
         {
+            
             Cursor = Cursors.WaitCursor;
             promomail pm = new promomail("");
             pm.TopLevel = false;
             pm.readlist();
-            pm.emaillist.Visible = true;
+            pm.emaillistpnl.Visible=true;
+            
             dialogcontainer dg = new dialogcontainer();
             dg.dialogpnl.Controls.Add(pm);
             dg.lbl.Text = "";
@@ -503,6 +525,29 @@ namespace Veiled_Kashmir_Admin_Panel
 
             pm.Show();
             Cursor = Cursors.Arrow;
+        }
+
+        private void bgworker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            readorders();
+        }
+
+        private void bgworker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            timer.Stop();
+            loadinglbl.Visible = false;
+            placedh.Visible = true;
+            shippedh.Visible = true;
+            shippedlbl.Visible = true;
+            attention.Visible = true;placedlbl.Visible = true;deliveredh.Visible = true;orderslbl.Visible = true;
+
+
+
+            placeddataview.DataSource = bsource;
+            shippeddataview.DataSource = bsource2;
+            attentionlbl.Text = "> " + atten + " Order(s) need your Attention ASAP!";
+            costlbl.Text = "> Will cost Rs. " + cost + "/-";
+            ordersdlbl.Text = order;
         }
     }
 }

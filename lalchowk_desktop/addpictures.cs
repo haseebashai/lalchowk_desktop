@@ -18,17 +18,21 @@ namespace Veiled_Kashmir_Admin_Panel
     public partial class addpictures : Form
     {
         DBConnect obj = new DBConnect();
-        string cmd, filename, fileaddress, fullpath, directory, uploaddir,pid;
+        string cmd, filename, fileaddress, fullpath, directory, uploaddir,pid, url = "http://lalchowk.in/lalchowk/pictures/";
         MySqlConnection con = new MySqlConnection("SERVER= 182.50.133.78; DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah");
         MySqlDataAdapter adap;
         DataTable dt;
         MySqlCommandBuilder cmdbl;
+        BindingSource bsource;
+       
 
-
-        public addpictures()
+        private dialogcontainer dg = null;
+        public addpictures(Form dgcopy)
         {
+            dg = dgcopy as dialogcontainer;
             InitializeComponent();
-            readpictures();
+            timer.Start();
+            bgworker.RunWorkerAsync();
 
         }
 
@@ -52,7 +56,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void delbtn_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Do you want to delete the selected picture ?.", "Confirm", MessageBoxButtons.YesNo);
+            DialogResult dr = MessageBox.Show("Do you want to delete the selected picture ?", "Confirm", MessageBoxButtons.YesNo);
             if (dr == DialogResult.Yes)
             {
 
@@ -63,12 +67,76 @@ namespace Veiled_Kashmir_Admin_Panel
             }
         }
 
+        private void gridtxt_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                DataView dv = new DataView(dt);
+                dv.RowFilter = string.Format("Convert([groupid],System.String) LIKE '%{0}%'", gridtxt.Text);
+                picturesdataview.DataSource = dv;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void gidtxt_Enter(object sender, EventArgs e)
+        {
+
+            if (gidtxt.Text == "Enter Group ID")
+            {
+                gidtxt.Text = "";
+                gidtxt.ForeColor = Color.Black;
+            }
+        }
+
+        private void gidtxt_Leave(object sender, EventArgs e)
+        {
+            if (gidtxt.Text == "")
+            {
+
+                gidtxt.ForeColor = SystemColors.ControlDark;
+                gidtxt.Text = "Enter Group ID";
+            }
+        }
+
+        private void bgworker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            readpictures();
+        }
+
+        private void bgworker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            timer.Stop();
+            picturesdataview.DataSource = bsource;
+            ppnl.Visible = true;
+
+            dg.lbl.BorderStyle = BorderStyle.None;
+            dg.lbl.ForeColor = SystemColors.Highlight;
+            dg.lbl.Text = "Add Pictures";
+        }
+
+        int numberOfPoints = 0;
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            int maxPoints = 5;
+
+            dg.lbl.BorderStyle = BorderStyle.FixedSingle;
+            dg.lbl.ForeColor = Color.Red;
+            dg.lbl.Text = "Loading" + new string('.', numberOfPoints);
+            numberOfPoints = (numberOfPoints + 1) % (maxPoints + 1);
+        }
+
         private void picturesdataview_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = this.picturesdataview.Rows[e.RowIndex];
                 pid = row.Cells["pictureid"].Value.ToString();
+                string piclocation = row.Cells["picture"].Value.ToString();
+                dp.SizeMode = PictureBoxSizeMode.StretchImage;
+                dp.ImageLocation = (url + piclocation);
 
             }
         }
@@ -164,9 +232,9 @@ namespace Veiled_Kashmir_Admin_Panel
             dt = new DataTable();
             adap.Fill(dt);
             con.Close();
-            BindingSource bsource = new BindingSource();
+            bsource = new BindingSource();
             bsource.DataSource = dt;
-            picturesdataview.DataSource = bsource;
+            
         }
 
         private void updbtn_Click(object sender, EventArgs e)

@@ -17,19 +17,110 @@ namespace Veiled_Kashmir_Admin_Panel
         MySqlDataReader dr,dr2;
         DBConnect obj = new DBConnect();
         bool fnameok, lnameok, usernameok, emailok, passwordok, confirmok, phoneok, dobok;
+        string tp, elec, cloth, foot, mobile, comp, cacc, cos, book;
+        int numberOfPoints=0;
+
         private mainform mf = null;
         private container hp = null;
-        public products(Form hpcopy,Form mfcopy)
+        public products(Form hpcopy, Form mfcopy)
         {
             hp = hpcopy as container;
             mf = mfcopy as mainform;
+           
             InitializeComponent();
+            timer.Start();
+            bgworker.RunWorkerAsync();
         }
+        private void bgworker_DoWork(object sender, DoWorkEventArgs e)
+        {
+           
+           
+            readdetails();
+        }
+
+        private void bgworker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            timer.Stop();
+
+            loadinglbl.Visible = false;
+            tplbl.Text = "Total Products currently added: " + tp;
+            eleclbl.Text = "Total Electronic Items currently added: " + elec;
+            clothlbl.Text = "Total Clothing Items currently added: " + cloth;
+            footlbl.Text = "Total Footwear Items currently added: " + foot;
+            mobilelbl.Text = "Total Mobile Phones currently added: " + mobile;
+            complbl.Text = "Total Computers/Laptops currently added: " + comp;
+            cacclbl.Text = "Total Computer Accessories currently added: " + cacc;
+            coslbl.Text = "Total Cosmetics Items currently added: " + cos;
+            booklbl.Text = "Total Books currently added: " + book;
+            ppnl.Visible = true;
+        }
+
+        private void readdetails()
+        {
+            dr = obj.Query("select count(productid) from products");
+            dr.Read();
+            tp= dr[0].ToString();
+            obj.closeConnection();
+
+            dr = obj.Query("Select count(productid) from products where supplierid ='1' or supplierid ='2' or supplierid='3' or supplierid='5'");
+            dr.Read();
+            elec= dr[0].ToString();
+            obj.closeConnection();
+
+            dr = obj.Query("Select count(productid) from products where supplierid ='4'");
+            dr.Read();
+            cloth= dr[0].ToString();
+            obj.closeConnection();
+
+            dr = obj.Query("Select count(productid) from products where supplierid ='6'");
+            dr.Read();
+            foot= dr[0].ToString();
+            obj.closeConnection();
+
+            dr = obj.Query("Select count(productid) from products where supplierid ='1'");
+            dr.Read();
+            mobile= dr[0].ToString();
+            obj.closeConnection();
+
+            dr = obj.Query("Select count(productid) from products where supplierid ='2' or supplierid ='5'");
+            dr.Read();
+            comp= dr[0].ToString();
+            obj.closeConnection();
+
+            dr = obj.Query("Select count(productid) from products where supplierid ='3'");
+            dr.Read();
+            cacc= dr[0].ToString();
+            obj.closeConnection();
+
+            dr = obj.Query("Select count(productid) from products where supplierid ='11'");
+            dr.Read();
+            cos= dr[0].ToString();
+            obj.closeConnection();
+
+            dr = obj.Query("select count(productid) from products where supplierid='12' or supplierid='13'");
+            dr.Read();
+            book= dr[0].ToString();
+            obj.closeConnection();
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+             
+            
+            int maxPoints = 5;
+            loadinglbl.Visible = true;
+            loadinglbl.BorderStyle = BorderStyle.FixedSingle;
+            loadinglbl.Text = "Loading Details" + new string('.', numberOfPoints);
+            numberOfPoints = (numberOfPoints + 1) % (maxPoints + 1);
+        
+    }
+
+       
         private void newbtn_Click(object sender, EventArgs e)
         {
             dialogcontainer dg = new dialogcontainer();
-            dg.lbl.Text = "";        
-            addproducts apr = new addproducts(hp,this);
+                   
+            addproducts apr = new addproducts(hp,this,dg);
             apr.TopLevel = false;
             dg.dialogpnl.Controls.Clear();
             dg.dialogpnl.Controls.Add(apr);
@@ -40,7 +131,7 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             dialogcontainer dg = new dialogcontainer();
             dg.lbl.Text = "";
-            inventory inv = new inventory(hp);
+            inventory inv = new inventory(hp,dg);
             inv.TopLevel = false;
             dg.dialogpnl.Controls.Clear();
             dg.dialogpnl.Controls.Add(inv);
@@ -51,81 +142,37 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void addpics_Click(object sender, EventArgs e)
         {
-            Cursor = Cursors.WaitCursor;
+            
+            
             dialogcontainer dg = new dialogcontainer();
             dg.lbl.Text = "";
-            addpictures ap = new addpictures();
+            addpictures ap = new addpictures(dg);
             ap.TopLevel = false;
             dg.dialogpnl.Controls.Clear();
             dg.dialogpnl.Controls.Add(ap);
             dg.Show();
             ap.Show();
-            Cursor = Cursors.Arrow;
+            
         }
 
         private void viewpbtn_Click(object sender, EventArgs e)
         {
-            Cursor = Cursors.WaitCursor;
+            
             dialogcontainer dg = new dialogcontainer();
             dg.lbl.Text = "";
-            viewproducts vp = new viewproducts();
+            viewproducts vp = new viewproducts(dg);
             vp.TopLevel = false;
-            mf.cntpnl.Controls.Clear();
             dg.dialogpnl.Controls.Add(vp);
             dg.Show();
             vp.Show();
-            Cursor = Cursors.Arrow;
+            
         }
 
-        private void products_Load(object sender, EventArgs e)
-        {
-            dr = obj.Query("select count(productid) from products");
-            dr.Read();
-            tplbl.Text = "Total Products currently added: " + dr[0].ToString();
-            obj.closeConnection();
 
-            dr=obj.Query("Select count(productid) from products where supplierid ='1' or supplierid ='2' or supplierid='3' or supplierid='5'");
-            dr.Read();
-            eleclbl.Text = "Total Electronic Items currently added: " + dr[0].ToString();
-            obj.closeConnection();
+       
 
-            dr = obj.Query("Select count(productid) from products where supplierid ='4'");
-            dr.Read();
-            clothlbl.Text = "Total Clothing Items currently added: " + dr[0].ToString();
-            obj.closeConnection();
-
-            dr = obj.Query("Select count(productid) from products where supplierid ='6'");
-            dr.Read();
-            footlbl.Text = "Total Footwear Items currently added: " + dr[0].ToString();
-            obj.closeConnection();
-
-            dr = obj.Query("Select count(productid) from products where supplierid ='1'");
-            dr.Read();
-            mobilelbl.Text = "Total Mobile Phones currently added: " + dr[0].ToString();
-            obj.closeConnection();
-
-            dr = obj.Query("Select count(productid) from products where supplierid ='2' or supplierid ='5'");
-            dr.Read();
-            complbl.Text = "Total Computers/Laptops currently added: " + dr[0].ToString();
-            obj.closeConnection();
-
-            dr = obj.Query("Select count(productid) from products where supplierid ='3'");
-            dr.Read();
-            cacclbl.Text = "Total Computer Accessories currently added: " + dr[0].ToString();
-            obj.closeConnection();
-
-            dr = obj.Query("Select count(productid) from products where supplierid ='11'");
-            dr.Read();
-            coslbl.Text = "Total Cosmetics Items currently added: " + dr[0].ToString();
-            obj.closeConnection();
-
-            dr = obj.Query("select count(productid) from products where supplierid='12'");
-            dr.Read();
-            booklbl.Text = "Total Books currently added: " + dr[0].ToString();
-            obj.closeConnection();
-
-
-        }
+        
+       
 
      
 

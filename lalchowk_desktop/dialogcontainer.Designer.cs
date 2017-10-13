@@ -45,7 +45,7 @@
             this.dialogpnl.AutoScroll = true;
             this.dialogpnl.Location = new System.Drawing.Point(1, 41);
             this.dialogpnl.Name = "dialogpnl";
-            this.dialogpnl.Size = new System.Drawing.Size(1195, 670);
+            this.dialogpnl.Size = new System.Drawing.Size(1185, 670);
             this.dialogpnl.TabIndex = 0;
             // 
             // closebtn
@@ -53,7 +53,7 @@
             this.closebtn.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.turn_on;
             this.closebtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.closebtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.closebtn.Location = new System.Drawing.Point(1163, 10);
+            this.closebtn.Location = new System.Drawing.Point(1157, 10);
             this.closebtn.Name = "closebtn";
             this.closebtn.Size = new System.Drawing.Size(25, 25);
             this.closebtn.TabIndex = 56;
@@ -64,18 +64,18 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.DodgerBlue;
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 721);
+            this.panel3.Location = new System.Drawing.Point(0, 714);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1199, 1);
+            this.panel3.Size = new System.Drawing.Size(1189, 1);
             this.panel3.TabIndex = 60;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.DodgerBlue;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(1199, 1);
+            this.panel2.Location = new System.Drawing.Point(1189, 1);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1, 721);
+            this.panel2.Size = new System.Drawing.Size(1, 714);
             this.panel2.TabIndex = 59;
             // 
             // panel1
@@ -92,7 +92,7 @@
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1200, 1);
+            this.panel5.Size = new System.Drawing.Size(1190, 1);
             this.panel5.TabIndex = 57;
             // 
             // lbl
@@ -111,7 +111,7 @@
             this.minimize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.minimize.Cursor = System.Windows.Forms.Cursors.Hand;
             this.minimize.ImageLocation = "";
-            this.minimize.Location = new System.Drawing.Point(1137, 13);
+            this.minimize.Location = new System.Drawing.Point(1131, 13);
             this.minimize.Name = "minimize";
             this.minimize.Size = new System.Drawing.Size(20, 20);
             this.minimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -124,7 +124,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1200, 722);
+            this.ClientSize = new System.Drawing.Size(1190, 715);
             this.Controls.Add(this.minimize);
             this.Controls.Add(this.lbl);
             this.Controls.Add(this.panel3);

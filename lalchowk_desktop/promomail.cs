@@ -18,14 +18,15 @@ namespace Veiled_Kashmir_Admin_Panel
     {
         DBConnect obj = new DBConnect();
         MySqlConnection con;
-        String cmd, sendername, from, tick= "✔";
+        String cmd, sendername, from, tick= "✔", returned;
         MySqlCommandBuilder cmdbl;
         MySqlDataReader dr;
         MySqlDataAdapter adap;
         DataTable dt;
         DataSet ds;
         MySqlCommand mycmd;
-        int i = 0, maillist, emails = 6;
+        MySqlConnection aconn = new MySqlConnection("SERVER=182.50.133.78;DATABASE=lalchowk_ac;USER=lalchowkac;PASSWORD=Lalchowk@123uzmah");
+        int i = 0, maillist, emails, j = 0,emailerrorno;
         List<string> myData = new List<string>();
 
         
@@ -34,6 +35,7 @@ namespace Veiled_Kashmir_Admin_Panel
         public promomail(string from)
         {
             InitializeComponent();
+            
             if (from == "")
             {
                 totxt.Text = "Enter single email here.";
@@ -49,7 +51,7 @@ namespace Veiled_Kashmir_Admin_Panel
         private void promomail_Load(object sender, EventArgs e)
         {
 
-
+           
             frombox.DisplayMember = "Text";
             var items = new[]
             {
@@ -66,26 +68,37 @@ namespace Veiled_Kashmir_Admin_Panel
         public void readlist()
         {
 
+            try
+            {
+                //offset
+                aconn.Open();
+                mycmd = new MySqlCommand("select eid,no_of_rec from emailno", aconn);
+                dr = mycmd.ExecuteReader();
+                dr.Read();
+                maillist = int.Parse(dr[0].ToString());
+                emailno.Text = maillist.ToString();
+                emails = int.Parse(dr[1].ToString());
+                recno.Text = emails.ToString();
+                elistlbl.Text= "Send email to "+emails+" customers today or enter a single email ID.";
+                aconn.Close();
 
-            //offset
-            dr = obj.Query("select eid from emailno");
-            dr.Read();
-            maillist = int.Parse(dr[0].ToString());
-            obj.closeConnection();
+                dr = obj.Query("SELECT mail FROM customer ORDER BY id LIMIT " + emails + " OFFSET " + maillist + " ");
+                dt = new DataTable();
+                dt.Columns.Add("mail", typeof(String));
+                dt.Load(dr);
+                obj.closeConnection();
+                emaillist.DisplayMember = "mail";
+                emaillist.DataSource = dt;
 
-            dr = obj.Query("SELECT email FROM email ORDER BY id LIMIT "+emails+" OFFSET "+maillist+" ");            
-            dt = new DataTable();
-            dt.Columns.Add("email", typeof(String));
-            dt.Load(dr);           
-            obj.closeConnection();
-            emaillist.DisplayMember = "email";
-            emaillist.DataSource = dt;
+            }
+            catch(Exception ex)
+            {
 
-           
+            }
 
         }
 
-        int emailerrorno;
+        
         private string sendmail(string from)
         {
 
@@ -108,25 +121,26 @@ namespace Veiled_Kashmir_Admin_Panel
                 Smtpobj.UseDefaultCredentials = false;
                 Smtpobj.EnableSsl = true;
                 Smtpobj.Credentials = new NetworkCredential(from, "Lalchowk@123");
-                Smtpobj.DeliveryMethod = SmtpDeliveryMethod.Network;            
+                Smtpobj.DeliveryMethod = SmtpDeliveryMethod.Network;
 
-                dr=obj.Query(" SELECT email FROM email ORDER BY id LIMIT " + emails + " OFFSET " + maillist + "");
-                
-                i = 0;
                
+                dr =obj.Query(" SELECT mail FROM customer ORDER BY id LIMIT " + emails + " OFFSET " + maillist + "");
+
+                i = 0;
+                j = 0;
                 while (dr.Read())
                 {
                     
-                    var recipients = new MailAddress(dr["email"].ToString());
+                    var recipients = new MailAddress(dr["mail"].ToString());
                     MailMessage mail = new MailMessage(from,recipients.ToString());
                     mail.From = new MailAddress(from, sendername);
                     mail.Subject = s1.ToString();
                     mail.Body = s.ToString();
                     mail.IsBodyHtml = true;
-                    myData.Add(dr["email"].ToString());
+                    myData.Add(dr["mail"].ToString());
                     Smtpobj.Send(mail);
 
-                   
+                    j++;
                     i += 100/emails;
                     bgworker.ReportProgress(i);
                     
@@ -143,9 +157,16 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
                 obj.closeConnection();
-                return (myData[i]);
+                MessageBox.Show(ex.ToString());
+                
+                if(myData.Count == 0)
+                {
+                    
+                    return ("shit");
+                }
+                else
+                return (myData[j]);
 
             }
             
@@ -178,6 +199,30 @@ namespace Veiled_Kashmir_Admin_Panel
             }
         }
 
+        private void setrecno_Click(object sender, EventArgs e)
+        {
+            aconn.Open();
+            mycmd = new MySqlCommand("update emailno set no_of_rec = '" + recno.Text + "' where id=1", aconn);
+            mycmd.ExecuteNonQuery();
+            aconn.Close();
+            emails = int.Parse(recno.Text);
+            elistlbl.Text = "Send email to "+emails+" customers today or enter a single email ID.";
+            readlist();
+        }
+
+        private void totxt_Leave(object sender, EventArgs e)
+        {
+            if (totxt.Text =="")
+            {
+
+                totxt.Font = new Font("Microsoft Sans Serif", 10, FontStyle.Italic);
+                totxt.Text = "Enter single email here.";
+            }
+
+        }
+
+       
+
         private void totxt_Enter(object sender, EventArgs e)
         {
 
@@ -191,62 +236,30 @@ namespace Veiled_Kashmir_Admin_Panel
 
 
 
-        string returned;
+       
+
+        private void setemailno_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                aconn.Open();
+                mycmd = new MySqlCommand("update emailno set eid = '" + emailno.Text + "' where id=1", aconn);
+                mycmd.ExecuteNonQuery();
+                aconn.Close();
+
+                readlist();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
         private void bgworker_DoWork(object sender, DoWorkEventArgs e)
         {
-            var bgworker = sender as BackgroundWorker;
+            var bgworker = sender as BackgroundWorker;         
+            returned= sendmail(from);
            
-            if (totxt.Text == ""||totxt.Text=="Enter single email here.")
-            {               
-                   
-              returned= sendmail(from);
-            }
-            else
-            {
-
-                try
-                {
-                    StringBuilder s = new StringBuilder(bodytxt.Text);
-                    s.Replace(@"\", @"\\");
-                    s.Replace("'", "\\'");
-                    StringBuilder s1 = new StringBuilder(subtxt.Text);
-                    s1.Replace(@"\", @"\\");
-                    s1.Replace("'", "\\'");
-
-
-
-                    SmtpClient Smtpobj = new SmtpClient();
-                    Smtpobj.Host = "smtp.zoho.com";
-                    Smtpobj.Port = 587;
-                    Smtpobj.UseDefaultCredentials = false;
-                    Smtpobj.EnableSsl = true;
-                    Smtpobj.Credentials = new NetworkCredential(from, "Lalchowk@123");
-                    Smtpobj.DeliveryMethod = SmtpDeliveryMethod.Network;
-
-                    i = 0;
-                    MailMessage mail = new MailMessage(from, totxt.Text);
-                    mail.From = new MailAddress(from, sendername);
-                    mail.Subject = s1.ToString();
-                    mail.Body = s.ToString();
-                    mail.IsBodyHtml = true;
-                    
-                    Smtpobj.Send(mail);
-                    i += 100 / 1;
-                    bgworker.ReportProgress(i);
-
-
-                    MessageBox.Show("Mail Sent.");
-                    
-
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.ToString());
-
-                }
-                
-            }
             
         }
 
@@ -263,16 +276,71 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void sendbtn_Click(object sender, EventArgs e)
         {
-            
-            sendbtn.Enabled = false;
-            timer.Start();
-            bgworker.RunWorkerAsync();
-            
+            if (totxt.Text == "" || totxt.Text == "Enter single email here.")
+            {
+                DialogResult dgr = MessageBox.Show("Do you want to send emails now?", "Confirm", MessageBoxButtons.YesNo);
+                if (dgr == DialogResult.Yes)
+                {
+                    sendbtn.Enabled = false;
+                    timer.Start();
+                    bgworker.RunWorkerAsync();
+                }
+            }
+            else
+            {
+                Cursor = Cursors.WaitCursor;
+                timer.Start();
+                    try
+                    {
+                        StringBuilder s = new StringBuilder(bodytxt.Text);
+                        s.Replace(@"\", @"\\");
+                        s.Replace("'", "\\'");
+                        StringBuilder s1 = new StringBuilder(subtxt.Text);
+                        s1.Replace(@"\", @"\\");
+                        s1.Replace("'", "\\'");
+
+
+
+                        SmtpClient Smtpobj = new SmtpClient();
+                        Smtpobj.Host = "smtp.zoho.com";
+                        Smtpobj.Port = 587;
+                        Smtpobj.UseDefaultCredentials = false;
+                        Smtpobj.EnableSsl = true;
+                        Smtpobj.Credentials = new NetworkCredential(from, "Lalchowk@123");
+                        Smtpobj.DeliveryMethod = SmtpDeliveryMethod.Network;
+
+                        i = 0;
+                        MailMessage mail = new MailMessage(from, totxt.Text);
+                        mail.From = new MailAddress(from, sendername);
+                        mail.Subject = s1.ToString();
+                        mail.Body = s.ToString();
+                        mail.IsBodyHtml = true;
+
+                        Smtpobj.Send(mail);
+                        i += 100 / 1;
+                        bgworker.ReportProgress(i);
+
+                    Cursor = Cursors.Arrow;
+                    timer.Stop();
+                    sendinglbl.Text = "";
+                    MessageBox.Show("Mail Sent.");
+                    
+                    progressBar1.Value = 0;
+
+
+                }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+
+                    }
+                }
         }
 
         int numberOfPoints = 0;
         private void timer_Tick(object sender, EventArgs e)
         {
+            progressBar1.Visible = true;
             int maxPoints = 5;
             sendinglbl.Text = "Sending" + new string('.', numberOfPoints);
             numberOfPoints = (numberOfPoints + 1) % (maxPoints + 1);
@@ -282,33 +350,44 @@ namespace Veiled_Kashmir_Admin_Panel
         {
            
             sendbtn.Enabled = true;
-            totxt.Text = "";
             subtxt.Text = "";
             tolbl.Text = "";
             timer.Stop();
             sendinglbl.Text = "";           
             progressBar1.Value = 0;
+            progressBar1.Visible = false;
 
             
             
             if (returned == null)
             {
-                cmd = ("update emailno set eid = (eid + '" + emails + "') where id=1 ");
-                obj.nonQuery(cmd);
-                obj.closeConnection();
 
+                aconn.Open();
+                mycmd = new MySqlCommand("update emailno set eid = (eid + '" + emails + "') where id=1", aconn);
+                mycmd.ExecuteNonQuery();
+                aconn.Close();
                 
             }
-            else
+            else if (returned == "shit")
             {
-                dr = obj.Query("select id from email where email='" + myData[i] + "'");
+                MessageBox.Show("Something happened. Please try again later.");
+
+                
+
+            }
+            else{
+                dr = obj.Query("select id from customer where mail='" + myData[j] + "'");
                 dr.Read();
                 emailerrorno = int.Parse(dr[0].ToString());
                 obj.closeConnection();
 
-                cmd = ("update emailno set eid = ((eid + '" + emailerrorno + "')-1) where id=1 ");
-                obj.nonQuery(cmd);
-                obj.closeConnection();
+
+                aconn.Open();
+                mycmd = new MySqlCommand("update emailno set eid = ((eid + '" + emailerrorno + "')-1) where id=1", aconn);
+                mycmd.ExecuteNonQuery();
+                aconn.Close();
+
+                MessageBox.Show("Email sending failed from: " + myData[j] + "\nPlease Check the error and continue sending emails.","Error!");
             }
             readlist();
 

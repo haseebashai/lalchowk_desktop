@@ -16,15 +16,20 @@ namespace Veiled_Kashmir_Admin_Panel
         MySqlConnection con = new MySqlConnection("SERVER= 182.50.133.78; DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah");
         MySqlDataAdapter adap;
         DataTable dt;
-        string pid, cmd, url = "http://lalchowk.in/lalchowk/pictures/";
+        string pid,pname, cmd, url = "http://lalchowk.in/lalchowk/pictures/";
         MySqlCommandBuilder cmdbl;
         DBConnect obj=new DBConnect();
+        BindingSource bsource;
 
-
-        public viewproducts()
+        private dialogcontainer dg = null;
+        public viewproducts(Form dgcopy)
         {
+            dg = dgcopy as dialogcontainer;
             InitializeComponent();
-            readproducts();
+            
+            timer.Start();
+            bgworker.RunWorkerAsync();
+            
         }
 
         private void readproducts()
@@ -34,9 +39,9 @@ namespace Veiled_Kashmir_Admin_Panel
             dt = new DataTable();
             adap.Fill(dt);
             con.Close();
-            BindingSource bsource = new BindingSource();
+            bsource = new BindingSource();
             bsource.DataSource = dt;
-            productsdataview.DataSource = bsource;
+            
         }
 
         private void productsdataview_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -46,6 +51,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 DataGridViewRow row = this.productsdataview.Rows[e.RowIndex];
                 string piclocation = row.Cells["picture"].Value.ToString();
                 pid = row.Cells["productid"].Value.ToString();
+                pname = row.Cells["productname"].Value.ToString();
                 pic.SizeMode = PictureBoxSizeMode.StretchImage;
                 pic.ImageLocation = (url + piclocation);
             }
@@ -73,6 +79,32 @@ namespace Veiled_Kashmir_Admin_Panel
             productsdataview.DataSource = dv;
         }
 
+        int numberOfPoints = 0;
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            int maxPoints = 5;
+            dg.lbl.BorderStyle = BorderStyle.FixedSingle;
+            dg.lbl.ForeColor = System.Drawing.Color.Red;
+            dg.lbl.Text = "Loading" + new string('.', numberOfPoints);
+            numberOfPoints = (numberOfPoints + 1) % (maxPoints + 1);
+        }
+
+        private void bgworker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            readproducts();
+        }
+
+        private void bgworker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            timer.Stop();
+            productsdataview.DataSource = bsource;
+            ppnl.Visible = true;
+
+            dg.lbl.BorderStyle = BorderStyle.None;
+            dg.lbl.ForeColor = SystemColors.Highlight;
+            dg.lbl.Text = "View Products";
+        }
+
         private void nametxt_TextChanged(object sender, EventArgs e)
         {
             DataView dv = new DataView(dt);
@@ -82,7 +114,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void delbtn_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Do you want to delete the selected product ?", "Confirm", MessageBoxButtons.YesNo);
+            DialogResult dr = MessageBox.Show("Do you want to delete the selected product ?\n"+pname, "Confirm", MessageBoxButtons.YesNo);
             if (dr == DialogResult.Yes)
             {
 

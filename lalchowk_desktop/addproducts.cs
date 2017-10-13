@@ -11,6 +11,7 @@ using MySql.Data.MySqlClient;
 using System.Text.RegularExpressions;
 using System.IO;
 using System.Net;
+using System.Threading;
 
 namespace Veiled_Kashmir_Admin_Panel
 {
@@ -25,20 +26,25 @@ namespace Veiled_Kashmir_Admin_Panel
 
         string filename, fileaddress, file1,file2,file3,file4,file5,fullpath, directory, uploaddir, categoryid;
 
+        int numberOfPoints = 0;
 
         private container hp = null;
         private mainform mf = null;
+        private dialogcontainer dg = null;
         string cmd;
 
 
-        public addproducts(Form hpcopy, Form mfcopy)
+        public addproducts(Form hpcopy, Form mfcopy, Form dgcopy)
         {
             hp = hpcopy as container;
             mf = mfcopy as mainform;
+            dg = dgcopy as dialogcontainer;
 
             InitializeComponent();
-            readfirst();
-            readsuppliers();
+            addppnl.Enabled = false;
+            timer.Start();
+
+            bgworker.RunWorkerAsync();
 
 
       /*      
@@ -48,6 +54,42 @@ namespace Veiled_Kashmir_Admin_Panel
             yeartxt.Text = temp.Substring(6, 4);
              */
         }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            int maxPoints = 5;
+           
+            dg.lbl.BorderStyle = BorderStyle.FixedSingle;
+            dg.lbl.ForeColor = Color.Red;
+            dg.lbl.Text = "Loading" + new string('.', numberOfPoints);
+            numberOfPoints = (numberOfPoints + 1) % (maxPoints + 1);
+
+        }
+
+        private void bgworker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            
+            readfirst();
+            readsuppliers();
+            readsecond();
+        }
+
+        private void bgworker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            firstcat.DisplayMember = "categoryname";
+            supplierlist.DisplayMember = "name";
+            
+            timer.Stop();
+            addppnl.Enabled = true;
+            
+            dg.lbl.BorderStyle = BorderStyle.None;
+            dg.lbl.ForeColor = SystemColors.Highlight;
+            dg.lbl.Text = "Add Product";
+            
+           
+        }
+
+
         private void readfirst()
         {
             dr = obj.Query("select * from firstcategory");            
@@ -55,7 +97,7 @@ namespace Veiled_Kashmir_Admin_Panel
             dt.Columns.Add("categoryname", typeof(String));            
             dt.Load(dr);
             obj.closeConnection();
-            firstcat.DisplayMember = "categoryname";           
+           
             firstcat.DataSource = dt;
         }
 
@@ -150,7 +192,8 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void readcategory()
         {
-            if (id3lbl.Text == "0" || id3lbl.Text=="id" || id2lbl.Text=="0" || id2lbl.Text=="id")
+            if ( id3lbl.Text=="" || id2lbl.Text=="")
+
                 catbox.Text = id2lbl.Text;
             else
             {
@@ -235,6 +278,9 @@ namespace Veiled_Kashmir_Admin_Panel
         {
 
             uploadpic(pictxt, pic1,file1);
+            pictxt.Clear();
+            pic1.Dispose();
+
             
         }
 
@@ -244,7 +290,7 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             try
             {
-                if (pidtxt.Text == "")
+                if (gidtxt.Text == "")
                 {
                     MessageBox.Show("Product undefined!");
                 }
@@ -293,6 +339,8 @@ namespace Veiled_Kashmir_Admin_Panel
         private void up2_Click(object sender, EventArgs e)
         {
             uploadpictable(p2txt, pic2,file2);
+            p2txt.Clear();
+            pic2.BackgroundImage.Dispose();
 
         }
 
@@ -304,6 +352,8 @@ namespace Veiled_Kashmir_Admin_Panel
         private void up3_Click(object sender, EventArgs e)
         {
             uploadpictable(p3txt, pic3,file3);
+            p3txt.Clear();
+            pic3.BackgroundImage.Dispose();
         }
 
         private void inclbl_Click(object sender, EventArgs e)
@@ -319,6 +369,19 @@ namespace Veiled_Kashmir_Admin_Panel
             }
         }
 
+        private void inclbl2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int inc = int.Parse(gidtxt.Text) + 1;
+                gidtxt.Text = inc.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Enter id first \n\n" + ex.ToString());
+            }
+        }
+
         private void pic4_Click(object sender, EventArgs e)
         {
            file4= picturedialog(p4txt, pic4);
@@ -327,6 +390,8 @@ namespace Veiled_Kashmir_Admin_Panel
         private void up4_Click(object sender, EventArgs e)
         {
             uploadpictable(p4txt, pic4,file4);
+            p4txt.Clear();
+            pic4.BackgroundImage.Dispose();
         }
 
         private void pic5_Click(object sender, EventArgs e)
@@ -337,6 +402,8 @@ namespace Veiled_Kashmir_Admin_Panel
         private void up5_Click(object sender, EventArgs e)
         {
             uploadpictable(p5txt, pic5,file5);
+            p5txt.Clear();
+            pic5.BackgroundImage.Dispose();
         }
 
         private void p6txt_Click(object sender, EventArgs e)
@@ -481,7 +548,7 @@ namespace Veiled_Kashmir_Admin_Panel
             }
            else 
             {
-                id3lbl.Text = "0";
+                id3lbl.Text = "";
             }
             obj.closeConnection();
             readcategory();

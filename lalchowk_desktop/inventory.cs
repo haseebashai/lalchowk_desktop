@@ -22,16 +22,11 @@ namespace Veiled_Kashmir_Admin_Panel
         MySqlDataReader dr;
         DataTable dt;
         MySqlCommandBuilder cmdbl;
+        BindingSource bsource;
+        int numberOfPoints=0;
 
-        private void inventory_Load(object sender, EventArgs e)
-        {
-            readinventory();
-        }
-
-       
-
+        private dialogcontainer dg = null;
         private container hp = null;
-
         private void supidtxt_TextChanged(object sender, EventArgs e)
         {
             try {
@@ -93,9 +88,9 @@ namespace Veiled_Kashmir_Admin_Panel
             {
                 DataGridViewRow row = this.inventorydatagridview.Rows[e.RowIndex];
                 idlbl.Text = row.Cells["productid"].Value.ToString();
-                productlbl.Text = row.Cells["productname"].Value.ToString();
-                catidlbl.Text = row.Cells["categoryid"].Value.ToString();
+                productlbl.Text = row.Cells["productname"].Value.ToString();              
                 desctxtbox.Text = row.Cells["description"].Value.ToString();
+                descpnl.Visible = true;
                
             }
         }
@@ -108,15 +103,7 @@ namespace Veiled_Kashmir_Admin_Panel
             readinventory();
         }
 
-        private void productlbl_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void catidlbl_Click(object sender, EventArgs e)
-        {
-
-        }
+      
 
         public static string RemoveSpecialCharacters(string str)
         {
@@ -176,10 +163,7 @@ namespace Veiled_Kashmir_Admin_Panel
             }
         }
 
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void upbtn_Click(object sender, EventArgs e)
         {
@@ -196,22 +180,48 @@ namespace Veiled_Kashmir_Admin_Panel
             }
         }
 
-        
+       
 
-        private void desctxtbox_TextChanged(object sender, EventArgs e)
+        private void bgworker_DoWork(object sender, DoWorkEventArgs e)
         {
+            readinventory();
+        }
+
+        private void bgworker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            timer.Stop();
+            inventorydatagridview.DataSource = bsource;
+
+            dg.lbl.BorderStyle = BorderStyle.None;
+            dg.lbl.ForeColor = SystemColors.Highlight;
+            dg.lbl.Text = "Edit Inventory";
+            ipnl.Visible = true;
+            upbtn.Visible = true;
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+
+            int maxPoints = 5;
+
+
+            dg.lbl.BorderStyle = BorderStyle.FixedSingle;
+            dg.lbl.ForeColor = Color.Red;
+            dg.lbl.Text = "Loading" + new string('.', numberOfPoints);
+            numberOfPoints = (numberOfPoints + 1) % (maxPoints + 1);
 
         }
 
-        private void label7_Click(object sender, EventArgs e)
-        {
 
-        }
 
-        public inventory(Form hpcopy)
+        public inventory(Form hpcopy,Form dgcopy)
         {
             hp = hpcopy as container;
+            dg = dgcopy as dialogcontainer;
             InitializeComponent();
+            upbtn.Visible = false;
+            timer.Start();
+            bgworker.RunWorkerAsync();
         }
 
 
@@ -224,9 +234,9 @@ namespace Veiled_Kashmir_Admin_Panel
                 adap = new MySqlDataAdapter("select * from products", con);
                 dt = new DataTable();
                 adap.Fill(dt);
-                BindingSource bsource = new BindingSource();
+                bsource = new BindingSource();
                 bsource.DataSource = dt;
-                inventorydatagridview.DataSource = bsource;
+                
             }
             catch(Exception ex)
             {

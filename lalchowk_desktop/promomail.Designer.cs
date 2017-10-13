@@ -37,8 +37,6 @@
             this.bodytxt = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.subtxt = new System.Windows.Forms.TextBox();
-            this.emaillist = new System.Windows.Forms.ListBox();
-            this.elistlbl = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.totxt = new System.Windows.Forms.TextBox();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
@@ -46,6 +44,16 @@
             this.tolbl = new System.Windows.Forms.Label();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.sendinglbl = new System.Windows.Forms.Label();
+            this.emaillistpnl = new System.Windows.Forms.Panel();
+            this.setrecno = new MaterialSkin.Controls.MaterialFlatButton();
+            this.recno = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.setemailno = new MaterialSkin.Controls.MaterialFlatButton();
+            this.emailno = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.elistlbl = new System.Windows.Forms.Label();
+            this.emaillist = new System.Windows.Forms.ListBox();
+            this.emaillistpnl.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -55,9 +63,9 @@
             this.label1.ForeColor = System.Drawing.SystemColors.Highlight;
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(210, 24);
+            this.label1.Size = new System.Drawing.Size(209, 24);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Send Promotional email";
+            this.label1.Text = "Send promotional email";
             // 
             // label5
             // 
@@ -134,26 +142,6 @@
             this.subtxt.Size = new System.Drawing.Size(587, 20);
             this.subtxt.TabIndex = 69;
             // 
-            // emaillist
-            // 
-            this.emaillist.FormattingEnabled = true;
-            this.emaillist.Location = new System.Drawing.Point(16, 74);
-            this.emaillist.Name = "emaillist";
-            this.emaillist.Size = new System.Drawing.Size(298, 459);
-            this.emaillist.TabIndex = 76;
-            this.emaillist.Visible = false;
-            // 
-            // elistlbl
-            // 
-            this.elistlbl.AutoSize = true;
-            this.elistlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.elistlbl.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.elistlbl.Location = new System.Drawing.Point(12, 51);
-            this.elistlbl.Name = "elistlbl";
-            this.elistlbl.Size = new System.Drawing.Size(288, 13);
-            this.elistlbl.TabIndex = 77;
-            this.elistlbl.Text = "Send email to 90 customers today or enter a single email ID.";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -174,6 +162,7 @@
             this.totxt.TabIndex = 78;
             this.totxt.Text = "Enter single email here.";
             this.totxt.Enter += new System.EventHandler(this.totxt_Enter);
+            this.totxt.Leave += new System.EventHandler(this.totxt_Leave);
             // 
             // bgworker
             // 
@@ -189,6 +178,7 @@
             this.progressBar1.Size = new System.Drawing.Size(587, 20);
             this.progressBar1.Step = 1;
             this.progressBar1.TabIndex = 80;
+            this.progressBar1.Visible = false;
             // 
             // tolbl
             // 
@@ -202,7 +192,7 @@
             // 
             // timer
             // 
-            this.timer.Interval = 1000;
+            this.timer.Interval = 600;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
             // sendinglbl
@@ -215,19 +205,123 @@
             this.sendinglbl.Size = new System.Drawing.Size(0, 16);
             this.sendinglbl.TabIndex = 82;
             // 
+            // emaillistpnl
+            // 
+            this.emaillistpnl.Controls.Add(this.setrecno);
+            this.emaillistpnl.Controls.Add(this.recno);
+            this.emaillistpnl.Controls.Add(this.label7);
+            this.emaillistpnl.Controls.Add(this.setemailno);
+            this.emaillistpnl.Controls.Add(this.emailno);
+            this.emaillistpnl.Controls.Add(this.label6);
+            this.emaillistpnl.Controls.Add(this.elistlbl);
+            this.emaillistpnl.Controls.Add(this.emaillist);
+            this.emaillistpnl.Location = new System.Drawing.Point(4, 27);
+            this.emaillistpnl.Name = "emaillistpnl";
+            this.emaillistpnl.Size = new System.Drawing.Size(312, 516);
+            this.emaillistpnl.TabIndex = 86;
+            this.emaillistpnl.Visible = false;
+            // 
+            // setrecno
+            // 
+            this.setrecno.AutoSize = true;
+            this.setrecno.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.setrecno.Depth = 0;
+            this.setrecno.Location = new System.Drawing.Point(178, 9);
+            this.setrecno.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.setrecno.MouseState = MaterialSkin.MouseState.HOVER;
+            this.setrecno.Name = "setrecno";
+            this.setrecno.Primary = false;
+            this.setrecno.Size = new System.Drawing.Size(36, 36);
+            this.setrecno.TabIndex = 93;
+            this.setrecno.Text = "Set";
+            this.setrecno.UseVisualStyleBackColor = true;
+            this.setrecno.Click += new System.EventHandler(this.setrecno_Click);
+            // 
+            // recno
+            // 
+            this.recno.Location = new System.Drawing.Point(130, 16);
+            this.recno.Name = "recno";
+            this.recno.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.recno.Size = new System.Drawing.Size(41, 20);
+            this.recno.TabIndex = 92;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label7.Location = new System.Drawing.Point(5, 23);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(104, 13);
+            this.label7.TabIndex = 91;
+            this.label7.Text = "Set no. of recipients:";
+            // 
+            // setemailno
+            // 
+            this.setemailno.AutoSize = true;
+            this.setemailno.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.setemailno.Depth = 0;
+            this.setemailno.Location = new System.Drawing.Point(178, 40);
+            this.setemailno.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.setemailno.MouseState = MaterialSkin.MouseState.HOVER;
+            this.setemailno.Name = "setemailno";
+            this.setemailno.Primary = false;
+            this.setemailno.Size = new System.Drawing.Size(36, 36);
+            this.setemailno.TabIndex = 90;
+            this.setemailno.Text = "Set";
+            this.setemailno.UseVisualStyleBackColor = true;
+            this.setemailno.Click += new System.EventHandler(this.setemailno_Click);
+            // 
+            // emailno
+            // 
+            this.emailno.Location = new System.Drawing.Point(130, 47);
+            this.emailno.Name = "emailno";
+            this.emailno.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.emailno.Size = new System.Drawing.Size(41, 20);
+            this.emailno.TabIndex = 89;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label6.Location = new System.Drawing.Point(5, 54);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(119, 13);
+            this.label6.TabIndex = 88;
+            this.label6.Text = "Set starting email id no.:";
+            // 
+            // elistlbl
+            // 
+            this.elistlbl.AutoSize = true;
+            this.elistlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.elistlbl.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.elistlbl.Location = new System.Drawing.Point(4, 83);
+            this.elistlbl.Name = "elistlbl";
+            this.elistlbl.Size = new System.Drawing.Size(282, 13);
+            this.elistlbl.TabIndex = 87;
+            this.elistlbl.Text = "Send email to 0 customers today or enter a single email ID.";
+            // 
+            // emaillist
+            // 
+            this.emaillist.FormattingEnabled = true;
+            this.emaillist.Location = new System.Drawing.Point(8, 99);
+            this.emaillist.Name = "emaillist";
+            this.emaillist.Size = new System.Drawing.Size(298, 407);
+            this.emaillist.TabIndex = 86;
+            // 
             // promomail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1162, 722);
+            this.Controls.Add(this.emaillistpnl);
             this.Controls.Add(this.sendinglbl);
             this.Controls.Add(this.tolbl);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.totxt);
-            this.Controls.Add(this.elistlbl);
-            this.Controls.Add(this.emaillist);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.frombox);
             this.Controls.Add(this.sendbtn);
@@ -241,6 +335,8 @@
             this.Name = "promomail";
             this.Text = "promomail";
             this.Load += new System.EventHandler(this.promomail_Load);
+            this.emaillistpnl.ResumeLayout(false);
+            this.emaillistpnl.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -258,11 +354,18 @@
         private System.Windows.Forms.TextBox totxt;
         private System.ComponentModel.BackgroundWorker bgworker;
         private System.Windows.Forms.ProgressBar progressBar1;
-        public System.Windows.Forms.ListBox emaillist;
         public System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label tolbl;
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.Label sendinglbl;
+        private MaterialSkin.Controls.MaterialFlatButton setemailno;
+        private System.Windows.Forms.TextBox emailno;
+        public System.Windows.Forms.Label label6;
         public System.Windows.Forms.Label elistlbl;
+        public System.Windows.Forms.ListBox emaillist;
+        private MaterialSkin.Controls.MaterialFlatButton setrecno;
+        private System.Windows.Forms.TextBox recno;
+        public System.Windows.Forms.Label label7;
+        public System.Windows.Forms.Panel emaillistpnl;
     }
 }

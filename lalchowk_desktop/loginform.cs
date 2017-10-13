@@ -131,7 +131,8 @@ namespace Veiled_Kashmir_Admin_Panel
             promomail pm = new promomail("");
             pm.TopLevel = false;
             pm.readlist();
-            pm.emaillist.Visible = true;
+            pm.emaillistpnl.Visible=true;
+           
             dialogcontainer dg = new dialogcontainer();
             dg.dialogpnl.Controls.Add(pm);
             dg.lbl.Text = "";
@@ -139,7 +140,12 @@ namespace Veiled_Kashmir_Admin_Panel
             dg.Show();
 
             pm.Show();
+            
+            
+           
             Cursor = Cursors.Arrow;
         }
+
+       
     }   
 }

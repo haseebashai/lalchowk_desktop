@@ -15,24 +15,35 @@ namespace Veiled_Kashmir_Admin_Panel
     public partial class orders : Form
     {
         DBConnect obj = new DBConnect();
-        String orderid,email, addressid,cmd, productid, productname, price, quantity, size,dealerprice,shipping, filename,amount;
+        String orderid,email, addressid,cmd, productid, productname, price, quantity, size,dealerprice,shipping, filename,amount,ordervar;
         MySqlDataReader dr;
         DataTable dt,dt1,dt2,dt3;
         MySqlCommand mysqlcmd;
         MySqlDataAdapter adap;
         MySqlConnection conn =new MySqlConnection("SERVER = 182.50.133.78; DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah");
+        BindingSource bsource;
         MySqlCommandBuilder cmdbl;
+        int numberOfPoints = 0;
 
-
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            loadinglbl.Visible = true;
+            int maxPoints = 5;
+            loadinglbl.BorderStyle = BorderStyle.FixedSingle;
+            loadinglbl.Text = "Loading" + new string('.', numberOfPoints);
+            numberOfPoints = (numberOfPoints + 1) % (maxPoints + 1);
+        }
 
         private container hp = null;
-     
-
         public orders(Form hpcopy)
         {
             hp = hpcopy as container;
             InitializeComponent();
-            readorders();
+
+            timer1.Start();
+            
+            bgworker.RunWorkerAsync();
+            
         }
 
 
@@ -42,16 +53,37 @@ namespace Veiled_Kashmir_Admin_Panel
             dt = new DataTable();
             adap.Fill(dt);
             obj.closeConnection();
-            BindingSource bsource = new BindingSource();
+            bsource = new BindingSource();
             bsource.DataSource = dt;
-            ordergridview.DataSource = bsource;
+            
 
             dr = obj.Query("select count(orderid) from orderdetails");
             dr.Read();
-            orlbl.Text = dr[0].ToString();
+            ordervar = dr[0].ToString();
             obj.closeConnection();
 
         }
+
+        private void bgworker_DoWork(object sender, DoWorkEventArgs e)
+        {
+           
+            readorders();
+            
+        }
+
+        private void bgworker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+
+            
+            timer1.Stop();
+            loadinglbl.Visible = false;
+            panel1.Visible = true;
+            ordergridview.Visible = true;
+            ordergridview.DataSource = bsource;
+            orlbl.Text = ordervar;
+        }
+
+
 
        
 
@@ -211,7 +243,7 @@ namespace Veiled_Kashmir_Admin_Panel
             proname.DisplayMember = "productname";
             proname.DataSource = dt3;
 
-            dr = obj.Query("select amount from orders where orderid='" + orderid + "'");
+            dr = obj.Query("select (amount+shipping) from orders where orderid='" + orderid + "'");
             dr.Read();
             amountlbl.Text = dr[0].ToString();
             obj.closeConnection();

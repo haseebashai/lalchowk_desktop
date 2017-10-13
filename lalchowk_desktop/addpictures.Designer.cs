@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.label1 = new System.Windows.Forms.Label();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.picdialog = new System.Windows.Forms.OpenFileDialog();
             this.updbtn = new System.Windows.Forms.Button();
             this.addbtn = new System.Windows.Forms.Button();
@@ -38,22 +38,18 @@
             this.ptxt = new System.Windows.Forms.TextBox();
             this.pic = new System.Windows.Forms.PictureBox();
             this.gidtxt = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.delbtn = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.gridtxt = new System.Windows.Forms.TextBox();
+            this.ppnl = new System.Windows.Forms.Panel();
+            this.timer = new System.Windows.Forms.Timer(this.components);
+            this.bgworker = new System.ComponentModel.BackgroundWorker();
+            this.dp = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.picturesdataview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic)).BeginInit();
+            this.ppnl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dp)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label1.Location = new System.Drawing.Point(1, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(121, 24);
-            this.label1.TabIndex = 51;
-            this.label1.Text = "Picture Table";
             // 
             // picdialog
             // 
@@ -63,7 +59,7 @@
             // 
             // updbtn
             // 
-            this.updbtn.Location = new System.Drawing.Point(913, 252);
+            this.updbtn.Location = new System.Drawing.Point(583, 283);
             this.updbtn.Name = "updbtn";
             this.updbtn.Size = new System.Drawing.Size(125, 97);
             this.updbtn.TabIndex = 55;
@@ -73,9 +69,9 @@
             // 
             // addbtn
             // 
-            this.addbtn.Location = new System.Drawing.Point(800, 602);
+            this.addbtn.Location = new System.Drawing.Point(487, 521);
             this.addbtn.Name = "addbtn";
-            this.addbtn.Size = new System.Drawing.Size(106, 68);
+            this.addbtn.Size = new System.Drawing.Size(91, 68);
             this.addbtn.TabIndex = 59;
             this.addbtn.Text = "Add Picture";
             this.addbtn.UseVisualStyleBackColor = true;
@@ -83,21 +79,22 @@
             // 
             // picturesdataview
             // 
+            this.picturesdataview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.picturesdataview.BackgroundColor = System.Drawing.Color.White;
             this.picturesdataview.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.picturesdataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.picturesdataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.picturesdataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.picturesdataview.GridColor = System.Drawing.SystemColors.Control;
-            this.picturesdataview.Location = new System.Drawing.Point(250, 29);
+            this.picturesdataview.Location = new System.Drawing.Point(3, 30);
             this.picturesdataview.Name = "picturesdataview";
-            this.picturesdataview.Size = new System.Drawing.Size(657, 485);
+            this.picturesdataview.Size = new System.Drawing.Size(574, 485);
             this.picturesdataview.TabIndex = 60;
             this.picturesdataview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.picturesdataview_CellClick);
             // 
@@ -105,17 +102,17 @@
             // 
             this.label30.AutoSize = true;
             this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.Location = new System.Drawing.Point(525, 653);
+            this.label30.Location = new System.Drawing.Point(244, 524);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(88, 17);
+            this.label30.Size = new System.Drawing.Size(81, 17);
             this.label30.TabIndex = 87;
-            this.label30.Text = "Add Pictures";
+            this.label30.Text = "Add Picture";
             // 
             // ptxt
             // 
-            this.ptxt.Location = new System.Drawing.Point(648, 650);
+            this.ptxt.Location = new System.Drawing.Point(366, 628);
             this.ptxt.Name = "ptxt";
-            this.ptxt.Size = new System.Drawing.Size(146, 20);
+            this.ptxt.Size = new System.Drawing.Size(115, 20);
             this.ptxt.TabIndex = 86;
             // 
             // pic
@@ -125,34 +122,27 @@
             this.pic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pic.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pic.Image = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.industrial_safety_1492046_640;
-            this.pic.Location = new System.Drawing.Point(648, 520);
+            this.pic.Location = new System.Drawing.Point(366, 521);
             this.pic.Name = "pic";
-            this.pic.Size = new System.Drawing.Size(146, 124);
+            this.pic.Size = new System.Drawing.Size(115, 101);
             this.pic.TabIndex = 88;
             this.pic.TabStop = false;
             this.pic.Click += new System.EventHandler(this.pic_Click);
             // 
             // gidtxt
             // 
-            this.gidtxt.Location = new System.Drawing.Point(800, 540);
+            this.gidtxt.ForeColor = System.Drawing.SystemColors.ControlDark;
+            this.gidtxt.Location = new System.Drawing.Point(247, 552);
             this.gidtxt.Name = "gidtxt";
-            this.gidtxt.Size = new System.Drawing.Size(106, 20);
+            this.gidtxt.Size = new System.Drawing.Size(113, 20);
             this.gidtxt.TabIndex = 89;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(800, 520);
-            this.label2.Name = "label2";
-            this.label2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label2.Size = new System.Drawing.Size(65, 17);
-            this.label2.TabIndex = 90;
-            this.label2.Text = "Group ID";
+            this.gidtxt.Text = "Enter Group ID";
+            this.gidtxt.Enter += new System.EventHandler(this.gidtxt_Enter);
+            this.gidtxt.Leave += new System.EventHandler(this.gidtxt_Leave);
             // 
             // delbtn
             // 
-            this.delbtn.Location = new System.Drawing.Point(250, 520);
+            this.delbtn.Location = new System.Drawing.Point(3, 521);
             this.delbtn.Name = "delbtn";
             this.delbtn.Size = new System.Drawing.Size(125, 23);
             this.delbtn.TabIndex = 91;
@@ -160,35 +150,82 @@
             this.delbtn.UseVisualStyleBackColor = true;
             this.delbtn.Click += new System.EventHandler(this.delbtn_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(3, 12);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(86, 13);
+            this.label4.TabIndex = 93;
+            this.label4.Text = "Filter by GroupID";
+            // 
+            // gridtxt
+            // 
+            this.gridtxt.Location = new System.Drawing.Point(95, 5);
+            this.gridtxt.Name = "gridtxt";
+            this.gridtxt.Size = new System.Drawing.Size(107, 20);
+            this.gridtxt.TabIndex = 92;
+            this.gridtxt.TextChanged += new System.EventHandler(this.gridtxt_TextChanged);
+            // 
+            // ppnl
+            // 
+            this.ppnl.Controls.Add(this.dp);
+            this.ppnl.Controls.Add(this.label4);
+            this.ppnl.Controls.Add(this.updbtn);
+            this.ppnl.Controls.Add(this.gridtxt);
+            this.ppnl.Controls.Add(this.addbtn);
+            this.ppnl.Controls.Add(this.delbtn);
+            this.ppnl.Controls.Add(this.picturesdataview);
+            this.ppnl.Controls.Add(this.gidtxt);
+            this.ppnl.Controls.Add(this.ptxt);
+            this.ppnl.Controls.Add(this.pic);
+            this.ppnl.Controls.Add(this.label30);
+            this.ppnl.Location = new System.Drawing.Point(12, 0);
+            this.ppnl.Name = "ppnl";
+            this.ppnl.Size = new System.Drawing.Size(795, 678);
+            this.ppnl.TabIndex = 94;
+            this.ppnl.Visible = false;
+            // 
+            // timer
+            // 
+            this.timer.Interval = 600;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
+            // bgworker
+            // 
+            this.bgworker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker_DoWork);
+            this.bgworker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker_RunWorkerCompleted);
+            // 
+            // dp
+            // 
+            this.dp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.dp.Location = new System.Drawing.Point(583, 30);
+            this.dp.Name = "dp";
+            this.dp.Size = new System.Drawing.Size(186, 217);
+            this.dp.TabIndex = 94;
+            this.dp.TabStop = false;
+            // 
             // addpictures
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1162, 722);
-            this.Controls.Add(this.delbtn);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.gidtxt);
-            this.Controls.Add(this.pic);
-            this.Controls.Add(this.label30);
-            this.Controls.Add(this.ptxt);
-            this.Controls.Add(this.picturesdataview);
-            this.Controls.Add(this.addbtn);
-            this.Controls.Add(this.updbtn);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.ppnl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "addpictures";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "forgotpwd";
             ((System.ComponentModel.ISupportInitialize)(this.picturesdataview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic)).EndInit();
+            this.ppnl.ResumeLayout(false);
+            this.ppnl.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dp)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.OpenFileDialog picdialog;
         private System.Windows.Forms.Button updbtn;
         private System.Windows.Forms.Button addbtn;
@@ -197,7 +234,12 @@
         private System.Windows.Forms.TextBox ptxt;
         private System.Windows.Forms.PictureBox pic;
         private System.Windows.Forms.TextBox gidtxt;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button delbtn;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox gridtxt;
+        private System.Windows.Forms.Panel ppnl;
+        private System.Windows.Forms.Timer timer;
+        private System.ComponentModel.BackgroundWorker bgworker;
+        private System.Windows.Forms.PictureBox dp;
     }
 }

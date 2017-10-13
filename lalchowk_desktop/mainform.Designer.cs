@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.signoutlbl = new System.Windows.Forms.Label();
             this.productsbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.customersbtn = new MaterialSkin.Controls.MaterialFlatButton();
@@ -41,6 +42,7 @@
             this.approvebtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.signinlbl = new System.Windows.Forms.Label();
             this.navpnl = new System.Windows.Forms.Panel();
+            this.sendmailbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.caboutbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.homepagebtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.msgbtn = new MaterialSkin.Controls.MaterialFlatButton();
@@ -52,6 +54,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.navtxt = new System.Windows.Forms.Label();
             this.cntpnl = new System.Windows.Forms.Panel();
+            this.loadinglbl = new System.Windows.Forms.Label();
             this.shippedlbl = new System.Windows.Forms.Label();
             this.placedlbl = new System.Windows.Forms.Label();
             this.attention = new System.Windows.Forms.PictureBox();
@@ -59,12 +62,13 @@
             this.attentionlbl = new System.Windows.Forms.Label();
             this.orderslbl = new System.Windows.Forms.Label();
             this.ordersdlbl = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.deliveredh = new System.Windows.Forms.Label();
             this.shippeddataview = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
+            this.shippedh = new System.Windows.Forms.Label();
             this.placeddataview = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
-            this.sendmailbtn = new MaterialSkin.Controls.MaterialFlatButton();
+            this.placedh = new System.Windows.Forms.Label();
+            this.bgworker = new System.ComponentModel.BackgroundWorker();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.navpnl.SuspendLayout();
             this.navtitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -184,6 +188,22 @@
             this.navpnl.Name = "navpnl";
             this.navpnl.Size = new System.Drawing.Size(200, 711);
             this.navpnl.TabIndex = 10;
+            // 
+            // sendmailbtn
+            // 
+            this.sendmailbtn.AutoSize = true;
+            this.sendmailbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.sendmailbtn.Depth = 0;
+            this.sendmailbtn.Location = new System.Drawing.Point(4, 432);
+            this.sendmailbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.sendmailbtn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.sendmailbtn.Name = "sendmailbtn";
+            this.sendmailbtn.Primary = false;
+            this.sendmailbtn.Size = new System.Drawing.Size(91, 36);
+            this.sendmailbtn.TabIndex = 25;
+            this.sendmailbtn.Text = "Send Mails";
+            this.sendmailbtn.UseVisualStyleBackColor = true;
+            this.sendmailbtn.Click += new System.EventHandler(this.sendmailbtn_Click);
             // 
             // caboutbtn
             // 
@@ -337,6 +357,7 @@
             // cntpnl
             // 
             this.cntpnl.BackColor = System.Drawing.Color.White;
+            this.cntpnl.Controls.Add(this.loadinglbl);
             this.cntpnl.Controls.Add(this.shippedlbl);
             this.cntpnl.Controls.Add(this.placedlbl);
             this.cntpnl.Controls.Add(this.attention);
@@ -344,15 +365,26 @@
             this.cntpnl.Controls.Add(this.attentionlbl);
             this.cntpnl.Controls.Add(this.orderslbl);
             this.cntpnl.Controls.Add(this.ordersdlbl);
-            this.cntpnl.Controls.Add(this.label3);
+            this.cntpnl.Controls.Add(this.deliveredh);
             this.cntpnl.Controls.Add(this.shippeddataview);
-            this.cntpnl.Controls.Add(this.label1);
+            this.cntpnl.Controls.Add(this.shippedh);
             this.cntpnl.Controls.Add(this.placeddataview);
-            this.cntpnl.Controls.Add(this.label2);
+            this.cntpnl.Controls.Add(this.placedh);
             this.cntpnl.Location = new System.Drawing.Point(201, 1);
             this.cntpnl.Name = "cntpnl";
             this.cntpnl.Size = new System.Drawing.Size(1162, 722);
             this.cntpnl.TabIndex = 12;
+            // 
+            // loadinglbl
+            // 
+            this.loadinglbl.AutoSize = true;
+            this.loadinglbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loadinglbl.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.loadinglbl.Location = new System.Drawing.Point(412, 263);
+            this.loadinglbl.Name = "loadinglbl";
+            this.loadinglbl.Size = new System.Drawing.Size(0, 31);
+            this.loadinglbl.TabIndex = 42;
+            this.loadinglbl.Visible = false;
             // 
             // shippedlbl
             // 
@@ -365,6 +397,7 @@
             this.shippedlbl.Size = new System.Drawing.Size(82, 16);
             this.shippedlbl.TabIndex = 41;
             this.shippedlbl.Text = "View Details";
+            this.shippedlbl.Visible = false;
             this.shippedlbl.Click += new System.EventHandler(this.shippedlbl_Click);
             // 
             // placedlbl
@@ -378,6 +411,7 @@
             this.placedlbl.Size = new System.Drawing.Size(82, 16);
             this.placedlbl.TabIndex = 40;
             this.placedlbl.Text = "View Details";
+            this.placedlbl.Visible = false;
             this.placedlbl.Click += new System.EventHandler(this.placedlbl_Click);
             // 
             // attention
@@ -389,6 +423,7 @@
             this.attention.Size = new System.Drawing.Size(73, 65);
             this.attention.TabIndex = 39;
             this.attention.TabStop = false;
+            this.attention.Visible = false;
             // 
             // costlbl
             // 
@@ -397,9 +432,8 @@
             this.costlbl.ForeColor = System.Drawing.Color.Red;
             this.costlbl.Location = new System.Drawing.Point(98, 560);
             this.costlbl.Name = "costlbl";
-            this.costlbl.Size = new System.Drawing.Size(39, 20);
+            this.costlbl.Size = new System.Drawing.Size(0, 20);
             this.costlbl.TabIndex = 38;
-            this.costlbl.Text = "cost";
             // 
             // attentionlbl
             // 
@@ -408,9 +442,8 @@
             this.attentionlbl.ForeColor = System.Drawing.Color.Red;
             this.attentionlbl.Location = new System.Drawing.Point(98, 537);
             this.attentionlbl.Name = "attentionlbl";
-            this.attentionlbl.Size = new System.Drawing.Size(72, 20);
+            this.attentionlbl.Size = new System.Drawing.Size(0, 20);
             this.attentionlbl.TabIndex = 37;
-            this.attentionlbl.Text = "attention";
             // 
             // orderslbl
             // 
@@ -423,6 +456,7 @@
             this.orderslbl.Size = new System.Drawing.Size(82, 16);
             this.orderslbl.TabIndex = 36;
             this.orderslbl.Text = "View Details";
+            this.orderslbl.Visible = false;
             this.orderslbl.Click += new System.EventHandler(this.orderslbl_Click);
             // 
             // ordersdlbl
@@ -432,120 +466,116 @@
             this.ordersdlbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.ordersdlbl.Location = new System.Drawing.Point(681, 556);
             this.ordersdlbl.Name = "ordersdlbl";
-            this.ordersdlbl.Size = new System.Drawing.Size(29, 24);
+            this.ordersdlbl.Size = new System.Drawing.Size(0, 24);
             this.ordersdlbl.TabIndex = 35;
-            this.ordersdlbl.Text = "lbl";
             // 
-            // label3
+            // deliveredh
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label3.Location = new System.Drawing.Point(681, 537);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(148, 16);
-            this.label3.TabIndex = 34;
-            this.label3.Text = "Total Orders Delivered:";
+            this.deliveredh.AutoSize = true;
+            this.deliveredh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deliveredh.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.deliveredh.Location = new System.Drawing.Point(681, 537);
+            this.deliveredh.Name = "deliveredh";
+            this.deliveredh.Size = new System.Drawing.Size(148, 16);
+            this.deliveredh.TabIndex = 34;
+            this.deliveredh.Text = "Total Orders Delivered:";
+            this.deliveredh.Visible = false;
             // 
             // shippeddataview
             // 
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.shippeddataview.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.shippeddataview.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.shippeddataview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.shippeddataview.BackgroundColor = System.Drawing.Color.White;
             this.shippeddataview.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.shippeddataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.shippeddataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.shippeddataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.shippeddataview.Location = new System.Drawing.Point(5, 296);
             this.shippeddataview.Name = "shippeddataview";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.shippeddataview.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.shippeddataview.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.shippeddataview.RowHeadersVisible = false;
             this.shippeddataview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.shippeddataview.Size = new System.Drawing.Size(1145, 155);
             this.shippeddataview.TabIndex = 33;
             // 
-            // label1
+            // shippedh
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label1.Location = new System.Drawing.Point(4, 277);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(167, 16);
-            this.label1.TabIndex = 32;
-            this.label1.Text = "Orders currently SHIPPED:";
+            this.shippedh.AutoSize = true;
+            this.shippedh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.shippedh.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.shippedh.Location = new System.Drawing.Point(4, 277);
+            this.shippedh.Name = "shippedh";
+            this.shippedh.Size = new System.Drawing.Size(167, 16);
+            this.shippedh.TabIndex = 32;
+            this.shippedh.Text = "Orders currently SHIPPED:";
+            this.shippedh.Visible = false;
             // 
             // placeddataview
             // 
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
-            this.placeddataview.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            this.placeddataview.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.placeddataview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.placeddataview.BackgroundColor = System.Drawing.Color.White;
             this.placeddataview.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.placeddataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.placeddataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.placeddataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.placeddataview.Location = new System.Drawing.Point(5, 30);
             this.placeddataview.Name = "placeddataview";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.placeddataview.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.placeddataview.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.placeddataview.RowHeadersVisible = false;
             this.placeddataview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.placeddataview.Size = new System.Drawing.Size(1145, 228);
             this.placeddataview.TabIndex = 31;
             // 
-            // label2
+            // placedh
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(4, 11);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(161, 16);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Orders currently PLACED:";
+            this.placedh.AutoSize = true;
+            this.placedh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.placedh.ForeColor = System.Drawing.Color.Red;
+            this.placedh.Location = new System.Drawing.Point(4, 11);
+            this.placedh.Name = "placedh";
+            this.placedh.Size = new System.Drawing.Size(161, 16);
+            this.placedh.TabIndex = 10;
+            this.placedh.Text = "Orders currently PLACED:";
+            this.placedh.Visible = false;
             // 
-            // sendmailbtn
+            // bgworker
             // 
-            this.sendmailbtn.AutoSize = true;
-            this.sendmailbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.sendmailbtn.Depth = 0;
-            this.sendmailbtn.Location = new System.Drawing.Point(4, 432);
-            this.sendmailbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.sendmailbtn.MouseState = MaterialSkin.MouseState.HOVER;
-            this.sendmailbtn.Name = "sendmailbtn";
-            this.sendmailbtn.Primary = false;
-            this.sendmailbtn.Size = new System.Drawing.Size(91, 36);
-            this.sendmailbtn.TabIndex = 25;
-            this.sendmailbtn.Text = "Send Mails";
-            this.sendmailbtn.UseVisualStyleBackColor = true;
-            this.sendmailbtn.Click += new System.EventHandler(this.sendmailbtn_Click);
+            this.bgworker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker_DoWork);
+            this.bgworker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker_RunWorkerCompleted);
+            // 
+            // timer
+            // 
+            this.timer.Interval = 600;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
             // mainform
             // 
@@ -589,11 +619,11 @@
         private System.Windows.Forms.Panel navtitle;
         public System.Windows.Forms.Panel cntpnl;
         private MaterialSkin.Controls.MaterialFlatButton accbtn;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label placedh;
         private System.Windows.Forms.DataGridView shippeddataview;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label shippedh;
         private System.Windows.Forms.Label ordersdlbl;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label deliveredh;
         private System.Windows.Forms.Label orderslbl;
         private System.Windows.Forms.Label attentionlbl;
         private System.Windows.Forms.Label costlbl;
@@ -607,5 +637,8 @@
         private System.Windows.Forms.Label shippedlbl;
         public System.Windows.Forms.DataGridView placeddataview;
         private MaterialSkin.Controls.MaterialFlatButton sendmailbtn;
+        private System.ComponentModel.BackgroundWorker bgworker;
+        private System.Windows.Forms.Label loadinglbl;
+        private System.Windows.Forms.Timer timer;
     }
 }
