@@ -14,6 +14,7 @@ namespace Veiled_Kashmir_Admin_Panel
     {
         public dialogcontainer()
         {
+            
             InitializeComponent();
         }
 

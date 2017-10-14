@@ -24,12 +24,72 @@ namespace Veiled_Kashmir_Admin_Panel
         DataTable dt;
         DataSet ds;
         int productcount;
+        BindingSource bsource;
+        PictureBox loading;
+
+        private dialogcontainer dg = null;
         private container hp = null;
-        public suppliers(Form hpcopy)
+        public suppliers(Form hpcopy,Form dgcopy)
         {
+            dg = dgcopy as dialogcontainer;
             hp = hpcopy as container;
             InitializeComponent();
+            
+            bgworker.RunWorkerAsync();
         }
+
+
+
+
+        private void bgworker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            readsuppliers();
+        }
+
+        private void bgworker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+
+
+            if (ActiveForm == dg)
+            {
+                dg.loadingimage.Visible = false;
+                dg.lbl.ForeColor = SystemColors.Highlight;
+                dg.lbl.Text = "Suppliers";
+                label1.Visible = false;
+            }
+            else
+            {
+                loading.Visible = false;
+                label1.Text = "Suppliers";
+            }
+            
+            suppnl.Visible = true;
+            supplierdatagridview.DataSource = bsource;
+
+
+        }
+        public void loadingnormal()
+        {
+            label1.Text = "Loading";
+            label1.Visible = true;
+            loading = new PictureBox()
+            {
+                Image = Properties.Resources.loading,
+                Size = new Size(40, 30),
+                SizeMode = PictureBoxSizeMode.StretchImage,
+                Location = new Point(72, 0),
+            };
+            this.Controls.Add(loading);
+        }
+
+        public void loadingdg()
+        {
+            dg.lbl.ForeColor = SystemColors.Highlight;
+            dg.lbl.Text = "Loading";           
+            dg.loadingimage.SizeMode = PictureBoxSizeMode.StretchImage;
+            dg.loadingimage.Visible = true;
+        }
+
 
         private void readsuppliers()
         {
@@ -40,28 +100,13 @@ namespace Veiled_Kashmir_Admin_Panel
             adap = new MySqlDataAdapter("select * from suppliers", con);
             dt = new DataTable();
             adap.Fill(dt);
-            BindingSource bsource = new BindingSource();
+            bsource = new BindingSource();
             bsource.DataSource = dt;
-            supplierdatagridview.DataSource = bsource;
+            
 
-          /*  ds = new DataSet();
-            adap.Fill(ds, "supplier_details");
-            supplierdatagridview.DataSource = ds.Tables[0]; */
-
-         /*   dr = obj.Query("select * from suppliers");
-
-            dt = new DataTable();
-            dt.Load(dr);
-            BindingSource bsource = new BindingSource();
-
-            bsource.DataSource = dt;
-            supplierdatagridview.DataSource = bsource;
-            */
+         
         }
-        private void suppliers_Load(object sender, EventArgs e)
-        {
-            readsuppliers();
-        }
+       
 
         private void updatebtn_Click(object sender, EventArgs e)
         {
@@ -84,29 +129,20 @@ namespace Veiled_Kashmir_Admin_Panel
             supplierdatagridview.DataSource = dv;
         }
 
+        string supid;
         private void supplierdatagridview_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
-                rmvbtn.Visible = true;
-                idlbl.Visible = true;
-                supplierlbl.Visible = true;
-                contactlbl.Visible = true;
-                addresslbl.Visible = true;
-                phonelbl.Visible = true;
-                emaillbl.Visible = true;
-                
-
-
                 DataGridViewRow row = this.supplierdatagridview.Rows[e.RowIndex];
-                idlbl.Text = row.Cells["supplierid"].Value.ToString();
+                supid = row.Cells["supplierid"].Value.ToString();
                 supplierlbl.Text = row.Cells["name"].Value.ToString();
                 contactlbl.Text = row.Cells["contactname"].Value.ToString();
                 addresslbl.Text = row.Cells["address"].Value.ToString();
                 phonelbl.Text = row.Cells["phone"].Value.ToString();
                 emaillbl.Text = row.Cells["email"].Value.ToString();
 
-                productcount = obj.Count("select count(*) from products where supplierid = '" + idlbl.Text + "'");
+                productcount = obj.Count("select count(*) from products where supplierid = '" + supid + "'");
                 if (productcount == 0)
                 {
                     countlbl.Text = "supplier has " + productcount.ToString() + " products listed currently.";
@@ -118,6 +154,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     countlbl.Text = "supplier has " + productcount.ToString() + " products listed currently. Cannot remove Supplier unless all products are removed first.";
                     countlbl.Visible = true;
                 }
+                dpnl.Visible = true;
             }
            
         }
@@ -133,24 +170,21 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             if (productcount == 0)
             {
-                cmd="delete from suppliers where supplierid='"+idlbl.Text+"'";
-                obj.nonQuery(cmd);
-                MessageBox.Show("Supplier removed successfully.");
-                readsuppliers();
+                DialogResult dgr = MessageBox.Show("Delete supplier ?\n" + supplierlbl.Text, "Confirm!", MessageBoxButtons.YesNo);
+                if (dgr == DialogResult.Yes)
+                {
+                    cmd = "delete from suppliers where supplierid='" + supid + "'";
+                    obj.nonQuery(cmd);
+                    MessageBox.Show("Supplier removed successfully.");
+                    readsuppliers();
+                    dpnl.Visible = false;
+                }
+                
             }
             else
             {
                 MessageBox.Show("Cannot remove Supplier while the products are listed.");
             }
-        }
-
-        private void idlbl_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void supplierlbl_Click(object sender, EventArgs e)
-        {
 
         }
 
@@ -177,5 +211,6 @@ namespace Veiled_Kashmir_Admin_Panel
                 readsuppliers();
             }
         }
+
     }
 }

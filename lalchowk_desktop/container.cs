@@ -12,8 +12,11 @@ namespace Veiled_Kashmir_Admin_Panel
 {
     public partial class container : Form
     {
+
+       
         public container()
         {
+            
             InitializeComponent();
         }
 
@@ -26,6 +29,7 @@ namespace Veiled_Kashmir_Admin_Panel
             mainpnl.Controls.Add(lg);
             lg.Show();
         }
+
 
         private void close_Click(object sender, EventArgs e)
         {

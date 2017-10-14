@@ -36,8 +36,10 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.lbl = new System.Windows.Forms.Label();
             this.minimize = new System.Windows.Forms.PictureBox();
+            this.loadingimage = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.closebtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.minimize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.loadingimage)).BeginInit();
             this.SuspendLayout();
             // 
             // dialogpnl
@@ -119,14 +121,25 @@
             this.minimize.TabStop = false;
             this.minimize.Click += new System.EventHandler(this.minimize_Click);
             // 
+            // loadingimage
+            // 
+            this.loadingimage.Image = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.loading;
+            this.loadingimage.Location = new System.Drawing.Point(78, 3);
+            this.loadingimage.Name = "loadingimage";
+            this.loadingimage.Size = new System.Drawing.Size(40, 29);
+            this.loadingimage.TabIndex = 70;
+            this.loadingimage.TabStop = false;
+            this.loadingimage.Visible = false;
+            // 
             // dialogcontainer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1190, 715);
-            this.Controls.Add(this.minimize);
             this.Controls.Add(this.lbl);
+            this.Controls.Add(this.loadingimage);
+            this.Controls.Add(this.minimize);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -139,6 +152,7 @@
             this.Text = "Lalchowk Admin Panel";
             ((System.ComponentModel.ISupportInitialize)(this.closebtn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.minimize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.loadingimage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -154,5 +168,6 @@
         private System.Windows.Forms.Panel panel5;
         public System.Windows.Forms.Label lbl;
         private System.Windows.Forms.PictureBox minimize;
+        public System.Windows.Forms.PictureBox loadingimage;
     }
 }

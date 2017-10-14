@@ -15,20 +15,22 @@ namespace Veiled_Kashmir_Admin_Panel
     {
         DBConnect obj = new DBConnect();
         MySqlDataReader dr;
+        string encmail;
 
-        public notification(string email)
+        public notification(string encemail,string realemail)
         {
          
 
             InitializeComponent();
             
-            emailtxt.Text = email;
+            emailtxt.Text = realemail;
+            encmail = encemail;
             
         }
         
         private void readorderid()
         {
-            dr = obj.Query("Select orderid from orders where email='" + emailtxt.Text + "'");
+            dr = obj.Query("Select orderid from orders where email='" + encmail + "'");
             DataTable dt = new DataTable();
             dt.Columns.Add("orderid", typeof(String));
             dt.Load(dr);

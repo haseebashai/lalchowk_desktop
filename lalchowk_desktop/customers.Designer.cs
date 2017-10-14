@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -39,15 +40,22 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnl = new System.Windows.Forms.Panel();
+            this.dpnl = new System.Windows.Forms.Panel();
+            this.deluserbtn = new System.Windows.Forms.Button();
+            this.mailbtn = new System.Windows.Forms.Button();
+            this.emaillbl = new System.Windows.Forms.Label();
+            this.namelbl = new System.Windows.Forms.Label();
+            this.contactlbl = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.notbtn = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
             this.countlbl = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.ordersdataview = new System.Windows.Forms.DataGridView();
-            this.notbtn = new System.Windows.Forms.Button();
-            this.mailbtn = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.contactlbl = new System.Windows.Forms.Label();
-            this.namelbl = new System.Windows.Forms.Label();
-            this.emaillbl = new System.Windows.Forms.Label();
+            this.usertxt = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.emailtxt = new System.Windows.Forms.TextBox();
             this.updbtn = new System.Windows.Forms.Button();
             this.addressdataview = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
@@ -55,12 +63,12 @@
             this.wishlistdataview = new System.Windows.Forms.DataGridView();
             this.cartdataview = new System.Windows.Forms.DataGridView();
             this.customerdataview = new System.Windows.Forms.DataGridView();
-            this.emailtxt = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.usertxt = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.bgworker = new System.ComponentModel.BackgroundWorker();
+            this.timer = new System.Windows.Forms.Timer(this.components);
+            this.loadinglbl = new System.Windows.Forms.Label();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.pnl.SuspendLayout();
+            this.dpnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ordersdataview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.addressdataview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.wishlistdataview)).BeginInit();
@@ -70,15 +78,15 @@
             // 
             // pnl
             // 
+            this.pnl.Controls.Add(this.dpnl);
+            this.pnl.Controls.Add(this.label5);
             this.pnl.Controls.Add(this.countlbl);
             this.pnl.Controls.Add(this.label6);
+            this.pnl.Controls.Add(this.label2);
             this.pnl.Controls.Add(this.ordersdataview);
-            this.pnl.Controls.Add(this.notbtn);
-            this.pnl.Controls.Add(this.mailbtn);
-            this.pnl.Controls.Add(this.panel1);
-            this.pnl.Controls.Add(this.contactlbl);
-            this.pnl.Controls.Add(this.namelbl);
-            this.pnl.Controls.Add(this.emaillbl);
+            this.pnl.Controls.Add(this.usertxt);
+            this.pnl.Controls.Add(this.label1);
+            this.pnl.Controls.Add(this.emailtxt);
             this.pnl.Controls.Add(this.updbtn);
             this.pnl.Controls.Add(this.addressdataview);
             this.pnl.Controls.Add(this.label4);
@@ -86,17 +94,113 @@
             this.pnl.Controls.Add(this.wishlistdataview);
             this.pnl.Controls.Add(this.cartdataview);
             this.pnl.Controls.Add(this.customerdataview);
-            this.pnl.Location = new System.Drawing.Point(0, 36);
+            this.pnl.Location = new System.Drawing.Point(1, 0);
             this.pnl.Name = "pnl";
-            this.pnl.Size = new System.Drawing.Size(1161, 686);
+            this.pnl.Size = new System.Drawing.Size(1161, 720);
             this.pnl.TabIndex = 11;
+            this.pnl.Visible = false;
+            // 
+            // dpnl
+            // 
+            this.dpnl.Controls.Add(this.deluserbtn);
+            this.dpnl.Controls.Add(this.mailbtn);
+            this.dpnl.Controls.Add(this.emaillbl);
+            this.dpnl.Controls.Add(this.namelbl);
+            this.dpnl.Controls.Add(this.contactlbl);
+            this.dpnl.Controls.Add(this.panel1);
+            this.dpnl.Controls.Add(this.notbtn);
+            this.dpnl.Location = new System.Drawing.Point(620, 556);
+            this.dpnl.Name = "dpnl";
+            this.dpnl.Size = new System.Drawing.Size(530, 123);
+            this.dpnl.TabIndex = 41;
+            this.dpnl.Visible = false;
+            // 
+            // deluserbtn
+            // 
+            this.deluserbtn.BackColor = System.Drawing.Color.Black;
+            this.deluserbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.deluserbtn.ForeColor = System.Drawing.Color.White;
+            this.deluserbtn.Location = new System.Drawing.Point(290, 88);
+            this.deluserbtn.Name = "deluserbtn";
+            this.deluserbtn.Size = new System.Drawing.Size(209, 23);
+            this.deluserbtn.TabIndex = 38;
+            this.deluserbtn.Text = "Delete User";
+            this.deluserbtn.UseVisualStyleBackColor = false;
+            this.deluserbtn.Click += new System.EventHandler(this.deluserbtn_Click);
+            // 
+            // mailbtn
+            // 
+            this.mailbtn.Location = new System.Drawing.Point(290, 11);
+            this.mailbtn.Name = "mailbtn";
+            this.mailbtn.Size = new System.Drawing.Size(209, 23);
+            this.mailbtn.TabIndex = 36;
+            this.mailbtn.Text = "Send Mail";
+            this.mailbtn.UseVisualStyleBackColor = true;
+            this.mailbtn.Click += new System.EventHandler(this.mailbtn_Click);
+            // 
+            // emaillbl
+            // 
+            this.emaillbl.AutoSize = true;
+            this.emaillbl.BackColor = System.Drawing.Color.White;
+            this.emaillbl.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.emaillbl.Location = new System.Drawing.Point(4, 54);
+            this.emaillbl.Name = "emaillbl";
+            this.emaillbl.Size = new System.Drawing.Size(0, 13);
+            this.emaillbl.TabIndex = 32;
+            // 
+            // namelbl
+            // 
+            this.namelbl.AutoSize = true;
+            this.namelbl.BackColor = System.Drawing.Color.White;
+            this.namelbl.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.namelbl.Location = new System.Drawing.Point(4, 28);
+            this.namelbl.Name = "namelbl";
+            this.namelbl.Size = new System.Drawing.Size(0, 13);
+            this.namelbl.TabIndex = 33;
+            // 
+            // contactlbl
+            // 
+            this.contactlbl.AutoSize = true;
+            this.contactlbl.BackColor = System.Drawing.Color.White;
+            this.contactlbl.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.contactlbl.Location = new System.Drawing.Point(4, 80);
+            this.contactlbl.Name = "contactlbl";
+            this.contactlbl.Size = new System.Drawing.Size(0, 13);
+            this.contactlbl.TabIndex = 34;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.DarkGray;
+            this.panel1.Location = new System.Drawing.Point(234, 11);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1, 100);
+            this.panel1.TabIndex = 35;
+            // 
+            // notbtn
+            // 
+            this.notbtn.Location = new System.Drawing.Point(290, 49);
+            this.notbtn.Name = "notbtn";
+            this.notbtn.Size = new System.Drawing.Size(209, 23);
+            this.notbtn.TabIndex = 37;
+            this.notbtn.Text = "Send Notification";
+            this.notbtn.UseVisualStyleBackColor = true;
+            this.notbtn.Click += new System.EventHandler(this.notbtn_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(220, 556);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(101, 13);
+            this.label5.TabIndex = 31;
+            this.label5.Text = "Edit Address Details";
             // 
             // countlbl
             // 
             this.countlbl.AutoSize = true;
             this.countlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.countlbl.ForeColor = System.Drawing.Color.Blue;
-            this.countlbl.Location = new System.Drawing.Point(3, 515);
+            this.countlbl.Location = new System.Drawing.Point(3, 544);
             this.countlbl.Name = "countlbl";
             this.countlbl.Size = new System.Drawing.Size(176, 16);
             this.countlbl.TabIndex = 40;
@@ -105,11 +209,20 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(258, 534);
+            this.label6.Location = new System.Drawing.Point(839, 16);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(85, 13);
             this.label6.TabIndex = 39;
             this.label6.Text = "Customer Orders";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(291, 12);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(94, 13);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "Filter by Username";
             // 
             // ordersdataview
             // 
@@ -123,7 +236,7 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.ordersdataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.ordersdataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ordersdataview.Location = new System.Drawing.Point(3, 550);
+            this.ordersdataview.Location = new System.Drawing.Point(620, 32);
             this.ordersdataview.Name = "ordersdataview";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
@@ -133,77 +246,41 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.ordersdataview.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.ordersdataview.Size = new System.Drawing.Size(610, 133);
+            this.ordersdataview.Size = new System.Drawing.Size(537, 176);
             this.ordersdataview.TabIndex = 38;
             // 
-            // notbtn
+            // usertxt
             // 
-            this.notbtn.Location = new System.Drawing.Point(903, 604);
-            this.notbtn.Name = "notbtn";
-            this.notbtn.Size = new System.Drawing.Size(209, 23);
-            this.notbtn.TabIndex = 37;
-            this.notbtn.Text = "Send Notification";
-            this.notbtn.UseVisualStyleBackColor = true;
-            this.notbtn.Click += new System.EventHandler(this.notbtn_Click);
+            this.usertxt.Location = new System.Drawing.Point(388, 5);
+            this.usertxt.Name = "usertxt";
+            this.usertxt.Size = new System.Drawing.Size(178, 20);
+            this.usertxt.TabIndex = 17;
+            this.usertxt.TextChanged += new System.EventHandler(this.usertxt_TextChanged);
             // 
-            // mailbtn
+            // label1
             // 
-            this.mailbtn.Location = new System.Drawing.Point(903, 568);
-            this.mailbtn.Name = "mailbtn";
-            this.mailbtn.Size = new System.Drawing.Size(209, 23);
-            this.mailbtn.TabIndex = 36;
-            this.mailbtn.Text = "Send Mail";
-            this.mailbtn.UseVisualStyleBackColor = true;
-            this.mailbtn.Click += new System.EventHandler(this.mailbtn_Click);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(15, 11);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(71, 13);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "Filter by Email";
             // 
-            // panel1
+            // emailtxt
             // 
-            this.panel1.BackColor = System.Drawing.Color.Black;
-            this.panel1.Location = new System.Drawing.Point(884, 550);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1, 100);
-            this.panel1.TabIndex = 35;
-            // 
-            // contactlbl
-            // 
-            this.contactlbl.AutoSize = true;
-            this.contactlbl.BackColor = System.Drawing.Color.White;
-            this.contactlbl.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.contactlbl.Location = new System.Drawing.Point(654, 619);
-            this.contactlbl.Name = "contactlbl";
-            this.contactlbl.Size = new System.Drawing.Size(44, 13);
-            this.contactlbl.TabIndex = 34;
-            this.contactlbl.Text = "Contact";
-            // 
-            // namelbl
-            // 
-            this.namelbl.AutoSize = true;
-            this.namelbl.BackColor = System.Drawing.Color.White;
-            this.namelbl.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.namelbl.Location = new System.Drawing.Point(654, 567);
-            this.namelbl.Name = "namelbl";
-            this.namelbl.Size = new System.Drawing.Size(35, 13);
-            this.namelbl.TabIndex = 33;
-            this.namelbl.Text = "Name";
-            // 
-            // emaillbl
-            // 
-            this.emaillbl.AutoSize = true;
-            this.emaillbl.BackColor = System.Drawing.Color.White;
-            this.emaillbl.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.emaillbl.Location = new System.Drawing.Point(654, 593);
-            this.emaillbl.Name = "emaillbl";
-            this.emaillbl.Size = new System.Drawing.Size(32, 13);
-            this.emaillbl.TabIndex = 32;
-            this.emaillbl.Text = "Email";
+            this.emailtxt.Location = new System.Drawing.Point(92, 6);
+            this.emailtxt.Name = "emailtxt";
+            this.emailtxt.Size = new System.Drawing.Size(178, 20);
+            this.emailtxt.TabIndex = 15;
+            this.emailtxt.TextChanged += new System.EventHandler(this.emailtxt_TextChanged);
             // 
             // updbtn
             // 
-            this.updbtn.Location = new System.Drawing.Point(1005, 162);
+            this.updbtn.Location = new System.Drawing.Point(547, 572);
             this.updbtn.Name = "updbtn";
-            this.updbtn.Size = new System.Drawing.Size(152, 31);
+            this.updbtn.Size = new System.Drawing.Size(52, 107);
             this.updbtn.TabIndex = 31;
-            this.updbtn.Text = "Update Details";
+            this.updbtn.Text = "Update";
             this.updbtn.UseVisualStyleBackColor = true;
             this.updbtn.Click += new System.EventHandler(this.updbtn_Click_1);
             // 
@@ -219,7 +296,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.addressdataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.addressdataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.addressdataview.Location = new System.Drawing.Point(619, 3);
+            this.addressdataview.Location = new System.Drawing.Point(3, 572);
             this.addressdataview.Name = "addressdataview";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
@@ -229,13 +306,13 @@
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.addressdataview.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.addressdataview.Size = new System.Drawing.Size(538, 155);
+            this.addressdataview.Size = new System.Drawing.Size(538, 107);
             this.addressdataview.TabIndex = 30;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(853, 355);
+            this.label4.Location = new System.Drawing.Point(853, 384);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(71, 13);
             this.label4.TabIndex = 29;
@@ -244,7 +321,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(859, 182);
+            this.label3.Location = new System.Drawing.Point(859, 211);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(54, 13);
             this.label3.TabIndex = 28;
@@ -262,7 +339,7 @@
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.wishlistdataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.wishlistdataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.wishlistdataview.Location = new System.Drawing.Point(620, 370);
+            this.wishlistdataview.Location = new System.Drawing.Point(620, 399);
             this.wishlistdataview.Name = "wishlistdataview";
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
@@ -287,7 +364,7 @@
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.cartdataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.cartdataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.cartdataview.Location = new System.Drawing.Point(619, 197);
+            this.cartdataview.Location = new System.Drawing.Point(619, 226);
             this.cartdataview.Name = "cartdataview";
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
@@ -312,7 +389,7 @@
             dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.customerdataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.customerdataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.customerdataview.Location = new System.Drawing.Point(3, 3);
+            this.customerdataview.Location = new System.Drawing.Point(3, 32);
             this.customerdataview.Name = "customerdataview";
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
@@ -326,48 +403,30 @@
             this.customerdataview.TabIndex = 25;
             this.customerdataview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.customerdataview_CellClick);
             // 
-            // emailtxt
+            // bgworker
             // 
-            this.emailtxt.Location = new System.Drawing.Point(89, 12);
-            this.emailtxt.Name = "emailtxt";
-            this.emailtxt.Size = new System.Drawing.Size(178, 20);
-            this.emailtxt.TabIndex = 15;
-            this.emailtxt.TextChanged += new System.EventHandler(this.emailtxt_TextChanged);
+            this.bgworker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker_DoWork);
+            this.bgworker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker_RunWorkerCompleted);
             // 
-            // label1
+            // timer
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 13);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "Filter by Email";
+            this.timer.Interval = 600;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
-            // label2
+            // loadinglbl
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(288, 18);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(94, 13);
-            this.label2.TabIndex = 18;
-            this.label2.Text = "Filter by Username";
+            this.loadinglbl.AutoSize = true;
+            this.loadinglbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loadinglbl.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.loadinglbl.Location = new System.Drawing.Point(1, 0);
+            this.loadinglbl.Name = "loadinglbl";
+            this.loadinglbl.Size = new System.Drawing.Size(0, 25);
+            this.loadinglbl.TabIndex = 12;
             // 
-            // usertxt
+            // timer2
             // 
-            this.usertxt.Location = new System.Drawing.Point(385, 11);
-            this.usertxt.Name = "usertxt";
-            this.usertxt.Size = new System.Drawing.Size(178, 20);
-            this.usertxt.TabIndex = 17;
-            this.usertxt.TextChanged += new System.EventHandler(this.usertxt_TextChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(836, 20);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(101, 13);
-            this.label5.TabIndex = 31;
-            this.label5.Text = "Edit Address Details";
+            this.timer2.Interval = 600;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
             // customers
             // 
@@ -375,18 +434,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1162, 722);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.loadinglbl);
             this.Controls.Add(this.pnl);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.usertxt);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.emailtxt);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "customers";
             this.Text = "customers";
-            this.Load += new System.EventHandler(this.customers_Load);
             this.pnl.ResumeLayout(false);
             this.pnl.PerformLayout();
+            this.dpnl.ResumeLayout(false);
+            this.dpnl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ordersdataview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.addressdataview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.wishlistdataview)).EndInit();
@@ -420,5 +476,11 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridView ordersdataview;
         private System.Windows.Forms.Label countlbl;
+        private System.ComponentModel.BackgroundWorker bgworker;
+        private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.Panel dpnl;
+        private System.Windows.Forms.Button deluserbtn;
+        private System.Windows.Forms.Label loadinglbl;
+        private System.Windows.Forms.Timer timer2;
     }
 }

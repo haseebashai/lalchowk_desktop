@@ -438,7 +438,7 @@ namespace Veiled_Kashmir_Admin_Panel
                         File.Move(fileaddress, directory + p6txt.Text);
                         uploaddir = directory + p6txt.Text;
 
-                    //        UploadFileToFtp("ftp://182.50.151.83/httpdocs/lalchowk/pictures/", uploaddir);
+                            UploadFileToFtp("ftp://182.50.151.83/httpdocs/lalchowk/pictures/", uploaddir);
 
                     cmd = "insert into pictures (`groupid`, `picture`) " +
                              "values ('" + gidtxt.Text + @"','" + p6txt.Text + "')";

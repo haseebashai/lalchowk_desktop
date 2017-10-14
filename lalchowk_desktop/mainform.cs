@@ -212,21 +212,24 @@ namespace Veiled_Kashmir_Admin_Panel
             if (cntpnl.Contains(placeddataview))
             {
                 Cursor = Cursors.WaitCursor;
-                customers cus = new customers(hp);
+                customers cus = new customers(hp,this);
                 cus.TopLevel = false;
                 cntpnl.Controls.Clear();
+                cus.normaltick();
                 cntpnl.Controls.Add(cus);
                 cus.Show();
                 Cursor = Cursors.Arrow;
             }
             else
             {
-                customers cus = new customers(hp);
-                cus.TopLevel = false;
                 dialogcontainer dg = new dialogcontainer();
+                customers cus = new customers(hp,dg);
+                cus.TopLevel = false;
+                
                 dg.dialogpnl.Controls.Add(cus);
+                cus.dgtick();
                 dg.lbl.Text = "";
-
+                
                 dg.Show();
                 cus.Show();
             }
@@ -239,20 +242,23 @@ namespace Veiled_Kashmir_Admin_Panel
             if (cntpnl.Contains(placeddataview))
             {
                 Cursor = Cursors.WaitCursor;
-                expenditure exp = new expenditure(this, hp);
+                expenditure exp = new expenditure(this, hp,this);
                 exp.TopLevel = false;
                 cntpnl.Controls.Clear();
                 cntpnl.Controls.Add(exp);
+                exp.loadingnormal();
                 exp.Show();
                 Cursor = Cursors.Arrow;
             }
             else
             {
-                expenditure exp = new expenditure(this, hp);
-                exp.TopLevel = false;
                 dialogcontainer dg = new dialogcontainer();
+                expenditure exp = new expenditure(this, hp,dg);
+                exp.TopLevel = false;
+               
                 dg.dialogpnl.Controls.Add(exp);
-                dg.lbl.Text = "";
+                exp.loadingdg();
+                
 
                 dg.Show();
                 exp.Show();
@@ -264,20 +270,22 @@ namespace Veiled_Kashmir_Admin_Panel
             if (cntpnl.Contains(placeddataview))
             {
                 Cursor = Cursors.WaitCursor;
-                suppliers sup = new suppliers(hp);
+                suppliers sup = new suppliers(hp,this);
                 sup.TopLevel = false;
                 cntpnl.Controls.Clear();
                 cntpnl.Controls.Add(sup);
+                sup.loadingnormal();
                 sup.Show();
                 Cursor = Cursors.Arrow;
             }
             else
             {
-                suppliers sup = new suppliers(hp);
-                sup.TopLevel = false;
                 dialogcontainer dg = new dialogcontainer();
+                suppliers sup = new suppliers(hp,dg);
+                sup.TopLevel = false;
+                sup.loadingdg();
                 dg.dialogpnl.Controls.Add(sup);
-                dg.lbl.Text = "";
+                dg.Text = "Suppliers";
 
                 dg.Show();
                 sup.Show();
@@ -495,18 +503,12 @@ namespace Veiled_Kashmir_Admin_Panel
 
         int numberOfPoints = 0;
         private void timer_Tick(object sender, EventArgs e)
-        {
-
-
-           
+        {         
             int maxPoints = 3;
             loadinglbl.BorderStyle = BorderStyle.FixedSingle;
             loadinglbl.Text = "Loading" + new string('.', numberOfPoints);
-            numberOfPoints = (numberOfPoints + 1) % (maxPoints + 1);
-        
+            numberOfPoints = (numberOfPoints + 1) % (maxPoints + 1);       
     }
-
-        
 
         private void sendmailbtn_Click(object sender, EventArgs e)
         {
@@ -540,9 +542,7 @@ namespace Veiled_Kashmir_Admin_Panel
             shippedh.Visible = true;
             shippedlbl.Visible = true;
             attention.Visible = true;placedlbl.Visible = true;deliveredh.Visible = true;orderslbl.Visible = true;
-
-
-
+           
             placeddataview.DataSource = bsource;
             shippeddataview.DataSource = bsource2;
             attentionlbl.Text = "> " + atten + " Order(s) need your Attention ASAP!";

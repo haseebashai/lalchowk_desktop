@@ -15,44 +15,126 @@ namespace Veiled_Kashmir_Admin_Panel
     {
 
         DBConnect obj = new DBConnect();
-        String email, username,orderid;
+        String email, username,orderid,count,cmd;
         bool status, nametxtok, desctxtok, editnametxtok, editdesctxtok, parknametxtok, parkdesctxtok, editparktxtok, editparkdesctxtok, sancnametxtok, sancdesctxtok, editsanctnametxtok, editsancdesctxtok;
-
-        MySqlConnection con;
+        BindingSource bsource;
         MySqlDataAdapter adap;
         MySqlDataReader dr,dr2,dr3;
         MySqlCommandBuilder cmdbl;
+        MySqlConnection con= new MySqlConnection( "SERVER=182.50.133.78;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah");
 
 
         private container hp = null;
+        private dialogcontainer dg = null;
         DataTable dt,dt1;
 
-        public customers(Form hpcopy)
+
+        public customers(Form hpcopy,Form dgcopy)
         {
+            dg = dgcopy as dialogcontainer;
             hp = hpcopy as container;
             InitializeComponent();
+            
+            bgworker.RunWorkerAsync();
+        }
+
+        private void deluserbtn_Click(object sender, EventArgs e)
+        {
+            DialogResult dgr = MessageBox.Show("You sure you want to delete the following user ?\n"+namelbl.Text,"Confirm!",MessageBoxButtons.YesNo);
+            if (dgr == DialogResult.Yes)
+            {
+                try
+                {
+                    Cursor = Cursors.WaitCursor;
+                    cmd = "delete from customer where email='"+email+"'";
+                    obj.nonQuery(cmd);
+                    obj.closeConnection();
+                    readcustomers();
+                    customerdataview.DataSource = bsource;
+                    Cursor = Cursors.Arrow;
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            int maxPoints = 5;
+
+            loadinglbl.BorderStyle = BorderStyle.FixedSingle;
+            loadinglbl.ForeColor = Color.Red;
+            loadinglbl.Text = "Loading" + new string('.', numberOfPoints);
+            numberOfPoints = (numberOfPoints + 1) % (maxPoints + 1);
+        }
+
+        public void normaltick()
+        {
+            timer2.Start();
+            timer2_Tick(null, null);
+        }
+
+        private void bgworker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            
+            readcustomers();
+            readcount();
+        }
+
+        private void bgworker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            timer.Stop();
+            customerdataview.DataSource = bsource;
+            loadinglbl.Visible = false;
+            countlbl.Text="Total Registered Customers: " + count;
+            pnl.Visible = true;
+
+            if (ActiveForm == dg)
+            {
+                dg.lbl.BorderStyle = BorderStyle.None;
+                dg.lbl.ForeColor = SystemColors.Highlight;
+                dg.lbl.Text = "Customers";
+            }
+        }
+
+        int numberOfPoints = 0;
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            
+            int maxPoints = 5;
+            timer.Start();
+            dg.lbl.BorderStyle = BorderStyle.FixedSingle;
+            dg.lbl.ForeColor = Color.Red;
+            dg.lbl.Text = "Loading" + new string('.', numberOfPoints);
+            numberOfPoints = (numberOfPoints + 1) % (maxPoints + 1);
+        }
+
+       public void dgtick()
+        {          
+            timer_Tick(null, null);
         }
 
         private void readcustomers()
         {
-            
-            dr = obj.Query("select * from customer");
-            
-            dt1 = new DataTable();
-            dt1.Load(dr);
-            obj.closeConnection();
-            BindingSource bsource = new BindingSource();
+            try
+            {
+                dr = obj.Query("select * from customer");
 
-            bsource.DataSource = dt1;
-            customerdataview.DataSource = bsource;
+                dt1 = new DataTable();
+                dt1.Load(dr);
+                obj.closeConnection();
+                bsource = new BindingSource();
 
-         /*   dr = obj.Query("select email from customer");
-            DataTable dt = new DataTable();
-            dt.Columns.Add("email", typeof(String));
-            dt.Load(dr);
-            obj.closeConnection();
-            customerlist.DisplayMember = "email";
-            customerlist.DataSource = dt; */
+                bsource.DataSource = dt1;
+            }
+            catch (Exception)
+            {
+
+            }
+
+         
         }
 
         private void mailbtn_Click(object sender, EventArgs e)
@@ -75,20 +157,12 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             dr = obj.Query("select count(*) from customer");
             dr.Read();
-            countlbl.Text = "Total Registered Customers: " + dr[0].ToString();
+            count = dr[0].ToString();
             obj.closeConnection();
         }
        
 
-
-        private void customers_Load(object sender, EventArgs e)
-        {
-            readcustomers();
-            readcount();
-        }
-
-
-        private void readcart()
+        private void readdetails()
         {
             try
             {
@@ -96,11 +170,39 @@ namespace Veiled_Kashmir_Admin_Panel
                 dr.Read();
                 dt = new DataTable();
                 dt.Load(dr);
-                
+                obj.closeConnection();     
                 BindingSource bsource = new BindingSource();
-
                 bsource.DataSource = dt;
                 cartdataview.DataSource = bsource;
+
+                dr = obj.Query("select * from wishlist where email='" + email + "'");
+                dr.Read();
+                dt = new DataTable();
+                dt.Load(dr);
+                obj.closeConnection();
+                BindingSource bsource2 = new BindingSource();
+                bsource2.DataSource = dt;
+                wishlistdataview.DataSource = bsource2;
+
+                con.Open();
+                adap = new MySqlDataAdapter("select * from orders where email='" + email + "'", con);
+                dt = new DataTable();
+                adap.Fill(dt);
+                con.Close();
+                BindingSource bsource3 = new BindingSource();
+                bsource3.DataSource = dt;
+                ordersdataview.DataSource = bsource3;
+
+                con.Open();
+                adap = new MySqlDataAdapter("select * from addresses where email='" + email + "'", con);
+                dt = new DataTable();
+                adap.Fill(dt);
+                con.Close();
+                BindingSource bsource4 = new BindingSource();
+                bsource4.DataSource = dt;
+                addressdataview.DataSource = bsource4;
+
+
             }
             catch(Exception ex)
             {
@@ -109,19 +211,11 @@ namespace Veiled_Kashmir_Admin_Panel
             obj.closeConnection();
         }
 
-        private void readwishlist()
+    /*    private void readwishlist()
         {
             try
             {
-                dr = obj.Query("select * from wishlist where email='" + email + "'");
-                dr.Read();
-                dt = new DataTable();
-                dt.Load(dr);
-
-                BindingSource bsource = new BindingSource();
-
-                bsource.DataSource = dt;
-                wishlistdataview.DataSource = bsource;
+                
             }
             catch (Exception ex)
             {
@@ -134,15 +228,8 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             try
             {
-                con = new MySqlConnection();
-                con.ConnectionString = "SERVER=182.50.133.78;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah";
-                con.Open();
-                adap = new MySqlDataAdapter("select * from orders where email='" + email + "'", con);
-                dt = new DataTable();
-                adap.Fill(dt);
-                BindingSource bsource = new BindingSource();
-                bsource.DataSource = dt;
-                ordersdataview.DataSource = bsource;
+               
+               
             }
             catch (Exception ex)
             {
@@ -156,22 +243,14 @@ namespace Veiled_Kashmir_Admin_Panel
             try
             {
 
-                con = new MySqlConnection();
-                con.ConnectionString = "SERVER=182.50.133.78;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah";
-                con.Open();
-                adap = new MySqlDataAdapter("select * from addresses where email='" + email + "'", con);
-                dt = new DataTable();
-                adap.Fill(dt);
-                BindingSource bsource = new BindingSource();
-                bsource.DataSource = dt;
-                addressdataview.DataSource = bsource;
+               
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
             obj.closeConnection();
-        }
+        } */
 
         private void updbtn_Click_1(object sender, EventArgs e)
         {
@@ -189,17 +268,18 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void customerdataview_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            Cursor = Cursors.WaitCursor;
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = this.customerdataview.Rows[e.RowIndex];               
                 email = row.Cells["email"].Value.ToString();
-                emaillbl.Text= row.Cells["mail"].Value.ToString();
+                emaillbl.Text = row.Cells["mail"].Value.ToString();
                 namelbl.Text= row.Cells["name"].Value.ToString();
                 contactlbl.Text= row.Cells["contact"].Value.ToString();
-                readcart();
-                readwishlist();
-                readaddress();
-                readorders();
+                dpnl.Visible = true;
+                readdetails();
+                Cursor = Cursors.Arrow;
+               
             }
         }
 
@@ -231,7 +311,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void notbtn_Click(object sender, EventArgs e)
         {
-            notification nf = new notification(email);
+            notification nf = new notification(email,emaillbl.Text);
             nf.ShowDialog();
         }
 
