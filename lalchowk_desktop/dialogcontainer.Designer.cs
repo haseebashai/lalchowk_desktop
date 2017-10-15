@@ -45,9 +45,9 @@
             // dialogpnl
             // 
             this.dialogpnl.AutoScroll = true;
-            this.dialogpnl.Location = new System.Drawing.Point(1, 41);
+            this.dialogpnl.Location = new System.Drawing.Point(1, 33);
             this.dialogpnl.Name = "dialogpnl";
-            this.dialogpnl.Size = new System.Drawing.Size(1185, 670);
+            this.dialogpnl.Size = new System.Drawing.Size(1185, 678);
             this.dialogpnl.TabIndex = 0;
             // 
             // closebtn
@@ -55,7 +55,7 @@
             this.closebtn.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.turn_on;
             this.closebtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.closebtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.closebtn.Location = new System.Drawing.Point(1157, 10);
+            this.closebtn.Location = new System.Drawing.Point(1142, 4);
             this.closebtn.Name = "closebtn";
             this.closebtn.Size = new System.Drawing.Size(25, 25);
             this.closebtn.TabIndex = 56;
@@ -102,7 +102,7 @@
             this.lbl.AutoSize = true;
             this.lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.lbl.Location = new System.Drawing.Point(9, 6);
+            this.lbl.Location = new System.Drawing.Point(4, 6);
             this.lbl.Name = "lbl";
             this.lbl.Size = new System.Drawing.Size(0, 24);
             this.lbl.TabIndex = 68;
@@ -113,7 +113,7 @@
             this.minimize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.minimize.Cursor = System.Windows.Forms.Cursors.Hand;
             this.minimize.ImageLocation = "";
-            this.minimize.Location = new System.Drawing.Point(1131, 13);
+            this.minimize.Location = new System.Drawing.Point(1116, 7);
             this.minimize.Name = "minimize";
             this.minimize.Size = new System.Drawing.Size(20, 20);
             this.minimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;

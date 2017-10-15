@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.formlbl = new System.Windows.Forms.Label();
             this.reqdataview = new System.Windows.Forms.DataGridView();
             this.pidlbl = new System.Windows.Forms.Label();
             this.pnamelbl = new System.Windows.Forms.Label();
@@ -49,27 +49,30 @@
             this.label9 = new System.Windows.Forms.Label();
             this.apnl = new System.Windows.Forms.Panel();
             this.ubtn = new System.Windows.Forms.Button();
+            this.ppnl = new System.Windows.Forms.Panel();
+            this.bgworker = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.reqdataview)).BeginInit();
             this.apnl.SuspendLayout();
+            this.ppnl.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
+            // formlbl
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(260, 24);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Review  Dealer Price Request";
+            this.formlbl.AutoSize = true;
+            this.formlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.formlbl.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.formlbl.Location = new System.Drawing.Point(0, -1);
+            this.formlbl.Name = "formlbl";
+            this.formlbl.Size = new System.Drawing.Size(120, 24);
+            this.formlbl.TabIndex = 0;
+            this.formlbl.Text = "Review Price";
             // 
             // reqdataview
             // 
             this.reqdataview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.reqdataview.BackgroundColor = System.Drawing.Color.White;
             this.reqdataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.reqdataview.Location = new System.Drawing.Point(12, 50);
+            this.reqdataview.Location = new System.Drawing.Point(6, 36);
             this.reqdataview.Name = "reqdataview";
             this.reqdataview.Size = new System.Drawing.Size(949, 459);
             this.reqdataview.TabIndex = 1;
@@ -79,7 +82,7 @@
             // 
             this.pidlbl.AutoSize = true;
             this.pidlbl.ForeColor = System.Drawing.Color.Black;
-            this.pidlbl.Location = new System.Drawing.Point(39, 48);
+            this.pidlbl.Location = new System.Drawing.Point(3, 47);
             this.pidlbl.Name = "pidlbl";
             this.pidlbl.Size = new System.Drawing.Size(21, 13);
             this.pidlbl.TabIndex = 2;
@@ -89,7 +92,7 @@
             // 
             this.pnamelbl.AutoSize = true;
             this.pnamelbl.ForeColor = System.Drawing.Color.Black;
-            this.pnamelbl.Location = new System.Drawing.Point(82, 48);
+            this.pnamelbl.Location = new System.Drawing.Point(46, 47);
             this.pnamelbl.Name = "pnamelbl";
             this.pnamelbl.Size = new System.Drawing.Size(48, 13);
             this.pnamelbl.TabIndex = 3;
@@ -99,7 +102,7 @@
             // 
             this.mrplbl.AutoSize = true;
             this.mrplbl.ForeColor = System.Drawing.Color.Black;
-            this.mrplbl.Location = new System.Drawing.Point(38, 110);
+            this.mrplbl.Location = new System.Drawing.Point(2, 109);
             this.mrplbl.Name = "mrplbl";
             this.mrplbl.Size = new System.Drawing.Size(24, 13);
             this.mrplbl.TabIndex = 4;
@@ -109,7 +112,7 @@
             // 
             this.pricelbl.AutoSize = true;
             this.pricelbl.ForeColor = System.Drawing.Color.Black;
-            this.pricelbl.Location = new System.Drawing.Point(127, 110);
+            this.pricelbl.Location = new System.Drawing.Point(91, 109);
             this.pricelbl.Name = "pricelbl";
             this.pricelbl.Size = new System.Drawing.Size(30, 13);
             this.pricelbl.TabIndex = 5;
@@ -119,7 +122,7 @@
             // 
             this.dealerlbl.AutoSize = true;
             this.dealerlbl.ForeColor = System.Drawing.Color.Black;
-            this.dealerlbl.Location = new System.Drawing.Point(214, 110);
+            this.dealerlbl.Location = new System.Drawing.Point(178, 109);
             this.dealerlbl.Name = "dealerlbl";
             this.dealerlbl.Size = new System.Drawing.Size(36, 13);
             this.dealerlbl.TabIndex = 6;
@@ -130,7 +133,7 @@
             this.reqlbl.AutoSize = true;
             this.reqlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.reqlbl.ForeColor = System.Drawing.Color.Red;
-            this.reqlbl.Location = new System.Drawing.Point(315, 110);
+            this.reqlbl.Location = new System.Drawing.Point(279, 109);
             this.reqlbl.Name = "reqlbl";
             this.reqlbl.Size = new System.Drawing.Size(33, 13);
             this.reqlbl.TabIndex = 7;
@@ -140,7 +143,7 @@
             // 
             this.rslbl.AutoSize = true;
             this.rslbl.ForeColor = System.Drawing.Color.Black;
-            this.rslbl.Location = new System.Drawing.Point(435, 110);
+            this.rslbl.Location = new System.Drawing.Point(399, 109);
             this.rslbl.Name = "rslbl";
             this.rslbl.Size = new System.Drawing.Size(38, 13);
             this.rslbl.TabIndex = 8;
@@ -150,7 +153,7 @@
             // 
             this.stocklbl.AutoSize = true;
             this.stocklbl.ForeColor = System.Drawing.Color.Black;
-            this.stocklbl.Location = new System.Drawing.Point(561, 110);
+            this.stocklbl.Location = new System.Drawing.Point(525, 109);
             this.stocklbl.Name = "stocklbl";
             this.stocklbl.Size = new System.Drawing.Size(33, 13);
             this.stocklbl.TabIndex = 9;
@@ -161,7 +164,7 @@
             this.apbtn.AutoSize = true;
             this.apbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.apbtn.Depth = 0;
-            this.apbtn.Location = new System.Drawing.Point(676, 87);
+            this.apbtn.Location = new System.Drawing.Point(640, 86);
             this.apbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.apbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.apbtn.Name = "apbtn";
@@ -176,7 +179,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.Blue;
-            this.label2.Location = new System.Drawing.Point(561, 87);
+            this.label2.Location = new System.Drawing.Point(525, 86);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 28;
@@ -186,7 +189,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.Blue;
-            this.label3.Location = new System.Drawing.Point(435, 87);
+            this.label3.Location = new System.Drawing.Point(399, 86);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(80, 13);
             this.label3.TabIndex = 27;
@@ -197,7 +200,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Red;
-            this.label4.Location = new System.Drawing.Point(315, 87);
+            this.label4.Location = new System.Drawing.Point(279, 86);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(86, 13);
             this.label4.TabIndex = 26;
@@ -207,7 +210,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.Color.Blue;
-            this.label5.Location = new System.Drawing.Point(214, 87);
+            this.label5.Location = new System.Drawing.Point(178, 86);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 13);
             this.label5.TabIndex = 25;
@@ -217,7 +220,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.Color.Blue;
-            this.label6.Location = new System.Drawing.Point(127, 87);
+            this.label6.Location = new System.Drawing.Point(91, 86);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(31, 13);
             this.label6.TabIndex = 24;
@@ -227,7 +230,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.ForeColor = System.Drawing.Color.Blue;
-            this.label7.Location = new System.Drawing.Point(38, 87);
+            this.label7.Location = new System.Drawing.Point(2, 86);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(31, 13);
             this.label7.TabIndex = 23;
@@ -237,7 +240,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.ForeColor = System.Drawing.Color.Blue;
-            this.label8.Location = new System.Drawing.Point(82, 25);
+            this.label8.Location = new System.Drawing.Point(46, 24);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(75, 13);
             this.label8.TabIndex = 22;
@@ -247,7 +250,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.ForeColor = System.Drawing.Color.Blue;
-            this.label9.Location = new System.Drawing.Point(39, 25);
+            this.label9.Location = new System.Drawing.Point(3, 24);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(22, 13);
             this.label9.TabIndex = 21;
@@ -272,7 +275,7 @@
             this.apnl.Controls.Add(this.label9);
             this.apnl.Controls.Add(this.stocklbl);
             this.apnl.Controls.Add(this.apbtn);
-            this.apnl.Location = new System.Drawing.Point(12, 526);
+            this.apnl.Location = new System.Drawing.Point(6, 512);
             this.apnl.Name = "apnl";
             this.apnl.Size = new System.Drawing.Size(949, 162);
             this.apnl.TabIndex = 29;
@@ -280,7 +283,7 @@
             // 
             // ubtn
             // 
-            this.ubtn.Location = new System.Drawing.Point(967, 224);
+            this.ubtn.Location = new System.Drawing.Point(961, 210);
             this.ubtn.Name = "ubtn";
             this.ubtn.Size = new System.Drawing.Size(139, 100);
             this.ubtn.TabIndex = 30;
@@ -288,16 +291,30 @@
             this.ubtn.UseVisualStyleBackColor = true;
             this.ubtn.Click += new System.EventHandler(this.ubtn_Click);
             // 
+            // ppnl
+            // 
+            this.ppnl.Controls.Add(this.reqdataview);
+            this.ppnl.Controls.Add(this.apnl);
+            this.ppnl.Controls.Add(this.ubtn);
+            this.ppnl.Location = new System.Drawing.Point(1, 0);
+            this.ppnl.Name = "ppnl";
+            this.ppnl.Size = new System.Drawing.Size(1162, 710);
+            this.ppnl.TabIndex = 72;
+            this.ppnl.Visible = false;
+            // 
+            // bgworker
+            // 
+            this.bgworker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker_DoWork);
+            this.bgworker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker_RunWorkerCompleted);
+            // 
             // approveprice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1162, 722);
-            this.Controls.Add(this.ubtn);
-            this.Controls.Add(this.apnl);
-            this.Controls.Add(this.reqdataview);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.ppnl);
+            this.Controls.Add(this.formlbl);
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "approveprice";
@@ -305,6 +322,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.reqdataview)).EndInit();
             this.apnl.ResumeLayout(false);
             this.apnl.PerformLayout();
+            this.ppnl.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -312,7 +330,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label formlbl;
         private System.Windows.Forms.DataGridView reqdataview;
         private System.Windows.Forms.Label pidlbl;
         private System.Windows.Forms.Label pnamelbl;
@@ -333,5 +351,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Panel apnl;
         private System.Windows.Forms.Button ubtn;
+        private System.Windows.Forms.Panel ppnl;
+        private System.ComponentModel.BackgroundWorker bgworker;
     }
 }

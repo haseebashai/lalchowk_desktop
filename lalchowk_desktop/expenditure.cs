@@ -137,14 +137,16 @@ namespace Veiled_Kashmir_Admin_Panel
        
         private void orderslbl_Click(object sender, EventArgs e)
         {
-           
-                ordersdetails od = new ordersdetails(mf);
+
+            dialogcontainer dg = new dialogcontainer();
+            ordersdetails od = new ordersdetails(mf,dg);
                 od.TopLevel = false;
-                dialogcontainer dg = new dialogcontainer();
+                
                 dg.dialogpnl.Controls.Add(od);
-                dg.lbl.Text = "";
-                od.readordersplaced();
-                od.orderslbl.Text = "Orders Placed";
+                dg.Text = "Orders placed";
+            od.loadingdg();
+            od.bgworker2.RunWorkerAsync();
+            
                 dg.Show();
                 od.Show();
                
@@ -152,15 +154,17 @@ namespace Veiled_Kashmir_Admin_Panel
         }
         private void orderslbl2_Click(object sender, EventArgs e)
         {
-           
-                ordersdetails od = new ordersdetails(mf);
-                od.TopLevel = false;
-                dialogcontainer dg = new dialogcontainer();
-                dg.dialogpnl.Controls.Add(od);
-                dg.lbl.Text = "";
-                od.readordersdelivered();
 
-                dg.Show();
+            dialogcontainer dg = new dialogcontainer();
+            ordersdetails od = new ordersdetails(mf,dg);
+                od.TopLevel = false;
+                
+                dg.dialogpnl.Controls.Add(od);
+                dg.Text = "Orders delivered";
+            od.loadingdg();
+            od.bgworker1.RunWorkerAsync();
+
+            dg.Show();
                 od.Show();
 
             
@@ -168,13 +172,16 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void costlbl_Click(object sender, EventArgs e)
         {
-                ordersdetails od = new ordersdetails(mf);
+            dialogcontainer dg = new dialogcontainer();
+            ordersdetails od = new ordersdetails(mf,dg);
                 od.TopLevel = false;
-                dialogcontainer dg = new dialogcontainer();
+                
                 dg.dialogpnl.Controls.Add(od);
-                dg.lbl.Text = "";
-                od.orderslbl.Text = "Purchased Products Cost";
-                od.readpurchasecost();
+            od.loadingdg();
+            od.bgworker5.RunWorkerAsync();
+                dg.Text = "Purchasing Cost";
+                
+                
                 dg.Show();
                 od.Show();
 
@@ -183,28 +190,31 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void profitlbl2_Click(object sender, EventArgs e)
         {
-           
-            ordersdetails od = new ordersdetails(mf);
-            od.TopLevel = false;
             dialogcontainer dg = new dialogcontainer();
+            ordersdetails od = new ordersdetails(mf,dg);
+            od.TopLevel = false;
+            
             dg.dialogpnl.Controls.Add(od);
-            dg.lbl.Text = "";
-            od.orderslbl.Text = "Profit Earned from these Orders";
-            od.readprofit();
+            dg.Text = "Profit Earned";
+            od.loadingdg();
+            od.bgworker4.RunWorkerAsync();
             dg.Show();
             od.Show();
         }
 
         private void ship_Click(object sender, EventArgs e)
         {
-           
-                ordersdetails od = new ordersdetails(mf);
+
+            dialogcontainer dg = new dialogcontainer();
+            ordersdetails od = new ordersdetails(mf,dg);
                 od.TopLevel = false;
-                dialogcontainer dg = new dialogcontainer();
+                
                 dg.dialogpnl.Controls.Add(od);
-                dg.lbl.Text = "";
-                od.orderslbl.Text = "Shipping Charges";
-                od.readshipping();
+            od.loadingdg();
+            od.bgworker3.RunWorkerAsync();
+                dg.Text = "Shipping Charges";
+                
+                
                 dg.Show();
                 od.Show();
 

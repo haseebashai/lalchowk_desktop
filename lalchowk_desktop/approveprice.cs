@@ -19,13 +19,18 @@ namespace Veiled_Kashmir_Admin_Panel
         MySqlDataAdapter adap;
         DataTable dt;
         MySqlCommandBuilder cmdbl;
+        BindingSource bsource;
+        PictureBox loading = new PictureBox();
 
+        private dialogcontainer dg = null;
         private container hp = null;
-        public approveprice(Form hpcopy)
+        public approveprice(Form hpcopy,Form dgcopy)
         {
+            dg = dgcopy as dialogcontainer;
             hp = hpcopy as container;
             InitializeComponent();
-            readrequest();
+            
+            bgworker.RunWorkerAsync();
 
         }
 
@@ -38,9 +43,9 @@ namespace Veiled_Kashmir_Admin_Panel
             adap = new MySqlDataAdapter("SELECT productid,supplierid,productname,mrp,price,dealerprice,requestedprice,requeststatus,stock FROM lalchowk.products where requeststatus='pending';", con);
             dt = new DataTable();
             adap.Fill(dt);
-            BindingSource bsource = new BindingSource();
+            bsource = new BindingSource();
             bsource.DataSource = dt;
-            reqdataview.DataSource = bsource;
+            
 
             
 
@@ -87,5 +92,53 @@ namespace Veiled_Kashmir_Admin_Panel
                 MessageBox.Show(ex.ToString());
             }
         }
+
+
+        public void loadingnormal()
+        {
+            formlbl.Text = "Loading";
+
+            loading = new PictureBox()
+            {
+                Image = Properties.Resources.loading,
+                Size = new Size(40, 30),
+                SizeMode = PictureBoxSizeMode.StretchImage,
+                Location = new Point(72, 0),
+            };
+            this.Controls.Add(loading);
+        }
+        public void loadingdg()
+        {
+            formlbl.Visible = false;
+            dg.lbl.ForeColor = SystemColors.Highlight;
+            dg.lbl.Text = "Loading";
+            dg.loadingimage.SizeMode = PictureBoxSizeMode.StretchImage;
+            dg.loadingimage.Visible = true;
+        }
+
+        private void bgworker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            readrequest();
+        }
+
+        private void bgworker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (ActiveForm == dg)
+            {
+                dg.loadingimage.Visible = false;
+                dg.lbl.ForeColor = SystemColors.Highlight;
+                dg.lbl.Text = "Review Price";
+                
+            }
+            else
+            {
+                loading.Visible = false;
+                formlbl.Text = "Review Price";
+                formlbl.BringToFront();
+            }
+            reqdataview.DataSource = bsource;
+            ppnl.Visible = true;
+        }
+
     }
 }

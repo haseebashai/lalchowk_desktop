@@ -161,6 +161,21 @@
             this.label41 = new System.Windows.Forms.Label();
             this.monthtxt = new System.Windows.Forms.TextBox();
             this.label42 = new System.Windows.Forms.Label();
+            this.dpnl = new System.Windows.Forms.Panel();
+            this.uppnl = new System.Windows.Forms.Panel();
+            this.epnl = new System.Windows.Forms.Panel();
+            this.bpnl = new System.Windows.Forms.Panel();
+            this.bgworker = new System.ComponentModel.BackgroundWorker();
+            this.formlbl = new System.Windows.Forms.Label();
+            this.bgworker2 = new System.ComponentModel.BackgroundWorker();
+            this.loadingaccpic = new System.Windows.Forms.PictureBox();
+            this.loadinglbl = new System.Windows.Forms.Label();
+            this.bgworker3 = new System.ComponentModel.BackgroundWorker();
+            this.bgworker4 = new System.ComponentModel.BackgroundWorker();
+            this.bgworker5 = new System.ComponentModel.BackgroundWorker();
+            this.bgworker6 = new System.ComponentModel.BackgroundWorker();
+            this.bgworker7 = new System.ComponentModel.BackgroundWorker();
+            this.bgworker8 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.accountdataview)).BeginInit();
             this.exppnl.SuspendLayout();
             this.moneypnl.SuspendLayout();
@@ -170,6 +185,11 @@
             this.delpnl.SuspendLayout();
             this.dealpnl.SuspendLayout();
             this.rpnl.SuspendLayout();
+            this.dpnl.SuspendLayout();
+            this.uppnl.SuspendLayout();
+            this.epnl.SuspendLayout();
+            this.bpnl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.loadingaccpic)).BeginInit();
             this.SuspendLayout();
             // 
             // expbtn
@@ -177,7 +197,7 @@
             this.expbtn.AutoSize = true;
             this.expbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.expbtn.Depth = 0;
-            this.expbtn.Location = new System.Drawing.Point(7, 9);
+            this.expbtn.Location = new System.Drawing.Point(4, 3);
             this.expbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.expbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.expbtn.Name = "expbtn";
@@ -193,7 +213,7 @@
             this.moneybtn.AutoSize = true;
             this.moneybtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.moneybtn.Depth = 0;
-            this.moneybtn.Location = new System.Drawing.Point(117, 9);
+            this.moneybtn.Location = new System.Drawing.Point(114, 3);
             this.moneybtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.moneybtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.moneybtn.Name = "moneybtn";
@@ -209,7 +229,7 @@
             this.bankbtn.AutoSize = true;
             this.bankbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.bankbtn.Depth = 0;
-            this.bankbtn.Location = new System.Drawing.Point(238, 9);
+            this.bankbtn.Location = new System.Drawing.Point(235, 3);
             this.bankbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.bankbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.bankbtn.Name = "bankbtn";
@@ -225,7 +245,7 @@
             this.miscbtn.AutoSize = true;
             this.miscbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.miscbtn.Depth = 0;
-            this.miscbtn.Location = new System.Drawing.Point(378, 9);
+            this.miscbtn.Location = new System.Drawing.Point(375, 3);
             this.miscbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.miscbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.miscbtn.Name = "miscbtn";
@@ -241,10 +261,11 @@
             this.accountdataview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.accountdataview.BackgroundColor = System.Drawing.Color.White;
             this.accountdataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.accountdataview.Location = new System.Drawing.Point(7, 219);
+            this.accountdataview.Location = new System.Drawing.Point(7, 221);
             this.accountdataview.Name = "accountdataview";
             this.accountdataview.Size = new System.Drawing.Size(1009, 400);
             this.accountdataview.TabIndex = 20;
+            this.accountdataview.Visible = false;
             // 
             // exppnl
             // 
@@ -259,7 +280,7 @@
             this.exppnl.Controls.Add(this.label2);
             this.exppnl.Controls.Add(this.itemtxt);
             this.exppnl.Controls.Add(this.label1);
-            this.exppnl.Location = new System.Drawing.Point(7, 54);
+            this.exppnl.Location = new System.Drawing.Point(3, 8);
             this.exppnl.Name = "exppnl";
             this.exppnl.Size = new System.Drawing.Size(1148, 164);
             this.exppnl.TabIndex = 21;
@@ -374,7 +395,7 @@
             this.moneypnl.Controls.Add(this.label5);
             this.moneypnl.Controls.Add(this.nametxt);
             this.moneypnl.Controls.Add(this.label6);
-            this.moneypnl.Location = new System.Drawing.Point(7, 54);
+            this.moneypnl.Location = new System.Drawing.Point(3, 8);
             this.moneypnl.Name = "moneypnl";
             this.moneypnl.Size = new System.Drawing.Size(1148, 164);
             this.moneypnl.TabIndex = 22;
@@ -472,7 +493,7 @@
             this.bankpnl.Controls.Add(this.label10);
             this.bankpnl.Controls.Add(this.datetxt3);
             this.bankpnl.Controls.Add(this.label11);
-            this.bankpnl.Location = new System.Drawing.Point(7, 54);
+            this.bankpnl.Location = new System.Drawing.Point(3, 8);
             this.bankpnl.Name = "bankpnl";
             this.bankpnl.Size = new System.Drawing.Size(1148, 164);
             this.bankpnl.TabIndex = 23;
@@ -568,7 +589,7 @@
             this.miscpnl.Controls.Add(this.label14);
             this.miscpnl.Controls.Add(this.nametxt4);
             this.miscpnl.Controls.Add(this.label15);
-            this.miscpnl.Location = new System.Drawing.Point(7, 54);
+            this.miscpnl.Location = new System.Drawing.Point(3, 8);
             this.miscpnl.Name = "miscpnl";
             this.miscpnl.Size = new System.Drawing.Size(1148, 161);
             this.miscpnl.TabIndex = 24;
@@ -641,7 +662,7 @@
             // 
             // updbtn
             // 
-            this.updbtn.Location = new System.Drawing.Point(1022, 342);
+            this.updbtn.Location = new System.Drawing.Point(6, 63);
             this.updbtn.Name = "updbtn";
             this.updbtn.Size = new System.Drawing.Size(120, 112);
             this.updbtn.TabIndex = 25;
@@ -654,7 +675,7 @@
             this.costlbl.AutoSize = true;
             this.costlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.costlbl.ForeColor = System.Drawing.Color.Blue;
-            this.costlbl.Location = new System.Drawing.Point(10, 662);
+            this.costlbl.Location = new System.Drawing.Point(4, 31);
             this.costlbl.Name = "costlbl";
             this.costlbl.Size = new System.Drawing.Size(105, 16);
             this.costlbl.TabIndex = 26;
@@ -665,7 +686,7 @@
             this.moneylbl.AutoSize = true;
             this.moneylbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.moneylbl.ForeColor = System.Drawing.Color.Blue;
-            this.moneylbl.Location = new System.Drawing.Point(10, 633);
+            this.moneylbl.Location = new System.Drawing.Point(4, 10);
             this.moneylbl.Name = "moneylbl";
             this.moneylbl.Size = new System.Drawing.Size(129, 16);
             this.moneylbl.TabIndex = 27;
@@ -676,7 +697,7 @@
             this.ballbl.AutoSize = true;
             this.ballbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ballbl.ForeColor = System.Drawing.Color.Blue;
-            this.ballbl.Location = new System.Drawing.Point(10, 691);
+            this.ballbl.Location = new System.Drawing.Point(4, 52);
             this.ballbl.Name = "ballbl";
             this.ballbl.Size = new System.Drawing.Size(120, 16);
             this.ballbl.TabIndex = 28;
@@ -687,7 +708,7 @@
             this.banklbl.AutoSize = true;
             this.banklbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.banklbl.ForeColor = System.Drawing.Color.Blue;
-            this.banklbl.Location = new System.Drawing.Point(359, 633);
+            this.banklbl.Location = new System.Drawing.Point(353, 10);
             this.banklbl.Name = "banklbl";
             this.banklbl.Size = new System.Drawing.Size(92, 16);
             this.banklbl.TabIndex = 29;
@@ -698,7 +719,7 @@
             this.billbtn.AutoSize = true;
             this.billbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.billbtn.Depth = 0;
-            this.billbtn.Location = new System.Drawing.Point(458, 9);
+            this.billbtn.Location = new System.Drawing.Point(455, 3);
             this.billbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.billbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.billbtn.Name = "billbtn";
@@ -714,7 +735,7 @@
             this.delbtn.AutoSize = true;
             this.delbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.delbtn.Depth = 0;
-            this.delbtn.Location = new System.Drawing.Point(553, 9);
+            this.delbtn.Location = new System.Drawing.Point(550, 3);
             this.delbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.delbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.delbtn.Name = "delbtn";
@@ -738,7 +759,7 @@
             this.billpnl.Controls.Add(this.label19);
             this.billpnl.Controls.Add(this.otxt);
             this.billpnl.Controls.Add(this.label20);
-            this.billpnl.Location = new System.Drawing.Point(7, 54);
+            this.billpnl.Location = new System.Drawing.Point(3, 8);
             this.billpnl.Name = "billpnl";
             this.billpnl.Size = new System.Drawing.Size(1148, 164);
             this.billpnl.TabIndex = 32;
@@ -853,7 +874,7 @@
             this.delpnl.Controls.Add(this.label25);
             this.delpnl.Controls.Add(this.otxt2);
             this.delpnl.Controls.Add(this.label26);
-            this.delpnl.Location = new System.Drawing.Point(7, 54);
+            this.delpnl.Location = new System.Drawing.Point(3, 8);
             this.delpnl.Name = "delpnl";
             this.delpnl.Size = new System.Drawing.Size(1148, 164);
             this.delpnl.TabIndex = 33;
@@ -967,7 +988,7 @@
             this.dealpnl.Controls.Add(this.label30);
             this.dealpnl.Controls.Add(this.suptxt);
             this.dealpnl.Controls.Add(this.label31);
-            this.dealpnl.Location = new System.Drawing.Point(7, 54);
+            this.dealpnl.Location = new System.Drawing.Point(3, 8);
             this.dealpnl.Name = "dealpnl";
             this.dealpnl.Size = new System.Drawing.Size(1148, 164);
             this.dealpnl.TabIndex = 34;
@@ -1205,7 +1226,7 @@
             this.dealbtn.AutoSize = true;
             this.dealbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.dealbtn.Depth = 0;
-            this.dealbtn.Location = new System.Drawing.Point(669, 9);
+            this.dealbtn.Location = new System.Drawing.Point(666, 3);
             this.dealbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.dealbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.dealbtn.Name = "dealbtn";
@@ -1222,7 +1243,7 @@
             this.refresh.Cursor = System.Windows.Forms.Cursors.Hand;
             this.refresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.refresh.ForeColor = System.Drawing.Color.Gray;
-            this.refresh.Location = new System.Drawing.Point(359, 673);
+            this.refresh.Location = new System.Drawing.Point(353, 52);
             this.refresh.Name = "refresh";
             this.refresh.Size = new System.Drawing.Size(100, 16);
             this.refresh.TabIndex = 36;
@@ -1231,7 +1252,7 @@
             // 
             // fsuptxt
             // 
-            this.fsuptxt.Location = new System.Drawing.Point(1022, 309);
+            this.fsuptxt.Location = new System.Drawing.Point(6, 30);
             this.fsuptxt.Name = "fsuptxt";
             this.fsuptxt.Size = new System.Drawing.Size(120, 20);
             this.fsuptxt.TabIndex = 38;
@@ -1241,7 +1262,7 @@
             // fsuplbl
             // 
             this.fsuplbl.AutoSize = true;
-            this.fsuplbl.Location = new System.Drawing.Point(1019, 292);
+            this.fsuplbl.Location = new System.Drawing.Point(3, 13);
             this.fsuplbl.Name = "fsuplbl";
             this.fsuplbl.Size = new System.Drawing.Size(84, 13);
             this.fsuplbl.TabIndex = 37;
@@ -1251,7 +1272,7 @@
             // totallbl
             // 
             this.totallbl.AutoSize = true;
-            this.totallbl.Location = new System.Drawing.Point(1022, 606);
+            this.totallbl.Location = new System.Drawing.Point(6, 327);
             this.totallbl.Name = "totallbl";
             this.totallbl.Size = new System.Drawing.Size(27, 13);
             this.totallbl.TabIndex = 39;
@@ -1263,7 +1284,7 @@
             this.revbtn.AutoSize = true;
             this.revbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.revbtn.Depth = 0;
-            this.revbtn.Location = new System.Drawing.Point(781, 9);
+            this.revbtn.Location = new System.Drawing.Point(778, 3);
             this.revbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.revbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.revbtn.Name = "revbtn";
@@ -1303,7 +1324,7 @@
             this.rpnl.Controls.Add(this.label41);
             this.rpnl.Controls.Add(this.monthtxt);
             this.rpnl.Controls.Add(this.label42);
-            this.rpnl.Location = new System.Drawing.Point(7, 54);
+            this.rpnl.Location = new System.Drawing.Point(3, 8);
             this.rpnl.Name = "rpnl";
             this.rpnl.Size = new System.Drawing.Size(1148, 164);
             this.rpnl.TabIndex = 41;
@@ -1548,38 +1569,151 @@
             this.label42.TabIndex = 0;
             this.label42.Text = "Month";
             // 
+            // dpnl
+            // 
+            this.dpnl.Controls.Add(this.moneylbl);
+            this.dpnl.Controls.Add(this.costlbl);
+            this.dpnl.Controls.Add(this.ballbl);
+            this.dpnl.Controls.Add(this.banklbl);
+            this.dpnl.Controls.Add(this.refresh);
+            this.dpnl.Location = new System.Drawing.Point(7, 622);
+            this.dpnl.Name = "dpnl";
+            this.dpnl.Size = new System.Drawing.Size(606, 94);
+            this.dpnl.TabIndex = 42;
+            this.dpnl.Visible = false;
+            // 
+            // uppnl
+            // 
+            this.uppnl.Controls.Add(this.fsuplbl);
+            this.uppnl.Controls.Add(this.updbtn);
+            this.uppnl.Controls.Add(this.fsuptxt);
+            this.uppnl.Controls.Add(this.totallbl);
+            this.uppnl.Location = new System.Drawing.Point(1020, 282);
+            this.uppnl.Name = "uppnl";
+            this.uppnl.Size = new System.Drawing.Size(135, 349);
+            this.uppnl.TabIndex = 43;
+            this.uppnl.Visible = false;
+            // 
+            // epnl
+            // 
+            this.epnl.Controls.Add(this.rpnl);
+            this.epnl.Controls.Add(this.moneypnl);
+            this.epnl.Controls.Add(this.billpnl);
+            this.epnl.Controls.Add(this.delpnl);
+            this.epnl.Controls.Add(this.dealpnl);
+            this.epnl.Controls.Add(this.bankpnl);
+            this.epnl.Controls.Add(this.miscpnl);
+            this.epnl.Controls.Add(this.exppnl);
+            this.epnl.Location = new System.Drawing.Point(7, 41);
+            this.epnl.Name = "epnl";
+            this.epnl.Size = new System.Drawing.Size(1139, 179);
+            this.epnl.TabIndex = 44;
+            this.epnl.Visible = false;
+            // 
+            // bpnl
+            // 
+            this.bpnl.Controls.Add(this.dealbtn);
+            this.bpnl.Controls.Add(this.expbtn);
+            this.bpnl.Controls.Add(this.moneybtn);
+            this.bpnl.Controls.Add(this.bankbtn);
+            this.bpnl.Controls.Add(this.revbtn);
+            this.bpnl.Controls.Add(this.miscbtn);
+            this.bpnl.Controls.Add(this.billbtn);
+            this.bpnl.Controls.Add(this.delbtn);
+            this.bpnl.Location = new System.Drawing.Point(2, 0);
+            this.bpnl.Name = "bpnl";
+            this.bpnl.Size = new System.Drawing.Size(986, 42);
+            this.bpnl.TabIndex = 45;
+            this.bpnl.Visible = false;
+            // 
+            // bgworker
+            // 
+            this.bgworker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker_DoWork);
+            this.bgworker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker_RunWorkerCompleted);
+            // 
+            // formlbl
+            // 
+            this.formlbl.AutoSize = true;
+            this.formlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.formlbl.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.formlbl.Location = new System.Drawing.Point(-1, -2);
+            this.formlbl.Name = "formlbl";
+            this.formlbl.Size = new System.Drawing.Size(94, 25);
+            this.formlbl.TabIndex = 46;
+            this.formlbl.Text = "Accounts";
+            // 
+            // bgworker2
+            // 
+            this.bgworker2.WorkerSupportsCancellation = true;
+            this.bgworker2.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker2_DoWork);
+            this.bgworker2.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker2_RunWorkerCompleted);
+            // 
+            // loadingaccpic
+            // 
+            this.loadingaccpic.Image = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.loading;
+            this.loadingaccpic.Location = new System.Drawing.Point(363, 105);
+            this.loadingaccpic.Name = "loadingaccpic";
+            this.loadingaccpic.Size = new System.Drawing.Size(140, 86);
+            this.loadingaccpic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.loadingaccpic.TabIndex = 47;
+            this.loadingaccpic.TabStop = false;
+            this.loadingaccpic.Visible = false;
+            // 
+            // loadinglbl
+            // 
+            this.loadinglbl.AutoSize = true;
+            this.loadinglbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loadinglbl.Location = new System.Drawing.Point(363, 190);
+            this.loadinglbl.Name = "loadinglbl";
+            this.loadinglbl.Size = new System.Drawing.Size(140, 25);
+            this.loadinglbl.TabIndex = 48;
+            this.loadinglbl.Text = "Gathering data";
+            this.loadinglbl.Visible = false;
+            // 
+            // bgworker3
+            // 
+            this.bgworker3.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker3_DoWork);
+            this.bgworker3.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker3_RunWorkerCompleted);
+            // 
+            // bgworker4
+            // 
+            this.bgworker4.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker4_DoWork);
+            this.bgworker4.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker4_RunWorkerCompleted);
+            // 
+            // bgworker5
+            // 
+            this.bgworker5.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker5_DoWork);
+            this.bgworker5.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker5_RunWorkerCompleted);
+            // 
+            // bgworker6
+            // 
+            this.bgworker6.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker6_DoWork);
+            this.bgworker6.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker6_RunWorkerCompleted);
+            // 
+            // bgworker7
+            // 
+            this.bgworker7.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker7_DoWork);
+            this.bgworker7.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker7_RunWorkerCompleted);
+            // 
+            // bgworker8
+            // 
+            this.bgworker8.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker8_DoWork);
+            this.bgworker8.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker8_RunWorkerCompleted);
+            // 
             // accounts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1162, 722);
-            this.Controls.Add(this.rpnl);
-            this.Controls.Add(this.revbtn);
-            this.Controls.Add(this.totallbl);
-            this.Controls.Add(this.fsuptxt);
-            this.Controls.Add(this.fsuplbl);
-            this.Controls.Add(this.refresh);
-            this.Controls.Add(this.dealbtn);
-            this.Controls.Add(this.delbtn);
-            this.Controls.Add(this.billbtn);
-            this.Controls.Add(this.banklbl);
-            this.Controls.Add(this.ballbl);
-            this.Controls.Add(this.moneylbl);
-            this.Controls.Add(this.costlbl);
-            this.Controls.Add(this.updbtn);
+            this.Controls.Add(this.bpnl);
+            this.Controls.Add(this.epnl);
+            this.Controls.Add(this.uppnl);
+            this.Controls.Add(this.dpnl);
             this.Controls.Add(this.accountdataview);
-            this.Controls.Add(this.miscbtn);
-            this.Controls.Add(this.bankbtn);
-            this.Controls.Add(this.moneybtn);
-            this.Controls.Add(this.expbtn);
-            this.Controls.Add(this.exppnl);
-            this.Controls.Add(this.miscpnl);
-            this.Controls.Add(this.bankpnl);
-            this.Controls.Add(this.dealpnl);
-            this.Controls.Add(this.delpnl);
-            this.Controls.Add(this.billpnl);
-            this.Controls.Add(this.moneypnl);
+            this.Controls.Add(this.formlbl);
+            this.Controls.Add(this.loadingaccpic);
+            this.Controls.Add(this.loadinglbl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "accounts";
             this.Text = "forum";
@@ -1600,6 +1734,14 @@
             this.dealpnl.PerformLayout();
             this.rpnl.ResumeLayout(false);
             this.rpnl.PerformLayout();
+            this.dpnl.ResumeLayout(false);
+            this.dpnl.PerformLayout();
+            this.uppnl.ResumeLayout(false);
+            this.uppnl.PerformLayout();
+            this.epnl.ResumeLayout(false);
+            this.bpnl.ResumeLayout(false);
+            this.bpnl.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.loadingaccpic)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1740,5 +1882,20 @@
         private System.Windows.Forms.Label label46;
         private System.Windows.Forms.Label label48;
         private System.Windows.Forms.TextBox investbox;
+        private System.Windows.Forms.Panel dpnl;
+        private System.Windows.Forms.Panel uppnl;
+        private System.Windows.Forms.Panel epnl;
+        private System.Windows.Forms.Panel bpnl;
+        private System.ComponentModel.BackgroundWorker bgworker;
+        private System.Windows.Forms.Label formlbl;
+        private System.ComponentModel.BackgroundWorker bgworker2;
+        private System.Windows.Forms.PictureBox loadingaccpic;
+        private System.Windows.Forms.Label loadinglbl;
+        private System.ComponentModel.BackgroundWorker bgworker3;
+        private System.ComponentModel.BackgroundWorker bgworker4;
+        private System.ComponentModel.BackgroundWorker bgworker5;
+        private System.ComponentModel.BackgroundWorker bgworker6;
+        private System.ComponentModel.BackgroundWorker bgworker7;
+        private System.ComponentModel.BackgroundWorker bgworker8;
     }
 }

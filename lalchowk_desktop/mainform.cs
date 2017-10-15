@@ -24,14 +24,15 @@ namespace Veiled_Kashmir_Admin_Panel
         MySqlDataReader dr;
         BindingSource bsource, bsource2;
         string order, cost, atten;
+        PictureBox loading = new PictureBox();
 
         private container hp = null;
         public mainform(Form hpcopy)
         {
             hp = hpcopy as container;
             InitializeComponent();
-            timer.Start();
-            loadinglbl.Visible = true;
+
+            loadingnormal();
 
             bgworker.RunWorkerAsync();
             //     loadingform();
@@ -255,7 +256,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 dialogcontainer dg = new dialogcontainer();
                 expenditure exp = new expenditure(this, hp,dg);
                 exp.TopLevel = false;
-               
+                dg.Text = "Expenditure";
                 dg.dialogpnl.Controls.Add(exp);
                 exp.loadingdg();
                 
@@ -298,22 +299,25 @@ namespace Veiled_Kashmir_Admin_Panel
             if (cntpnl.Contains(placeddataview))
             {
                 Cursor = Cursors.WaitCursor;
-                accounts acc = new accounts(hp);
+                accounts acc = new accounts(hp,this);
                 acc.TopLevel = false;
                 cntpnl.Controls.Clear();
                 cntpnl.Controls.Add(acc);
-                acc.readexpenses();
+                acc.loadingnormal();
+                
                 acc.Show();
                 Cursor = Cursors.Arrow;
             }
             else
             {
-                accounts acc = new accounts(hp);
-                acc.TopLevel = false;
                 dialogcontainer dg = new dialogcontainer();
+                accounts acc = new accounts(hp,dg);
+                acc.TopLevel = false;
+                
                 dg.dialogpnl.Controls.Add(acc);
-                dg.lbl.Text = "";
-                acc.readexpenses();
+                acc.loadingdg();
+                dg.Text = "Accounts";
+                
                 dg.Show();
                 acc.Show();
             }
@@ -324,20 +328,23 @@ namespace Veiled_Kashmir_Admin_Panel
             if (cntpnl.Contains(placeddataview))
             {
                 Cursor = Cursors.WaitCursor;
-                approveprice ap = new approveprice(hp);
+                approveprice ap = new approveprice(hp,this);
                 cntpnl.Controls.Clear();
                 ap.TopLevel = false;
                 cntpnl.Controls.Add(ap);
+                ap.loadingnormal();
                 ap.Show();
                 Cursor = Cursors.Arrow;
             }
             else
             {
-                approveprice ap = new approveprice(hp);
-                ap.TopLevel = false;
                 dialogcontainer dg = new dialogcontainer();
+                approveprice ap = new approveprice(hp,dg);
+                ap.TopLevel = false;
+                
                 dg.dialogpnl.Controls.Add(ap);
-                dg.lbl.Text = "";
+                ap.loadingdg();
+                dg.Text = "Review Price";
 
                 dg.Show();
                 ap.Show();
@@ -359,25 +366,27 @@ namespace Veiled_Kashmir_Admin_Panel
         private void orderslbl_Click(object sender, EventArgs e)
         {
             Cursor = Cursors.WaitCursor;
-            ordersdetails od = new ordersdetails(hp);
+            ordersdetails od = new ordersdetails(hp,this);
             cntpnl.Controls.Clear();
             od.TopLevel = false;
-            od.readordersdelivered();
+            
             cntpnl.Controls.Add(od);
+            od.loadingnormal();
             od.Show();
+            od.bgworker1.RunWorkerAsync();
             Cursor = Cursors.Arrow;
         }
 
         private void placedlbl_Click(object sender, EventArgs e)
         {
             Cursor = Cursors.WaitCursor;
-            ordersdetails od = new ordersdetails(hp);
+            ordersdetails od = new ordersdetails(hp,this);
             od.TopLevel = false;
             cntpnl.Controls.Clear();
-            od.orderslbl.Text = "Orders Placed";
-            od.readordersplaced();
             cntpnl.Controls.Add(od);
             od.Show();
+            od.loadingnormal();
+            od.bgworker.RunWorkerAsync();
             Cursor = Cursors.Arrow;
         }
 
@@ -386,20 +395,23 @@ namespace Veiled_Kashmir_Admin_Panel
             if (cntpnl.Contains(placeddataview))
             {
                 Cursor = Cursors.WaitCursor;
-                cancelorders co = new cancelorders();
+                cancelorders co = new cancelorders(this);
                 cntpnl.Controls.Clear();
                 co.TopLevel = false;
                 cntpnl.Controls.Add(co);
+                co.loadingnormal();
                 co.Show();
                 Cursor = Cursors.Arrow;
             }
             else
             {
-                cancelorders co = new cancelorders();
-                co.TopLevel = false;
                 dialogcontainer dg = new dialogcontainer();
+                cancelorders co = new cancelorders(dg);
+                co.TopLevel = false;
+                
                 dg.dialogpnl.Controls.Add(co);
-                dg.lbl.Text = "";
+                co.loadingdg();
+                dg.Text = "Cancel Order";
 
                 dg.Show();
                 co.Show();
@@ -411,20 +423,23 @@ namespace Veiled_Kashmir_Admin_Panel
             if (cntpnl.Contains(placeddataview))
             {
                 Cursor = Cursors.WaitCursor;
-                messages msg = new messages();
+                messages msg = new messages(this);
                 cntpnl.Controls.Clear();
                 msg.TopLevel = false;
                 cntpnl.Controls.Add(msg);
+                msg.loadingnormal();
                 msg.Show();
                 Cursor = Cursors.Arrow;
             }
             else
             {
-                messages msg = new messages();
-                msg.TopLevel = false;
                 dialogcontainer dg = new dialogcontainer();
+                messages msg = new messages(dg);
+                msg.TopLevel = false;
+                
                 dg.dialogpnl.Controls.Add(msg);
-                dg.lbl.Text = "";
+                msg.loadingdg();
+                dg.Text = "User Messages";
 
                 dg.Show();
                 msg.Show();
@@ -437,20 +452,23 @@ namespace Veiled_Kashmir_Admin_Panel
             if (cntpnl.Contains(placeddataview))
             {
                 Cursor = Cursors.WaitCursor;
-                apphomepage aph = new apphomepage();
+                apphomepage aph = new apphomepage(this);
                 cntpnl.Controls.Clear();
                 aph.TopLevel = false;
                 cntpnl.Controls.Add(aph);
+                aph.loadingnormal();
                 aph.Show();
                 Cursor = Cursors.Arrow;
             }
             else
             {
-                apphomepage aph = new apphomepage();
-                aph.TopLevel = false;
                 dialogcontainer dg = new dialogcontainer();
+                apphomepage aph = new apphomepage(dg);
+                aph.TopLevel = false;
+                
                 dg.dialogpnl.Controls.Add(aph);
-                dg.lbl.Text = "";
+                aph.loadingdg();
+                dg.Text = "Edit Homepage";
 
                 dg.Show();
                 aph.Show();
@@ -462,24 +480,27 @@ namespace Veiled_Kashmir_Admin_Panel
             if (cntpnl.Contains(placeddataview))
             {
                 Cursor = Cursors.WaitCursor;
-                terms tr = new terms(hp);
+                terms tr = new terms(hp,this);
                 tr.TopLevel = false;
                 cntpnl.Controls.Clear();
-                tr.termspnl.Visible = true;
+                
                 cntpnl.Controls.Add(tr);
-                tr.readterms();
+                tr.loadingnormal();
+                
                 tr.Show();
                 Cursor = Cursors.Arrow;
             }
             else
             {
-                terms tr = new terms(hp);
-                tr.TopLevel = false;
                 dialogcontainer dg = new dialogcontainer();
+                terms tr = new terms(hp,dg);
+                tr.TopLevel = false;
+                
                 dg.dialogpnl.Controls.Add(tr);
-                dg.lbl.Text = "";
-                tr.termspnl.Visible = true;
-                tr.readterms();
+                tr.loadingdg();
+                dg.Text = "Policies";
+                
+               
                 dg.Show();
                 tr.Show();
             }
@@ -488,45 +509,60 @@ namespace Veiled_Kashmir_Admin_Panel
         private void shippedlbl_Click(object sender, EventArgs e)
         {
             Cursor = Cursors.WaitCursor;
-            ordersdetails od = new ordersdetails(hp);
+            ordersdetails od = new ordersdetails(hp,this);
             od.TopLevel = false;
             cntpnl.Controls.Clear();
             od.orderslbl.Text = "Orders Shipped";
-            od.readordershipped();
+            
             cntpnl.Controls.Add(od);
+            od.loadingnormal();
             od.Show();
+            od.bgworker2.RunWorkerAsync();
             Cursor = Cursors.Arrow;
 
 
         }
 
 
-        int numberOfPoints = 0;
-        private void timer_Tick(object sender, EventArgs e)
-        {         
-            int maxPoints = 3;
-            loadinglbl.BorderStyle = BorderStyle.FixedSingle;
-            loadinglbl.Text = "Loading" + new string('.', numberOfPoints);
-            numberOfPoints = (numberOfPoints + 1) % (maxPoints + 1);       
-    }
+        
 
         private void sendmailbtn_Click(object sender, EventArgs e)
         {
             
             Cursor = Cursors.WaitCursor;
-            promomail pm = new promomail("");
+            dialogcontainer dg = new dialogcontainer();
+            promomail pm = new promomail("",dg);
             pm.TopLevel = false;
-            pm.readlist();
+            
             pm.emaillistpnl.Visible=true;
             
-            dialogcontainer dg = new dialogcontainer();
+            
             dg.dialogpnl.Controls.Add(pm);
-            dg.lbl.Text = "";
+            pm.loadingdg();
+            
+            dg.Text = "Send Email";
 
             dg.Show();
 
             pm.Show();
             Cursor = Cursors.Arrow;
+        }
+
+
+        public void loadingnormal()
+        {
+            
+            loadinglbl.Visible = true;
+            loadingpic.Visible = true;
+            loading = new PictureBox()
+            {
+                Image = Properties.Resources.loading,
+                Size = new Size(400, 300),
+                SizeMode = PictureBoxSizeMode.StretchImage,
+                Location = new Point(400, 700),
+            };
+            this.Controls.Add(loading);
+            loadinglbl.SendToBack();
         }
 
         private void bgworker_DoWork(object sender, DoWorkEventArgs e)
@@ -536,7 +572,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void bgworker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            timer.Stop();
+            loadingpic.Visible = false;
             loadinglbl.Visible = false;
             placedh.Visible = true;
             shippedh.Visible = true;
@@ -545,6 +581,8 @@ namespace Veiled_Kashmir_Admin_Panel
            
             placeddataview.DataSource = bsource;
             shippeddataview.DataSource = bsource2;
+            placeddataview.Visible = true;
+            shippeddataview.Visible = true;
             attentionlbl.Text = "> " + atten + " Order(s) need your Attention ASAP!";
             costlbl.Text = "> Will cost Rs. " + cost + "/-";
             ordersdlbl.Text = order;

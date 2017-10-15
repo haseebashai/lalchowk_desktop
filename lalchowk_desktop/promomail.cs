@@ -28,14 +28,17 @@ namespace Veiled_Kashmir_Admin_Panel
         MySqlConnection aconn = new MySqlConnection("SERVER=182.50.133.78;DATABASE=lalchowk_ac;USER=lalchowkac;PASSWORD=Lalchowk@123uzmah");
         int i = 0, maillist, emails, j = 0,emailerrorno;
         List<string> myData = new List<string>();
+        PictureBox loading = new PictureBox();
 
-        
 
 
-        public promomail(string from)
+
+        private dialogcontainer dg = null;
+        public promomail(string from,Form dgcopy)
         {
+            dg = dgcopy as dialogcontainer;
             InitializeComponent();
-            
+            bgworker1.RunWorkerAsync();
             if (from == "")
             {
                 totxt.Text = "Enter single email here.";
@@ -46,6 +49,44 @@ namespace Veiled_Kashmir_Admin_Panel
                 totxt.Text = from;
                 totxt.Font = new Font("Microsoft Sans Serif", 10, FontStyle.Regular);
             }
+        }
+
+        private void bgworker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            readlist();
+        }
+
+        private void bgworker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            dg.loadingimage.Visible = false;
+            dg.lbl.ForeColor = SystemColors.Highlight;
+            dg.lbl.Text = "Send Email";
+            emailno.Text = maillist.ToString();
+            recno.Text = emails.ToString();
+            elistlbl.Text = "Send email to " + emails + " customers today or enter a single email ID.";
+            emaillist.DisplayMember = "mail";
+            epnl.Visible = true;
+        }
+
+        public void loadingnormal()
+        {
+           
+            loading = new PictureBox()
+            {
+                Image = Properties.Resources.loading,
+                Size = new Size(40, 30),
+                SizeMode = PictureBoxSizeMode.StretchImage,
+                Location = new Point(72, 0),
+            };
+            this.Controls.Add(loading);
+        }
+        public void loadingdg()
+        {
+            
+            dg.lbl.ForeColor = SystemColors.Highlight;
+            dg.lbl.Text = "Loading";
+            dg.loadingimage.SizeMode = PictureBoxSizeMode.StretchImage;
+            dg.loadingimage.Visible = true;
         }
 
         private void promomail_Load(object sender, EventArgs e)
@@ -76,10 +117,10 @@ namespace Veiled_Kashmir_Admin_Panel
                 dr = mycmd.ExecuteReader();
                 dr.Read();
                 maillist = int.Parse(dr[0].ToString());
-                emailno.Text = maillist.ToString();
+                
                 emails = int.Parse(dr[1].ToString());
-                recno.Text = emails.ToString();
-                elistlbl.Text= "Send email to "+emails+" customers today or enter a single email ID.";
+                
+               
                 aconn.Close();
 
                 dr = obj.Query("SELECT mail FROM customer ORDER BY id LIMIT " + emails + " OFFSET " + maillist + " ");
@@ -87,7 +128,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 dt.Columns.Add("mail", typeof(String));
                 dt.Load(dr);
                 obj.closeConnection();
-                emaillist.DisplayMember = "mail";
+                
                 emaillist.DataSource = dt;
 
             }
@@ -222,7 +263,6 @@ namespace Veiled_Kashmir_Admin_Panel
         }
 
        
-
         private void totxt_Enter(object sender, EventArgs e)
         {
 

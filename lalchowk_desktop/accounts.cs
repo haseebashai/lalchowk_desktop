@@ -21,15 +21,113 @@ namespace Veiled_Kashmir_Admin_Panel
         MySqlCommandBuilder cmdbl;
         MySqlDataAdapter adap,adap1;
         MySqlConnection aconn = new MySqlConnection("SERVER=182.50.133.78;DATABASE=lalchowk_ac;USER=lalchowkac;PASSWORD=Lalchowk@123uzmah");
-        string date, month;
+        string date, month,bal,total;
+        PictureBox loading = new PictureBox();
+        BindingSource bsource;
 
+
+        private dialogcontainer dg = null;
         private container hp = null;
-        public accounts(Form hpcopy)
+        public accounts(Form hpcopy,Form dgcopy)
         {
+            dg = dgcopy as dialogcontainer;
             hp = hpcopy as container;
             InitializeComponent();
-            readdetails();
+            bgworker.RunWorkerAsync();
             
+            
+        }
+
+        private void bgworker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            readdetails();
+            readexpenses();
+        }
+
+        private void bgworker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (ActiveForm == dg)
+            {
+                dg.loadingimage.Visible = false;
+                dg.lbl.ForeColor = SystemColors.Highlight;
+                dg.lbl.Text = "Accounts";
+
+            }
+            else
+            {
+                loading.Visible = false;
+                formlbl.Visible = false;
+                
+            }
+            accountdataview.DataSource = bsource;
+            baltxt.Text = bal;
+            btnenable();
+            bpnl.Visible = true;
+            panelshow();
+            
+        }
+        private void panelshow()
+        {
+            epnl.Visible = true;
+            accountdataview.Visible = true;
+            uppnl.Visible = true;
+            dpnl.Visible = true;
+        }
+
+        private void panelhide()
+        {
+            epnl.Visible = false;
+            accountdataview.Visible = false;
+            uppnl.Visible = false;
+            dpnl.Visible =false;
+        }
+
+        private void btndisable()
+        {
+            expbtn.Enabled = false;
+            moneybtn.Enabled = false;
+            bankbtn.Enabled = false;
+            miscbtn.Enabled = false;
+            billbtn.Enabled = false;
+            dealbtn.Enabled = false;
+            delbtn.Enabled = false;
+            revbtn.Enabled = false;
+        }
+
+        private void btnenable()
+        {
+            expbtn.Enabled = true;
+            moneybtn.Enabled = true;
+            bankbtn.Enabled = true;
+            miscbtn.Enabled = true;
+            billbtn.Enabled = true;
+            dealbtn.Enabled = true;
+            delbtn.Enabled = true;
+            revbtn.Enabled = true;
+        }
+
+        public void loadingnormal()
+        {
+            formlbl.Text = "Loading";
+           
+            loading = new PictureBox()
+            {
+                Image = Properties.Resources.loading,
+                Size = new Size(40, 30),
+                SizeMode = PictureBoxSizeMode.StretchImage,
+                Location = new Point(72, 0),
+            };
+            this.Controls.Add(loading);
+        }
+        
+
+        public void loadingdg()
+        {
+            formlbl.Visible = false;
+            dg.lbl.ForeColor = SystemColors.Highlight;
+            dg.lbl.Text = "Loading";
+            dg.loadingimage.SizeMode = PictureBoxSizeMode.StretchImage;
+            dg.loadingimage.Visible = true;
         }
 
         public void readexpenses()
@@ -39,15 +137,15 @@ namespace Veiled_Kashmir_Admin_Panel
             dt = new DataTable();
             adap.Fill(dt);
             aconn.Close();
-            BindingSource bsource = new BindingSource();
+            bsource = new BindingSource();
             bsource.DataSource = dt;
-            accountdataview.DataSource = bsource;
+           
 
             aconn.Open();
             cmd = new MySqlCommand("SELECT balance FROM lalchowk_ac.expenses order by eid desc limit 1", aconn);
             dr = cmd.ExecuteReader();
             dr.Read();
-            baltxt.Text = dr[0].ToString();
+            bal = dr[0].ToString();
             aconn.Close();
         }
 
@@ -58,9 +156,9 @@ namespace Veiled_Kashmir_Admin_Panel
             dt = new DataTable();
             adap.Fill(dt);
             aconn.Close();
-            BindingSource bsource = new BindingSource();
+            bsource = new BindingSource();
             bsource.DataSource = dt;
-            accountdataview.DataSource = bsource;
+            
         }
 
         public void readbank()
@@ -70,9 +168,9 @@ namespace Veiled_Kashmir_Admin_Panel
             dt = new DataTable();
             adap.Fill(dt);
             aconn.Close();
-            BindingSource bsource = new BindingSource();
+            bsource = new BindingSource();
             bsource.DataSource = dt;
-            accountdataview.DataSource = bsource;
+            
         }
 
         public void readmisc()
@@ -82,9 +180,9 @@ namespace Veiled_Kashmir_Admin_Panel
             dt = new DataTable();
             adap.Fill(dt);
             aconn.Close();
-            BindingSource bsource = new BindingSource();
+            bsource = new BindingSource();
             bsource.DataSource = dt;
-            accountdataview.DataSource = bsource;
+            
         }
 
         public void readbilling()
@@ -94,16 +192,16 @@ namespace Veiled_Kashmir_Admin_Panel
             dt = new DataTable();
             adap.Fill(dt);
             aconn.Close();
-            BindingSource bsource = new BindingSource();
+            bsource = new BindingSource();
             bsource.DataSource = dt;
-            accountdataview.DataSource = bsource;
+            
 
             aconn.Open();
             cmd = new MySqlCommand("select count(bid) from billing", aconn);
             dr = cmd.ExecuteReader();
             dr.Read();
-            totallbl.Text = "Total bills: " + dr[0].ToString();
-            totallbl.Visible = true;
+            total =  dr[0].ToString();
+            
             aconn.Close();
         }
 
@@ -114,16 +212,16 @@ namespace Veiled_Kashmir_Admin_Panel
             dt = new DataTable();
             adap.Fill(dt);
             aconn.Close();
-            BindingSource bsource = new BindingSource();
+            bsource = new BindingSource();
             bsource.DataSource = dt;
-            accountdataview.DataSource = bsource;
+           
 
             aconn.Open();
             cmd = new MySqlCommand("select count(did) from deliveries", aconn);
             dr = cmd.ExecuteReader();
             dr.Read();
-            totallbl.Text = "Total deliveries: " + dr[0].ToString();
-            totallbl.Visible = true;
+            total= dr[0].ToString();
+            
             aconn.Close();
         }
 
@@ -134,16 +232,16 @@ namespace Veiled_Kashmir_Admin_Panel
             dt = new DataTable();
             adap.Fill(dt);
             aconn.Close();
-            BindingSource bsource = new BindingSource();
+            bsource = new BindingSource();
             bsource.DataSource = dt;
-            accountdataview.DataSource = bsource;
+           
 
             aconn.Open();
             cmd = new MySqlCommand("select count(did) from dealing", aconn);
             dr = cmd.ExecuteReader();
             dr.Read();
-            totallbl.Text = "Total dealings: " + dr[0].ToString();
-            totallbl.Visible = true;
+            total= dr[0].ToString();
+            
             aconn.Close();
         }
 
@@ -155,18 +253,20 @@ namespace Veiled_Kashmir_Admin_Panel
             dt = new DataTable();
             adap.Fill(dt);
             aconn.Close();
-            BindingSource bsource = new BindingSource();
+            bsource = new BindingSource();
             bsource.DataSource = dt;
-            accountdataview.DataSource = bsource;
+            
 
             aconn.Open();
             cmd = new MySqlCommand("SELECT date FROM lalchowk_ac.deliveries ORDER BY did DESC LIMIT 1;", aconn);
             dr = cmd.ExecuteReader();
             dr.Read();
-            date = dr[0].ToString();
-            aconn.Close();
-            month = date.Substring(3, 2);
             
+            date = dr[0].ToString();           
+            month = date.Substring(3, 2);
+            aconn.Close();
+
+
         }
 
 
@@ -204,9 +304,11 @@ namespace Veiled_Kashmir_Admin_Panel
        
         private void expbtn_Click(object sender, EventArgs e)
         {
-            readdetails();
+            panelhide();
+            btndisable();
+            bgworker.RunWorkerAsync();
+
             
-            readexpenses();
             fsuptxt.Visible = false;
             fsuplbl.Visible = false;
             exppnl.Visible = true;
@@ -217,11 +319,32 @@ namespace Veiled_Kashmir_Admin_Panel
             totallbl.Visible = false;
         }
 
+        private void bgworker2_DoWork(object sender, DoWorkEventArgs e)
+        {
+            readmoneypool();
+        }
+
+        private void bgworker2_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            btnenable();
+            panelshow();
+            accountdataview.DataSource = bsource;
+            
+
+        }
+        private void loadingshow()
+        {
+            loadingaccpic.Visible = true;
+            loadinglbl.Visible = true;
+        }
+
         private void moneybtn_Click(object sender, EventArgs e)
         {
-            readdetails();
+            panelhide();
+            loadingshow();
+            btndisable();
+            bgworker2.RunWorkerAsync();
             
-            readmoneypool();
             fsuptxt.Visible = false;
             fsuplbl.Visible = false;
             moneypnl.Visible = true;
@@ -232,11 +355,26 @@ namespace Veiled_Kashmir_Admin_Panel
             totallbl.Visible = false;
         }
 
+        private void bgworker3_DoWork(object sender, DoWorkEventArgs e)
+        {
+            readbank();
+        }
+
+        private void bgworker3_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            btnenable();
+            panelshow();
+            accountdataview.DataSource = bsource;
+        }
+
         private void bankbtn_Click(object sender, EventArgs e)
         {
-            readdetails();
-            
-            readbank();
+
+            panelhide();
+            loadingshow();
+            btndisable();
+            bgworker3.RunWorkerAsync();
+
             fsuptxt.Visible = false;
             fsuplbl.Visible = false;
             bankpnl.Visible = true;
@@ -247,11 +385,27 @@ namespace Veiled_Kashmir_Admin_Panel
             totallbl.Visible = false;
         }
 
+
+
+        private void bgworker4_DoWork(object sender, DoWorkEventArgs e)
+        {
+            readmisc();
+        }
+
+        private void bgworker4_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            btnenable();
+            panelshow();
+            accountdataview.DataSource = bsource;
+        }
         private void miscbtn_Click(object sender, EventArgs e)
         {
-            readdetails();
-            
-            readmisc();
+
+            panelhide();
+            loadingshow();
+            btndisable();
+            bgworker4.RunWorkerAsync();
+
             fsuptxt.Visible = false;
             fsuplbl.Visible = false;
             miscpnl.Visible = true;
@@ -277,7 +431,8 @@ namespace Veiled_Kashmir_Admin_Panel
             reasontxt1.Text = "";
             
             readexpenses();
-            
+            accountdataview.DataSource = bsource;
+
         }
 
         private void addbtn_Click(object sender, EventArgs e)
@@ -292,6 +447,7 @@ namespace Veiled_Kashmir_Admin_Panel
             datetxt2.Text = "";
             reasontxt.Text = "";
             readmoneypool();
+            accountdataview.DataSource = bsource;
         }
 
         private void addmbtn_Click(object sender, EventArgs e)
@@ -305,6 +461,7 @@ namespace Veiled_Kashmir_Admin_Panel
             amounttxt4.Text = "";
             reasontxt4.Text = "";
             readmisc();
+            accountdataview.DataSource = bsource;
         }
 
         private void addbbtn_Click(object sender, EventArgs e)
@@ -319,14 +476,34 @@ namespace Veiled_Kashmir_Admin_Panel
             cbaltxt.Text = "";
             reasontxt2.Text = "";
             readbank();
+            accountdataview.DataSource = bsource;
 
         }
+
+        private void bgworker5_DoWork(object sender, DoWorkEventArgs e)
+        {
+            readbilling();
+        }
+
+        private void bgworker5_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            btnenable();
+            panelshow();
+            accountdataview.DataSource = bsource;
+            totallbl.Text = "Total bills: " + total;
+            totallbl.Visible = true;
+        }
+
 
         private void billbtn_Click(object sender, EventArgs e)
         {
 
-            readdetails();
-            readbilling();
+
+            panelhide();
+            loadingshow();
+            btndisable();
+            bgworker5.RunWorkerAsync();
+
             fsuptxt.Visible = false;
             fsuplbl.Visible = false;
             billpnl.Visible = true;
@@ -352,13 +529,31 @@ namespace Veiled_Kashmir_Admin_Panel
             utxt.Text = "";
             otxt.Text = "";
             readbilling();
+            accountdataview.DataSource = bsource;
+        }
+
+        private void bgworker6_DoWork(object sender, DoWorkEventArgs e)
+        {
+            readdeliveries();
+        }
+
+        private void bgworker6_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            btnenable();
+            panelshow();
+            accountdataview.DataSource = bsource;
+            totallbl.Text = "Total deliveries: " + total;
+            totallbl.Visible = true;
         }
 
         private void delbtn_Click(object sender, EventArgs e)
         {
-            readdetails();
 
-            readdeliveries();
+            panelhide();
+            loadingshow();
+            btndisable();
+            bgworker6.RunWorkerAsync();
+
             fsuptxt.Visible = false;
             fsuplbl.Visible = false;
             delpnl.Visible = true;
@@ -385,13 +580,30 @@ namespace Veiled_Kashmir_Admin_Panel
             stxt.Text = "";
             
             readdeliveries();
+            accountdataview.DataSource = bsource;
+        }
+
+        private void bgworker7_DoWork(object sender, DoWorkEventArgs e)
+        {
+            readdealings();
+        }
+
+        private void bgworker7_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            btnenable();
+            panelshow();
+            accountdataview.DataSource = bsource;
+            totallbl.Text = "Total dealings: " + total;
+            totallbl.Visible = true;
         }
 
         private void dealbtn_Click(object sender, EventArgs e)
         {
-            readdetails();
 
-            readdealings();
+            panelhide();
+            loadingshow();
+            btndisable();
+            bgworker7.RunWorkerAsync();
 
             fsuptxt.Visible = true;
             fsuplbl.Visible = true;
@@ -435,6 +647,7 @@ namespace Veiled_Kashmir_Admin_Panel
             paymentdatetxt.Text = "";
             commentstxt.Text = "";
             readdealings();
+            accountdataview.DataSource = bsource;
         }
 
         private void yes_CheckedChanged(object sender, EventArgs e)
@@ -475,11 +688,51 @@ namespace Veiled_Kashmir_Admin_Panel
             accountdataview.DataSource = dv;
         }
 
+        private void bgworker8_DoWork(object sender, DoWorkEventArgs e)
+        {
+            readrevenue();
+            aconn.Open();
+            cmd = new MySqlCommand(" SELECT sum(amount) from deliveries where status='delivered' and date like '%-" + month + "-%'", aconn);
+            dr = cmd.ExecuteReader();
+            dr.Read();
+            sale = dr[0].ToString();
+            aconn.Close();
+
+            aconn.Open();
+            cmd = new MySqlCommand(" SELECT sum(dealerprice) from dealing where pickupdate like '%-" + month + "-%'", aconn);
+            dr = cmd.ExecuteReader();
+            dr.Read();
+            purchase = dr[0].ToString();
+            aconn.Close();
+
+            aconn.Open();
+            cmd = new MySqlCommand(" SELECT sum(amount) from expenses where purchasedate like '%-" + month + "-%'", aconn);
+            dr = cmd.ExecuteReader();
+            dr.Read();
+            invest = dr[0].ToString();
+            aconn.Close();
+        }
+
+        private void bgworker8_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            btnenable();
+            panelshow();
+            accountdataview.DataSource = bsource;
+            salebox.Text = sale;
+            purchasebox.Text = purchase;
+            investbox.Text = invest;
+            profitbox.Text = (int.Parse(salebox.Text) - int.Parse(purchasebox.Text)).ToString();
+        }
+
+        string sale, purchase, invest;
         private void revbtn_Click(object sender, EventArgs e)
         {
-            readdetails();
 
-            readrevenue();
+            panelhide();
+            loadingshow();
+            btndisable();
+            bgworker8.RunWorkerAsync();
+
             fsuptxt.Visible = false;
             fsuplbl.Visible = false;
             rpnl.Visible = true;
@@ -534,30 +787,9 @@ namespace Veiled_Kashmir_Admin_Panel
                     monlbl.Visible = false;
                     break;
             }
-
-            aconn.Open();
-            cmd = new MySqlCommand(" SELECT sum(amount) from deliveries where status='delivered' and date like '%-"+month+"-%'", aconn);
-            dr = cmd.ExecuteReader();
-            dr.Read();
-            salebox.Text = dr[0].ToString();
-            aconn.Close();
-
-            aconn.Open();
-            cmd = new MySqlCommand(" SELECT sum(dealerprice) from dealing where pickupdate like '%-" + month + "-%'", aconn);
-            dr = cmd.ExecuteReader();
-            dr.Read();
-            purchasebox.Text = dr[0].ToString();
-            aconn.Close();
-
-            profitbox.Text = (int.Parse(salebox.Text) - int.Parse(purchasebox.Text)).ToString();
+            
 
 
-            aconn.Open();
-            cmd = new MySqlCommand(" SELECT sum(amount) from expenses where purchasedate like '%-" + month + "-%'", aconn);
-            dr = cmd.ExecuteReader();
-            dr.Read();
-            investbox.Text = dr[0].ToString();
-            aconn.Close();
         }
 
        
@@ -579,6 +811,7 @@ namespace Veiled_Kashmir_Admin_Panel
             pcosttxt.Text = "";
 
             readrevenue();
+            accountdataview.DataSource = bsource;
         }
 
 

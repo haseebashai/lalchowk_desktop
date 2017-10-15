@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.frombox = new System.Windows.Forms.ComboBox();
             this.sendbtn = new MaterialSkin.Controls.MaterialFlatButton();
@@ -53,26 +52,18 @@
             this.label6 = new System.Windows.Forms.Label();
             this.elistlbl = new System.Windows.Forms.Label();
             this.emaillist = new System.Windows.Forms.ListBox();
+            this.bgworker1 = new System.ComponentModel.BackgroundWorker();
+            this.epnl = new System.Windows.Forms.Panel();
             this.emaillistpnl.SuspendLayout();
+            this.epnl.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(209, 24);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Send promotional email";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label5.Location = new System.Drawing.Point(537, 567);
+            this.label5.Location = new System.Drawing.Point(545, 553);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(77, 16);
             this.label5.TabIndex = 75;
@@ -81,7 +72,7 @@
             // frombox
             // 
             this.frombox.FormattingEnabled = true;
-            this.frombox.Location = new System.Drawing.Point(620, 562);
+            this.frombox.Location = new System.Drawing.Point(628, 548);
             this.frombox.Name = "frombox";
             this.frombox.Size = new System.Drawing.Size(191, 21);
             this.frombox.TabIndex = 74;
@@ -92,7 +83,7 @@
             this.sendbtn.AutoSize = true;
             this.sendbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.sendbtn.Depth = 0;
-            this.sendbtn.Location = new System.Drawing.Point(846, 553);
+            this.sendbtn.Location = new System.Drawing.Point(854, 539);
             this.sendbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.sendbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.sendbtn.Name = "sendbtn";
@@ -108,7 +99,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(339, 186);
+            this.label4.Location = new System.Drawing.Point(347, 172);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(40, 16);
             this.label4.TabIndex = 72;
@@ -117,7 +108,7 @@
             // bodytxt
             // 
             this.bodytxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bodytxt.Location = new System.Drawing.Point(342, 208);
+            this.bodytxt.Location = new System.Drawing.Point(350, 194);
             this.bodytxt.Multiline = true;
             this.bodytxt.Name = "bodytxt";
             this.bodytxt.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
@@ -129,7 +120,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(339, 131);
+            this.label3.Location = new System.Drawing.Point(347, 117);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 16);
             this.label3.TabIndex = 70;
@@ -137,7 +128,7 @@
             // 
             // subtxt
             // 
-            this.subtxt.Location = new System.Drawing.Point(342, 153);
+            this.subtxt.Location = new System.Drawing.Point(350, 139);
             this.subtxt.Name = "subtxt";
             this.subtxt.Size = new System.Drawing.Size(587, 20);
             this.subtxt.TabIndex = 69;
@@ -147,7 +138,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(339, 75);
+            this.label2.Location = new System.Drawing.Point(347, 61);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(25, 16);
             this.label2.TabIndex = 79;
@@ -156,7 +147,7 @@
             // totxt
             // 
             this.totxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totxt.Location = new System.Drawing.Point(342, 97);
+            this.totxt.Location = new System.Drawing.Point(350, 83);
             this.totxt.Name = "totxt";
             this.totxt.Size = new System.Drawing.Size(587, 20);
             this.totxt.TabIndex = 78;
@@ -173,7 +164,7 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(342, 623);
+            this.progressBar1.Location = new System.Drawing.Point(350, 609);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(587, 20);
             this.progressBar1.Step = 1;
@@ -185,7 +176,7 @@
             this.tolbl.AutoSize = true;
             this.tolbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tolbl.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.tolbl.Location = new System.Drawing.Point(339, 647);
+            this.tolbl.Location = new System.Drawing.Point(347, 633);
             this.tolbl.Name = "tolbl";
             this.tolbl.Size = new System.Drawing.Size(0, 16);
             this.tolbl.TabIndex = 81;
@@ -200,7 +191,7 @@
             this.sendinglbl.AutoSize = true;
             this.sendinglbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sendinglbl.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.sendinglbl.Location = new System.Drawing.Point(339, 604);
+            this.sendinglbl.Location = new System.Drawing.Point(347, 590);
             this.sendinglbl.Name = "sendinglbl";
             this.sendinglbl.Size = new System.Drawing.Size(0, 16);
             this.sendinglbl.TabIndex = 82;
@@ -215,7 +206,7 @@
             this.emaillistpnl.Controls.Add(this.label6);
             this.emaillistpnl.Controls.Add(this.elistlbl);
             this.emaillistpnl.Controls.Add(this.emaillist);
-            this.emaillistpnl.Location = new System.Drawing.Point(4, 27);
+            this.emaillistpnl.Location = new System.Drawing.Point(12, 13);
             this.emaillistpnl.Name = "emaillistpnl";
             this.emaillistpnl.Size = new System.Drawing.Size(312, 516);
             this.emaillistpnl.TabIndex = 86;
@@ -310,26 +301,39 @@
             this.emaillist.Size = new System.Drawing.Size(298, 407);
             this.emaillist.TabIndex = 86;
             // 
+            // bgworker1
+            // 
+            this.bgworker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker1_DoWork);
+            this.bgworker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker1_RunWorkerCompleted);
+            // 
+            // epnl
+            // 
+            this.epnl.Controls.Add(this.emaillistpnl);
+            this.epnl.Controls.Add(this.subtxt);
+            this.epnl.Controls.Add(this.sendinglbl);
+            this.epnl.Controls.Add(this.label3);
+            this.epnl.Controls.Add(this.tolbl);
+            this.epnl.Controls.Add(this.bodytxt);
+            this.epnl.Controls.Add(this.progressBar1);
+            this.epnl.Controls.Add(this.label4);
+            this.epnl.Controls.Add(this.label2);
+            this.epnl.Controls.Add(this.sendbtn);
+            this.epnl.Controls.Add(this.totxt);
+            this.epnl.Controls.Add(this.frombox);
+            this.epnl.Controls.Add(this.label5);
+            this.epnl.Location = new System.Drawing.Point(0, 1);
+            this.epnl.Name = "epnl";
+            this.epnl.Size = new System.Drawing.Size(1029, 709);
+            this.epnl.TabIndex = 87;
+            this.epnl.Visible = false;
+            // 
             // promomail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1162, 722);
-            this.Controls.Add(this.emaillistpnl);
-            this.Controls.Add(this.sendinglbl);
-            this.Controls.Add(this.tolbl);
-            this.Controls.Add(this.progressBar1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.totxt);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.frombox);
-            this.Controls.Add(this.sendbtn);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.bodytxt);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.subtxt);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.epnl);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "promomail";
@@ -337,8 +341,9 @@
             this.Load += new System.EventHandler(this.promomail_Load);
             this.emaillistpnl.ResumeLayout(false);
             this.emaillistpnl.PerformLayout();
+            this.epnl.ResumeLayout(false);
+            this.epnl.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -354,7 +359,6 @@
         private System.Windows.Forms.TextBox totxt;
         private System.ComponentModel.BackgroundWorker bgworker;
         private System.Windows.Forms.ProgressBar progressBar1;
-        public System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label tolbl;
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.Label sendinglbl;
@@ -367,5 +371,7 @@
         private System.Windows.Forms.TextBox recno;
         public System.Windows.Forms.Label label7;
         public System.Windows.Forms.Panel emaillistpnl;
+        public System.ComponentModel.BackgroundWorker bgworker1;
+        public System.Windows.Forms.Panel epnl;
     }
 }

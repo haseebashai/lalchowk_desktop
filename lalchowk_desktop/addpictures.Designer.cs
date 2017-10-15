@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.picdialog = new System.Windows.Forms.OpenFileDialog();
             this.updbtn = new System.Windows.Forms.Button();
             this.addbtn = new System.Windows.Forms.Button();
@@ -42,9 +42,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.gridtxt = new System.Windows.Forms.TextBox();
             this.ppnl = new System.Windows.Forms.Panel();
+            this.dp = new System.Windows.Forms.PictureBox();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.bgworker = new System.ComponentModel.BackgroundWorker();
-            this.dp = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.picturesdataview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic)).BeginInit();
             this.ppnl.SuspendLayout();
@@ -82,14 +82,14 @@
             this.picturesdataview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.picturesdataview.BackgroundColor = System.Drawing.Color.White;
             this.picturesdataview.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.picturesdataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.picturesdataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.picturesdataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.picturesdataview.GridColor = System.Drawing.SystemColors.Control;
             this.picturesdataview.Location = new System.Drawing.Point(3, 30);
@@ -144,7 +144,7 @@
             // 
             this.delbtn.Location = new System.Drawing.Point(3, 521);
             this.delbtn.Name = "delbtn";
-            this.delbtn.Size = new System.Drawing.Size(125, 23);
+            this.delbtn.Size = new System.Drawing.Size(51, 23);
             this.delbtn.TabIndex = 91;
             this.delbtn.Text = "Delete";
             this.delbtn.UseVisualStyleBackColor = true;
@@ -186,6 +186,15 @@
             this.ppnl.TabIndex = 94;
             this.ppnl.Visible = false;
             // 
+            // dp
+            // 
+            this.dp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.dp.Location = new System.Drawing.Point(583, 30);
+            this.dp.Name = "dp";
+            this.dp.Size = new System.Drawing.Size(186, 217);
+            this.dp.TabIndex = 94;
+            this.dp.TabStop = false;
+            // 
             // timer
             // 
             this.timer.Interval = 600;
@@ -195,15 +204,6 @@
             // 
             this.bgworker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker_DoWork);
             this.bgworker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker_RunWorkerCompleted);
-            // 
-            // dp
-            // 
-            this.dp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.dp.Location = new System.Drawing.Point(583, 30);
-            this.dp.Name = "dp";
-            this.dp.Size = new System.Drawing.Size(186, 217);
-            this.dp.TabIndex = 94;
-            this.dp.TabStop = false;
             // 
             // addpictures
             // 

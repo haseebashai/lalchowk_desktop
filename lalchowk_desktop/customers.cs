@@ -139,13 +139,15 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void mailbtn_Click(object sender, EventArgs e)
         {
-            promomail pm = new promomail(emaillbl.Text);
-            pm.TopLevel = false;
-            pm.label1.Text = "Send Mail";
-            pm.elistlbl.Text = "";
             dialogcontainer dg = new dialogcontainer();
+            promomail pm = new promomail(emaillbl.Text,dg);
+            pm.TopLevel = false;
+            pm.epnl.Location = new Point(-70, 1);
+            pm.elistlbl.Text = "";
+            
             dg.dialogpnl.Controls.Add(pm);
-            dg.lbl.Text = "";
+            pm.loadingdg();
+            dg.Text = "Send Email";
 
             dg.Show();
 
@@ -312,6 +314,7 @@ namespace Veiled_Kashmir_Admin_Panel
         private void notbtn_Click(object sender, EventArgs e)
         {
             notification nf = new notification(email,emaillbl.Text);
+            nf.loadingnormal();
             nf.ShowDialog();
         }
 

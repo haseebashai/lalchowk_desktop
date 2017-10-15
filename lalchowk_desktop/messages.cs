@@ -17,10 +17,17 @@ namespace Veiled_Kashmir_Admin_Panel
         DBConnect obj = new DBConnect();
         MySqlDataReader dr;
         DataTable dt;
+        PictureBox loading = new PictureBox();
+        BindingSource bsource;
 
-        public messages()
+
+        private dialogcontainer dg = null;
+
+        public messages(Form dgcopy)
         {
+            dg = dgcopy as dialogcontainer;
             InitializeComponent();
+            bgworker.RunWorkerAsync();
         }
 
         private void readmsgs()
@@ -29,15 +36,11 @@ namespace Veiled_Kashmir_Admin_Panel
             dt = new DataTable();
             dt.Load(dr);
             obj.closeConnection();
-            BindingSource bsource = new BindingSource();
+            bsource = new BindingSource();
             bsource.DataSource = dt;
-            messagesdataview.DataSource = bsource;
+           
         }
 
-        private void messages_Load(object sender, EventArgs e)
-        {
-            readmsgs();
-        }
 
         private void messagesdataview_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -61,6 +64,53 @@ namespace Veiled_Kashmir_Admin_Panel
             mail ml = new mail(emaillbl.Text,sublbl.Text,msgtxt.Text,midlbl.Text);
             ml.ShowDialog();
             readmsgs();
+            messagesdataview.DataSource = bsource;
         }
+
+        private void bgworker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            readmsgs();
+        }
+
+        private void bgworker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (ActiveForm == dg)
+            {
+                dg.loadingimage.Visible = false;
+                dg.lbl.ForeColor = SystemColors.Highlight;
+                dg.lbl.Text = "User Messages";
+
+            }
+            else
+            {
+                loading.Visible = false;
+                formlbl.Text="User Messages";
+                formlbl.BringToFront();
+            }
+            messagesdataview.DataSource = bsource;
+            msgpnl.Visible = true;
+        }
+        public void loadingnormal()
+        {
+            formlbl.Text = "Loading";
+
+            loading = new PictureBox()
+            {
+                Image = Properties.Resources.loading,
+                Size = new Size(40, 30),
+                SizeMode = PictureBoxSizeMode.StretchImage,
+                Location = new Point(72, 0),
+            };
+            this.Controls.Add(loading);
+        }
+        public void loadingdg()
+        {
+            formlbl.Visible = false;
+            dg.lbl.ForeColor = SystemColors.Highlight;
+            dg.lbl.Text = "Loading";
+            dg.loadingimage.SizeMode = PictureBoxSizeMode.StretchImage;
+            dg.loadingimage.Visible = true;
+        }
+
     }
 }

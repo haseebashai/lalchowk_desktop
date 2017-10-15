@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -66,9 +65,9 @@
             this.placeddataview = new System.Windows.Forms.DataGridView();
             this.placedh = new System.Windows.Forms.Label();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
-            this.timer = new System.Windows.Forms.Timer(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.attention = new System.Windows.Forms.PictureBox();
+            this.loadingpic = new System.Windows.Forms.PictureBox();
             this.navpnl.SuspendLayout();
             this.navtitle.SuspendLayout();
             this.cntpnl.SuspendLayout();
@@ -76,6 +75,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.placeddataview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.attention)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.loadingpic)).BeginInit();
             this.SuspendLayout();
             // 
             // signoutlbl
@@ -346,7 +346,6 @@
             // cntpnl
             // 
             this.cntpnl.BackColor = System.Drawing.Color.White;
-            this.cntpnl.Controls.Add(this.loadinglbl);
             this.cntpnl.Controls.Add(this.shippedlbl);
             this.cntpnl.Controls.Add(this.placedlbl);
             this.cntpnl.Controls.Add(this.attention);
@@ -359,6 +358,8 @@
             this.cntpnl.Controls.Add(this.shippedh);
             this.cntpnl.Controls.Add(this.placeddataview);
             this.cntpnl.Controls.Add(this.placedh);
+            this.cntpnl.Controls.Add(this.loadingpic);
+            this.cntpnl.Controls.Add(this.loadinglbl);
             this.cntpnl.Location = new System.Drawing.Point(201, 1);
             this.cntpnl.Name = "cntpnl";
             this.cntpnl.Size = new System.Drawing.Size(1162, 722);
@@ -367,12 +368,13 @@
             // loadinglbl
             // 
             this.loadinglbl.AutoSize = true;
-            this.loadinglbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loadinglbl.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.loadinglbl.Location = new System.Drawing.Point(412, 263);
+            this.loadinglbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loadinglbl.ForeColor = System.Drawing.Color.Black;
+            this.loadinglbl.Location = new System.Drawing.Point(432, 292);
             this.loadinglbl.Name = "loadinglbl";
-            this.loadinglbl.Size = new System.Drawing.Size(0, 31);
+            this.loadinglbl.Size = new System.Drawing.Size(101, 25);
             this.loadinglbl.TabIndex = 42;
+            this.loadinglbl.Text = "LOADING";
             this.loadinglbl.Visible = false;
             // 
             // shippedlbl
@@ -475,7 +477,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.shippeddataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.shippeddataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.shippeddataview.Location = new System.Drawing.Point(5, 296);
+            this.shippeddataview.Location = new System.Drawing.Point(5, 299);
             this.shippeddataview.Name = "shippeddataview";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
@@ -487,8 +489,9 @@
             this.shippeddataview.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.shippeddataview.RowHeadersVisible = false;
             this.shippeddataview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.shippeddataview.Size = new System.Drawing.Size(1145, 155);
+            this.shippeddataview.Size = new System.Drawing.Size(1145, 152);
             this.shippeddataview.TabIndex = 33;
+            this.shippeddataview.Visible = false;
             // 
             // shippedh
             // 
@@ -530,8 +533,9 @@
             this.placeddataview.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.placeddataview.RowHeadersVisible = false;
             this.placeddataview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.placeddataview.Size = new System.Drawing.Size(1145, 228);
+            this.placeddataview.Size = new System.Drawing.Size(1145, 223);
             this.placeddataview.TabIndex = 31;
+            this.placeddataview.Visible = false;
             // 
             // placedh
             // 
@@ -549,11 +553,6 @@
             // 
             this.bgworker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker_DoWork);
             this.bgworker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker_RunWorkerCompleted);
-            // 
-            // timer
-            // 
-            this.timer.Interval = 600;
-            this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
             // pictureBox1
             // 
@@ -576,6 +575,17 @@
             this.attention.TabIndex = 39;
             this.attention.TabStop = false;
             this.attention.Visible = false;
+            // 
+            // loadingpic
+            // 
+            this.loadingpic.Image = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.loader;
+            this.loadingpic.Location = new System.Drawing.Point(378, 190);
+            this.loadingpic.Name = "loadingpic";
+            this.loadingpic.Size = new System.Drawing.Size(205, 103);
+            this.loadingpic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.loadingpic.TabIndex = 43;
+            this.loadingpic.TabStop = false;
+            this.loadingpic.Visible = false;
             // 
             // mainform
             // 
@@ -600,6 +610,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.placeddataview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.attention)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.loadingpic)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -639,6 +650,6 @@
         private MaterialSkin.Controls.MaterialFlatButton sendmailbtn;
         private System.ComponentModel.BackgroundWorker bgworker;
         private System.Windows.Forms.Label loadinglbl;
-        private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.PictureBox loadingpic;
     }
 }

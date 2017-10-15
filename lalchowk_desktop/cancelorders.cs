@@ -18,13 +18,61 @@ namespace Veiled_Kashmir_Admin_Panel
         MySqlDataReader dr;
         DataTable dt, dt1, dt2, dt3;
         string cmd;
+        PictureBox loading = new PictureBox();
+        BindingSource bsource;
 
-       
 
-        public cancelorders()
+        private dialogcontainer dg = null;
+        public cancelorders(Form dgcopy)
         {
+            dg = dgcopy as dialogcontainer;
             InitializeComponent();
+            bgworker.RunWorkerAsync();
+        }
+
+        private void bgworker_DoWork(object sender, DoWorkEventArgs e)
+        {
             readorders();
+        }
+
+        private void bgworker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (ActiveForm == dg)
+            {
+                dg.loadingimage.Visible = false;
+                dg.lbl.ForeColor = SystemColors.Highlight;
+                dg.lbl.Text = "Cancel Order";
+
+            }
+            else
+            {
+                loading.Visible = false;
+                formlbl.Visible = true;
+                formlbl.BringToFront();
+            }
+            ordergridview.DataSource = bsource;
+            cpnl.Visible = true;
+        }
+        public void loadingnormal()
+        {
+            formlbl.Text = "Loading";
+
+            loading = new PictureBox()
+            {
+                Image = Properties.Resources.loading,
+                Size = new Size(40, 30),
+                SizeMode = PictureBoxSizeMode.StretchImage,
+                Location = new Point(72, 0),
+            };
+            this.Controls.Add(loading);
+        }
+        public void loadingdg()
+        {
+            formlbl.Visible = false;
+            dg.lbl.ForeColor = SystemColors.Highlight;
+            dg.lbl.Text = "Loading";
+            dg.loadingimage.SizeMode = PictureBoxSizeMode.StretchImage;
+            dg.loadingimage.Visible = true;
         }
 
         private void readorders()
@@ -34,10 +82,10 @@ namespace Veiled_Kashmir_Admin_Panel
             dt = new DataTable();
             dt.Load(dr);
             obj.closeConnection();
-            BindingSource bsource = new BindingSource();
+            bsource = new BindingSource();
 
             bsource.DataSource = dt;
-            ordergridview.DataSource = bsource;
+            
 
         }
 
@@ -65,11 +113,18 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void apbtn_Click(object sender, EventArgs e)
         {
-            cmd = "Update orders set status='Cancelled' where orderid='" + oidlbl.Text + "'";
-            obj.nonQuery(cmd);
-            cmd = "Update products set stock=stock+1 where productid in(SELECT productid FROM lalchowk.orderdetails where orderid in (select orderid from lalchowk.orders where orderid='" + oidlbl.Text + "'))";
-            obj.nonQuery(cmd);
-            MessageBox.Show("Order cancelled.");
+            try
+            {
+                cmd = "Update orders set status='Cancelled' where orderid='" + oidlbl.Text + "'";
+                obj.nonQuery(cmd);
+                cmd = "Update products set stock=stock+1 where productid in(SELECT productid FROM lalchowk.orderdetails where orderid in (select orderid from lalchowk.orders where orderid='" + oidlbl.Text + "'))";
+                obj.nonQuery(cmd);
+                MessageBox.Show("Order cancelled.");
+            }
+            catch (Exception)
+            {
+
+            }
             readorders();
             apnl.Visible = false;
         }

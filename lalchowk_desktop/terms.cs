@@ -22,12 +22,65 @@ namespace Veiled_Kashmir_Admin_Panel
         MySqlDataAdapter adap;
         DataTable dt;
         MySqlCommandBuilder cmdbl;
+        BindingSource bsource;
+        PictureBox loading = new PictureBox();
+
+        private dialogcontainer dg = null;
         private container hp = null;
-        public terms(Form hpcopy)
+        public terms(Form hpcopy,Form dgcopy)
         {
+            dg = dgcopy as dialogcontainer;
             hp = hpcopy as container;
             InitializeComponent();
+            bgterms.RunWorkerAsync();
+        }
+
+        public void loadingnormal()
+        {
+            formlbl.Text = "Loading";
+
+            loading = new PictureBox()
+            {
+                Image = Properties.Resources.loading,
+                Size = new Size(40, 30),
+                SizeMode = PictureBoxSizeMode.StretchImage,
+                Location = new Point(72, 0),
+            };
+            this.Controls.Add(loading);
+        }
+        public void loadingdg()
+        {
+            formlbl.Visible = false;
+            dg.lbl.ForeColor = SystemColors.Highlight;
+            dg.lbl.Text = "Loading";
+            dg.loadingimage.SizeMode = PictureBoxSizeMode.StretchImage;
+            dg.loadingimage.Visible = true;
+        }
+
+        private void bgterms_DoWork(object sender, DoWorkEventArgs e)
+        {
             readterms();
+        }
+
+        private void bgterms_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (ActiveForm == dg)
+            {
+                dg.loadingimage.Visible = false;
+                dg.lbl.ForeColor = SystemColors.Highlight;
+                dg.lbl.Text = "Policies";
+
+            }
+            else
+            {
+                loading.Visible = false;
+                formlbl.Text = "Policies";
+                formlbl.Visible = true;
+            }
+            termsdataview.DataSource = bsource;
+            bpnl.Visible = true;
+            ppnl.Visible = true;
+            bpnl.Enabled = true;
         }
 
         public void readterms()
@@ -37,9 +90,9 @@ namespace Veiled_Kashmir_Admin_Panel
             dt = new DataTable();
             adap.Fill(dt);
             con.Close();
-            BindingSource bsource = new BindingSource();
+            bsource = new BindingSource();
             bsource.DataSource = dt;
-            termsdataview.DataSource = bsource;
+            
         }
 
         public void readfaq()
@@ -49,9 +102,9 @@ namespace Veiled_Kashmir_Admin_Panel
             dt = new DataTable();
             adap.Fill(dt);
             con.Close();
-            BindingSource bsource = new BindingSource();
+            bsource = new BindingSource();
             bsource.DataSource = dt;
-            faqdataview.DataSource = bsource;
+            
         }
 
         public void readabout()
@@ -61,9 +114,9 @@ namespace Veiled_Kashmir_Admin_Panel
             dt = new DataTable();
             adap.Fill(dt);
             con.Close();
-            BindingSource bsource = new BindingSource();
+            bsource = new BindingSource();
             bsource.DataSource = dt;
-            aboutdataview.DataSource = bsource;
+            
         }
 
         private void termsdataview_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -95,7 +148,8 @@ namespace Veiled_Kashmir_Admin_Panel
                      obj.nonQuery(cmd);
 
                     MessageBox.Show("Successfully Updated.");
-                    // readterms();
+                    readterms();
+                    termsdataview.DataSource = bsource;
                 }
 
             }
@@ -136,7 +190,8 @@ namespace Veiled_Kashmir_Admin_Panel
                     obj.nonQuery(cmd);
 
                     MessageBox.Show("Successfully Updated.");
-                    // readfaq();
+                    readfaq();
+                    faqdataview.DataSource = bsource;
                 }
 
             }
@@ -177,7 +232,9 @@ namespace Veiled_Kashmir_Admin_Panel
                     obj.nonQuery(cmd);
 
                     MessageBox.Show("Successfully Updated.");
-                    // readfaq();
+                    readabout();
+                    aboutdataview.DataSource = bsource;
+
                 }
 
             }
@@ -187,30 +244,126 @@ namespace Veiled_Kashmir_Admin_Panel
             }
         }
 
+        private void loadingshow()
+        {
+            loadinglbl.Visible = true;
+            loadingpic.Visible = true;
+        }
         
-
         private void termsbtn_Click(object sender, EventArgs e)
         {
+            loadingshow();
+            bpnl.Enabled = false;
+            ppnl.Visible = false;
+            bgterms.RunWorkerAsync();
             termspnl.Visible = true;
             faqpnl.Visible = false;
             aboutpnl.Visible = false;
-            readterms();
+            
+            
+            
+        }
+        private void bgfaq_DoWork(object sender, DoWorkEventArgs e)
+        {
+            readfaq();
+        }
+
+        private void bgfaq_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            faqdataview.DataSource = bsource;
+            bpnl.Visible = true;
+            ppnl.Visible = true;
+            bpnl.Enabled = true;
         }
 
         private void faqbtn_Click(object sender, EventArgs e)
         {
+            loadingshow();
+            bpnl.Enabled = false;
+            ppnl.Visible = false;
+            bgfaq.RunWorkerAsync();
             termspnl.Visible = false;
             faqpnl.Visible = true;
             aboutpnl.Visible = false;
-            readfaq();
+            
         }
 
         private void aboutbtn_Click(object sender, EventArgs e)
         {
+            loadingshow();
+            bpnl.Enabled = false;
+            ppnl.Visible = false;
+            bgabout.RunWorkerAsync();
             termspnl.Visible = false;
             faqpnl.Visible = false;
             aboutpnl.Visible = true;
+            
+        }
+
+        private void bgabout_DoWork(object sender, DoWorkEventArgs e)
+        {
             readabout();
         }
+
+        private void bgabout_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            aboutdataview.DataSource = bsource;
+            bpnl.Visible = true;
+            ppnl.Visible = true;
+            bpnl.Enabled = true;
+        }
+
+        private void addtbtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                cmdbl = new MySqlCommandBuilder(adap);
+                adap.Update(dt);
+                MessageBox.Show("Terms entry added.");
+                readterms();
+                termsdataview.DataSource = bsource;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void addfaqbtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                cmdbl = new MySqlCommandBuilder(adap);
+                adap.Update(dt);
+                MessageBox.Show("FAQ entry added.");
+                readfaq();
+                faqdataview.DataSource = bsource;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void addabtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                cmdbl = new MySqlCommandBuilder(adap);
+                adap.Update(dt);
+                MessageBox.Show("About entry added.");
+                readabout();
+                aboutdataview.DataSource = bsource;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+       
     }
 }
