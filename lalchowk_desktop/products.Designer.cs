@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.tplbl = new System.Windows.Forms.Label();
             this.eleclbl = new System.Windows.Forms.Label();
             this.clothlbl = new System.Windows.Forms.Label();
@@ -41,7 +40,6 @@
             this.booklbl = new System.Windows.Forms.Label();
             this.ppnl = new System.Windows.Forms.Panel();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
-            this.timer = new System.Windows.Forms.Timer(this.components);
             this.addpics = new MaterialSkin.Controls.MaterialFlatButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.viewpbtn = new MaterialSkin.Controls.MaterialFlatButton();
@@ -49,7 +47,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.newbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.chkbtn = new MaterialSkin.Controls.MaterialFlatButton();
-            this.loadinglbl = new System.Windows.Forms.Label();
+            this.formlbl = new System.Windows.Forms.Label();
             this.ppnl.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -177,11 +175,6 @@
             this.bgworker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker_DoWork);
             this.bgworker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker_RunWorkerCompleted);
             // 
-            // timer
-            // 
-            this.timer.Interval = 600;
-            this.timer.Tick += new System.EventHandler(this.timer_Tick);
-            // 
             // addpics
             // 
             this.addpics.AutoSize = true;
@@ -270,16 +263,17 @@
             this.chkbtn.UseVisualStyleBackColor = true;
             this.chkbtn.Click += new System.EventHandler(this.chkbtn_Click);
             // 
-            // loadinglbl
+            // formlbl
             // 
-            this.loadinglbl.AutoSize = true;
-            this.loadinglbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loadinglbl.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.loadinglbl.Location = new System.Drawing.Point(12, 305);
-            this.loadinglbl.Name = "loadinglbl";
-            this.loadinglbl.Size = new System.Drawing.Size(0, 25);
-            this.loadinglbl.TabIndex = 32;
-            this.loadinglbl.Visible = false;
+            this.formlbl.AutoSize = true;
+            this.formlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.formlbl.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.formlbl.Location = new System.Drawing.Point(12, 305);
+            this.formlbl.Name = "formlbl";
+            this.formlbl.Size = new System.Drawing.Size(82, 25);
+            this.formlbl.TabIndex = 32;
+            this.formlbl.Text = "Loading";
+            this.formlbl.Visible = false;
             // 
             // products
             // 
@@ -287,7 +281,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1162, 722);
-            this.Controls.Add(this.loadinglbl);
+            this.Controls.Add(this.formlbl);
             this.Controls.Add(this.chkbtn);
             this.Controls.Add(this.ppnl);
             this.Controls.Add(this.label1);
@@ -320,7 +314,6 @@
         private System.Windows.Forms.Label booklbl;
         private System.Windows.Forms.Panel ppnl;
         private System.ComponentModel.BackgroundWorker bgworker;
-        private System.Windows.Forms.Timer timer;
         private MaterialSkin.Controls.MaterialFlatButton addpics;
         private System.Windows.Forms.Panel panel2;
         private MaterialSkin.Controls.MaterialFlatButton viewpbtn;
@@ -328,6 +321,6 @@
         private System.Windows.Forms.Panel panel3;
         private MaterialSkin.Controls.MaterialFlatButton newbtn;
         private MaterialSkin.Controls.MaterialFlatButton chkbtn;
-        private System.Windows.Forms.Label loadinglbl;
+        private System.Windows.Forms.Label formlbl;
     }
 }

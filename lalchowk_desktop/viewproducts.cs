@@ -26,8 +26,8 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             dg = dgcopy as dialogcontainer;
             InitializeComponent();
-            
-            timer.Start();
+
+            loadingdg();
             bgworker.RunWorkerAsync();
             
         }
@@ -79,15 +79,16 @@ namespace Veiled_Kashmir_Admin_Panel
             productsdataview.DataSource = dv;
         }
 
-        int numberOfPoints = 0;
-        private void timer_Tick(object sender, EventArgs e)
+        public void loadingdg()
         {
-            int maxPoints = 5;
-            dg.lbl.BorderStyle = BorderStyle.FixedSingle;
-            dg.lbl.ForeColor = System.Drawing.Color.Red;
-            dg.lbl.Text = "Loading" + new string('.', numberOfPoints);
-            numberOfPoints = (numberOfPoints + 1) % (maxPoints + 1);
+
+            dg.lbl.ForeColor = SystemColors.Highlight;
+            dg.lbl.Text = "Loading";
+            dg.loadingimage.SizeMode = PictureBoxSizeMode.StretchImage;
+            dg.loadingimage.Visible = true;
         }
+
+
 
         private void bgworker_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -96,11 +97,10 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void bgworker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            timer.Stop();
             productsdataview.DataSource = bsource;
             ppnl.Visible = true;
 
-            dg.lbl.BorderStyle = BorderStyle.None;
+            dg.loadingimage.Visible = false;
             dg.lbl.ForeColor = SystemColors.Highlight;
             dg.lbl.Text = "View Products";
         }

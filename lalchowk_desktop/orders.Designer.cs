@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.delbtn = new System.Windows.Forms.Button();
             this.orlbl = new System.Windows.Forms.Label();
@@ -40,6 +39,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.emailtxt = new System.Windows.Forms.TextBox();
             this.orderpnl = new System.Windows.Forms.Panel();
+            this.formlbl = new System.Windows.Forms.Label();
             this.dpnl = new System.Windows.Forms.Panel();
             this.con = new System.Windows.Forms.Label();
             this.billbtn = new System.Windows.Forms.Button();
@@ -68,8 +68,6 @@
             this.orderdetailview = new System.Windows.Forms.DataGridView();
             this.ordergridview = new System.Windows.Forms.DataGridView();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
-            this.loadinglbl = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.orderpnl.SuspendLayout();
             this.dpnl.SuspendLayout();
@@ -88,7 +86,7 @@
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.emailtxt);
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Location = new System.Drawing.Point(2, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1162, 49);
             this.panel1.TabIndex = 0;
@@ -179,7 +177,6 @@
             // 
             // orderpnl
             // 
-            this.orderpnl.Controls.Add(this.loadinglbl);
             this.orderpnl.Controls.Add(this.dpnl);
             this.orderpnl.Controls.Add(this.orderdetailview);
             this.orderpnl.Controls.Add(this.ordergridview);
@@ -187,6 +184,19 @@
             this.orderpnl.Name = "orderpnl";
             this.orderpnl.Size = new System.Drawing.Size(1162, 671);
             this.orderpnl.TabIndex = 1;
+            // 
+            // formlbl
+            // 
+            this.formlbl.AutoSize = true;
+            this.formlbl.BackColor = System.Drawing.Color.Transparent;
+            this.formlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.formlbl.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.formlbl.Location = new System.Drawing.Point(-2, -1);
+            this.formlbl.Name = "formlbl";
+            this.formlbl.Size = new System.Drawing.Size(72, 25);
+            this.formlbl.TabIndex = 14;
+            this.formlbl.Text = "Orders";
+            this.formlbl.Visible = false;
             // 
             // dpnl
             // 
@@ -274,11 +284,11 @@
             // orderlbl
             // 
             this.orderlbl.AutoSize = true;
-            this.orderlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.orderlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.orderlbl.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.orderlbl.Location = new System.Drawing.Point(9, 38);
+            this.orderlbl.Location = new System.Drawing.Point(15, 33);
             this.orderlbl.Name = "orderlbl";
-            this.orderlbl.Size = new System.Drawing.Size(63, 29);
+            this.orderlbl.Size = new System.Drawing.Size(43, 20);
             this.orderlbl.TabIndex = 3;
             this.orderlbl.Text = "OrID";
             // 
@@ -488,23 +498,6 @@
             this.bgworker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker_DoWork);
             this.bgworker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker_RunWorkerCompleted);
             // 
-            // loadinglbl
-            // 
-            this.loadinglbl.AutoSize = true;
-            this.loadinglbl.BackColor = System.Drawing.Color.Transparent;
-            this.loadinglbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loadinglbl.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.loadinglbl.Location = new System.Drawing.Point(435, 263);
-            this.loadinglbl.Name = "loadinglbl";
-            this.loadinglbl.Size = new System.Drawing.Size(0, 31);
-            this.loadinglbl.TabIndex = 14;
-            this.loadinglbl.Visible = false;
-            // 
-            // timer1
-            // 
-            this.timer1.Interval = 600;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
             // orders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -513,18 +506,19 @@
             this.ClientSize = new System.Drawing.Size(1162, 722);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.orderpnl);
+            this.Controls.Add(this.formlbl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "orders";
             this.Text = "orders";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.orderpnl.ResumeLayout(false);
-            this.orderpnl.PerformLayout();
             this.dpnl.ResumeLayout(false);
             this.dpnl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.orderdetailview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ordergridview)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -569,7 +563,6 @@
         private System.Windows.Forms.Button delbtn;
         private System.ComponentModel.BackgroundWorker bgworker;
         public System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label loadinglbl;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label formlbl;
     }
 }

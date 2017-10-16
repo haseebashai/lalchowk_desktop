@@ -23,7 +23,7 @@ namespace Veiled_Kashmir_Admin_Panel
         DataTable dt;
         MySqlCommandBuilder cmdbl;
         BindingSource bsource;
-        int numberOfPoints=0;
+        
 
         private dialogcontainer dg = null;
         private container hp = null;
@@ -179,8 +179,25 @@ namespace Veiled_Kashmir_Admin_Panel
                 MessageBox.Show(ex.ToString());
             }
         }
+        public inventory(Form hpcopy, Form dgcopy)
+        {
+            hp = hpcopy as container;
+            dg = dgcopy as dialogcontainer;
+            InitializeComponent();
+            upbtn.Visible = false;
+            loadingdg();
+            bgworker.RunWorkerAsync();
+        }
+        public void loadingdg()
+        {
 
-       
+            dg.lbl.ForeColor = SystemColors.Highlight;
+            dg.lbl.Text = "Loading";
+            dg.loadingimage.SizeMode = PictureBoxSizeMode.StretchImage;
+            dg.loadingimage.Visible = true;
+        }
+
+
 
         private void bgworker_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -189,41 +206,20 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void bgworker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            timer.Stop();
+            
             inventorydatagridview.DataSource = bsource;
-
-            dg.lbl.BorderStyle = BorderStyle.None;
-            dg.lbl.ForeColor = SystemColors.Highlight;
-            dg.lbl.Text = "Edit Inventory";
             ipnl.Visible = true;
             upbtn.Visible = true;
+            dg.loadingimage.Visible = false;
+            dg.lbl.ForeColor = SystemColors.Highlight;
+            dg.lbl.Text = "Edit Inventory";
+            
         }
 
-        private void timer_Tick(object sender, EventArgs e)
-        {
-
-            int maxPoints = 5;
+        
 
 
-            dg.lbl.BorderStyle = BorderStyle.FixedSingle;
-            dg.lbl.ForeColor = Color.Red;
-            dg.lbl.Text = "Loading" + new string('.', numberOfPoints);
-            numberOfPoints = (numberOfPoints + 1) % (maxPoints + 1);
-
-        }
-
-
-
-        public inventory(Form hpcopy,Form dgcopy)
-        {
-            hp = hpcopy as container;
-            dg = dgcopy as dialogcontainer;
-            InitializeComponent();
-            upbtn.Visible = false;
-            timer.Start();
-            bgworker.RunWorkerAsync();
-        }
-
+       
 
         private void readinventory()
         {

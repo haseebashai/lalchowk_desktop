@@ -23,24 +23,17 @@ namespace Veiled_Kashmir_Admin_Panel
         MySqlConnection conn =new MySqlConnection("SERVER = 182.50.133.78; DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah");
         BindingSource bsource;
         MySqlCommandBuilder cmdbl;
-        int numberOfPoints = 0;
+        PictureBox loading = new PictureBox();
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            loadinglbl.Visible = true;
-            int maxPoints = 5;
-            loadinglbl.BorderStyle = BorderStyle.FixedSingle;
-            loadinglbl.Text = "Loading" + new string('.', numberOfPoints);
-            numberOfPoints = (numberOfPoints + 1) % (maxPoints + 1);
-        }
-
+        private dialogcontainer dg = null;
         private container hp = null;
-        public orders(Form hpcopy)
+        public orders(Form hpcopy,Form dgcopy)
         {
+            dg = dgcopy as dialogcontainer;
             hp = hpcopy as container;
             InitializeComponent();
 
-            timer1.Start();
+           
             
             bgworker.RunWorkerAsync();
             
@@ -74,9 +67,20 @@ namespace Veiled_Kashmir_Admin_Panel
         private void bgworker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
 
-            
-            timer1.Stop();
-            loadinglbl.Visible = false;
+
+            if (ActiveForm == dg)
+            {
+                dg.loadingimage.Visible = false;
+                dg.lbl.ForeColor = SystemColors.Highlight;
+                dg.lbl.Text = "Orders";
+                formlbl.Visible = false;
+            }
+            else
+            {
+                loading.Visible = false;
+                
+            }
+            formlbl.Visible = false;
             panel1.Visible = true;
             ordergridview.Visible = true;
             ordergridview.DataSource = bsource;
@@ -84,8 +88,29 @@ namespace Veiled_Kashmir_Admin_Panel
         }
 
 
+        public void loadingnormal()
+        {
+            formlbl.Text = "Loading";
+            formlbl.Visible = true;
 
-       
+            loading = new PictureBox()
+            {
+                Image = Properties.Resources.loading,
+                Size = new Size(40, 30),
+                SizeMode = PictureBoxSizeMode.StretchImage,
+                Location = new Point(72, 0),
+            };
+            this.Controls.Add(loading);
+        }
+        public void loadingdg()
+        {
+
+            dg.lbl.ForeColor = SystemColors.Highlight;
+            dg.lbl.Text = "Loading";
+            dg.loadingimage.SizeMode = PictureBoxSizeMode.StretchImage;
+            dg.loadingimage.Visible = true;
+        }
+
 
         private void emailtxt_TextChanged(object sender, EventArgs e)
         {

@@ -48,6 +48,7 @@ namespace Veiled_Kashmir_Admin_Panel
             {
                 loading.Visible = false;
                 formlbl.Visible = true;
+                formlbl.Text = "Cancel Order";
                 formlbl.BringToFront();
             }
             ordergridview.DataSource = bsource;
@@ -126,6 +127,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
             }
             readorders();
+            ordergridview.DataSource = bsource;
             apnl.Visible = false;
         }
 

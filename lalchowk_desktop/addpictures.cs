@@ -31,12 +31,21 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             dg = dgcopy as dialogcontainer;
             InitializeComponent();
-            timer.Start();
+            loadingdg();
             bgworker.RunWorkerAsync();
 
         }
 
-       
+        public void loadingdg()
+        {
+
+            dg.lbl.ForeColor = SystemColors.Highlight;
+            dg.lbl.Text = "Loading";
+            dg.loadingimage.SizeMode = PictureBoxSizeMode.StretchImage;
+            dg.loadingimage.Visible = true;
+        }
+
+
 
         private void pic_Click(object sender, EventArgs e)
         {
@@ -63,7 +72,9 @@ namespace Veiled_Kashmir_Admin_Panel
                 cmd = ("delete from pictures where pictureid='" + pid + "'");
                 obj.nonQuery(cmd);
                 MessageBox.Show("Picture Deleted.");
+                dp.BackgroundImage = null;
                 readpictures();
+                picturesdataview.DataSource = bsource;
             }
         }
 
@@ -101,6 +112,8 @@ namespace Veiled_Kashmir_Admin_Panel
             }
         }
 
+       
+
         private void bgworker_DoWork(object sender, DoWorkEventArgs e)
         {
             readpictures();
@@ -108,11 +121,11 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void bgworker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            timer.Stop();
+            
             picturesdataview.DataSource = bsource;
             ppnl.Visible = true;
 
-            dg.lbl.BorderStyle = BorderStyle.None;
+            dg.loadingimage.Visible = false;
             dg.lbl.ForeColor = SystemColors.Highlight;
             dg.lbl.Text = "Add Pictures";
         }
@@ -120,13 +133,14 @@ namespace Veiled_Kashmir_Admin_Panel
         int numberOfPoints = 0;
         private void timer_Tick(object sender, EventArgs e)
         {
-            int maxPoints = 5;
+           
+            int maxPoints = 5;             //loading sign on timer
 
-            dg.lbl.BorderStyle = BorderStyle.FixedSingle;
-            dg.lbl.ForeColor = Color.Red;
-            dg.lbl.Text = "Loading" + new string('.', numberOfPoints);
+            uploadlbl.Visible = true;
+            uploadlbl.Text = "Uploading" + new string('.', numberOfPoints);
             numberOfPoints = (numberOfPoints + 1) % (maxPoints + 1);
         }
+    
 
         private void picturesdataview_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -177,6 +191,35 @@ namespace Veiled_Kashmir_Admin_Panel
             }
         }
 
+        private void picworker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            pic.BackgroundImage.Dispose();
+            File.Move(fileaddress, directory + ptxt.Text);
+            uploaddir = directory + ptxt.Text;
+
+            UploadFileToFtp("ftp://182.50.151.83/httpdocs/lalchowk/pictures/", uploaddir);
+
+            cmd = "insert into pictures (`groupid`, `picture`) " +
+                 "values ('" + gidtxt.Text + @"','" + ptxt.Text + "')";
+            obj.nonQuery(cmd);
+
+            obj.closeConnection();
+            
+        }
+
+        private void picworker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            timer.Stop();
+            uploadlbl.Visible = false;
+            Cursor = Cursors.WaitCursor;
+            ptxt.Text = "";
+            gidtxt.Text = "";
+            pic.BackgroundImage = null;            
+            readpictures();
+            picturesdataview.DataSource = bsource;
+            addbtn.Enabled = true;
+            Cursor = Cursors.Arrow;
+        }
         private void addbtn_Click(object sender, EventArgs e)
         {
             if (gidtxt.Text == "")
@@ -191,38 +234,21 @@ namespace Veiled_Kashmir_Admin_Panel
                 }
                 else
                 {
-                    Cursor = Cursors.WaitCursor;
+                    
                     try
                     {
-                        pic.BackgroundImage.Dispose();
-                        File.Move(fileaddress, directory + ptxt.Text);
-                        uploaddir = directory + ptxt.Text;
-
-                        UploadFileToFtp("ftp://182.50.151.83/httpdocs/lalchowk/pictures/", uploaddir);
-
-                        cmd = "insert into pictures (`groupid`, `picture`) " +
-                             "values ('" + gidtxt.Text + @"','" + ptxt.Text + "')";
-                        obj.nonQuery(cmd);
-
-                        obj.closeConnection();
-                        ptxt.Text = "";
-                        gidtxt.Text = "";
-                        pic.BackgroundImage = null;
-                        readpictures();
+                        timer.Start();
+                        addbtn.Enabled = false;
+                        picworker.RunWorkerAsync();
                     }
                     catch (WebException ex)
                     {
                         MessageBox.Show(ex.ToString());
                     }
-                    Cursor = Cursors.Arrow;
+                    
                    
                 }
             }
-        }
-
-        private void closebtn_Click(object sender, EventArgs e)
-        {
-            Close();
         }
 
         private void readpictures()

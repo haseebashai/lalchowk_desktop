@@ -122,6 +122,12 @@
     <Compile Include="dialogcontainer.Designer.cs">
       <DependentUpon>dialogcontainer.cs</DependentUpon>
     </Compile>
+    <Compile Include="lifeclicks_account.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="lifeclicks_account.Designer.cs">
+      <DependentUpon>lifeclicks_account.cs</DependentUpon>
+    </Compile>
     <Compile Include="mail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -261,6 +267,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="dialogcontainer.resx">
       <DependentUpon>dialogcontainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="lifeclicks_account.resx">
+      <DependentUpon>lifeclicks_account.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="mail.resx">
       <DependentUpon>mail.cs</DependentUpon>

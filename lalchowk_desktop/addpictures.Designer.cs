@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.picdialog = new System.Windows.Forms.OpenFileDialog();
             this.updbtn = new System.Windows.Forms.Button();
             this.addbtn = new System.Windows.Forms.Button();
@@ -42,9 +42,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.gridtxt = new System.Windows.Forms.TextBox();
             this.ppnl = new System.Windows.Forms.Panel();
+            this.uploadlbl = new System.Windows.Forms.Label();
             this.dp = new System.Windows.Forms.PictureBox();
-            this.timer = new System.Windows.Forms.Timer(this.components);
             this.bgworker = new System.ComponentModel.BackgroundWorker();
+            this.picworker = new System.ComponentModel.BackgroundWorker();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.picturesdataview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic)).BeginInit();
             this.ppnl.SuspendLayout();
@@ -69,9 +71,9 @@
             // 
             // addbtn
             // 
-            this.addbtn.Location = new System.Drawing.Point(487, 521);
+            this.addbtn.Location = new System.Drawing.Point(466, 588);
             this.addbtn.Name = "addbtn";
-            this.addbtn.Size = new System.Drawing.Size(91, 68);
+            this.addbtn.Size = new System.Drawing.Size(91, 41);
             this.addbtn.TabIndex = 59;
             this.addbtn.Text = "Add Picture";
             this.addbtn.UseVisualStyleBackColor = true;
@@ -82,14 +84,14 @@
             this.picturesdataview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.picturesdataview.BackgroundColor = System.Drawing.Color.White;
             this.picturesdataview.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.picturesdataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.picturesdataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.picturesdataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.picturesdataview.GridColor = System.Drawing.SystemColors.Control;
             this.picturesdataview.Location = new System.Drawing.Point(3, 30);
@@ -102,7 +104,7 @@
             // 
             this.label30.AutoSize = true;
             this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.Location = new System.Drawing.Point(244, 524);
+            this.label30.Location = new System.Drawing.Point(460, 517);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(81, 17);
             this.label30.TabIndex = 87;
@@ -110,7 +112,7 @@
             // 
             // ptxt
             // 
-            this.ptxt.Location = new System.Drawing.Point(366, 628);
+            this.ptxt.Location = new System.Drawing.Point(325, 628);
             this.ptxt.Name = "ptxt";
             this.ptxt.Size = new System.Drawing.Size(115, 20);
             this.ptxt.TabIndex = 86;
@@ -122,7 +124,7 @@
             this.pic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pic.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pic.Image = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.industrial_safety_1492046_640;
-            this.pic.Location = new System.Drawing.Point(366, 521);
+            this.pic.Location = new System.Drawing.Point(325, 521);
             this.pic.Name = "pic";
             this.pic.Size = new System.Drawing.Size(115, 101);
             this.pic.TabIndex = 88;
@@ -132,7 +134,7 @@
             // gidtxt
             // 
             this.gidtxt.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.gidtxt.Location = new System.Drawing.Point(247, 552);
+            this.gidtxt.Location = new System.Drawing.Point(463, 537);
             this.gidtxt.Name = "gidtxt";
             this.gidtxt.Size = new System.Drawing.Size(113, 20);
             this.gidtxt.TabIndex = 89;
@@ -169,6 +171,7 @@
             // 
             // ppnl
             // 
+            this.ppnl.Controls.Add(this.uploadlbl);
             this.ppnl.Controls.Add(this.dp);
             this.ppnl.Controls.Add(this.label4);
             this.ppnl.Controls.Add(this.updbtn);
@@ -186,6 +189,17 @@
             this.ppnl.TabIndex = 94;
             this.ppnl.Visible = false;
             // 
+            // uploadlbl
+            // 
+            this.uploadlbl.AutoSize = true;
+            this.uploadlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uploadlbl.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.uploadlbl.Location = new System.Drawing.Point(468, 632);
+            this.uploadlbl.Name = "uploadlbl";
+            this.uploadlbl.Size = new System.Drawing.Size(0, 15);
+            this.uploadlbl.TabIndex = 95;
+            this.uploadlbl.Visible = false;
+            // 
             // dp
             // 
             this.dp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
@@ -195,15 +209,20 @@
             this.dp.TabIndex = 94;
             this.dp.TabStop = false;
             // 
-            // timer
-            // 
-            this.timer.Interval = 600;
-            this.timer.Tick += new System.EventHandler(this.timer_Tick);
-            // 
             // bgworker
             // 
             this.bgworker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker_DoWork);
             this.bgworker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker_RunWorkerCompleted);
+            // 
+            // picworker
+            // 
+            this.picworker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.picworker_DoWork);
+            this.picworker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.picworker_RunWorkerCompleted);
+            // 
+            // timer
+            // 
+            this.timer.Interval = 500;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
             // addpictures
             // 
@@ -238,8 +257,10 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox gridtxt;
         private System.Windows.Forms.Panel ppnl;
-        private System.Windows.Forms.Timer timer;
         private System.ComponentModel.BackgroundWorker bgworker;
         private System.Windows.Forms.PictureBox dp;
+        private System.ComponentModel.BackgroundWorker picworker;
+        private System.Windows.Forms.Label uploadlbl;
+        private System.Windows.Forms.Timer timer;
     }
 }

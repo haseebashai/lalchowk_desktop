@@ -18,31 +18,45 @@ namespace Veiled_Kashmir_Admin_Panel
         DBConnect obj = new DBConnect();
         bool fnameok, lnameok, usernameok, emailok, passwordok, confirmok, phoneok, dobok;
         string tp, elec, cloth, foot, mobile, comp, cacc, cos, book;
-        int numberOfPoints=0;
+        PictureBox loading = new PictureBox();
 
+        private dialogcontainer dg = null;
         private mainform mf = null;
         private container hp = null;
-        public products(Form hpcopy, Form mfcopy)
+        public products(Form hpcopy, Form mfcopy,Form dgcopy)
         {
+            dg = dgcopy as dialogcontainer;
             hp = hpcopy as container;
             mf = mfcopy as mainform;
            
             InitializeComponent();
-            timer.Start();
+            
             bgworker.RunWorkerAsync();
         }
         private void bgworker_DoWork(object sender, DoWorkEventArgs e)
         {
-           
-           
             readdetails();
         }
 
         private void bgworker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            timer.Stop();
 
-            loadinglbl.Visible = false;
+            if (ActiveForm == dg)
+            {
+                
+                
+                label1.Visible = false;
+                
+                formlbl.Visible = false;
+                loading.Visible = false;
+            }
+            else
+            {
+                formlbl.Visible = false;
+                loading.Visible = false;
+
+            }
+            
             tplbl.Text = "Total Products currently added: " + tp;
             eleclbl.Text = "Total Electronic Items currently added: " + elec;
             clothlbl.Text = "Total Clothing Items currently added: " + cloth;
@@ -53,6 +67,38 @@ namespace Veiled_Kashmir_Admin_Panel
             coslbl.Text = "Total Cosmetics Items currently added: " + cos;
             booklbl.Text = "Total Books currently added: " + book;
             ppnl.Visible = true;
+        }
+
+        public void loadingnormal()
+        {
+            formlbl.Text = "Loading details";
+            formlbl.Visible = true;
+
+            loading = new PictureBox()
+            {
+                Image = Properties.Resources.loading,
+                Size = new Size(40, 30),
+                SizeMode = PictureBoxSizeMode.StretchImage,
+                Location = new Point(145, 302)
+            };
+            this.Controls.Add(loading);
+        }
+        public void loadingdg()
+        {
+            dg.lbl.ForeColor = SystemColors.Highlight;
+            dg.lbl.Text = "Products";
+            label1.Visible = false;
+            formlbl.Text = "Loading details";
+            formlbl.Visible = true;
+            loading = new PictureBox()
+            {
+                Image = Properties.Resources.loading,
+                Size = new Size(40, 30),
+                SizeMode = PictureBoxSizeMode.StretchImage,
+                Location = new Point(145, 302)
+            };
+            this.Controls.Add(loading);
+
         }
 
         private void readdetails()
@@ -103,17 +149,6 @@ namespace Veiled_Kashmir_Admin_Panel
             obj.closeConnection();
         }
 
-        private void timer_Tick(object sender, EventArgs e)
-        {
-             
-            
-            int maxPoints = 5;
-            loadinglbl.Visible = true;
-            loadinglbl.BorderStyle = BorderStyle.FixedSingle;
-            loadinglbl.Text = "Loading Details" + new string('.', numberOfPoints);
-            numberOfPoints = (numberOfPoints + 1) % (maxPoints + 1);
-        
-    }
 
        
         private void newbtn_Click(object sender, EventArgs e)
@@ -145,7 +180,8 @@ namespace Veiled_Kashmir_Admin_Panel
             
             
             dialogcontainer dg = new dialogcontainer();
-            dg.lbl.Text = "";
+            dg.Text = "Add Pictures";
+            dg.Size = new Size(800, 715);
             addpictures ap = new addpictures(dg);
             ap.TopLevel = false;
             dg.dialogpnl.Controls.Clear();
@@ -159,7 +195,8 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             
             dialogcontainer dg = new dialogcontainer();
-            dg.lbl.Text = "";
+            dg.Text = "View Products";
+            dg.Size = new Size(1000, 715);
             viewproducts vp = new viewproducts(dg);
             vp.TopLevel = false;
             dg.dialogpnl.Controls.Add(vp);

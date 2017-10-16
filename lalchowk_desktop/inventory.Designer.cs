@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.inventorydatagridview = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
@@ -48,7 +47,6 @@
             this.ipnl = new System.Windows.Forms.Panel();
             this.descpnl = new System.Windows.Forms.Panel();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
-            this.timer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.inventorydatagridview)).BeginInit();
             this.ipnl.SuspendLayout();
             this.descpnl.SuspendLayout();
@@ -232,11 +230,6 @@
             this.bgworker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker_DoWork);
             this.bgworker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker_RunWorkerCompleted);
             // 
-            // timer
-            // 
-            this.timer.Interval = 600;
-            this.timer.Tick += new System.EventHandler(this.timer_Tick);
-            // 
             // inventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -278,6 +271,5 @@
         private System.Windows.Forms.Panel ipnl;
         private System.Windows.Forms.Panel descpnl;
         private System.ComponentModel.BackgroundWorker bgworker;
-        private System.Windows.Forms.Timer timer;
     }
 }

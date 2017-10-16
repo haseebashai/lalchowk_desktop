@@ -50,11 +50,12 @@
             this.cobtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.ordersbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.navtitle = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.navtxt = new System.Windows.Forms.Label();
             this.cntpnl = new System.Windows.Forms.Panel();
-            this.loadinglbl = new System.Windows.Forms.Label();
             this.shippedlbl = new System.Windows.Forms.Label();
             this.placedlbl = new System.Windows.Forms.Label();
+            this.attention = new System.Windows.Forms.PictureBox();
             this.costlbl = new System.Windows.Forms.Label();
             this.attentionlbl = new System.Windows.Forms.Label();
             this.orderslbl = new System.Windows.Forms.Label();
@@ -64,17 +65,17 @@
             this.shippedh = new System.Windows.Forms.Label();
             this.placeddataview = new System.Windows.Forms.DataGridView();
             this.placedh = new System.Windows.Forms.Label();
-            this.bgworker = new System.ComponentModel.BackgroundWorker();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.attention = new System.Windows.Forms.PictureBox();
             this.loadingpic = new System.Windows.Forms.PictureBox();
+            this.loadinglbl = new System.Windows.Forms.Label();
+            this.bgworker = new System.ComponentModel.BackgroundWorker();
+            this.clientbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.navpnl.SuspendLayout();
             this.navtitle.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.cntpnl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.attention)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.shippeddataview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.placeddataview)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.attention)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.loadingpic)).BeginInit();
             this.SuspendLayout();
             // 
@@ -170,6 +171,7 @@
             // navpnl
             // 
             this.navpnl.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.navpnl.Controls.Add(this.clientbtn);
             this.navpnl.Controls.Add(this.sendmailbtn);
             this.navpnl.Controls.Add(this.caboutbtn);
             this.navpnl.Controls.Add(this.homepagebtn);
@@ -194,7 +196,7 @@
             this.sendmailbtn.AutoSize = true;
             this.sendmailbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.sendmailbtn.Depth = 0;
-            this.sendmailbtn.Location = new System.Drawing.Point(4, 432);
+            this.sendmailbtn.Location = new System.Drawing.Point(5, 432);
             this.sendmailbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.sendmailbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.sendmailbtn.Name = "sendmailbtn";
@@ -226,7 +228,7 @@
             this.homepagebtn.AutoSize = true;
             this.homepagebtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.homepagebtn.Depth = 0;
-            this.homepagebtn.Location = new System.Drawing.Point(4, 356);
+            this.homepagebtn.Location = new System.Drawing.Point(5, 356);
             this.homepagebtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.homepagebtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.homepagebtn.Name = "homepagebtn";
@@ -290,7 +292,7 @@
             this.cobtn.AutoSize = true;
             this.cobtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.cobtn.Depth = 0;
-            this.cobtn.Location = new System.Drawing.Point(4, 244);
+            this.cobtn.Location = new System.Drawing.Point(5, 244);
             this.cobtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.cobtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.cobtn.Name = "cobtn";
@@ -327,6 +329,17 @@
             this.navtitle.Name = "navtitle";
             this.navtitle.Size = new System.Drawing.Size(200, 22);
             this.navtitle.TabIndex = 11;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Black;
+            this.pictureBox1.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources._9895;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Location = new System.Drawing.Point(1, 1);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(24, 20);
+            this.pictureBox1.TabIndex = 41;
+            this.pictureBox1.TabStop = false;
             // 
             // navtxt
             // 
@@ -365,18 +378,6 @@
             this.cntpnl.Size = new System.Drawing.Size(1162, 722);
             this.cntpnl.TabIndex = 12;
             // 
-            // loadinglbl
-            // 
-            this.loadinglbl.AutoSize = true;
-            this.loadinglbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loadinglbl.ForeColor = System.Drawing.Color.Black;
-            this.loadinglbl.Location = new System.Drawing.Point(432, 292);
-            this.loadinglbl.Name = "loadinglbl";
-            this.loadinglbl.Size = new System.Drawing.Size(101, 25);
-            this.loadinglbl.TabIndex = 42;
-            this.loadinglbl.Text = "LOADING";
-            this.loadinglbl.Visible = false;
-            // 
             // shippedlbl
             // 
             this.shippedlbl.AutoSize = true;
@@ -404,6 +405,17 @@
             this.placedlbl.Text = "View Details";
             this.placedlbl.Visible = false;
             this.placedlbl.Click += new System.EventHandler(this.placedlbl_Click);
+            // 
+            // attention
+            // 
+            this.attention.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.industrial_safety_1492046_640;
+            this.attention.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.attention.Location = new System.Drawing.Point(19, 540);
+            this.attention.Name = "attention";
+            this.attention.Size = new System.Drawing.Size(73, 65);
+            this.attention.TabIndex = 39;
+            this.attention.TabStop = false;
+            this.attention.Visible = false;
             // 
             // costlbl
             // 
@@ -549,43 +561,49 @@
             this.placedh.Text = "Orders currently PLACED:";
             this.placedh.Visible = false;
             // 
+            // loadingpic
+            // 
+            this.loadingpic.Image = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.loader;
+            this.loadingpic.Location = new System.Drawing.Point(437, 212);
+            this.loadingpic.Name = "loadingpic";
+            this.loadingpic.Size = new System.Drawing.Size(87, 88);
+            this.loadingpic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.loadingpic.TabIndex = 43;
+            this.loadingpic.TabStop = false;
+            this.loadingpic.Visible = false;
+            // 
+            // loadinglbl
+            // 
+            this.loadinglbl.AutoSize = true;
+            this.loadinglbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loadinglbl.ForeColor = System.Drawing.Color.Black;
+            this.loadinglbl.Location = new System.Drawing.Point(432, 299);
+            this.loadinglbl.Name = "loadinglbl";
+            this.loadinglbl.Size = new System.Drawing.Size(101, 25);
+            this.loadinglbl.TabIndex = 42;
+            this.loadinglbl.Text = "LOADING";
+            this.loadinglbl.Visible = false;
+            // 
             // bgworker
             // 
             this.bgworker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker_DoWork);
             this.bgworker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker_RunWorkerCompleted);
             // 
-            // pictureBox1
+            // clientbtn
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Black;
-            this.pictureBox1.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources._9895;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(1, 1);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(24, 20);
-            this.pictureBox1.TabIndex = 41;
-            this.pictureBox1.TabStop = false;
-            // 
-            // attention
-            // 
-            this.attention.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.industrial_safety_1492046_640;
-            this.attention.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.attention.Location = new System.Drawing.Point(19, 540);
-            this.attention.Name = "attention";
-            this.attention.Size = new System.Drawing.Size(73, 65);
-            this.attention.TabIndex = 39;
-            this.attention.TabStop = false;
-            this.attention.Visible = false;
-            // 
-            // loadingpic
-            // 
-            this.loadingpic.Image = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.loader;
-            this.loadingpic.Location = new System.Drawing.Point(378, 190);
-            this.loadingpic.Name = "loadingpic";
-            this.loadingpic.Size = new System.Drawing.Size(205, 103);
-            this.loadingpic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.loadingpic.TabIndex = 43;
-            this.loadingpic.TabStop = false;
-            this.loadingpic.Visible = false;
+            this.clientbtn.AutoSize = true;
+            this.clientbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.clientbtn.Depth = 0;
+            this.clientbtn.Location = new System.Drawing.Point(5, 469);
+            this.clientbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.clientbtn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.clientbtn.Name = "clientbtn";
+            this.clientbtn.Primary = false;
+            this.clientbtn.Size = new System.Drawing.Size(133, 36);
+            this.clientbtn.TabIndex = 26;
+            this.clientbtn.Text = "Client accounts";
+            this.clientbtn.UseVisualStyleBackColor = true;
+            this.clientbtn.Click += new System.EventHandler(this.clientbtn_Click);
             // 
             // mainform
             // 
@@ -604,12 +622,12 @@
             this.navpnl.PerformLayout();
             this.navtitle.ResumeLayout(false);
             this.navtitle.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.cntpnl.ResumeLayout(false);
             this.cntpnl.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.attention)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.shippeddataview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.placeddataview)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.attention)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.loadingpic)).EndInit();
             this.ResumeLayout(false);
 
@@ -651,5 +669,6 @@
         private System.ComponentModel.BackgroundWorker bgworker;
         private System.Windows.Forms.Label loadinglbl;
         private System.Windows.Forms.PictureBox loadingpic;
+        private MaterialSkin.Controls.MaterialFlatButton clientbtn;
     }
 }

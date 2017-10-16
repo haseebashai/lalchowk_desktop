@@ -22,7 +22,7 @@ namespace Veiled_Kashmir_Admin_Panel
         MySqlDataReader dr,dr2,dr3;
         MySqlCommandBuilder cmdbl;
         MySqlConnection con= new MySqlConnection( "SERVER=182.50.133.78;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah");
-
+        PictureBox loading = new PictureBox();
 
         private container hp = null;
         private dialogcontainer dg = null;
@@ -60,20 +60,26 @@ namespace Veiled_Kashmir_Admin_Panel
             }
         }
 
-        private void timer2_Tick(object sender, EventArgs e)
+        public void loadingnormal()
         {
-            int maxPoints = 5;
+            formlbl.Text = "Loading";
 
-            loadinglbl.BorderStyle = BorderStyle.FixedSingle;
-            loadinglbl.ForeColor = Color.Red;
-            loadinglbl.Text = "Loading" + new string('.', numberOfPoints);
-            numberOfPoints = (numberOfPoints + 1) % (maxPoints + 1);
+            loading = new PictureBox()
+            {
+                Image = Properties.Resources.loading,
+                Size = new Size(40, 30),
+                SizeMode = PictureBoxSizeMode.StretchImage,
+                Location = new Point(73, 0),
+            };
+            this.Controls.Add(loading);
         }
-
-        public void normaltick()
+        public void loadingdg()
         {
-            timer2.Start();
-            timer2_Tick(null, null);
+            formlbl.Visible = false;
+            dg.lbl.ForeColor = SystemColors.Highlight;
+            dg.lbl.Text = "Loading";
+            dg.loadingimage.SizeMode = PictureBoxSizeMode.StretchImage;
+            dg.loadingimage.Visible = true;
         }
 
         private void bgworker_DoWork(object sender, DoWorkEventArgs e)
@@ -85,37 +91,40 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void bgworker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            timer.Stop();
-            customerdataview.DataSource = bsource;
-            loadinglbl.Visible = false;
-            countlbl.Text="Total Registered Customers: " + count;
-            pnl.Visible = true;
 
             if (ActiveForm == dg)
             {
-                dg.lbl.BorderStyle = BorderStyle.None;
+                dg.loadingimage.Visible = false;
                 dg.lbl.ForeColor = SystemColors.Highlight;
                 dg.lbl.Text = "Customers";
+
             }
+            else
+            {
+                loading.Visible = false;
+                
+            }
+            customerdataview.DataSource = bsource;
+            formlbl.Visible = false;
+            countlbl.Text="Total Registered Customers: " + count;
+            pnl.Visible = true;
+
+           
         }
 
-        int numberOfPoints = 0;
+    /*    int numberOfPoints = 0;
         private void timer_Tick(object sender, EventArgs e)
         {
             
-            int maxPoints = 5;
-            timer.Start();
+            int maxPoints = 5;                                       //loading sign on timer
+           
             dg.lbl.BorderStyle = BorderStyle.FixedSingle;
             dg.lbl.ForeColor = Color.Red;
             dg.lbl.Text = "Loading" + new string('.', numberOfPoints);
             numberOfPoints = (numberOfPoints + 1) % (maxPoints + 1);
         }
-
-       public void dgtick()
-        {          
-            timer_Tick(null, null);
-        }
-
+        */
+      
         private void readcustomers()
         {
             try
@@ -142,7 +151,8 @@ namespace Veiled_Kashmir_Admin_Panel
             dialogcontainer dg = new dialogcontainer();
             promomail pm = new promomail(emaillbl.Text,dg);
             pm.TopLevel = false;
-            pm.epnl.Location = new Point(-70, 1);
+            dg.Size = new Size(700, 715);
+            pm.epnl.Location = new Point(-300, 1);
             pm.elistlbl.Text = "";
             
             dg.dialogpnl.Controls.Add(pm);
@@ -213,46 +223,6 @@ namespace Veiled_Kashmir_Admin_Panel
             obj.closeConnection();
         }
 
-    /*    private void readwishlist()
-        {
-            try
-            {
-                
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-            obj.closeConnection();
-        }
-
-        private void readorders()
-        {
-            try
-            {
-               
-               
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-            obj.closeConnection();
-        }
-
-        private void readaddress()
-        {
-            try
-            {
-
-               
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-            obj.closeConnection();
-        } */
 
         private void updbtn_Click_1(object sender, EventArgs e)
         {
@@ -270,6 +240,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void customerdataview_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            inflbl.Visible = false;
             Cursor = Cursors.WaitCursor;
             if (e.RowIndex >= 0)
             {
@@ -278,8 +249,11 @@ namespace Veiled_Kashmir_Admin_Panel
                 emaillbl.Text = row.Cells["mail"].Value.ToString();
                 namelbl.Text= row.Cells["name"].Value.ToString();
                 contactlbl.Text= row.Cells["contact"].Value.ToString();
+                
                 dpnl.Visible = true;
                 readdetails();
+                ppnl.Visible = true;
+                apnl.Visible = true;
                 Cursor = Cursors.Arrow;
                
             }
@@ -294,15 +268,6 @@ namespace Veiled_Kashmir_Admin_Panel
 
 
 
-        private void updbtn_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void banbtn_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void usertxt_TextChanged(object sender, EventArgs e)
         {

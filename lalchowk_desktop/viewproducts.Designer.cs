@@ -28,8 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.productsdataview = new System.Windows.Forms.DataGridView();
             this.pic = new System.Windows.Forms.PictureBox();
             this.updbtn = new System.Windows.Forms.Button();
@@ -40,7 +39,6 @@
             this.delbtn = new System.Windows.Forms.Button();
             this.ppnl = new System.Windows.Forms.Panel();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
-            this.timer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.productsdataview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic)).BeginInit();
             this.ppnl.SuspendLayout();
@@ -51,14 +49,14 @@
             this.productsdataview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.productsdataview.BackgroundColor = System.Drawing.Color.White;
             this.productsdataview.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.productsdataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.productsdataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.productsdataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.productsdataview.GridColor = System.Drawing.SystemColors.Control;
             this.productsdataview.Location = new System.Drawing.Point(1, 35);
@@ -151,11 +149,6 @@
             this.bgworker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker_DoWork);
             this.bgworker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker_RunWorkerCompleted);
             // 
-            // timer
-            // 
-            this.timer.Interval = 600;
-            this.timer.Tick += new System.EventHandler(this.timer_Tick);
-            // 
             // viewproducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -187,6 +180,5 @@
         private System.Windows.Forms.Button delbtn;
         private System.Windows.Forms.Panel ppnl;
         private System.ComponentModel.BackgroundWorker bgworker;
-        private System.Windows.Forms.Timer timer;
     }
 }

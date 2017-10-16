@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.firstcat = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -118,7 +117,6 @@
             this.inclbl2 = new System.Windows.Forms.Label();
             this.addppnl = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.timer = new System.Windows.Forms.Timer(this.components);
             this.bgworker = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.pic1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic2)).BeginInit();
@@ -1032,7 +1030,7 @@
             this.addppnl.Controls.Add(this.dname4);
             this.addppnl.Controls.Add(this.inclbl);
             this.addppnl.Controls.Add(this.inclbl2);
-            this.addppnl.Location = new System.Drawing.Point(21, -1);
+            this.addppnl.Location = new System.Drawing.Point(25, -1);
             this.addppnl.Name = "addppnl";
             this.addppnl.Size = new System.Drawing.Size(1150, 711);
             this.addppnl.TabIndex = 88;
@@ -1045,11 +1043,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(621, 1);
             this.panel3.TabIndex = 88;
-            // 
-            // timer
-            // 
-            this.timer.Interval = 600;
-            this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
             // bgworker
             // 
@@ -1168,7 +1161,6 @@
         private System.Windows.Forms.Label inclbl;
         private System.Windows.Forms.Label inclbl2;
         private System.Windows.Forms.Panel addppnl;
-        private System.Windows.Forms.Timer timer;
         private System.ComponentModel.BackgroundWorker bgworker;
         private System.Windows.Forms.Panel panel3;
     }

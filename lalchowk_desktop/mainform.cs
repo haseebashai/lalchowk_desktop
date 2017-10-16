@@ -132,20 +132,23 @@ namespace Veiled_Kashmir_Admin_Panel
             if (cntpnl.Contains(placeddataview))
             {
                 Cursor = Cursors.WaitCursor;
-                orders or = new orders(hp);
+                orders or = new orders(hp,this);
                 or.TopLevel = false;
                 cntpnl.Controls.Clear();
                 cntpnl.Controls.Add(or);
+                or.loadingnormal();
                 or.Show();
                 Cursor = Cursors.Arrow;
             }
             else
             {
-                orders or = new orders(hp);
-                or.TopLevel = false;
                 dialogcontainer dg = new dialogcontainer();
+                orders or = new orders(hp,dg);
+                or.TopLevel = false;
+                
                 dg.dialogpnl.Controls.Add(or);
-                dg.lbl.Text = "Orders";
+                or.loadingdg();
+                dg.Text = "Orders";
 
                 dg.Show();
                 or.Show();
@@ -187,20 +190,23 @@ namespace Veiled_Kashmir_Admin_Panel
             if (cntpnl.Contains(placeddataview))
             {
                 Cursor = Cursors.WaitCursor;
-                products pr = new products(hp, this);
+                products pr = new products(hp, this,this);
                 pr.TopLevel = false;
                 cntpnl.Controls.Clear();
                 cntpnl.Controls.Add(pr);
+                pr.loadingnormal();
                 pr.Show();
                 Cursor = Cursors.Arrow;
             }
             else
             {
-                products pr  = new products(hp,this);
-                pr.TopLevel = false;
                 dialogcontainer dg = new dialogcontainer();
+                products pr  = new products(hp,this,dg);
+                pr.TopLevel = false;
+                
                 dg.dialogpnl.Controls.Add(pr);
-                dg.lbl.Text = "";
+                pr.loadingdg();
+                dg.Text = "Products";
 
                 dg.Show();
                 pr.Show();
@@ -216,7 +222,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 customers cus = new customers(hp,this);
                 cus.TopLevel = false;
                 cntpnl.Controls.Clear();
-                cus.normaltick();
+                cus.loadingnormal();
                 cntpnl.Controls.Add(cus);
                 cus.Show();
                 Cursor = Cursors.Arrow;
@@ -228,8 +234,8 @@ namespace Veiled_Kashmir_Admin_Panel
                 cus.TopLevel = false;
                 
                 dg.dialogpnl.Controls.Add(cus);
-                cus.dgtick();
-                dg.lbl.Text = "";
+                cus.loadingdg();
+                dg.Text = "Customers";
                 
                 dg.Show();
                 cus.Show();
@@ -256,6 +262,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 dialogcontainer dg = new dialogcontainer();
                 expenditure exp = new expenditure(this, hp,dg);
                 exp.TopLevel = false;
+                dg.Size = new Size(1000, 715);
                 dg.Text = "Expenditure";
                 dg.dialogpnl.Controls.Add(exp);
                 exp.loadingdg();
@@ -436,7 +443,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 dialogcontainer dg = new dialogcontainer();
                 messages msg = new messages(dg);
                 msg.TopLevel = false;
-                
+                dg.Size = new Size(900, 715);
                 dg.dialogpnl.Controls.Add(msg);
                 msg.loadingdg();
                 dg.Text = "User Messages";
@@ -495,7 +502,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 dialogcontainer dg = new dialogcontainer();
                 terms tr = new terms(hp,dg);
                 tr.TopLevel = false;
-                
+                dg.Size = new Size(900, 715);
                 dg.dialogpnl.Controls.Add(tr);
                 tr.loadingdg();
                 dg.Text = "Policies";
@@ -503,6 +510,36 @@ namespace Veiled_Kashmir_Admin_Panel
                
                 dg.Show();
                 tr.Show();
+            }
+        }
+
+        private void clientbtn_Click(object sender, EventArgs e)
+        {
+            if (cntpnl.Contains(placeddataview))
+            {
+
+                lifeclicks_account la = new lifeclicks_account(this);
+                la.TopLevel = false;
+                cntpnl.Controls.Clear();
+
+                cntpnl.Controls.Add(la);
+                la.loadingnormal();
+
+                la.Show();
+                
+            }
+            else
+            {
+                dialogcontainer dg = new dialogcontainer();
+                lifeclicks_account la = new lifeclicks_account(dg);
+                la.TopLevel = false;
+                dg.dialogpnl.Controls.Add(la);
+                la.loadingdg();
+                dg.Text = "Client Accounts";
+
+
+                dg.Show();
+                la.Show();
             }
         }
 
@@ -547,7 +584,6 @@ namespace Veiled_Kashmir_Admin_Panel
             pm.Show();
             Cursor = Cursors.Arrow;
         }
-
 
         public void loadingnormal()
         {

@@ -52,6 +52,7 @@
             // 
             // closebtn
             // 
+            this.closebtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.closebtn.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.turn_on;
             this.closebtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.closebtn.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -109,6 +110,7 @@
             // 
             // minimize
             // 
+            this.minimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.minimize.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.diminish;
             this.minimize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.minimize.Cursor = System.Windows.Forms.Cursors.Hand;

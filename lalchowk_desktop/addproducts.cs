@@ -32,7 +32,7 @@ namespace Veiled_Kashmir_Admin_Panel
         private mainform mf = null;
         private dialogcontainer dg = null;
         string cmd;
-
+        
 
         public addproducts(Form hpcopy, Form mfcopy, Form dgcopy)
         {
@@ -41,9 +41,10 @@ namespace Veiled_Kashmir_Admin_Panel
             dg = dgcopy as dialogcontainer;
 
             InitializeComponent();
-            addppnl.Enabled = false;
-            timer.Start();
 
+            loadingdg();
+            addppnl.Enabled = false;
+           
             bgworker.RunWorkerAsync();
 
 
@@ -55,16 +56,7 @@ namespace Veiled_Kashmir_Admin_Panel
              */
         }
 
-        private void timer_Tick(object sender, EventArgs e)
-        {
-            int maxPoints = 5;
-           
-            dg.lbl.BorderStyle = BorderStyle.FixedSingle;
-            dg.lbl.ForeColor = Color.Red;
-            dg.lbl.Text = "Loading" + new string('.', numberOfPoints);
-            numberOfPoints = (numberOfPoints + 1) % (maxPoints + 1);
-
-        }
+      
 
         private void bgworker_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -76,17 +68,24 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void bgworker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+
             firstcat.DisplayMember = "categoryname";
-            supplierlist.DisplayMember = "name";
-            
-            timer.Stop();
+            supplierlist.DisplayMember = "name";         
             addppnl.Enabled = true;
-            
-            dg.lbl.BorderStyle = BorderStyle.None;
+            dg.loadingimage.Visible = false;
             dg.lbl.ForeColor = SystemColors.Highlight;
-            dg.lbl.Text = "Add Product";
-            
-           
+            dg.lbl.Text = "Add Products";
+
+        }
+
+       
+        public void loadingdg()
+        {
+
+            dg.lbl.ForeColor = SystemColors.Highlight;
+            dg.lbl.Text = "Loading";
+            dg.loadingimage.SizeMode = PictureBoxSizeMode.StretchImage;
+            dg.loadingimage.Visible = true;
         }
 
 
