@@ -145,7 +145,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 dg.dialogpnl.Controls.Add(od);
                 dg.Text = "Orders placed";
             od.loadingdg();
-            od.bgworker2.RunWorkerAsync();
+            od.bgworker.RunWorkerAsync();
             
                 dg.Show();
                 od.Show();

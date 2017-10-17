@@ -427,11 +427,12 @@ namespace Veiled_Kashmir_Admin_Panel
             itemtxt.Text = "";
             amounttxt.Text="";
             datetxt.Text = "";
-            baltxt.Text = "";
+            
             reasontxt1.Text = "";
             
             readexpenses();
             accountdataview.DataSource = bsource;
+            baltxt.Text = bal;
 
         }
 
