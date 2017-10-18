@@ -19,7 +19,7 @@ namespace Veiled_Kashmir_Admin_Panel
         MySqlConnection aconn = new MySqlConnection("SERVER=182.50.133.78;DATABASE=lalchowk_ac;USER=lalchowkac;PASSWORD=Lalchowk@123uzmah");
         MySqlDataReader dr;
 
-
+        
 
         public addbill(string orderlbl,string email,string amount,string productid,string productname,string price,string quantity,string size,string dealerprice,string shipping)
         {
@@ -46,19 +46,51 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void billaddbtn_Click(object sender, EventArgs e)
         {
+            try
+            {
+                cmd = "update orders set status='Delivered' where orderid='" + otxt.Text + "'";
+                obj.nonQuery(cmd);
+                obj.closeConnection();
 
-            cmd = "update orders set status='Delivered' where orderid='" + otxt.Text + "'";
-            obj.nonQuery(cmd);
+                aconn.Open();
+                mysqlcmd = new MySqlCommand("insert into billing(`orderid`, `user`, `amount`,`deliverydate`,`billno`) values ('" + otxt.Text + "','" + utxt.Text + "','" + atxt.Text + "','" + dtxt.Text + "','bill" + btxt.Text + "')", aconn);
+                mysqlcmd.ExecuteNonQuery();
+                mysqlcmd = new MySqlCommand("insert into deliveries(`orderid`, `email`, `amount`,`status`,`date`) values ('" + otxt.Text + "','" + utxt.Text + "','" + atxt.Text + "','Delivered','" + dtxt.Text + "')", aconn);
+                mysqlcmd.ExecuteNonQuery();
+                aconn.Close();
 
-            aconn.Open();
-            mysqlcmd = new MySqlCommand("insert into billing(`orderid`, `user`, `amount`,`deliverydate`,`billno`) values ('" + otxt.Text + "','" + utxt.Text + "','" + atxt.Text + "','" + dtxt.Text + "','bill" + btxt.Text + "')", aconn);
-            mysqlcmd.ExecuteNonQuery();           
-            mysqlcmd = new MySqlCommand("insert into deliveries(`orderid`, `email`, `amount`,`status`,`date`) values ('" + otxt.Text + "','" + utxt.Text + "','" + atxt.Text + "','Delivered','"+dtxt.Text+"')", aconn);
-            mysqlcmd.ExecuteNonQuery();
-            aconn.Close();
+                MessageBox.Show("Bill added.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Something happened, please try again.\n\n\n" +ex.ToString());
+            }
+            DialogResult dgr = MessageBox.Show("Do you want to send confirmation mail with e-bill?", "Confirm", MessageBoxButtons.YesNo);
+            {
+                if (dgr == DialogResult.Yes)
+                {
+                    dialogcontainer dg = new dialogcontainer();
+                    promomail pm = new promomail(utxt.Text, dg);
+                    pm.TopLevel = false;
+                    dg.Size = new Size(700, 715);
+                    pm.epnl.Location = new Point(-300, 1);
+                    pm.attachtxt.Visible = true;
+                    pm.elistlbl.Text = "";
 
-            MessageBox.Show("Bill added.");
-            Close();
+                    dg.dialogpnl.Controls.Add(pm);
+                    pm.loadingdg();
+                    dg.Text = "Send Email";
+
+                    dg.Show();
+
+                    pm.Show();
+                }
+                else
+                {
+                    Close();
+                }
+            }
+            
         }
 
         private void addprobtn_Click(object sender, EventArgs e)
@@ -97,6 +129,25 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             if (no.Checked)
                 yes.Checked = false;
+        }
+
+        private void sendmailbtn_Click(object sender, EventArgs e)
+        {
+            dialogcontainer dg = new dialogcontainer();
+            promomail pm = new promomail(utxt.Text, dg);
+            pm.TopLevel = false;
+            dg.Size = new Size(700, 715);
+            pm.epnl.Location = new Point(-300, 1);
+            pm.attachtxt.Visible = true;
+            pm.elistlbl.Text = "";
+
+            dg.dialogpnl.Controls.Add(pm);
+            pm.loadingdg();
+            dg.Text = "Send Email";
+
+            dg.Show();
+
+            pm.Show();
         }
 
         private void addsupbtn_Click(object sender, EventArgs e)

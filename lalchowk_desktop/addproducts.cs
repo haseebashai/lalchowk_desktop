@@ -102,11 +102,17 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void supplierlist_SelectedIndexChanged(object sender, EventArgs e)
         {
+            try { 
             dr = obj.Query("select supplierid from suppliers where name='" + supplierlist.Text + "'");
             dr.Read();    
             supidtxt.Text = dr[0].ToString();            
             obj.closeConnection();
-        }
+        }catch(Exception)
+            {
+                obj.closeConnection();
+                MessageBox.Show("Error!\nPlease try again.");
+            }
+}
 
         private void readsecond()
         {
@@ -235,29 +241,35 @@ namespace Veiled_Kashmir_Admin_Panel
                 {
                     MessageBox.Show("Product undefined!");
                 }
-                /*     else
-                     {
-                         if (image.BackgroundImage == null)
-                         {
-                             MessageBox.Show("Select Image first.");
-                         } */
                 else
                 {
-                    Cursor = Cursors.WaitCursor;
+                    if (image.BackgroundImage == null)
+                    {
+                        DialogResult dgr = MessageBox.Show("Do you want to update database only ?", "Warning!", MessageBoxButtons.YesNo);
+                        if (dgr == DialogResult.Yes) {
+                            cmd = "update products set picture='" + name.Text + "' where productid='" + pidtxt.Text + "'";
+                            obj.nonQuery(cmd);
+                            MessageBox.Show("Image address added in database, please upload the picture seperately now.");
+                            }
+                    }
 
-                    image.BackgroundImage.Dispose();
-                    File.Move(fileaddress, directory + name.Text);
-                    uploaddir = directory + name.Text;
+                    else
+                    {
+                        Cursor = Cursors.WaitCursor;
 
-                    cmd = "update products set picture='" + name.Text + "' where productid='" + pidtxt.Text + "'";
-                    obj.nonQuery(cmd);
+                        image.BackgroundImage.Dispose();
+                        File.Move(fileaddress, directory + name.Text);
+                        uploaddir = directory + name.Text;
 
-                    UploadFileToFtp("ftp://182.50.151.83/httpdocs/lalchowk/pictures/", uploaddir);
+                        cmd = "update products set picture='" + name.Text + "' where productid='" + pidtxt.Text + "'";
+                        obj.nonQuery(cmd);
+
+                        UploadFileToFtp("ftp://182.50.151.83/httpdocs/lalchowk/pictures/", uploaddir);
 
 
-                    Cursor = Cursors.Arrow;
+                        Cursor = Cursors.Arrow;
+                    }
                 }
-            //}
             }
             catch (WebException ex)
             {
@@ -297,7 +309,13 @@ namespace Veiled_Kashmir_Admin_Panel
                 {
                     if (image.BackgroundImage == null)
                     {
-                        MessageBox.Show("Select Image first.");
+                        DialogResult dgr = MessageBox.Show("Do you want to update database only ?", "Warning!", MessageBoxButtons.YesNo);
+                        if (dgr == DialogResult.Yes)
+                        {
+                            cmd = "update products set picture='" + name.Text + "' where productid='" + pidtxt.Text + "'";
+                            obj.nonQuery(cmd);
+                            MessageBox.Show("Image address added in database, please upload the picture seperately now.");
+                        }
                     }
                     else
                     {
@@ -380,6 +398,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 MessageBox.Show("Enter id first \n\n" + ex.ToString());
             }
         }
+
 
         private void pic4_Click(object sender, EventArgs e)
         {
@@ -479,7 +498,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 }
 
                 var response = (FtpWebResponse)request.GetResponse();
-                MessageBox.Show("Upload done: " + response.StatusDescription, "Upload Successful.");
+                MessageBox.Show("Image uploaded successfully.\nSuccess Response code: " + response.StatusDescription);
 
                 response.Close();
 
@@ -494,8 +513,10 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void fillbtn_Click(object sender, EventArgs e)
         {
-            readdetails();
-        }
+            
+                readdetails();
+            
+            }
 
         private void desctxt_Leave(object sender, EventArgs e)
         {
@@ -525,6 +546,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void readdetails()
         {
+            try { 
             dr = obj.Query("select detailname1,detailname2,detailname3,detailname4,detailname5 from products where categoryid='"+catbox.Text+"'");
             dr.Read();
             
@@ -534,11 +556,17 @@ namespace Veiled_Kashmir_Admin_Panel
             dname4txt.Text = dr["detailname4"].ToString();
             dname5txt.Text = dr["detailname5"].ToString();
             obj.closeConnection();
+            }catch(Exception)
+            {
+                obj.closeConnection();
+                MessageBox.Show("Error!\nPlease try again.");
+            }
 
-        }
+}
 
         private void thirdcat_SelectedIndexChanged(object sender, EventArgs e)
         {
+            try { 
             dr = obj.Query("select categoryid from thirdcategory where categoryname='" + thirdcat.Text + "' && secondcategoryid='" + id2lbl.Text + "'");
             if (dr.Read())
             {
@@ -551,11 +579,17 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             obj.closeConnection();
             readcategory();
-            
-        }
+        }catch(Exception)
+            {
+                obj.closeConnection();
+                MessageBox.Show("Error!\nPlease try again.");
+            }
+
+}
 
         private void seccat_SelectedIndexChanged(object sender, EventArgs e)
         {
+            try {
             StringBuilder sb = new StringBuilder(seccat.Text);
             sb.Replace("'", "\\'");
             dr = obj.Query("select categoryid from secondcategory where categoryname='" + sb + "' && firstcategoryid='" +idlbl.Text+"'");
@@ -571,13 +605,18 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             readthird();
             readcategory();
-           
+        }catch(Exception)
+            {
+                obj.closeConnection();
+                MessageBox.Show("Error!\nPlease try again.");
+            }
 
-        }
+
+}
 
         private void firstcat_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            try {
             dr = obj.Query("select categoryid from firstcategory where categoryname='" + firstcat.Text + "'");
             dr.Read();
             idlbl.Text = dr[0].ToString();
@@ -586,9 +625,14 @@ namespace Veiled_Kashmir_Admin_Panel
             foreach (DataRowView items in seccat.Items)
                 seccat.Items.Remove(items);
             readsecond();
-            
+        }catch(Exception)
+            {
+                obj.closeConnection();
+                MessageBox.Show("Error!\nPlease try again.");
+            }
 
-        }
+
+}
 
       
 

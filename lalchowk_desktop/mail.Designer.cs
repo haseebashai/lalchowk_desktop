@@ -45,7 +45,9 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.msgtxt = new System.Windows.Forms.TextBox();
+            this.panel4 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.closebtn)).BeginInit();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -108,7 +110,7 @@
             // 
             // totxt
             // 
-            this.totxt.Location = new System.Drawing.Point(17, 204);
+            this.totxt.Location = new System.Drawing.Point(12, 29);
             this.totxt.Name = "totxt";
             this.totxt.ReadOnly = true;
             this.totxt.Size = new System.Drawing.Size(587, 20);
@@ -119,7 +121,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(14, 182);
+            this.label2.Location = new System.Drawing.Point(9, 7);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(25, 16);
             this.label2.TabIndex = 61;
@@ -130,7 +132,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(14, 236);
+            this.label3.Location = new System.Drawing.Point(9, 61);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 16);
             this.label3.TabIndex = 63;
@@ -138,7 +140,7 @@
             // 
             // subtxt
             // 
-            this.subtxt.Location = new System.Drawing.Point(17, 258);
+            this.subtxt.Location = new System.Drawing.Point(12, 83);
             this.subtxt.Name = "subtxt";
             this.subtxt.ReadOnly = true;
             this.subtxt.Size = new System.Drawing.Size(587, 20);
@@ -149,7 +151,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(14, 291);
+            this.label4.Location = new System.Drawing.Point(9, 116);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(40, 16);
             this.label4.TabIndex = 65;
@@ -157,11 +159,11 @@
             // 
             // bodytxt
             // 
-            this.bodytxt.Location = new System.Drawing.Point(17, 313);
+            this.bodytxt.Location = new System.Drawing.Point(12, 138);
             this.bodytxt.Multiline = true;
             this.bodytxt.Name = "bodytxt";
             this.bodytxt.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.bodytxt.Size = new System.Drawing.Size(587, 250);
+            this.bodytxt.Size = new System.Drawing.Size(587, 180);
             this.bodytxt.TabIndex = 64;
             // 
             // sendbtn
@@ -169,7 +171,7 @@
             this.sendbtn.AutoSize = true;
             this.sendbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.sendbtn.Depth = 0;
-            this.sendbtn.Location = new System.Drawing.Point(521, 572);
+            this.sendbtn.Location = new System.Drawing.Point(516, 327);
             this.sendbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.sendbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.sendbtn.Name = "sendbtn";
@@ -183,7 +185,7 @@
             // frombox
             // 
             this.frombox.FormattingEnabled = true;
-            this.frombox.Location = new System.Drawing.Point(295, 581);
+            this.frombox.Location = new System.Drawing.Point(290, 336);
             this.frombox.Name = "frombox";
             this.frombox.Size = new System.Drawing.Size(191, 21);
             this.frombox.TabIndex = 67;
@@ -194,7 +196,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label5.Location = new System.Drawing.Point(212, 586);
+            this.label5.Location = new System.Drawing.Point(207, 341);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(77, 16);
             this.label5.TabIndex = 68;
@@ -218,8 +220,24 @@
             this.msgtxt.Name = "msgtxt";
             this.msgtxt.ReadOnly = true;
             this.msgtxt.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.msgtxt.Size = new System.Drawing.Size(587, 99);
+            this.msgtxt.Size = new System.Drawing.Size(587, 74);
             this.msgtxt.TabIndex = 69;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.label2);
+            this.panel4.Controls.Add(this.totxt);
+            this.panel4.Controls.Add(this.subtxt);
+            this.panel4.Controls.Add(this.label5);
+            this.panel4.Controls.Add(this.label3);
+            this.panel4.Controls.Add(this.frombox);
+            this.panel4.Controls.Add(this.bodytxt);
+            this.panel4.Controls.Add(this.sendbtn);
+            this.panel4.Controls.Add(this.label4);
+            this.panel4.Location = new System.Drawing.Point(5, 146);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(617, 448);
+            this.panel4.TabIndex = 71;
             // 
             // mail
             // 
@@ -227,17 +245,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(628, 626);
+            this.Controls.Add(this.panel4);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.msgtxt);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.frombox);
-            this.Controls.Add(this.sendbtn);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.bodytxt);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.subtxt);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.totxt);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.closebtn);
             this.Controls.Add(this.panel3);
@@ -250,6 +260,8 @@
             this.Text = "mail";
             this.Load += new System.EventHandler(this.mail_Load);
             ((System.ComponentModel.ISupportInitialize)(this.closebtn)).EndInit();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -274,5 +286,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox msgtxt;
+        private System.Windows.Forms.Panel panel4;
     }
 }

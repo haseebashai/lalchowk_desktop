@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.Net.Mail;
 using System.Net;
+using System.IO;
 using System.Threading;
 
 namespace Veiled_Kashmir_Admin_Panel
@@ -18,7 +19,7 @@ namespace Veiled_Kashmir_Admin_Panel
     {
         DBConnect obj = new DBConnect();
         MySqlConnection con;
-        String cmd, sendername, from, tick= "✔", returned;
+        String cmd, sendername, from, tick= "✔", returned, fileaddress,filename,directory,fullpath, uploaddir;
         MySqlCommandBuilder cmdbl;
         MySqlDataReader dr;
         MySqlDataAdapter adap;
@@ -29,6 +30,7 @@ namespace Veiled_Kashmir_Admin_Panel
         int i = 0, maillist, emails, j = 0,emailerrorno;
         List<string> myData = new List<string>();
         PictureBox loading = new PictureBox();
+        bool attachment = false;
 
 
 
@@ -54,6 +56,7 @@ namespace Veiled_Kashmir_Admin_Panel
         private void bgworker1_DoWork(object sender, DoWorkEventArgs e)
         {
             readlist();
+            
         }
 
         private void bgworker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -63,7 +66,7 @@ namespace Veiled_Kashmir_Admin_Panel
             dg.lbl.Text = "Send Email";
             emailno.Text = maillist.ToString();
             recno.Text = emails.ToString();
-            elistlbl.Text = "Send email to " + emails + " customers today or enter a single email ID.";
+            elistlbl.Text = "Send email to " + recno.Text + " customers today or enter a single email ID.";
             emaillist.DisplayMember = "mail";
             epnl.Visible = true;
         }
@@ -139,7 +142,17 @@ namespace Veiled_Kashmir_Admin_Panel
 
         }
 
-        
+        private void checkattach_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkattach.Checked)
+                attachtxt.Visible = true;
+            else
+            
+                attachtxt.Visible = false;
+              
+        }
+
+      
         private string sendmail(string from)
         {
 
@@ -179,7 +192,16 @@ namespace Veiled_Kashmir_Admin_Panel
                     mail.Body = s.ToString();
                     mail.IsBodyHtml = true;
                     myData.Add(dr["mail"].ToString());
-                    Smtpobj.Send(mail);
+                    if (checkattach.Checked && attachment)
+                    {
+                        uploaddir = directory + attachtxt.Text;
+                        mail.Attachments.Add(new Attachment(uploaddir));
+                        Smtpobj.Send(mail);
+                    }
+                    else
+                    {
+                        Smtpobj.Send(mail);
+                    }
 
                     j++;
                     i += 100/emails;
@@ -213,7 +235,7 @@ namespace Veiled_Kashmir_Admin_Panel
             
         }
 
-
+      
         private void frombox_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (frombox.Text)
@@ -262,7 +284,23 @@ namespace Veiled_Kashmir_Admin_Panel
 
         }
 
-       
+        private void attachtxt_Click(object sender, EventArgs e)
+        {
+            if (attachdialog.ShowDialog() == DialogResult.OK)
+            {
+                fileaddress = attachdialog.FileName;
+                filename = attachdialog.SafeFileName;
+                
+               
+               
+                fullpath = Path.GetFullPath(fileaddress).TrimEnd(Path.DirectorySeparatorChar);
+                directory = Path.GetDirectoryName(fullpath) + "\\";
+                attachtxt.Text = Path.GetFileName(fullpath);
+                attachment = true;
+
+            }
+        }
+
         private void totxt_Enter(object sender, EventArgs e)
         {
 
@@ -309,7 +347,8 @@ namespace Veiled_Kashmir_Admin_Panel
             for (int i = 0; i < myData.Count; i++)
             {
                 tolbl.Text = "Sending to: " + myData[i] +"  " + tick;
-            }    
+            }
+            
             
         }
 
@@ -329,12 +368,10 @@ namespace Veiled_Kashmir_Admin_Panel
             else
             {
                 Cursor = Cursors.WaitCursor;
-                timer.Start();
+                
                     try
                     {
-                        StringBuilder s = new StringBuilder(bodytxt.Text);
-                        s.Replace(@"\", @"\\");
-                        s.Replace("'", "\\'");
+                        StringBuilder s = new StringBuilder(bodytxt.Text);                  
                         StringBuilder s1 = new StringBuilder(subtxt.Text);
                         s1.Replace(@"\", @"\\");
                         s1.Replace("'", "\\'");
@@ -349,25 +386,34 @@ namespace Veiled_Kashmir_Admin_Panel
                         Smtpobj.Credentials = new NetworkCredential(from, "Lalchowk@123");
                         Smtpobj.DeliveryMethod = SmtpDeliveryMethod.Network;
 
-                        i = 0;
+                        
                         MailMessage mail = new MailMessage(from, totxt.Text);
                         mail.From = new MailAddress(from, sendername);
                         mail.Subject = s1.ToString();
                         mail.Body = s.ToString();
+                    if (checkhtml.Checked)
+                    {
                         mail.IsBodyHtml = true;
+                       
+                    }
 
+                    if (checkattach.Checked && attachment)
+                    {
+                        uploaddir = directory + attachtxt.Text;
+                        mail.Attachments.Add(new Attachment(uploaddir));
                         Smtpobj.Send(mail);
-                        i += 100 / 1;
-                        bgworker.ReportProgress(i);
+                    }
+                    else
+                    {
+                        Smtpobj.Send(mail);
+                       
+                    }
+                        
 
                     Cursor = Cursors.Arrow;
-                    timer.Stop();
+                    
                     sendinglbl.Text = "";
                     MessageBox.Show("Mail Sent.");
-                    
-                    progressBar1.Value = 0;
-
-
                 }
                     catch (Exception ex)
                     {
@@ -430,10 +476,16 @@ namespace Veiled_Kashmir_Admin_Panel
                 MessageBox.Show("Email sending failed from: " + myData[j] + "\nPlease Check the error and continue sending emails.","Error!");
             }
             readlist();
+            emailno.Text = maillist.ToString();
+            recno.Text = emails.ToString();
+            elistlbl.Text = "Send email to " + recno.Text + " customers today or enter a single email ID.";
+            emaillist.DisplayMember = "mail";
+
 
 
         }
     }
+ 
 }
 
         

@@ -173,7 +173,9 @@ namespace Veiled_Kashmir_Admin_Panel
                 obj.nonQuery(cmd);
                 MessageBox.Show("Order deleted.");
                 dpnl.Visible = false;
+                orderdetailview.Visible = false;
                 readorders();
+                ordergridview.DataSource = bsource;
             }
 
 

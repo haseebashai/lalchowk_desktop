@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             this.signoutlbl = new System.Windows.Forms.Label();
             this.productsbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.customersbtn = new MaterialSkin.Controls.MaterialFlatButton();
@@ -41,6 +41,7 @@
             this.approvebtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.signinlbl = new System.Windows.Forms.Label();
             this.navpnl = new System.Windows.Forms.Panel();
+            this.categorybtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.clientbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.sendmailbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.caboutbtn = new MaterialSkin.Controls.MaterialFlatButton();
@@ -69,7 +70,8 @@
             this.loadingpic = new System.Windows.Forms.PictureBox();
             this.loadinglbl = new System.Windows.Forms.Label();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
-            this.categorybtn = new MaterialSkin.Controls.MaterialFlatButton();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.navpnl.SuspendLayout();
             this.navtitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -99,7 +101,7 @@
             this.productsbtn.AutoSize = true;
             this.productsbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.productsbtn.Depth = 0;
-            this.productsbtn.Location = new System.Drawing.Point(5, 56);
+            this.productsbtn.Location = new System.Drawing.Point(20, 81);
             this.productsbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.productsbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.productsbtn.Name = "productsbtn";
@@ -115,7 +117,7 @@
             this.customersbtn.AutoSize = true;
             this.customersbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.customersbtn.Depth = 0;
-            this.customersbtn.Location = new System.Drawing.Point(5, 93);
+            this.customersbtn.Location = new System.Drawing.Point(20, 118);
             this.customersbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.customersbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.customersbtn.Name = "customersbtn";
@@ -131,7 +133,7 @@
             this.suppliersbtn.AutoSize = true;
             this.suppliersbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.suppliersbtn.Depth = 0;
-            this.suppliersbtn.Location = new System.Drawing.Point(4, 131);
+            this.suppliersbtn.Location = new System.Drawing.Point(19, 156);
             this.suppliersbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.suppliersbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.suppliersbtn.Name = "suppliersbtn";
@@ -147,14 +149,14 @@
             this.approvebtn.AutoSize = true;
             this.approvebtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.approvebtn.Depth = 0;
-            this.approvebtn.Location = new System.Drawing.Point(5, 206);
+            this.approvebtn.Location = new System.Drawing.Point(20, 231);
             this.approvebtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.approvebtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.approvebtn.Name = "approvebtn";
             this.approvebtn.Primary = false;
-            this.approvebtn.Size = new System.Drawing.Size(168, 36);
+            this.approvebtn.Size = new System.Drawing.Size(115, 36);
             this.approvebtn.TabIndex = 15;
-            this.approvebtn.Text = "approve dealer price";
+            this.approvebtn.Text = "approve price";
             this.approvebtn.UseVisualStyleBackColor = true;
             this.approvebtn.Click += new System.EventHandler(this.approvebtn_Click);
             // 
@@ -171,7 +173,10 @@
             // 
             // navpnl
             // 
-            this.navpnl.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.navpnl.BackColor = System.Drawing.Color.White;
+            this.navpnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.navpnl.Controls.Add(this.label1);
+            this.navpnl.Controls.Add(this.label2);
             this.navpnl.Controls.Add(this.categorybtn);
             this.navpnl.Controls.Add(this.clientbtn);
             this.navpnl.Controls.Add(this.sendmailbtn);
@@ -188,17 +193,33 @@
             this.navpnl.Controls.Add(this.customersbtn);
             this.navpnl.Controls.Add(this.suppliersbtn);
             this.navpnl.Controls.Add(this.ordersbtn);
-            this.navpnl.Location = new System.Drawing.Point(0, 12);
+            this.navpnl.Location = new System.Drawing.Point(0, 11);
             this.navpnl.Name = "navpnl";
             this.navpnl.Size = new System.Drawing.Size(200, 711);
             this.navpnl.TabIndex = 10;
+            // 
+            // categorybtn
+            // 
+            this.categorybtn.AutoSize = true;
+            this.categorybtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.categorybtn.Depth = 0;
+            this.categorybtn.Location = new System.Drawing.Point(20, 496);
+            this.categorybtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.categorybtn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.categorybtn.Name = "categorybtn";
+            this.categorybtn.Primary = false;
+            this.categorybtn.Size = new System.Drawing.Size(93, 36);
+            this.categorybtn.TabIndex = 27;
+            this.categorybtn.Text = "Categories";
+            this.categorybtn.UseVisualStyleBackColor = true;
+            this.categorybtn.Click += new System.EventHandler(this.categorybtn_Click);
             // 
             // clientbtn
             // 
             this.clientbtn.AutoSize = true;
             this.clientbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.clientbtn.Depth = 0;
-            this.clientbtn.Location = new System.Drawing.Point(5, 469);
+            this.clientbtn.Location = new System.Drawing.Point(20, 577);
             this.clientbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.clientbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.clientbtn.Name = "clientbtn";
@@ -214,7 +235,7 @@
             this.sendmailbtn.AutoSize = true;
             this.sendmailbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.sendmailbtn.Depth = 0;
-            this.sendmailbtn.Location = new System.Drawing.Point(5, 432);
+            this.sendmailbtn.Location = new System.Drawing.Point(20, 458);
             this.sendmailbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.sendmailbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.sendmailbtn.Name = "sendmailbtn";
@@ -230,7 +251,7 @@
             this.caboutbtn.AutoSize = true;
             this.caboutbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.caboutbtn.Depth = 0;
-            this.caboutbtn.Location = new System.Drawing.Point(5, 394);
+            this.caboutbtn.Location = new System.Drawing.Point(20, 420);
             this.caboutbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.caboutbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.caboutbtn.Name = "caboutbtn";
@@ -246,7 +267,7 @@
             this.homepagebtn.AutoSize = true;
             this.homepagebtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.homepagebtn.Depth = 0;
-            this.homepagebtn.Location = new System.Drawing.Point(5, 356);
+            this.homepagebtn.Location = new System.Drawing.Point(20, 382);
             this.homepagebtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.homepagebtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.homepagebtn.Name = "homepagebtn";
@@ -262,7 +283,7 @@
             this.msgbtn.AutoSize = true;
             this.msgbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.msgbtn.Depth = 0;
-            this.msgbtn.Location = new System.Drawing.Point(5, 281);
+            this.msgbtn.Location = new System.Drawing.Point(20, 306);
             this.msgbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.msgbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.msgbtn.Name = "msgbtn";
@@ -278,7 +299,7 @@
             this.accbtn.AutoSize = true;
             this.accbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.accbtn.Depth = 0;
-            this.accbtn.Location = new System.Drawing.Point(5, 318);
+            this.accbtn.Location = new System.Drawing.Point(20, 344);
             this.accbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.accbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.accbtn.Name = "accbtn";
@@ -294,7 +315,7 @@
             this.expbtn.AutoSize = true;
             this.expbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.expbtn.Depth = 0;
-            this.expbtn.Location = new System.Drawing.Point(5, 169);
+            this.expbtn.Location = new System.Drawing.Point(20, 194);
             this.expbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.expbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.expbtn.Name = "expbtn";
@@ -310,7 +331,7 @@
             this.cobtn.AutoSize = true;
             this.cobtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.cobtn.Depth = 0;
-            this.cobtn.Location = new System.Drawing.Point(5, 244);
+            this.cobtn.Location = new System.Drawing.Point(20, 269);
             this.cobtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.cobtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.cobtn.Name = "cobtn";
@@ -326,7 +347,7 @@
             this.ordersbtn.AutoSize = true;
             this.ordersbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ordersbtn.Depth = 0;
-            this.ordersbtn.Location = new System.Drawing.Point(5, 19);
+            this.ordersbtn.Location = new System.Drawing.Point(20, 44);
             this.ordersbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.ordersbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.ordersbtn.Name = "ordersbtn";
@@ -343,9 +364,9 @@
             this.navtitle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.navtitle.Controls.Add(this.pictureBox1);
             this.navtitle.Controls.Add(this.navtxt);
-            this.navtitle.Location = new System.Drawing.Point(0, 1);
+            this.navtitle.Location = new System.Drawing.Point(0, 0);
             this.navtitle.Name = "navtitle";
-            this.navtitle.Size = new System.Drawing.Size(200, 22);
+            this.navtitle.Size = new System.Drawing.Size(200, 27);
             this.navtitle.TabIndex = 11;
             // 
             // pictureBox1
@@ -353,7 +374,7 @@
             this.pictureBox1.BackColor = System.Drawing.Color.Black;
             this.pictureBox1.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources._9895;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(1, 1);
+            this.pictureBox1.Location = new System.Drawing.Point(1, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(24, 20);
             this.pictureBox1.TabIndex = 41;
@@ -367,7 +388,7 @@
             this.navtxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.navtxt.ForeColor = System.Drawing.Color.White;
             this.navtxt.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.navtxt.Location = new System.Drawing.Point(1, 1);
+            this.navtxt.Location = new System.Drawing.Point(1, 3);
             this.navtxt.Name = "navtxt";
             this.navtxt.Size = new System.Drawing.Size(72, 20);
             this.navtxt.TabIndex = 0;
@@ -391,7 +412,7 @@
             this.cntpnl.Controls.Add(this.placedh);
             this.cntpnl.Controls.Add(this.loadingpic);
             this.cntpnl.Controls.Add(this.loadinglbl);
-            this.cntpnl.Location = new System.Drawing.Point(201, 1);
+            this.cntpnl.Location = new System.Drawing.Point(201, 0);
             this.cntpnl.Name = "cntpnl";
             this.cntpnl.Size = new System.Drawing.Size(1162, 722);
             this.cntpnl.TabIndex = 12;
@@ -493,30 +514,30 @@
             // 
             // shippeddataview
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.shippeddataview.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.shippeddataview.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle19;
             this.shippeddataview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.shippeddataview.BackgroundColor = System.Drawing.Color.White;
             this.shippeddataview.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.shippeddataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.shippeddataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle20;
             this.shippeddataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.shippeddataview.Location = new System.Drawing.Point(5, 299);
             this.shippeddataview.Name = "shippeddataview";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.shippeddataview.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.shippeddataview.RowHeadersDefaultCellStyle = dataGridViewCellStyle21;
             this.shippeddataview.RowHeadersVisible = false;
             this.shippeddataview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.shippeddataview.Size = new System.Drawing.Size(1145, 152);
@@ -537,30 +558,30 @@
             // 
             // placeddataview
             // 
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            this.placeddataview.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle22.BackColor = System.Drawing.Color.White;
+            this.placeddataview.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle22;
             this.placeddataview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.placeddataview.BackgroundColor = System.Drawing.Color.White;
             this.placeddataview.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.placeddataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.placeddataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle23;
             this.placeddataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.placeddataview.Location = new System.Drawing.Point(5, 30);
             this.placeddataview.Name = "placeddataview";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.placeddataview.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.placeddataview.RowHeadersDefaultCellStyle = dataGridViewCellStyle24;
             this.placeddataview.RowHeadersVisible = false;
             this.placeddataview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.placeddataview.Size = new System.Drawing.Size(1145, 223);
@@ -607,21 +628,27 @@
             this.bgworker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker_DoWork);
             this.bgworker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker_RunWorkerCompleted);
             // 
-            // categorybtn
+            // label1
             // 
-            this.categorybtn.AutoSize = true;
-            this.categorybtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.categorybtn.Depth = 0;
-            this.categorybtn.Location = new System.Drawing.Point(5, 506);
-            this.categorybtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.categorybtn.MouseState = MaterialSkin.MouseState.HOVER;
-            this.categorybtn.Name = "categorybtn";
-            this.categorybtn.Primary = false;
-            this.categorybtn.Size = new System.Drawing.Size(93, 36);
-            this.categorybtn.TabIndex = 27;
-            this.categorybtn.Text = "Categories";
-            this.categorybtn.UseVisualStyleBackColor = true;
-            this.categorybtn.Click += new System.EventHandler(this.categorybtn_Click);
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label1.Location = new System.Drawing.Point(3, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(64, 16);
+            this.label1.TabIndex = 33;
+            this.label1.Text = "Lalchowk";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label2.Location = new System.Drawing.Point(3, 551);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(63, 16);
+            this.label2.TabIndex = 34;
+            this.label2.Text = "Lifeclicks";
             // 
             // mainform
             // 
@@ -689,5 +716,7 @@
         private System.Windows.Forms.PictureBox loadingpic;
         private MaterialSkin.Controls.MaterialFlatButton clientbtn;
         private MaterialSkin.Controls.MaterialFlatButton categorybtn;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
     }
 }

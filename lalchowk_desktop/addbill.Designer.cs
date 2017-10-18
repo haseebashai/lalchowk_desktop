@@ -74,6 +74,7 @@
             this.label13 = new System.Windows.Forms.Label();
             this.dptxt = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
+            this.sendmailbtn = new MaterialSkin.Controls.MaterialFlatButton();
             ((System.ComponentModel.ISupportInitialize)(this.closebtn)).BeginInit();
             this.SuspendLayout();
             // 
@@ -165,7 +166,7 @@
             this.billaddbtn.AutoSize = true;
             this.billaddbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.billaddbtn.Depth = 0;
-            this.billaddbtn.Location = new System.Drawing.Point(399, 600);
+            this.billaddbtn.Location = new System.Drawing.Point(399, 569);
             this.billaddbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.billaddbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.billaddbtn.Name = "billaddbtn";
@@ -524,12 +525,29 @@
             this.label14.TabIndex = 96;
             this.label14.Text = "DP";
             // 
+            // sendmailbtn
+            // 
+            this.sendmailbtn.AutoSize = true;
+            this.sendmailbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.sendmailbtn.Depth = 0;
+            this.sendmailbtn.Location = new System.Drawing.Point(478, 611);
+            this.sendmailbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.sendmailbtn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.sendmailbtn.Name = "sendmailbtn";
+            this.sendmailbtn.Primary = false;
+            this.sendmailbtn.Size = new System.Drawing.Size(151, 36);
+            this.sendmailbtn.TabIndex = 98;
+            this.sendmailbtn.Text = "send mail with bill";
+            this.sendmailbtn.UseVisualStyleBackColor = true;
+            this.sendmailbtn.Click += new System.EventHandler(this.sendmailbtn_Click);
+            // 
             // addbill
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(642, 661);
+            this.Controls.Add(this.sendmailbtn);
             this.Controls.Add(this.dptxt);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
@@ -635,5 +653,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox dptxt;
         private System.Windows.Forms.Label label14;
+        private MaterialSkin.Controls.MaterialFlatButton sendmailbtn;
     }
 }

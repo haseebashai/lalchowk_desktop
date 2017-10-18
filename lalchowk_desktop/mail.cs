@@ -31,6 +31,7 @@ namespace Veiled_Kashmir_Admin_Panel
             msgid = mid;
         }
 
+
         private void closebtn_Click(object sender, EventArgs e)
         {
             Close();

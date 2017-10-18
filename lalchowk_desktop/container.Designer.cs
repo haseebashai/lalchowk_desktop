@@ -118,7 +118,7 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.Black;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 777);
+            this.panel2.Location = new System.Drawing.Point(0, 757);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1377, 1);
             this.panel2.TabIndex = 5;
@@ -129,7 +129,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(0, 1);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1, 776);
+            this.panel3.Size = new System.Drawing.Size(1, 756);
             this.panel3.TabIndex = 5;
             // 
             // panel4
@@ -138,15 +138,15 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel4.Location = new System.Drawing.Point(1376, 1);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1, 776);
+            this.panel4.Size = new System.Drawing.Size(1, 756);
             this.panel4.TabIndex = 5;
             // 
             // mainpnl
             // 
             this.mainpnl.BackColor = System.Drawing.Color.White;
-            this.mainpnl.Location = new System.Drawing.Point(1, 38);
+            this.mainpnl.Location = new System.Drawing.Point(1, 34);
             this.mainpnl.Name = "mainpnl";
-            this.mainpnl.Size = new System.Drawing.Size(1363, 739);
+            this.mainpnl.Size = new System.Drawing.Size(1375, 723);
             this.mainpnl.TabIndex = 6;
             // 
             // container
