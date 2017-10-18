@@ -84,6 +84,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Messaging" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.Services" />
@@ -103,6 +104,12 @@
     </Compile>
     <Compile Include="addbill.Designer.cs">
       <DependentUpon>addbill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="addcategories.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addcategories.Designer.cs">
+      <DependentUpon>addcategories.cs</DependentUpon>
     </Compile>
     <Compile Include="apphomepage.cs">
       <SubType>Form</SubType>
@@ -258,6 +265,9 @@
     </Compile>
     <EmbeddedResource Include="addbill.resx">
       <DependentUpon>addbill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="addcategories.resx">
+      <DependentUpon>addcategories.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="apphomepage.resx">
       <DependentUpon>apphomepage.cs</DependentUpon>

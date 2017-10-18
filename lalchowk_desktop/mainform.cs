@@ -585,6 +585,36 @@ namespace Veiled_Kashmir_Admin_Panel
             Cursor = Cursors.Arrow;
         }
 
+        private void categorybtn_Click(object sender, EventArgs e)
+        {
+            if (cntpnl.Contains(placeddataview))
+            {
+
+                addcategories ac = new addcategories(this);
+                ac.TopLevel = false;
+                cntpnl.Controls.Clear();
+
+                cntpnl.Controls.Add(ac);
+                ac.loadingnormal();
+
+                ac.Show();
+
+            }
+            else
+            {
+                dialogcontainer dg = new dialogcontainer();
+                addcategories ac = new addcategories(dg);
+                ac.TopLevel = false;
+                dg.dialogpnl.Controls.Add(ac);
+                ac.loadingdg();
+                dg.Text = "Categories";
+
+
+                dg.Show();
+                ac.Show();
+            }
+        }
+
         public void loadingnormal()
         {
             

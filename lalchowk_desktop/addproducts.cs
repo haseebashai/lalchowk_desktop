@@ -232,32 +232,32 @@ namespace Veiled_Kashmir_Admin_Panel
             try
             {
                 if (pidtxt.Text == "")
-            {
-                MessageBox.Show("Product undefined!");
-            }
-            else
-            {
-                if (image.BackgroundImage == null)
                 {
-                    MessageBox.Show("Select Image first.");
+                    MessageBox.Show("Product undefined!");
                 }
+                /*     else
+                     {
+                         if (image.BackgroundImage == null)
+                         {
+                             MessageBox.Show("Select Image first.");
+                         } */
                 else
                 {
                     Cursor = Cursors.WaitCursor;
-                    
-                        image.BackgroundImage.Dispose();
-                        File.Move(fileaddress, directory + name.Text);
-                        uploaddir = directory + name.Text;
 
-                        cmd = "update products set picture='" + name.Text + "' where productid='" + pidtxt.Text + "'";
-                        obj.nonQuery(cmd);
+                    image.BackgroundImage.Dispose();
+                    File.Move(fileaddress, directory + name.Text);
+                    uploaddir = directory + name.Text;
 
-                        UploadFileToFtp("ftp://182.50.151.83/httpdocs/lalchowk/pictures/", uploaddir);
+                    cmd = "update products set picture='" + name.Text + "' where productid='" + pidtxt.Text + "'";
+                    obj.nonQuery(cmd);
 
-                    
+                    UploadFileToFtp("ftp://182.50.151.83/httpdocs/lalchowk/pictures/", uploaddir);
+
+
                     Cursor = Cursors.Arrow;
                 }
-            }
+            //}
             }
             catch (WebException ex)
             {
@@ -278,7 +278,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
             uploadpic(pictxt, pic1,file1);
             pictxt.Clear();
-            pic1.Dispose();
+            pic1.BackgroundImage.Dispose();
 
             
         }

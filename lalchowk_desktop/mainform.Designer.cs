@@ -41,6 +41,7 @@
             this.approvebtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.signinlbl = new System.Windows.Forms.Label();
             this.navpnl = new System.Windows.Forms.Panel();
+            this.clientbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.sendmailbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.caboutbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.homepagebtn = new MaterialSkin.Controls.MaterialFlatButton();
@@ -68,7 +69,7 @@
             this.loadingpic = new System.Windows.Forms.PictureBox();
             this.loadinglbl = new System.Windows.Forms.Label();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
-            this.clientbtn = new MaterialSkin.Controls.MaterialFlatButton();
+            this.categorybtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.navpnl.SuspendLayout();
             this.navtitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -171,6 +172,7 @@
             // navpnl
             // 
             this.navpnl.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.navpnl.Controls.Add(this.categorybtn);
             this.navpnl.Controls.Add(this.clientbtn);
             this.navpnl.Controls.Add(this.sendmailbtn);
             this.navpnl.Controls.Add(this.caboutbtn);
@@ -190,6 +192,22 @@
             this.navpnl.Name = "navpnl";
             this.navpnl.Size = new System.Drawing.Size(200, 711);
             this.navpnl.TabIndex = 10;
+            // 
+            // clientbtn
+            // 
+            this.clientbtn.AutoSize = true;
+            this.clientbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.clientbtn.Depth = 0;
+            this.clientbtn.Location = new System.Drawing.Point(5, 469);
+            this.clientbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.clientbtn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.clientbtn.Name = "clientbtn";
+            this.clientbtn.Primary = false;
+            this.clientbtn.Size = new System.Drawing.Size(133, 36);
+            this.clientbtn.TabIndex = 26;
+            this.clientbtn.Text = "Client accounts";
+            this.clientbtn.UseVisualStyleBackColor = true;
+            this.clientbtn.Click += new System.EventHandler(this.clientbtn_Click);
             // 
             // sendmailbtn
             // 
@@ -589,21 +607,21 @@
             this.bgworker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker_DoWork);
             this.bgworker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker_RunWorkerCompleted);
             // 
-            // clientbtn
+            // categorybtn
             // 
-            this.clientbtn.AutoSize = true;
-            this.clientbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.clientbtn.Depth = 0;
-            this.clientbtn.Location = new System.Drawing.Point(5, 469);
-            this.clientbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.clientbtn.MouseState = MaterialSkin.MouseState.HOVER;
-            this.clientbtn.Name = "clientbtn";
-            this.clientbtn.Primary = false;
-            this.clientbtn.Size = new System.Drawing.Size(133, 36);
-            this.clientbtn.TabIndex = 26;
-            this.clientbtn.Text = "Client accounts";
-            this.clientbtn.UseVisualStyleBackColor = true;
-            this.clientbtn.Click += new System.EventHandler(this.clientbtn_Click);
+            this.categorybtn.AutoSize = true;
+            this.categorybtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.categorybtn.Depth = 0;
+            this.categorybtn.Location = new System.Drawing.Point(5, 506);
+            this.categorybtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.categorybtn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.categorybtn.Name = "categorybtn";
+            this.categorybtn.Primary = false;
+            this.categorybtn.Size = new System.Drawing.Size(93, 36);
+            this.categorybtn.TabIndex = 27;
+            this.categorybtn.Text = "Categories";
+            this.categorybtn.UseVisualStyleBackColor = true;
+            this.categorybtn.Click += new System.EventHandler(this.categorybtn_Click);
             // 
             // mainform
             // 
@@ -670,5 +688,6 @@
         private System.Windows.Forms.Label loadinglbl;
         private System.Windows.Forms.PictureBox loadingpic;
         private MaterialSkin.Controls.MaterialFlatButton clientbtn;
+        private MaterialSkin.Controls.MaterialFlatButton categorybtn;
     }
 }
