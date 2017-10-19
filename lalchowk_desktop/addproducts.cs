@@ -290,7 +290,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
             uploadpic(pictxt, pic1,file1);
             pictxt.Clear();
-            pic1.BackgroundImage.Dispose();
+            pic1.BackgroundImage = null;
 
             
         }
@@ -357,7 +357,7 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             uploadpictable(p2txt, pic2,file2);
             p2txt.Clear();
-            pic2.BackgroundImage.Dispose();
+            pic2.BackgroundImage = null;
 
         }
 
@@ -370,7 +370,7 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             uploadpictable(p3txt, pic3,file3);
             p3txt.Clear();
-            pic3.BackgroundImage.Dispose();
+            pic3.BackgroundImage = null;
         }
 
         private void inclbl_Click(object sender, EventArgs e)
@@ -409,7 +409,7 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             uploadpictable(p4txt, pic4,file4);
             p4txt.Clear();
-            pic4.BackgroundImage.Dispose();
+            pic4.BackgroundImage = null;
         }
 
         private void pic5_Click(object sender, EventArgs e)
@@ -421,7 +421,7 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             uploadpictable(p5txt, pic5,file5);
             p5txt.Clear();
-            pic5.BackgroundImage.Dispose();
+            pic5.BackgroundImage = null;
         }
 
         private void p6txt_Click(object sender, EventArgs e)
