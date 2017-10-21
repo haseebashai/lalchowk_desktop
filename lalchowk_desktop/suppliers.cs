@@ -93,7 +93,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void readsuppliers()
         {
-
+            try { 
             con = new MySqlConnection();
             con.ConnectionString = "SERVER=182.50.133.78;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah";
             con.Open();
@@ -102,9 +102,13 @@ namespace Veiled_Kashmir_Admin_Panel
             adap.Fill(dt);
             bsource = new BindingSource();
             bsource.DataSource = dt;
-            
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
+            }
 
-         
+
         }
        
 
@@ -114,7 +118,7 @@ namespace Veiled_Kashmir_Admin_Panel
             {
                 cmdbl = new MySqlCommandBuilder(adap);
                 adap.Update(dt);
-
+                MessageBox.Show("Entry Updated.");
             }
             catch (Exception ex)
             {
@@ -196,10 +200,20 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             else
             {
-                cmd = "insert into suppliers (`name`,`email`,`password`,`contactname`,`address`,`postalcode`,`phone`,`description`) values" +
-                "('" + supnametxt.Text + "','" + supemailtxt.Text + "','" + suppwdtxt.Text + "','" + contxt.Text + "','" + conaddtxt.Text + "','" + posttxt.Text + "','" + phonetxt.Text + "','" + desctxt.Text + "')";
-                obj.nonQuery(cmd);
-                MessageBox.Show("Supplier added.");
+                try
+                {
+                    cmd = "insert into suppliers (`name`,`email`,`password`,`contactname`,`address`,`postalcode`,`phone`,`description`) values" +
+                    "('" + supnametxt.Text + "','" + supemailtxt.Text + "','" + suppwdtxt.Text + "','" + contxt.Text + "','" + conaddtxt.Text + "','" + posttxt.Text + "','" + phonetxt.Text + "','" + desctxt.Text + "')";
+                    obj.nonQuery(cmd);
+                    obj.closeConnection();
+                    MessageBox.Show("Supplier added.");
+                }
+                
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
+            }
+            
                 supnametxt.Text = "";
                 supemailtxt.Text = "";
                 suppwdtxt.Text = "";
@@ -209,6 +223,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 phonetxt.Text = "";
                 desctxt.Text = "";
                 readsuppliers();
+                supplierdatagridview.DataSource = bsource;
             }
         }
 

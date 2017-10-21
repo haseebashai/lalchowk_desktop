@@ -113,7 +113,7 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception)
             {
-                MessageBox.Show("here");
+                MessageBox.Show("Something happened, please try again");
             }
             aconn.Close();
 
@@ -176,7 +176,7 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception)
             {
-
+                MessageBox.Show("Something happened, please try again");
             }
             clientnametxt.Text = "";
             clientemailtxt.Text = "";
@@ -191,7 +191,7 @@ namespace Veiled_Kashmir_Admin_Panel
         }
 
         public void readclientexp()
-        {
+        {try { 
             aconn.Open();
             adap = new MySqlDataAdapter("select * from client_expenses", aconn);
             dt = new DataTable();
@@ -199,8 +199,13 @@ namespace Veiled_Kashmir_Admin_Panel
             aconn.Close();
             bsource = new BindingSource();
             bsource.DataSource = dt;
-
         }
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
+            }
+
+}
         private void bgworker2_DoWork(object sender, DoWorkEventArgs e)
         {
             readclientexp();
@@ -233,9 +238,10 @@ namespace Veiled_Kashmir_Admin_Panel
                 MessageBox.Show("Entry added.");
                 aconn.Close();
             }
+           
             catch (Exception)
             {
-
+                MessageBox.Show("Something happened, please try again");
             }
             cenametxt.Text = "";
             ceamounttxt.Text = "";
@@ -305,9 +311,10 @@ namespace Veiled_Kashmir_Admin_Panel
                     try
                     {
                         bgworker3.RunWorkerAsync();
-                    }catch(Exception ex)
+                    }
+                    catch (Exception)
                     {
-                        
+                        MessageBox.Show("Something happened, please try again");
                     }
                 }
             }

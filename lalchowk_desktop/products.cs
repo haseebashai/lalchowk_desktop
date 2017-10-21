@@ -102,7 +102,7 @@ namespace Veiled_Kashmir_Admin_Panel
         }
 
         private void readdetails()
-        {
+        {try { 
             dr = obj.Query("select count(productid) from products");
             dr.Read();
             tp= dr[0].ToString();
@@ -148,6 +148,12 @@ namespace Veiled_Kashmir_Admin_Panel
             book= dr[0].ToString();
             obj.closeConnection();
         }
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
+            }
+            obj.closeConnection();
+}
 
 
        

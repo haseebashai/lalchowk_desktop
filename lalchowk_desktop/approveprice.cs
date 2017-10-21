@@ -36,7 +36,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void readrequest()
         {
-
+            try { 
             con = new MySqlConnection();
             con.ConnectionString = "SERVER=182.50.133.78;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah";
             con.Open();
@@ -45,11 +45,15 @@ namespace Veiled_Kashmir_Admin_Panel
             adap.Fill(dt);
             bsource = new BindingSource();
             bsource.DataSource = dt;
-            
-
-            
-
         }
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
+            }
+
+
+
+}
 
         private void reqdataview_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -69,14 +73,19 @@ namespace Veiled_Kashmir_Admin_Panel
         }
 
         private void apbtn_Click(object sender, EventArgs e)
-        {
+        {try { 
             cmd = "Update products set dealerprice='"+reqlbl.Text+"', requestedprice=null, requeststatus='Approved' where productid='"+pidlbl.Text+"'";
             obj.nonQuery(cmd);
             MessageBox.Show("Request Approved.");
             readrequest();
             apnl.Visible = false;
-            
         }
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
+            }
+
+}
 
         private void ubtn_Click(object sender, EventArgs e)
         {

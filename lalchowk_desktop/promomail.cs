@@ -135,11 +135,11 @@ namespace Veiled_Kashmir_Admin_Panel
                 emaillist.DataSource = dt;
 
             }
-            catch(Exception ex)
+            catch (Exception)
             {
-
+                MessageBox.Show("Something happened, please try again");
             }
-
+            aconn.Close();
         }
 
         private void checkattach_CheckedChanged(object sender, EventArgs e)
@@ -264,13 +264,23 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void setrecno_Click(object sender, EventArgs e)
         {
-            aconn.Open();
-            mycmd = new MySqlCommand("update emailno set no_of_rec = '" + recno.Text + "' where id=1", aconn);
-            mycmd.ExecuteNonQuery();
-            aconn.Close();
-            emails = int.Parse(recno.Text);
-            elistlbl.Text = "Send email to "+emails+" customers today or enter a single email ID.";
-            readlist();
+            Cursor = Cursors.WaitCursor;
+            try
+            {
+                aconn.Open();
+                mycmd = new MySqlCommand("update emailno set no_of_rec = '" + recno.Text + "' where id=1", aconn);
+                mycmd.ExecuteNonQuery();
+                aconn.Close();
+                emails = int.Parse(recno.Text);
+                elistlbl.Text = "Send email to " + emails + " customers today or enter a single email ID.";
+                readlist();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again.");
+
+            }
+            Cursor = Cursors.Arrow;
         }
 
         private void totxt_Leave(object sender, EventArgs e)
@@ -410,7 +420,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     }
                         
 
-                    Cursor = Cursors.Arrow;
+                    
                     
                     sendinglbl.Text = "";
                     MessageBox.Show("Mail Sent.");
@@ -420,7 +430,8 @@ namespace Veiled_Kashmir_Admin_Panel
                         MessageBox.Show(ex.ToString());
 
                     }
-                }
+                Cursor = Cursors.Arrow;
+            }
         }
 
         int numberOfPoints = 0;
@@ -443,8 +454,8 @@ namespace Veiled_Kashmir_Admin_Panel
             progressBar1.Value = 0;
             progressBar1.Visible = false;
 
-            
-            
+
+            try { 
             if (returned == null)
             {
 
@@ -474,6 +485,11 @@ namespace Veiled_Kashmir_Admin_Panel
                 aconn.Close();
 
                 MessageBox.Show("Email sending failed from: " + myData[j] + "\nPlease Check the error and continue sending emails.","Error!");
+            }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
             }
             readlist();
             emailno.Text = maillist.ToString();

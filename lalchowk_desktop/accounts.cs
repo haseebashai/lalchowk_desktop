@@ -132,25 +132,33 @@ namespace Veiled_Kashmir_Admin_Panel
 
         public void readexpenses()
         {
-            aconn.Open();
-            adap = new MySqlDataAdapter("select * from expenses", aconn);
-            dt = new DataTable();
-            adap.Fill(dt);
-            aconn.Close();
-            bsource = new BindingSource();
-            bsource.DataSource = dt;
-           
+            try
+            {
+                aconn.Open();
+                adap = new MySqlDataAdapter("select * from expenses", aconn);
+                dt = new DataTable();
+                adap.Fill(dt);
+                aconn.Close();
+                bsource = new BindingSource();
+                bsource.DataSource = dt;
 
-            aconn.Open();
-            cmd = new MySqlCommand("SELECT balance FROM lalchowk_ac.expenses order by eid desc limit 1", aconn);
-            dr = cmd.ExecuteReader();
-            dr.Read();
-            bal = dr[0].ToString();
-            aconn.Close();
+
+                aconn.Open();
+                cmd = new MySqlCommand("SELECT balance FROM lalchowk_ac.expenses order by eid desc limit 1", aconn);
+                dr = cmd.ExecuteReader();
+                dr.Read();
+                bal = dr[0].ToString();
+                aconn.Close();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
+            }
         }
 
         public void readmoneypool()
         {
+            try { 
             aconn.Open();
             adap = new MySqlDataAdapter("select * from moneypool", aconn);
             dt = new DataTable();
@@ -158,11 +166,15 @@ namespace Veiled_Kashmir_Admin_Panel
             aconn.Close();
             bsource = new BindingSource();
             bsource.DataSource = dt;
-            
         }
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
+            }
+}
 
         public void readbank()
-        {
+        {try {
             aconn.Open();
             adap = new MySqlDataAdapter("select * from bankdetails", aconn);
             dt = new DataTable();
@@ -170,11 +182,15 @@ namespace Veiled_Kashmir_Admin_Panel
             aconn.Close();
             bsource = new BindingSource();
             bsource.DataSource = dt;
-            
         }
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
+            }
+}
 
         public void readmisc()
-        {
+        {try { 
             aconn.Open();
             adap = new MySqlDataAdapter("select * from misc", aconn);
             dt = new DataTable();
@@ -182,11 +198,15 @@ namespace Veiled_Kashmir_Admin_Panel
             aconn.Close();
             bsource = new BindingSource();
             bsource.DataSource = dt;
-            
         }
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
+            }
+}
 
         public void readbilling()
-        {
+        {try { 
             aconn.Open();
             adap = new MySqlDataAdapter("select * from billing", aconn);
             dt = new DataTable();
@@ -204,9 +224,14 @@ namespace Veiled_Kashmir_Admin_Panel
             
             aconn.Close();
         }
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
+            }
+}
 
         public void readdeliveries()
-        {
+        {try { 
             aconn.Open();
             adap = new MySqlDataAdapter("select * from deliveries", aconn);
             dt = new DataTable();
@@ -224,9 +249,14 @@ namespace Veiled_Kashmir_Admin_Panel
             
             aconn.Close();
         }
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
+            }
+}
 
         public void readdealings()
-        {
+        {try { 
             aconn.Open();
             adap = new MySqlDataAdapter("select * from dealing", aconn);
             dt = new DataTable();
@@ -244,10 +274,15 @@ namespace Veiled_Kashmir_Admin_Panel
             
             aconn.Close();
         }
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
+            }
+}
 
         
         public void readrevenue()
-        {
+        {try { 
             aconn.Open();
             adap = new MySqlDataAdapter("select * from revenue", aconn);
             dt = new DataTable();
@@ -265,13 +300,18 @@ namespace Veiled_Kashmir_Admin_Panel
             date = dr[0].ToString();           
             month = date.Substring(3, 2);
             aconn.Close();
-
-
         }
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
+            }
+
+}
 
 
         private void readdetails()
         {
+            try { 
             aconn.Open();
             cmd = new MySqlCommand("select sum(amount)-3000 from moneypool",aconn);
             dr = cmd.ExecuteReader();
@@ -300,6 +340,11 @@ namespace Veiled_Kashmir_Admin_Panel
             banklbl.Text = "Bank balance: Rs. " + dr[0].ToString();
             aconn.Close();
         }
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
+            }
+}
 
        
         private void expbtn_Click(object sender, EventArgs e)
@@ -418,7 +463,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
 
         private void updatebtn_Click(object sender, EventArgs e)
-        {
+        {try { 
             aconn.Open();
             mysqlcmd = new MySqlCommand ("insert into expenses(`item`, `amount`, `purchasedate`,`balance`,`reason`) values ('" + itemtxt.Text + "','"+amounttxt.Text+"','"+datetxt.Text+"','"+baltxt.Text+"','"+reasontxt1.Text+"')",aconn);
             mysqlcmd.ExecuteNonQuery();
@@ -433,11 +478,16 @@ namespace Veiled_Kashmir_Admin_Panel
             readexpenses();
             accountdataview.DataSource = bsource;
             baltxt.Text = bal;
-
         }
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
+            }
+
+}
 
         private void addbtn_Click(object sender, EventArgs e)
-        {
+        {try { 
             aconn.Open();
             mysqlcmd = new MySqlCommand("INSERT INTO moneypool(`name`, `amount`, `pooldate`, `reason`, `entry_by`) VALUES ('"+nametxt.Text+"', '"+amounttxt2.Text+"', '"+datetxt2.Text+"', '"+reasontxt.Text+"', 'haseeb')", aconn);
             mysqlcmd.ExecuteNonQuery();
@@ -450,9 +500,14 @@ namespace Veiled_Kashmir_Admin_Panel
             readmoneypool();
             accountdataview.DataSource = bsource;
         }
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
+            }
+}
 
         private void addmbtn_Click(object sender, EventArgs e)
-        {
+        {try { 
             aconn.Open();
             mysqlcmd = new MySqlCommand("insert into misc(`name`, `amount`,`reason`) values ('" + nametxt4.Text + "','" + amounttxt4.Text + "','" + reasontxt4.Text + "')",aconn);
             mysqlcmd.ExecuteNonQuery();
@@ -464,9 +519,14 @@ namespace Veiled_Kashmir_Admin_Panel
             readmisc();
             accountdataview.DataSource = bsource;
         }
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
+            }
+}
 
         private void addbbtn_Click(object sender, EventArgs e)
-        {
+        {try { 
             aconn.Open();
             mysqlcmd = new MySqlCommand("insert into bankdetails(`date`, `openingbal`, `closingbal`,`reason`) values ('" + datetxt3.Text + "','" + obaltxt.Text + "','" + cbaltxt.Text + "','" + reasontxt2.Text + "')",aconn);
             mysqlcmd.ExecuteNonQuery();
@@ -478,8 +538,12 @@ namespace Veiled_Kashmir_Admin_Panel
             reasontxt2.Text = "";
             readbank();
             accountdataview.DataSource = bsource;
-
         }
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
+            }
+}
 
         private void bgworker5_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -518,7 +582,7 @@ namespace Veiled_Kashmir_Admin_Panel
         }
 
         private void billaddbtn_Click(object sender, EventArgs e)
-        {
+        {try { 
             aconn.Open();
             mysqlcmd = new MySqlCommand("insert into billing(`orderid`, `user`, `amount`,`deliverydate`,`billno`) values ('" + otxt.Text + "','" + utxt.Text + "','" + atxt.Text + "','" + dtxt.Text + "','bill" + btxt.Text + "')", aconn);
             mysqlcmd.ExecuteNonQuery();
@@ -532,6 +596,11 @@ namespace Veiled_Kashmir_Admin_Panel
             readbilling();
             accountdataview.DataSource = bsource;
         }
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
+            }
+}
 
         private void bgworker6_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -569,7 +638,7 @@ namespace Veiled_Kashmir_Admin_Panel
         }
 
         private void adddbtn_Click(object sender, EventArgs e)
-        {
+        {try { 
             aconn.Open();
             mysqlcmd = new MySqlCommand("insert into deliveries(`orderid`, `email`, `amount`,`status`) values ('" + otxt2.Text + "','" + etxt2.Text + "','" + atxt2.Text + "','" + stxt.Text + "')", aconn);
             mysqlcmd.ExecuteNonQuery();
@@ -583,6 +652,11 @@ namespace Veiled_Kashmir_Admin_Panel
             readdeliveries();
             accountdataview.DataSource = bsource;
         }
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
+            }
+}
 
         private void bgworker7_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -620,6 +694,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void dealaddbtn_Click(object sender, EventArgs e)
         {
+            try { 
             if (yes.Checked)
             {
                 aconn.Open();
@@ -650,6 +725,11 @@ namespace Veiled_Kashmir_Admin_Panel
             readdealings();
             accountdataview.DataSource = bsource;
         }
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
+            }
+}
 
         private void yes_CheckedChanged(object sender, EventArgs e)
         {
@@ -691,6 +771,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void bgworker8_DoWork(object sender, DoWorkEventArgs e)
         {
+            try { 
             readrevenue();
             aconn.Open();
             cmd = new MySqlCommand(" SELECT sum(amount) from deliveries where status='delivered' and date like '%-" + month + "-%'", aconn);
@@ -713,6 +794,11 @@ namespace Veiled_Kashmir_Admin_Panel
             invest = dr[0].ToString();
             aconn.Close();
         }
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
+            }
+}
 
         private void bgworker8_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -796,7 +882,7 @@ namespace Veiled_Kashmir_Admin_Panel
        
 
         private void addrbtn_Click(object sender, EventArgs e)
-        {
+        {try { 
             aconn.Open();
             mysqlcmd = new MySqlCommand("insert into revenue(`month`, `year`,`sale`,`profit`,`invested`,`reason`,`gross_profit`,`purchase_cost`) values ('" + monthtxt.Text + "','" + yeartxt.Text + "','" + saletxt.Text + "','" + profittxt.Text + "','"+investedtxt.Text+"','"+ireasontxt.Text+"','"+gprofittxt.Text+"','"+pcosttxt.Text+"')", aconn);
             mysqlcmd.ExecuteNonQuery();
@@ -814,6 +900,11 @@ namespace Veiled_Kashmir_Admin_Panel
             readrevenue();
             accountdataview.DataSource = bsource;
         }
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
+            }
+}
 
 
 

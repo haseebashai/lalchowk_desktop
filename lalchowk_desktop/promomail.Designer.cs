@@ -54,10 +54,10 @@
             this.emaillist = new System.Windows.Forms.ListBox();
             this.bgworker1 = new System.ComponentModel.BackgroundWorker();
             this.epnl = new System.Windows.Forms.Panel();
+            this.checkhtml = new System.Windows.Forms.CheckBox();
+            this.checkattach = new System.Windows.Forms.CheckBox();
             this.attachtxt = new System.Windows.Forms.TextBox();
             this.attachdialog = new System.Windows.Forms.OpenFileDialog();
-            this.checkattach = new System.Windows.Forms.CheckBox();
-            this.checkhtml = new System.Windows.Forms.CheckBox();
             this.emaillistpnl.SuspendLayout();
             this.epnl.SuspendLayout();
             this.SuspendLayout();
@@ -334,6 +334,29 @@
             this.epnl.TabIndex = 87;
             this.epnl.Visible = false;
             // 
+            // checkhtml
+            // 
+            this.checkhtml.AutoSize = true;
+            this.checkhtml.ForeColor = System.Drawing.Color.Black;
+            this.checkhtml.Location = new System.Drawing.Point(407, 173);
+            this.checkhtml.Name = "checkhtml";
+            this.checkhtml.Size = new System.Drawing.Size(78, 17);
+            this.checkhtml.TabIndex = 89;
+            this.checkhtml.Text = "Use HTML";
+            this.checkhtml.UseVisualStyleBackColor = true;
+            // 
+            // checkattach
+            // 
+            this.checkattach.AutoSize = true;
+            this.checkattach.ForeColor = System.Drawing.Color.Black;
+            this.checkattach.Location = new System.Drawing.Point(350, 525);
+            this.checkattach.Name = "checkattach";
+            this.checkattach.Size = new System.Drawing.Size(80, 17);
+            this.checkattach.TabIndex = 88;
+            this.checkattach.Text = "Attachment";
+            this.checkattach.UseVisualStyleBackColor = true;
+            this.checkattach.CheckedChanged += new System.EventHandler(this.checkattach_CheckedChanged);
+            // 
             // attachtxt
             // 
             this.attachtxt.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
@@ -350,35 +373,12 @@
             // 
             this.attachdialog.Filter = "All Files|*.*|PDF|*.pdf|Excel|*.xls";
             // 
-            // checkattach
-            // 
-            this.checkattach.AutoSize = true;
-            this.checkattach.ForeColor = System.Drawing.Color.Black;
-            this.checkattach.Location = new System.Drawing.Point(350, 525);
-            this.checkattach.Name = "checkattach";
-            this.checkattach.Size = new System.Drawing.Size(80, 17);
-            this.checkattach.TabIndex = 88;
-            this.checkattach.Text = "Attachment";
-            this.checkattach.UseVisualStyleBackColor = true;
-            this.checkattach.CheckedChanged += new System.EventHandler(this.checkattach_CheckedChanged);
-            // 
-            // checkhtml
-            // 
-            this.checkhtml.AutoSize = true;
-            this.checkhtml.ForeColor = System.Drawing.Color.Black;
-            this.checkhtml.Location = new System.Drawing.Point(407, 173);
-            this.checkhtml.Name = "checkhtml";
-            this.checkhtml.Size = new System.Drawing.Size(78, 17);
-            this.checkhtml.TabIndex = 89;
-            this.checkhtml.Text = "Use HTML";
-            this.checkhtml.UseVisualStyleBackColor = true;
-            // 
             // promomail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1162, 722);
+            this.ClientSize = new System.Drawing.Size(1035, 722);
             this.Controls.Add(this.epnl);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

@@ -34,6 +34,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void readproducts()
         {
+            try { 
             con.Open();
             adap = new MySqlDataAdapter("select productid, productname, groupid, mrp, price, dealerprice, stock, picture from products", con);
             dt = new DataTable();
@@ -41,7 +42,12 @@ namespace Veiled_Kashmir_Admin_Panel
             con.Close();
             bsource = new BindingSource();
             bsource.DataSource = dt;
-            
+            }
+
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
+            }
         }
 
         private void productsdataview_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -117,11 +123,19 @@ namespace Veiled_Kashmir_Admin_Panel
             DialogResult dr = MessageBox.Show("Do you want to delete the selected product ?\n"+pname, "Confirm", MessageBoxButtons.YesNo);
             if (dr == DialogResult.Yes)
             {
-
+                try { 
                 cmd = ("delete from products where productid='" + pid + "'");
                 obj.nonQuery(cmd);
+                obj.closeConnection();
                 MessageBox.Show("Product Deleted.");
+                }
+
+                catch (Exception)
+                {
+                    MessageBox.Show("Something happened, please try again");
+                }
                 readproducts();
+                productsdataview.DataSource = bsource;
             }
         }
     }

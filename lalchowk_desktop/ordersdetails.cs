@@ -36,59 +36,80 @@ namespace Veiled_Kashmir_Admin_Panel
         }
 
         public void readordersdelivered()
-        {
+        {try { 
             con.Open();
             adap = new MySqlDataAdapter("select * from orders where status='delivered'", con);
             dt = new DataTable();
             adap.Fill(dt);
             bsource = new BindingSource();
             bsource.DataSource = dt;
-            
         }
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
+            }
+
+}
 
         public void readordersplaced()
-        {
+        {try { 
             con.Open();
             adap = new MySqlDataAdapter("select * from orders where status='placed'", con);
             dt = new DataTable();
             adap.Fill(dt);
             bsource = new BindingSource();
             bsource.DataSource = dt;
-            
         }
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
+            }
+}
 
         public void readordershipped()
-        {
+        {try { 
             con.Open();
             adap = new MySqlDataAdapter("select * from orders where status='shipped'", con);
             dt = new DataTable();
             adap.Fill(dt);
             bsource = new BindingSource();
             bsource.DataSource = dt;
-            
         }
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
+            }
+}
 
         public void readpurchasecost()
-        {
+        {try { 
             con.Open();
             adap = new MySqlDataAdapter("select * from lalchowk.orderdetails where productid in (SELECT productid FROM lalchowk.orderdetails where orderid in (SELECT orderid FROM lalchowk.orders where status = 'delivered'))", con);
             dt = new DataTable();
             adap.Fill(dt);
             bsource = new BindingSource();
             bsource.DataSource = dt;
-            
         }
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
+            }
+}
 
         public void readprofit()
-        {
+        {try { 
             con.Open();
             adap = new MySqlDataAdapter("select orderdetailid,orderid,productid,productname,price,quantity,dealerprice,size,price-dealerprice as profit from orderdetails where orderid in (SELECT orderid FROM orders where status = 'delivered')", con);
             dt = new DataTable();
             adap.Fill(dt);
             bsource = new BindingSource();
             bsource.DataSource = dt;
-            
         }
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
+            }
+}
 
         private void upbtn_Click(object sender, EventArgs e)
         {
@@ -106,15 +127,19 @@ namespace Veiled_Kashmir_Admin_Panel
         }
 
         public void readshipping()
-        {
+        {try { 
             con.Open();
             adap = new MySqlDataAdapter("select orderid, email, shipdate,shipping from lalchowk.orders where status ='delivered'",con);
             dt = new DataTable();
             adap.Fill(dt);
             bsource = new BindingSource();
             bsource.DataSource = dt;
-            
         }
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
+            }
+}
 
         private void bgworker_DoWork(object sender, DoWorkEventArgs e)
         {

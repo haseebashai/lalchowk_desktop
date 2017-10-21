@@ -85,6 +85,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         public void readterms()
         {
+            try { 
             con.Open();
             adap = new MySqlDataAdapter("select * from terms", con);
             dt = new DataTable();
@@ -92,11 +93,17 @@ namespace Veiled_Kashmir_Admin_Panel
             con.Close();
             bsource = new BindingSource();
             bsource.DataSource = dt;
-            
+            }
+
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
+            }
         }
 
         public void readfaq()
         {
+            try { 
             con.Open();
             adap = new MySqlDataAdapter("select * from faq", con);
             dt = new DataTable();
@@ -104,11 +111,17 @@ namespace Veiled_Kashmir_Admin_Panel
             con.Close();
             bsource = new BindingSource();
             bsource.DataSource = dt;
-            
+            }
+
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
+            }
         }
 
         public void readabout()
         {
+            try { 
             con.Open();
             adap = new MySqlDataAdapter("select * from about", con);
             dt = new DataTable();
@@ -116,7 +129,12 @@ namespace Veiled_Kashmir_Admin_Panel
             con.Close();
             bsource = new BindingSource();
             bsource.DataSource = dt;
-            
+            }
+
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
+            }
         }
 
         private void termsdataview_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -144,10 +162,17 @@ namespace Veiled_Kashmir_Admin_Panel
                 }
                 else
                 {
+                    try { 
                     cmd = ("UPDATE terms SET `heading`= '"+headingtxt.Text+"', `description`= '"+desctxt.Text+"' WHERE `termsid`= '"+termsidlbl.Text+"'");
-                     obj.nonQuery(cmd);
+                    obj.nonQuery(cmd);
 
                     MessageBox.Show("Successfully Updated.");
+                    }
+
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Something happened, please try again");
+                    }
                     readterms();
                     termsdataview.DataSource = bsource;
                 }
@@ -186,10 +211,17 @@ namespace Veiled_Kashmir_Admin_Panel
                 }
                 else
                 {
+                    try { 
                     cmd = ("UPDATE faq SET `question`= '" + qtxt.Text + "', `answer`= '" + anstxt.Text + "' WHERE `faqid`= '" + faqid.Text + "'");
                     obj.nonQuery(cmd);
 
                     MessageBox.Show("Successfully Updated.");
+                    }
+
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Something happened, please try again");
+                    }
                     readfaq();
                     faqdataview.DataSource = bsource;
                 }
@@ -228,10 +260,17 @@ namespace Veiled_Kashmir_Admin_Panel
                 }
                 else
                 {
+                    try { 
                     cmd = ("UPDATE about SET `heading`= '" + headingtxtbox.Text + "', `description`= '" + desctxtbox.Text + "' WHERE `aboutid`= '" + aboutid.Text + "'");
                     obj.nonQuery(cmd);
 
                     MessageBox.Show("Successfully Updated.");
+                    }
+
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Something happened, please try again");
+                    }
                     readabout();
                     aboutdataview.DataSource = bsource;
 

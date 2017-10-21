@@ -360,6 +360,7 @@
             this.desctxt.Location = new System.Drawing.Point(463, 146);
             this.desctxt.Multiline = true;
             this.desctxt.Name = "desctxt";
+            this.desctxt.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.desctxt.Size = new System.Drawing.Size(283, 225);
             this.desctxt.TabIndex = 19;
             this.desctxt.Leave += new System.EventHandler(this.desctxt_Leave);
@@ -671,6 +672,7 @@
             this.pidtxt.Name = "pidtxt";
             this.pidtxt.Size = new System.Drawing.Size(134, 20);
             this.pidtxt.TabIndex = 2;
+            this.pidtxt.TextChanged += new System.EventHandler(this.pidtxt_TextChanged);
             // 
             // label28
             // 
@@ -1060,8 +1062,7 @@
             this.Controls.Add(this.addppnl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "addproducts";
-            this.Text = "profile";
-            this.Load += new System.EventHandler(this.profile_Load);
+            this.Text = "Add Products";
             ((System.ComponentModel.ISupportInitialize)(this.pic1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic3)).EndInit();

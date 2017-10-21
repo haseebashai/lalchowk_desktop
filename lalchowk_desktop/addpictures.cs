@@ -65,16 +65,23 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void delbtn_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Do you want to delete the selected picture ?", "Confirm", MessageBoxButtons.YesNo);
+            try { 
+            DialogResult dr = MessageBox.Show("Do you want to delete the selected picture ?\n"+pid, "Confirm", MessageBoxButtons.YesNo);
             if (dr == DialogResult.Yes)
             {
 
                 cmd = ("delete from pictures where pictureid='" + pid + "'");
                 obj.nonQuery(cmd);
-                MessageBox.Show("Picture Deleted.");
-                dp.BackgroundImage = null;
+                    dp.BackgroundImage = null;
+                    MessageBox.Show("Picture Deleted.");
+                
                 readpictures();
                 picturesdataview.DataSource = bsource;
+            }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
             }
         }
 
@@ -192,19 +199,23 @@ namespace Veiled_Kashmir_Admin_Panel
         }
 
         private void picworker_DoWork(object sender, DoWorkEventArgs e)
-        {
+        {try { 
             pic.BackgroundImage.Dispose();
             File.Move(fileaddress, directory + ptxt.Text);
             uploaddir = directory + ptxt.Text;
 
-            UploadFileToFtp("ftp://182.50.151.83/httpdocs/lalchowk/pictures/", uploaddir);
+            UploadFileToFtp("ftp://lalchowk.in/httpdocs/lalchowk/pictures/", uploaddir);
 
             cmd = "insert into pictures (`groupid`, `picture`) " +
                  "values ('" + gidtxt.Text + @"','" + ptxt.Text + "')";
             obj.nonQuery(cmd);
 
             obj.closeConnection();
-            
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
+            }
         }
 
         private void picworker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -252,7 +263,7 @@ namespace Veiled_Kashmir_Admin_Panel
         }
 
         private void readpictures()
-        {
+        {try { 
             con.Open();
             adap = new MySqlDataAdapter("select * from pictures", con);
             dt = new DataTable();
@@ -260,7 +271,11 @@ namespace Veiled_Kashmir_Admin_Panel
             con.Close();
             bsource = new BindingSource();
             bsource.DataSource = dt;
-            
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
+            }
         }
 
         private void updbtn_Click(object sender, EventArgs e)

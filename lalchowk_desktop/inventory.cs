@@ -95,14 +95,6 @@ namespace Veiled_Kashmir_Admin_Panel
             }
         }
 
-        private void rmvbtn_Click(object sender, EventArgs e)
-        {
-            cmd = "delete from products where productid='" + idlbl.Text + "'";
-            obj.nonQuery(cmd);
-            MessageBox.Show("Product removed successfully.");
-            readinventory();
-        }
-
       
 
         public static string RemoveSpecialCharacters(string str)

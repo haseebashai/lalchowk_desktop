@@ -45,7 +45,17 @@ namespace Veiled_Kashmir_Admin_Panel
             try
             {
 
+                
+               /*   Hello seharshah,
 
+We give our customers total control over the products they purchase. We have a return policy of 3 days. If you are not satisfied with the product, you can ask for a full refund or a replacement within 3 days from the date of order requiring that the product is not damaged by the user in any way.
+For more info on our return policy, please check ' More > Terms and conditions ' in the Lalchowk app.
+
+Regards,
+Lalchowk.
+                  
+                 */ 
+                 
                 StringBuilder s = new StringBuilder(bodytxt.Text);
                 s.Replace(@"\", @"\\");
                 s.Replace("'", "\\'");
@@ -68,7 +78,6 @@ namespace Veiled_Kashmir_Admin_Panel
                 mail.From = new MailAddress(frombox.Text, sendername);
                 mail.Subject = s1.ToString();
                 mail.Body = s.ToString();
-                mail.IsBodyHtml = true;
 
                 Smtpobj.Send(mail);
                 Cursor = Cursors.Arrow;
@@ -110,9 +119,20 @@ namespace Veiled_Kashmir_Admin_Panel
         private void sendbtn_Click(object sender, EventArgs e)
         {
             sendmail();
-            cmd = "UPDATE `lalchowk`.`messages` SET `reply`='" + bodytxt.Text + "' WHERE `messageid`='" + msgid + "'";
-            obj.nonQuery(cmd);
-            this.Close();
+            try
+            {
+                StringBuilder s = new StringBuilder(bodytxt.Text);
+                s.Replace(@"\", @"\\");
+                s.Replace("'", "\\'");
+
+                cmd = "UPDATE `lalchowk`.`messages` SET `reply`='" + s + "' WHERE `messageid`='" + msgid + "'";
+                obj.nonQuery(cmd);
+                this.Close();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again.");
+            }
            
         }
 

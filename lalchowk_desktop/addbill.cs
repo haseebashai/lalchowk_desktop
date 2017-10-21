@@ -19,9 +19,9 @@ namespace Veiled_Kashmir_Admin_Panel
         MySqlConnection aconn = new MySqlConnection("SERVER=182.50.133.78;DATABASE=lalchowk_ac;USER=lalchowkac;PASSWORD=Lalchowk@123uzmah");
         MySqlDataReader dr;
 
-        
 
-        public addbill(string orderlbl,string email,string amount,string productid,string productname,string price,string quantity,string size,string dealerprice,string shipping)
+
+        public addbill(string orderlbl, string email, string amount, string productid, string productname, string price, string quantity, string size, string dealerprice, string shipping)
         {
             InitializeComponent();
             otxt.Text = orderlbl;
@@ -32,11 +32,11 @@ namespace Veiled_Kashmir_Admin_Panel
             pronametxt.Text = productname;
             sizetxt.Text = size;
             counttxt.Text = quantity;
-            int am = int.Parse(price)*int.Parse(counttxt.Text);
+            int am = int.Parse(price) * int.Parse(counttxt.Text);
             amounttxt.Text = am.ToString();
             int dp = int.Parse(dealerprice) * int.Parse(counttxt.Text);
             dptxt.Text = dp.ToString();
-            
+
         }
 
         private void closebtn_Click(object sender, EventArgs e)
@@ -63,7 +63,7 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Something happened, please try again.\n\n\n" +ex.ToString());
+                MessageBox.Show("Something happened, please try again.\n\n\n" + ex.ToString());
             }
             DialogResult dgr = MessageBox.Show("Do you want to send confirmation mail with e-bill?", "Confirm", MessageBoxButtons.YesNo);
             {
@@ -90,34 +90,43 @@ namespace Veiled_Kashmir_Admin_Panel
                     Close();
                 }
             }
-            
+
         }
 
         private void addprobtn_Click(object sender, EventArgs e)
-        {
-            if (supidtxt.Text == "")
+        { try
             {
-                MessageBox.Show("Add Supplier first.");
-            }
-            else
-            {
-                if (yes.Checked)
+                if (supidtxt.Text == "")
                 {
-                    aconn.Open();
-                    mysqlcmd = new MySqlCommand("insert into dealing(`supplierid`, `suppliername`, `productid`,`productname`,`size`,`count`,`amount`,`dealerprice`,`pickupdate`,`paymentdone`,`paymentdate`,`comments`) values ('" + supidtxt.Text + "','" + supnametxt.Text + "','" + proidtxt.Text + "','" + pronametxt.Text + "','" + sizetxt.Text + "','" + counttxt.Text + "','" + amounttxt.Text + "','"+dptxt.Text+"','" + pickuptxt.Text + "','1','" + paymenttxt.Text + "','" + commentstxt.Text + "')", aconn);
-                    mysqlcmd.ExecuteNonQuery();
-                    aconn.Close();
+                    MessageBox.Show("Add Supplier first.");
                 }
                 else
                 {
-                    aconn.Open();
-                    mysqlcmd = new MySqlCommand("insert into dealing(`supplierid`, `suppliername`, `productid`,`productname`,`size`,`count`,`amount`,`dealerprice`,`pickupdate`,`paymentdone`,`paymentdate`,`comments`) values ('" + supidtxt.Text + "','" + supnametxt.Text + "','" + proidtxt.Text + "','" + pronametxt.Text + "','" + sizetxt.Text + "','" + counttxt.Text + "','" + amounttxt.Text + "','"+dptxt.Text+"','" + pickuptxt.Text + "','0','" + paymenttxt.Text + "','" + commentstxt.Text + "')", aconn);
-                    mysqlcmd.ExecuteNonQuery();
-                    aconn.Close();
+                    if (yes.Checked)
+                    {
+                        aconn.Open();
+                        mysqlcmd = new MySqlCommand("insert into dealing(`supplierid`, `suppliername`, `productid`,`productname`,`size`,`count`,`amount`,`dealerprice`,`pickupdate`,`paymentdone`,`paymentdate`,`comments`) values ('" + supidtxt.Text + "','" + supnametxt.Text + "','" + proidtxt.Text + "','" + pronametxt.Text + "','" + sizetxt.Text + "','" + counttxt.Text + "','" + amounttxt.Text + "','" + dptxt.Text + "','" + pickuptxt.Text + "','1','" + paymenttxt.Text + "','" + commentstxt.Text + "')", aconn);
+                        mysqlcmd.ExecuteNonQuery();
+                        aconn.Close();
+                    }
+                    else
+                    {
+                        aconn.Open();
+                        mysqlcmd = new MySqlCommand("insert into dealing(`supplierid`, `suppliername`, `productid`,`productname`,`size`,`count`,`amount`,`dealerprice`,`pickupdate`,`paymentdone`,`paymentdate`,`comments`) values ('" + supidtxt.Text + "','" + supnametxt.Text + "','" + proidtxt.Text + "','" + pronametxt.Text + "','" + sizetxt.Text + "','" + counttxt.Text + "','" + amounttxt.Text + "','" + dptxt.Text + "','" + pickuptxt.Text + "','0','" + paymenttxt.Text + "','" + commentstxt.Text + "')", aconn);
+                        mysqlcmd.ExecuteNonQuery();
+                        aconn.Close();
+                    }
+                    MessageBox.Show("Product bill Added.");
                 }
-                MessageBox.Show("Product bill Added.");
+
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
             }
         }
+    
 
         private void yes_CheckedChanged(object sender, EventArgs e)
         {
@@ -151,13 +160,18 @@ namespace Veiled_Kashmir_Admin_Panel
         }
 
         private void addsupbtn_Click(object sender, EventArgs e)
-        {
+        {try { 
             dr = obj.Query("SELECT name,supplierid from suppliers where supplierid in (select supplierid FROM lalchowk.products where productid='" + proidtxt.Text + "');");
             dr.Read();
             supidtxt.Text = dr[1].ToString();
             supnametxt.Text = dr[0].ToString();
             obj.closeConnection();
         }
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
+            }
+}
 
        
         

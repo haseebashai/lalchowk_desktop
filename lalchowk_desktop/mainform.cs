@@ -615,6 +615,36 @@ namespace Veiled_Kashmir_Admin_Panel
             }
         }
 
+        private void settingsbtn_Click(object sender, EventArgs e)
+        {
+            if (cntpnl.Contains(placeddataview))
+            {
+
+                Settings st = new Settings(this);
+                st.TopLevel = false;
+                cntpnl.Controls.Clear();
+
+                cntpnl.Controls.Add(st);
+                st.loadingnormal();
+
+                st.Show();
+
+            }
+            else
+            {
+                dialogcontainer dg = new dialogcontainer();
+                Settings st = new Settings(dg);
+                st.TopLevel = false;
+                dg.dialogpnl.Controls.Add(st);
+                st.loadingdg();
+                dg.Text = "OTP/Pincodes";
+
+
+                dg.Show();
+                st.Show();
+            }
+        }
+
         public void loadingnormal()
         {
             

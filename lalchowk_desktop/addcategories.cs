@@ -94,33 +94,45 @@ namespace Veiled_Kashmir_Admin_Panel
 
         public void readfirstcat()
         {
-            
+            try { 
             adap = new MySqlDataAdapter("select * from firstcategory",con);
             dt = new DataTable();
             adap.Fill(dt);
             bsource = new BindingSource();
             bsource.DataSource = dt;
-
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
+            }
         }
         public void readsecondcat()
-        {
+        {try { 
 
             adap = new MySqlDataAdapter("select * from secondcategory", con);
             dt = new DataTable();
             adap.Fill(dt);
             bsource = new BindingSource();
             bsource.DataSource = dt;
-
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
+            }
         }
         public void readthirdcat()
         {
-
+            try { 
             adap = new MySqlDataAdapter("select * from thirdcategory", con);
             dt = new DataTable();
             adap.Fill(dt);
             bsource = new BindingSource();
             bsource.DataSource = dt;
-
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
+            }
         }
 
         private void bgworker2_DoWork(object sender, DoWorkEventArgs e)
@@ -202,12 +214,12 @@ namespace Veiled_Kashmir_Admin_Panel
             File.Move(fileaddress, directory + fpictxt.Text);
             uploaddir = directory + fpictxt.Text;
 
-            UploadFileToFtp("ftp://182.50.151.83/httpdocs/lalchowk/pictures/", uploaddir);
+            UploadFileToFtp("ftp://lalchowk.in/httpdocs/lalchowk/pictures/", uploaddir);
             Cursor = Cursors.Arrow;
         }
             catch (Exception)
             {
-                MessageBox.Show("Something happened, try again.");
+                MessageBox.Show("Something happened, please try again.");
             }
 }
 
@@ -220,12 +232,12 @@ namespace Veiled_Kashmir_Admin_Panel
                 File.Move(fileaddress, directory + spictxt.Text);
                 uploaddir = directory + spictxt.Text;
 
-                UploadFileToFtp("ftp://182.50.151.83/httpdocs/lalchowk/pictures/", uploaddir);
+                UploadFileToFtp("ftp://lalchowk.in/httpdocs/lalchowk/pictures/", uploaddir);
                 Cursor = Cursors.Arrow;
             }
             catch (Exception)
             {
-                MessageBox.Show("Something happened, try again.");
+                MessageBox.Show("Something happened, please try again.");
             }
         }
 
@@ -289,7 +301,7 @@ namespace Veiled_Kashmir_Admin_Panel
             catch (Exception)
             {
                 obj.closeConnection();
-                MessageBox.Show("Something happened, try again.");
+                MessageBox.Show("Something happened, please try again.");
             }
         }
 
@@ -318,12 +330,12 @@ namespace Veiled_Kashmir_Admin_Panel
                 File.Move(fileaddress, directory + tpictxt.Text);
                 uploaddir = directory + tpictxt.Text;
 
-                UploadFileToFtp("ftp://182.50.151.83/httpdocs/lalchowk/pictures/", uploaddir);
+                UploadFileToFtp("ftp://lalchowk.in/httpdocs/lalchowk/pictures/", uploaddir);
                 Cursor = Cursors.Arrow;
             }
             catch (Exception)
             {
-                MessageBox.Show("Something happened, try again.");
+                MessageBox.Show("Something happened, please try again.");
             }
         }
 
@@ -375,6 +387,8 @@ namespace Veiled_Kashmir_Admin_Panel
                 MessageBox.Show("Something happened, please try again.\n\n\n"+ex.ToString());
             }
         }
+
+      
 
         private void tcbtn_Click(object sender, EventArgs e)
         {
@@ -432,7 +446,7 @@ namespace Veiled_Kashmir_Admin_Panel
             catch (Exception)
             {
                 obj.closeConnection();
-                MessageBox.Show("Something happened, try again.");
+                MessageBox.Show("Something happened, please try again.");
             }
         }
 

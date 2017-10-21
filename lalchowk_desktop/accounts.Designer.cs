@@ -1716,7 +1716,7 @@
             this.Controls.Add(this.loadinglbl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "accounts";
-            this.Text = "forum";
+            this.Text = "Accounts";
             ((System.ComponentModel.ISupportInitialize)(this.accountdataview)).EndInit();
             this.exppnl.ResumeLayout(false);
             this.exppnl.PerformLayout();

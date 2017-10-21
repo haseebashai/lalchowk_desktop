@@ -33,7 +33,7 @@ namespace Veiled_Kashmir_Admin_Panel
         }
         
         private void readorderid()
-        {
+        {try { 
             dr = obj.Query("Select orderid from orders where email='" + encmail + "'");
             DataTable dt = new DataTable();
             dt.Columns.Add("orderid", typeof(String));
@@ -42,6 +42,11 @@ namespace Veiled_Kashmir_Admin_Panel
            
             orderidbox.DataSource = dt;
         }
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
+            }
+}
 
         private void picbtn_Click(object sender, EventArgs e)
         {
@@ -57,7 +62,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     pic.BackgroundImage.Dispose();
                     File.Move(fileaddress, directory + ptxt.Text);
                     uploaddir = directory + ptxt.Text;
-                    UploadFileToFtp("ftp://182.50.151.83/httpdocs/lalchowk/pictures/", uploaddir);
+                    UploadFileToFtp("ftp://lalchowk.in/httpdocs/lalchowk/pictures/", uploaddir);
                     obj.closeConnection();                 
                 }
                 catch (WebException ex)

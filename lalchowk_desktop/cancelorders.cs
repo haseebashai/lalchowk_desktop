@@ -77,7 +77,7 @@ namespace Veiled_Kashmir_Admin_Panel
         }
 
         private void readorders()
-        {
+        {try { 
             dr = obj.Query("SELECT orderid, amount, shipping, itemcount,status, name, address1, address2, pincode, contact, city FROM orders where status='Placed'");
 
             dt = new DataTable();
@@ -86,9 +86,13 @@ namespace Veiled_Kashmir_Admin_Panel
             bsource = new BindingSource();
 
             bsource.DataSource = dt;
-            
-
         }
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
+            }
+
+}
 
         private void ordergridview_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -124,7 +128,7 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception)
             {
-
+                MessageBox.Show("Something happened, please try again");
             }
             readorders();
             ordergridview.DataSource = bsource;

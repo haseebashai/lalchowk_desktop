@@ -52,7 +52,7 @@ namespace Veiled_Kashmir_Admin_Panel
         }
 
         private void readoffers()
-        {
+        {try { 
             con.Open();
             adap1 = new MySqlDataAdapter("SELECT * FROM offers", con);
             dt5 = new DataTable();
@@ -60,9 +60,14 @@ namespace Veiled_Kashmir_Admin_Panel
             con.Close();
             bsource = new BindingSource();
             bsource.DataSource = dt5;
-            
-
         }
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
+            }
+
+
+}
         public void loadingnormal()
         {
             formlbl.Text = "Loading";
@@ -217,9 +222,8 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception)
             {
-
+                MessageBox.Show("Something happened, please try again");
             }
-
         }
 
 
@@ -264,7 +268,7 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception)
             {
-
+                MessageBox.Show("Something happened, please try again");
             }
         }
 
@@ -275,11 +279,12 @@ namespace Veiled_Kashmir_Admin_Panel
                 obj.nonQuery(cmd);
                 MessageBox.Show("Updated.");
             }
+            
             catch (Exception)
             {
-
+                MessageBox.Show("Something happened, please try again");
             }
-        }
+}
 
         private void u2_Click(object sender, EventArgs e)
         {
@@ -288,9 +293,10 @@ namespace Veiled_Kashmir_Admin_Panel
                 obj.nonQuery(cmd);
                 MessageBox.Show("Updated.");
             }
+            
             catch (Exception)
             {
-
+                MessageBox.Show("Something happened, please try again");
             }
         }
 
@@ -317,7 +323,7 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception)
             {
-
+                MessageBox.Show("Something happened, please try again");
             }
             Cursor = Cursors.WaitCursor;
             readoffers();
@@ -366,10 +372,10 @@ namespace Veiled_Kashmir_Admin_Panel
             cmd = "update homepage2 set title='" + p4title.Text + "',subtitle='" + p4sub.Text + "',picture='" + p4pic.Text + "',link='" + p4link.Text + "' where homeid='6'";
             obj.nonQuery(cmd);
             MessageBox.Show("Updated.");
-        }
+            }
             catch (Exception)
             {
-
+                MessageBox.Show("Something happened, please try again");
             }
         }
 
@@ -389,7 +395,7 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception)
             {
-
+                MessageBox.Show("Something happened, please try again");
             }
         }
 

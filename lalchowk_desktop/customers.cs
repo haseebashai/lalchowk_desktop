@@ -140,10 +140,10 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception)
             {
-
+                MessageBox.Show("Something happened, please try again");
             }
 
-         
+
         }
 
         private void mailbtn_Click(object sender, EventArgs e)
@@ -166,12 +166,17 @@ namespace Veiled_Kashmir_Admin_Panel
 
 
         private void readcount()
-        {
+        {try { 
             dr = obj.Query("select count(*) from customer");
             dr.Read();
             count = dr[0].ToString();
             obj.closeConnection();
         }
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
+            }
+}
        
 
         private void readdetails()

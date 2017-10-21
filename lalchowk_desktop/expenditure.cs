@@ -97,6 +97,7 @@ namespace Veiled_Kashmir_Admin_Panel
         string ordersd, ordersdv, ordersp, orderspv, pur, shipvar,profit;
         private void readexpenditure()
         {
+            try { 
             dr = obj.Query("SELECT count(status),sum(amount+shipping) FROM orders where status='delivered'");
             dr.Read();
             ordersd = dr[0].ToString();
@@ -118,9 +119,13 @@ namespace Veiled_Kashmir_Admin_Panel
             dr.Read();
             shipvar = dr[0].ToString();
             obj.closeConnection();
-
-           
         }
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
+            }
+
+}
 
         private void readprofit()
         {

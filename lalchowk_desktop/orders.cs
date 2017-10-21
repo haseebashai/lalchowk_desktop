@@ -41,7 +41,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
 
            private void readorders()
-            {
+        {try { 
             adap = new MySqlDataAdapter("SELECT customer.mail,orders.*  FROM lalchowk.orders inner join customer on customer.email=orders.email;",conn);
             dt = new DataTable();
             adap.Fill(dt);
@@ -54,8 +54,13 @@ namespace Veiled_Kashmir_Admin_Panel
             dr.Read();
             ordervar = dr[0].ToString();
             obj.closeConnection();
-
         }
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
+            }
+
+}
 
         private void bgworker_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -122,7 +127,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void orderdetails()
         {
-            
+            try { 
             dr = obj.Query("SELECT * FROM orderdetails where orderid='"+orderid+"'");
             dt1 = new DataTable();
             dt1.Load(dr);
@@ -133,6 +138,11 @@ namespace Veiled_Kashmir_Admin_Panel
             
             orderdetailview.Visible = true;
         }
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
+            }
+}
         
         
 
@@ -163,7 +173,7 @@ namespace Veiled_Kashmir_Admin_Panel
         }
 
         private void delbtn_Click(object sender, EventArgs e)
-        {
+        {try { 
             DialogResult dr = MessageBox.Show("Delete order and all its details ?", "Confirm", MessageBoxButtons.YesNo);
             if (dr == DialogResult.Yes)
             {
@@ -177,9 +187,14 @@ namespace Veiled_Kashmir_Admin_Panel
                 readorders();
                 ordergridview.DataSource = bsource;
             }
-
-
         }
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
+            }
+
+
+}
 
         private void orderdetailview_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -197,7 +212,7 @@ namespace Veiled_Kashmir_Admin_Panel
         }
 
         private void cnfbtn_Click(object sender, EventArgs e)
-        {
+        {try { 
             DialogResult dr = MessageBox.Show("Open the bill format file and print the bill.\n Change the status to Shipped.", "Confirm", MessageBoxButtons.YesNo);
             if (dr == DialogResult.Yes)
             {
@@ -226,9 +241,15 @@ namespace Veiled_Kashmir_Admin_Panel
 
             
             readorders();
+                ordergridview.DataSource = bsource;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
+            }
 
 
-        }
+}
 
         private void readaddress()
         {
@@ -253,7 +274,7 @@ namespace Veiled_Kashmir_Admin_Panel
         }
 
         private void readproduct()
-        {
+        {try { 
             dr = obj.Query("SELECT productid FROM orderdetails where orderid='" + orderid + "'");
             dt2 = new DataTable();
             dt2.Columns.Add("productid", typeof(String));
@@ -275,6 +296,11 @@ namespace Veiled_Kashmir_Admin_Panel
             amountlbl.Text = dr[0].ToString();
             obj.closeConnection();
         }
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
+            }
+}
            
 
         private void ordergridview_CellClick(object sender, DataGridViewCellEventArgs e)

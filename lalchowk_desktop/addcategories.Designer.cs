@@ -31,6 +31,7 @@
             this.bgworker = new System.ComponentModel.BackgroundWorker();
             this.formlbl = new System.Windows.Forms.Label();
             this.cpnl = new System.Windows.Forms.Panel();
+            this.updbtn = new System.Windows.Forms.Button();
             this.epnl = new System.Windows.Forms.Panel();
             this.tcpnl = new System.Windows.Forms.Panel();
             this.stcidtxt = new System.Windows.Forms.TextBox();
@@ -88,7 +89,6 @@
             this.bgworker2 = new System.ComponentModel.BackgroundWorker();
             this.bgworker3 = new System.ComponentModel.BackgroundWorker();
             this.picdialog = new System.Windows.Forms.OpenFileDialog();
-            this.updbtn = new System.Windows.Forms.Button();
             this.cpnl.SuspendLayout();
             this.epnl.SuspendLayout();
             this.tcpnl.SuspendLayout();
@@ -131,11 +131,22 @@
             this.cpnl.Size = new System.Drawing.Size(1159, 722);
             this.cpnl.TabIndex = 1;
             // 
+            // updbtn
+            // 
+            this.updbtn.Location = new System.Drawing.Point(1018, 382);
+            this.updbtn.Name = "updbtn";
+            this.updbtn.Size = new System.Drawing.Size(120, 112);
+            this.updbtn.TabIndex = 52;
+            this.updbtn.Text = "Update Entry";
+            this.updbtn.UseVisualStyleBackColor = true;
+            this.updbtn.Visible = false;
+            this.updbtn.Click += new System.EventHandler(this.updbtn_Click);
+            // 
             // epnl
             // 
-            this.epnl.Controls.Add(this.tcpnl);
             this.epnl.Controls.Add(this.fcpnl);
             this.epnl.Controls.Add(this.scpnl);
+            this.epnl.Controls.Add(this.tcpnl);
             this.epnl.Location = new System.Drawing.Point(3, 55);
             this.epnl.Name = "epnl";
             this.epnl.Size = new System.Drawing.Size(1159, 177);
@@ -720,17 +731,6 @@
             // picdialog
             // 
             this.picdialog.Filter = "All Files|*.*|JPG|*.jpg|PNG|*.png";
-            // 
-            // updbtn
-            // 
-            this.updbtn.Location = new System.Drawing.Point(1018, 382);
-            this.updbtn.Name = "updbtn";
-            this.updbtn.Size = new System.Drawing.Size(120, 112);
-            this.updbtn.TabIndex = 52;
-            this.updbtn.Text = "Update Entry";
-            this.updbtn.UseVisualStyleBackColor = true;
-            this.updbtn.Visible = false;
-            this.updbtn.Click += new System.EventHandler(this.updbtn_Click);
             // 
             // addcategories
             // 

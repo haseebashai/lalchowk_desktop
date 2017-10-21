@@ -31,15 +31,19 @@ namespace Veiled_Kashmir_Admin_Panel
         }
 
         private void readmsgs()
-        {
+        {try {
             dr = obj.Query("SELECT customer.mail,messages.*  FROM lalchowk.messages inner join customer on customer.email=messages.email");
             dt = new DataTable();
             dt.Load(dr);
             obj.closeConnection();
             bsource = new BindingSource();
             bsource.DataSource = dt;
-           
         }
+            catch (Exception)
+            {
+                MessageBox.Show("Something happened, please try again");
+            }
+}
 
 
         private void messagesdataview_CellClick(object sender, DataGridViewCellEventArgs e)
