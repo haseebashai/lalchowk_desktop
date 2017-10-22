@@ -115,7 +115,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void readsecond()
         {
-            Cursor = Cursors.WaitCursor;
+            
             try { 
             
             dr = obj.Query("select categoryname from secondcategory where firstcategoryid = '" + idlbl.Text +"'");
@@ -131,14 +131,14 @@ namespace Veiled_Kashmir_Admin_Panel
             {
                 MessageBox.Show("Something happened, please try again");
             }
-            Cursor = Cursors.Arrow;
+            
         }
 
       
 
         private void readthird()
         {
-            Cursor = Cursors.WaitCursor;
+            
             try { 
             dr = obj.Query("select categoryname from thirdcategory where secondcategoryid = '" + id2lbl.Text + "'");
             DataTable dt = new DataTable();
@@ -152,7 +152,7 @@ namespace Veiled_Kashmir_Admin_Panel
             {
                 MessageBox.Show("Something happened, please try again");
             }
-             Cursor = Cursors.Arrow;
+            
         }
 
         
@@ -228,7 +228,7 @@ namespace Veiled_Kashmir_Admin_Panel
             }
         }
         
-        private string picturedialog(Control name, Control image)
+        private string picturedialog(TextBox name, PictureBox image)
         {
             try {
                 if (picdialog.ShowDialog() == DialogResult.OK)
@@ -236,7 +236,18 @@ namespace Veiled_Kashmir_Admin_Panel
                     fileaddress = picdialog.FileName;
                     filename = picdialog.SafeFileName;
                     Image myimage = new Bitmap(fileaddress);
-                    image.BackgroundImage = myimage;
+                    Bitmap clone = new Bitmap(myimage.Width, myimage.Height);
+                    // get the object representing clone's currently empty drawing surface
+                    Graphics g = Graphics.FromImage(clone);
+                    g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.None;
+                    g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+                    g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighSpeed;
+                    // copy the original image onto this surface
+                    g.DrawImage(myimage, 0, 0, myimage.Width, myimage.Height);
+                    // free graphics and original image
+                    g.Dispose();
+                    myimage.Dispose();
+                    image.BackgroundImage = clone;
                     image.BackgroundImageLayout = ImageLayout.Stretch;
                     fullpath = Path.GetFullPath(fileaddress).TrimEnd(Path.DirectorySeparatorChar);
                     directory = Path.GetDirectoryName(fullpath) + "\\";
@@ -255,13 +266,15 @@ namespace Veiled_Kashmir_Admin_Panel
 
         }
 
-        private void uploadpic(Control name, Control image, string fileaddress)
+        bool success = false;
+        private void uploadpic(TextBox name, PictureBox image, string fileaddress)
         {
             try
             {
                 if (pidtxt.Text == "")
                 {
                     MessageBox.Show("Product undefined!");
+                    success = false;
                 }
                 else
                 {
@@ -272,14 +285,15 @@ namespace Veiled_Kashmir_Admin_Panel
                             cmd = "update products set picture='" + name.Text + "' where productid='" + pidtxt.Text + "'";
                             obj.nonQuery(cmd);
                             MessageBox.Show("Image address added in database, please upload the picture seperately now.");
-                            }
+                            success = true;
+                        }
+                       
                     }
 
                     else
                     {
-                        Cursor = Cursors.WaitCursor;
-
-                        image.BackgroundImage.Dispose();
+                     
+                  
                         File.Move(fileaddress, directory + name.Text);
                         uploaddir = directory + name.Text;
 
@@ -287,15 +301,70 @@ namespace Veiled_Kashmir_Admin_Panel
                         obj.nonQuery(cmd);
 
                         UploadFileToFtp("ftp://lalchowk.in/httpdocs/lalchowk/pictures/", uploaddir);
+                        bguploadpic.ReportProgress(100);
+                        success = true;
 
-
-                        Cursor = Cursors.Arrow;
                     }
                 }
             }
             catch (WebException ex)
             {
+
                 MessageBox.Show(ex.ToString());
+                uptxt.ForeColor = Color.Red;
+                uptxt.Text = "Upload Error: " + nametxt.Text;
+                
+            }
+        }
+       
+        private void bguploadpic_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            picprogress.Value = e.ProgressPercentage;
+        }
+
+        
+        private void bguploadpic_DoWork(object sender, DoWorkEventArgs e)
+        {
+            Object[] arg = e.Argument as Object[];
+            TextBox pictext = (TextBox)arg[0];
+            PictureBox picture = (PictureBox)arg[1];
+            String file = (string)arg[2];
+            string check = (string)arg[3];
+            
+
+            if (check == "")
+            {
+                
+                uploadpic(pictext, picture, file);
+            }
+            else
+            {
+                if (check == "table")
+                {
+                    
+                    uploadpictable(pictext, picture, file);
+                }
+            }
+            e.Result = arg;
+        }
+        private void bguploadpic_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            pictimer.Stop();
+            enableup();
+           
+
+            object[] arg = (object[])e.Result;
+            TextBox pictext = (TextBox)arg[0];
+            PictureBox picture = (PictureBox)arg[1];
+            if (success)
+            {
+                pictext.Clear();
+                picture.BackgroundImage = null;
+            }else
+            {
+                uptxt.Visible = false;
+                picprogress.Visible = false;
+              
             }
         }
 
@@ -306,26 +375,57 @@ namespace Veiled_Kashmir_Admin_Panel
             file1=picturedialog(pictxt, pic1);
                      
         }
-
         private void up1_Click(object sender, EventArgs e)
         {
-
-            uploadpic(pictxt, pic1,file1);
-            pictxt.Clear();
-            pic1.BackgroundImage = null;
-
+            pictimer.Start();
+            disableup();
             
+            Object[] args = { pictxt, pic1, file1,"" };
+            bguploadpic.RunWorkerAsync(args);
+        
+        }
+
+        private void disableup()
+        {
+            up1.Enabled = false;
+            up2.Enabled = false;
+            up3.Enabled = false;
+            up4.Enabled = false;
+            up5.Enabled = false;
+            up6.Enabled = false;
+        }
+        private void enableup()
+        {
+            up1.Enabled = true;
+            up2.Enabled = true;
+            up3.Enabled = true;
+            up4.Enabled = true;
+            up5.Enabled = true;
+            up6.Enabled = true;
+        }
+
+      
+        
+    int numberOfPoints = 0;
+        private void pictimer_Tick(object sender, EventArgs e)
+        {
+            picprogress.Value = 0;
+            uptxt.Visible = true;
+            picprogress.Visible = true;
+            int maxPoints = 5;
+            uptxt.Text = "Uploading" + new string('.', numberOfPoints);
+            numberOfPoints = (numberOfPoints + 1) % (maxPoints + 1);
         }
 
 
-
-        private void uploadpictable(Control name, Control image, string fileaddress)
+        private void uploadpictable(TextBox name, PictureBox image, string fileaddress)
         {
             try
             {
                 if (gidtxt.Text == "")
                 {
                     MessageBox.Show("Product undefined!");
+                    success = false;
                 }
                 else
                 {
@@ -335,33 +435,38 @@ namespace Veiled_Kashmir_Admin_Panel
                         if (dgr == DialogResult.Yes)
                         {
                             cmd = "insert into pictures (`groupid`, `picture`) " +
-                             "values ('" + gidtxt.Text + @"','" + name.Text + "') where productid='" + pidtxt.Text + "'";
+                             "values ('" + gidtxt.Text + @"','" + name.Text + "')";
                             obj.nonQuery(cmd);
                             MessageBox.Show("Image address added in database, please upload the picture seperately now.");
+                            success = true;
                         }
+
                     }
                     else
                     {
-                        Cursor = Cursors.WaitCursor;
 
-                        image.BackgroundImage.Dispose();
-                  
-                        File.Move(fileaddress, directory + name.Text);
-                        uploaddir = directory + name.Text;
+                       
+                         
 
-                        cmd = "insert into pictures (`groupid`, `picture`) " +
-                             "values ('" + gidtxt.Text + @"','" + name.Text + "')";
-                        obj.nonQuery(cmd);
+                            File.Move(fileaddress, directory + name.Text);
+                            uploaddir = directory + name.Text;
 
-                        UploadFileToFtp("ftp://lalchowk.in/httpdocs/lalchowk/pictures/", uploaddir);
+                            cmd = "insert into pictures (`groupid`, `picture`) " +
+                                 "values ('" + gidtxt.Text + @"','" + name.Text + "')";
+                            obj.nonQuery(cmd);
+
+                            UploadFileToFtp("ftp://lalchowk.in/httpdocs/lalchowk/pictures/", uploaddir);
+                        bguploadpic.ReportProgress(100);
+
+                        success = true;
 
 
-                        Cursor = Cursors.Arrow;
                     }
                 }
             }
             catch (WebException ex)
             {
+                success = false;
                 MessageBox.Show(ex.ToString());
             }
         }
@@ -378,9 +483,11 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void up2_Click(object sender, EventArgs e)
         {
-            uploadpictable(p2txt, pic2,file2);
-            p2txt.Clear();
-            pic2.BackgroundImage = null;
+            pictimer.Start();
+            disableup();          
+            Object[] args = { p2txt, pic2, file2,"table" };
+            bguploadpic.RunWorkerAsync(args);
+
 
         }
 
@@ -391,9 +498,10 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void up3_Click(object sender, EventArgs e)
         {
-            uploadpictable(p3txt, pic3,file3);
-            p3txt.Clear();
-            pic3.BackgroundImage = null;
+            pictimer.Start();
+            disableup();
+            Object[] args = { p3txt, pic3, file3, "table" };
+            bguploadpic.RunWorkerAsync(args);
         }
 
         private void inclbl_Click(object sender, EventArgs e)
@@ -422,6 +530,8 @@ namespace Veiled_Kashmir_Admin_Panel
             }
         }
 
+        
+
         private void pidtxt_TextChanged(object sender, EventArgs e)
         {
             pictxt.Text = pidtxt.Text + "-1.jpg";
@@ -436,9 +546,10 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void up4_Click(object sender, EventArgs e)
         {
-            uploadpictable(p4txt, pic4,file4);
-            p4txt.Clear();
-            pic4.BackgroundImage = null;
+            pictimer.Start();
+            disableup();
+            Object[] args = { p4txt, pic4, file4, "table" };
+            bguploadpic.RunWorkerAsync(args);
         }
 
         private void pic5_Click(object sender, EventArgs e)
@@ -448,9 +559,10 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void up5_Click(object sender, EventArgs e)
         {
-            uploadpictable(p5txt, pic5,file5);
-            p5txt.Clear();
-            pic5.BackgroundImage = null;
+            pictimer.Start();
+            disableup();
+            Object[] args = { p5txt, pic5, file5, "table" };
+            bguploadpic.RunWorkerAsync(args);
         }
 
         private void p6txt_Click(object sender, EventArgs e)
@@ -476,12 +588,14 @@ namespace Veiled_Kashmir_Admin_Panel
             if (gidtxt.Text == "")
             {
                 MessageBox.Show("Product undefined!");
+                success = false;
             }
             else
             {
                     Cursor = Cursors.WaitCursor;
                     try
                     {
+                   
                         File.Move(fileaddress, directory + p6txt.Text);
                         uploaddir = directory + p6txt.Text;
 
@@ -492,12 +606,16 @@ namespace Veiled_Kashmir_Admin_Panel
                         obj.nonQuery(cmd);
 
                         obj.closeConnection();
+                    success = true;
+                    MessageBox.Show("Picture Uploaded.");
+
                     
                     }
                     catch (WebException ex)
                     {
-                        MessageBox.Show(ex.ToString());
-                    }
+                    MessageBox.Show(ex.ToString());
+                    success = false;
+                }
                     Cursor = Cursors.Arrow;
                 p6txt.Text = "";
             }          
@@ -516,7 +634,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 request.UsePassive = true;
                 request.UseBinary = true;
                 request.KeepAlive = true;
-
+                
                 using (var fileStream = File.OpenRead(filePath))
                 {
                     using (var requestStream = request.GetRequestStream())
@@ -525,11 +643,12 @@ namespace Veiled_Kashmir_Admin_Panel
                         requestStream.Close();
                     }
                 }
+                
 
-                var response = (FtpWebResponse)request.GetResponse();
-                MessageBox.Show("Image uploaded successfully.\nSuccess Response code: " + response.StatusDescription);
+                //      var response = (FtpWebResponse)request.GetResponse();
+                //    MessageBox.Show("Image uploaded successfully.\nSuccess Response code: " + response.StatusDescription);
 
-                response.Close();
+                //  response.Close();
 
 
             }

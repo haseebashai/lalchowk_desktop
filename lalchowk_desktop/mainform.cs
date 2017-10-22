@@ -572,8 +572,8 @@ namespace Veiled_Kashmir_Admin_Panel
             pm.TopLevel = false;
             
             pm.emaillistpnl.Visible=true;
-            
-            
+
+            dg.Size = new Size(1000, 722);
             dg.dialogpnl.Controls.Add(pm);
             pm.loadingdg();
             

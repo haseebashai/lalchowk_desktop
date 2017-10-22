@@ -119,7 +119,10 @@
             this.addppnl = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.pictimer = new System.Windows.Forms.Timer(this.components);
+            this.bguploadpic = new System.ComponentModel.BackgroundWorker();
+            this.picprogress = new System.Windows.Forms.ProgressBar();
+            this.uptxt = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pic1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic3)).BeginInit();
@@ -947,6 +950,8 @@
             // 
             // addppnl
             // 
+            this.addppnl.Controls.Add(this.uptxt);
+            this.addppnl.Controls.Add(this.picprogress);
             this.addppnl.Controls.Add(this.panel3);
             this.addppnl.Controls.Add(this.firstcat);
             this.addppnl.Controls.Add(this.label30);
@@ -1052,6 +1057,39 @@
             // 
             this.bgworker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker_DoWork);
             this.bgworker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker_RunWorkerCompleted);
+            // 
+            // pictimer
+            // 
+            this.pictimer.Interval = 600;
+            this.pictimer.Tick += new System.EventHandler(this.pictimer_Tick);
+            // 
+            // bguploadpic
+            // 
+            this.bguploadpic.WorkerReportsProgress = true;
+            this.bguploadpic.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bguploadpic_DoWork);
+            this.bguploadpic.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bguploadpic_ProgressChanged);
+            this.bguploadpic.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bguploadpic_RunWorkerCompleted);
+            // 
+            // picprogress
+            // 
+            this.picprogress.BackColor = System.Drawing.Color.Black;
+            this.picprogress.ForeColor = System.Drawing.SystemColors.Window;
+            this.picprogress.Location = new System.Drawing.Point(852, 106);
+            this.picprogress.Name = "picprogress";
+            this.picprogress.Size = new System.Drawing.Size(221, 5);
+            this.picprogress.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.picprogress.TabIndex = 89;
+            this.picprogress.Visible = false;
+            // 
+            // uptxt
+            // 
+            this.uptxt.AutoSize = true;
+            this.uptxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uptxt.Location = new System.Drawing.Point(850, 91);
+            this.uptxt.Name = "uptxt";
+            this.uptxt.Size = new System.Drawing.Size(0, 13);
+            this.uptxt.TabIndex = 90;
+            this.uptxt.Visible = false;
             // 
             // addproducts
             // 
@@ -1166,6 +1204,9 @@
         private System.Windows.Forms.Panel addppnl;
         private System.ComponentModel.BackgroundWorker bgworker;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer pictimer;
+        private System.ComponentModel.BackgroundWorker bguploadpic;
+        private System.Windows.Forms.Label uptxt;
+        private System.Windows.Forms.ProgressBar picprogress;
     }
 }

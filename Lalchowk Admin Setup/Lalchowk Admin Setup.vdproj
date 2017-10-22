@@ -45,7 +45,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_A160FACEAFB944ECB015CEAB90DCA7D7"
+        "MsmKey" = "8:_962BC629AA114A21BB7B9D337C4CAEF1"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -53,12 +53,6 @@
         {
         "MsmKey" = "8:_FF45832CEBC88197E166D287629C137D"
         "OwnerKey" = "8:_3E11DD73A81A4371BB76D7994E769EBA"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_1F23393763B826FAADFB66C5E472429B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -91,6 +85,12 @@
         "OwnerKey" = "8:_8586E9D72FDD6E2C26CB3B1CCA3CE94E"
         "MsmSig" = "8:_UNDEFINED"
         }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_1F23393763B826FAADFB66C5E472429B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
     }
     "Configurations"
     {
@@ -109,6 +109,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.5"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.5 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.5"
+                    }
+                }
+            }
         }
         "Release"
         {
@@ -125,6 +141,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -278,9 +302,9 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A160FACEAFB944ECB015CEAB90DCA7D7"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_962BC629AA114A21BB7B9D337C4CAEF1"
             {
-            "SourcePath" = "8:..\\..\\..\\..\\Downloads\\logoW2.ico"
+            "SourcePath" = "8:..\\lalchowk_desktop\\Resources\\logoW2.ico"
             "TargetName" = "8:icon.ico"
             "Tag" = "8:"
             "Folder" = "8:_8CA9B7F96F0146DAAD54DBD461CD5364"
@@ -395,9 +419,9 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:Lalchowk Admin Setup"
+        "ProductName" = "8:Lalchowk Admin Panel"
         "ProductCode" = "8:{F0D04401-FF1C-4367-A9DE-C46BDCAB50A9}"
-        "PackageCode" = "8:{F2FC8B01-DAA2-4673-9F1D-A1EDC2D52DE3}"
+        "PackageCode" = "8:{EFFA70C2-0C73-4B8E-9169-E40BE2119518}"
         "UpgradeCode" = "8:{B8A7C424-E711-4824-A69A-7F9AEDACE445}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -413,8 +437,8 @@
         "ARPCONTACT" = "8:Lifeclicks"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
-        "ARPURLINFOABOUT" = "8:https://www.lifelicks.in"
-        "ARPPRODUCTICON" = "8:_A160FACEAFB944ECB015CEAB90DCA7D7"
+        "ARPURLINFOABOUT" = "8:https://www.lifeclicks.in"
+        "ARPPRODUCTICON" = "8:_962BC629AA114A21BB7B9D337C4CAEF1"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -528,7 +552,7 @@
             "Target" = "8:_3E11DD73A81A4371BB76D7994E769EBA"
             "Folder" = "8:_1C999B1E425F427FBC6592B01DEC312A"
             "WorkingFolder" = "8:_8CA9B7F96F0146DAAD54DBD461CD5364"
-            "Icon" = "8:"
+            "Icon" = "8:_962BC629AA114A21BB7B9D337C4CAEF1"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_B3F8F39F67164D328106DFB965C2F459"
@@ -542,7 +566,7 @@
             "Target" = "8:_3E11DD73A81A4371BB76D7994E769EBA"
             "Folder" = "8:_5A7C9B5AB23845588F07EAD23996D8E6"
             "WorkingFolder" = "8:_8CA9B7F96F0146DAAD54DBD461CD5364"
-            "Icon" = "8:"
+            "Icon" = "8:_962BC629AA114A21BB7B9D337C4CAEF1"
             "Feature" = "8:"
             }
         }
