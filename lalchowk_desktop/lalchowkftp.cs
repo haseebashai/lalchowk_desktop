@@ -9,48 +9,103 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Net;
+using MySql.Data.MySqlClient;
 
 namespace Veiled_Kashmir_Admin_Panel
 {
+
+    
     public partial class lalchowkftp : Form
     {
+       
+        PictureBox loading = new PictureBox();
+
         private dialogcontainer dg = null;
         public lalchowkftp(Form dgcopy)
         {
             dg = dgcopy as dialogcontainer;
             InitializeComponent();
+
+            bgworker.RunWorkerAsync();
         }
 
-        private void lalchowkftp_Load(object sender, EventArgs e)
+        public void loadingnormal()
         {
-            this.loadfiles();
+            formlbl.Text = "Loading";
+
+            loading = new PictureBox()
+            {
+                Image = Properties.Resources.loading,
+                Size = new Size(40, 30),
+                SizeMode = PictureBoxSizeMode.StretchImage,
+                Location = new Point(72, 0),
+            };
+            this.Controls.Add(loading);
+        }
+        public void loadingdg()
+        {
+            formlbl.Visible = false;
+            dg.lbl.ForeColor = SystemColors.Highlight;
+            dg.lbl.Text = "Loading";
+            dg.loadingimage.SizeMode = PictureBoxSizeMode.StretchImage;
+            dg.loadingimage.Visible = true;
         }
 
-        public void loadfiles()
+
+        private void bgworker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            if (ActiveForm == dg)
+            {
+                dg.loadingimage.Visible = false;
+                dg.lbl.ForeColor = SystemColors.Highlight;
+                dg.lbl.Text = "Lalchowk FTP";
+
+            }
+            else
+            {
+                loading.Visible = false;
+                formlbl.Text = "Lalchowk FTP";
+                formlbl.BringToFront();
+            }
             var ftp = new FtpUtility();
             ftp.UserName = "Lalchowk";
             ftp.Password = "Lalchowk@123";
-            ftp.Path = "ftp://lalchowk.in/httpdocs/lalchowk/";
-
-            this.dataGridView1.DataSource = ftp.ListFiles()
-                                                .Select(x => new
-                                                {
-                                                    Name = x, //Name Column
-                                                    Path = ftp.Path + x   //Path Column
-                                                }).ToList();
+            ftp.Path = ftppath;
+            this.ftpdataview.DataSource = ftp.ListFiles()
+                                                  .Select(x => new
+                                                  {
+                                                                         
+                                                       Path = ftp.Path + x,   //Path Column 
+                                                        Name = x             //Name Column
+                                                  }).ToList();
+            
+           
+            fpnl.Visible = true;
         }
 
+        private void bgworker_DoWork(object sender, DoWorkEventArgs e)
+        {
+           
+        }
+
+
+        private void dirbtn_Click(object sender, EventArgs e)
+        {
+            
+                ftppath = "ftp://lalchowk.in/httpdocs/lalchowk/" + dirtxt.Text + "/";
+            filetxt.Text = "";
+            bgworker.RunWorkerAsync();
+           
+        }
+
+        string ftppath= "ftp://lalchowk.in/httpdocs/lalchowk/";
+      
 
         public static bool DeleteFileOnFtpServer(Uri serverUri, string ftpUsername, string ftpPassword)
         {
             try
             {
-                // The serverUri parameter should use the ftp:// scheme.
-                // It contains the name of the server file that is to be deleted.
-                // Example: ftp://contoso.com/someFile.txt.
-                // 
-
+               
                 if (serverUri.Scheme != Uri.UriSchemeFtp)
                 {
                     return false;
@@ -61,7 +116,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 request.Method = WebRequestMethods.Ftp.DeleteFile;
 
                 FtpWebResponse response = (FtpWebResponse)request.GetResponse();
-                MessageBox.Show("Image deleted successfully.\nSuccess Response code: " + response.StatusDescription);
+                MessageBox.Show("File deleted successfully.\nSuccess Response code: " + response.StatusDescription);
                 response.Close();
                 return true;
             }
@@ -71,53 +126,256 @@ namespace Veiled_Kashmir_Admin_Panel
             }
         }
 
-        string delurl;
-        private void button1_Click(object sender, EventArgs e)
+        string pathurl;
+        private void ftpdelbtn_Click(object sender, EventArgs e)
         {
-            DeleteFileOnFtpServer(new Uri(delurl), "Lalchowk", "Lalchowk@123");
-            this.loadfiles();
+            string filename = pathurl.Split('/').Last();
+            DialogResult dgr = MessageBox.Show("Delete following file ?\n\n" + filename, "Confirm!", MessageBoxButtons.YesNo);
+                if (dgr == DialogResult.Yes)
+                {
+                    DeleteFileOnFtpServer(new Uri(pathurl), "Lalchowk", "Lalchowk@123");
+
+                    bgworker.RunWorkerAsync();
+                }
+            
+
+           
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
-                DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
-                delurl = row.Cells["path"].Value.ToString();
-                MessageBox.Show(delurl);
+                DataGridViewRow row = this.ftpdataview.Rows[e.RowIndex];
+                pathurl = row.Cells["path"].Value.ToString();
+                filetxt.Text = pathurl.Split('/').Last();
             }
         }
 
+
+        string downloadpath;
+        private void ftpdldbtn_Click(object sender, EventArgs e)
+        {
+            
+            using (var folderDialog = new FolderBrowserDialog())
+            {
+                if (folderDialog.ShowDialog() == DialogResult.OK)
+                {
+
+                    downloadpath = folderDialog.SelectedPath;
+                }
+            }
+         
+            // Run Download on background thread
+            Task.Run(() => Download());
+           
+        }
+
+        private void Download()
+        {
+           
+            try
+            {
+                string url = pathurl;
+                NetworkCredential credentials = new NetworkCredential("Lalchowk", "Lalchowk@123");
+
+                // Query size of the file to be downloaded
+                FtpWebRequest sizeRequest = (FtpWebRequest)WebRequest.Create(url);
+                sizeRequest.Credentials = credentials;
+                sizeRequest.Method = WebRequestMethods.Ftp.GetFileSize;
+                long size = sizeRequest.GetResponse().ContentLength/8;
+
+                progressBar1.Invoke(
+                    (MethodInvoker)delegate { progressBar1.Maximum = (int)size; });
+
+                // Download the file
+                FtpWebRequest request = (FtpWebRequest)WebRequest.Create(url);
+                request.Credentials = credentials;
+                request.Method = WebRequestMethods.Ftp.DownloadFile;
+               //      Uri uri = new Uri(url);
+                 //  string filename = uri.Segments.Last();
+
+                string filename=url.Substring(url.LastIndexOf("/") + 1);
+                using (Stream ftpStream = request.GetResponse().GetResponseStream())
+                using (Stream fileStream = File.Create(@downloadpath+filename))
+                {
+                    byte[] buffer = new byte[10240];
+                    int read;
+                    int total = 0;
+                    while ((read = ftpStream.Read(buffer, 0, buffer.Length)) > 0)
+                    {
+                        fileStream.Write(buffer, 0, read);
+                        total += read;
+                        
+                        progressBar1.Invoke(
+                            (MethodInvoker)delegate { progressBar1.Visible = true; progressBar1.Value = total/8;progresspc.Visible = true; progresspc.Text = progressBar1.Value.ToString()+" Kilobytes downloaded"; });
+                    }
+                }
+                MessageBox.Show("File downloaded.");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
+
+
+
+
+
+
+
+
         public class FtpUtility
         {
+            
             public string UserName { get; set; }
             public string Password { get; set; }
             public string Path { get; set; }
+
             public List<string> ListFiles()
             {
-                var request = (FtpWebRequest)WebRequest.Create(Path);
-                request.Method = WebRequestMethods.Ftp.ListDirectoryDetails;
-                request.Credentials = new NetworkCredential(UserName, Password);
-                List<string> files = new List<string>();
-                using (var response = (FtpWebResponse)request.GetResponse())
-                {
-                    using (var responseStream = response.GetResponseStream())
+                try {
+                    var request = (FtpWebRequest)WebRequest.Create(Path);
+                    request.Method = WebRequestMethods.Ftp.ListDirectoryDetails;
+                    request.Credentials = new NetworkCredential(UserName, Password);
+                    List<string> files = new List<string>();
+
+                    using (var response = (FtpWebResponse)request.GetResponse())
+
                     {
-                        var reader = new StreamReader(responseStream);
-                        while (!reader.EndOfStream)
+                        using (var responseStream = response.GetResponseStream())
                         {
-                            var line = reader.ReadLine();
-                            if (string.IsNullOrWhiteSpace(line) == false)
+                            var reader = new StreamReader(responseStream);
+                            while (!reader.EndOfStream)
                             {
-                                var fileName = line.Split(new[] { ' ', '\t' }).Last();
-                                if (!fileName.StartsWith("."))
-                                    files.Add(fileName);
+                                var line = reader.ReadLine();
+                                if (string.IsNullOrWhiteSpace(line) == false)
+                                {
+
+                                    var fileName = line.Split(new[] { ' ', '\t' }).Last();
+                                    if (!fileName.StartsWith("."))
+                                        files.Add(fileName);
+                                }
+
                             }
                         }
-                        return files;
+                    }
+
+                    return files;
+
+
+                }catch(Exception e)
+                {
+                    
+                    MessageBox.Show("Please enter valid directory address.");
+                    
+                    return null;
+                }
+               }
+            }
+                
+        
+
+        private void ftpupbtn_Click(object sender, EventArgs e)
+        {
+            if (uptxt.Text == "")
+            {
+                MessageBox.Show("Select File first!");
+                
+            }
+            else
+            {
+                
+                Cursor = Cursors.WaitCursor;
+                try
+                {
+
+                    File.Move(fileaddress, directory + uptxt.Text);
+                    uploaddir = directory + uptxt.Text;
+
+                    string responsefromftp = UploadFileToFtp(ftppath, uploaddir);
+
+                    
+                    MessageBox.Show("Picture Uploaded.\n\n\n" + responsefromftp.ToString());
+                    progressBar1.Value = 0;
+                    progressBar1.Visible = false;
+                    bgworker.RunWorkerAsync();
+
+
+                }
+                catch (WebException ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                    
+                }
+                Cursor = Cursors.Arrow;
+                uptxt.Text = "";
+            }
+        }
+
+        public string UploadFileToFtp(string url, string filePath)
+        {
+            try
+            {
+                var fileName = Path.GetFileName(filePath);
+                var request = (FtpWebRequest)WebRequest.Create(url + fileName);
+
+                request.Method = WebRequestMethods.Ftp.UploadFile;
+                request.Credentials = new NetworkCredential("lalchowk", "Lalchowk@123");
+                request.UsePassive = true;
+                request.UseBinary = true;
+                request.KeepAlive = true;
+
+
+               
+                   
+                
+                using (var fileStream = File.OpenRead(filePath))
+                {
+                    using (var requestStream = request.GetRequestStream())
+                    {
+
+                        fileStream.CopyTo(requestStream);
+                        requestStream.Close();
+
+                        
+                        progressBar1.Invoke(
+                       (MethodInvoker)delegate { progressBar1.Visible = true; progressBar1.Value = 100; progresspc.Text = "File Uplaoded"; });
                     }
                 }
+
+
+                     var response = (FtpWebResponse)request.GetResponse();
+                //    MessageBox.Show("Image uploaded successfully.\nSuccess Response code: " + response.StatusDescription);
+
+                      response.Close();
+                return response.StatusDescription;
+
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                return null;
+            }
+        }
+
+        string fileaddress, filename, fullpath, directory,uploaddir;
+        private void uptxt_Click(object sender, EventArgs e)
+        {
+            
+            OpenFileDialog fd = new OpenFileDialog();
+           
+                if (fd.ShowDialog() == DialogResult.OK)
+                {
+                    fileaddress = fd.FileName;
+                    filename = fd.SafeFileName;
+                    fullpath = Path.GetFullPath(fileaddress).TrimEnd(Path.DirectorySeparatorChar);
+                    directory = Path.GetDirectoryName(fullpath) + "\\";
+                    uptxt.Text = Path.GetFileName(fullpath);
+                }
+               
+            
         }
     }
 }

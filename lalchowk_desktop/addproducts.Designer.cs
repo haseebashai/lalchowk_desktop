@@ -117,13 +117,13 @@
             this.inclbl = new System.Windows.Forms.Label();
             this.inclbl2 = new System.Windows.Forms.Label();
             this.addppnl = new System.Windows.Forms.Panel();
+            this.clearpicbtn = new System.Windows.Forms.Button();
             this.uptxt = new System.Windows.Forms.Label();
             this.picprogress = new System.Windows.Forms.ProgressBar();
             this.panel3 = new System.Windows.Forms.Panel();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
             this.pictimer = new System.Windows.Forms.Timer(this.components);
             this.bguploadpic = new System.ComponentModel.BackgroundWorker();
-            this.clearpicbtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pic1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic3)).BeginInit();
@@ -1046,6 +1046,17 @@
             this.addppnl.Size = new System.Drawing.Size(1150, 711);
             this.addppnl.TabIndex = 88;
             // 
+            // clearpicbtn
+            // 
+            this.clearpicbtn.Location = new System.Drawing.Point(1079, 87);
+            this.clearpicbtn.Name = "clearpicbtn";
+            this.clearpicbtn.Size = new System.Drawing.Size(41, 39);
+            this.clearpicbtn.TabIndex = 97;
+            this.clearpicbtn.Text = "Clear Pics";
+            this.clearpicbtn.UseVisualStyleBackColor = true;
+            this.clearpicbtn.Visible = false;
+            this.clearpicbtn.Click += new System.EventHandler(this.clearpicbtn_Click);
+            // 
             // uptxt
             // 
             this.uptxt.AutoSize = true;
@@ -1092,17 +1103,6 @@
             this.bguploadpic.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bguploadpic_DoWork);
             this.bguploadpic.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bguploadpic_ProgressChanged);
             this.bguploadpic.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bguploadpic_RunWorkerCompleted);
-            // 
-            // clearpicbtn
-            // 
-            this.clearpicbtn.Location = new System.Drawing.Point(1079, 87);
-            this.clearpicbtn.Name = "clearpicbtn";
-            this.clearpicbtn.Size = new System.Drawing.Size(41, 39);
-            this.clearpicbtn.TabIndex = 97;
-            this.clearpicbtn.Text = "Clear Pics";
-            this.clearpicbtn.UseVisualStyleBackColor = true;
-            this.clearpicbtn.Visible = false;
-            this.clearpicbtn.Click += new System.EventHandler(this.clearpicbtn_Click);
             // 
             // addproducts
             // 

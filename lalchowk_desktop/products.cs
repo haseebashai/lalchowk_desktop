@@ -220,6 +220,7 @@ namespace Veiled_Kashmir_Admin_Panel
             dg.Size = new Size(1000, 715);
             lalchowkftp ftp  = new lalchowkftp(dg);
             ftp.TopLevel = false;
+            ftp.loadingdg();
             dg.dialogpnl.Controls.Add(ftp);
             dg.Show();
             ftp.Show();
