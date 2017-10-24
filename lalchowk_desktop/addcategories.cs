@@ -275,13 +275,13 @@ namespace Veiled_Kashmir_Admin_Panel
             {
                 if (syes.Checked)
                 {
-                    cmd = ("insert into secondcategory(`cid`, `categoryid`, `categoryname`,`picture`,`firstcategoryid`,`final`) values ('" + sidtxt.Text + "','" + scidtxt.Text + "','" + scnametxt.Text + "','" + spictxt.Text + "','" + fscidtxt.Text + ",'1'");
+                    cmd = ("insert into secondcategory(`cid`, `categoryid`, `categoryname`,`picture`,`firstcategoryid`,`final`) values ('" + sidtxt.Text + "','" + scidtxt.Text + "','" + scnametxt.Text + "','" + spictxt.Text + "','" + fscidtxt.Text + "','1')");
                     obj.nonQuery(cmd);
                     obj.closeConnection();
                 }
                 else
                 {
-                    cmd = ("insert into secondcategory(`cid`, `categoryid`, `categoryname`,`picture`,`firstcategoryid`,`final`) values ('" + sidtxt.Text + "','" + scidtxt.Text + "','" + scnametxt.Text + "','" + spictxt.Text + "','" + fscidtxt.Text + ",'0'");
+                    cmd = ("insert into secondcategory(`cid`, `categoryid`, `categoryname`,`picture`,`firstcategoryid`,`final`) values ('" + sidtxt.Text + "','" + scidtxt.Text + "','" + scnametxt.Text + "','" + spictxt.Text + "','" + fscidtxt.Text + "','0')");
                     obj.nonQuery(cmd);
                     obj.closeConnection();
                 }
@@ -298,10 +298,10 @@ namespace Veiled_Kashmir_Admin_Panel
                 readsecondcat();
                 catdataview.DataSource = bsource;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 obj.closeConnection();
-                MessageBox.Show("Something happened, please try again.");
+                MessageBox.Show(ex.ToString()+"Something happened, please try again.");
             }
         }
 
@@ -345,7 +345,7 @@ namespace Veiled_Kashmir_Admin_Panel
             {
                 if (tyes.Checked)
                 {
-                    cmd = ("insert into thirdcategory(`categoryid`, `categoryname`,`picture`,`secondcategoryid`,`final`) values ('" + tidtxt.Text + "','" + tcnametxt.Text + "','" + tpictxt.Text + "','" + stcidtxt.Text + "','1'");
+                    cmd = ("insert into thirdcategory(`categoryid`, `categoryname`,`picture`,`secondcategoryid`,`final`) values ('" + tidtxt.Text + "','" + tcnametxt.Text + "','" + tpictxt.Text + "','" + stcidtxt.Text + "','1')");
                     obj.nonQuery(cmd);
                     obj.closeConnection();
                     MessageBox.Show("Category added.");
@@ -353,6 +353,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     tcnametxt.Text = "";
                     tpictxt.Text = "";
                     stcidtxt.Text = "";
+                    tyes.Checked = false;
 
                     readthirdcat();
                     catdataview.DataSource = bsource;
@@ -366,10 +367,10 @@ namespace Veiled_Kashmir_Admin_Panel
 
                
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 obj.closeConnection();
-                MessageBox.Show("Something happened, try again.");
+                MessageBox.Show(ex.ToString()+"Something happened, try again.");
             }
         }
 
@@ -403,42 +404,24 @@ namespace Veiled_Kashmir_Admin_Panel
             tcpnl.Visible = true;
         }
 
-        private void fyes_CheckedChanged(object sender, EventArgs e)
-        {
-            if (fyes.Checked)
-                fno.Checked = false;
-        }
-
-        private void fno_CheckedChanged(object sender, EventArgs e)
-        {
-            if (fno.Checked)
-                fyes.Checked = false;
-        }
-
+      
         private void faddbtn_Click(object sender, EventArgs e)
         {
             try
             {
-                if (fyes.Checked)
-                {
-                    cmd = ("insert into firstcategory(`cid`, `categoryid`, `categoryname`,`picture`,`final`) values ('" + fidtxt.Text + "','" + fcidtxt.Text + "','" + fnametxt.Text + "','"+fpictxt.Text+"','1'");
+                
+                    cmd = ("insert into firstcategory(`cid`, `categoryid`, `categoryname`,`picture`,`final`) values ('" + fidtxt.Text + "','" + fcidtxt.Text + "','" + fnametxt.Text + "','"+fpictxt.Text+"','0')");
                     obj.nonQuery(cmd);
                     obj.closeConnection();
-                }
-                else
-                {
-                    cmd = ("insert into firstcategory(`cid`, `categoryid`, `categoryname`,`picture`,`final`) values ('" + fidtxt.Text + "','" + fcidtxt.Text + "','" + fnametxt.Text + "','" + fpictxt.Text + "','0'");
-                    obj.nonQuery(cmd);
-                    obj.closeConnection();
-                }
+                
+               
                 MessageBox.Show("Category added.");
                 
                 fidtxt.Text = "";
                 fcidtxt.Text = "";
                 fnametxt.Text = "";
                 fpictxt.Text = "";
-                fyes.Checked = false;
-                fno.Checked = false;
+               
 
                 readfirstcat();
                 catdataview.DataSource = bsource;

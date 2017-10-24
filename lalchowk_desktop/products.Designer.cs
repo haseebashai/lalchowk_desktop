@@ -48,6 +48,7 @@
             this.newbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.chkbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.formlbl = new System.Windows.Forms.Label();
+            this.ftpbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.ppnl.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -275,12 +276,29 @@
             this.formlbl.Text = "Loading";
             this.formlbl.Visible = false;
             // 
+            // ftpbtn
+            // 
+            this.ftpbtn.AutoSize = true;
+            this.ftpbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ftpbtn.Depth = 0;
+            this.ftpbtn.Location = new System.Drawing.Point(484, 191);
+            this.ftpbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.ftpbtn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.ftpbtn.Name = "ftpbtn";
+            this.ftpbtn.Primary = false;
+            this.ftpbtn.Size = new System.Drawing.Size(84, 36);
+            this.ftpbtn.TabIndex = 33;
+            this.ftpbtn.Text = "Check ftp";
+            this.ftpbtn.UseVisualStyleBackColor = true;
+            this.ftpbtn.Click += new System.EventHandler(this.ftpbtn_Click);
+            // 
             // products
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1162, 722);
+            this.Controls.Add(this.ftpbtn);
             this.Controls.Add(this.formlbl);
             this.Controls.Add(this.chkbtn);
             this.Controls.Add(this.ppnl);
@@ -322,5 +340,6 @@
         private MaterialSkin.Controls.MaterialFlatButton newbtn;
         private MaterialSkin.Controls.MaterialFlatButton chkbtn;
         private System.Windows.Forms.Label formlbl;
+        private MaterialSkin.Controls.MaterialFlatButton ftpbtn;
     }
 }

@@ -47,6 +47,8 @@
             this.ipnl = new System.Windows.Forms.Panel();
             this.descpnl = new System.Windows.Forms.Panel();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
+            this.cattxt = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.inventorydatagridview)).BeginInit();
             this.ipnl.SuspendLayout();
             this.descpnl.SuspendLayout();
@@ -54,6 +56,7 @@
             // 
             // inventorydatagridview
             // 
+            this.inventorydatagridview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.inventorydatagridview.BackgroundColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -75,22 +78,22 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(251, 11);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(114, 13);
+            this.label3.Size = new System.Drawing.Size(75, 13);
             this.label3.TabIndex = 24;
-            this.label3.Text = "Filter by Product Name";
+            this.label3.Text = "Product Name";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(582, 11);
+            this.label2.Location = new System.Drawing.Point(552, 11);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(98, 13);
+            this.label2.Size = new System.Drawing.Size(59, 13);
             this.label2.TabIndex = 22;
-            this.label2.Text = "Filter by Supplier ID";
+            this.label2.Text = "Supplier ID";
             // 
             // supidtxt
             // 
-            this.supidtxt.Location = new System.Drawing.Point(686, 4);
+            this.supidtxt.Location = new System.Drawing.Point(617, 4);
             this.supidtxt.Name = "supidtxt";
             this.supidtxt.Size = new System.Drawing.Size(78, 20);
             this.supidtxt.TabIndex = 21;
@@ -107,7 +110,7 @@
             // 
             // pronametxt
             // 
-            this.pronametxt.Location = new System.Drawing.Point(369, 4);
+            this.pronametxt.Location = new System.Drawing.Point(332, 4);
             this.pronametxt.Name = "pronametxt";
             this.pronametxt.Size = new System.Drawing.Size(187, 20);
             this.pronametxt.TabIndex = 23;
@@ -124,17 +127,17 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(798, 11);
+            this.label5.Location = new System.Drawing.Point(716, 11);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(74, 13);
+            this.label5.Size = new System.Drawing.Size(35, 13);
             this.label5.TabIndex = 28;
-            this.label5.Text = "Filter by Brand";
+            this.label5.Text = "Brand";
             // 
             // brandtxt
             // 
-            this.brandtxt.Location = new System.Drawing.Point(878, 4);
+            this.brandtxt.Location = new System.Drawing.Point(757, 4);
             this.brandtxt.Name = "brandtxt";
-            this.brandtxt.Size = new System.Drawing.Size(187, 20);
+            this.brandtxt.Size = new System.Drawing.Size(109, 20);
             this.brandtxt.TabIndex = 27;
             this.brandtxt.TextChanged += new System.EventHandler(this.brandtxt_TextChanged);
             // 
@@ -197,6 +200,8 @@
             // 
             // ipnl
             // 
+            this.ipnl.Controls.Add(this.cattxt);
+            this.ipnl.Controls.Add(this.label1);
             this.ipnl.Controls.Add(this.inventorydatagridview);
             this.ipnl.Controls.Add(this.supidtxt);
             this.ipnl.Controls.Add(this.label2);
@@ -229,6 +234,23 @@
             // 
             this.bgworker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker_DoWork);
             this.bgworker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker_RunWorkerCompleted);
+            // 
+            // cattxt
+            // 
+            this.cattxt.Location = new System.Drawing.Point(952, 4);
+            this.cattxt.Name = "cattxt";
+            this.cattxt.Size = new System.Drawing.Size(109, 20);
+            this.cattxt.TabIndex = 29;
+            this.cattxt.TextChanged += new System.EventHandler(this.cattxt_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(886, 11);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(60, 13);
+            this.label1.TabIndex = 30;
+            this.label1.Text = "CategoryID";
             // 
             // inventory
             // 
@@ -271,5 +293,7 @@
         private System.Windows.Forms.Panel ipnl;
         private System.Windows.Forms.Panel descpnl;
         private System.ComponentModel.BackgroundWorker bgworker;
+        private System.Windows.Forms.TextBox cattxt;
+        private System.Windows.Forms.Label label1;
     }
 }

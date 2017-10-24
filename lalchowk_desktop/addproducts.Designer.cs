@@ -117,12 +117,13 @@
             this.inclbl = new System.Windows.Forms.Label();
             this.inclbl2 = new System.Windows.Forms.Label();
             this.addppnl = new System.Windows.Forms.Panel();
+            this.uptxt = new System.Windows.Forms.Label();
+            this.picprogress = new System.Windows.Forms.ProgressBar();
             this.panel3 = new System.Windows.Forms.Panel();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
             this.pictimer = new System.Windows.Forms.Timer(this.components);
             this.bguploadpic = new System.ComponentModel.BackgroundWorker();
-            this.picprogress = new System.Windows.Forms.ProgressBar();
-            this.uptxt = new System.Windows.Forms.Label();
+            this.clearpicbtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pic1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic3)).BeginInit();
@@ -950,6 +951,7 @@
             // 
             // addppnl
             // 
+            this.addppnl.Controls.Add(this.clearpicbtn);
             this.addppnl.Controls.Add(this.uptxt);
             this.addppnl.Controls.Add(this.picprogress);
             this.addppnl.Controls.Add(this.panel3);
@@ -1044,6 +1046,27 @@
             this.addppnl.Size = new System.Drawing.Size(1150, 711);
             this.addppnl.TabIndex = 88;
             // 
+            // uptxt
+            // 
+            this.uptxt.AutoSize = true;
+            this.uptxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uptxt.Location = new System.Drawing.Point(850, 91);
+            this.uptxt.Name = "uptxt";
+            this.uptxt.Size = new System.Drawing.Size(0, 13);
+            this.uptxt.TabIndex = 90;
+            this.uptxt.Visible = false;
+            // 
+            // picprogress
+            // 
+            this.picprogress.BackColor = System.Drawing.Color.Black;
+            this.picprogress.ForeColor = System.Drawing.SystemColors.Window;
+            this.picprogress.Location = new System.Drawing.Point(852, 106);
+            this.picprogress.Name = "picprogress";
+            this.picprogress.Size = new System.Drawing.Size(221, 5);
+            this.picprogress.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.picprogress.TabIndex = 89;
+            this.picprogress.Visible = false;
+            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -1070,26 +1093,16 @@
             this.bguploadpic.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bguploadpic_ProgressChanged);
             this.bguploadpic.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bguploadpic_RunWorkerCompleted);
             // 
-            // picprogress
+            // clearpicbtn
             // 
-            this.picprogress.BackColor = System.Drawing.Color.Black;
-            this.picprogress.ForeColor = System.Drawing.SystemColors.Window;
-            this.picprogress.Location = new System.Drawing.Point(852, 106);
-            this.picprogress.Name = "picprogress";
-            this.picprogress.Size = new System.Drawing.Size(221, 5);
-            this.picprogress.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.picprogress.TabIndex = 89;
-            this.picprogress.Visible = false;
-            // 
-            // uptxt
-            // 
-            this.uptxt.AutoSize = true;
-            this.uptxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uptxt.Location = new System.Drawing.Point(850, 91);
-            this.uptxt.Name = "uptxt";
-            this.uptxt.Size = new System.Drawing.Size(0, 13);
-            this.uptxt.TabIndex = 90;
-            this.uptxt.Visible = false;
+            this.clearpicbtn.Location = new System.Drawing.Point(1079, 87);
+            this.clearpicbtn.Name = "clearpicbtn";
+            this.clearpicbtn.Size = new System.Drawing.Size(41, 39);
+            this.clearpicbtn.TabIndex = 97;
+            this.clearpicbtn.Text = "Clear Pics";
+            this.clearpicbtn.UseVisualStyleBackColor = true;
+            this.clearpicbtn.Visible = false;
+            this.clearpicbtn.Click += new System.EventHandler(this.clearpicbtn_Click);
             // 
             // addproducts
             // 
@@ -1208,5 +1221,6 @@
         private System.ComponentModel.BackgroundWorker bguploadpic;
         private System.Windows.Forms.Label uptxt;
         private System.Windows.Forms.ProgressBar picprogress;
+        private System.Windows.Forms.Button clearpicbtn;
     }
 }

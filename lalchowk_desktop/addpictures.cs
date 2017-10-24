@@ -241,26 +241,36 @@ namespace Veiled_Kashmir_Admin_Panel
             {
                 if (pic.BackgroundImage == null)
                 {
-                    MessageBox.Show("Select Image first.");
-                }
-                else
-                {
-                    
-                    try
+                    DialogResult dgr = MessageBox.Show("Do you want to update database only ?", "Warning!", MessageBoxButtons.YesNo);
+                    if (dgr == DialogResult.Yes)
                     {
-                        timer.Start();
-                        addbtn.Enabled = false;
-                        picworker.RunWorkerAsync();
+                        cmd = "insert into pictures (`groupid`, `picture`) " +
+                         "values ('" + gidtxt.Text + @"','" + ptxt.Text + "')";
+                        obj.nonQuery(cmd);
+                        MessageBox.Show("Image address added in database, please upload the picture seperately now.");
+                        readpictures();
+                        picturesdataview.DataSource = bsource;
                     }
-                    catch (WebException ex)
+                    else
                     {
-                        MessageBox.Show(ex.ToString());
+
+                        try
+                        {
+                            timer.Start();
+                            addbtn.Enabled = false;
+                            picworker.RunWorkerAsync();
+                        }
+                        catch (WebException ex)
+                        {
+                            MessageBox.Show(ex.ToString());
+                        }
+
+
                     }
-                    
-                   
                 }
             }
         }
+        
 
         private void readpictures()
         {try { 

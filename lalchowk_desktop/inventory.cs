@@ -180,6 +180,14 @@ namespace Veiled_Kashmir_Admin_Panel
             loadingdg();
             bgworker.RunWorkerAsync();
         }
+
+        private void cattxt_TextChanged(object sender, EventArgs e)
+        {
+            DataView dv = new DataView(dt);
+            dv.RowFilter = string.Format("categoryid LIKE '%{0}%'", cattxt.Text);
+            inventorydatagridview.DataSource = dv;
+        }
+
         public void loadingdg()
         {
 

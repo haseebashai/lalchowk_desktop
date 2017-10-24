@@ -212,12 +212,23 @@ namespace Veiled_Kashmir_Admin_Panel
         }
 
 
-       
 
-        
-       
+        private void ftpbtn_Click(object sender, EventArgs e)
+        {
+            dialogcontainer dg = new dialogcontainer();
+            dg.Text = "Lalchowk FTP";
+            dg.Size = new Size(1000, 715);
+            lalchowkftp ftp  = new lalchowkftp(dg);
+            ftp.TopLevel = false;
+            dg.dialogpnl.Controls.Add(ftp);
+            dg.Show();
+            ftp.Show();
+        }
 
-     
+
+
+
+
 
 
 

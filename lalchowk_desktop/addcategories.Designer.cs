@@ -50,12 +50,9 @@
             this.fcpnl = new System.Windows.Forms.Panel();
             this.fidtxt = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.fno = new System.Windows.Forms.CheckBox();
-            this.fyes = new System.Windows.Forms.CheckBox();
             this.faddpicbtn = new System.Windows.Forms.Button();
             this.fpictxt = new System.Windows.Forms.TextBox();
             this.fpic = new System.Windows.Forms.PictureBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.faddbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.label3 = new System.Windows.Forms.Label();
             this.fnametxt = new System.Windows.Forms.TextBox();
@@ -192,8 +189,6 @@
             // tyes
             // 
             this.tyes.AutoSize = true;
-            this.tyes.Checked = true;
-            this.tyes.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tyes.Location = new System.Drawing.Point(16, 130);
             this.tyes.Name = "tyes";
             this.tyes.Size = new System.Drawing.Size(44, 17);
@@ -301,12 +296,9 @@
             // 
             this.fcpnl.Controls.Add(this.fidtxt);
             this.fcpnl.Controls.Add(this.label8);
-            this.fcpnl.Controls.Add(this.fno);
-            this.fcpnl.Controls.Add(this.fyes);
             this.fcpnl.Controls.Add(this.faddpicbtn);
             this.fcpnl.Controls.Add(this.fpictxt);
             this.fcpnl.Controls.Add(this.fpic);
-            this.fcpnl.Controls.Add(this.label13);
             this.fcpnl.Controls.Add(this.faddbtn);
             this.fcpnl.Controls.Add(this.label3);
             this.fcpnl.Controls.Add(this.fnametxt);
@@ -333,28 +325,6 @@
             this.label8.Size = new System.Drawing.Size(146, 13);
             this.label8.TabIndex = 101;
             this.label8.Text = "ID (corresponding with CatID)";
-            // 
-            // fno
-            // 
-            this.fno.AutoSize = true;
-            this.fno.Location = new System.Drawing.Point(66, 130);
-            this.fno.Name = "fno";
-            this.fno.Size = new System.Drawing.Size(40, 17);
-            this.fno.TabIndex = 100;
-            this.fno.Text = "No";
-            this.fno.UseVisualStyleBackColor = true;
-            this.fno.CheckedChanged += new System.EventHandler(this.fno_CheckedChanged);
-            // 
-            // fyes
-            // 
-            this.fyes.AutoSize = true;
-            this.fyes.Location = new System.Drawing.Point(16, 130);
-            this.fyes.Name = "fyes";
-            this.fyes.Size = new System.Drawing.Size(44, 17);
-            this.fyes.TabIndex = 99;
-            this.fyes.Text = "Yes";
-            this.fyes.UseVisualStyleBackColor = true;
-            this.fyes.CheckedChanged += new System.EventHandler(this.fyes_CheckedChanged);
             // 
             // faddpicbtn
             // 
@@ -386,15 +356,6 @@
             this.fpic.TabStop = false;
             this.fpic.Click += new System.EventHandler(this.fpic_Click);
             // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(13, 113);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(29, 13);
-            this.label13.TabIndex = 29;
-            this.label13.Text = "Final";
-            // 
             // faddbtn
             // 
             this.faddbtn.AutoSize = true;
@@ -422,7 +383,7 @@
             // 
             // fnametxt
             // 
-            this.fnametxt.Location = new System.Drawing.Point(16, 80);
+            this.fnametxt.Location = new System.Drawing.Point(16, 113);
             this.fnametxt.Name = "fnametxt";
             this.fnametxt.Size = new System.Drawing.Size(229, 20);
             this.fnametxt.TabIndex = 25;
@@ -430,7 +391,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 63);
+            this.label2.Location = new System.Drawing.Point(13, 96);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(80, 13);
             this.label2.TabIndex = 24;
@@ -775,7 +736,6 @@
         private MaterialSkin.Controls.MaterialFlatButton scbtn;
         private MaterialSkin.Controls.MaterialFlatButton fcbtn;
         private System.Windows.Forms.DataGridView catdataview;
-        private System.Windows.Forms.Label label13;
         private MaterialSkin.Controls.MaterialFlatButton faddbtn;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox fnametxt;
@@ -784,8 +744,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox fidtxt;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.CheckBox fno;
-        private System.Windows.Forms.CheckBox fyes;
         private System.Windows.Forms.Button faddpicbtn;
         private System.Windows.Forms.TextBox fpictxt;
         private System.Windows.Forms.PictureBox fpic;

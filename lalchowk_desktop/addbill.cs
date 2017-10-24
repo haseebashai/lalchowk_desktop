@@ -26,7 +26,7 @@ namespace Veiled_Kashmir_Admin_Panel
             InitializeComponent();
             otxt.Text = orderlbl;
             utxt.Text = email;
-            int total = int.Parse(amount) + int.Parse(shipping);
+            int total = int.Parse(amount);
             atxt.Text = total.ToString();
             proidtxt.Text = productid;
             pronametxt.Text = productname;
