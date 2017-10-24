@@ -168,7 +168,7 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Please Try again or refresh the page.","Error!");
             }
         }
         public inventory(Form hpcopy, Form dgcopy)
