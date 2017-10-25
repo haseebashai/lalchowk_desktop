@@ -41,14 +41,18 @@
             this.ppnl = new System.Windows.Forms.Panel();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
             this.addpics = new MaterialSkin.Controls.MaterialFlatButton();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.viewpbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.newbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.chkbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.formlbl = new System.Windows.Forms.Label();
             this.ftpbtn = new MaterialSkin.Controls.MaterialFlatButton();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.sqlbtn = new MaterialSkin.Controls.MaterialFlatButton();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.groclbl = new System.Windows.Forms.Label();
             this.ppnl.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -155,6 +159,7 @@
             // 
             // ppnl
             // 
+            this.ppnl.Controls.Add(this.groclbl);
             this.ppnl.Controls.Add(this.booklbl);
             this.ppnl.Controls.Add(this.tplbl);
             this.ppnl.Controls.Add(this.eleclbl);
@@ -166,7 +171,7 @@
             this.ppnl.Controls.Add(this.complbl);
             this.ppnl.Location = new System.Drawing.Point(12, 342);
             this.ppnl.Name = "ppnl";
-            this.ppnl.Size = new System.Drawing.Size(646, 192);
+            this.ppnl.Size = new System.Drawing.Size(646, 222);
             this.ppnl.TabIndex = 31;
             this.ppnl.Visible = false;
             // 
@@ -181,7 +186,7 @@
             this.addpics.AutoSize = true;
             this.addpics.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.addpics.Depth = 0;
-            this.addpics.Location = new System.Drawing.Point(517, 80);
+            this.addpics.Location = new System.Drawing.Point(519, 86);
             this.addpics.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.addpics.MouseState = MaterialSkin.MouseState.HOVER;
             this.addpics.Name = "addpics";
@@ -192,20 +197,12 @@
             this.addpics.UseVisualStyleBackColor = true;
             this.addpics.Click += new System.EventHandler(this.addpics_Click);
             // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.Silver;
-            this.panel2.Location = new System.Drawing.Point(457, 70);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1, 50);
-            this.panel2.TabIndex = 27;
-            // 
             // viewpbtn
             // 
             this.viewpbtn.AutoSize = true;
             this.viewpbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.viewpbtn.Depth = 0;
-            this.viewpbtn.Location = new System.Drawing.Point(277, 191);
+            this.viewpbtn.Location = new System.Drawing.Point(44, 168);
             this.viewpbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.viewpbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.viewpbtn.Name = "viewpbtn";
@@ -219,25 +216,17 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Silver;
-            this.panel1.Location = new System.Drawing.Point(219, 70);
+            this.panel1.Location = new System.Drawing.Point(219, 87);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1, 50);
+            this.panel1.Size = new System.Drawing.Size(1, 30);
             this.panel1.TabIndex = 16;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.Silver;
-            this.panel3.Location = new System.Drawing.Point(293, 158);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(85, 1);
-            this.panel3.TabIndex = 29;
             // 
             // newbtn
             // 
             this.newbtn.AutoSize = true;
             this.newbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.newbtn.Depth = 0;
-            this.newbtn.Location = new System.Drawing.Point(14, 80);
+            this.newbtn.Location = new System.Drawing.Point(16, 86);
             this.newbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.newbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.newbtn.Name = "newbtn";
@@ -253,7 +242,7 @@
             this.chkbtn.AutoSize = true;
             this.chkbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.chkbtn.Depth = 0;
-            this.chkbtn.Location = new System.Drawing.Point(277, 80);
+            this.chkbtn.Location = new System.Drawing.Point(279, 86);
             this.chkbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.chkbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.chkbtn.Name = "chkbtn";
@@ -281,7 +270,7 @@
             this.ftpbtn.AutoSize = true;
             this.ftpbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ftpbtn.Depth = 0;
-            this.ftpbtn.Location = new System.Drawing.Point(484, 191);
+            this.ftpbtn.Location = new System.Drawing.Point(519, 168);
             this.ftpbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.ftpbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.ftpbtn.Name = "ftpbtn";
@@ -292,12 +281,74 @@
             this.ftpbtn.UseVisualStyleBackColor = true;
             this.ftpbtn.Click += new System.EventHandler(this.ftpbtn_Click);
             // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.Silver;
+            this.panel3.Location = new System.Drawing.Point(16, 143);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(615, 1);
+            this.panel3.TabIndex = 29;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Silver;
+            this.panel2.Location = new System.Drawing.Point(463, 87);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1, 30);
+            this.panel2.TabIndex = 34;
+            // 
+            // sqlbtn
+            // 
+            this.sqlbtn.AutoSize = true;
+            this.sqlbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.sqlbtn.Depth = 0;
+            this.sqlbtn.Location = new System.Drawing.Point(289, 168);
+            this.sqlbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.sqlbtn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.sqlbtn.Name = "sqlbtn";
+            this.sqlbtn.Primary = false;
+            this.sqlbtn.Size = new System.Drawing.Size(99, 36);
+            this.sqlbtn.TabIndex = 35;
+            this.sqlbtn.Text = "Execute SQL";
+            this.sqlbtn.UseVisualStyleBackColor = true;
+            this.sqlbtn.Click += new System.EventHandler(this.sqlbtn_Click);
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.Silver;
+            this.panel4.Location = new System.Drawing.Point(219, 168);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1, 30);
+            this.panel4.TabIndex = 36;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.Silver;
+            this.panel5.Location = new System.Drawing.Point(463, 168);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(1, 30);
+            this.panel5.TabIndex = 37;
+            // 
+            // groclbl
+            // 
+            this.groclbl.AutoSize = true;
+            this.groclbl.ForeColor = System.Drawing.Color.Gray;
+            this.groclbl.Location = new System.Drawing.Point(17, 183);
+            this.groclbl.Name = "groclbl";
+            this.groclbl.Size = new System.Drawing.Size(51, 13);
+            this.groclbl.TabIndex = 31;
+            this.groclbl.Text = "total groc";
+            // 
             // products
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1162, 722);
+            this.Controls.Add(this.panel5);
+            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.sqlbtn);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.ftpbtn);
             this.Controls.Add(this.formlbl);
             this.Controls.Add(this.chkbtn);
@@ -308,7 +359,6 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.addpics);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "products";
             this.Text = "admin";
@@ -333,13 +383,17 @@
         private System.Windows.Forms.Panel ppnl;
         private System.ComponentModel.BackgroundWorker bgworker;
         private MaterialSkin.Controls.MaterialFlatButton addpics;
-        private System.Windows.Forms.Panel panel2;
         private MaterialSkin.Controls.MaterialFlatButton viewpbtn;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel3;
         private MaterialSkin.Controls.MaterialFlatButton newbtn;
         private MaterialSkin.Controls.MaterialFlatButton chkbtn;
         private System.Windows.Forms.Label formlbl;
         private MaterialSkin.Controls.MaterialFlatButton ftpbtn;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel2;
+        private MaterialSkin.Controls.MaterialFlatButton sqlbtn;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Label groclbl;
     }
 }

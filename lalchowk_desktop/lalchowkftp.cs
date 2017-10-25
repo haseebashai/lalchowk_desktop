@@ -26,66 +26,34 @@ namespace Veiled_Kashmir_Admin_Panel
             dg = dgcopy as dialogcontainer;
             InitializeComponent();
 
-            bgworker.RunWorkerAsync();
-        }
-
-        public void loadingnormal()
-        {
-            formlbl.Text = "Loading";
-
-            loading = new PictureBox()
-            {
-                Image = Properties.Resources.loading,
-                Size = new Size(40, 30),
-                SizeMode = PictureBoxSizeMode.StretchImage,
-                Location = new Point(72, 0),
-            };
-            this.Controls.Add(loading);
-        }
-        public void loadingdg()
-        {
-            formlbl.Visible = false;
-            dg.lbl.ForeColor = SystemColors.Highlight;
-            dg.lbl.Text = "Loading";
-            dg.loadingimage.SizeMode = PictureBoxSizeMode.StretchImage;
-            dg.loadingimage.Visible = true;
+          
         }
 
 
-        private void bgworker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            if (ActiveForm == dg)
-            {
-                dg.loadingimage.Visible = false;
-                dg.lbl.ForeColor = SystemColors.Highlight;
-                dg.lbl.Text = "Lalchowk FTP";
 
-            }
-            else
-            {
-                loading.Visible = false;
-                formlbl.Text = "Lalchowk FTP";
-                formlbl.BringToFront();
-            }
+        private void loadfiles()
+        {
+            Cursor = Cursors.WaitCursor;
             var ftp = new FtpUtility();
             ftp.UserName = "Lalchowk";
             ftp.Password = "Lalchowk@123";
             ftp.Path = ftppath;
-            this.ftpdataview.DataSource = ftp.ListFiles()
-                                                  .Select(x => new
-                                                  {
-                                                                         
-                                                       Path = ftp.Path + x,   //Path Column 
-                                                        Name = x             //Name Column
+            try
+            {
+                this.ftpdataview.DataSource = ftp.ListFiles()
+                                                      .Select(x => new
+                                                      {
+
+                                                          Path = ftp.Path + x,   //Path Column 
+                                                      Name = x             //Name Column
                                                   }).ToList();
-            
+            }catch(Exception e)
+            {
+
+            }
            
             fpnl.Visible = true;
-        }
-
-        private void bgworker_DoWork(object sender, DoWorkEventArgs e)
-        {
-           
+            Cursor = Cursors.Arrow;
         }
 
 
@@ -94,7 +62,7 @@ namespace Veiled_Kashmir_Admin_Panel
             
                 ftppath = "ftp://lalchowk.in/httpdocs/lalchowk/" + dirtxt.Text + "/";
             filetxt.Text = "";
-            bgworker.RunWorkerAsync();
+            loadfiles();
            
         }
 
@@ -129,16 +97,21 @@ namespace Veiled_Kashmir_Admin_Panel
         string pathurl;
         private void ftpdelbtn_Click(object sender, EventArgs e)
         {
-            string filename = pathurl.Split('/').Last();
-            DialogResult dgr = MessageBox.Show("Delete following file ?\n\n" + filename, "Confirm!", MessageBoxButtons.YesNo);
+            try
+            {
+                string filename = pathurl.Split('/').Last();
+                DialogResult dgr = MessageBox.Show("Delete following file ?\n\n" + filename, "Confirm!", MessageBoxButtons.YesNo);
                 if (dgr == DialogResult.Yes)
                 {
                     DeleteFileOnFtpServer(new Uri(pathurl), "Lalchowk", "Lalchowk@123");
 
-                    bgworker.RunWorkerAsync();
+                    loadfiles();
                 }
-            
 
+            }catch(Exception ex)
+            {
+                MessageBox.Show("Please select a file first.");
+            }
            
         }
 
@@ -300,7 +273,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     MessageBox.Show("Picture Uploaded.\n\n\n" + responsefromftp.ToString());
                     progressBar1.Value = 0;
                     progressBar1.Visible = false;
-                    bgworker.RunWorkerAsync();
+                    loadfiles();
 
 
                 }
@@ -310,7 +283,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     
                 }
                 Cursor = Cursors.Arrow;
-                uptxt.Text = "";
+                uptxt.Text = "Select File";
             }
         }
 
@@ -361,6 +334,12 @@ namespace Veiled_Kashmir_Admin_Panel
         }
 
         string fileaddress, filename, fullpath, directory,uploaddir;
+
+        private void lalchowkftp_Load(object sender, EventArgs e)
+        {
+            loadfiles();
+        }
+
         private void uptxt_Click(object sender, EventArgs e)
         {
             

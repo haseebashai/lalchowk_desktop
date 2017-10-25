@@ -54,10 +54,11 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void bgworker_DoWork(object sender, DoWorkEventArgs e)
         {
-            
+            Cursor = Cursors.WaitCursor;
             readfirst();
             readsuppliers();
             readsecond();
+           
         }
 
         private void bgworker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -69,7 +70,7 @@ namespace Veiled_Kashmir_Admin_Panel
             dg.loadingimage.Visible = false;
             dg.lbl.ForeColor = SystemColors.Highlight;
             dg.lbl.Text = "Add Products";
-
+            Cursor = Cursors.Arrow;
         }
 
        
@@ -84,7 +85,8 @@ namespace Veiled_Kashmir_Admin_Panel
 
 
         private void readfirst()
-        {try { 
+        {try {
+                
             dr = obj.Query("select * from firstcategory");            
             DataTable dt = new DataTable();          
             dt.Columns.Add("categoryname", typeof(String));            
@@ -92,6 +94,8 @@ namespace Veiled_Kashmir_Admin_Panel
             obj.closeConnection();
            
             firstcat.DataSource = dt;
+               
+               
             }
             catch (Exception)
             {
@@ -101,11 +105,13 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void supplierlist_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try { 
+            try {
+                
             dr = obj.Query("select supplierid from suppliers where name='" + supplierlist.Text + "'");
             dr.Read();    
             supidtxt.Text = dr[0].ToString();            
             obj.closeConnection();
+                
         }catch(Exception)
             {
                 obj.closeConnection();
@@ -116,16 +122,16 @@ namespace Veiled_Kashmir_Admin_Panel
         private void readsecond()
         {
             
-            try { 
-            
-            dr = obj.Query("select categoryname from secondcategory where firstcategoryid = '" + idlbl.Text +"'");
+            try {
+              
+                dr = obj.Query("select categoryname from secondcategory where firstcategoryid = '" + idlbl.Text +"'");
             DataTable dt = new DataTable();
             dt.Columns.Add("categoryname", typeof(String));
             dt.Load(dr);
             obj.closeConnection();
             seccat.DisplayMember = "categoryname";
             seccat.DataSource = dt;
-            
+             
             }
             catch (Exception)
             {
@@ -139,15 +145,17 @@ namespace Veiled_Kashmir_Admin_Panel
         private void readthird()
         {
             
-            try { 
-            dr = obj.Query("select categoryname from thirdcategory where secondcategoryid = '" + id2lbl.Text + "'");
+            try {
+              
+                dr = obj.Query("select categoryname from thirdcategory where secondcategoryid = '" + id2lbl.Text + "'");
             DataTable dt = new DataTable();
             dt.Columns.Add("categoryname", typeof(String));
             dt.Load(dr);
             obj.closeConnection();
             thirdcat.DisplayMember = "categoryname";
             thirdcat.DataSource = dt;
-        }
+               
+            }
             catch (Exception)
             {
                 MessageBox.Show("Something happened, please try again");
@@ -159,14 +167,16 @@ namespace Veiled_Kashmir_Admin_Panel
 
 
         private void readsuppliers()
-        {try { 
-            dr = obj.Query("select distinct name from suppliers");
+        {try {
+               
+                dr = obj.Query("select distinct name from suppliers");
             DataTable dt = new DataTable();
             dt.Columns.Add("name", typeof(String));
             dt.Load(dr);
             obj.closeConnection();
             supplierlist.DisplayMember = "name";
             supplierlist.DataSource = dt;
+               
             }
             catch (Exception)
             {
@@ -718,7 +728,7 @@ namespace Veiled_Kashmir_Admin_Panel
         private void desctxt_Leave(object sender, EventArgs e)
         {
             
-                if (!Regex.IsMatch(desctxt.Text, @"^([a-zA-Z0-9@#$%&*+\-_(),+':;?.,![\]\s\\/{}""|]+)$"))
+                if (!Regex.IsMatch(desctxt.Text, @"^([a-zA-Z0-9@#$%&*+\-_(),+':;?.,![\]\s\\/{}""|]+)$") )
                 {
 
                     MessageBox.Show("Abnormal Special Character found, Please remove it and proceed.");
@@ -846,8 +856,8 @@ namespace Veiled_Kashmir_Admin_Panel
                 s1.Replace(@"\", @"\\");
                 s1.Replace("'", "\\'");
                 StringBuilder s2 = new StringBuilder(desctxt.Text);
-                s1.Replace(@"\", @"\\");
-                s1.Replace("'", "\\'");
+                s2.Replace(@"\", @"\\");
+                s2.Replace("'", "\\'");
 
 
                 if (sizetxt.Text =="")

@@ -17,7 +17,7 @@ namespace Veiled_Kashmir_Admin_Panel
         MySqlDataReader dr,dr2;
         DBConnect obj = new DBConnect();
         bool fnameok, lnameok, usernameok, emailok, passwordok, confirmok, phoneok, dobok;
-        string tp, elec, cloth, foot, mobile, comp, cacc, cos, book;
+        string tp, elec, cloth, foot, mobile, comp, cacc, cos, book,groc;
         PictureBox loading = new PictureBox();
 
         private dialogcontainer dg = null;
@@ -66,6 +66,7 @@ namespace Veiled_Kashmir_Admin_Panel
             cacclbl.Text = "Total Computer Accessories currently added: " + cacc;
             coslbl.Text = "Total Cosmetics Items currently added: " + cos;
             booklbl.Text = "Total Books currently added: " + book;
+            groclbl.Text= "Total Grocery items currently added: " + groc;
             ppnl.Visible = true;
         }
 
@@ -113,7 +114,7 @@ namespace Veiled_Kashmir_Admin_Panel
             elec= dr[0].ToString();
             obj.closeConnection();
 
-            dr = obj.Query("Select count(productid) from products where supplierid ='4'");
+            dr = obj.Query("Select count(productid) from products where supplierid ='4' or supplierid='7' or supplierid='8' or supplierid='16'");
             dr.Read();
             cloth= dr[0].ToString();
             obj.closeConnection();
@@ -143,11 +144,17 @@ namespace Veiled_Kashmir_Admin_Panel
             cos= dr[0].ToString();
             obj.closeConnection();
 
-            dr = obj.Query("select count(productid) from products where supplierid='12' or supplierid='13'");
+            dr = obj.Query("select count(productid) from products where supplierid='12' or supplierid='13' or supplierid='14'");
             dr.Read();
             book= dr[0].ToString();
             obj.closeConnection();
-        }
+
+                dr = obj.Query("select count(productid) from products where supplierid='15'");
+                dr.Read();
+                groc = dr[0].ToString();
+                obj.closeConnection();
+
+            }
             catch (Exception)
             {
                 MessageBox.Show("Something happened, please try again");
@@ -216,17 +223,31 @@ namespace Veiled_Kashmir_Admin_Panel
         private void ftpbtn_Click(object sender, EventArgs e)
         {
             dialogcontainer dg = new dialogcontainer();
+            
             dg.Text = "Lalchowk FTP";
             dg.Size = new Size(1000, 715);
             lalchowkftp ftp  = new lalchowkftp(dg);
             ftp.TopLevel = false;
-            ftp.loadingdg();
             dg.dialogpnl.Controls.Add(ftp);
             dg.Show();
             ftp.Show();
+            dg.lbl.Text = "Lalchowk FTP";
         }
 
 
+        private void sqlbtn_Click(object sender, EventArgs e)
+        {
+            dialogcontainer dg = new dialogcontainer();
+
+            dg.Text = "SQL Executor";
+            dg.Size = new Size(1000, 715);
+            sql sql = new sql(dg);
+            sql.TopLevel = false;
+            dg.dialogpnl.Controls.Add(sql);
+            dg.Show();
+            sql.Show();
+            dg.lbl.Text = "SQL Executor";
+        }
 
 
 

@@ -30,7 +30,6 @@
         {
             this.ftpdataview = new System.Windows.Forms.DataGridView();
             this.ftpdelbtn = new System.Windows.Forms.Button();
-            this.formlbl = new System.Windows.Forms.Label();
             this.ftpdldbtn = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.dirtxt = new System.Windows.Forms.TextBox();
@@ -43,7 +42,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.filetxt = new System.Windows.Forms.TextBox();
             this.fpnl = new System.Windows.Forms.Panel();
-            this.bgworker = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.ftpdataview)).BeginInit();
             this.fpnl.SuspendLayout();
             this.SuspendLayout();
@@ -53,7 +51,7 @@
             this.ftpdataview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.ftpdataview.BackgroundColor = System.Drawing.Color.White;
             this.ftpdataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ftpdataview.Location = new System.Drawing.Point(3, 130);
+            this.ftpdataview.Location = new System.Drawing.Point(3, 114);
             this.ftpdataview.Name = "ftpdataview";
             this.ftpdataview.Size = new System.Drawing.Size(613, 501);
             this.ftpdataview.TabIndex = 0;
@@ -64,7 +62,7 @@
             this.ftpdelbtn.BackColor = System.Drawing.Color.Black;
             this.ftpdelbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ftpdelbtn.ForeColor = System.Drawing.Color.White;
-            this.ftpdelbtn.Location = new System.Drawing.Point(633, 376);
+            this.ftpdelbtn.Location = new System.Drawing.Point(633, 360);
             this.ftpdelbtn.Name = "ftpdelbtn";
             this.ftpdelbtn.Size = new System.Drawing.Size(51, 23);
             this.ftpdelbtn.TabIndex = 1;
@@ -72,20 +70,9 @@
             this.ftpdelbtn.UseVisualStyleBackColor = false;
             this.ftpdelbtn.Click += new System.EventHandler(this.ftpdelbtn_Click);
             // 
-            // formlbl
-            // 
-            this.formlbl.AutoSize = true;
-            this.formlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.formlbl.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.formlbl.Location = new System.Drawing.Point(-2, -1);
-            this.formlbl.Name = "formlbl";
-            this.formlbl.Size = new System.Drawing.Size(137, 25);
-            this.formlbl.TabIndex = 2;
-            this.formlbl.Text = "Lalchowk FTP";
-            // 
             // ftpdldbtn
             // 
-            this.ftpdldbtn.Location = new System.Drawing.Point(808, 355);
+            this.ftpdldbtn.Location = new System.Drawing.Point(808, 339);
             this.ftpdldbtn.Name = "ftpdldbtn";
             this.ftpdldbtn.Size = new System.Drawing.Size(80, 44);
             this.ftpdldbtn.TabIndex = 3;
@@ -95,7 +82,7 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(633, 439);
+            this.progressBar1.Location = new System.Drawing.Point(633, 423);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(255, 3);
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
@@ -104,7 +91,7 @@
             // 
             // dirtxt
             // 
-            this.dirtxt.Location = new System.Drawing.Point(6, 56);
+            this.dirtxt.Location = new System.Drawing.Point(6, 40);
             this.dirtxt.Name = "dirtxt";
             this.dirtxt.Size = new System.Drawing.Size(191, 20);
             this.dirtxt.TabIndex = 5;
@@ -114,7 +101,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label1.Location = new System.Drawing.Point(3, 40);
+            this.label1.Location = new System.Drawing.Point(3, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(194, 13);
             this.label1.TabIndex = 6;
@@ -125,7 +112,7 @@
             this.dirbtn.AutoSize = true;
             this.dirbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.dirbtn.Depth = 0;
-            this.dirbtn.Location = new System.Drawing.Point(216, 47);
+            this.dirbtn.Location = new System.Drawing.Point(216, 31);
             this.dirbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.dirbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.dirbtn.Name = "dirbtn";
@@ -142,7 +129,7 @@
             this.progresspc.BackColor = System.Drawing.Color.Transparent;
             this.progresspc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.progresspc.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.progresspc.Location = new System.Drawing.Point(630, 452);
+            this.progresspc.Location = new System.Drawing.Point(630, 436);
             this.progresspc.Name = "progresspc";
             this.progresspc.Size = new System.Drawing.Size(25, 13);
             this.progresspc.TabIndex = 30;
@@ -151,7 +138,7 @@
             // 
             // ftpupbtn
             // 
-            this.ftpupbtn.Location = new System.Drawing.Point(813, 128);
+            this.ftpupbtn.Location = new System.Drawing.Point(813, 112);
             this.ftpupbtn.Name = "ftpupbtn";
             this.ftpupbtn.Size = new System.Drawing.Size(75, 23);
             this.ftpupbtn.TabIndex = 31;
@@ -162,7 +149,7 @@
             // uptxt
             // 
             this.uptxt.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.uptxt.Location = new System.Drawing.Point(633, 130);
+            this.uptxt.Location = new System.Drawing.Point(633, 114);
             this.uptxt.Name = "uptxt";
             this.uptxt.ReadOnly = true;
             this.uptxt.Size = new System.Drawing.Size(174, 20);
@@ -176,7 +163,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Maroon;
-            this.label2.Location = new System.Drawing.Point(630, 154);
+            this.label2.Location = new System.Drawing.Point(630, 138);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(264, 13);
             this.label2.TabIndex = 85;
@@ -188,7 +175,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Maroon;
-            this.label3.Location = new System.Drawing.Point(3, 79);
+            this.label3.Location = new System.Drawing.Point(3, 63);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(142, 13);
             this.label3.TabIndex = 86;
@@ -198,7 +185,7 @@
             // 
             this.filetxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.filetxt.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.filetxt.Location = new System.Drawing.Point(633, 315);
+            this.filetxt.Location = new System.Drawing.Point(633, 299);
             this.filetxt.Multiline = true;
             this.filetxt.Name = "filetxt";
             this.filetxt.ReadOnly = true;
@@ -220,16 +207,11 @@
             this.fpnl.Controls.Add(this.dirtxt);
             this.fpnl.Controls.Add(this.progresspc);
             this.fpnl.Controls.Add(this.dirbtn);
-            this.fpnl.Location = new System.Drawing.Point(3, -1);
+            this.fpnl.Location = new System.Drawing.Point(1, 1);
             this.fpnl.Name = "fpnl";
-            this.fpnl.Size = new System.Drawing.Size(1151, 670);
+            this.fpnl.Size = new System.Drawing.Size(1191, 683);
             this.fpnl.TabIndex = 88;
             this.fpnl.Visible = false;
-            // 
-            // bgworker
-            // 
-            this.bgworker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker_DoWork);
-            this.bgworker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker_RunWorkerCompleted);
             // 
             // lalchowkftp
             // 
@@ -238,15 +220,14 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1166, 722);
             this.Controls.Add(this.fpnl);
-            this.Controls.Add(this.formlbl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "lalchowkftp";
             this.Text = "lalchowkftp";
+            this.Load += new System.EventHandler(this.lalchowkftp_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ftpdataview)).EndInit();
             this.fpnl.ResumeLayout(false);
             this.fpnl.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -254,7 +235,6 @@
 
         private System.Windows.Forms.DataGridView ftpdataview;
         private System.Windows.Forms.Button ftpdelbtn;
-        private System.Windows.Forms.Label formlbl;
         private System.Windows.Forms.Button ftpdldbtn;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.TextBox dirtxt;
@@ -267,6 +247,5 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox filetxt;
         private System.Windows.Forms.Panel fpnl;
-        private System.ComponentModel.BackgroundWorker bgworker;
     }
 }

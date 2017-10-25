@@ -157,7 +157,7 @@ namespace Veiled_Kashmir_Admin_Panel
             ppnl.Visible = false;
             settingsdataview.BringToFront();
             spnl.Visible = true;
-            panelshow();
+            panelshow(); loadingaccpic.Visible = false;
             epnl.Visible = false;
         }
 
@@ -187,6 +187,7 @@ namespace Veiled_Kashmir_Admin_Panel
             updbtn.Location = new Point(1018, 282);
             spnl.Visible = true;
             panelshow();
+            loadingaccpic.Visible = false;
         }
 
         private void otpbtn_Click(object sender, EventArgs e)
@@ -198,6 +199,8 @@ namespace Veiled_Kashmir_Admin_Panel
 
 
             ppnl.Visible = false;
+            loadingaccpic.SendToBack();
+            settingsdataview.BringToFront();
         }
 
         private void pinbtn_Click(object sender, EventArgs e)

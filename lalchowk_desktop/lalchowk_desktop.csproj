@@ -200,6 +200,12 @@
     <Compile Include="Settings.Designer.cs">
       <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
+    <Compile Include="sql.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="sql.Designer.cs">
+      <DependentUpon>sql.cs</DependentUpon>
+    </Compile>
     <Compile Include="suppliers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -336,6 +342,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="sql.resx">
+      <DependentUpon>sql.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="suppliers.resx">
       <DependentUpon>suppliers.cs</DependentUpon>
