@@ -73,19 +73,21 @@ namespace Veiled_Kashmir_Admin_Panel
 
 
         }
-
-
-
+        BackgroundWorker bw;
+        bool starterror=false;
+        PictureBox refresh;
+        Label refreshlbl;
         private void readorders()
         {
-            try { 
-            con.Open();
-            adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='placed';", con);
-            dt = new DataTable();
-            adap.Fill(dt);
-            con.Close();
-            bsource = new BindingSource();
-            bsource.DataSource = dt;
+            
+            try {
+                con.Open();
+                adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='placed';", con);
+                dt = new DataTable();
+                adap.Fill(dt);
+                con.Close();
+                bsource = new BindingSource();
+                bsource.DataSource = dt;
 
 
                 con.Open();
@@ -97,14 +99,14 @@ namespace Veiled_Kashmir_Admin_Panel
                 bsource2.DataSource = dt;
 
                 dr = obj.Query("Select count(status) from orders where status='placed'");
-            dr.Read();
+                dr.Read();
                 atten = dr[0].ToString();
-            obj.closeConnection();
+                obj.closeConnection();
 
-            dr = obj.Query("select sum(dealerprice*quantity) from orderdetails where orderid in(SELECT orderid FROM orders where status = 'placed');");
-            dr.Read();
+                dr = obj.Query("select sum(dealerprice*quantity) from orderdetails where orderid in(SELECT orderid FROM orders where status = 'placed');");
+                dr.Read();
                 cost = dr[0].ToString();
-            obj.closeConnection();
+                obj.closeConnection();
 
 
                 dr = obj.Query("SELECT count(status) FROM orders where status='delivered'");
@@ -112,19 +114,63 @@ namespace Veiled_Kashmir_Admin_Panel
                 order = dr[0].ToString();
                 obj.closeConnection();
 
-                
-                
+                starterror = false;
+
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                
+                MessageBox.Show("Something happened.\nPlease check your internet connection and click refresh.","Error!");
+                starterror = true;
+
+ 
             }
         }
-    
+        void bw_DoWork(object sender, DoWorkEventArgs e)
+        {
+            
+            
 
-       
-      
+
+            refresh = new PictureBox()
+            {
+                Image = Properties.Resources.refresh,
+                Size = new Size(80, 70),
+                SizeMode = PictureBoxSizeMode.StretchImage,
+                Location = new Point(437, 212),
+                Cursor = Cursors.Hand,
+            };
+
+            refresh.BringToFront();
+            refresh.Click += Refresh_Click;
+            refreshlbl = new Label()
+            {
+                ForeColor = SystemColors.Highlight,
+                Font = new Font("MS Sans Seriff", 14, FontStyle.Regular),
+                Text = "Refresh",
+                Location = new Point(442, 289),
+            };
+
+        }
+
+        void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+    {
+            cntpnl.Controls.Add(refresh);
+            cntpnl.Controls.Add(refreshlbl);
+        }
+
+    private void Refresh_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            mainform mf = new mainform(hp);
+            hp.mainpnl.Controls.Clear();
+            mf.TopLevel = false;
+            hp.mainpnl.Controls.Add(mf);
+            mf.Show();
+            Cursor = Cursors.Arrow;
+
+        }
 
         private void ordersbtn_Click(object sender, EventArgs e)
         {
@@ -668,20 +714,47 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void bgworker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            loadingpic.Visible = false;
-            loadinglbl.Visible = false;
-            placedh.Visible = true;
-            shippedh.Visible = true;
-            shippedlbl.Visible = true;
-            attention.Visible = true;placedlbl.Visible = true;deliveredh.Visible = true;orderslbl.Visible = true;
-           
-            placeddataview.DataSource = bsource;
-            shippeddataview.DataSource = bsource2;
-            placeddataview.Visible = true;
-            shippeddataview.Visible = true;
-            attentionlbl.Text = "> " + atten + " Order(s) need your Attention ASAP!";
-            costlbl.Text = "> Will cost Rs. " + cost + "/-";
-            ordersdlbl.Text = order;
+
+            if (starterror)
+            {
+               
+                
+                placedh.Visible = false;
+                placeddataview.Visible = false;
+                shippedh.Visible = false;
+                shippedlbl.Visible = false;
+                attention.Visible = false; placedlbl.Visible = false; deliveredh.Visible = false; orderslbl.Visible = false;
+                shippeddataview.Visible = false;
+                loadingpic.Visible = false;
+                loadinglbl.Visible = false;
+                
+                bw = new BackgroundWorker();
+                bw.DoWork += new DoWorkEventHandler(bw_DoWork);
+                bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_RunWorkerCompleted);
+                bw.RunWorkerAsync();
+            }
+
+
+            else
+            {
+               
+                
+                loadingpic.Visible = false;
+                loadinglbl.Visible = false;
+                placedh.Visible = true;
+                shippedh.Visible = true;
+                shippedlbl.Visible = true;
+                attention.Visible = true; placedlbl.Visible = true; deliveredh.Visible = true; orderslbl.Visible = true;
+
+                placeddataview.DataSource = bsource;
+                shippeddataview.DataSource = bsource2;
+                placeddataview.Visible = true;
+                shippeddataview.Visible = true;
+                attentionlbl.Text = "> " + atten + " Order(s) need your Attention ASAP!";
+                costlbl.Text = "> Will cost Rs. " + cost + "/-";
+                ordersdlbl.Text = order;
+            }
+            
         }
     }
 }

@@ -128,10 +128,10 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void bgworker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            
+            refresh.Enabled = true;
             picturesdataview.DataSource = bsource;
             ppnl.Visible = true;
-
+            Cursor = Cursors.Arrow;
             dg.loadingimage.Visible = false;
             dg.lbl.ForeColor = SystemColors.Highlight;
             dg.lbl.Text = "Add Pictures";
@@ -147,7 +147,13 @@ namespace Veiled_Kashmir_Admin_Panel
             uploadlbl.Text = "Uploading" + new string('.', numberOfPoints);
             numberOfPoints = (numberOfPoints + 1) % (maxPoints + 1);
         }
-    
+
+        private void refresh_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            refresh.Enabled = false;
+            bgworker.RunWorkerAsync();
+        }
 
         private void picturesdataview_CellClick(object sender, DataGridViewCellEventArgs e)
         {

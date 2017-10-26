@@ -365,23 +365,29 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void sendbtn_Click(object sender, EventArgs e)
         {
-            if (totxt.Text == "" || totxt.Text == "Enter single email here.")
+            if (subtxt.Text == "")
             {
-                DialogResult dgr = MessageBox.Show("Do you want to send emails now?", "Confirm", MessageBoxButtons.YesNo);
-                if (dgr == DialogResult.Yes)
-                {
-                    sendbtn.Enabled = false;
-                    timer.Start();
-                    bgworker.RunWorkerAsync();
-                }
+                MessageBox.Show("Please enter subject.");
             }
-            else
-            {
-                Cursor = Cursors.WaitCursor;
-                
+            else if (totxt.Text == "" || totxt.Text == "Enter single email here.")
+                {
+
+                    DialogResult dgr = MessageBox.Show("Do you want to send emails now?", "Confirm", MessageBoxButtons.YesNo);
+                    if (dgr == DialogResult.Yes)
+                    {
+                        sendbtn.Enabled = false;
+                        timer.Start();
+                        bgworker.RunWorkerAsync();
+                    }
+
+                }
+                else
+                {
+                    Cursor = Cursors.WaitCursor;
+
                     try
                     {
-                        StringBuilder s = new StringBuilder(bodytxt.Text);                  
+                        StringBuilder s = new StringBuilder(bodytxt.Text);
                         StringBuilder s1 = new StringBuilder(subtxt.Text);
                         s1.Replace(@"\", @"\\");
                         s1.Replace("'", "\\'");
@@ -396,42 +402,43 @@ namespace Veiled_Kashmir_Admin_Panel
                         Smtpobj.Credentials = new NetworkCredential(from, "Lalchowk@123");
                         Smtpobj.DeliveryMethod = SmtpDeliveryMethod.Network;
 
-                        
+
                         MailMessage mail = new MailMessage(from, totxt.Text);
                         mail.From = new MailAddress(from, sendername);
                         mail.Subject = s1.ToString();
                         mail.Body = s.ToString();
-                    if (checkhtml.Checked)
-                    {
-                        mail.IsBodyHtml = true;
-                       
-                    }
+                        if (checkhtml.Checked)
+                        {
+                            mail.IsBodyHtml = true;
 
-                    if (checkattach.Checked && attachment)
-                    {
-                        uploaddir = directory + attachtxt.Text;
-                        mail.Attachments.Add(new Attachment(uploaddir));
-                        Smtpobj.Send(mail);
-                    }
-                    else
-                    {
-                        Smtpobj.Send(mail);
-                       
-                    }
-                        
+                        }
 
-                    
-                    
-                    sendinglbl.Text = "";
-                    MessageBox.Show("Mail Sent.");
-                }
+                        if (checkattach.Checked && attachment)
+                        {
+                            uploaddir = directory + attachtxt.Text;
+                            mail.Attachments.Add(new Attachment(uploaddir));
+                            Smtpobj.Send(mail);
+                        }
+                        else
+                        {
+                            Smtpobj.Send(mail);
+
+                        }
+
+
+
+
+                        sendinglbl.Text = "";
+                        MessageBox.Show("Mail Sent.");
+                    }
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.ToString());
 
                     }
-                Cursor = Cursors.Arrow;
-            }
+                    Cursor = Cursors.Arrow;
+                }
+           
         }
 
         int numberOfPoints = 0;

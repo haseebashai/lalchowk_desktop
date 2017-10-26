@@ -55,10 +55,12 @@
             this.cobtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.ordersbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.navtitle = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.navtxt = new System.Windows.Forms.Label();
             this.cntpnl = new System.Windows.Forms.Panel();
             this.shippedlbl = new System.Windows.Forms.Label();
             this.placedlbl = new System.Windows.Forms.Label();
+            this.attention = new System.Windows.Forms.PictureBox();
             this.costlbl = new System.Windows.Forms.Label();
             this.attentionlbl = new System.Windows.Forms.Label();
             this.orderslbl = new System.Windows.Forms.Label();
@@ -68,18 +70,16 @@
             this.shippedh = new System.Windows.Forms.Label();
             this.placeddataview = new System.Windows.Forms.DataGridView();
             this.placedh = new System.Windows.Forms.Label();
+            this.loadingpic = new System.Windows.Forms.PictureBox();
             this.loadinglbl = new System.Windows.Forms.Label();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.attention = new System.Windows.Forms.PictureBox();
-            this.loadingpic = new System.Windows.Forms.PictureBox();
             this.navpnl.SuspendLayout();
             this.navtitle.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.cntpnl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.attention)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.shippeddataview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.placeddataview)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.attention)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.loadingpic)).BeginInit();
             this.SuspendLayout();
             // 
@@ -409,6 +409,17 @@
             this.navtitle.Size = new System.Drawing.Size(200, 27);
             this.navtitle.TabIndex = 11;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Black;
+            this.pictureBox1.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources._9895;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Location = new System.Drawing.Point(1, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(24, 20);
+            this.pictureBox1.TabIndex = 41;
+            this.pictureBox1.TabStop = false;
+            // 
             // navtxt
             // 
             this.navtxt.AutoSize = true;
@@ -473,6 +484,17 @@
             this.placedlbl.Text = "View Details";
             this.placedlbl.Visible = false;
             this.placedlbl.Click += new System.EventHandler(this.placedlbl_Click);
+            // 
+            // attention
+            // 
+            this.attention.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.industrial_safety_1492046_640;
+            this.attention.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.attention.Location = new System.Drawing.Point(19, 540);
+            this.attention.Name = "attention";
+            this.attention.Size = new System.Drawing.Size(73, 65);
+            this.attention.TabIndex = 39;
+            this.attention.TabStop = false;
+            this.attention.Visible = false;
             // 
             // costlbl
             // 
@@ -618,6 +640,17 @@
             this.placedh.Text = "Orders currently PLACED:";
             this.placedh.Visible = false;
             // 
+            // loadingpic
+            // 
+            this.loadingpic.Image = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.loader;
+            this.loadingpic.Location = new System.Drawing.Point(437, 212);
+            this.loadingpic.Name = "loadingpic";
+            this.loadingpic.Size = new System.Drawing.Size(87, 88);
+            this.loadingpic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.loadingpic.TabIndex = 43;
+            this.loadingpic.TabStop = false;
+            this.loadingpic.Visible = false;
+            // 
             // loadinglbl
             // 
             this.loadinglbl.AutoSize = true;
@@ -632,41 +665,10 @@
             // 
             // bgworker
             // 
+            this.bgworker.WorkerReportsProgress = true;
+            this.bgworker.WorkerSupportsCancellation = true;
             this.bgworker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker_DoWork);
             this.bgworker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker_RunWorkerCompleted);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Black;
-            this.pictureBox1.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources._9895;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(1, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(24, 20);
-            this.pictureBox1.TabIndex = 41;
-            this.pictureBox1.TabStop = false;
-            // 
-            // attention
-            // 
-            this.attention.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.industrial_safety_1492046_640;
-            this.attention.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.attention.Location = new System.Drawing.Point(19, 540);
-            this.attention.Name = "attention";
-            this.attention.Size = new System.Drawing.Size(73, 65);
-            this.attention.TabIndex = 39;
-            this.attention.TabStop = false;
-            this.attention.Visible = false;
-            // 
-            // loadingpic
-            // 
-            this.loadingpic.Image = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.loader;
-            this.loadingpic.Location = new System.Drawing.Point(437, 212);
-            this.loadingpic.Name = "loadingpic";
-            this.loadingpic.Size = new System.Drawing.Size(87, 88);
-            this.loadingpic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.loadingpic.TabIndex = 43;
-            this.loadingpic.TabStop = false;
-            this.loadingpic.Visible = false;
             // 
             // mainform
             // 
@@ -685,12 +687,12 @@
             this.navpnl.PerformLayout();
             this.navtitle.ResumeLayout(false);
             this.navtitle.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.cntpnl.ResumeLayout(false);
             this.cntpnl.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.attention)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.shippeddataview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.placeddataview)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.attention)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.loadingpic)).EndInit();
             this.ResumeLayout(false);
 

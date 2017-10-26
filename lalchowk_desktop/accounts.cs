@@ -59,6 +59,8 @@ namespace Veiled_Kashmir_Admin_Panel
                 formlbl.Visible = false;
                 
             }
+            Cursor = Cursors.Arrow;
+            refresh.Enabled = true;
             accountdataview.DataSource = bsource;
             baltxt.Text = bal;
             btnenable();
@@ -809,6 +811,13 @@ namespace Veiled_Kashmir_Admin_Panel
             purchasebox.Text = purchase;
             investbox.Text = invest;
             profitbox.Text = (int.Parse(salebox.Text) - int.Parse(purchasebox.Text)).ToString();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            refresh.Enabled = false;
+            bgworker.RunWorkerAsync();
         }
 
         string sale, purchase, invest;

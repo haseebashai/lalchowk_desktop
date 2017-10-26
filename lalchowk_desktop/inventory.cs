@@ -27,6 +27,18 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private dialogcontainer dg = null;
         private container hp = null;
+        public inventory(Form hpcopy, Form dgcopy)
+        {
+            hp = hpcopy as container;
+            dg = dgcopy as dialogcontainer;
+            InitializeComponent();
+            upbtn.Visible = false;
+            loadingdg();
+            bgworker.RunWorkerAsync();
+        }
+
+
+
         private void supidtxt_TextChanged(object sender, EventArgs e)
         {
             try {
@@ -154,16 +166,47 @@ namespace Veiled_Kashmir_Admin_Panel
                 MessageBox.Show(ex.ToString());
             }
         }
-
-       
+        BackgroundWorker bw ;
+        private void dtrefresh()
+        {
+            inventorydatagridview.DataSource = null;
+            fetchlbl.Text = "Fetching Rows";
+            bw = new BackgroundWorker();
+            bw.DoWork += new DoWorkEventHandler(bw_DoWork);
+            bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_RunWorkerCompleted);
+            bw.RunWorkerAsync();
+        }
+        void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            ipnl.Enabled = true;
+            upbtn.Enabled = true;
+            updlbl.Visible = false;
+            fetchlbl.Visible = false;
+            pbar.Visible = false;
+            inventorydatagridview.DataSource = bsource;
+        }
+        void bw_DoWork(object sender, DoWorkEventArgs e)
+        {
+            readinventory();
+            
+        }
 
         private void upbtn_Click(object sender, EventArgs e)
         {
             try
             {
+                fetchlbl.Text = "Updating rows";
+                fetchlbl.Visible = true;
+                pbar.Visible = true;
+                descpnl.Visible = false;
+                upbtn.Enabled = false;
+                ipnl.Enabled = false;
                 cmdbl = new MySqlCommandBuilder(adap);
                 adap.Update(dt);
-                MessageBox.Show("Updated.");
+                updlbl.Visible = true;
+                
+                dtrefresh();
+                
 
             }
             catch (Exception ex)
@@ -171,21 +214,20 @@ namespace Veiled_Kashmir_Admin_Panel
                 MessageBox.Show("Please Try again or refresh the page.","Error!");
             }
         }
-        public inventory(Form hpcopy, Form dgcopy)
-        {
-            hp = hpcopy as container;
-            dg = dgcopy as dialogcontainer;
-            InitializeComponent();
-            upbtn.Visible = false;
-            loadingdg();
-            bgworker.RunWorkerAsync();
-        }
+      
 
         private void cattxt_TextChanged(object sender, EventArgs e)
         {
             DataView dv = new DataView(dt);
             dv.RowFilter = string.Format("categoryid LIKE '%{0}%'", cattxt.Text);
             inventorydatagridview.DataSource = dv;
+        }
+
+        private void refresh_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            refresh.Enabled = false;
+            bgworker.RunWorkerAsync();
         }
 
         public void loadingdg()
@@ -206,7 +248,8 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void bgworker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            
+            Cursor = Cursors.Arrow;
+            refresh.Enabled = true;
             inventorydatagridview.DataSource = bsource;
             ipnl.Visible = true;
             upbtn.Visible = true;

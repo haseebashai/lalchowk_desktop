@@ -90,6 +90,8 @@ namespace Veiled_Kashmir_Admin_Panel
             
             cpnl.Visible = true;
             panelshow();
+            Cursor = Cursors.Arrow;
+            refresh.Enabled = true;
         }
 
         public void readfirstcat()
@@ -337,6 +339,13 @@ namespace Veiled_Kashmir_Admin_Panel
             {
                 MessageBox.Show("Something happened, please try again.");
             }
+        }
+
+        private void refresh_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            refresh.Enabled = false;
+            bgworker.RunWorkerAsync();
         }
 
         private void tcaddbtn_Click(object sender, EventArgs e)

@@ -33,20 +33,6 @@
             this.cpnl = new System.Windows.Forms.Panel();
             this.updbtn = new System.Windows.Forms.Button();
             this.epnl = new System.Windows.Forms.Panel();
-            this.tcpnl = new System.Windows.Forms.Panel();
-            this.stcidtxt = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.tyes = new System.Windows.Forms.CheckBox();
-            this.tpicaddbtn = new System.Windows.Forms.Button();
-            this.tpictxt = new System.Windows.Forms.TextBox();
-            this.tpic = new System.Windows.Forms.PictureBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.tcaddbtn = new MaterialSkin.Controls.MaterialFlatButton();
-            this.label15 = new System.Windows.Forms.Label();
-            this.tcnametxt = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.tidtxt = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
             this.fcpnl = new System.Windows.Forms.Panel();
             this.fidtxt = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -76,6 +62,20 @@
             this.label6 = new System.Windows.Forms.Label();
             this.scidtxt = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.tcpnl = new System.Windows.Forms.Panel();
+            this.stcidtxt = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.tyes = new System.Windows.Forms.CheckBox();
+            this.tpicaddbtn = new System.Windows.Forms.Button();
+            this.tpictxt = new System.Windows.Forms.TextBox();
+            this.tpic = new System.Windows.Forms.PictureBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.tcaddbtn = new MaterialSkin.Controls.MaterialFlatButton();
+            this.label15 = new System.Windows.Forms.Label();
+            this.tcnametxt = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.tidtxt = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.loadingaccpic = new System.Windows.Forms.PictureBox();
             this.loadinglbl = new System.Windows.Forms.Label();
             this.catdataview = new System.Windows.Forms.DataGridView();
@@ -86,17 +86,19 @@
             this.bgworker2 = new System.ComponentModel.BackgroundWorker();
             this.bgworker3 = new System.ComponentModel.BackgroundWorker();
             this.picdialog = new System.Windows.Forms.OpenFileDialog();
+            this.refresh = new System.Windows.Forms.PictureBox();
             this.cpnl.SuspendLayout();
             this.epnl.SuspendLayout();
-            this.tcpnl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tpic)).BeginInit();
             this.fcpnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fpic)).BeginInit();
             this.scpnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spic)).BeginInit();
+            this.tcpnl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tpic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.loadingaccpic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.catdataview)).BeginInit();
             this.bpnl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.refresh)).BeginInit();
             this.SuspendLayout();
             // 
             // bgworker
@@ -149,148 +151,6 @@
             this.epnl.Size = new System.Drawing.Size(1159, 177);
             this.epnl.TabIndex = 51;
             this.epnl.Visible = false;
-            // 
-            // tcpnl
-            // 
-            this.tcpnl.Controls.Add(this.stcidtxt);
-            this.tcpnl.Controls.Add(this.label11);
-            this.tcpnl.Controls.Add(this.tyes);
-            this.tcpnl.Controls.Add(this.tpicaddbtn);
-            this.tcpnl.Controls.Add(this.tpictxt);
-            this.tcpnl.Controls.Add(this.tpic);
-            this.tcpnl.Controls.Add(this.label14);
-            this.tcpnl.Controls.Add(this.tcaddbtn);
-            this.tcpnl.Controls.Add(this.label15);
-            this.tcpnl.Controls.Add(this.tcnametxt);
-            this.tcpnl.Controls.Add(this.label16);
-            this.tcpnl.Controls.Add(this.tidtxt);
-            this.tcpnl.Controls.Add(this.label17);
-            this.tcpnl.Location = new System.Drawing.Point(3, 3);
-            this.tcpnl.Name = "tcpnl";
-            this.tcpnl.Size = new System.Drawing.Size(1153, 170);
-            this.tcpnl.TabIndex = 23;
-            // 
-            // stcidtxt
-            // 
-            this.stcidtxt.Location = new System.Drawing.Point(112, 30);
-            this.stcidtxt.Name = "stcidtxt";
-            this.stcidtxt.Size = new System.Drawing.Size(100, 20);
-            this.stcidtxt.TabIndex = 104;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(109, 13);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(103, 13);
-            this.label11.TabIndex = 103;
-            this.label11.Text = "Second Category ID";
-            // 
-            // tyes
-            // 
-            this.tyes.AutoSize = true;
-            this.tyes.Location = new System.Drawing.Point(16, 130);
-            this.tyes.Name = "tyes";
-            this.tyes.Size = new System.Drawing.Size(44, 17);
-            this.tyes.TabIndex = 99;
-            this.tyes.Text = "Yes";
-            this.tyes.UseVisualStyleBackColor = true;
-            // 
-            // tpicaddbtn
-            // 
-            this.tpicaddbtn.Location = new System.Drawing.Point(465, 99);
-            this.tpicaddbtn.Name = "tpicaddbtn";
-            this.tpicaddbtn.Size = new System.Drawing.Size(58, 34);
-            this.tpicaddbtn.TabIndex = 96;
-            this.tpicaddbtn.Text = "Upload";
-            this.tpicaddbtn.UseVisualStyleBackColor = true;
-            this.tpicaddbtn.Click += new System.EventHandler(this.tpicaddbtn_Click);
-            // 
-            // tpictxt
-            // 
-            this.tpictxt.Location = new System.Drawing.Point(373, 113);
-            this.tpictxt.Name = "tpictxt";
-            this.tpictxt.Size = new System.Drawing.Size(86, 20);
-            this.tpictxt.TabIndex = 97;
-            // 
-            // tpic
-            // 
-            this.tpic.BackColor = System.Drawing.Color.Transparent;
-            this.tpic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.tpic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tpic.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.tpic.Location = new System.Drawing.Point(373, 33);
-            this.tpic.Name = "tpic";
-            this.tpic.Size = new System.Drawing.Size(86, 74);
-            this.tpic.TabIndex = 98;
-            this.tpic.TabStop = false;
-            this.tpic.Click += new System.EventHandler(this.tpic_Click);
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(13, 113);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(29, 13);
-            this.label14.TabIndex = 29;
-            this.label14.Text = "Final";
-            // 
-            // tcaddbtn
-            // 
-            this.tcaddbtn.AutoSize = true;
-            this.tcaddbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tcaddbtn.Depth = 0;
-            this.tcaddbtn.Location = new System.Drawing.Point(595, 97);
-            this.tcaddbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.tcaddbtn.MouseState = MaterialSkin.MouseState.HOVER;
-            this.tcaddbtn.Name = "tcaddbtn";
-            this.tcaddbtn.Primary = false;
-            this.tcaddbtn.Size = new System.Drawing.Size(112, 36);
-            this.tcaddbtn.TabIndex = 28;
-            this.tcaddbtn.Text = "add category";
-            this.tcaddbtn.UseVisualStyleBackColor = true;
-            this.tcaddbtn.Click += new System.EventHandler(this.tcaddbtn_Click);
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(370, 14);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(88, 13);
-            this.label15.TabIndex = 26;
-            this.label15.Text = "Picture (Optional)";
-            // 
-            // tcnametxt
-            // 
-            this.tcnametxt.Location = new System.Drawing.Point(16, 80);
-            this.tcnametxt.Name = "tcnametxt";
-            this.tcnametxt.Size = new System.Drawing.Size(270, 20);
-            this.tcnametxt.TabIndex = 25;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(13, 63);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(80, 13);
-            this.label16.TabIndex = 24;
-            this.label16.Text = "Category Name";
-            // 
-            // tidtxt
-            // 
-            this.tidtxt.Location = new System.Drawing.Point(19, 30);
-            this.tidtxt.Name = "tidtxt";
-            this.tidtxt.Size = new System.Drawing.Size(60, 20);
-            this.tidtxt.TabIndex = 23;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(16, 13);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(63, 13);
-            this.label17.TabIndex = 22;
-            this.label17.Text = "Category ID";
             // 
             // fcpnl
             // 
@@ -587,6 +447,148 @@
             this.label7.TabIndex = 22;
             this.label7.Text = "Category ID";
             // 
+            // tcpnl
+            // 
+            this.tcpnl.Controls.Add(this.stcidtxt);
+            this.tcpnl.Controls.Add(this.label11);
+            this.tcpnl.Controls.Add(this.tyes);
+            this.tcpnl.Controls.Add(this.tpicaddbtn);
+            this.tcpnl.Controls.Add(this.tpictxt);
+            this.tcpnl.Controls.Add(this.tpic);
+            this.tcpnl.Controls.Add(this.label14);
+            this.tcpnl.Controls.Add(this.tcaddbtn);
+            this.tcpnl.Controls.Add(this.label15);
+            this.tcpnl.Controls.Add(this.tcnametxt);
+            this.tcpnl.Controls.Add(this.label16);
+            this.tcpnl.Controls.Add(this.tidtxt);
+            this.tcpnl.Controls.Add(this.label17);
+            this.tcpnl.Location = new System.Drawing.Point(3, 3);
+            this.tcpnl.Name = "tcpnl";
+            this.tcpnl.Size = new System.Drawing.Size(1153, 170);
+            this.tcpnl.TabIndex = 23;
+            // 
+            // stcidtxt
+            // 
+            this.stcidtxt.Location = new System.Drawing.Point(112, 30);
+            this.stcidtxt.Name = "stcidtxt";
+            this.stcidtxt.Size = new System.Drawing.Size(100, 20);
+            this.stcidtxt.TabIndex = 104;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(109, 13);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(103, 13);
+            this.label11.TabIndex = 103;
+            this.label11.Text = "Second Category ID";
+            // 
+            // tyes
+            // 
+            this.tyes.AutoSize = true;
+            this.tyes.Location = new System.Drawing.Point(16, 130);
+            this.tyes.Name = "tyes";
+            this.tyes.Size = new System.Drawing.Size(44, 17);
+            this.tyes.TabIndex = 99;
+            this.tyes.Text = "Yes";
+            this.tyes.UseVisualStyleBackColor = true;
+            // 
+            // tpicaddbtn
+            // 
+            this.tpicaddbtn.Location = new System.Drawing.Point(465, 99);
+            this.tpicaddbtn.Name = "tpicaddbtn";
+            this.tpicaddbtn.Size = new System.Drawing.Size(58, 34);
+            this.tpicaddbtn.TabIndex = 96;
+            this.tpicaddbtn.Text = "Upload";
+            this.tpicaddbtn.UseVisualStyleBackColor = true;
+            this.tpicaddbtn.Click += new System.EventHandler(this.tpicaddbtn_Click);
+            // 
+            // tpictxt
+            // 
+            this.tpictxt.Location = new System.Drawing.Point(373, 113);
+            this.tpictxt.Name = "tpictxt";
+            this.tpictxt.Size = new System.Drawing.Size(86, 20);
+            this.tpictxt.TabIndex = 97;
+            // 
+            // tpic
+            // 
+            this.tpic.BackColor = System.Drawing.Color.Transparent;
+            this.tpic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tpic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tpic.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.tpic.Location = new System.Drawing.Point(373, 33);
+            this.tpic.Name = "tpic";
+            this.tpic.Size = new System.Drawing.Size(86, 74);
+            this.tpic.TabIndex = 98;
+            this.tpic.TabStop = false;
+            this.tpic.Click += new System.EventHandler(this.tpic_Click);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(13, 113);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(29, 13);
+            this.label14.TabIndex = 29;
+            this.label14.Text = "Final";
+            // 
+            // tcaddbtn
+            // 
+            this.tcaddbtn.AutoSize = true;
+            this.tcaddbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tcaddbtn.Depth = 0;
+            this.tcaddbtn.Location = new System.Drawing.Point(595, 97);
+            this.tcaddbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.tcaddbtn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.tcaddbtn.Name = "tcaddbtn";
+            this.tcaddbtn.Primary = false;
+            this.tcaddbtn.Size = new System.Drawing.Size(112, 36);
+            this.tcaddbtn.TabIndex = 28;
+            this.tcaddbtn.Text = "add category";
+            this.tcaddbtn.UseVisualStyleBackColor = true;
+            this.tcaddbtn.Click += new System.EventHandler(this.tcaddbtn_Click);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(370, 14);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(88, 13);
+            this.label15.TabIndex = 26;
+            this.label15.Text = "Picture (Optional)";
+            // 
+            // tcnametxt
+            // 
+            this.tcnametxt.Location = new System.Drawing.Point(16, 80);
+            this.tcnametxt.Name = "tcnametxt";
+            this.tcnametxt.Size = new System.Drawing.Size(270, 20);
+            this.tcnametxt.TabIndex = 25;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(13, 63);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(80, 13);
+            this.label16.TabIndex = 24;
+            this.label16.Text = "Category Name";
+            // 
+            // tidtxt
+            // 
+            this.tidtxt.Location = new System.Drawing.Point(19, 30);
+            this.tidtxt.Name = "tidtxt";
+            this.tidtxt.Size = new System.Drawing.Size(60, 20);
+            this.tidtxt.TabIndex = 23;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(16, 13);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(63, 13);
+            this.label17.TabIndex = 22;
+            this.label17.Text = "Category ID";
+            // 
             // loadingaccpic
             // 
             this.loadingaccpic.Image = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.loading;
@@ -622,6 +624,7 @@
             // 
             // bpnl
             // 
+            this.bpnl.Controls.Add(this.refresh);
             this.bpnl.Controls.Add(this.tcbtn);
             this.bpnl.Controls.Add(this.scbtn);
             this.bpnl.Controls.Add(this.fcbtn);
@@ -693,6 +696,18 @@
             // 
             this.picdialog.Filter = "All Files|*.*|JPG|*.jpg|PNG|*.png";
             // 
+            // refresh
+            // 
+            this.refresh.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.refresh;
+            this.refresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.refresh.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.refresh.Location = new System.Drawing.Point(1132, 0);
+            this.refresh.Name = "refresh";
+            this.refresh.Size = new System.Drawing.Size(21, 21);
+            this.refresh.TabIndex = 32;
+            this.refresh.TabStop = false;
+            this.refresh.Click += new System.EventHandler(this.refresh_Click);
+            // 
             // addcategories
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -707,19 +722,20 @@
             this.cpnl.ResumeLayout(false);
             this.cpnl.PerformLayout();
             this.epnl.ResumeLayout(false);
-            this.tcpnl.ResumeLayout(false);
-            this.tcpnl.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tpic)).EndInit();
             this.fcpnl.ResumeLayout(false);
             this.fcpnl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fpic)).EndInit();
             this.scpnl.ResumeLayout(false);
             this.scpnl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spic)).EndInit();
+            this.tcpnl.ResumeLayout(false);
+            this.tcpnl.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tpic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.loadingaccpic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.catdataview)).EndInit();
             this.bpnl.ResumeLayout(false);
             this.bpnl.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.refresh)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -785,5 +801,6 @@
         private System.Windows.Forms.Label loadinglbl;
         private System.Windows.Forms.OpenFileDialog picdialog;
         private System.Windows.Forms.Button updbtn;
+        private System.Windows.Forms.PictureBox refresh;
     }
 }

@@ -101,11 +101,19 @@ namespace Veiled_Kashmir_Admin_Panel
             readproducts();
         }
 
+        private void refresh_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            refresh.Enabled = false;
+            bgworker.RunWorkerAsync();
+        }
+
         private void bgworker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            refresh.Enabled = true;
             productsdataview.DataSource = bsource;
             ppnl.Visible = true;
-
+            Cursor = Cursors.Arrow;
             dg.loadingimage.Visible = false;
             dg.lbl.ForeColor = SystemColors.Highlight;
             dg.lbl.Text = "View Products";

@@ -39,9 +39,11 @@
             this.delbtn = new System.Windows.Forms.Button();
             this.ppnl = new System.Windows.Forms.Panel();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
+            this.refresh = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.productsdataview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic)).BeginInit();
             this.ppnl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.refresh)).BeginInit();
             this.SuspendLayout();
             // 
             // productsdataview
@@ -130,6 +132,7 @@
             // 
             // ppnl
             // 
+            this.ppnl.Controls.Add(this.refresh);
             this.ppnl.Controls.Add(this.label2);
             this.ppnl.Controls.Add(this.delbtn);
             this.ppnl.Controls.Add(this.productsdataview);
@@ -149,6 +152,18 @@
             this.bgworker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker_DoWork);
             this.bgworker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker_RunWorkerCompleted);
             // 
+            // refresh
+            // 
+            this.refresh.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.refresh;
+            this.refresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.refresh.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.refresh.Location = new System.Drawing.Point(735, 8);
+            this.refresh.Name = "refresh";
+            this.refresh.Size = new System.Drawing.Size(21, 21);
+            this.refresh.TabIndex = 93;
+            this.refresh.TabStop = false;
+            this.refresh.Click += new System.EventHandler(this.refresh_Click);
+            // 
             // viewproducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -164,6 +179,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pic)).EndInit();
             this.ppnl.ResumeLayout(false);
             this.ppnl.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.refresh)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -180,5 +196,6 @@
         private System.Windows.Forms.Button delbtn;
         private System.Windows.Forms.Panel ppnl;
         private System.ComponentModel.BackgroundWorker bgworker;
+        private System.Windows.Forms.PictureBox refresh;
     }
 }

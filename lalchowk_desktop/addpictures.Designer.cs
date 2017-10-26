@@ -47,10 +47,12 @@
             this.bgworker = new System.ComponentModel.BackgroundWorker();
             this.picworker = new System.ComponentModel.BackgroundWorker();
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.refresh = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.picturesdataview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic)).BeginInit();
             this.ppnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.refresh)).BeginInit();
             this.SuspendLayout();
             // 
             // picdialog
@@ -171,6 +173,7 @@
             // 
             // ppnl
             // 
+            this.ppnl.Controls.Add(this.refresh);
             this.ppnl.Controls.Add(this.uploadlbl);
             this.ppnl.Controls.Add(this.dp);
             this.ppnl.Controls.Add(this.label4);
@@ -224,6 +227,18 @@
             this.timer.Interval = 500;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
+            // refresh
+            // 
+            this.refresh.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.refresh;
+            this.refresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.refresh.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.refresh.Location = new System.Drawing.Point(555, 3);
+            this.refresh.Name = "refresh";
+            this.refresh.Size = new System.Drawing.Size(21, 21);
+            this.refresh.TabIndex = 96;
+            this.refresh.TabStop = false;
+            this.refresh.Click += new System.EventHandler(this.refresh_Click);
+            // 
             // addpictures
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -240,6 +255,7 @@
             this.ppnl.ResumeLayout(false);
             this.ppnl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.refresh)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -262,5 +278,6 @@
         private System.ComponentModel.BackgroundWorker picworker;
         private System.Windows.Forms.Label uploadlbl;
         private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.PictureBox refresh;
     }
 }
