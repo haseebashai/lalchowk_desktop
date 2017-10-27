@@ -176,7 +176,6 @@
             this.bgworker6 = new System.ComponentModel.BackgroundWorker();
             this.bgworker7 = new System.ComponentModel.BackgroundWorker();
             this.bgworker8 = new System.ComponentModel.BackgroundWorker();
-            this.refreshpic = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.accountdataview)).BeginInit();
             this.exppnl.SuspendLayout();
             this.moneypnl.SuspendLayout();
@@ -191,7 +190,6 @@
             this.epnl.SuspendLayout();
             this.bpnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.loadingaccpic)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.refreshpic)).BeginInit();
             this.SuspendLayout();
             // 
             // expbtn
@@ -1598,7 +1596,6 @@
             // 
             // epnl
             // 
-            this.epnl.Controls.Add(this.exppnl);
             this.epnl.Controls.Add(this.rpnl);
             this.epnl.Controls.Add(this.moneypnl);
             this.epnl.Controls.Add(this.billpnl);
@@ -1606,6 +1603,7 @@
             this.epnl.Controls.Add(this.dealpnl);
             this.epnl.Controls.Add(this.bankpnl);
             this.epnl.Controls.Add(this.miscpnl);
+            this.epnl.Controls.Add(this.exppnl);
             this.epnl.Location = new System.Drawing.Point(7, 41);
             this.epnl.Name = "epnl";
             this.epnl.Size = new System.Drawing.Size(1139, 179);
@@ -1702,25 +1700,12 @@
             this.bgworker8.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker8_DoWork);
             this.bgworker8.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker8_RunWorkerCompleted);
             // 
-            // refreshpic
-            // 
-            this.refreshpic.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.refresh;
-            this.refreshpic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.refreshpic.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.refreshpic.Location = new System.Drawing.Point(1137, 3);
-            this.refreshpic.Name = "refreshpic";
-            this.refreshpic.Size = new System.Drawing.Size(21, 21);
-            this.refreshpic.TabIndex = 49;
-            this.refreshpic.TabStop = false;
-            this.refreshpic.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
             // accounts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1162, 722);
-            this.Controls.Add(this.refreshpic);
             this.Controls.Add(this.bpnl);
             this.Controls.Add(this.epnl);
             this.Controls.Add(this.uppnl);
@@ -1757,7 +1742,6 @@
             this.bpnl.ResumeLayout(false);
             this.bpnl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.loadingaccpic)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.refreshpic)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1913,6 +1897,5 @@
         private System.ComponentModel.BackgroundWorker bgworker6;
         private System.ComponentModel.BackgroundWorker bgworker7;
         private System.ComponentModel.BackgroundWorker bgworker8;
-        private System.Windows.Forms.PictureBox refreshpic;
     }
 }

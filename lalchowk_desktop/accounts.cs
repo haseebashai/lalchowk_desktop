@@ -811,37 +811,7 @@ namespace Veiled_Kashmir_Admin_Panel
             purchasebox.Text = purchase;
             investbox.Text = invest;
             profitbox.Text = (int.Parse(salebox.Text) - int.Parse(purchasebox.Text)).ToString();
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            Cursor = Cursors.WaitCursor;
-            refresh.Enabled = false;
-            bgworker.RunWorkerAsync();
-        }
-
-        string sale, purchase, invest;
-        private void revbtn_Click(object sender, EventArgs e)
-        {
-
-            panelhide();
-            loadingshow();
-            btndisable();
-            bgworker8.RunWorkerAsync();
-
-            fsuptxt.Visible = false;
-            fsuplbl.Visible = false;
-            rpnl.Visible = true;
-            delpnl.Visible = false;
-            dealpnl.Visible = false;
-            exppnl.Visible = false;
-            moneypnl.Visible = false;
-            bankpnl.Visible = false;
-            miscpnl.Visible = false;
-            billpnl.Visible = false;
-            totallbl.Visible = false;
-
-            switch(month)
+            switch (month)
             {
                 case "01":
                     monlbl.Text = "January";
@@ -883,6 +853,32 @@ namespace Veiled_Kashmir_Admin_Panel
                     monlbl.Visible = false;
                     break;
             }
+                   
+        }
+
+      
+
+        string sale, purchase, invest;
+        private void revbtn_Click(object sender, EventArgs e)
+        {
+
+            panelhide();
+            loadingshow();
+            btndisable();
+            bgworker8.RunWorkerAsync();
+
+            fsuptxt.Visible = false;
+            fsuplbl.Visible = false;
+            rpnl.Visible = true;
+            delpnl.Visible = false;
+            dealpnl.Visible = false;
+            exppnl.Visible = false;
+            moneypnl.Visible = false;
+            bankpnl.Visible = false;
+            miscpnl.Visible = false;
+            billpnl.Visible = false;
+            totallbl.Visible = false;
+
             
 
 
