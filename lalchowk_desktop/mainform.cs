@@ -120,9 +120,11 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
-                
-                MessageBox.Show("Something happened.\nPlease check your internet connection and click refresh.","Error!");
-                starterror = true;
+                var message = ex.ToString();
+                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                MessageBox.Show("Something happened.\nPlease check your internet connection and click Refresh.\n\n" + split[0], "Error!");
+            
+            starterror = true;
 
  
             }

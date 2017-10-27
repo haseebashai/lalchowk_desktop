@@ -44,17 +44,6 @@ namespace Veiled_Kashmir_Admin_Panel
             Cursor = Cursors.WaitCursor;
             try
             {
-
-                
-               /*   Hello seharshah,
-
-We give our customers total control over the products they purchase. We have a return policy of 3 days. If you are not satisfied with the product, you can ask for a full refund or a replacement within 3 days from the date of order requiring that the product is not damaged by the user in any way.
-For more info on our return policy, please check ' More > Terms and conditions ' in the Lalchowk app.
-
-Regards,
-Lalchowk.
-                  
-                 */ 
                  
                 StringBuilder s = new StringBuilder(bodytxt.Text);
                 s.Replace(@"\", @"\\");
@@ -85,12 +74,14 @@ Lalchowk.
                 MessageBox.Show("Mail Sent.");
                 obj.closeConnection();
             }
-                           
+
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                var message = ex.ToString();
+                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
-            
+
         }
     
 
@@ -129,11 +120,13 @@ Lalchowk.
                 obj.nonQuery(cmd);
                 this.Close();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Something happened, please try again.");
+                var message = ex.ToString();
+                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
-           
+
         }
 
         private void mail_Load(object sender, EventArgs e)

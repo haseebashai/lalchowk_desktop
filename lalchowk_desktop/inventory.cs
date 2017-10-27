@@ -46,11 +46,13 @@ namespace Veiled_Kashmir_Admin_Panel
                 dv.RowFilter = string.Format("Convert([supplierid],System.String) LIKE '%{0}%'", supidtxt.Text);
                 inventorydatagridview.DataSource = dv;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                var message = ex.ToString();
+                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
-            }
+        }
 
         private void pronametxt_TextChanged(object sender, EventArgs e)
         {
@@ -61,7 +63,9 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                var message = ex.ToString();
+                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
 
         }
@@ -75,7 +79,9 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                var message = ex.ToString();
+                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
 
         }
@@ -89,7 +95,9 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                var message = ex.ToString();
+                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
 
         }
@@ -211,7 +219,9 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Please Try again or refresh the page.","Error!");
+                var message = ex.ToString();
+                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
         }
       
@@ -257,12 +267,7 @@ namespace Veiled_Kashmir_Admin_Panel
             dg.lbl.ForeColor = SystemColors.Highlight;
             dg.lbl.Text = "Edit Inventory";
             
-        }
-
-        
-
-
-       
+        }    
 
         private void readinventory()
         {
@@ -277,11 +282,13 @@ namespace Veiled_Kashmir_Admin_Panel
                 bsource.DataSource = dt;
                 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                var message = ex.ToString();
+                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
-            }
+        }
 
       
 

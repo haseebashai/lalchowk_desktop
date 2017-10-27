@@ -87,12 +87,14 @@ namespace Veiled_Kashmir_Admin_Panel
 
             bsource.DataSource = dt;
         }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Something happened, please try again");
+                var message = ex.ToString();
+                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
 
-}
+        }
 
         private void ordergridview_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -126,9 +128,11 @@ namespace Veiled_Kashmir_Admin_Panel
                 obj.nonQuery(cmd);
                 MessageBox.Show("Order cancelled.");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Something happened, please try again");
+                var message = ex.ToString();
+                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
             readorders();
             ordergridview.DataSource = bsource;

@@ -46,14 +46,16 @@ namespace Veiled_Kashmir_Admin_Panel
             bsource = new BindingSource();
             bsource.DataSource = dt;
         }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Something happened, please try again");
+                var message = ex.ToString();
+                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
 
 
 
-}
+        }
 
         private void reqdataview_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -80,12 +82,14 @@ namespace Veiled_Kashmir_Admin_Panel
             readrequest();
             apnl.Visible = false;
         }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Something happened, please try again");
+                var message = ex.ToString();
+                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
 
-}
+        }
 
         private void ubtn_Click(object sender, EventArgs e)
         {
@@ -98,7 +102,9 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                var message = ex.ToString();
+                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
         }
 

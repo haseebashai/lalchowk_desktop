@@ -53,7 +53,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 }
                 catch (MySqlException)
                 {
-                    MessageBox.Show("Cannot connect to Server.");
+                    MessageBox.Show("Cannot connect to Server.","Error!");
                     return false;
                 }
             }

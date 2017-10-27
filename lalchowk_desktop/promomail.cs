@@ -135,9 +135,11 @@ namespace Veiled_Kashmir_Admin_Panel
                 emaillist.DataSource = dt;
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Something happened, please try again");
+                var message = ex.ToString();
+                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
             aconn.Close();
         }
@@ -221,9 +223,12 @@ namespace Veiled_Kashmir_Admin_Panel
             catch (Exception ex)
             {
                 obj.closeConnection();
-                MessageBox.Show(ex.ToString());
-                
-                if(myData.Count == 0)
+                var message = ex.ToString();
+                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
+            
+
+            if (myData.Count == 0)
                 {
                     
                     return ("shit");
@@ -275,10 +280,11 @@ namespace Veiled_Kashmir_Admin_Panel
                 elistlbl.Text = "Send email to " + emails + " customers today or enter a single email ID.";
                 readlist();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Something happened, please try again.");
-
+                var message = ex.ToString();
+                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
             Cursor = Cursors.Arrow;
         }
@@ -337,9 +343,11 @@ namespace Veiled_Kashmir_Admin_Panel
 
                 readlist();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                var message = ex.ToString();
+                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
         }
 
@@ -431,12 +439,13 @@ namespace Veiled_Kashmir_Admin_Panel
                         sendinglbl.Text = "";
                         MessageBox.Show("Mail Sent.");
                     }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.ToString());
-
-                    }
-                    Cursor = Cursors.Arrow;
+                catch (Exception ex)
+                {
+                    var message = ex.ToString();
+                    string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                    MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
+                }
+                Cursor = Cursors.Arrow;
                 }
            
         }
@@ -465,21 +474,20 @@ namespace Veiled_Kashmir_Admin_Panel
             try { 
             if (returned == null)
             {
-
+                    Cursor = Cursors.WaitCursor;
                 aconn.Open();
                 mycmd = new MySqlCommand("update emailno set eid = (eid + '" + emails + "') where id=1", aconn);
                 mycmd.ExecuteNonQuery();
                 aconn.Close();
-                
+                    Cursor = Cursors.Arrow;
             }
             else if (returned == "shit")
             {
                 MessageBox.Show("Something happened. Please try again later.");
 
-                
-
             }
             else{
+                    Cursor = Cursors.WaitCursor;
                 dr = obj.Query("select id from customer where mail='" + myData[j] + "'");
                 dr.Read();
                 emailerrorno = int.Parse(dr[0].ToString());
@@ -490,13 +498,15 @@ namespace Veiled_Kashmir_Admin_Panel
                 mycmd = new MySqlCommand("update emailno set eid = ((eid + '" + emailerrorno + "')-1) where id=1", aconn);
                 mycmd.ExecuteNonQuery();
                 aconn.Close();
-
+                    Cursor = Cursors.Arrow;
                 MessageBox.Show("Email sending failed from: " + myData[j] + "\nPlease Check the error and continue sending emails.","Error!");
             }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Something happened, please try again");
+                var message = ex.ToString();
+                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
             readlist();
             emailno.Text = maillist.ToString();

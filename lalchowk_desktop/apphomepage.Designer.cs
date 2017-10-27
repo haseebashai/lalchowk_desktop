@@ -86,6 +86,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
             this.hpnl = new System.Windows.Forms.Panel();
+            this.randbtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.leftpic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rightpic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productsdataview)).BeginInit();
@@ -633,6 +634,7 @@
             // 
             // hpnl
             // 
+            this.hpnl.Controls.Add(this.randbtn);
             this.hpnl.Controls.Add(this.label3);
             this.hpnl.Controls.Add(this.label2);
             this.hpnl.Controls.Add(this.panel1);
@@ -693,6 +695,16 @@
             this.hpnl.Size = new System.Drawing.Size(1158, 720);
             this.hpnl.TabIndex = 104;
             this.hpnl.Visible = false;
+            // 
+            // randbtn
+            // 
+            this.randbtn.Location = new System.Drawing.Point(369, 319);
+            this.randbtn.Name = "randbtn";
+            this.randbtn.Size = new System.Drawing.Size(75, 19);
+            this.randbtn.TabIndex = 104;
+            this.randbtn.Text = "Randomize";
+            this.randbtn.UseVisualStyleBackColor = true;
+            this.randbtn.Click += new System.EventHandler(this.randbtn_Click);
             // 
             // apphomepage
             // 
@@ -782,5 +794,6 @@
         private System.Windows.Forms.Label label3;
         private System.ComponentModel.BackgroundWorker bgworker;
         private System.Windows.Forms.Panel hpnl;
+        private System.Windows.Forms.Button randbtn;
     }
 }

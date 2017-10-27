@@ -53,9 +53,11 @@ namespace Veiled_Kashmir_Admin_Panel
                     customerdataview.DataSource = bsource;
                     Cursor = Cursors.Arrow;
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
-                    MessageBox.Show(ex.ToString());
+                    var message = ex.ToString();
+                    string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                    MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
                 }
             }
         }
@@ -138,9 +140,11 @@ namespace Veiled_Kashmir_Admin_Panel
 
                 bsource.DataSource = dt1;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Something happened, please try again");
+                var message = ex.ToString();
+                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
 
 
@@ -172,11 +176,13 @@ namespace Veiled_Kashmir_Admin_Panel
             count = dr[0].ToString();
             obj.closeConnection();
         }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Something happened, please try again");
+                var message = ex.ToString();
+                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
-}
+        }
        
 
         private void readdetails()
@@ -221,9 +227,11 @@ namespace Veiled_Kashmir_Admin_Panel
 
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                var message = ex.ToString();
+                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
             obj.closeConnection();
         }
@@ -239,7 +247,9 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                var message = ex.ToString();
+                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
         }
 

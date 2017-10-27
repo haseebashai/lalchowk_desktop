@@ -139,7 +139,9 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show(ex.ToString());
+                var message = ex.ToString();
+                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
 
         }   
@@ -175,10 +177,12 @@ namespace Veiled_Kashmir_Admin_Panel
                 bsource = new BindingSource();
                 bsource.DataSource = dt;
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
                 error = true;
-                MessageBox.Show("Something happened, please try again or check the error description.\n\n\n" + e.ToString());
+                var message = ex.ToString();
+                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
         }
 
@@ -193,10 +197,12 @@ namespace Veiled_Kashmir_Admin_Panel
                 bsource = new BindingSource();
                 bsource.DataSource = dt;
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
                 error = true;
-                MessageBox.Show("Something happened, please try again or check the error description.\n\n\n" + e.ToString());
+                var message = ex.ToString();
+                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
         }
 
@@ -235,7 +241,9 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Something happened, please try again.\n\n\n" + ex.ToString());
+                var message = ex.ToString();
+                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
         }
 

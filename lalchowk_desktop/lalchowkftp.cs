@@ -19,56 +19,84 @@ namespace Veiled_Kashmir_Admin_Panel
     {
        
         PictureBox loading = new PictureBox();
+        BackgroundWorker bw;
+        BindingSource bsource;
+
 
         private dialogcontainer dg = null;
         public lalchowkftp(Form dgcopy)
         {
             dg = dgcopy as dialogcontainer;
             InitializeComponent();
+            
+            bw = new BackgroundWorker();
+            bw.DoWork += new DoWorkEventHandler(bw_DoWork);
+            bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_RunWorkerCompleted);
+            bw.RunWorkerAsync();
+            fetchpnl.Visible = true;
+        }
 
-          
+
+    void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+    {
+
+            fpnl.Enabled = true;
+            fetchpnl.Visible = false;
+            ftpdataview.DataSource = bsource;
+            
+
         }
 
 
 
-        private void loadfiles()
+
+    void bw_DoWork(object sender, DoWorkEventArgs e)
+    {
+
+            loadfiles();
+
+    }
+
+
+    private void loadfiles()
         {
-            Cursor = Cursors.WaitCursor;
+            
             var ftp = new FtpUtility();
             ftp.UserName = "Lalchowk";
             ftp.Password = "Lalchowk@123";
             ftp.Path = ftppath;
             try
             {
-                this.ftpdataview.DataSource = ftp.ListFiles()
-                                                      .Select(x => new
-                                                      {
-
-                                                          Path = ftp.Path + x,   //Path Column 
-                                                      Name = x             //Name Column
-                                                  }).ToList();
+                bsource = new BindingSource();
+                bsource.DataSource = ftp.ListFiles().Select(x => new {
+                                                         Path = ftp.Path + x,   //Path Column 
+                                                         Name = x             //Name Column
+                                                         }).ToList();
             }catch(Exception e)
             {
+                var message = e.ToString();
+                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
 
+                MessageBox.Show("Could not load FTP, please try again.\n\n" + split[0], "Error!");
             }
            
-            fpnl.Visible = true;
-            Cursor = Cursors.Arrow;
+           
+            
         }
 
 
         private void dirbtn_Click(object sender, EventArgs e)
         {
-            
+            ftpdataview.DataSource = null;
+            fetchpnl.Visible = true;
+            fpnl.Enabled = false;
                 ftppath = "ftp://lalchowk.in/httpdocs/lalchowk/" + dirtxt.Text + "/";
-            filetxt.Text = "";
-            loadfiles();
+                filetxt.Text = "";
+                bw.RunWorkerAsync();
            
         }
 
         string ftppath= "ftp://lalchowk.in/httpdocs/lalchowk/";
-      
-
         public static bool DeleteFileOnFtpServer(Uri serverUri, string ftpUsername, string ftpPassword)
         {
             try
@@ -90,6 +118,10 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
+                var message = ex.ToString();
+                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
+            
                 return false;
             }
         }
@@ -105,7 +137,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 {
                     DeleteFileOnFtpServer(new Uri(pathurl), "Lalchowk", "Lalchowk@123");
 
-                    loadfiles();
+                    bw.RunWorkerAsync();
                 }
 
             }catch(Exception ex)
@@ -122,6 +154,9 @@ namespace Veiled_Kashmir_Admin_Panel
                 DataGridViewRow row = this.ftpdataview.Rows[e.RowIndex];
                 pathurl = row.Cells["path"].Value.ToString();
                 filetxt.Text = pathurl.Split('/').Last();
+                string ftpurl = pathurl.Replace("ftp://", "http://").Replace("httpdocs/", "");
+                MessageBox.Show(ftpurl.ToString());
+                ftppic.ImageLocation = ftpurl;
             }
         }
 
@@ -156,7 +191,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 FtpWebRequest sizeRequest = (FtpWebRequest)WebRequest.Create(url);
                 sizeRequest.Credentials = credentials;
                 sizeRequest.Method = WebRequestMethods.Ftp.GetFileSize;
-                long size = sizeRequest.GetResponse().ContentLength/8;
+                long size = sizeRequest.GetResponse().ContentLength/1000;
 
                 progressBar1.Invoke(
                     (MethodInvoker)delegate { progressBar1.Maximum = (int)size; });
@@ -181,14 +216,17 @@ namespace Veiled_Kashmir_Admin_Panel
                         total += read;
                         
                         progressBar1.Invoke(
-                            (MethodInvoker)delegate { progressBar1.Visible = true; progressBar1.Value = total/8;progresspc.Visible = true; progresspc.Text = progressBar1.Value.ToString()+" Kilobytes downloaded"; });
+                            (MethodInvoker)delegate { progressBar1.Visible = true; progressBar1.Value = total/1000;progresspc.Visible = true; progresspc.Text = progressBar1.Value.ToString()+" KB downloaded"; });
                     }
                 }
                 MessageBox.Show("File downloaded.");
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);
+            
+                var message = e.ToString();
+                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                MessageBox.Show(split[0],"Error");
             }
         }
 
@@ -238,10 +276,11 @@ namespace Veiled_Kashmir_Admin_Panel
                     return files;
 
 
-                }catch(Exception e)
+                }catch(Exception ex)
                 {
-                    
-                    MessageBox.Show("Please enter valid directory address.");
+                    var message = ex.ToString();
+                    string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                    MessageBox.Show("Something happened, please try again.\n\n"+split[0],"Error!");
                     
                     return null;
                 }
@@ -273,7 +312,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     MessageBox.Show("Picture Uploaded.\n\n\n" + responsefromftp.ToString());
                     progressBar1.Value = 0;
                     progressBar1.Visible = false;
-                    loadfiles();
+                    bw.RunWorkerAsync();
 
 
                 }
@@ -299,11 +338,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 request.UsePassive = true;
                 request.UseBinary = true;
                 request.KeepAlive = true;
-
-
-               
-                   
-                
+              
                 using (var fileStream = File.OpenRead(filePath))
                 {
                     using (var requestStream = request.GetRequestStream())
@@ -328,17 +363,15 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                var message = ex.ToString();
+                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
                 return null;
             }
         }
 
         string fileaddress, filename, fullpath, directory,uploaddir;
 
-        private void lalchowkftp_Load(object sender, EventArgs e)
-        {
-            loadfiles();
-        }
 
         private void uptxt_Click(object sender, EventArgs e)
         {

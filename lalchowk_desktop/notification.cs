@@ -42,11 +42,13 @@ namespace Veiled_Kashmir_Admin_Panel
            
             orderidbox.DataSource = dt;
         }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Something happened, please try again");
+                var message = ex.ToString();
+                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
-}
+        }
 
         private void picbtn_Click(object sender, EventArgs e)
         {
@@ -67,7 +69,9 @@ namespace Veiled_Kashmir_Admin_Panel
                 }
                 catch (WebException ex)
                 {
-                    MessageBox.Show(ex.ToString());
+                    var message = ex.ToString();
+                    string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                    MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
                 }
                 Cursor = Cursors.Arrow;
 
@@ -92,9 +96,11 @@ namespace Veiled_Kashmir_Admin_Panel
                 MessageBox.Show("Notification sent sucessfully.");
                 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                var message = ex.ToString();
+                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
             obj.closeConnection();
         }
@@ -177,8 +183,9 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
-
+                var message = ex.ToString();
+                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
         }
     }

@@ -111,9 +111,11 @@ namespace Veiled_Kashmir_Admin_Panel
                 aconn.Close();
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Something happened, please try again");
+                var message = ex.ToString();
+                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
             aconn.Close();
 
@@ -174,9 +176,11 @@ namespace Veiled_Kashmir_Admin_Panel
                 MessageBox.Show("Entry added.");
                 aconn.Close();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Something happened, please try again");
+                var message = ex.ToString();
+                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
             clientnametxt.Text = "";
             clientemailtxt.Text = "";
@@ -200,12 +204,14 @@ namespace Veiled_Kashmir_Admin_Panel
             bsource = new BindingSource();
             bsource.DataSource = dt;
         }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Something happened, please try again");
+                var message = ex.ToString();
+                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
 
-}
+        }
         private void bgworker2_DoWork(object sender, DoWorkEventArgs e)
         {
             readclientexp();
@@ -238,10 +244,12 @@ namespace Veiled_Kashmir_Admin_Panel
                 MessageBox.Show("Entry added.");
                 aconn.Close();
             }
-           
-            catch (Exception)
+
+            catch (Exception ex)
             {
-                MessageBox.Show("Something happened, please try again");
+                var message = ex.ToString();
+                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
             cenametxt.Text = "";
             ceamounttxt.Text = "";
@@ -277,9 +285,11 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
-                aconn.Close();
+                var message = ex.ToString();
+                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
+            aconn.Close();
         }
 
         private void updbtn_Click(object sender, EventArgs e)
@@ -293,7 +303,9 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                var message = ex.ToString();
+                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
         }
 
@@ -312,9 +324,11 @@ namespace Veiled_Kashmir_Admin_Panel
                     {
                         bgworker3.RunWorkerAsync();
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-                        MessageBox.Show("Something happened, please try again");
+                        var message = ex.ToString();
+                        string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                        MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
                     }
                 }
             }
@@ -327,8 +341,10 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                var message = ex.ToString();
+                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
-            }
+        }
     }
 }
