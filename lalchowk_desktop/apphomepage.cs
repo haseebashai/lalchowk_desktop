@@ -152,7 +152,48 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void randbtn_Click(object sender, EventArgs e)
         {
-            
+
+
+            Cursor = Cursors.WaitCursor;
+            dr = obj.Query("SELECT productname,picture,productid FROM lalchowk.products WHERE stock>0 ORDER BY RAND() LIMIT 4 ");
+            List<string> productname = new List<string>();
+            List<string> picture = new List<string>();
+            List<string> productid = new List<string>();
+            int i = 0;
+            while (dr.Read())
+            {
+                productname.Add(dr["productname"].ToString());
+                picture.Add(dr["picture"].ToString());
+                productid.Add(dr["productid"].ToString());
+
+                i++;
+                
+            }
+            obj.closeConnection();
+
+
+            p1title.Text = productname[0];
+            p1pic.Text = picture[0];
+            p1link.Text = productid[0];
+            p1.ImageLocation = url+p1pic.Text;
+
+            p2title.Text = productname[1];
+            p2pic.Text = picture[1];
+            p2link.Text = productid[1];
+            p2.ImageLocation = url+p2pic.Text;
+
+            p3title.Text = productname[2];
+            p3pic.Text = picture[2];
+            p3link.Text = productid[2];
+            p3.ImageLocation = url+p3pic.Text;
+
+            p4title.Text = productname[3];
+            p4pic.Text = picture[3];
+            p4link.Text = productid[3];
+            p4.ImageLocation = url+p4pic.Text;
+            Cursor = Cursors.Arrow;
+
+
         }
 
         private void readhomepage2()

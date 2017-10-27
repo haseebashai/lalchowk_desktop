@@ -621,7 +621,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label3.Location = new System.Drawing.Point(543, 230);
+            this.label3.Location = new System.Drawing.Point(484, 232);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(106, 18);
             this.label3.TabIndex = 103;
@@ -698,9 +698,9 @@
             // 
             // randbtn
             // 
-            this.randbtn.Location = new System.Drawing.Point(369, 319);
+            this.randbtn.Location = new System.Drawing.Point(633, 233);
             this.randbtn.Name = "randbtn";
-            this.randbtn.Size = new System.Drawing.Size(75, 19);
+            this.randbtn.Size = new System.Drawing.Size(71, 19);
             this.randbtn.TabIndex = 104;
             this.randbtn.Text = "Randomize";
             this.randbtn.UseVisualStyleBackColor = true;
