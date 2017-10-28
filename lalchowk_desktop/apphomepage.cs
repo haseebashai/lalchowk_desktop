@@ -66,7 +66,7 @@ namespace Veiled_Kashmir_Admin_Panel
             catch (Exception ex)
             {
                 var message = ex.ToString();
-                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
                 MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
 
@@ -150,49 +150,111 @@ namespace Veiled_Kashmir_Admin_Panel
         string righttxtvar, rightlinkvar, lefttxtvar, leftlinkvar, p1titlevar, p1subvar, p1picvar, p1linkvar, p2titlevar, p2subvar, p2picvar, p2linkvar,
                 p3titlevar, p3subvar, p3picvar, p3linkvar, p4titlevar, p4subvar, p4picvar, p4linkvar;
 
+        private void randlist_Click(object sender, EventArgs e)
+        {
+            try { 
+            Cursor = Cursors.WaitCursor;
+            dr = obj.Query("SELECT productname,productid FROM lalchowk.products WHERE stock>0 ORDER BY RAND() LIMIT 16 ");
+           
+            List<string> productid = new List<string>();
+
+            int i = 0;
+            int homeid = 35;
+            while (dr.Read())
+            {
+                
+                productid.Add(dr["productid"].ToString());
+                   
+                i++;
+                
+
+            }
+                obj.closeConnection();
+                try
+                {
+                    for (i = 0; i < 16; i++)
+                     {
+                   
+                        cmd = "update homepage2 set link='" + productid[i] + "' where homeid='" + homeid + "'";
+                        obj.nonQuery(cmd);
+                        obj.closeConnection();
+
+                        homeid++;
+                    }
+                    itemsdataview.DataSource = null;
+                    adap.Fill(dt1);
+                    bsource3.DataSource = dt1;
+                    itemsdataview.DataSource = bsource3;
+                    MessageBox.Show("Updated.");
+                }
+                catch (Exception ex)
+                {
+                    Cursor = Cursors.Arrow;
+                    var message = ex.ToString();
+                    string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
+                    MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
+                }
+                Cursor = Cursors.Arrow;
+            }
+            catch (Exception ex)
+            {
+                Cursor = Cursors.Arrow;
+                var message = ex.ToString();
+                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
+                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
+            }
+        }
+
         private void randbtn_Click(object sender, EventArgs e)
         {
 
-
-            Cursor = Cursors.WaitCursor;
-            dr = obj.Query("SELECT productname,picture,productid FROM lalchowk.products WHERE stock>0 ORDER BY RAND() LIMIT 4 ");
-            List<string> productname = new List<string>();
-            List<string> picture = new List<string>();
-            List<string> productid = new List<string>();
-            int i = 0;
-            while (dr.Read())
+            try
             {
-                productname.Add(dr["productname"].ToString());
-                picture.Add(dr["picture"].ToString());
-                productid.Add(dr["productid"].ToString());
+                Cursor = Cursors.WaitCursor;
+                dr = obj.Query("SELECT productname,picture,productid FROM lalchowk.products WHERE stock>0 ORDER BY RAND() LIMIT 4 ");
+                List<string> productname = new List<string>();
+                List<string> picture = new List<string>();
+                List<string> productid = new List<string>();
+                int i = 0;
+                while (dr.Read())
+                {
+                    productname.Add(dr["productname"].ToString());
+                    picture.Add(dr["picture"].ToString());
+                    productid.Add(dr["productid"].ToString());
 
-                i++;
-                
+                    i++;
+
+                }
+                obj.closeConnection();
+
+
+                p1title.Text = productname[0];
+                p1pic.Text = picture[0];
+                p1link.Text = productid[0];
+                p1.ImageLocation = url + p1pic.Text;
+
+                p2title.Text = productname[1];
+                p2pic.Text = picture[1];
+                p2link.Text = productid[1];
+                p2.ImageLocation = url + p2pic.Text;
+
+                p3title.Text = productname[2];
+                p3pic.Text = picture[2];
+                p3link.Text = productid[2];
+                p3.ImageLocation = url + p3pic.Text;
+
+                p4title.Text = productname[3];
+                p4pic.Text = picture[3];
+                p4link.Text = productid[3];
+                p4.ImageLocation = url + p4pic.Text;
+                Cursor = Cursors.Arrow;
             }
-            obj.closeConnection();
-
-
-            p1title.Text = productname[0];
-            p1pic.Text = picture[0];
-            p1link.Text = productid[0];
-            p1.ImageLocation = url+p1pic.Text;
-
-            p2title.Text = productname[1];
-            p2pic.Text = picture[1];
-            p2link.Text = productid[1];
-            p2.ImageLocation = url+p2pic.Text;
-
-            p3title.Text = productname[2];
-            p3pic.Text = picture[2];
-            p3link.Text = productid[2];
-            p3.ImageLocation = url+p3pic.Text;
-
-            p4title.Text = productname[3];
-            p4pic.Text = picture[3];
-            p4link.Text = productid[3];
-            p4.ImageLocation = url+p4pic.Text;
-            Cursor = Cursors.Arrow;
-
+            catch (Exception ex)
+            {
+                var message = ex.ToString();
+                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
+            }
 
         }
 

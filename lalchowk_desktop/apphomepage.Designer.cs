@@ -87,6 +87,7 @@
             this.bgworker = new System.ComponentModel.BackgroundWorker();
             this.hpnl = new System.Windows.Forms.Panel();
             this.randbtn = new System.Windows.Forms.Button();
+            this.randlist = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.leftpic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rightpic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productsdataview)).BeginInit();
@@ -634,6 +635,7 @@
             // 
             // hpnl
             // 
+            this.hpnl.Controls.Add(this.randlist);
             this.hpnl.Controls.Add(this.randbtn);
             this.hpnl.Controls.Add(this.label3);
             this.hpnl.Controls.Add(this.label2);
@@ -705,6 +707,16 @@
             this.randbtn.Text = "Randomize";
             this.randbtn.UseVisualStyleBackColor = true;
             this.randbtn.Click += new System.EventHandler(this.randbtn_Click);
+            // 
+            // randlist
+            // 
+            this.randlist.Location = new System.Drawing.Point(2, 678);
+            this.randlist.Name = "randlist";
+            this.randlist.Size = new System.Drawing.Size(71, 19);
+            this.randlist.TabIndex = 105;
+            this.randlist.Text = "Randomize";
+            this.randlist.UseVisualStyleBackColor = true;
+            this.randlist.Click += new System.EventHandler(this.randlist_Click);
             // 
             // apphomepage
             // 
@@ -795,5 +807,6 @@
         private System.ComponentModel.BackgroundWorker bgworker;
         private System.Windows.Forms.Panel hpnl;
         private System.Windows.Forms.Button randbtn;
+        private System.Windows.Forms.Button randlist;
     }
 }

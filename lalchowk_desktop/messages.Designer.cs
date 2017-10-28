@@ -42,6 +42,7 @@
             this.sendbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.msgpnl = new System.Windows.Forms.Panel();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
+            this.delbtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.messagesdataview)).BeginInit();
             this.mpnl.SuspendLayout();
             this.msgpnl.SuspendLayout();
@@ -71,6 +72,7 @@
             // 
             // mpnl
             // 
+            this.mpnl.Controls.Add(this.delbtn);
             this.mpnl.Controls.Add(this.msgtxt);
             this.mpnl.Controls.Add(this.label2);
             this.mpnl.Controls.Add(this.midlbl);
@@ -129,7 +131,7 @@
             // sublbl
             // 
             this.sublbl.ForeColor = System.Drawing.Color.Black;
-            this.sublbl.Location = new System.Drawing.Point(3, 94);
+            this.sublbl.Location = new System.Drawing.Point(5, 94);
             this.sublbl.Name = "sublbl";
             this.sublbl.Size = new System.Drawing.Size(188, 106);
             this.sublbl.TabIndex = 4;
@@ -170,7 +172,7 @@
             this.sendbtn.AutoSize = true;
             this.sendbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.sendbtn.Depth = 0;
-            this.sendbtn.Location = new System.Drawing.Point(660, 94);
+            this.sendbtn.Location = new System.Drawing.Point(617, 94);
             this.sendbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.sendbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.sendbtn.Name = "sendbtn";
@@ -195,6 +197,16 @@
             // 
             this.bgworker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker_DoWork);
             this.bgworker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker_RunWorkerCompleted);
+            // 
+            // delbtn
+            // 
+            this.delbtn.Location = new System.Drawing.Point(796, 1);
+            this.delbtn.Name = "delbtn";
+            this.delbtn.Size = new System.Drawing.Size(48, 19);
+            this.delbtn.TabIndex = 26;
+            this.delbtn.Text = "Delete";
+            this.delbtn.UseVisualStyleBackColor = true;
+            this.delbtn.Click += new System.EventHandler(this.delbtn_Click);
             // 
             // messages
             // 
@@ -232,5 +244,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel msgpnl;
         private System.ComponentModel.BackgroundWorker bgworker;
+        private System.Windows.Forms.Button delbtn;
     }
 }

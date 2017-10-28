@@ -118,5 +118,30 @@ namespace Veiled_Kashmir_Admin_Panel
             dg.loadingimage.Visible = true;
         }
 
+        private void delbtn_Click(object sender, EventArgs e)
+        {
+            DialogResult dgr = MessageBox.Show("Do you want to delete this message?", "Confirm!", MessageBoxButtons.YesNo);
+            if (dgr == DialogResult.Yes)
+            {
+                try
+                {
+                    string cmd = "delete from messages where messageid='" + midlbl.Text + "'";
+                    obj.nonQuery(cmd);
+                    obj.closeConnection();
+                    MessageBox.Show("Message deleted.");
+                    Cursor = Cursors.WaitCursor;
+                    readmsgs();
+                    messagesdataview.DataSource = bsource;
+                    Cursor = Cursors.Arrow;
+                }
+                catch (Exception ex)
+                {
+                    var message = ex.ToString();
+                    string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                    MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
+                }
+            }
+            
+        }
     }
 }
