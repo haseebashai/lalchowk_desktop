@@ -138,7 +138,7 @@ namespace Veiled_Kashmir_Admin_Panel
             catch (Exception ex)
             {
                 var message = ex.ToString();
-                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
                 MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
             aconn.Close();
@@ -160,16 +160,6 @@ namespace Veiled_Kashmir_Admin_Panel
 
             try
             {
-             
-
-                StringBuilder s = new StringBuilder(bodytxt.Text);
-                s.Replace(@"\", @"\\");
-                s.Replace("'", "\\'");
-                StringBuilder s1 = new StringBuilder(subtxt.Text);
-                s1.Replace(@"\", @"\\");
-                s1.Replace("'", "\\'");
-
-
                
                 SmtpClient Smtpobj = new SmtpClient();
                 Smtpobj.Host = "smtp.zoho.com";
@@ -190,8 +180,8 @@ namespace Veiled_Kashmir_Admin_Panel
                     var recipients = new MailAddress(dr["mail"].ToString());
                     MailMessage mail = new MailMessage(from,recipients.ToString());
                     mail.From = new MailAddress(from, sendername);
-                    mail.Subject = s1.ToString();
-                    mail.Body = s.ToString();
+                    mail.Subject = subtxt.Text;
+                    mail.Body = bodytxt.Text;
                     mail.IsBodyHtml = true;
                     myData.Add(dr["mail"].ToString());
                     if (checkattach.Checked && attachment)
@@ -214,7 +204,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
                 bgworker.ReportProgress(100);
                 MessageBox.Show("Mail Sent.");
-                
+                sendinglbl.Text = "";
 
 
                 return (null);
@@ -224,7 +214,7 @@ namespace Veiled_Kashmir_Admin_Panel
             {
                 obj.closeConnection();
                 var message = ex.ToString();
-                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
                 MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             
 
@@ -283,7 +273,7 @@ namespace Veiled_Kashmir_Admin_Panel
             catch (Exception ex)
             {
                 var message = ex.ToString();
-                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
                 MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
             Cursor = Cursors.Arrow;
@@ -346,7 +336,7 @@ namespace Veiled_Kashmir_Admin_Panel
             catch (Exception ex)
             {
                 var message = ex.ToString();
-                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
                 MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
         }
@@ -442,7 +432,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 catch (Exception ex)
                 {
                     var message = ex.ToString();
-                    string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                    string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
                     MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
                 }
                 Cursor = Cursors.Arrow;
@@ -463,27 +453,26 @@ namespace Veiled_Kashmir_Admin_Panel
         {
            
             sendbtn.Enabled = true;
-            subtxt.Text = "";
-            tolbl.Text = "";
             timer.Stop();
             sendinglbl.Text = "";           
             progressBar1.Value = 0;
             progressBar1.Visible = false;
 
-
+            Cursor = Cursors.WaitCursor;
             try { 
             if (returned == null)
             {
-                    Cursor = Cursors.WaitCursor;
+                    
                 aconn.Open();
                 mycmd = new MySqlCommand("update emailno set eid = (eid + '" + emails + "') where id=1", aconn);
                 mycmd.ExecuteNonQuery();
                 aconn.Close();
-                    Cursor = Cursors.Arrow;
+                   
+                    
             }
             else if (returned == "shit")
             {
-                MessageBox.Show("Something happened. Please try again later.");
+                MessageBox.Show("Please check your internet connection.");
 
             }
             else{
@@ -492,20 +481,22 @@ namespace Veiled_Kashmir_Admin_Panel
                 dr.Read();
                 emailerrorno = int.Parse(dr[0].ToString());
                 obj.closeConnection();
-
+                
 
                 aconn.Open();
-                mycmd = new MySqlCommand("update emailno set eid = ((eid + '" + emailerrorno + "')-1) where id=1", aconn);
+                mycmd = new MySqlCommand("update emailno set eid = ((eid + '" + myData.Count + "')-1) where id=1", aconn);
                 mycmd.ExecuteNonQuery();
                 aconn.Close();
                     Cursor = Cursors.Arrow;
                 MessageBox.Show("Email sending failed from: " + myData[j] + "\nPlease Check the error and continue sending emails.","Error!");
-            }
+                   
+                }
             }
             catch (Exception ex)
             {
+                Cursor = Cursors.Arrow;
                 var message = ex.ToString();
-                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
                 MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
             readlist();
@@ -513,7 +504,7 @@ namespace Veiled_Kashmir_Admin_Panel
             recno.Text = emails.ToString();
             elistlbl.Text = "Send email to " + recno.Text + " customers today or enter a single email ID.";
             emaillist.DisplayMember = "mail";
-
+            Cursor = Cursors.Arrow;
 
 
         }

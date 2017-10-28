@@ -134,20 +134,24 @@
             // leftpic
             // 
             this.leftpic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.leftpic.Cursor = System.Windows.Forms.Cursors.Hand;
             this.leftpic.Location = new System.Drawing.Point(10, 268);
             this.leftpic.Name = "leftpic";
             this.leftpic.Size = new System.Drawing.Size(112, 112);
             this.leftpic.TabIndex = 42;
             this.leftpic.TabStop = false;
+            this.leftpic.Click += new System.EventHandler(this.leftpic_Click);
             // 
             // rightpic
             // 
             this.rightpic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.rightpic.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rightpic.Location = new System.Drawing.Point(121, 268);
             this.rightpic.Name = "rightpic";
             this.rightpic.Size = new System.Drawing.Size(112, 112);
             this.rightpic.TabIndex = 43;
             this.rightpic.TabStop = false;
+            this.rightpic.Click += new System.EventHandler(this.rightpic_Click);
             // 
             // lefttxt
             // 
@@ -196,7 +200,7 @@
             this.upddpbtn.Name = "upddpbtn";
             this.upddpbtn.Size = new System.Drawing.Size(230, 25);
             this.upddpbtn.TabIndex = 51;
-            this.upddpbtn.Text = "Update Display Images";
+            this.upddpbtn.Text = "Update/Upload Display Images";
             this.upddpbtn.UseVisualStyleBackColor = true;
             this.upddpbtn.Click += new System.EventHandler(this.upddpbtn_Click);
             // 
@@ -612,7 +616,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Silver;
-            this.panel1.Location = new System.Drawing.Point(338, 232);
+            this.panel1.Location = new System.Drawing.Point(356, 232);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1, 249);
             this.panel1.TabIndex = 102;
@@ -710,9 +714,9 @@
             // 
             // randlist
             // 
-            this.randlist.Location = new System.Drawing.Point(2, 678);
+            this.randlist.Location = new System.Drawing.Point(3, 672);
             this.randlist.Name = "randlist";
-            this.randlist.Size = new System.Drawing.Size(71, 19);
+            this.randlist.Size = new System.Drawing.Size(82, 25);
             this.randlist.TabIndex = 105;
             this.randlist.Text = "Randomize";
             this.randlist.UseVisualStyleBackColor = true;

@@ -64,7 +64,7 @@ namespace Veiled_Kashmir_Admin_Panel
             catch (Exception ex)
             {
                 var message = ex.ToString();
-                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
                 MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
             DialogResult dgr = MessageBox.Show("Do you want to send confirmation mail with e-bill?", "Confirm", MessageBoxButtons.YesNo);
@@ -126,7 +126,7 @@ namespace Veiled_Kashmir_Admin_Panel
             catch (Exception ex)
             {
                 var message = ex.ToString();
-                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
                 MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
         }
@@ -174,7 +174,7 @@ namespace Veiled_Kashmir_Admin_Panel
             catch (Exception ex)
             {
                 var message = ex.ToString();
-                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
                 MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
         }

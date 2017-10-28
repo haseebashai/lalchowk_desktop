@@ -37,7 +37,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void bgworker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            if (ActiveForm == dg)
+            if (dg!=null)
             {
                 dg.loadingimage.Visible = false;
                 dg.lbl.ForeColor = SystemColors.Highlight;
@@ -90,7 +90,7 @@ namespace Veiled_Kashmir_Admin_Panel
             catch (Exception ex)
             {
                 var message = ex.ToString();
-                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
                 MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
 
@@ -131,7 +131,7 @@ namespace Veiled_Kashmir_Admin_Panel
             catch (Exception ex)
             {
                 var message = ex.ToString();
-                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
                 MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
             readorders();

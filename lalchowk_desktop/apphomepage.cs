@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.IO;
+using System.Net;
 
 namespace Veiled_Kashmir_Admin_Panel
 {
@@ -48,7 +50,7 @@ namespace Veiled_Kashmir_Admin_Panel
             catch (Exception ex)
             {
                 var message = ex.ToString();
-                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
                 MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
         }
@@ -101,7 +103,9 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void bgworker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            if (ActiveForm == dg)
+
+
+            if (dg!=null)
             {
                 dg.loadingimage.Visible = false;
                 dg.lbl.ForeColor = SystemColors.Highlight;
@@ -146,9 +150,171 @@ namespace Veiled_Kashmir_Admin_Panel
 
            
         }
+        public static void UploadFileToFtp(string url, string filePath)
+        {
+            try
+            {
+                var fileName = Path.GetFileName(filePath);
+                var request = (FtpWebRequest)WebRequest.Create(url + fileName);
+
+                request.Method = WebRequestMethods.Ftp.UploadFile;
+                request.Credentials = new NetworkCredential("lalchowk", "Lalchowk@123");
+                request.UsePassive = true;
+                request.UseBinary = true;
+                request.KeepAlive = true;
+
+                using (var fileStream = File.OpenRead(filePath))
+                {
+                    using (var requestStream = request.GetRequestStream())
+                    {
+                        fileStream.CopyTo(requestStream);
+                        requestStream.Close();
+                    }
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                var message = ex.ToString();
+                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
+                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
+            }
+        }
 
         string righttxtvar, rightlinkvar, lefttxtvar, leftlinkvar, p1titlevar, p1subvar, p1picvar, p1linkvar, p2titlevar, p2subvar, p2picvar, p2linkvar,
-                p3titlevar, p3subvar, p3picvar, p3linkvar, p4titlevar, p4subvar, p4picvar, p4linkvar;
+                p3titlevar, p3subvar, p3picvar, p3linkvar, p4titlevar, p4subvar, p4picvar, p4linkvar,fileaddress,filename,fullpath,
+                directory,uploaddir;
+
+        bool rightpicture = false, leftpicture = false;
+        private void rightpic_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog picdialog = new OpenFileDialog();
+            if (picdialog.ShowDialog() == DialogResult.OK)
+            {
+                fileaddress = picdialog.FileName;
+                filename = picdialog.SafeFileName;
+                Image myimage = new Bitmap(fileaddress);
+                Bitmap clone = new Bitmap(myimage.Width, myimage.Height);
+                
+                Graphics g = Graphics.FromImage(clone);
+                g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.None;
+                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+                g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighSpeed;
+               
+                g.DrawImage(myimage, 0, 0, myimage.Width, myimage.Height);
+               
+                g.Dispose();
+                myimage.Dispose();
+                rightpic.BackgroundImage = clone;
+                rightpic.BackgroundImageLayout = ImageLayout.Stretch;
+                fullpath = Path.GetFullPath(fileaddress).TrimEnd(Path.DirectorySeparatorChar);
+                directory = Path.GetDirectoryName(fullpath) + "\\";
+                righttxt.Text = Path.GetFileName(fullpath);
+                rightpicture = true;
+
+            }
+        }
+
+        private void leftpic_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog picdialog = new OpenFileDialog();
+            if (picdialog.ShowDialog() == DialogResult.OK)
+            {
+                fileaddress = picdialog.FileName;
+                filename = picdialog.SafeFileName;
+                Image myimage = new Bitmap(fileaddress);
+                Bitmap clone = new Bitmap(myimage.Width, myimage.Height);
+
+                Graphics g = Graphics.FromImage(clone);
+                g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.None;
+                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+                g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighSpeed;
+
+                g.DrawImage(myimage, 0, 0, myimage.Width, myimage.Height);
+
+                g.Dispose();
+                myimage.Dispose();
+                leftpic.BackgroundImage = clone;
+                leftpic.BackgroundImageLayout = ImageLayout.Stretch;
+                fullpath = Path.GetFullPath(fileaddress).TrimEnd(Path.DirectorySeparatorChar);
+                directory = Path.GetDirectoryName(fullpath) + "\\";
+                lefttxt.Text = Path.GetFileName(fullpath);
+                leftpicture = true;
+            }
+            
+        }
+        private void uploadrightpic()
+        {
+           
+            File.Move(fileaddress, directory + righttxt.Text);
+            uploaddir = directory + righttxt.Text;
+            MessageBox.Show(uploaddir);
+      //      UploadFileToFtp("ftp://lalchowk.in/httpdocs/lalchowk/pictures/", uploaddir);
+
+            cmd = "update homepage2 set picture='" + righttxt.Text + "',link='" + rightlink.Text + "' where homeid='2'";
+            obj.nonQuery(cmd);
+            obj.closeConnection();
+           
+        }
+
+        private void uploadleftpic()
+        {
+            
+            File.Move(fileaddress, directory + lefttxt.Text);
+            uploaddir = directory + lefttxt.Text;
+            MessageBox.Show(uploaddir);
+            //      UploadFileToFtp("ftp://lalchowk.in/httpdocs/lalchowk/pictures/", uploaddir);
+
+            cmd = "update homepage2 set picture='" + lefttxt.Text + "',link='" + leftlink.Text + "' where homeid='1'";
+            obj.nonQuery(cmd);
+            obj.closeConnection();
+          
+        }
+
+
+        private void upddpbtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (rightpicture && leftpicture)
+                {
+                    try
+                    {
+                        Cursor = Cursors.WaitCursor;
+                       
+                        uploadrightpic();
+                        uploadleftpic();
+                        Cursor = Cursors.Arrow;
+                    }
+                    catch (Exception ex)
+                    {
+                        var message = ex.ToString();
+                        string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
+                        MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
+                    }
+                }else if (rightpicture==false || leftpicture==false)
+                {
+                    MessageBox.Show("Please select both pictures.");
+                }
+                else
+                {
+                    cmd = "update homepage2 set picture='" + lefttxt.Text + "',link='" + leftlink.Text + "' where homeid='1'";
+                    obj.nonQuery(cmd);
+
+                    cmd = "update homepage2 set picture='" + righttxt.Text + "',link='" + rightlink.Text + "' where homeid='2'";
+                    obj.nonQuery(cmd);
+
+                    MessageBox.Show("Display pictures updated.");
+                }
+            }
+            catch (Exception ex)
+            {
+                var message = ex.ToString();
+                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
+                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
+            }
+        }
 
         private void randlist_Click(object sender, EventArgs e)
         {
@@ -252,7 +418,7 @@ namespace Veiled_Kashmir_Admin_Panel
             catch (Exception ex)
             {
                 var message = ex.ToString();
-                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
                 MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
 
@@ -336,7 +502,7 @@ namespace Veiled_Kashmir_Admin_Panel
             catch (Exception ex)
             {
                 var message = ex.ToString();
-                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
                 MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
         }
@@ -370,24 +536,7 @@ namespace Veiled_Kashmir_Admin_Panel
             p4.ImageLocation = (url + p4pic.Text);
         }
 
-        private void upddpbtn_Click(object sender, EventArgs e)
-        {
-            try {
-                cmd = "update homepage2 set picture='" + lefttxt.Text + "',link='" + leftlink.Text + "' where homeid='1'";
-                obj.nonQuery(cmd);
-
-                cmd = "update homepage2 set picture='" + righttxt.Text + "',link='" + rightlink.Text + "' where homeid='2'";
-                obj.nonQuery(cmd);
-
-                MessageBox.Show("Display pictures updated.");
-            }
-            catch (Exception ex)
-            {
-                var message = ex.ToString();
-                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
-                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
-            }
-        }
+      
 
         private void u1_Click(object sender, EventArgs e)
         {
@@ -400,7 +549,7 @@ namespace Veiled_Kashmir_Admin_Panel
             catch (Exception ex)
             {
                 var message = ex.ToString();
-                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
                 MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
         }
@@ -416,7 +565,7 @@ namespace Veiled_Kashmir_Admin_Panel
             catch (Exception ex)
             {
                 var message = ex.ToString();
-                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
                 MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
         }
@@ -445,7 +594,7 @@ namespace Veiled_Kashmir_Admin_Panel
             catch (Exception ex)
             {
                 var message = ex.ToString();
-                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
                 MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
             Cursor = Cursors.WaitCursor;
@@ -484,7 +633,7 @@ namespace Veiled_Kashmir_Admin_Panel
             catch (Exception ex)
             {
                 var message = ex.ToString();
-                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
                 MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
         }
@@ -501,7 +650,7 @@ namespace Veiled_Kashmir_Admin_Panel
             catch (Exception ex)
             {
                 var message = ex.ToString();
-                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
                 MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
         }
@@ -523,7 +672,7 @@ namespace Veiled_Kashmir_Admin_Panel
             catch (Exception ex)
             {
                 var message = ex.ToString();
-                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
                 MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
         }
@@ -540,7 +689,7 @@ namespace Veiled_Kashmir_Admin_Panel
             catch (Exception ex)
             {
                 var message = ex.ToString();
-                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
                 MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
         }

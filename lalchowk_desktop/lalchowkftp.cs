@@ -75,7 +75,7 @@ namespace Veiled_Kashmir_Admin_Panel
             }catch(Exception e)
             {
                 var message = e.ToString();
-                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
 
                 MessageBox.Show("Could not load FTP, please try again.\n\n" + split[0], "Error!");
             }
@@ -119,7 +119,7 @@ namespace Veiled_Kashmir_Admin_Panel
             catch (Exception ex)
             {
                 var message = ex.ToString();
-                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
                 MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             
                 return false;
@@ -225,7 +225,7 @@ namespace Veiled_Kashmir_Admin_Panel
             {
             
                 var message = e.ToString();
-                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
                 MessageBox.Show(split[0],"Error");
             }
         }
@@ -279,7 +279,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 }catch(Exception ex)
                 {
                     var message = ex.ToString();
-                    string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                    string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
                     MessageBox.Show("Something happened, please try again.\n\n"+split[0],"Error!");
                     
                     return null;
@@ -364,7 +364,7 @@ namespace Veiled_Kashmir_Admin_Panel
             catch (Exception ex)
             {
                 var message = ex.ToString();
-                string[] split = message.Split(new string[] { "at" }, StringSplitOptions.None);
+                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
                 MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
                 return null;
             }
