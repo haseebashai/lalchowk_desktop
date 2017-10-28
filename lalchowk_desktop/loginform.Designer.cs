@@ -42,7 +42,7 @@
             // 
             this.usernametxt.Depth = 0;
             this.usernametxt.Hint = "";
-            this.usernametxt.Location = new System.Drawing.Point(530, 205);
+            this.usernametxt.Location = new System.Drawing.Point(530, 230);
             this.usernametxt.MouseState = MaterialSkin.MouseState.HOVER;
             this.usernametxt.Name = "usernametxt";
             this.usernametxt.PasswordChar = '\0';
@@ -60,7 +60,7 @@
             // 
             this.pwdtxt.Depth = 0;
             this.pwdtxt.Hint = "";
-            this.pwdtxt.Location = new System.Drawing.Point(530, 261);
+            this.pwdtxt.Location = new System.Drawing.Point(530, 286);
             this.pwdtxt.MouseState = MaterialSkin.MouseState.HOVER;
             this.pwdtxt.Name = "pwdtxt";
             this.pwdtxt.PasswordChar = '*';
@@ -79,7 +79,7 @@
             this.forgotbtn.AutoSize = true;
             this.forgotbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.forgotbtn.Depth = 0;
-            this.forgotbtn.Location = new System.Drawing.Point(530, 333);
+            this.forgotbtn.Location = new System.Drawing.Point(530, 358);
             this.forgotbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.forgotbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.forgotbtn.Name = "forgotbtn";
@@ -92,7 +92,7 @@
             // loginbtn
             // 
             this.loginbtn.Depth = 0;
-            this.loginbtn.Location = new System.Drawing.Point(703, 340);
+            this.loginbtn.Location = new System.Drawing.Point(703, 365);
             this.loginbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.loginbtn.Name = "loginbtn";
             this.loginbtn.Primary = true;
@@ -106,7 +106,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(576, 129);
+            this.label1.Location = new System.Drawing.Point(576, 154);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(164, 18);
             this.label1.TabIndex = 6;
@@ -116,7 +116,7 @@
             // 
             this.error.AutoSize = true;
             this.error.ForeColor = System.Drawing.Color.Coral;
-            this.error.Location = new System.Drawing.Point(596, 299);
+            this.error.Location = new System.Drawing.Point(596, 324);
             this.error.Name = "error";
             this.error.Size = new System.Drawing.Size(123, 13);
             this.error.TabIndex = 8;
@@ -128,7 +128,7 @@
             this.namelbl.AutoSize = true;
             this.namelbl.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.namelbl.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.namelbl.Location = new System.Drawing.Point(527, 205);
+            this.namelbl.Location = new System.Drawing.Point(527, 230);
             this.namelbl.Name = "namelbl";
             this.namelbl.Size = new System.Drawing.Size(38, 18);
             this.namelbl.TabIndex = 9;
@@ -139,7 +139,7 @@
             this.pwdlbl.AutoSize = true;
             this.pwdlbl.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pwdlbl.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.pwdlbl.Location = new System.Drawing.Point(527, 261);
+            this.pwdlbl.Location = new System.Drawing.Point(527, 286);
             this.pwdlbl.Name = "pwdlbl";
             this.pwdlbl.Size = new System.Drawing.Size(58, 18);
             this.pwdlbl.TabIndex = 10;
