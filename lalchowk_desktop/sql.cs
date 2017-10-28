@@ -172,6 +172,7 @@ namespace Veiled_Kashmir_Admin_Panel
             {
                 adap = new MySqlDataAdapter(use + sqlquery, conn);
                 dt = new DataTable();
+                
                 adap.Fill(dt);
                 conn.Close();
                 bsource = new BindingSource();

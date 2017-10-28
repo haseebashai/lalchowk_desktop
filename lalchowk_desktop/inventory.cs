@@ -195,8 +195,10 @@ namespace Veiled_Kashmir_Admin_Panel
         }
         void bw_DoWork(object sender, DoWorkEventArgs e)
         {
-            readinventory();
-            
+
+       
+                readinventory();
+
         }
 
         private void upbtn_Click(object sender, EventArgs e)
@@ -219,9 +221,11 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
+
                 var message = ex.ToString();
                 string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
                 MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
+
             }
         }
       
@@ -239,6 +243,8 @@ namespace Veiled_Kashmir_Admin_Panel
             refresh.Enabled = false;
             bgworker.RunWorkerAsync();
         }
+
+      
 
         public void loadingdg()
         {
