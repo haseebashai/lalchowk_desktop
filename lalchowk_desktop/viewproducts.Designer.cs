@@ -38,8 +38,8 @@
             this.idtxt = new System.Windows.Forms.TextBox();
             this.delbtn = new System.Windows.Forms.Button();
             this.ppnl = new System.Windows.Forms.Panel();
-            this.bgworker = new System.ComponentModel.BackgroundWorker();
             this.refresh = new System.Windows.Forms.PictureBox();
+            this.bgworker = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.productsdataview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic)).BeginInit();
             this.ppnl.SuspendLayout();
@@ -72,7 +72,7 @@
             this.pic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pic.Location = new System.Drawing.Point(762, 35);
             this.pic.Name = "pic";
-            this.pic.Size = new System.Drawing.Size(243, 318);
+            this.pic.Size = new System.Drawing.Size(233, 318);
             this.pic.TabIndex = 63;
             this.pic.TabStop = false;
             // 
@@ -147,11 +147,6 @@
             this.ppnl.TabIndex = 93;
             this.ppnl.Visible = false;
             // 
-            // bgworker
-            // 
-            this.bgworker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker_DoWork);
-            this.bgworker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker_RunWorkerCompleted);
-            // 
             // refresh
             // 
             this.refresh.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.refresh;
@@ -163,6 +158,11 @@
             this.refresh.TabIndex = 93;
             this.refresh.TabStop = false;
             this.refresh.Click += new System.EventHandler(this.refresh_Click);
+            // 
+            // bgworker
+            // 
+            this.bgworker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker_DoWork);
+            this.bgworker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker_RunWorkerCompleted);
             // 
             // viewproducts
             // 

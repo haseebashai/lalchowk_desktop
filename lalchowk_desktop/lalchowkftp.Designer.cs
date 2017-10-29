@@ -41,14 +41,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.filetxt = new System.Windows.Forms.TextBox();
             this.fpnl = new System.Windows.Forms.Panel();
+            this.searchtxt = new System.Windows.Forms.TextBox();
+            this.ftppic = new System.Windows.Forms.PictureBox();
             this.fetchpnl = new System.Windows.Forms.Panel();
             this.fetchlbl = new System.Windows.Forms.Label();
             this.pbar = new System.Windows.Forms.ProgressBar();
-            this.ftppic = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ftpdataview)).BeginInit();
             this.fpnl.SuspendLayout();
-            this.fetchpnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ftppic)).BeginInit();
+            this.fetchpnl.SuspendLayout();
             this.SuspendLayout();
             // 
             // ftpdataview
@@ -187,6 +189,8 @@
             // 
             // fpnl
             // 
+            this.fpnl.Controls.Add(this.label3);
+            this.fpnl.Controls.Add(this.searchtxt);
             this.fpnl.Controls.Add(this.ftppic);
             this.fpnl.Controls.Add(this.fetchpnl);
             this.fpnl.Controls.Add(this.label1);
@@ -206,6 +210,23 @@
             this.fpnl.Name = "fpnl";
             this.fpnl.Size = new System.Drawing.Size(1191, 683);
             this.fpnl.TabIndex = 88;
+            // 
+            // searchtxt
+            // 
+            this.searchtxt.Location = new System.Drawing.Point(430, 88);
+            this.searchtxt.Name = "searchtxt";
+            this.searchtxt.Size = new System.Drawing.Size(185, 20);
+            this.searchtxt.TabIndex = 90;
+            this.searchtxt.TextChanged += new System.EventHandler(this.searchtxt_TextChanged);
+            // 
+            // ftppic
+            // 
+            this.ftppic.Location = new System.Drawing.Point(668, 207);
+            this.ftppic.Name = "ftppic";
+            this.ftppic.Size = new System.Drawing.Size(182, 244);
+            this.ftppic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ftppic.TabIndex = 89;
+            this.ftppic.TabStop = false;
             // 
             // fetchpnl
             // 
@@ -238,14 +259,17 @@
             this.pbar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.pbar.TabIndex = 56;
             // 
-            // ftppic
+            // label3
             // 
-            this.ftppic.Location = new System.Drawing.Point(668, 207);
-            this.ftppic.Name = "ftppic";
-            this.ftppic.Size = new System.Drawing.Size(182, 244);
-            this.ftppic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.ftppic.TabIndex = 89;
-            this.ftppic.TabStop = false;
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(378, 89);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(46, 15);
+            this.label3.TabIndex = 91;
+            this.label3.Text = "Search";
             // 
             // lalchowkftp
             // 
@@ -260,9 +284,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.ftpdataview)).EndInit();
             this.fpnl.ResumeLayout(false);
             this.fpnl.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ftppic)).EndInit();
             this.fetchpnl.ResumeLayout(false);
             this.fetchpnl.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ftppic)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -286,5 +310,7 @@
         private System.Windows.Forms.Label fetchlbl;
         private System.Windows.Forms.ProgressBar pbar;
         private System.Windows.Forms.PictureBox ftppic;
+        private System.Windows.Forms.TextBox searchtxt;
+        private System.Windows.Forms.Label label3;
     }
 }

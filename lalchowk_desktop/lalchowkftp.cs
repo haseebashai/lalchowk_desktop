@@ -67,23 +67,40 @@ namespace Veiled_Kashmir_Admin_Panel
             ftp.Path = ftppath;
             try
             {
-                bsource = new BindingSource();
-                bsource.DataSource = ftp.ListFiles().Select(x => new {
-                                                         Path = ftp.Path + x,   //Path Column 
-                                                         Name = x             //Name Column
-                                                         }).ToList();
-            }catch(Exception e)
+                bsource = new BindingSource();             
+                bsource.DataSource = ftp.ListFiles().Select(x => new { Path = ftp.Path + x, Name = x }).ToList();
+
+            } catch(Exception e)
             {
                 var message = e.ToString();
                 string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
 
                 MessageBox.Show("Could not load FTP, please try again.\n\n" + split[0], "Error!");
-            }
-           
-           
-            
+            }      
         }
+        private void searchtxt_TextChanged(object sender, EventArgs e)
+        {
+            ftpdataview.DataSource = bsource;
+            DataTable dt = new DataTable();
+            foreach (DataGridViewColumn col in ftpdataview.Columns)
+            {
+                dt.Columns.Add(col.HeaderText);
+            }
 
+            foreach (DataGridViewRow row in ftpdataview.Rows)
+            {
+                DataRow dRow = dt.NewRow();
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    dRow[cell.ColumnIndex] = cell.Value;
+                }
+                dt.Rows.Add(dRow);
+            }
+
+            DataView dv = new DataView(dt);
+            dv.RowFilter = string.Format("name LIKE '%{0}%'", searchtxt.Text);
+            ftpdataview.DataSource = dv;
+        }
 
         private void dirbtn_Click(object sender, EventArgs e)
         {
@@ -155,7 +172,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 pathurl = row.Cells["path"].Value.ToString();
                 filetxt.Text = pathurl.Split('/').Last();
                 string ftpurl = pathurl.Replace("ftp://", "http://").Replace("httpdocs/", "");
-                MessageBox.Show(ftpurl.ToString());
+               
                 ftppic.ImageLocation = ftpurl;
             }
         }
@@ -164,7 +181,7 @@ namespace Veiled_Kashmir_Admin_Panel
         string downloadpath;
         private void ftpdldbtn_Click(object sender, EventArgs e)
         {
-            
+            progressBar1.Value = 0;
             using (var folderDialog = new FolderBrowserDialog())
             {
                 if (folderDialog.ShowDialog() == DialogResult.OK)
@@ -372,6 +389,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         string fileaddress, filename, fullpath, directory,uploaddir;
 
+      
 
         private void uptxt_Click(object sender, EventArgs e)
         {
