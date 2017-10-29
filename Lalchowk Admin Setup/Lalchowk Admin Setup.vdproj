@@ -717,7 +717,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Lalchowk Admin Panel"
         "ProductCode" = "8:{2208713B-A27C-483B-B198-6766AD5F5D78}"
-        "PackageCode" = "8:{8F6417DD-B881-40ED-AF2B-1E8848388EDC}"
+        "PackageCode" = "8:{A947A7EE-BCC8-49DF-B051-644799F11C1E}"
         "UpgradeCode" = "8:{B8A7C424-E711-4824-A69A-7F9AEDACE445}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -740,7 +740,7 @@
         "UseSystemSearchPath" = "11:TRUE"
         "TargetPlatform" = "3:0"
         "PreBuildEvent" = "8:"
-        "PostBuildEvent" = "8:open \"lalchowk admin panel.exe\""
+        "PostBuildEvent" = "8:"
         "RunPostBuildEvent" = "3:0"
         }
         "Registry"
