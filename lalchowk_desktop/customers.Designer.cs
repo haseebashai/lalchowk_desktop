@@ -434,7 +434,7 @@
             this.customerdataview.RowHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.customerdataview.Size = new System.Drawing.Size(637, 508);
             this.customerdataview.TabIndex = 25;
-            this.customerdataview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.customerdataview_CellClick);
+            this.customerdataview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.customerdataview_CellClick);
             // 
             // bgworker
             // 

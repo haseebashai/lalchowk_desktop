@@ -61,7 +61,7 @@
             this.ordergridview.Name = "ordergridview";
             this.ordergridview.Size = new System.Drawing.Size(1122, 372);
             this.ordergridview.TabIndex = 1;
-            this.ordergridview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ordergridview_CellClick);
+            this.ordergridview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ordergridview_CellClick);
             // 
             // apnl
             // 

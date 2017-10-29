@@ -76,7 +76,7 @@
             this.inventorydatagridview.Name = "inventorydatagridview";
             this.inventorydatagridview.Size = new System.Drawing.Size(1148, 389);
             this.inventorydatagridview.TabIndex = 0;
-            this.inventorydatagridview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.inventorydatagridview_CellClick);
+            this.inventorydatagridview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.inventorydatagridview_CellClick);
             // 
             // label3
             // 
@@ -185,9 +185,9 @@
             // 
             // updatebtn
             // 
-            this.updatebtn.Location = new System.Drawing.Point(599, 62);
+            this.updatebtn.Location = new System.Drawing.Point(602, 102);
             this.updatebtn.Name = "updatebtn";
-            this.updatebtn.Size = new System.Drawing.Size(61, 122);
+            this.updatebtn.Size = new System.Drawing.Size(61, 62);
             this.updatebtn.TabIndex = 38;
             this.updatebtn.Text = "Update";
             this.updatebtn.UseVisualStyleBackColor = true;

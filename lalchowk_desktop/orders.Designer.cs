@@ -39,7 +39,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.emailtxt = new System.Windows.Forms.TextBox();
             this.orderpnl = new System.Windows.Forms.Panel();
-            this.formlbl = new System.Windows.Forms.Label();
             this.dpnl = new System.Windows.Forms.Panel();
             this.con = new System.Windows.Forms.Label();
             this.billbtn = new System.Windows.Forms.Button();
@@ -67,6 +66,7 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.orderdetailview = new System.Windows.Forms.DataGridView();
             this.ordergridview = new System.Windows.Forms.DataGridView();
+            this.formlbl = new System.Windows.Forms.Label();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
             this.panel1.SuspendLayout();
             this.orderpnl.SuspendLayout();
@@ -184,19 +184,6 @@
             this.orderpnl.Name = "orderpnl";
             this.orderpnl.Size = new System.Drawing.Size(1162, 671);
             this.orderpnl.TabIndex = 1;
-            // 
-            // formlbl
-            // 
-            this.formlbl.AutoSize = true;
-            this.formlbl.BackColor = System.Drawing.Color.Transparent;
-            this.formlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.formlbl.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.formlbl.Location = new System.Drawing.Point(-2, -1);
-            this.formlbl.Name = "formlbl";
-            this.formlbl.Size = new System.Drawing.Size(72, 25);
-            this.formlbl.TabIndex = 14;
-            this.formlbl.Text = "Orders";
-            this.formlbl.Visible = false;
             // 
             // dpnl
             // 
@@ -480,7 +467,7 @@
             this.orderdetailview.Size = new System.Drawing.Size(1156, 169);
             this.orderdetailview.TabIndex = 1;
             this.orderdetailview.Visible = false;
-            this.orderdetailview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.orderdetailview_CellClick);
+            this.orderdetailview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.orderdetailview_CellClick);
             // 
             // ordergridview
             // 
@@ -491,7 +478,20 @@
             this.ordergridview.Size = new System.Drawing.Size(1156, 231);
             this.ordergridview.TabIndex = 0;
             this.ordergridview.Visible = false;
-            this.ordergridview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ordergridview_CellClick);
+            this.ordergridview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ordergridview_CellClick);
+            // 
+            // formlbl
+            // 
+            this.formlbl.AutoSize = true;
+            this.formlbl.BackColor = System.Drawing.Color.Transparent;
+            this.formlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.formlbl.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.formlbl.Location = new System.Drawing.Point(-2, -1);
+            this.formlbl.Name = "formlbl";
+            this.formlbl.Size = new System.Drawing.Size(72, 25);
+            this.formlbl.TabIndex = 14;
+            this.formlbl.Text = "Orders";
+            this.formlbl.Visible = false;
             // 
             // bgworker
             // 

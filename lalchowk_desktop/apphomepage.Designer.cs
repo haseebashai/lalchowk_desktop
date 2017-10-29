@@ -86,8 +86,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
             this.hpnl = new System.Windows.Forms.Panel();
-            this.randbtn = new System.Windows.Forms.Button();
             this.randlist = new System.Windows.Forms.Button();
+            this.randbtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.leftpic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rightpic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productsdataview)).BeginInit();
@@ -213,7 +213,7 @@
             this.productsdataview.Name = "productsdataview";
             this.productsdataview.Size = new System.Drawing.Size(424, 670);
             this.productsdataview.TabIndex = 52;
-            this.productsdataview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.productsdataview_CellClick);
+            this.productsdataview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.productsdataview_CellClick);
             // 
             // label5
             // 
@@ -581,7 +581,7 @@
             this.offersdataview.Name = "offersdataview";
             this.offersdataview.Size = new System.Drawing.Size(413, 166);
             this.offersdataview.TabIndex = 98;
-            this.offersdataview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.offersdataview_CellClick);
+            this.offersdataview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.offersdataview_CellClick);
             // 
             // updoffers
             // 
@@ -702,16 +702,6 @@
             this.hpnl.TabIndex = 104;
             this.hpnl.Visible = false;
             // 
-            // randbtn
-            // 
-            this.randbtn.Location = new System.Drawing.Point(633, 233);
-            this.randbtn.Name = "randbtn";
-            this.randbtn.Size = new System.Drawing.Size(71, 19);
-            this.randbtn.TabIndex = 104;
-            this.randbtn.Text = "Randomize";
-            this.randbtn.UseVisualStyleBackColor = true;
-            this.randbtn.Click += new System.EventHandler(this.randbtn_Click);
-            // 
             // randlist
             // 
             this.randlist.Location = new System.Drawing.Point(3, 672);
@@ -721,6 +711,16 @@
             this.randlist.Text = "Randomize";
             this.randlist.UseVisualStyleBackColor = true;
             this.randlist.Click += new System.EventHandler(this.randlist_Click);
+            // 
+            // randbtn
+            // 
+            this.randbtn.Location = new System.Drawing.Point(633, 233);
+            this.randbtn.Name = "randbtn";
+            this.randbtn.Size = new System.Drawing.Size(71, 19);
+            this.randbtn.TabIndex = 104;
+            this.randbtn.Text = "Randomize";
+            this.randbtn.UseVisualStyleBackColor = true;
+            this.randbtn.Click += new System.EventHandler(this.randbtn_Click);
             // 
             // apphomepage
             // 

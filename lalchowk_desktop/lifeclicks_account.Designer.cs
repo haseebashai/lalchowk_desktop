@@ -175,7 +175,7 @@
             // 
             this.aballbl.AutoSize = true;
             this.aballbl.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.aballbl.Location = new System.Drawing.Point(853, 117);
+            this.aballbl.Location = new System.Drawing.Point(843, 117);
             this.aballbl.Name = "aballbl";
             this.aballbl.Size = new System.Drawing.Size(153, 13);
             this.aballbl.TabIndex = 24;

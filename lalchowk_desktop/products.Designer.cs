@@ -39,6 +39,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.booklbl = new System.Windows.Forms.Label();
             this.ppnl = new System.Windows.Forms.Panel();
+            this.groclbl = new System.Windows.Forms.Label();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
             this.addpics = new MaterialSkin.Controls.MaterialFlatButton();
             this.viewpbtn = new MaterialSkin.Controls.MaterialFlatButton();
@@ -52,7 +53,6 @@
             this.sqlbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.groclbl = new System.Windows.Forms.Label();
             this.ppnl.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -175,6 +175,16 @@
             this.ppnl.TabIndex = 31;
             this.ppnl.Visible = false;
             // 
+            // groclbl
+            // 
+            this.groclbl.AutoSize = true;
+            this.groclbl.ForeColor = System.Drawing.Color.Gray;
+            this.groclbl.Location = new System.Drawing.Point(17, 183);
+            this.groclbl.Name = "groclbl";
+            this.groclbl.Size = new System.Drawing.Size(51, 13);
+            this.groclbl.TabIndex = 31;
+            this.groclbl.Text = "total groc";
+            // 
             // bgworker
             // 
             this.bgworker.WorkerSupportsCancellation = true;
@@ -270,14 +280,14 @@
             this.ftpbtn.AutoSize = true;
             this.ftpbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ftpbtn.Depth = 0;
-            this.ftpbtn.Location = new System.Drawing.Point(519, 168);
+            this.ftpbtn.Location = new System.Drawing.Point(512, 168);
             this.ftpbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.ftpbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.ftpbtn.Name = "ftpbtn";
             this.ftpbtn.Primary = false;
-            this.ftpbtn.Size = new System.Drawing.Size(84, 36);
+            this.ftpbtn.Size = new System.Drawing.Size(113, 36);
             this.ftpbtn.TabIndex = 33;
-            this.ftpbtn.Text = "Check ftp";
+            this.ftpbtn.Text = "lalchowk ftp";
             this.ftpbtn.UseVisualStyleBackColor = true;
             this.ftpbtn.Click += new System.EventHandler(this.ftpbtn_Click);
             // 
@@ -328,16 +338,6 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1, 30);
             this.panel5.TabIndex = 37;
-            // 
-            // groclbl
-            // 
-            this.groclbl.AutoSize = true;
-            this.groclbl.ForeColor = System.Drawing.Color.Gray;
-            this.groclbl.Location = new System.Drawing.Point(17, 183);
-            this.groclbl.Name = "groclbl";
-            this.groclbl.Size = new System.Drawing.Size(51, 13);
-            this.groclbl.TabIndex = 31;
-            this.groclbl.Text = "total groc";
             // 
             // products
             // 

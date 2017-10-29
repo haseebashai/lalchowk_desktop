@@ -76,7 +76,7 @@
             this.reqdataview.Name = "reqdataview";
             this.reqdataview.Size = new System.Drawing.Size(949, 459);
             this.reqdataview.TabIndex = 1;
-            this.reqdataview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.reqdataview_CellClick);
+            this.reqdataview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.reqdataview_CellClick);
             // 
             // pidlbl
             // 

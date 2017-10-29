@@ -104,6 +104,10 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void dirbtn_Click(object sender, EventArgs e)
         {
+            progressBar1.Visible = false;
+            progresspc.Visible = false;
+            ftppic.Image = null;
+            filesize.Visible = false;
             ftpdataview.DataSource = null;
             fetchpnl.Visible = true;
             fpnl.Enabled = false;
@@ -149,12 +153,24 @@ namespace Veiled_Kashmir_Admin_Panel
             try
             {
                 string filename = pathurl.Split('/').Last();
-                DialogResult dgr = MessageBox.Show("Delete following file ?\n\n" + filename, "Confirm!", MessageBoxButtons.YesNo);
-                if (dgr == DialogResult.Yes)
+                string ext = Path.GetExtension(filename);
+                if (ext != "")
                 {
-                    DeleteFileOnFtpServer(new Uri(pathurl), "Lalchowk", "Lalchowk@123");
+                    DialogResult dgr = MessageBox.Show("Delete following file ?\n\n" + filename, "Confirm!", MessageBoxButtons.YesNo);
+                    if (dgr == DialogResult.Yes)
+                    {
+                        DeleteFileOnFtpServer(new Uri(pathurl), "Lalchowk", "Lalchowk@123");
 
-                    bw.RunWorkerAsync();
+                        bw.RunWorkerAsync();
+                        ftppic.Image = null;
+                        filetxt.Text = "";
+                    }
+                }else
+                {
+                    filesize.Location = new Point(770, 450);
+                    filesize.ForeColor = Color.Red;
+                    filesize.Text = "Cannot delete directory.";
+                    filesize.Visible = true;
                 }
 
             }catch(Exception ex)
@@ -166,14 +182,32 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            progressBar1.Visible = false;
+            progresspc.Visible = false;
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = this.ftpdataview.Rows[e.RowIndex];
                 pathurl = row.Cells["path"].Value.ToString();
                 filetxt.Text = pathurl.Split('/').Last();
-                string ftpurl = pathurl.Replace("ftp://", "http://").Replace("httpdocs/", "");
-               
+                string ftpurl = pathurl.Replace("ftp://", "http://").Replace("httpdocs/", "");             
                 ftppic.ImageLocation = ftpurl;
+                string ext = Path.GetExtension(pathurl);
+                if (ext != "")
+                {
+                    NetworkCredential credentials = new NetworkCredential("Lalchowk", "Lalchowk@123");
+                    FtpWebRequest sizeRequest = (FtpWebRequest)WebRequest.Create(pathurl);
+                    sizeRequest.Credentials = credentials;
+                    sizeRequest.Method = WebRequestMethods.Ftp.GetFileSize;
+                    long size = sizeRequest.GetResponse().ContentLength / 1000;
+                    filesize.Text = size + " KB";
+                    filesize.ForeColor = SystemColors.Highlight;
+                    filesize.Location = new Point(845, 450);
+                    filesize.Visible = true;
+                }
+
+
+                 
+                
             }
         }
 
@@ -181,19 +215,46 @@ namespace Veiled_Kashmir_Admin_Panel
         string downloadpath;
         private void ftpdldbtn_Click(object sender, EventArgs e)
         {
-            progressBar1.Value = 0;
-            using (var folderDialog = new FolderBrowserDialog())
+            ftpdldbtn.Enabled = false;
+            if (filetxt.Text == "")
             {
-                if (folderDialog.ShowDialog() == DialogResult.OK)
+                MessageBox.Show("Please select a file first.");
+                ftpdldbtn.Enabled = true;
+            }
+            else
+            {
+                string ext = System.IO.Path.GetExtension(pathurl);
+                if (ext != "")
                 {
 
-                    downloadpath = folderDialog.SelectedPath;
+                    progressBar1.Value = 0;
+                    progressBar1.Visible = false;
+                    progresspc.Visible = false;
+                    using (var folderDialog = new FolderBrowserDialog())
+                    {
+                        if (folderDialog.ShowDialog() == DialogResult.OK)
+                        {
+
+                            downloadpath = folderDialog.SelectedPath;
+                            // Run Download on background thread
+                            Task.Run(() => Download());
+
+                        }else
+                        {
+                            ftpdldbtn.Enabled = true;
+                        }
+                    }
                 }
+                else
+                {
+                    filesize.Location = new Point(750, 450);
+                    filesize.ForeColor = Color.Red;
+                    filesize.Text = "Cannot download directory.";
+                    filesize.Visible = true;
+                    ftpdldbtn.Enabled = true;
+                }
+
             }
-         
-            // Run Download on background thread
-            Task.Run(() => Download());
-           
         }
 
         private void Download()
@@ -202,7 +263,8 @@ namespace Veiled_Kashmir_Admin_Panel
             try
             {
                 string url = pathurl;
-                NetworkCredential credentials = new NetworkCredential("Lalchowk", "Lalchowk@123");
+                
+                    NetworkCredential credentials = new NetworkCredential("Lalchowk", "Lalchowk@123");
 
                 // Query size of the file to be downloaded
                 FtpWebRequest sizeRequest = (FtpWebRequest)WebRequest.Create(url);
@@ -217,26 +279,27 @@ namespace Veiled_Kashmir_Admin_Panel
                 FtpWebRequest request = (FtpWebRequest)WebRequest.Create(url);
                 request.Credentials = credentials;
                 request.Method = WebRequestMethods.Ftp.DownloadFile;
-               //      Uri uri = new Uri(url);
-                 //  string filename = uri.Segments.Last();
-
                 string filename=url.Substring(url.LastIndexOf("/") + 1);
-                using (Stream ftpStream = request.GetResponse().GetResponseStream())
-                using (Stream fileStream = File.Create(@downloadpath+filename))
-                {
-                    byte[] buffer = new byte[10240];
-                    int read;
-                    int total = 0;
-                    while ((read = ftpStream.Read(buffer, 0, buffer.Length)) > 0)
+                
+
+
+                    using (Stream ftpStream = request.GetResponse().GetResponseStream())
+                    using (Stream fileStream = File.Create(@downloadpath + filename))
                     {
-                        fileStream.Write(buffer, 0, read);
-                        total += read;
-                        
-                        progressBar1.Invoke(
-                            (MethodInvoker)delegate { progressBar1.Visible = true; progressBar1.Value = total/1000;progresspc.Visible = true; progresspc.Text = progressBar1.Value.ToString()+" KB downloaded"; });
+                        byte[] buffer = new byte[10240];
+                        int read;
+                        int total = 0;
+                        while ((read = ftpStream.Read(buffer, 0, buffer.Length)) > 0)
+                        {
+                            fileStream.Write(buffer, 0, read);
+                            total += read;
+
+                            progressBar1.Invoke(
+                                (MethodInvoker)delegate { progressBar1.Visible = true; progressBar1.Value = total / 1000; progresspc.Visible = true; progresspc.Text = progressBar1.Value.ToString() + "/" + size + " KB downloaded"; ftpdldbtn.Enabled = true; });
+                        }
                     }
-                }
-                MessageBox.Show("File downloaded.");
+                    MessageBox.Show("File downloaded.");
+                    
             }
             catch (Exception e)
             {
@@ -308,45 +371,45 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void ftpupbtn_Click(object sender, EventArgs e)
         {
-            if (uptxt.Text == "")
+            ftpupbtn.Enabled = false;
+            if (uptxt.Text == "" || uptxt.Text== "Select File")
             {
                 MessageBox.Show("Select File first!");
-                
+                ftpupbtn.Enabled = true;
             }
             else
             {
-                
-                Cursor = Cursors.WaitCursor;
                 try
                 {
 
                     File.Move(fileaddress, directory + uptxt.Text);
                     uploaddir = directory + uptxt.Text;
-
-                    string responsefromftp = UploadFileToFtp(ftppath, uploaddir);
-
                     
-                    MessageBox.Show("Picture Uploaded.\n\n\n" + responsefromftp.ToString());
-                    progressBar1.Value = 0;
-                    progressBar1.Visible = false;
-                    bw.RunWorkerAsync();
-
+                    Task.Run(() => UploadFileToFtp(ftppath, uploaddir));
 
                 }
-                catch (WebException ex)
+                catch (Exception ex)
                 {
-                    MessageBox.Show(ex.ToString());
-                    
+                    ftpupbtn.Enabled = true;
+                    var message = ex.ToString();
+                    string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
+                    MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
+
                 }
-                Cursor = Cursors.Arrow;
-                uptxt.Text = "Select File";
+
+
             }
         }
 
-        public string UploadFileToFtp(string url, string filePath)
+        public void UploadFileToFtp(string url, string filePath)
         {
             try
             {
+                upbar.Invoke(
+                     (MethodInvoker)delegate
+                     {
+                         upbar.Visible = true; uplbl.Visible = true; uplbl.Text = "Uploading File";
+                     });
                 var fileName = Path.GetFileName(filePath);
                 var request = (FtpWebRequest)WebRequest.Create(url + fileName);
 
@@ -360,30 +423,36 @@ namespace Veiled_Kashmir_Admin_Panel
                 {
                     using (var requestStream = request.GetRequestStream())
                     {
-
-                        fileStream.CopyTo(requestStream);
+                       
+                          fileStream.CopyTo(requestStream);
                         requestStream.Close();
 
-                        
-                        progressBar1.Invoke(
-                       (MethodInvoker)delegate { progressBar1.Visible = true; progressBar1.Value = 100; progresspc.Text = "File Uplaoded"; });
+                        uplbl.Invoke(
+                     (MethodInvoker)delegate
+                     {
+                         upbar.Visible = false; uplbl.Visible = false;
+                         uptxt.Text = "Select File";
+                         ftpupbtn.Enabled = true;
+                         bw.RunWorkerAsync();
+                         MessageBox.Show("File Uploaded");
+                         
+                      });
+
                     }
                 }
-
-
-                     var response = (FtpWebResponse)request.GetResponse();
-                //    MessageBox.Show("Image uploaded successfully.\nSuccess Response code: " + response.StatusDescription);
-
-                      response.Close();
-                return response.StatusDescription;
 
             }
             catch (Exception ex)
             {
-                var message = ex.ToString();
+                uplbl.Invoke(
+                     (MethodInvoker)delegate
+                     {
+                         upbar.Visible = false; uplbl.Visible = false;
+                     });
+                         var message = ex.ToString();
                 string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
                 MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
-                return null;
+              
             }
         }
 

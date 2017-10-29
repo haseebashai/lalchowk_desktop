@@ -65,7 +65,7 @@
             this.productsdataview.Name = "productsdataview";
             this.productsdataview.Size = new System.Drawing.Size(755, 485);
             this.productsdataview.TabIndex = 61;
-            this.productsdataview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.productsdataview_CellClick);
+            this.productsdataview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.productsdataview_CellClick);
             // 
             // pic
             // 

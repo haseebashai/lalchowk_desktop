@@ -41,12 +41,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.filetxt = new System.Windows.Forms.TextBox();
             this.fpnl = new System.Windows.Forms.Panel();
+            this.filesize = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.searchtxt = new System.Windows.Forms.TextBox();
             this.ftppic = new System.Windows.Forms.PictureBox();
             this.fetchpnl = new System.Windows.Forms.Panel();
             this.fetchlbl = new System.Windows.Forms.Label();
             this.pbar = new System.Windows.Forms.ProgressBar();
-            this.label3 = new System.Windows.Forms.Label();
+            this.upbar = new System.Windows.Forms.ProgressBar();
+            this.uplbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ftpdataview)).BeginInit();
             this.fpnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ftppic)).BeginInit();
@@ -62,7 +65,7 @@
             this.ftpdataview.Name = "ftpdataview";
             this.ftpdataview.Size = new System.Drawing.Size(613, 501);
             this.ftpdataview.TabIndex = 0;
-            this.ftpdataview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.ftpdataview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // ftpdelbtn
             // 
@@ -189,6 +192,9 @@
             // 
             // fpnl
             // 
+            this.fpnl.Controls.Add(this.upbar);
+            this.fpnl.Controls.Add(this.uplbl);
+            this.fpnl.Controls.Add(this.filesize);
             this.fpnl.Controls.Add(this.label3);
             this.fpnl.Controls.Add(this.searchtxt);
             this.fpnl.Controls.Add(this.ftppic);
@@ -211,6 +217,31 @@
             this.fpnl.Size = new System.Drawing.Size(1191, 683);
             this.fpnl.TabIndex = 88;
             // 
+            // filesize
+            // 
+            this.filesize.AutoSize = true;
+            this.filesize.BackColor = System.Drawing.Color.Transparent;
+            this.filesize.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.filesize.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.filesize.Location = new System.Drawing.Point(845, 450);
+            this.filesize.Name = "filesize";
+            this.filesize.Size = new System.Drawing.Size(25, 13);
+            this.filesize.TabIndex = 92;
+            this.filesize.Text = "size";
+            this.filesize.Visible = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(378, 89);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(46, 15);
+            this.label3.TabIndex = 91;
+            this.label3.Text = "Search";
+            // 
             // searchtxt
             // 
             this.searchtxt.Location = new System.Drawing.Point(430, 88);
@@ -221,7 +252,7 @@
             // 
             // ftppic
             // 
-            this.ftppic.Location = new System.Drawing.Point(668, 207);
+            this.ftppic.Location = new System.Drawing.Point(634, 207);
             this.ftppic.Name = "ftppic";
             this.ftppic.Size = new System.Drawing.Size(182, 244);
             this.ftppic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -259,17 +290,28 @@
             this.pbar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.pbar.TabIndex = 56;
             // 
-            // label3
+            // upbar
             // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(378, 89);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(46, 15);
-            this.label3.TabIndex = 91;
-            this.label3.Text = "Search";
+            this.upbar.Location = new System.Drawing.Point(633, 163);
+            this.upbar.MarqueeAnimationSpeed = 30;
+            this.upbar.Name = "upbar";
+            this.upbar.Size = new System.Drawing.Size(255, 3);
+            this.upbar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.upbar.TabIndex = 93;
+            this.upbar.Visible = false;
+            // 
+            // uplbl
+            // 
+            this.uplbl.AutoSize = true;
+            this.uplbl.BackColor = System.Drawing.Color.Transparent;
+            this.uplbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uplbl.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.uplbl.Location = new System.Drawing.Point(630, 174);
+            this.uplbl.Name = "uplbl";
+            this.uplbl.Size = new System.Drawing.Size(25, 13);
+            this.uplbl.TabIndex = 94;
+            this.uplbl.Text = "size";
+            this.uplbl.Visible = false;
             // 
             // lalchowkftp
             // 
@@ -312,5 +354,8 @@
         private System.Windows.Forms.PictureBox ftppic;
         private System.Windows.Forms.TextBox searchtxt;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label filesize;
+        private System.Windows.Forms.ProgressBar upbar;
+        private System.Windows.Forms.Label uplbl;
     }
 }

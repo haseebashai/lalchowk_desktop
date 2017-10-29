@@ -42,17 +42,17 @@
             this.label4 = new System.Windows.Forms.Label();
             this.gridtxt = new System.Windows.Forms.TextBox();
             this.ppnl = new System.Windows.Forms.Panel();
+            this.refresh = new System.Windows.Forms.PictureBox();
             this.uploadlbl = new System.Windows.Forms.Label();
             this.dp = new System.Windows.Forms.PictureBox();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
             this.picworker = new System.ComponentModel.BackgroundWorker();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.refresh = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.picturesdataview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic)).BeginInit();
             this.ppnl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.refresh)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dp)).BeginInit();
             this.SuspendLayout();
             // 
             // picdialog
@@ -100,7 +100,7 @@
             this.picturesdataview.Name = "picturesdataview";
             this.picturesdataview.Size = new System.Drawing.Size(574, 485);
             this.picturesdataview.TabIndex = 60;
-            this.picturesdataview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.picturesdataview_CellClick);
+            this.picturesdataview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.picturesdataview_CellClick);
             // 
             // label30
             // 
@@ -192,6 +192,18 @@
             this.ppnl.TabIndex = 94;
             this.ppnl.Visible = false;
             // 
+            // refresh
+            // 
+            this.refresh.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.refresh;
+            this.refresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.refresh.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.refresh.Location = new System.Drawing.Point(555, 3);
+            this.refresh.Name = "refresh";
+            this.refresh.Size = new System.Drawing.Size(21, 21);
+            this.refresh.TabIndex = 96;
+            this.refresh.TabStop = false;
+            this.refresh.Click += new System.EventHandler(this.refresh_Click);
+            // 
             // uploadlbl
             // 
             this.uploadlbl.AutoSize = true;
@@ -227,18 +239,6 @@
             this.timer.Interval = 500;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
-            // refresh
-            // 
-            this.refresh.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.refresh;
-            this.refresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.refresh.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.refresh.Location = new System.Drawing.Point(555, 3);
-            this.refresh.Name = "refresh";
-            this.refresh.Size = new System.Drawing.Size(21, 21);
-            this.refresh.TabIndex = 96;
-            this.refresh.TabStop = false;
-            this.refresh.Click += new System.EventHandler(this.refresh_Click);
-            // 
             // addpictures
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -254,8 +254,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pic)).EndInit();
             this.ppnl.ResumeLayout(false);
             this.ppnl.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.refresh)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dp)).EndInit();
             this.ResumeLayout(false);
 
         }
