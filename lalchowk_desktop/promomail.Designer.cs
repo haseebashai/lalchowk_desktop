@@ -236,7 +236,6 @@
             // 
             this.recno.Location = new System.Drawing.Point(130, 16);
             this.recno.Name = "recno";
-            this.recno.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.recno.Size = new System.Drawing.Size(41, 20);
             this.recno.TabIndex = 92;
             // 
@@ -271,7 +270,6 @@
             // 
             this.emailno.Location = new System.Drawing.Point(130, 47);
             this.emailno.Name = "emailno";
-            this.emailno.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.emailno.Size = new System.Drawing.Size(41, 20);
             this.emailno.TabIndex = 89;
             // 

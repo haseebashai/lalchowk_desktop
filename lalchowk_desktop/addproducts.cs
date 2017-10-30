@@ -56,8 +56,9 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             Cursor = Cursors.WaitCursor;
             readfirst();
-            readsuppliers();
             readsecond();
+            readsuppliers();
+            
            
         }
 
@@ -65,6 +66,7 @@ namespace Veiled_Kashmir_Admin_Panel
         {
 
             firstcat.DisplayMember = "categoryname";
+            seccat.DisplayMember = "categoryname";
             supplierlist.DisplayMember = "name";         
             addppnl.Enabled = true;
             dg.loadingimage.Visible = false;
@@ -133,7 +135,7 @@ namespace Veiled_Kashmir_Admin_Panel
             dt.Columns.Add("categoryname", typeof(String));
             dt.Load(dr);
             obj.closeConnection();
-            seccat.DisplayMember = "categoryname";
+           
             seccat.DataSource = dt;
              
             }
@@ -350,14 +352,13 @@ namespace Veiled_Kashmir_Admin_Panel
                 string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
                 MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             
-                success = false;
+               
                 return null;               
             }
         }
        
         private void bguploadpic_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            uptxt.Text = e.ProgressPercentage.ToString();
             picprogress.Value = e.ProgressPercentage;
         }
 
@@ -404,7 +405,12 @@ namespace Veiled_Kashmir_Admin_Panel
                 uptxt.Text = "Upload Successful. " + displayname ;
                 pictext.Clear();
                 picture.BackgroundImage = null;
-            }else
+            }else if (uploadfailed)
+            {
+                uptxt.ForeColor = Color.Red;
+                uptxt.Text = "Upload Failed " + displayname;
+            }
+            else
             {
 
                 uptxt.Visible = false;
@@ -534,7 +540,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 var message = ex.ToString();
                 string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
                 MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");          
-                success = false;
+                
                 return null;
             }
         }
@@ -699,15 +705,15 @@ namespace Veiled_Kashmir_Admin_Panel
                     string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
                     MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
                 
-                    success = false;
+                    
                 }
                     Cursor = Cursors.Arrow;
                 p6txt.Text = "";
             }          
         }
 
-
-        public static void UploadFileToFtp(string url, string filePath)
+        bool uploadfailed = false;
+        public void UploadFileToFtp(string url, string filePath)
         {
             try
             {
@@ -739,7 +745,8 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
-                var message = ex.ToString();
+                uploadfailed = true;
+                string message = ex.ToString();
                 string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
                 MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
@@ -755,7 +762,7 @@ namespace Veiled_Kashmir_Admin_Panel
         private void desctxt_Leave(object sender, EventArgs e)
         {
             
-                if (!Regex.IsMatch(desctxt.Text, @"^([a-zA-Z0-9@#$%&*+\-_(),+':;?.,![\]\s\\/{}""|]+)$") )
+                if (!Regex.IsMatch(desctxt.Text, @"^([a-zA-Z0-9@#$%&*+\-_(),+':;?.,![\]\s\\/{}""|]+)$") && desctxt.Text!="")
                 {
 
                     MessageBox.Show("Abnormal Special Character found, Please remove it and proceed.");
@@ -862,6 +869,7 @@ namespace Veiled_Kashmir_Admin_Panel
             foreach (DataRowView items in seccat.Items)
                 seccat.Items.Remove(items);
             readsecond();
+                seccat.DisplayMember = "categoryname";
             }
             catch (Exception ex)
             {

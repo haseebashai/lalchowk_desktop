@@ -204,7 +204,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
                 bgworker.ReportProgress(100);
                 MessageBox.Show("Mail Sent.");
-                sendinglbl.Text = "";
+                
 
 
                 return (null);
@@ -454,7 +454,8 @@ namespace Veiled_Kashmir_Admin_Panel
            
             sendbtn.Enabled = true;
             timer.Stop();
-            sendinglbl.Text = "";           
+            sendinglbl.Text = "";
+            tolbl.Text = "";
             progressBar1.Value = 0;
             progressBar1.Visible = false;
 

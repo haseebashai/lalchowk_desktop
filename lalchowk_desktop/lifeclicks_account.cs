@@ -243,6 +243,11 @@ namespace Veiled_Kashmir_Admin_Panel
                 mysqlcmd.ExecuteNonQuery();
                 MessageBox.Show("Entry added.");
                 aconn.Close();
+                cenametxt.Text = "";
+                ceamounttxt.Text = "";
+                cedatetxt.Text = "";
+                cecmtstxt.Text = "";
+                cespenttxt.Text = "";
             }
 
             catch (Exception ex)
@@ -251,11 +256,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
                 MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
-            cenametxt.Text = "";
-            ceamounttxt.Text = "";
-            cedatetxt.Text = "";
-            cecmtstxt.Text = "";
-            cespenttxt.Text = "";
+            
             readclientexp();
             accountdataview.DataSource = bsource;
 

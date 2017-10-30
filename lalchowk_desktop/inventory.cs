@@ -174,16 +174,8 @@ namespace Veiled_Kashmir_Admin_Panel
                 MessageBox.Show(ex.ToString());
             }
         }
+
         BackgroundWorker bw ;
-        private void dtrefresh()
-        {
-            inventorydatagridview.DataSource = null;
-            fetchlbl.Text = "Fetching Rows";
-            bw = new BackgroundWorker();
-            bw.DoWork += new DoWorkEventHandler(bw_DoWork);
-            bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_RunWorkerCompleted);
-            bw.RunWorkerAsync();
-        }
         void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             ipnl.Enabled = true;
@@ -196,37 +188,46 @@ namespace Veiled_Kashmir_Admin_Panel
         void bw_DoWork(object sender, DoWorkEventArgs e)
         {
 
-       
-                readinventory();
-
+            try
+            {
+                adap.Fill(dt);
+                bsource = new BindingSource();
+                bsource.DataSource = dt;
+            }catch
+            {
+                MessageBox.Show("Please check your internet connection.");
+            }
         }
 
         private void upbtn_Click(object sender, EventArgs e)
         {
-            try
-            {
-                fetchlbl.Text = "Updating rows";
+                try
+                {
+                    cmdbl = new MySqlCommandBuilder(adap);
+                    adap.Update(dt);
+                    fetchlbl.Text = "Fetching Rows";
                 fetchlbl.Visible = true;
                 pbar.Visible = true;
                 descpnl.Visible = false;
                 upbtn.Enabled = false;
                 ipnl.Enabled = false;
-                cmdbl = new MySqlCommandBuilder(adap);
-                adap.Update(dt);
                 updlbl.Visible = true;
-                
-                dtrefresh();
-                
-
-            }
-            catch (Exception ex)
-            {
-
-                var message = ex.ToString();
-                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
-                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
-
-            }
+                inventorydatagridview.DataSource = null;
+                bw = new BackgroundWorker();
+                    bw.DoWork += new DoWorkEventHandler(bw_DoWork);
+                    bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_RunWorkerCompleted);
+                    bw.RunWorkerAsync();
+                }
+                catch (Exception ex)
+                {
+                    updlbl.Text="Update failed";
+                updlbl.Visible = true;
+                fetchlbl.Text = "Database mismatch, Please refresh the page.";
+                fetchlbl.Visible = true;
+                    var message = ex.ToString();
+                    string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
+                    MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
+                }
         }
       
 
