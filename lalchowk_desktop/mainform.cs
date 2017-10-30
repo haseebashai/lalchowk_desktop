@@ -77,6 +77,7 @@ namespace Veiled_Kashmir_Admin_Panel
         bool starterror=false;
         PictureBox refresh;
         Label refreshlbl;
+        int placedcount, shippedcount;
         private void readorders()
         {
             
@@ -88,6 +89,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 con.Close();
                 bsource = new BindingSource();
                 bsource.DataSource = dt;
+                placedcount = dt.Rows.Count;
 
 
                 con.Open();
@@ -97,6 +99,8 @@ namespace Veiled_Kashmir_Admin_Panel
                 con.Close();
                 bsource2 = new BindingSource();
                 bsource2.DataSource = dt;
+                shippedcount=dt.Rows.Count;
+               
 
                 dr = obj.Query("Select count(status) from orders where status='placed'");
                 dr.Read();
@@ -122,7 +126,7 @@ namespace Veiled_Kashmir_Admin_Panel
             {
                 var message = ex.ToString();
                 string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
-                MessageBox.Show("Something happened.\nPlease check your internet connection and click Refresh.\n\n" + split[0], "Error!");
+                MessageBox.Show("Something happened.\nPlease check your internet connection and click Refresh.\n\n" , "Error!");
             
             starterror = true;
 
@@ -131,10 +135,6 @@ namespace Veiled_Kashmir_Admin_Panel
         }
         void bw_DoWork(object sender, DoWorkEventArgs e)
         {
-            
-            
-
-
             refresh = new PictureBox()
             {
                 Image = Properties.Resources.refresh,
@@ -204,14 +204,14 @@ namespace Veiled_Kashmir_Admin_Panel
         }
         public void changelabel(String welcome)
         {
-            signinlbl.Text = welcome;
+        //    signinlbl.Text = welcome;
 
-            signinlbl.Visible = true;
+      //      signinlbl.Visible = true;
 
         }
         public void signout()
         {
-            signoutlbl.Visible = true;
+         //   signoutlbl.Visible = true;
         }
 
         private void signoutlbl_Click(object sender, EventArgs e)
@@ -310,7 +310,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 dialogcontainer dg = new dialogcontainer();
                 expenditure exp = new expenditure(this, hp,dg);
                 exp.TopLevel = false;
-                dg.Size = new Size(1000, 715);
+                dg.Size = new Size(1000, 725);
                 dg.Text = "Expenditure";
                 dg.dialogpnl.Controls.Add(exp);
                 exp.loadingdg();
@@ -491,7 +491,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 dialogcontainer dg = new dialogcontainer();
                 messages msg = new messages(dg);
                 msg.TopLevel = false;
-                dg.Size = new Size(900, 715);
+                dg.Size = new Size(900, 735);
                 dg.dialogpnl.Controls.Add(msg);
                 msg.loadingdg();
                 dg.Text = "User Messages";
@@ -523,6 +523,9 @@ namespace Veiled_Kashmir_Admin_Panel
                 
                 dg.dialogpnl.Controls.Add(aph);
                 aph.loadingdg();
+                dg.dialogpnl.Location = new Point(0, -1);
+                dg.dialogpnl.Size = new Size(1185, 698);
+                
                 dg.Text = "Edit Homepage";
 
                 dg.Show();
@@ -663,6 +666,21 @@ namespace Veiled_Kashmir_Admin_Panel
             }
         }
 
+        private void totalordersdel_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            ordersdetails od = new ordersdetails(hp, this);
+            cntpnl.Controls.Clear();
+            od.TopLevel = false;
+            cntpnl.Controls.Add(od);
+            od.loadingnormal();
+            cntpnl.Visible = true;        
+            od.Show();
+           
+            od.bgworker1.RunWorkerAsync();
+            Cursor = Cursors.Arrow;
+        }
+
         private void settingsbtn_Click(object sender, EventArgs e)
         {
             if (cntpnl.Contains(placeddataview))
@@ -717,47 +735,54 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void bgworker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-
-            if (starterror)
+            if (shippedcount == 0 && placedcount == 0 && starterror==false)
             {
+                cntpnl.Visible = false;
                
-                
-                placedh.Visible = false;
-                placeddataview.Visible = false;
-                shippedh.Visible = false;
-                shippedlbl.Visible = false;
-                attention.Visible = false; placedlbl.Visible = false; deliveredh.Visible = false; orderslbl.Visible = false;
-                shippeddataview.Visible = false;
-                loadingpic.Visible = false;
-                loadinglbl.Visible = false;
-                
-                bw = new BackgroundWorker();
-                bw.DoWork += new DoWorkEventHandler(bw_DoWork);
-                bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_RunWorkerCompleted);
-                bw.RunWorkerAsync();
             }
-
-
             else
             {
-               
-                
-                loadingpic.Visible = false;
-                loadinglbl.Visible = false;
-                placedh.Visible = true;
-                shippedh.Visible = true;
-                shippedlbl.Visible = true;
-                attention.Visible = true; placedlbl.Visible = true; deliveredh.Visible = true; orderslbl.Visible = true;
+                if (starterror)
+                {
 
-                placeddataview.DataSource = bsource;
-                shippeddataview.DataSource = bsource2;
-                placeddataview.Visible = true;
-                shippeddataview.Visible = true;
-                attentionlbl.Text = "> " + atten + " Order(s) need your Attention ASAP!";
-                costlbl.Text = "> Will cost Rs. " + cost + "/-";
-                ordersdlbl.Text = order;
+
+                    placedh.Visible = false;
+                    placeddataview.Visible = false;
+                    shippedh.Visible = false;
+                    shippedlbl.Visible = false;
+                    attention.Visible = false; placedlbl.Visible = false; deliveredh.Visible = false; orderslbl.Visible = false;
+                    shippeddataview.Visible = false;
+                    loadingpic.Visible = false;
+                    loadinglbl.Visible = false;
+
+                    bw = new BackgroundWorker();
+                    bw.DoWork += new DoWorkEventHandler(bw_DoWork);
+                    bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_RunWorkerCompleted);
+                    bw.RunWorkerAsync();
+                }
+
+
+                else
+                {
+
+
+                    loadingpic.Visible = false;
+                    loadinglbl.Visible = false;
+                    placedh.Visible = true;
+                    shippedh.Visible = true;
+                    shippedlbl.Visible = true;
+                    attention.Visible = true; placedlbl.Visible = true; deliveredh.Visible = true; orderslbl.Visible = true;
+
+                    placeddataview.DataSource = bsource;
+                    shippeddataview.DataSource = bsource2;
+                    placeddataview.Visible = true;
+                    shippeddataview.Visible = true;
+                    attentionlbl.Text = "> " + atten + " Order(s) need your Attention ASAP!";
+                    costlbl.Text = "> Will cost Rs. " + cost + "/-";
+                    ordersdlbl.Text = order;
+                }
+
             }
-            
         }
     }
 }

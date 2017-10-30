@@ -41,6 +41,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.filetxt = new System.Windows.Forms.TextBox();
             this.fpnl = new System.Windows.Forms.Panel();
+            this.upbar = new System.Windows.Forms.ProgressBar();
+            this.uplbl = new System.Windows.Forms.Label();
             this.filesize = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.searchtxt = new System.Windows.Forms.TextBox();
@@ -48,8 +50,6 @@
             this.fetchpnl = new System.Windows.Forms.Panel();
             this.fetchlbl = new System.Windows.Forms.Label();
             this.pbar = new System.Windows.Forms.ProgressBar();
-            this.upbar = new System.Windows.Forms.ProgressBar();
-            this.uplbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ftpdataview)).BeginInit();
             this.fpnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ftppic)).BeginInit();
@@ -217,6 +217,29 @@
             this.fpnl.Size = new System.Drawing.Size(1191, 683);
             this.fpnl.TabIndex = 88;
             // 
+            // upbar
+            // 
+            this.upbar.Location = new System.Drawing.Point(633, 163);
+            this.upbar.MarqueeAnimationSpeed = 30;
+            this.upbar.Name = "upbar";
+            this.upbar.Size = new System.Drawing.Size(255, 3);
+            this.upbar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.upbar.TabIndex = 93;
+            this.upbar.Visible = false;
+            // 
+            // uplbl
+            // 
+            this.uplbl.AutoSize = true;
+            this.uplbl.BackColor = System.Drawing.Color.Transparent;
+            this.uplbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uplbl.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.uplbl.Location = new System.Drawing.Point(630, 174);
+            this.uplbl.Name = "uplbl";
+            this.uplbl.Size = new System.Drawing.Size(25, 13);
+            this.uplbl.TabIndex = 94;
+            this.uplbl.Text = "size";
+            this.uplbl.Visible = false;
+            // 
             // filesize
             // 
             this.filesize.AutoSize = true;
@@ -290,35 +313,12 @@
             this.pbar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.pbar.TabIndex = 56;
             // 
-            // upbar
-            // 
-            this.upbar.Location = new System.Drawing.Point(633, 163);
-            this.upbar.MarqueeAnimationSpeed = 30;
-            this.upbar.Name = "upbar";
-            this.upbar.Size = new System.Drawing.Size(255, 3);
-            this.upbar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
-            this.upbar.TabIndex = 93;
-            this.upbar.Visible = false;
-            // 
-            // uplbl
-            // 
-            this.uplbl.AutoSize = true;
-            this.uplbl.BackColor = System.Drawing.Color.Transparent;
-            this.uplbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uplbl.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.uplbl.Location = new System.Drawing.Point(630, 174);
-            this.uplbl.Name = "uplbl";
-            this.uplbl.Size = new System.Drawing.Size(25, 13);
-            this.uplbl.TabIndex = 94;
-            this.uplbl.Text = "size";
-            this.uplbl.Visible = false;
-            // 
             // lalchowkftp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1166, 722);
+            this.ClientSize = new System.Drawing.Size(1166, 689);
             this.Controls.Add(this.fpnl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "lalchowkftp";

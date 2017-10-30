@@ -275,7 +275,7 @@
             this.apnl.Controls.Add(this.label9);
             this.apnl.Controls.Add(this.stocklbl);
             this.apnl.Controls.Add(this.apbtn);
-            this.apnl.Location = new System.Drawing.Point(6, 512);
+            this.apnl.Location = new System.Drawing.Point(6, 497);
             this.apnl.Name = "apnl";
             this.apnl.Size = new System.Drawing.Size(949, 162);
             this.apnl.TabIndex = 29;
@@ -298,7 +298,7 @@
             this.ppnl.Controls.Add(this.ubtn);
             this.ppnl.Location = new System.Drawing.Point(1, 0);
             this.ppnl.Name = "ppnl";
-            this.ppnl.Size = new System.Drawing.Size(1162, 710);
+            this.ppnl.Size = new System.Drawing.Size(1162, 662);
             this.ppnl.TabIndex = 72;
             this.ppnl.Visible = false;
             // 
@@ -312,7 +312,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1162, 722);
+            this.ClientSize = new System.Drawing.Size(1162, 665);
             this.Controls.Add(this.ppnl);
             this.Controls.Add(this.formlbl);
             this.ForeColor = System.Drawing.Color.Black;

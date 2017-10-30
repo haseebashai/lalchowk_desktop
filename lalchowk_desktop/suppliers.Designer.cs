@@ -87,6 +87,7 @@
             this.supplierdatagridview.Name = "supplierdatagridview";
             this.supplierdatagridview.Size = new System.Drawing.Size(948, 431);
             this.supplierdatagridview.TabIndex = 0;
+            this.supplierdatagridview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.supplierdatagridview_CellContentClick);
             this.supplierdatagridview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.supplierdatagridview_CellContentClick);
             // 
             // label2
@@ -360,7 +361,7 @@
             this.dpnl.Controls.Add(this.countlbl);
             this.dpnl.Location = new System.Drawing.Point(3, 539);
             this.dpnl.Name = "dpnl";
-            this.dpnl.Size = new System.Drawing.Size(870, 126);
+            this.dpnl.Size = new System.Drawing.Size(870, 109);
             this.dpnl.TabIndex = 60;
             this.dpnl.Visible = false;
             // 
@@ -392,7 +393,7 @@
             this.suppnl.Controls.Add(this.label6);
             this.suppnl.Location = new System.Drawing.Point(2, 30);
             this.suppnl.Name = "suppnl";
-            this.suppnl.Size = new System.Drawing.Size(1163, 680);
+            this.suppnl.Size = new System.Drawing.Size(1163, 650);
             this.suppnl.TabIndex = 61;
             this.suppnl.Visible = false;
             // 
@@ -417,7 +418,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1162, 722);
+            this.ClientSize = new System.Drawing.Size(1162, 681);
             this.Controls.Add(this.suppnl);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

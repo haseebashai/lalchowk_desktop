@@ -28,17 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(dialogcontainer));
             this.dialogpnl = new System.Windows.Forms.Panel();
-            this.closebtn = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.lbl = new System.Windows.Forms.Label();
-            this.minimize = new System.Windows.Forms.PictureBox();
             this.loadingimage = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.closebtn)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.minimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.loadingimage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,19 +46,6 @@
             this.dialogpnl.Name = "dialogpnl";
             this.dialogpnl.Size = new System.Drawing.Size(1185, 678);
             this.dialogpnl.TabIndex = 0;
-            // 
-            // closebtn
-            // 
-            this.closebtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.closebtn.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.turn_on;
-            this.closebtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.closebtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.closebtn.Location = new System.Drawing.Point(1142, 4);
-            this.closebtn.Name = "closebtn";
-            this.closebtn.Size = new System.Drawing.Size(25, 25);
-            this.closebtn.TabIndex = 56;
-            this.closebtn.TabStop = false;
-            this.closebtn.Click += new System.EventHandler(this.closebtn_Click);
             // 
             // panel3
             // 
@@ -108,21 +92,6 @@
             this.lbl.Size = new System.Drawing.Size(0, 24);
             this.lbl.TabIndex = 68;
             // 
-            // minimize
-            // 
-            this.minimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.minimize.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.diminish;
-            this.minimize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.minimize.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.minimize.ImageLocation = "";
-            this.minimize.Location = new System.Drawing.Point(1116, 7);
-            this.minimize.Name = "minimize";
-            this.minimize.Size = new System.Drawing.Size(20, 20);
-            this.minimize.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.minimize.TabIndex = 69;
-            this.minimize.TabStop = false;
-            this.minimize.Click += new System.EventHandler(this.minimize_Click);
-            // 
             // loadingimage
             // 
             this.loadingimage.Image = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.loading;
@@ -141,19 +110,17 @@
             this.ClientSize = new System.Drawing.Size(1190, 715);
             this.Controls.Add(this.lbl);
             this.Controls.Add(this.loadingimage);
-            this.Controls.Add(this.minimize);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel5);
-            this.Controls.Add(this.closebtn);
             this.Controls.Add(this.dialogpnl);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "dialogcontainer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Lalchowk Admin Panel";
-            ((System.ComponentModel.ISupportInitialize)(this.closebtn)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.minimize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.loadingimage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -163,13 +130,11 @@
         #endregion
 
         public System.Windows.Forms.Panel dialogpnl;
-        private System.Windows.Forms.PictureBox closebtn;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel5;
         public System.Windows.Forms.Label lbl;
-        private System.Windows.Forms.PictureBox minimize;
         public System.Windows.Forms.PictureBox loadingimage;
     }
 }

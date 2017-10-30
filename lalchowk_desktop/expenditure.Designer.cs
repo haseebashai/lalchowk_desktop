@@ -178,7 +178,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Silver;
-            this.panel2.Location = new System.Drawing.Point(412, 34);
+            this.panel2.Location = new System.Drawing.Point(412, 17);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1, 595);
             this.panel2.TabIndex = 11;
@@ -335,7 +335,7 @@
             this.epnl.Controls.Add(this.panel2);
             this.epnl.Location = new System.Drawing.Point(2, 26);
             this.epnl.Name = "epnl";
-            this.epnl.Size = new System.Drawing.Size(993, 697);
+            this.epnl.Size = new System.Drawing.Size(993, 634);
             this.epnl.TabIndex = 48;
             this.epnl.Visible = false;
             // 
@@ -359,7 +359,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1162, 722);
+            this.ClientSize = new System.Drawing.Size(1162, 663);
             this.Controls.Add(this.formlbl);
             this.Controls.Add(this.epnl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

@@ -17,7 +17,7 @@ namespace Veiled_Kashmir_Admin_Panel
         MySqlDataReader dr,dr2;
         DBConnect obj = new DBConnect();
         bool fnameok, lnameok, usernameok, emailok, passwordok, confirmok, phoneok, dobok;
-        string tp, elec, cloth, foot, mobile, comp, cacc, cos, book,groc;
+        string tp, elec, cloth, foot, mobile, comp, cacc, cos, book,groc,hhold;
         PictureBox loading = new PictureBox();
 
         private dialogcontainer dg = null;
@@ -67,6 +67,7 @@ namespace Veiled_Kashmir_Admin_Panel
             coslbl.Text = "Total Cosmetics Items currently added: " + cos;
             booklbl.Text = "Total Books currently added: " + book;
             groclbl.Text= "Total Grocery items currently added: " + groc;
+            householdlbl.Text = "Total Customized items currently added: " + hhold;
             ppnl.Visible = true;
         }
 
@@ -134,7 +135,7 @@ namespace Veiled_Kashmir_Admin_Panel
             comp= dr[0].ToString();
             obj.closeConnection();
 
-            dr = obj.Query("Select count(productid) from products where supplierid ='3'");
+            dr = obj.Query("Select count(productid) from products where supplierid ='3' or supplierid='18'");
             dr.Read();
             cacc= dr[0].ToString();
             obj.closeConnection();
@@ -152,6 +153,11 @@ namespace Veiled_Kashmir_Admin_Panel
                 dr = obj.Query("select count(productid) from products where supplierid='15'");
                 dr.Read();
                 groc = dr[0].ToString();
+                obj.closeConnection();
+
+                dr = obj.Query("select count(productid) from products where supplierid='17'");
+                dr.Read();
+                hhold = dr[0].ToString();
                 obj.closeConnection();
 
             }
@@ -174,6 +180,7 @@ namespace Veiled_Kashmir_Admin_Panel
             apr.TopLevel = false;
             dg.dialogpnl.Controls.Clear();
             dg.dialogpnl.Controls.Add(apr);
+            dg.Size = new Size(1206, 734);
             dg.Show();
             apr.Show();
         }
@@ -185,6 +192,7 @@ namespace Veiled_Kashmir_Admin_Panel
             inv.TopLevel = false;
             dg.dialogpnl.Controls.Clear();
             dg.dialogpnl.Controls.Add(inv);
+            dg.Size = new Size(1206, 732);
             dg.Show();
             inv.Show();
 
@@ -196,7 +204,7 @@ namespace Veiled_Kashmir_Admin_Panel
             
             dialogcontainer dg = new dialogcontainer();
             dg.Text = "Add Pictures";
-            dg.Size = new Size(800, 715);
+            dg.Size = new Size(800, 735);
             addpictures ap = new addpictures(dg);
             ap.TopLevel = false;
             dg.dialogpnl.Controls.Clear();

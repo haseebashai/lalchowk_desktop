@@ -505,7 +505,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1162, 722);
+            this.ClientSize = new System.Drawing.Size(1162, 617);
             this.Controls.Add(this.epnl);
             this.Controls.Add(this.loadingaccpic);
             this.Controls.Add(this.loadinglbl);

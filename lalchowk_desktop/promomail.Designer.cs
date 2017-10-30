@@ -328,7 +328,7 @@
             this.epnl.Controls.Add(this.label5);
             this.epnl.Location = new System.Drawing.Point(0, 1);
             this.epnl.Name = "epnl";
-            this.epnl.Size = new System.Drawing.Size(1029, 709);
+            this.epnl.Size = new System.Drawing.Size(1029, 670);
             this.epnl.TabIndex = 87;
             this.epnl.Visible = false;
             // 
@@ -376,7 +376,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1162, 722);
+            this.ClientSize = new System.Drawing.Size(1162, 671);
             this.Controls.Add(this.epnl);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

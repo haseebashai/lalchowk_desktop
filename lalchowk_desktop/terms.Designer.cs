@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.termsbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.aboutbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.faqbtn = new MaterialSkin.Controls.MaterialFlatButton();
@@ -152,6 +152,7 @@
             this.termsidlbl.Name = "termsidlbl";
             this.termsidlbl.Size = new System.Drawing.Size(0, 13);
             this.termsidlbl.TabIndex = 5;
+            this.termsidlbl.Visible = false;
             // 
             // tupdbtn
             // 
@@ -161,6 +162,7 @@
             this.tupdbtn.TabIndex = 4;
             this.tupdbtn.Text = "Update";
             this.tupdbtn.UseVisualStyleBackColor = true;
+            this.tupdbtn.Visible = false;
             this.tupdbtn.Click += new System.EventHandler(this.tupdbtn_Click);
             // 
             // desctxt
@@ -170,6 +172,7 @@
             this.desctxt.Name = "desctxt";
             this.desctxt.Size = new System.Drawing.Size(371, 242);
             this.desctxt.TabIndex = 3;
+            this.desctxt.Visible = false;
             // 
             // headingtxt
             // 
@@ -178,27 +181,29 @@
             this.headingtxt.Name = "headingtxt";
             this.headingtxt.Size = new System.Drawing.Size(253, 101);
             this.headingtxt.TabIndex = 2;
+            this.headingtxt.Visible = false;
             // 
             // termsdataview
             // 
             this.termsdataview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.termsdataview.BackgroundColor = System.Drawing.Color.White;
             this.termsdataview.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.termsdataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.termsdataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.termsdataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.termsdataview.GridColor = System.Drawing.SystemColors.Control;
             this.termsdataview.Location = new System.Drawing.Point(25, 3);
             this.termsdataview.Name = "termsdataview";
             this.termsdataview.Size = new System.Drawing.Size(624, 283);
             this.termsdataview.TabIndex = 1;
-            this.termsdataview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.termsdataview_CellClick);
+            this.termsdataview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.termsdataview_CellContentClick);
+            this.termsdataview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.termsdataview_CellContentClick);
             // 
             // faqpnl
             // 
@@ -231,6 +236,7 @@
             this.faqid.Name = "faqid";
             this.faqid.Size = new System.Drawing.Size(0, 13);
             this.faqid.TabIndex = 5;
+            this.faqid.Visible = false;
             // 
             // faqupdbtn
             // 
@@ -240,6 +246,7 @@
             this.faqupdbtn.TabIndex = 4;
             this.faqupdbtn.Text = "Update";
             this.faqupdbtn.UseVisualStyleBackColor = true;
+            this.faqupdbtn.Visible = false;
             this.faqupdbtn.Click += new System.EventHandler(this.faqupdbtn_Click);
             // 
             // anstxt
@@ -249,6 +256,7 @@
             this.anstxt.Name = "anstxt";
             this.anstxt.Size = new System.Drawing.Size(371, 242);
             this.anstxt.TabIndex = 3;
+            this.anstxt.Visible = false;
             // 
             // qtxt
             // 
@@ -257,6 +265,7 @@
             this.qtxt.Name = "qtxt";
             this.qtxt.Size = new System.Drawing.Size(253, 101);
             this.qtxt.TabIndex = 2;
+            this.qtxt.Visible = false;
             // 
             // faqdataview
             // 
@@ -264,21 +273,22 @@
             this.faqdataview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.faqdataview.BackgroundColor = System.Drawing.Color.White;
             this.faqdataview.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.faqdataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.faqdataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.faqdataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.faqdataview.GridColor = System.Drawing.SystemColors.Control;
             this.faqdataview.Location = new System.Drawing.Point(25, 3);
             this.faqdataview.Name = "faqdataview";
             this.faqdataview.Size = new System.Drawing.Size(624, 283);
             this.faqdataview.TabIndex = 1;
-            this.faqdataview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.faqdataview_CellClick);
+            this.faqdataview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.faqdataview_CellContentClick);
+            this.faqdataview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.faqdataview_CellContentClick);
             // 
             // aboutpnl
             // 
@@ -311,6 +321,7 @@
             this.aboutid.Name = "aboutid";
             this.aboutid.Size = new System.Drawing.Size(0, 13);
             this.aboutid.TabIndex = 5;
+            this.aboutid.Visible = false;
             // 
             // abtbtn
             // 
@@ -320,6 +331,7 @@
             this.abtbtn.TabIndex = 4;
             this.abtbtn.Text = "Update";
             this.abtbtn.UseVisualStyleBackColor = true;
+            this.abtbtn.Visible = false;
             this.abtbtn.Click += new System.EventHandler(this.abtbtn_Click);
             // 
             // desctxtbox
@@ -329,6 +341,7 @@
             this.desctxtbox.Name = "desctxtbox";
             this.desctxtbox.Size = new System.Drawing.Size(371, 242);
             this.desctxtbox.TabIndex = 3;
+            this.desctxtbox.Visible = false;
             // 
             // headingtxtbox
             // 
@@ -337,27 +350,29 @@
             this.headingtxtbox.Name = "headingtxtbox";
             this.headingtxtbox.Size = new System.Drawing.Size(253, 101);
             this.headingtxtbox.TabIndex = 2;
+            this.headingtxtbox.Visible = false;
             // 
             // aboutdataview
             // 
             this.aboutdataview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.aboutdataview.BackgroundColor = System.Drawing.Color.White;
             this.aboutdataview.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.aboutdataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.aboutdataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.aboutdataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.aboutdataview.GridColor = System.Drawing.SystemColors.Control;
             this.aboutdataview.Location = new System.Drawing.Point(25, 3);
             this.aboutdataview.Name = "aboutdataview";
             this.aboutdataview.Size = new System.Drawing.Size(624, 283);
             this.aboutdataview.TabIndex = 1;
-            this.aboutdataview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.aboutdataview_CellClick);
+            this.aboutdataview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.aboutdataview_CellContentClick);
+            this.aboutdataview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.aboutdataview_CellContentClick);
             // 
             // bpnl
             // 
@@ -435,7 +450,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1162, 722);
+            this.ClientSize = new System.Drawing.Size(1162, 626);
             this.Controls.Add(this.bpnl);
             this.Controls.Add(this.ppnl);
             this.Controls.Add(this.formlbl);

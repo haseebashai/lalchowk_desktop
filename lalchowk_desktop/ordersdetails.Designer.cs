@@ -66,7 +66,7 @@
             // 
             // upbtn
             // 
-            this.upbtn.Location = new System.Drawing.Point(1008, 622);
+            this.upbtn.Location = new System.Drawing.Point(1008, 607);
             this.upbtn.Name = "upbtn";
             this.upbtn.Size = new System.Drawing.Size(118, 48);
             this.upbtn.TabIndex = 4;
@@ -110,7 +110,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1162, 722);
+            this.ClientSize = new System.Drawing.Size(1162, 660);
             this.Controls.Add(this.upbtn);
             this.Controls.Add(this.orderslbl);
             this.Controls.Add(this.ordersdataview);

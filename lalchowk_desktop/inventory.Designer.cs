@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.inventorydatagridview = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -63,19 +63,20 @@
             // 
             this.inventorydatagridview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.inventorydatagridview.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.inventorydatagridview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.inventorydatagridview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.inventorydatagridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.inventorydatagridview.Location = new System.Drawing.Point(4, 32);
+            this.inventorydatagridview.Location = new System.Drawing.Point(4, 28);
             this.inventorydatagridview.Name = "inventorydatagridview";
             this.inventorydatagridview.Size = new System.Drawing.Size(1148, 389);
             this.inventorydatagridview.TabIndex = 0;
+            this.inventorydatagridview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.inventorydatagridview_CellClick);
             this.inventorydatagridview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.inventorydatagridview_CellClick);
             // 
             // label3
@@ -170,14 +171,14 @@
             this.desctxtbox.Multiline = true;
             this.desctxtbox.Name = "desctxtbox";
             this.desctxtbox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.desctxtbox.Size = new System.Drawing.Size(371, 260);
+            this.desctxtbox.Size = new System.Drawing.Size(371, 224);
             this.desctxtbox.TabIndex = 36;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(136, 112);
+            this.label7.Location = new System.Drawing.Point(136, 103);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(83, 20);
             this.label7.TabIndex = 37;
@@ -185,7 +186,7 @@
             // 
             // updatebtn
             // 
-            this.updatebtn.Location = new System.Drawing.Point(602, 102);
+            this.updatebtn.Location = new System.Drawing.Point(602, 83);
             this.updatebtn.Name = "updatebtn";
             this.updatebtn.Size = new System.Drawing.Size(61, 62);
             this.updatebtn.TabIndex = 38;
@@ -195,7 +196,7 @@
             // 
             // upbtn
             // 
-            this.upbtn.Location = new System.Drawing.Point(1033, 429);
+            this.upbtn.Location = new System.Drawing.Point(1033, 421);
             this.upbtn.Name = "upbtn";
             this.upbtn.Size = new System.Drawing.Size(122, 36);
             this.upbtn.TabIndex = 40;
@@ -219,7 +220,7 @@
             this.ipnl.Controls.Add(this.label5);
             this.ipnl.Location = new System.Drawing.Point(3, 2);
             this.ipnl.Name = "ipnl";
-            this.ipnl.Size = new System.Drawing.Size(1156, 424);
+            this.ipnl.Size = new System.Drawing.Size(1156, 419);
             this.ipnl.TabIndex = 41;
             this.ipnl.Visible = false;
             // 
@@ -259,9 +260,9 @@
             this.descpnl.Controls.Add(this.updatebtn);
             this.descpnl.Controls.Add(this.desctxtbox);
             this.descpnl.Controls.Add(this.label7);
-            this.descpnl.Location = new System.Drawing.Point(3, 427);
+            this.descpnl.Location = new System.Drawing.Point(3, 420);
             this.descpnl.Name = "descpnl";
-            this.descpnl.Size = new System.Drawing.Size(671, 265);
+            this.descpnl.Size = new System.Drawing.Size(671, 226);
             this.descpnl.TabIndex = 42;
             this.descpnl.Visible = false;
             // 
@@ -276,7 +277,7 @@
             this.fetchlbl.BackColor = System.Drawing.Color.Transparent;
             this.fetchlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fetchlbl.ForeColor = System.Drawing.Color.Black;
-            this.fetchlbl.Location = new System.Drawing.Point(889, 455);
+            this.fetchlbl.Location = new System.Drawing.Point(889, 447);
             this.fetchlbl.Name = "fetchlbl";
             this.fetchlbl.Size = new System.Drawing.Size(76, 13);
             this.fetchlbl.TabIndex = 57;
@@ -285,7 +286,7 @@
             // 
             // pbar
             // 
-            this.pbar.Location = new System.Drawing.Point(839, 447);
+            this.pbar.Location = new System.Drawing.Point(839, 439);
             this.pbar.MarqueeAnimationSpeed = 30;
             this.pbar.Name = "pbar";
             this.pbar.Size = new System.Drawing.Size(165, 5);
@@ -299,7 +300,7 @@
             this.updlbl.BackColor = System.Drawing.Color.Transparent;
             this.updlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.updlbl.ForeColor = System.Drawing.Color.Black;
-            this.updlbl.Location = new System.Drawing.Point(899, 431);
+            this.updlbl.Location = new System.Drawing.Point(899, 423);
             this.updlbl.Name = "updlbl";
             this.updlbl.Size = new System.Drawing.Size(47, 13);
             this.updlbl.TabIndex = 58;
@@ -311,7 +312,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1162, 722);
+            this.ClientSize = new System.Drawing.Size(1162, 646);
             this.Controls.Add(this.updlbl);
             this.Controls.Add(this.fetchlbl);
             this.Controls.Add(this.pbar);

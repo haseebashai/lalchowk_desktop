@@ -143,16 +143,7 @@ namespace Veiled_Kashmir_Admin_Panel
             }
         }
 
-        private void termsdataview_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow row = this.termsdataview.Rows[e.RowIndex];
-                headingtxt.Text = row.Cells["heading"].Value.ToString();
-                desctxt.Text = row.Cells["description"].Value.ToString();
-                termsidlbl.Text = row.Cells["termsid"].Value.ToString()+".";
-            }
-        }
+     
 
         private void tupdbtn_Click(object sender, EventArgs e)
         {
@@ -194,16 +185,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         
 
-        private void faqdataview_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow row = this.faqdataview.Rows[e.RowIndex];
-                qtxt.Text = row.Cells["question"].Value.ToString();
-                anstxt.Text = row.Cells["answer"].Value.ToString();
-                faqid.Text = row.Cells["faqid"].Value.ToString()+".";
-            }
-        }
+     
 
         private void faqupdbtn_Click(object sender, EventArgs e)
         {
@@ -233,18 +215,6 @@ namespace Veiled_Kashmir_Admin_Panel
                 }
         }
 
-       
-
-        private void aboutdataview_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow row = this.aboutdataview.Rows[e.RowIndex];
-                headingtxtbox.Text = row.Cells["heading"].Value.ToString();
-                desctxtbox.Text = row.Cells["description"].Value.ToString();
-                aboutid.Text = row.Cells["aboutid"].Value.ToString()+".";
-            }
-        }
 
         private void abtbtn_Click(object sender, EventArgs e)
         {
@@ -284,6 +254,10 @@ namespace Veiled_Kashmir_Admin_Panel
         
         private void termsbtn_Click(object sender, EventArgs e)
         {
+            termsidlbl.Visible = false;
+            tupdbtn.Visible = false;
+            headingtxt.Visible = false;
+            desctxt.Visible = false;
             loadingshow();
             bpnl.Enabled = false;
             ppnl.Visible = false;
@@ -310,6 +284,10 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void faqbtn_Click(object sender, EventArgs e)
         {
+            faqupdbtn.Visible = false;
+            qtxt.Visible = false;
+            anstxt.Visible = false;
+            faqid.Visible = false;
             loadingshow();
             bpnl.Enabled = false;
             ppnl.Visible = false;
@@ -322,6 +300,10 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void aboutbtn_Click(object sender, EventArgs e)
         {
+            aboutid.Visible = false;
+            headingtxtbox.Visible = false;
+            desctxtbox.Visible = false;
+            abtbtn.Visible = false;
             loadingshow();
             bpnl.Enabled = false;
             ppnl.Visible = false;
@@ -402,6 +384,50 @@ namespace Veiled_Kashmir_Admin_Panel
             }
         }
 
-       
+        private void termsdataview_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = this.termsdataview.Rows[e.RowIndex];
+                headingtxt.Text = row.Cells["heading"].Value.ToString();
+                desctxt.Text = row.Cells["description"].Value.ToString();
+                termsidlbl.Text = row.Cells["termsid"].Value.ToString() + ".";
+                tupdbtn.Visible = true;
+                headingtxt.Visible = true;
+                desctxt.Visible = true;
+                termsidlbl.Visible = true;
+                
+            }
+        }
+
+        private void faqdataview_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = this.faqdataview.Rows[e.RowIndex];
+                qtxt.Text = row.Cells["question"].Value.ToString();
+                anstxt.Text = row.Cells["answer"].Value.ToString();
+                faqid.Text = row.Cells["faqid"].Value.ToString() + ".";
+                faqupdbtn.Visible = true;
+                qtxt.Visible = true;
+                anstxt.Visible = true;
+                faqid.Visible = true;
+            }
+        }
+
+        private void aboutdataview_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = this.aboutdataview.Rows[e.RowIndex];
+                headingtxtbox.Text = row.Cells["heading"].Value.ToString();
+                desctxtbox.Text = row.Cells["description"].Value.ToString();
+                aboutid.Text = row.Cells["aboutid"].Value.ToString() + ".";
+                headingtxtbox.Visible = true;
+                desctxtbox.Visible = true;
+                abtbtn.Visible = true;
+                aboutid.Visible = true;
+            }
+        }
     }
 }

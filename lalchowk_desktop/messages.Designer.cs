@@ -84,7 +84,7 @@
             this.mpnl.Controls.Add(this.sendbtn);
             this.mpnl.Location = new System.Drawing.Point(1, 453);
             this.mpnl.Name = "mpnl";
-            this.mpnl.Size = new System.Drawing.Size(845, 246);
+            this.mpnl.Size = new System.Drawing.Size(845, 211);
             this.mpnl.TabIndex = 30;
             this.mpnl.Visible = false;
             // 
@@ -199,7 +199,7 @@
             this.msgpnl.Controls.Add(this.mpnl);
             this.msgpnl.Location = new System.Drawing.Point(1, 1);
             this.msgpnl.Name = "msgpnl";
-            this.msgpnl.Size = new System.Drawing.Size(1042, 709);
+            this.msgpnl.Size = new System.Drawing.Size(1042, 667);
             this.msgpnl.TabIndex = 31;
             this.msgpnl.Visible = false;
             // 
@@ -213,7 +213,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1162, 722);
+            this.ClientSize = new System.Drawing.Size(1162, 672);
             this.Controls.Add(this.msgpnl);
             this.Controls.Add(this.formlbl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

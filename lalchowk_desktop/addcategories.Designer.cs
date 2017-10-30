@@ -80,13 +80,13 @@
             this.loadinglbl = new System.Windows.Forms.Label();
             this.catdataview = new System.Windows.Forms.DataGridView();
             this.bpnl = new System.Windows.Forms.Panel();
+            this.refresh = new System.Windows.Forms.PictureBox();
             this.tcbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.scbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.fcbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.bgworker2 = new System.ComponentModel.BackgroundWorker();
             this.bgworker3 = new System.ComponentModel.BackgroundWorker();
             this.picdialog = new System.Windows.Forms.OpenFileDialog();
-            this.refresh = new System.Windows.Forms.PictureBox();
             this.cpnl.SuspendLayout();
             this.epnl.SuspendLayout();
             this.fcpnl.SuspendLayout();
@@ -634,6 +634,18 @@
             this.bpnl.TabIndex = 1;
             this.bpnl.Visible = false;
             // 
+            // refresh
+            // 
+            this.refresh.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.refresh;
+            this.refresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.refresh.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.refresh.Location = new System.Drawing.Point(1132, 0);
+            this.refresh.Name = "refresh";
+            this.refresh.Size = new System.Drawing.Size(21, 21);
+            this.refresh.TabIndex = 32;
+            this.refresh.TabStop = false;
+            this.refresh.Click += new System.EventHandler(this.refresh_Click);
+            // 
             // tcbtn
             // 
             this.tcbtn.AutoSize = true;
@@ -696,24 +708,12 @@
             // 
             this.picdialog.Filter = "All Files|*.*|JPG|*.jpg|PNG|*.png";
             // 
-            // refresh
-            // 
-            this.refresh.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.refresh;
-            this.refresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.refresh.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.refresh.Location = new System.Drawing.Point(1132, 0);
-            this.refresh.Name = "refresh";
-            this.refresh.Size = new System.Drawing.Size(21, 21);
-            this.refresh.TabIndex = 32;
-            this.refresh.TabStop = false;
-            this.refresh.Click += new System.EventHandler(this.refresh_Click);
-            // 
             // addcategories
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1162, 722);
+            this.ClientSize = new System.Drawing.Size(1162, 684);
             this.Controls.Add(this.cpnl);
             this.Controls.Add(this.formlbl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

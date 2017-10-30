@@ -80,7 +80,7 @@
             this.apnl.Controls.Add(this.apbtn);
             this.apnl.Location = new System.Drawing.Point(3, 444);
             this.apnl.Name = "apnl";
-            this.apnl.Size = new System.Drawing.Size(949, 162);
+            this.apnl.Size = new System.Drawing.Size(949, 158);
             this.apnl.TabIndex = 30;
             this.apnl.Visible = false;
             // 
@@ -250,7 +250,7 @@
             this.cpnl.Controls.Add(this.apnl);
             this.cpnl.Location = new System.Drawing.Point(1, 1);
             this.cpnl.Name = "cpnl";
-            this.cpnl.Size = new System.Drawing.Size(1161, 720);
+            this.cpnl.Size = new System.Drawing.Size(1161, 607);
             this.cpnl.TabIndex = 33;
             this.cpnl.Visible = false;
             // 
@@ -264,7 +264,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1162, 722);
+            this.ClientSize = new System.Drawing.Size(1162, 610);
             this.Controls.Add(this.cpnl);
             this.Controls.Add(this.formlbl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

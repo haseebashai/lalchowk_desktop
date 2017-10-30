@@ -65,6 +65,7 @@
             this.productsdataview.Name = "productsdataview";
             this.productsdataview.Size = new System.Drawing.Size(755, 485);
             this.productsdataview.TabIndex = 61;
+            this.productsdataview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.productsdataview_CellClick);
             this.productsdataview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.productsdataview_CellClick);
             // 
             // pic
@@ -143,7 +144,7 @@
             this.ppnl.Controls.Add(this.idtxt);
             this.ppnl.Location = new System.Drawing.Point(3, 2);
             this.ppnl.Name = "ppnl";
-            this.ppnl.Size = new System.Drawing.Size(1042, 640);
+            this.ppnl.Size = new System.Drawing.Size(1042, 610);
             this.ppnl.TabIndex = 93;
             this.ppnl.Visible = false;
             // 
@@ -169,7 +170,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1162, 722);
+            this.ClientSize = new System.Drawing.Size(1162, 616);
             this.ControlBox = false;
             this.Controls.Add(this.ppnl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

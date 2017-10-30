@@ -92,7 +92,7 @@
             this.pnl.Controls.Add(this.customerdataview);
             this.pnl.Location = new System.Drawing.Point(1, 0);
             this.pnl.Name = "pnl";
-            this.pnl.Size = new System.Drawing.Size(1161, 720);
+            this.pnl.Size = new System.Drawing.Size(1161, 685);
             this.pnl.TabIndex = 11;
             this.pnl.Visible = false;
             // 
@@ -114,7 +114,7 @@
             this.apnl.Controls.Add(this.label5);
             this.apnl.Location = new System.Drawing.Point(1, 546);
             this.apnl.Name = "apnl";
-            this.apnl.Size = new System.Drawing.Size(612, 143);
+            this.apnl.Size = new System.Drawing.Size(612, 133);
             this.apnl.TabIndex = 43;
             this.apnl.Visible = false;
             // 
@@ -457,7 +457,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1162, 722);
+            this.ClientSize = new System.Drawing.Size(1162, 687);
             this.Controls.Add(this.pnl);
             this.Controls.Add(this.formlbl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

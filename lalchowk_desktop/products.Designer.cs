@@ -53,6 +53,7 @@
             this.sqlbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.householdlbl = new System.Windows.Forms.Label();
             this.ppnl.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -110,7 +111,7 @@
             // 
             this.complbl.AutoSize = true;
             this.complbl.ForeColor = System.Drawing.Color.Gray;
-            this.complbl.Location = new System.Drawing.Point(412, 95);
+            this.complbl.Location = new System.Drawing.Point(412, 94);
             this.complbl.Name = "complbl";
             this.complbl.Size = new System.Drawing.Size(79, 13);
             this.complbl.TabIndex = 22;
@@ -120,7 +121,7 @@
             // 
             this.cacclbl.AutoSize = true;
             this.cacclbl.ForeColor = System.Drawing.Color.Gray;
-            this.cacclbl.Location = new System.Drawing.Point(412, 116);
+            this.cacclbl.Location = new System.Drawing.Point(412, 115);
             this.cacclbl.Name = "cacclbl";
             this.cacclbl.Size = new System.Drawing.Size(86, 13);
             this.cacclbl.TabIndex = 23;
@@ -159,6 +160,7 @@
             // 
             // ppnl
             // 
+            this.ppnl.Controls.Add(this.householdlbl);
             this.ppnl.Controls.Add(this.groclbl);
             this.ppnl.Controls.Add(this.booklbl);
             this.ppnl.Controls.Add(this.tplbl);
@@ -179,7 +181,7 @@
             // 
             this.groclbl.AutoSize = true;
             this.groclbl.ForeColor = System.Drawing.Color.Gray;
-            this.groclbl.Location = new System.Drawing.Point(17, 183);
+            this.groclbl.Location = new System.Drawing.Point(17, 181);
             this.groclbl.Name = "groclbl";
             this.groclbl.Size = new System.Drawing.Size(51, 13);
             this.groclbl.TabIndex = 31;
@@ -339,12 +341,22 @@
             this.panel5.Size = new System.Drawing.Size(1, 30);
             this.panel5.TabIndex = 37;
             // 
+            // householdlbl
+            // 
+            this.householdlbl.AutoSize = true;
+            this.householdlbl.ForeColor = System.Drawing.Color.Gray;
+            this.householdlbl.Location = new System.Drawing.Point(412, 136);
+            this.householdlbl.Name = "householdlbl";
+            this.householdlbl.Size = new System.Drawing.Size(59, 13);
+            this.householdlbl.TabIndex = 32;
+            this.householdlbl.Text = "total house";
+            // 
             // products
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1162, 722);
+            this.ClientSize = new System.Drawing.Size(1162, 617);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.sqlbtn);
@@ -395,5 +407,6 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label groclbl;
+        private System.Windows.Forms.Label householdlbl;
     }
 }

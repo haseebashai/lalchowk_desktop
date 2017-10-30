@@ -698,7 +698,7 @@
             this.hpnl.Controls.Add(this.label11);
             this.hpnl.Location = new System.Drawing.Point(0, 1);
             this.hpnl.Name = "hpnl";
-            this.hpnl.Size = new System.Drawing.Size(1158, 720);
+            this.hpnl.Size = new System.Drawing.Size(1158, 699);
             this.hpnl.TabIndex = 104;
             this.hpnl.Visible = false;
             // 
@@ -727,7 +727,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1162, 722);
+            this.ClientSize = new System.Drawing.Size(1162, 700);
             this.Controls.Add(this.hpnl);
             this.Controls.Add(this.formlbl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

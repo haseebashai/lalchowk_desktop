@@ -109,7 +109,7 @@ namespace Veiled_Kashmir_Admin_Panel
             {
                 dg.loadingimage.Visible = false;
                 dg.lbl.ForeColor = SystemColors.Highlight;
-                dg.lbl.Text = "change Offers";
+                dg.lbl.Text = "";
 
             }
             else

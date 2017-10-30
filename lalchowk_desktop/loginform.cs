@@ -35,24 +35,24 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void usrtxt_Enter(object sender, EventArgs e)
         {
-            namelbl.Location = new Point(527, 205);
+            namelbl.Location = new Point(527, 263);
         }
 
         private void usernametxt_Leave(object sender, EventArgs e)
         {
             if (usernametxt.Text=="")
-                namelbl.Location = new Point(527, 230);
+                namelbl.Location = new Point(527, 288);
         }
 
         private void pwdtxt_Enter(object sender, EventArgs e)
         {
-            pwdlbl.Location = new Point(527, 261);
+            pwdlbl.Location = new Point(527, 319);
         }
 
         private void pwdtxt_Leave(object sender, EventArgs e)
         {
             if (pwdtxt.Text=="")
-                pwdlbl.Location = new Point(527, 286);
+                pwdlbl.Location = new Point(527, 344);
         }
 
         private void loginbtn_Click(object sender, EventArgs e)

@@ -1041,9 +1041,9 @@
             this.addppnl.Controls.Add(this.dname4);
             this.addppnl.Controls.Add(this.inclbl);
             this.addppnl.Controls.Add(this.inclbl2);
-            this.addppnl.Location = new System.Drawing.Point(25, -1);
+            this.addppnl.Location = new System.Drawing.Point(25, -9);
             this.addppnl.Name = "addppnl";
-            this.addppnl.Size = new System.Drawing.Size(1150, 711);
+            this.addppnl.Size = new System.Drawing.Size(1150, 668);
             this.addppnl.TabIndex = 88;
             // 
             // clearpicbtn
@@ -1109,7 +1109,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1162, 722);
+            this.ClientSize = new System.Drawing.Size(1162, 668);
             this.Controls.Add(this.addppnl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "addproducts";

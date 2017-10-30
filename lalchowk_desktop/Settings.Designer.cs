@@ -32,7 +32,10 @@
             this.updbtn = new System.Windows.Forms.Button();
             this.epnl = new System.Windows.Forms.Panel();
             this.ppnl = new System.Windows.Forms.Panel();
+            this.pintxt = new System.Windows.Forms.MaskedTextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.pno = new System.Windows.Forms.CheckBox();
+            this.pyes = new System.Windows.Forms.CheckBox();
             this.areatxt = new System.Windows.Forms.TextBox();
             this.addpbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.label3 = new System.Windows.Forms.Label();
@@ -46,13 +49,10 @@
             this.verbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.pinbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.otpbtn = new MaterialSkin.Controls.MaterialFlatButton();
-            this.pyes = new System.Windows.Forms.CheckBox();
-            this.pno = new System.Windows.Forms.CheckBox();
             this.bgotp = new System.ComponentModel.BackgroundWorker();
             this.bgpincodes = new System.ComponentModel.BackgroundWorker();
             this.bgverification = new System.ComponentModel.BackgroundWorker();
             this.formlbl = new System.Windows.Forms.Label();
-            this.pintxt = new System.Windows.Forms.MaskedTextBox();
             this.spnl.SuspendLayout();
             this.epnl.SuspendLayout();
             this.ppnl.SuspendLayout();
@@ -71,7 +71,7 @@
             this.spnl.Controls.Add(this.bpnl);
             this.spnl.Location = new System.Drawing.Point(2, 0);
             this.spnl.Name = "spnl";
-            this.spnl.Size = new System.Drawing.Size(1159, 722);
+            this.spnl.Size = new System.Drawing.Size(1159, 655);
             this.spnl.TabIndex = 2;
             // 
             // updbtn
@@ -111,6 +111,17 @@
             this.ppnl.Size = new System.Drawing.Size(1153, 170);
             this.ppnl.TabIndex = 0;
             // 
+            // pintxt
+            // 
+            this.pintxt.Culture = new System.Globalization.CultureInfo("en-IN");
+            this.pintxt.Location = new System.Drawing.Point(16, 56);
+            this.pintxt.Mask = "000000";
+            this.pintxt.Name = "pintxt";
+            this.pintxt.PromptChar = ' ';
+            this.pintxt.Size = new System.Drawing.Size(143, 20);
+            this.pintxt.TabIndex = 102;
+            this.pintxt.Click += new System.EventHandler(this.pintxt_Click);
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -119,6 +130,28 @@
             this.label8.Size = new System.Drawing.Size(46, 13);
             this.label8.TabIndex = 101;
             this.label8.Text = "Pincode";
+            // 
+            // pno
+            // 
+            this.pno.AutoSize = true;
+            this.pno.Location = new System.Drawing.Point(264, 59);
+            this.pno.Name = "pno";
+            this.pno.Size = new System.Drawing.Size(40, 17);
+            this.pno.TabIndex = 105;
+            this.pno.Text = "No";
+            this.pno.UseVisualStyleBackColor = true;
+            this.pno.CheckedChanged += new System.EventHandler(this.pno_CheckedChanged);
+            // 
+            // pyes
+            // 
+            this.pyes.AutoSize = true;
+            this.pyes.Location = new System.Drawing.Point(214, 59);
+            this.pyes.Name = "pyes";
+            this.pyes.Size = new System.Drawing.Size(44, 17);
+            this.pyes.TabIndex = 104;
+            this.pyes.Text = "Yes";
+            this.pyes.UseVisualStyleBackColor = true;
+            this.pyes.CheckedChanged += new System.EventHandler(this.pyes_CheckedChanged);
             // 
             // areatxt
             // 
@@ -269,28 +302,6 @@
             this.otpbtn.UseVisualStyleBackColor = true;
             this.otpbtn.Click += new System.EventHandler(this.otpbtn_Click);
             // 
-            // pyes
-            // 
-            this.pyes.AutoSize = true;
-            this.pyes.Location = new System.Drawing.Point(214, 59);
-            this.pyes.Name = "pyes";
-            this.pyes.Size = new System.Drawing.Size(44, 17);
-            this.pyes.TabIndex = 104;
-            this.pyes.Text = "Yes";
-            this.pyes.UseVisualStyleBackColor = true;
-            this.pyes.CheckedChanged += new System.EventHandler(this.pyes_CheckedChanged);
-            // 
-            // pno
-            // 
-            this.pno.AutoSize = true;
-            this.pno.Location = new System.Drawing.Point(264, 59);
-            this.pno.Name = "pno";
-            this.pno.Size = new System.Drawing.Size(40, 17);
-            this.pno.TabIndex = 105;
-            this.pno.Text = "No";
-            this.pno.UseVisualStyleBackColor = true;
-            this.pno.CheckedChanged += new System.EventHandler(this.pno_CheckedChanged);
-            // 
             // bgotp
             // 
             this.bgotp.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgotp_DoWork);
@@ -317,23 +328,12 @@
             this.formlbl.TabIndex = 102;
             this.formlbl.Text = "OTP/Pincodes";
             // 
-            // pintxt
-            // 
-            this.pintxt.Culture = new System.Globalization.CultureInfo("en-IN");
-            this.pintxt.Location = new System.Drawing.Point(16, 56);
-            this.pintxt.Mask = "000000";
-            this.pintxt.Name = "pintxt";
-            this.pintxt.PromptChar = ' ';
-            this.pintxt.Size = new System.Drawing.Size(143, 20);
-            this.pintxt.TabIndex = 102;
-            this.pintxt.Click += new System.EventHandler(this.pintxt_Click);
-            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1162, 722);
+            this.ClientSize = new System.Drawing.Size(1162, 659);
             this.Controls.Add(this.spnl);
             this.Controls.Add(this.formlbl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

@@ -625,6 +625,7 @@ namespace Veiled_Kashmir_Admin_Panel
             pictxt.Text = pidtxt.Text + "-1.jpg";
             p2txt.Text= pidtxt.Text + "-2.jpg";
             p3txt.Text= pidtxt.Text + "-3.jpg";
+            p4txt.Text = pidtxt.Text + "-4.jpg";
         }
 
         private void pic4_Click(object sender, EventArgs e)

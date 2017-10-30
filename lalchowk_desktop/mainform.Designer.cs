@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle79 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle80 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle81 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle82 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle83 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle84 = new System.Windows.Forms.DataGridViewCellStyle();
             this.signoutlbl = new System.Windows.Forms.Label();
             this.productsbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.customersbtn = new MaterialSkin.Controls.MaterialFlatButton();
@@ -73,6 +73,9 @@
             this.loadingpic = new System.Windows.Forms.PictureBox();
             this.loadinglbl = new System.Windows.Forms.Label();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.totalordersdel = new System.Windows.Forms.Label();
+            this.zero = new System.Windows.Forms.Label();
             this.navpnl.SuspendLayout();
             this.navtitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -88,7 +91,7 @@
             this.signoutlbl.AutoSize = true;
             this.signoutlbl.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.signoutlbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.signoutlbl.Location = new System.Drawing.Point(144, 691);
+            this.signoutlbl.Location = new System.Drawing.Point(144, 659);
             this.signoutlbl.Name = "signoutlbl";
             this.signoutlbl.Size = new System.Drawing.Size(55, 16);
             this.signoutlbl.TabIndex = 16;
@@ -102,7 +105,7 @@
             this.productsbtn.AutoSize = true;
             this.productsbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.productsbtn.Depth = 0;
-            this.productsbtn.Location = new System.Drawing.Point(20, 81);
+            this.productsbtn.Location = new System.Drawing.Point(20, 71);
             this.productsbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.productsbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.productsbtn.Name = "productsbtn";
@@ -118,7 +121,7 @@
             this.customersbtn.AutoSize = true;
             this.customersbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.customersbtn.Depth = 0;
-            this.customersbtn.Location = new System.Drawing.Point(20, 118);
+            this.customersbtn.Location = new System.Drawing.Point(20, 107);
             this.customersbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.customersbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.customersbtn.Name = "customersbtn";
@@ -134,7 +137,7 @@
             this.suppliersbtn.AutoSize = true;
             this.suppliersbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.suppliersbtn.Depth = 0;
-            this.suppliersbtn.Location = new System.Drawing.Point(19, 156);
+            this.suppliersbtn.Location = new System.Drawing.Point(19, 142);
             this.suppliersbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.suppliersbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.suppliersbtn.Name = "suppliersbtn";
@@ -150,7 +153,7 @@
             this.approvebtn.AutoSize = true;
             this.approvebtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.approvebtn.Depth = 0;
-            this.approvebtn.Location = new System.Drawing.Point(20, 231);
+            this.approvebtn.Location = new System.Drawing.Point(20, 212);
             this.approvebtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.approvebtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.approvebtn.Name = "approvebtn";
@@ -164,7 +167,7 @@
             // signinlbl
             // 
             this.signinlbl.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.signinlbl.Location = new System.Drawing.Point(7, 668);
+            this.signinlbl.Location = new System.Drawing.Point(7, 636);
             this.signinlbl.Name = "signinlbl";
             this.signinlbl.Size = new System.Drawing.Size(192, 25);
             this.signinlbl.TabIndex = 9;
@@ -197,7 +200,7 @@
             this.navpnl.Controls.Add(this.ordersbtn);
             this.navpnl.Location = new System.Drawing.Point(0, 11);
             this.navpnl.Name = "navpnl";
-            this.navpnl.Size = new System.Drawing.Size(200, 711);
+            this.navpnl.Size = new System.Drawing.Size(200, 689);
             this.navpnl.TabIndex = 10;
             // 
             // settingsbtn
@@ -205,7 +208,7 @@
             this.settingsbtn.AutoSize = true;
             this.settingsbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.settingsbtn.Depth = 0;
-            this.settingsbtn.Location = new System.Drawing.Point(20, 534);
+            this.settingsbtn.Location = new System.Drawing.Point(20, 498);
             this.settingsbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.settingsbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.settingsbtn.Name = "settingsbtn";
@@ -221,7 +224,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label1.Location = new System.Drawing.Point(3, 25);
+            this.label1.Location = new System.Drawing.Point(3, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(64, 16);
             this.label1.TabIndex = 33;
@@ -232,7 +235,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label2.Location = new System.Drawing.Point(3, 587);
+            this.label2.Location = new System.Drawing.Point(3, 543);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(63, 16);
             this.label2.TabIndex = 34;
@@ -243,7 +246,7 @@
             this.categorybtn.AutoSize = true;
             this.categorybtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.categorybtn.Depth = 0;
-            this.categorybtn.Location = new System.Drawing.Point(20, 496);
+            this.categorybtn.Location = new System.Drawing.Point(20, 463);
             this.categorybtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.categorybtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.categorybtn.Name = "categorybtn";
@@ -259,7 +262,7 @@
             this.clientbtn.AutoSize = true;
             this.clientbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.clientbtn.Depth = 0;
-            this.clientbtn.Location = new System.Drawing.Point(20, 613);
+            this.clientbtn.Location = new System.Drawing.Point(20, 563);
             this.clientbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.clientbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.clientbtn.Name = "clientbtn";
@@ -275,7 +278,7 @@
             this.sendmailbtn.AutoSize = true;
             this.sendmailbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.sendmailbtn.Depth = 0;
-            this.sendmailbtn.Location = new System.Drawing.Point(20, 458);
+            this.sendmailbtn.Location = new System.Drawing.Point(20, 427);
             this.sendmailbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.sendmailbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.sendmailbtn.Name = "sendmailbtn";
@@ -291,7 +294,7 @@
             this.caboutbtn.AutoSize = true;
             this.caboutbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.caboutbtn.Depth = 0;
-            this.caboutbtn.Location = new System.Drawing.Point(20, 420);
+            this.caboutbtn.Location = new System.Drawing.Point(20, 392);
             this.caboutbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.caboutbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.caboutbtn.Name = "caboutbtn";
@@ -307,7 +310,7 @@
             this.homepagebtn.AutoSize = true;
             this.homepagebtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.homepagebtn.Depth = 0;
-            this.homepagebtn.Location = new System.Drawing.Point(20, 382);
+            this.homepagebtn.Location = new System.Drawing.Point(20, 356);
             this.homepagebtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.homepagebtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.homepagebtn.Name = "homepagebtn";
@@ -323,7 +326,7 @@
             this.msgbtn.AutoSize = true;
             this.msgbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.msgbtn.Depth = 0;
-            this.msgbtn.Location = new System.Drawing.Point(20, 306);
+            this.msgbtn.Location = new System.Drawing.Point(20, 284);
             this.msgbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.msgbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.msgbtn.Name = "msgbtn";
@@ -339,7 +342,7 @@
             this.accbtn.AutoSize = true;
             this.accbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.accbtn.Depth = 0;
-            this.accbtn.Location = new System.Drawing.Point(20, 344);
+            this.accbtn.Location = new System.Drawing.Point(20, 320);
             this.accbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.accbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.accbtn.Name = "accbtn";
@@ -355,7 +358,7 @@
             this.expbtn.AutoSize = true;
             this.expbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.expbtn.Depth = 0;
-            this.expbtn.Location = new System.Drawing.Point(20, 194);
+            this.expbtn.Location = new System.Drawing.Point(20, 176);
             this.expbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.expbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.expbtn.Name = "expbtn";
@@ -371,7 +374,7 @@
             this.cobtn.AutoSize = true;
             this.cobtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.cobtn.Depth = 0;
-            this.cobtn.Location = new System.Drawing.Point(20, 269);
+            this.cobtn.Location = new System.Drawing.Point(20, 248);
             this.cobtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.cobtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.cobtn.Name = "cobtn";
@@ -387,7 +390,7 @@
             this.ordersbtn.AutoSize = true;
             this.ordersbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ordersbtn.Depth = 0;
-            this.ordersbtn.Location = new System.Drawing.Point(20, 44);
+            this.ordersbtn.Location = new System.Drawing.Point(20, 37);
             this.ordersbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.ordersbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.ordersbtn.Name = "ordersbtn";
@@ -522,7 +525,7 @@
             this.orderslbl.Cursor = System.Windows.Forms.Cursors.Hand;
             this.orderslbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.orderslbl.ForeColor = System.Drawing.Color.Black;
-            this.orderslbl.Location = new System.Drawing.Point(682, 589);
+            this.orderslbl.Location = new System.Drawing.Point(828, 589);
             this.orderslbl.Name = "orderslbl";
             this.orderslbl.Size = new System.Drawing.Size(82, 16);
             this.orderslbl.TabIndex = 36;
@@ -535,7 +538,7 @@
             this.ordersdlbl.AutoSize = true;
             this.ordersdlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ordersdlbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.ordersdlbl.Location = new System.Drawing.Point(681, 556);
+            this.ordersdlbl.Location = new System.Drawing.Point(827, 556);
             this.ordersdlbl.Name = "ordersdlbl";
             this.ordersdlbl.Size = new System.Drawing.Size(0, 24);
             this.ordersdlbl.TabIndex = 35;
@@ -545,7 +548,7 @@
             this.deliveredh.AutoSize = true;
             this.deliveredh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.deliveredh.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.deliveredh.Location = new System.Drawing.Point(681, 537);
+            this.deliveredh.Location = new System.Drawing.Point(827, 537);
             this.deliveredh.Name = "deliveredh";
             this.deliveredh.Size = new System.Drawing.Size(148, 16);
             this.deliveredh.TabIndex = 34;
@@ -554,30 +557,30 @@
             // 
             // shippeddataview
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.shippeddataview.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle79.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.shippeddataview.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle79;
             this.shippeddataview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.shippeddataview.BackgroundColor = System.Drawing.Color.White;
             this.shippeddataview.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.shippeddataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle80.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle80.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle80.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle80.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle80.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle80.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle80.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.shippeddataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle80;
             this.shippeddataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.shippeddataview.Location = new System.Drawing.Point(5, 299);
             this.shippeddataview.Name = "shippeddataview";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.shippeddataview.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle81.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle81.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle81.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle81.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle81.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle81.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle81.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.shippeddataview.RowHeadersDefaultCellStyle = dataGridViewCellStyle81;
             this.shippeddataview.RowHeadersVisible = false;
             this.shippeddataview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.shippeddataview.Size = new System.Drawing.Size(1145, 152);
@@ -598,30 +601,30 @@
             // 
             // placeddataview
             // 
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            this.placeddataview.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle82.BackColor = System.Drawing.Color.White;
+            this.placeddataview.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle82;
             this.placeddataview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.placeddataview.BackgroundColor = System.Drawing.Color.White;
             this.placeddataview.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.placeddataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle83.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle83.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle83.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle83.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle83.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle83.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle83.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.placeddataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle83;
             this.placeddataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.placeddataview.Location = new System.Drawing.Point(5, 30);
             this.placeddataview.Name = "placeddataview";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.placeddataview.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle84.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle84.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle84.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle84.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle84.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle84.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle84.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.placeddataview.RowHeadersDefaultCellStyle = dataGridViewCellStyle84;
             this.placeddataview.RowHeadersVisible = false;
             this.placeddataview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.placeddataview.Size = new System.Drawing.Size(1145, 223);
@@ -670,6 +673,41 @@
             this.bgworker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker_DoWork);
             this.bgworker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker_RunWorkerCompleted);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label3.Location = new System.Drawing.Point(629, 296);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(173, 17);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "Orders have been placed.";
+            // 
+            // totalordersdel
+            // 
+            this.totalordersdel.AutoSize = true;
+            this.totalordersdel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.totalordersdel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalordersdel.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.totalordersdel.Location = new System.Drawing.Point(1089, 644);
+            this.totalordersdel.Name = "totalordersdel";
+            this.totalordersdel.Size = new System.Drawing.Size(228, 16);
+            this.totalordersdel.TabIndex = 42;
+            this.totalordersdel.Text = "View details for total orders delivered";
+            this.totalordersdel.Click += new System.EventHandler(this.totalordersdel_Click);
+            // 
+            // zero
+            // 
+            this.zero.AutoSize = true;
+            this.zero.Font = new System.Drawing.Font("Monotype Corsiva", 130F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.zero.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.zero.Location = new System.Drawing.Point(497, 190);
+            this.zero.Name = "zero";
+            this.zero.Size = new System.Drawing.Size(166, 208);
+            this.zero.TabIndex = 13;
+            this.zero.Text = "0";
+            // 
             // mainform
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -679,6 +717,9 @@
             this.Controls.Add(this.navtitle);
             this.Controls.Add(this.cntpnl);
             this.Controls.Add(this.navpnl);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.zero);
+            this.Controls.Add(this.totalordersdel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "mainform";
             this.Text = "mainform";
@@ -695,6 +736,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.placeddataview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.loadingpic)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -739,5 +781,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private MaterialSkin.Controls.MaterialFlatButton settingsbtn;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label totalordersdel;
+        private System.Windows.Forms.Label zero;
     }
 }
