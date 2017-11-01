@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle79 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle80 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle81 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle82 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle83 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle84 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.signoutlbl = new System.Windows.Forms.Label();
             this.productsbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.customersbtn = new MaterialSkin.Controls.MaterialFlatButton();
@@ -41,6 +41,7 @@
             this.approvebtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.signinlbl = new System.Windows.Forms.Label();
             this.navpnl = new System.Windows.Forms.Panel();
+            this.smsbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.settingsbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -58,6 +59,11 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.navtxt = new System.Windows.Forms.Label();
             this.cntpnl = new System.Windows.Forms.Panel();
+            this.zeropnl = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.zero = new System.Windows.Forms.Label();
+            this.totalordersdel = new System.Windows.Forms.Label();
+            this.homelbl = new System.Windows.Forms.Label();
             this.shippedlbl = new System.Windows.Forms.Label();
             this.placedlbl = new System.Windows.Forms.Label();
             this.attention = new System.Windows.Forms.PictureBox();
@@ -73,13 +79,11 @@
             this.loadingpic = new System.Windows.Forms.PictureBox();
             this.loadinglbl = new System.Windows.Forms.Label();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
-            this.label3 = new System.Windows.Forms.Label();
-            this.totalordersdel = new System.Windows.Forms.Label();
-            this.zero = new System.Windows.Forms.Label();
             this.navpnl.SuspendLayout();
             this.navtitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.cntpnl.SuspendLayout();
+            this.zeropnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.attention)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.shippeddataview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.placeddataview)).BeginInit();
@@ -91,7 +95,7 @@
             this.signoutlbl.AutoSize = true;
             this.signoutlbl.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.signoutlbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.signoutlbl.Location = new System.Drawing.Point(144, 659);
+            this.signoutlbl.Location = new System.Drawing.Point(144, 671);
             this.signoutlbl.Name = "signoutlbl";
             this.signoutlbl.Size = new System.Drawing.Size(55, 16);
             this.signoutlbl.TabIndex = 16;
@@ -167,7 +171,7 @@
             // signinlbl
             // 
             this.signinlbl.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.signinlbl.Location = new System.Drawing.Point(7, 636);
+            this.signinlbl.Location = new System.Drawing.Point(7, 648);
             this.signinlbl.Name = "signinlbl";
             this.signinlbl.Size = new System.Drawing.Size(192, 25);
             this.signinlbl.TabIndex = 9;
@@ -179,6 +183,7 @@
             // 
             this.navpnl.BackColor = System.Drawing.Color.White;
             this.navpnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.navpnl.Controls.Add(this.smsbtn);
             this.navpnl.Controls.Add(this.settingsbtn);
             this.navpnl.Controls.Add(this.label1);
             this.navpnl.Controls.Add(this.label2);
@@ -202,6 +207,22 @@
             this.navpnl.Name = "navpnl";
             this.navpnl.Size = new System.Drawing.Size(200, 689);
             this.navpnl.TabIndex = 10;
+            // 
+            // smsbtn
+            // 
+            this.smsbtn.AutoSize = true;
+            this.smsbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.smsbtn.Depth = 0;
+            this.smsbtn.Location = new System.Drawing.Point(20, 534);
+            this.smsbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.smsbtn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.smsbtn.Name = "smsbtn";
+            this.smsbtn.Primary = false;
+            this.smsbtn.Size = new System.Drawing.Size(79, 36);
+            this.smsbtn.TabIndex = 36;
+            this.smsbtn.Text = "send sms";
+            this.smsbtn.UseVisualStyleBackColor = true;
+            this.smsbtn.Click += new System.EventHandler(this.smsbtn_Click);
             // 
             // settingsbtn
             // 
@@ -235,7 +256,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label2.Location = new System.Drawing.Point(3, 543);
+            this.label2.Location = new System.Drawing.Point(3, 592);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(63, 16);
             this.label2.TabIndex = 34;
@@ -262,7 +283,7 @@
             this.clientbtn.AutoSize = true;
             this.clientbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.clientbtn.Depth = 0;
-            this.clientbtn.Location = new System.Drawing.Point(20, 563);
+            this.clientbtn.Location = new System.Drawing.Point(20, 612);
             this.clientbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.clientbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.clientbtn.Name = "clientbtn";
@@ -441,6 +462,7 @@
             // cntpnl
             // 
             this.cntpnl.BackColor = System.Drawing.Color.White;
+            this.cntpnl.Controls.Add(this.zeropnl);
             this.cntpnl.Controls.Add(this.shippedlbl);
             this.cntpnl.Controls.Add(this.placedlbl);
             this.cntpnl.Controls.Add(this.attention);
@@ -459,6 +481,66 @@
             this.cntpnl.Name = "cntpnl";
             this.cntpnl.Size = new System.Drawing.Size(1162, 722);
             this.cntpnl.TabIndex = 12;
+            // 
+            // zeropnl
+            // 
+            this.zeropnl.Controls.Add(this.label3);
+            this.zeropnl.Controls.Add(this.zero);
+            this.zeropnl.Controls.Add(this.totalordersdel);
+            this.zeropnl.Controls.Add(this.homelbl);
+            this.zeropnl.Location = new System.Drawing.Point(0, 0);
+            this.zeropnl.Name = "zeropnl";
+            this.zeropnl.Size = new System.Drawing.Size(1162, 722);
+            this.zeropnl.TabIndex = 44;
+            this.zeropnl.Visible = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label3.Location = new System.Drawing.Point(457, 351);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(173, 17);
+            this.label3.TabIndex = 45;
+            this.label3.Text = "Orders have been placed.";
+            // 
+            // zero
+            // 
+            this.zero.AutoSize = true;
+            this.zero.Font = new System.Drawing.Font("Orator Std", 110.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.zero.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.zero.Location = new System.Drawing.Point(348, 217);
+            this.zero.Name = "zero";
+            this.zero.Size = new System.Drawing.Size(176, 197);
+            this.zero.TabIndex = 44;
+            this.zero.Text = "0";
+            // 
+            // totalordersdel
+            // 
+            this.totalordersdel.AutoSize = true;
+            this.totalordersdel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.totalordersdel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalordersdel.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.totalordersdel.Location = new System.Drawing.Point(1030, 631);
+            this.totalordersdel.Name = "totalordersdel";
+            this.totalordersdel.Size = new System.Drawing.Size(102, 16);
+            this.totalordersdel.TabIndex = 46;
+            this.totalordersdel.Text = "Order delivered";
+            this.totalordersdel.Click += new System.EventHandler(this.totalordersdel_Click);
+            // 
+            // homelbl
+            // 
+            this.homelbl.AutoSize = true;
+            this.homelbl.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.homelbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.homelbl.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.homelbl.Location = new System.Drawing.Point(1030, 660);
+            this.homelbl.Name = "homelbl";
+            this.homelbl.Size = new System.Drawing.Size(77, 17);
+            this.homelbl.TabIndex = 47;
+            this.homelbl.Text = "Homepage";
+            this.homelbl.Click += new System.EventHandler(this.homelbl_Click);
             // 
             // shippedlbl
             // 
@@ -557,30 +639,30 @@
             // 
             // shippeddataview
             // 
-            dataGridViewCellStyle79.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.shippeddataview.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle79;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.shippeddataview.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.shippeddataview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.shippeddataview.BackgroundColor = System.Drawing.Color.White;
             this.shippeddataview.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle80.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle80.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle80.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle80.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle80.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle80.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle80.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.shippeddataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle80;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.shippeddataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.shippeddataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.shippeddataview.Location = new System.Drawing.Point(5, 299);
             this.shippeddataview.Name = "shippeddataview";
-            dataGridViewCellStyle81.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle81.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle81.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle81.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle81.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle81.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle81.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.shippeddataview.RowHeadersDefaultCellStyle = dataGridViewCellStyle81;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.shippeddataview.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.shippeddataview.RowHeadersVisible = false;
             this.shippeddataview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.shippeddataview.Size = new System.Drawing.Size(1145, 152);
@@ -601,30 +683,30 @@
             // 
             // placeddataview
             // 
-            dataGridViewCellStyle82.BackColor = System.Drawing.Color.White;
-            this.placeddataview.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle82;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            this.placeddataview.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.placeddataview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.placeddataview.BackgroundColor = System.Drawing.Color.White;
             this.placeddataview.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle83.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle83.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle83.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle83.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle83.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle83.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle83.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.placeddataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle83;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.placeddataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.placeddataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.placeddataview.Location = new System.Drawing.Point(5, 30);
             this.placeddataview.Name = "placeddataview";
-            dataGridViewCellStyle84.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle84.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle84.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle84.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle84.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle84.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle84.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.placeddataview.RowHeadersDefaultCellStyle = dataGridViewCellStyle84;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.placeddataview.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.placeddataview.RowHeadersVisible = false;
             this.placeddataview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.placeddataview.Size = new System.Drawing.Size(1145, 223);
@@ -673,41 +755,6 @@
             this.bgworker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker_DoWork);
             this.bgworker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker_RunWorkerCompleted);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label3.Location = new System.Drawing.Point(629, 296);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(173, 17);
-            this.label3.TabIndex = 14;
-            this.label3.Text = "Orders have been placed.";
-            // 
-            // totalordersdel
-            // 
-            this.totalordersdel.AutoSize = true;
-            this.totalordersdel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.totalordersdel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalordersdel.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.totalordersdel.Location = new System.Drawing.Point(1089, 644);
-            this.totalordersdel.Name = "totalordersdel";
-            this.totalordersdel.Size = new System.Drawing.Size(228, 16);
-            this.totalordersdel.TabIndex = 42;
-            this.totalordersdel.Text = "View details for total orders delivered";
-            this.totalordersdel.Click += new System.EventHandler(this.totalordersdel_Click);
-            // 
-            // zero
-            // 
-            this.zero.AutoSize = true;
-            this.zero.Font = new System.Drawing.Font("Monotype Corsiva", 130F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.zero.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.zero.Location = new System.Drawing.Point(497, 190);
-            this.zero.Name = "zero";
-            this.zero.Size = new System.Drawing.Size(166, 208);
-            this.zero.TabIndex = 13;
-            this.zero.Text = "0";
-            // 
             // mainform
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -717,9 +764,6 @@
             this.Controls.Add(this.navtitle);
             this.Controls.Add(this.cntpnl);
             this.Controls.Add(this.navpnl);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.zero);
-            this.Controls.Add(this.totalordersdel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "mainform";
             this.Text = "mainform";
@@ -731,12 +775,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.cntpnl.ResumeLayout(false);
             this.cntpnl.PerformLayout();
+            this.zeropnl.ResumeLayout(false);
+            this.zeropnl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.attention)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.shippeddataview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.placeddataview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.loadingpic)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -781,8 +826,11 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private MaterialSkin.Controls.MaterialFlatButton settingsbtn;
+        private MaterialSkin.Controls.MaterialFlatButton smsbtn;
+        private System.Windows.Forms.Panel zeropnl;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label totalordersdel;
         private System.Windows.Forms.Label zero;
+        private System.Windows.Forms.Label totalordersdel;
+        private System.Windows.Forms.Label homelbl;
     }
 }

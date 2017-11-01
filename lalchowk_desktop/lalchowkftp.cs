@@ -70,13 +70,12 @@ namespace Veiled_Kashmir_Admin_Panel
                 bsource = new BindingSource();             
                 bsource.DataSource = ftp.ListFiles().Select(x => new { Path = ftp.Path + x, Name = x }).ToList();
 
-            } catch(Exception e)
+            }
+            catch (Exception ex)
             {
-                var message = e.ToString();
-                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
 
-                MessageBox.Show("Could not load FTP, please try again.\n\n" + split[0], "Error!");
-            }      
+                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
+            }
         }
         private void searchtxt_TextChanged(object sender, EventArgs e)
         {
@@ -139,10 +138,8 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
-                var message = ex.ToString();
-                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
-                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
-            
+
+                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
                 return false;
             }
         }
@@ -301,12 +298,10 @@ namespace Veiled_Kashmir_Admin_Panel
                     MessageBox.Show("File downloaded.");
                     
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-            
-                var message = e.ToString();
-                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
-                MessageBox.Show(split[0],"Error");
+
+                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
         }
 
@@ -349,15 +344,14 @@ namespace Veiled_Kashmir_Admin_Panel
                     return files;
 
 
-                }catch(Exception ex)
+                }
+                catch (Exception ex)
                 {
-                    var message = ex.ToString();
-                    string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
-                    MessageBox.Show("Something happened, please try again.\n\n"+split[0],"Error!");
-                    
+
+                    MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
                     return null;
                 }
-               }
+            }
             }
                 
         
@@ -384,10 +378,8 @@ namespace Veiled_Kashmir_Admin_Panel
                 catch (Exception ex)
                 {
                     ftpupbtn.Enabled = true;
-                    var message = ex.ToString();
-                    string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
-                    MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
 
+                    MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
                 }
 
 
@@ -442,10 +434,8 @@ namespace Veiled_Kashmir_Admin_Panel
                      {
                          upbar.Visible = false; uplbl.Visible = false;
                      });
-                         var message = ex.ToString();
-                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
-                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
-              
+                         
+                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
         }
 

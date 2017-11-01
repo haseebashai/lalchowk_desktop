@@ -21,6 +21,7 @@ namespace Veiled_Kashmir_Admin_Panel
         BindingSource bsource;
         DataTable dt;
         BackgroundWorker bw;
+        MySqlDataReader dr;
        
         private dialogcontainer dg = null;
         public sql(Form dgcopy)
@@ -33,7 +34,7 @@ namespace Veiled_Kashmir_Admin_Panel
            
             bw.WorkerReportsProgress = true;
             bw.WorkerSupportsCancellation = true;
-
+            
 
         }
 
@@ -45,14 +46,19 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             if (error)
             {
-               
+
                 pbar.Visible = false;
+                valuepnl.Visible = false;
             }
             else
             {
-               
+                
                 pbar.Value = 100;
-                pbar.Style = ProgressBarStyle.Continuous;
+                pbar.Style = ProgressBarStyle.Continuous;             
+            }
+            if (valuepanel)
+            {
+                valuepnl.Visible = true;
             }
             execbtn.Enabled = true;
             execbtn.Text = "Execute Query";
@@ -80,6 +86,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void execbtn_Click(object sender, EventArgs e)
         {
+            valuepnl.Visible = false;
             updbtn.Visible = false;
             pbar.Visible = false;
             execbtn.Enabled = false;
@@ -89,8 +96,8 @@ namespace Veiled_Kashmir_Admin_Panel
 
               StringBuilder query = new StringBuilder(sqltxt.Text);
 
-              query.Replace(@"\", @"\\");
-              query.Replace("'", "\\'");
+             // query.Replace(@"\", @"\\");
+             // query.Replace("'", "\\'");
               sqlquery = query.ToString();
 
             try
@@ -137,11 +144,10 @@ namespace Veiled_Kashmir_Admin_Panel
                     }
                 }
             }
-            catch (MySqlException ex)
+            catch (Exception ex)
             {
-                var message = ex.ToString();
-                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
-                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
+
+                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
 
         }   
@@ -177,16 +183,19 @@ namespace Veiled_Kashmir_Admin_Panel
                 conn.Close();
                 bsource = new BindingSource();
                 bsource.DataSource = dt;
+                valuepanel = true;
             }
             catch (Exception ex)
             {
                 error = true;
-                var message = ex.ToString();
-                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
-                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
+                MessageBox.Show(ex.Message.ToString());
+           //     var message = ex.ToString();
+             //   string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
+               // MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
             }
         }
 
+        bool valuepanel;
         private void execlalchowkac()
         {
             try
@@ -197,13 +206,12 @@ namespace Veiled_Kashmir_Admin_Panel
                 aconn.Close();
                 bsource = new BindingSource();
                 bsource.DataSource = dt;
+                valuepanel = true;
             }
             catch (Exception ex)
             {
                 error = true;
-                var message = ex.ToString();
-                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
-                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
+                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
         }
 
@@ -242,9 +250,8 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
-                var message = ex.ToString();
-                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
-                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
+
+                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
         }
 
@@ -257,6 +264,126 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             }
 
-      
+        private void copybtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string seperator = "";
+
+                if (spacebox.Checked)
+                {
+                    seperator = " ";
+                }
+                else if (commabox.Checked)
+                {
+                    seperator = ",";
+                }
+                else if (linebox.Checked)
+                {
+                    seperator = "\r\n";
+                }
+                else if (colonbox.Checked)
+                {
+                    seperator = ";";
+                }
+
+
+                if (coltxt.Text == "")
+                {
+                    MessageBox.Show("Please enter a column");
+                }
+                else if (spacebox.Checked == false && commabox.Checked == false && linebox.Checked == false && colonbox.Checked == false)
+                {
+                    MessageBox.Show("Please select a seperator character.");
+                }
+                else
+                {
+                    int i = 0;
+                    string numbers = "";
+                    if (lalchowkchk.Checked)
+                    {
+                        dr = obj.Query(sqlquery);
+                        while (dr.Read())
+                        {
+                            numbers += dr[coltxt.Text].ToString();
+                            numbers += seperator;
+
+                            i++;
+                        }
+
+                        obj.closeConnection();
+                    }else if (lalacchk.Checked)
+                    {
+                        aconn.Open();
+                        MySqlCommand cmd = new MySqlCommand(sqlquery, aconn);
+                        dr= cmd.ExecuteReader();
+                        while(dr.Read())
+                         {
+                            numbers += dr[coltxt.Text].ToString();
+                            numbers += seperator;
+
+                            i++;
+                        }
+
+                        aconn.Close();
+                    }
+
+                        Form values = new Form();
+                    values.Size = new Size(600, 600);
+                    values.Text = "Values";
+                    
+                    values.StartPosition = FormStartPosition.CenterScreen;
+                    values.FormBorderStyle = FormBorderStyle.FixedSingle;
+                    values.Controls.Add(new TextBox() {Location=new Point(1,1), Text = numbers, Multiline = true, ScrollBars = ScrollBars.Vertical,
+                                        ForeColor = Color.Blue,Font=new Font("MS Sans Serif",10),Dock=DockStyle.Fill                 });
+                    values.Show();
+                }
+            }
+            catch (Exception ex)
+            {
+                obj.closeConnection();
+                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
+            }
+        }
+
+        private void spacebox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (spacebox.Checked)
+           {
+                commabox.Checked = false;
+                linebox.Checked = false;
+                colonbox.Checked = false;
+            }
+        }
+
+        private void commabox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (commabox.Checked)
+            {
+                linebox.Checked = false;
+                colonbox.Checked = false;
+                spacebox.Checked = false;
+            }
+        }
+
+        private void linebox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (linebox.Checked)
+            {
+                colonbox.Checked = false;
+                spacebox.Checked = false;
+                commabox.Checked = false;
+            }
+        }
+
+        private void colonbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (colonbox.Checked)
+            {
+                spacebox.Checked = false;
+                commabox.Checked = false;
+                linebox.Checked = false;
+            }
+        }
     }
 }

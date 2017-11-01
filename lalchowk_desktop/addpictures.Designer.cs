@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.picdialog = new System.Windows.Forms.OpenFileDialog();
             this.updbtn = new System.Windows.Forms.Button();
             this.addbtn = new System.Windows.Forms.Button();
@@ -73,7 +73,7 @@
             // 
             // addbtn
             // 
-            this.addbtn.Location = new System.Drawing.Point(466, 588);
+            this.addbtn.Location = new System.Drawing.Point(485, 551);
             this.addbtn.Name = "addbtn";
             this.addbtn.Size = new System.Drawing.Size(91, 41);
             this.addbtn.TabIndex = 59;
@@ -86,14 +86,14 @@
             this.picturesdataview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.picturesdataview.BackgroundColor = System.Drawing.Color.White;
             this.picturesdataview.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.picturesdataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.picturesdataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.picturesdataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.picturesdataview.GridColor = System.Drawing.SystemColors.Control;
             this.picturesdataview.Location = new System.Drawing.Point(3, 30);
@@ -106,7 +106,7 @@
             // 
             this.label30.AutoSize = true;
             this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.Location = new System.Drawing.Point(460, 517);
+            this.label30.Location = new System.Drawing.Point(231, 522);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(81, 17);
             this.label30.TabIndex = 87;
@@ -114,7 +114,7 @@
             // 
             // ptxt
             // 
-            this.ptxt.Location = new System.Drawing.Point(325, 628);
+            this.ptxt.Location = new System.Drawing.Point(234, 600);
             this.ptxt.Name = "ptxt";
             this.ptxt.Size = new System.Drawing.Size(115, 20);
             this.ptxt.TabIndex = 86;
@@ -126,7 +126,7 @@
             this.pic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pic.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pic.Image = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.industrial_safety_1492046_640;
-            this.pic.Location = new System.Drawing.Point(325, 521);
+            this.pic.Location = new System.Drawing.Point(355, 519);
             this.pic.Name = "pic";
             this.pic.Size = new System.Drawing.Size(115, 101);
             this.pic.TabIndex = 88;
@@ -136,7 +136,7 @@
             // gidtxt
             // 
             this.gidtxt.ForeColor = System.Drawing.SystemColors.ControlDark;
-            this.gidtxt.Location = new System.Drawing.Point(463, 537);
+            this.gidtxt.Location = new System.Drawing.Point(234, 565);
             this.gidtxt.Name = "gidtxt";
             this.gidtxt.Size = new System.Drawing.Size(113, 20);
             this.gidtxt.TabIndex = 89;
@@ -209,7 +209,7 @@
             this.uploadlbl.AutoSize = true;
             this.uploadlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.uploadlbl.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.uploadlbl.Location = new System.Drawing.Point(468, 632);
+            this.uploadlbl.Location = new System.Drawing.Point(487, 595);
             this.uploadlbl.Name = "uploadlbl";
             this.uploadlbl.Size = new System.Drawing.Size(0, 15);
             this.uploadlbl.TabIndex = 95;
@@ -218,9 +218,9 @@
             // dp
             // 
             this.dp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.dp.Location = new System.Drawing.Point(583, 30);
+            this.dp.Location = new System.Drawing.Point(583, 48);
             this.dp.Name = "dp";
-            this.dp.Size = new System.Drawing.Size(178, 213);
+            this.dp.Size = new System.Drawing.Size(165, 195);
             this.dp.TabIndex = 94;
             this.dp.TabStop = false;
             // 

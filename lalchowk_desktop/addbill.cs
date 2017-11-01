@@ -32,10 +32,16 @@ namespace Veiled_Kashmir_Admin_Panel
             pronametxt.Text = productname;
             sizetxt.Text = size;
             counttxt.Text = quantity;
-            int am = int.Parse(price) * int.Parse(counttxt.Text);
-            amounttxt.Text = am.ToString();
-            int dp = int.Parse(dealerprice) * int.Parse(counttxt.Text);
-            dptxt.Text = dp.ToString();
+            try
+            {
+                int am = int.Parse(price) * int.Parse(counttxt.Text);
+                amounttxt.Text = am.ToString();
+                int dp = int.Parse(dealerprice) * int.Parse(counttxt.Text);
+                dptxt.Text = dp.ToString();
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
 
         }
 
@@ -63,9 +69,8 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
-                var message = ex.ToString();
-                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
-                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
+
+                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
             DialogResult dgr = MessageBox.Show("Do you want to send confirmation mail with e-bill?", "Confirm", MessageBoxButtons.YesNo);
             {
@@ -125,9 +130,8 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
-                var message = ex.ToString();
-                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
-                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
+
+                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
         }
     
@@ -173,9 +177,8 @@ namespace Veiled_Kashmir_Admin_Panel
         }
             catch (Exception ex)
             {
-                var message = ex.ToString();
-                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
-                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
+
+                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
         }
 

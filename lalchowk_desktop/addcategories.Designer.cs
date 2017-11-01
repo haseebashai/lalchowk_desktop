@@ -127,7 +127,7 @@
             this.cpnl.Controls.Add(this.bpnl);
             this.cpnl.Location = new System.Drawing.Point(2, 0);
             this.cpnl.Name = "cpnl";
-            this.cpnl.Size = new System.Drawing.Size(1159, 722);
+            this.cpnl.Size = new System.Drawing.Size(1159, 640);
             this.cpnl.TabIndex = 1;
             // 
             // updbtn
@@ -713,7 +713,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1162, 684);
+            this.ClientSize = new System.Drawing.Size(1162, 643);
             this.Controls.Add(this.cpnl);
             this.Controls.Add(this.formlbl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

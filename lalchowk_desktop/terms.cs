@@ -97,9 +97,8 @@ namespace Veiled_Kashmir_Admin_Panel
 
             catch (Exception ex)
             {
-                var message = ex.ToString();
-                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
-                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
+
+                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
         }
 
@@ -117,9 +116,8 @@ namespace Veiled_Kashmir_Admin_Panel
 
             catch (Exception ex)
             {
-                var message = ex.ToString();
-                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
-                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
+
+                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
         }
 
@@ -137,9 +135,8 @@ namespace Veiled_Kashmir_Admin_Panel
 
             catch (Exception ex)
             {
-                var message = ex.ToString();
-                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
-                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
+
+                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
         }
 
@@ -151,7 +148,7 @@ namespace Veiled_Kashmir_Admin_Panel
             {
                
 
-                if (!Regex.IsMatch(desctxt.Text, @"^([a-zA-Z0-9@#$%&*+\-_(),+':;?.,![\]\s\\/{}""|]+)$"))
+                if (!Regex.IsMatch(desctxt.Text, @"^([a-zA-Z0-9@#$%&*+\-_(),+':;?.,![\]\s\\/{}""|]+)$")&& desctxt.Text!="")
                 {
 
                     MessageBox.Show("Abnormal Special Character found, Please remove it and proceed.");
@@ -177,9 +174,8 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
-                var message = ex.ToString();
-                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
-                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
+
+                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
         }
 
@@ -189,7 +185,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void faqupdbtn_Click(object sender, EventArgs e)
         {
-                if (!Regex.IsMatch(anstxt.Text, @"^([a-zA-Z0-9@#$%&*+\-_(),+':;?.,![\]\s\\/{}""|]+)$"))
+                if (!Regex.IsMatch(anstxt.Text, @"^([a-zA-Z0-9@#$%&*+\-_(),+':;?.,![\]\s\\/{}""|]+)$")&& anstxt.Text!="")
                 {
 
                     MessageBox.Show("Abnormal Special Character found, Please remove it and proceed.");
@@ -204,13 +200,12 @@ namespace Veiled_Kashmir_Admin_Panel
                     MessageBox.Show("Successfully Updated.");
                     }
 
-                    catch (Exception ex)
-                    {
-                        var message = ex.ToString();
-                        string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
-                        MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
-                    }
-                    readfaq();
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
+                }
+                readfaq();
                     faqdataview.DataSource = bsource;
                 }
         }
@@ -218,7 +213,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void abtbtn_Click(object sender, EventArgs e)
         {
-                if (!Regex.IsMatch(desctxtbox.Text, @"^([a-zA-Z0-9@#$%&*+\-_(),+':;?.,![\]\s\\/{}""|]+)$"))
+                if (!Regex.IsMatch(desctxtbox.Text, @"^([a-zA-Z0-9@#$%&*+\-_(),+':;?.,![\]\s\\/{}""|]+)$")&& desctxtbox.Text!="")
                 {
 
                     MessageBox.Show("Abnormal Special Character found, Please remove it and proceed.");
@@ -235,11 +230,10 @@ namespace Veiled_Kashmir_Admin_Panel
 
                 catch (Exception ex)
                 {
-                    var message = ex.ToString();
-                    string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
-                    MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
+
+                    MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
                 }
-                    readabout();
+                readabout();
                     aboutdataview.DataSource = bsource;
 
                 }
@@ -340,9 +334,8 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
-                var message = ex.ToString();
-                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
-                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
+
+                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
         }
 
@@ -359,9 +352,8 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
-                var message = ex.ToString();
-                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
-                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
+
+                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
         }
 
@@ -378,9 +370,8 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
-                var message = ex.ToString();
-                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
-                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
+
+                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
         }
 

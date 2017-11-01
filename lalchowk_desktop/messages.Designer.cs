@@ -57,6 +57,7 @@
             this.messagesdataview.Name = "messagesdataview";
             this.messagesdataview.Size = new System.Drawing.Size(843, 414);
             this.messagesdataview.TabIndex = 1;
+            this.messagesdataview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.messagesdataview_CellClick);
             this.messagesdataview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.messagesdataview_CellClick);
             // 
             // formlbl
@@ -84,7 +85,7 @@
             this.mpnl.Controls.Add(this.sendbtn);
             this.mpnl.Location = new System.Drawing.Point(1, 453);
             this.mpnl.Name = "mpnl";
-            this.mpnl.Size = new System.Drawing.Size(845, 211);
+            this.mpnl.Size = new System.Drawing.Size(845, 204);
             this.mpnl.TabIndex = 30;
             this.mpnl.Visible = false;
             // 
@@ -199,7 +200,7 @@
             this.msgpnl.Controls.Add(this.mpnl);
             this.msgpnl.Location = new System.Drawing.Point(1, 1);
             this.msgpnl.Name = "msgpnl";
-            this.msgpnl.Size = new System.Drawing.Size(1042, 667);
+            this.msgpnl.Size = new System.Drawing.Size(1042, 657);
             this.msgpnl.TabIndex = 31;
             this.msgpnl.Visible = false;
             // 
@@ -213,7 +214,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1162, 672);
+            this.ClientSize = new System.Drawing.Size(1162, 660);
             this.Controls.Add(this.msgpnl);
             this.Controls.Add(this.formlbl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -242,8 +243,8 @@
         private MaterialSkin.Controls.MaterialFlatButton sendbtn;
         private System.Windows.Forms.TextBox msgtxt;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel msgpnl;
         private System.ComponentModel.BackgroundWorker bgworker;
         private System.Windows.Forms.Button delbtn;
+        public System.Windows.Forms.Panel msgpnl;
     }
 }

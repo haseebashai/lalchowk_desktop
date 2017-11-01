@@ -124,8 +124,7 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
-                var message = ex.ToString();
-                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
+               
                 MessageBox.Show("Something happened.\nPlease check your internet connection and click Refresh.\n\n" , "Error!");
             
             starterror = true;
@@ -183,6 +182,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 orders or = new orders(hp,this);
                 or.TopLevel = false;
                 cntpnl.Controls.Clear();
+                cntpnl.Visible = true;
                 cntpnl.Controls.Add(or);
                 or.loadingnormal();
                 or.Show();
@@ -235,12 +235,13 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void productsbtn_Click(object sender, EventArgs e)
         {
-            if (cntpnl.Contains(placeddataview))
+            if (cntpnl.Contains(placeddataview) )
             {
                 Cursor = Cursors.WaitCursor;
                 products pr = new products(hp, this,this);
                 pr.TopLevel = false;
                 cntpnl.Controls.Clear();
+                cntpnl.Visible = true;
                 cntpnl.Controls.Add(pr);
                 pr.loadingnormal();
                 pr.Show();
@@ -264,12 +265,13 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void customersbtn_Click(object sender, EventArgs e)
         {
-            if (cntpnl.Contains(placeddataview))
+            if (cntpnl.Contains(placeddataview) )
             {
                 Cursor = Cursors.WaitCursor;
                 customers cus = new customers(hp,this);
                 cus.TopLevel = false;
                 cntpnl.Controls.Clear();
+                cntpnl.Visible = true;
                 cus.loadingnormal();
                 cntpnl.Controls.Add(cus);
                 cus.Show();
@@ -300,6 +302,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 expenditure exp = new expenditure(this, hp,this);
                 exp.TopLevel = false;
                 cntpnl.Controls.Clear();
+                cntpnl.Visible = true;
                 cntpnl.Controls.Add(exp);
                 exp.loadingnormal();
                 exp.Show();
@@ -329,6 +332,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 suppliers sup = new suppliers(hp,this);
                 sup.TopLevel = false;
                 cntpnl.Controls.Clear();
+                cntpnl.Visible = true;
                 cntpnl.Controls.Add(sup);
                 sup.loadingnormal();
                 sup.Show();
@@ -356,6 +360,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 Cursor = Cursors.WaitCursor;
                 accounts acc = new accounts(hp,this);
                 acc.TopLevel = false;
+                cntpnl.Visible = true;
                 cntpnl.Controls.Clear();
                 cntpnl.Controls.Add(acc);
                 acc.loadingnormal();
@@ -386,6 +391,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 approveprice ap = new approveprice(hp,this);
                 cntpnl.Controls.Clear();
                 ap.TopLevel = false;
+                cntpnl.Visible = true;
                 cntpnl.Controls.Add(ap);
                 ap.loadingnormal();
                 ap.Show();
@@ -481,6 +487,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 messages msg = new messages(this);
                 cntpnl.Controls.Clear();
                 msg.TopLevel = false;
+                cntpnl.Visible = true;
                 cntpnl.Controls.Add(msg);
                 msg.loadingnormal();
                 msg.Show();
@@ -495,7 +502,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 dg.dialogpnl.Controls.Add(msg);
                 msg.loadingdg();
                 dg.Text = "User Messages";
-
+                msg.msgpnl.Location = new Point(1, -20);
                 dg.Show();
                 msg.Show();
             }
@@ -510,6 +517,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 apphomepage aph = new apphomepage(this);
                 cntpnl.Controls.Clear();
                 aph.TopLevel = false;
+                cntpnl.Visible = true;
                 cntpnl.Controls.Add(aph);
                 aph.loadingnormal();
                 aph.Show();
@@ -541,7 +549,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 terms tr = new terms(hp,this);
                 tr.TopLevel = false;
                 cntpnl.Controls.Clear();
-                
+                cntpnl.Visible = true;
                 cntpnl.Controls.Add(tr);
                 tr.loadingnormal();
                 
@@ -572,7 +580,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 lifeclicks_account la = new lifeclicks_account(this);
                 la.TopLevel = false;
                 cntpnl.Controls.Clear();
-
+                cntpnl.Visible = true;
                 cntpnl.Controls.Add(la);
                 la.loadingnormal();
 
@@ -624,7 +632,7 @@ namespace Veiled_Kashmir_Admin_Panel
             
             pm.emaillistpnl.Visible=true;
 
-            dg.Size = new Size(1000, 722);
+            dg.Size = new Size(1000, 732);
             dg.dialogpnl.Controls.Add(pm);
             pm.loadingdg();
             
@@ -644,7 +652,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 addcategories ac = new addcategories(this);
                 ac.TopLevel = false;
                 cntpnl.Controls.Clear();
-
+                cntpnl.Visible = true;
                 cntpnl.Controls.Add(ac);
                 ac.loadingnormal();
 
@@ -668,6 +676,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void totalordersdel_Click(object sender, EventArgs e)
         {
+           
             Cursor = Cursors.WaitCursor;
             ordersdetails od = new ordersdetails(hp, this);
             cntpnl.Controls.Clear();
@@ -681,6 +690,21 @@ namespace Veiled_Kashmir_Admin_Panel
             Cursor = Cursors.Arrow;
         }
 
+        private void smsbtn_Click(object sender, EventArgs e)
+        {
+            dialogcontainer dg = new dialogcontainer();
+           sendsms sms = new sendsms();
+            sms.TopLevel = false;
+            dg.dialogpnl.Controls.Add(sms);
+            dg.lbl.Text="Send SMS";
+            dg.Text = "Send SMS";
+            dg.Size = new Size(800, 600);
+
+            dg.Show();
+            sms.Show();
+        }
+
+      
         private void settingsbtn_Click(object sender, EventArgs e)
         {
             if (cntpnl.Contains(placeddataview))
@@ -689,7 +713,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 Settings st = new Settings(this);
                 st.TopLevel = false;
                 cntpnl.Controls.Clear();
-
+                cntpnl.Visible = true;
                 cntpnl.Controls.Add(st);
                 st.loadingnormal();
 
@@ -711,6 +735,8 @@ namespace Veiled_Kashmir_Admin_Panel
             }
         }
 
+    
+       
 
         public void loadingnormal()
         {
@@ -737,7 +763,8 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             if (shippedcount == 0 && placedcount == 0 && starterror==false)
             {
-                cntpnl.Visible = false;
+
+                zeropnl.Visible = true;
                
             }
             else
@@ -782,7 +809,31 @@ namespace Veiled_Kashmir_Admin_Panel
                     ordersdlbl.Text = order;
                 }
 
-            }
+            }          
+       }
+        private void homelbl_Click(object sender, EventArgs e)
+        {
+            zeropnl.Visible = false;
+
+            loadingpic.Visible = false;
+            loadinglbl.Visible = false;
+            placedh.Visible = true;
+            shippedh.Visible = true;
+            shippedlbl.Visible = true;
+            attention.Visible = true; placedlbl.Visible = true; deliveredh.Visible = true; orderslbl.Visible = true;
+
+            placeddataview.DataSource = bsource;
+            shippeddataview.DataSource = bsource2;
+            placeddataview.Visible = true;
+            shippeddataview.Visible = true;
+            attentionlbl.Text = "> " + atten + " Order(s) need your Attention ASAP!";
+            int cst = int.Parse(atten);
+            if (cst == 0)
+            {
+                costlbl.Text = "";
+            }else
+            costlbl.Text = "> Will cost Rs. " + cost + "/-";
+            ordersdlbl.Text = order;
         }
     }
 }

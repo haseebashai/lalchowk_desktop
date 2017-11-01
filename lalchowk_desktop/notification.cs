@@ -67,11 +67,10 @@ namespace Veiled_Kashmir_Admin_Panel
                     UploadFileToFtp("ftp://lalchowk.in/httpdocs/lalchowk/pictures/", uploaddir);
                     obj.closeConnection();                 
                 }
-                catch (WebException ex)
+                catch (Exception ex)
                 {
-                    var message = ex.ToString();
-                    string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
-                    MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
+                    Cursor = Cursors.Arrow;
+                    MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
                 }
                 Cursor = Cursors.Arrow;
 
@@ -98,9 +97,8 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
-                var message = ex.ToString();
-                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
-                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
+
+                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
             obj.closeConnection();
         }
@@ -183,9 +181,8 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
-                var message = ex.ToString();
-                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
-                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
+
+                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
         }
     }

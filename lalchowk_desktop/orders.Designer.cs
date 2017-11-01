@@ -182,7 +182,7 @@
             this.orderpnl.Controls.Add(this.ordergridview);
             this.orderpnl.Location = new System.Drawing.Point(0, 49);
             this.orderpnl.Name = "orderpnl";
-            this.orderpnl.Size = new System.Drawing.Size(1162, 671);
+            this.orderpnl.Size = new System.Drawing.Size(1162, 616);
             this.orderpnl.TabIndex = 1;
             // 
             // dpnl
@@ -211,9 +211,9 @@
             this.dpnl.Controls.Add(this.label9);
             this.dpnl.Controls.Add(this.address1lbl);
             this.dpnl.Controls.Add(this.panel4);
-            this.dpnl.Location = new System.Drawing.Point(3, 410);
+            this.dpnl.Location = new System.Drawing.Point(3, 374);
             this.dpnl.Name = "dpnl";
-            this.dpnl.Size = new System.Drawing.Size(1156, 258);
+            this.dpnl.Size = new System.Drawing.Size(1156, 238);
             this.dpnl.TabIndex = 26;
             this.dpnl.Visible = false;
             // 
@@ -337,7 +337,7 @@
             this.proid.Location = new System.Drawing.Point(113, 33);
             this.proid.Name = "proid";
             this.proid.SelectionMode = System.Windows.Forms.SelectionMode.None;
-            this.proid.Size = new System.Drawing.Size(60, 208);
+            this.proid.Size = new System.Drawing.Size(60, 192);
             this.proid.TabIndex = 6;
             // 
             // namelbl
@@ -409,7 +409,7 @@
             this.proname.ItemHeight = 16;
             this.proname.Location = new System.Drawing.Point(179, 33);
             this.proname.Name = "proname";
-            this.proname.Size = new System.Drawing.Size(256, 208);
+            this.proname.Size = new System.Drawing.Size(256, 192);
             this.proname.TabIndex = 17;
             // 
             // panel3
@@ -464,7 +464,7 @@
             this.orderdetailview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.orderdetailview.Location = new System.Drawing.Point(3, 240);
             this.orderdetailview.Name = "orderdetailview";
-            this.orderdetailview.Size = new System.Drawing.Size(1156, 169);
+            this.orderdetailview.Size = new System.Drawing.Size(1156, 134);
             this.orderdetailview.TabIndex = 1;
             this.orderdetailview.Visible = false;
             this.orderdetailview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.orderdetailview_CellClick);
@@ -503,7 +503,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1162, 722);
+            this.ClientSize = new System.Drawing.Size(1162, 666);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.orderpnl);
             this.Controls.Add(this.formlbl);

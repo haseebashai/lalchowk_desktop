@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tplbl = new System.Windows.Forms.Label();
             this.sqltxt = new System.Windows.Forms.RichTextBox();
             this.sqldataview = new System.Windows.Forms.DataGridView();
@@ -44,7 +44,17 @@
             this.updbtn = new System.Windows.Forms.Button();
             this.pbar = new System.Windows.Forms.ProgressBar();
             this.fetchlbl = new System.Windows.Forms.Label();
+            this.copybtn = new System.Windows.Forms.Button();
+            this.coltxt = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.spacebox = new System.Windows.Forms.CheckBox();
+            this.commabox = new System.Windows.Forms.CheckBox();
+            this.linebox = new System.Windows.Forms.CheckBox();
+            this.colonbox = new System.Windows.Forms.CheckBox();
+            this.valuepnl = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.sqldataview)).BeginInit();
+            this.valuepnl.SuspendLayout();
             this.SuspendLayout();
             // 
             // tplbl
@@ -62,7 +72,7 @@
             // 
             this.sqltxt.AutoWordSelection = true;
             this.sqltxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sqltxt.ForeColor = System.Drawing.Color.Firebrick;
+            this.sqltxt.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.sqltxt.Location = new System.Drawing.Point(15, 116);
             this.sqltxt.Name = "sqltxt";
             this.sqltxt.Size = new System.Drawing.Size(588, 102);
@@ -73,19 +83,19 @@
             // 
             this.sqldataview.BackgroundColor = System.Drawing.Color.White;
             this.sqldataview.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.sqldataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.sqldataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.sqldataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.sqldataview.GridColor = System.Drawing.SystemColors.Control;
             this.sqldataview.Location = new System.Drawing.Point(15, 224);
             this.sqldataview.Name = "sqldataview";
-            this.sqldataview.Size = new System.Drawing.Size(957, 367);
+            this.sqldataview.Size = new System.Drawing.Size(957, 322);
             this.sqldataview.TabIndex = 20;
             this.sqldataview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.sqldataview_CellContentClick);
             // 
@@ -198,7 +208,7 @@
             // 
             // updbtn
             // 
-            this.updbtn.Location = new System.Drawing.Point(889, 597);
+            this.updbtn.Location = new System.Drawing.Point(889, 552);
             this.updbtn.Name = "updbtn";
             this.updbtn.Size = new System.Drawing.Size(83, 28);
             this.updbtn.TabIndex = 53;
@@ -230,12 +240,115 @@
             this.fetchlbl.Text = "Fetching Rows";
             this.fetchlbl.Visible = false;
             // 
+            // copybtn
+            // 
+            this.copybtn.Location = new System.Drawing.Point(341, 19);
+            this.copybtn.Name = "copybtn";
+            this.copybtn.Size = new System.Drawing.Size(129, 48);
+            this.copybtn.TabIndex = 56;
+            this.copybtn.Text = "Copy values to String";
+            this.copybtn.UseVisualStyleBackColor = true;
+            this.copybtn.Click += new System.EventHandler(this.copybtn_Click);
+            // 
+            // coltxt
+            // 
+            this.coltxt.Location = new System.Drawing.Point(3, 19);
+            this.coltxt.Name = "coltxt";
+            this.coltxt.Size = new System.Drawing.Size(332, 20);
+            this.coltxt.TabIndex = 57;
+            this.coltxt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(127, 2);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(72, 13);
+            this.label3.TabIndex = 58;
+            this.label3.Text = "Column Name";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(3, 54);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(67, 13);
+            this.label4.TabIndex = 59;
+            this.label4.Text = "Seperate by:";
+            // 
+            // spacebox
+            // 
+            this.spacebox.AutoSize = true;
+            this.spacebox.Location = new System.Drawing.Point(76, 52);
+            this.spacebox.Name = "spacebox";
+            this.spacebox.Size = new System.Drawing.Size(57, 17);
+            this.spacebox.TabIndex = 60;
+            this.spacebox.Text = "Space";
+            this.spacebox.UseVisualStyleBackColor = true;
+            this.spacebox.CheckedChanged += new System.EventHandler(this.spacebox_CheckedChanged);
+            // 
+            // commabox
+            // 
+            this.commabox.AutoSize = true;
+            this.commabox.Location = new System.Drawing.Point(139, 52);
+            this.commabox.Name = "commabox";
+            this.commabox.Size = new System.Drawing.Size(60, 17);
+            this.commabox.TabIndex = 61;
+            this.commabox.Text = "comma";
+            this.commabox.UseVisualStyleBackColor = true;
+            this.commabox.CheckedChanged += new System.EventHandler(this.commabox_CheckedChanged);
+            // 
+            // linebox
+            // 
+            this.linebox.AutoSize = true;
+            this.linebox.Location = new System.Drawing.Point(205, 52);
+            this.linebox.Name = "linebox";
+            this.linebox.Size = new System.Drawing.Size(71, 17);
+            this.linebox.TabIndex = 62;
+            this.linebox.Text = "New Line";
+            this.linebox.UseVisualStyleBackColor = true;
+            this.linebox.CheckedChanged += new System.EventHandler(this.linebox_CheckedChanged);
+            // 
+            // colonbox
+            // 
+            this.colonbox.AutoSize = true;
+            this.colonbox.Location = new System.Drawing.Point(282, 52);
+            this.colonbox.Name = "colonbox";
+            this.colonbox.Size = new System.Drawing.Size(53, 17);
+            this.colonbox.TabIndex = 63;
+            this.colonbox.Text = "Colon";
+            this.colonbox.UseVisualStyleBackColor = true;
+            this.colonbox.CheckedChanged += new System.EventHandler(this.colonbox_CheckedChanged);
+            // 
+            // valuepnl
+            // 
+            this.valuepnl.Controls.Add(this.coltxt);
+            this.valuepnl.Controls.Add(this.colonbox);
+            this.valuepnl.Controls.Add(this.copybtn);
+            this.valuepnl.Controls.Add(this.linebox);
+            this.valuepnl.Controls.Add(this.label3);
+            this.valuepnl.Controls.Add(this.commabox);
+            this.valuepnl.Controls.Add(this.label4);
+            this.valuepnl.Controls.Add(this.spacebox);
+            this.valuepnl.Location = new System.Drawing.Point(15, 547);
+            this.valuepnl.Name = "valuepnl";
+            this.valuepnl.Size = new System.Drawing.Size(491, 74);
+            this.valuepnl.TabIndex = 64;
+            this.valuepnl.Visible = false;
+            // 
             // sql
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(984, 643);
+            this.Controls.Add(this.valuepnl);
             this.Controls.Add(this.fetchlbl);
             this.Controls.Add(this.pbar);
             this.Controls.Add(this.updbtn);
@@ -255,6 +368,8 @@
             this.Name = "sql";
             this.Text = "sql";
             ((System.ComponentModel.ISupportInitialize)(this.sqldataview)).EndInit();
+            this.valuepnl.ResumeLayout(false);
+            this.valuepnl.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -277,5 +392,14 @@
         private System.Windows.Forms.Button updbtn;
         private System.Windows.Forms.ProgressBar pbar;
         private System.Windows.Forms.Label fetchlbl;
+        private System.Windows.Forms.Button copybtn;
+        private System.Windows.Forms.TextBox coltxt;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.CheckBox spacebox;
+        private System.Windows.Forms.CheckBox commabox;
+        private System.Windows.Forms.CheckBox linebox;
+        private System.Windows.Forms.CheckBox colonbox;
+        private System.Windows.Forms.Panel valuepnl;
     }
 }

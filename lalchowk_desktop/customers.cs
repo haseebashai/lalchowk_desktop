@@ -18,7 +18,7 @@ namespace Veiled_Kashmir_Admin_Panel
         String email, username,orderid,count,cmd;
         bool status, nametxtok, desctxtok, editnametxtok, editdesctxtok, parknametxtok, parkdesctxtok, editparktxtok, editparkdesctxtok, sancnametxtok, sancdesctxtok, editsanctnametxtok, editsancdesctxtok;
         BindingSource bsource;
-        MySqlDataAdapter adap;
+        MySqlDataAdapter adap,adap1,adap2,adap3;
         MySqlDataReader dr,dr2,dr3;
         MySqlCommandBuilder cmdbl;
         MySqlConnection con= new MySqlConnection( "SERVER=182.50.133.78;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah");
@@ -26,7 +26,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private container hp = null;
         private dialogcontainer dg = null;
-        DataTable dt,dt1;
+        DataTable dt,dt1,dt2,dt3,dt4;
 
 
         public customers(Form hpcopy,Form dgcopy)
@@ -50,15 +50,17 @@ namespace Veiled_Kashmir_Admin_Panel
                     obj.nonQuery(cmd);
                     obj.closeConnection();
                     readcustomers();
+                    MessageBox.Show("Customer deleted.");
                     customerdataview.DataSource = bsource;
                     Cursor = Cursors.Arrow;
                 }
                 catch (Exception ex)
                 {
-                    var message = ex.ToString();
-                    string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
-                    MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
+                    obj.closeConnection();
+                    
+                    MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
                 }
+                Cursor = Cursors.Arrow;
             }
         }
 
@@ -142,11 +144,9 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
-                var message = ex.ToString();
-                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
-                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
-            }
 
+                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
+            }
 
         }
 
@@ -178,9 +178,8 @@ namespace Veiled_Kashmir_Admin_Panel
         }
             catch (Exception ex)
             {
-                var message = ex.ToString();
-                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
-                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
+
+                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
         }
        
@@ -189,31 +188,31 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             try
             {
-                dr = obj.Query("select * from cartitems where email='" + email + "'");
-                dr.Read();
-                dt = new DataTable();
-                dt.Load(dr);
-                obj.closeConnection();     
+                con.Open();
+                adap2 = new MySqlDataAdapter("select * from cartitems where email='" + email + "'", con);             
+                dt3 = new DataTable();
+                adap2.Fill(dt3);
+                con.Close();
                 BindingSource bsource = new BindingSource();
-                bsource.DataSource = dt;
+                bsource.DataSource = dt3;
                 cartdataview.DataSource = bsource;
 
-                dr = obj.Query("select * from wishlist where email='" + email + "'");
-                dr.Read();
-                dt = new DataTable();
-                dt.Load(dr);
-                obj.closeConnection();
+                con.Open();
+                adap3 = new MySqlDataAdapter("select * from wishlist where email='" + email + "'", con);               
+                dt4 = new DataTable();
+                adap3.Fill(dt4);
+                con.Close();
                 BindingSource bsource2 = new BindingSource();
-                bsource2.DataSource = dt;
+                bsource2.DataSource = dt4;
                 wishlistdataview.DataSource = bsource2;
 
                 con.Open();
-                adap = new MySqlDataAdapter("select * from orders where email='" + email + "'", con);
-                dt = new DataTable();
-                adap.Fill(dt);
+                adap1 = new MySqlDataAdapter("select * from orders where email='" + email + "'", con);
+                dt2 = new DataTable();
+                adap1.Fill(dt2);
                 con.Close();
                 BindingSource bsource3 = new BindingSource();
-                bsource3.DataSource = dt;
+                bsource3.DataSource = dt2;
                 ordersdataview.DataSource = bsource3;
 
                 con.Open();
@@ -229,11 +228,54 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
-                var message = ex.ToString();
-                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
-                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
+
+                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
-            obj.closeConnection();
+            con.Close();
+        }
+        private void uporlbl_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                cmdbl = new MySqlCommandBuilder(adap1);
+                adap1.Update(dt2);
+                MessageBox.Show("Updated Successfully.");
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
+            }
+        }
+
+        private void upcalbl_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                cmdbl = new MySqlCommandBuilder(adap2);
+                adap2.Update(dt3);
+                MessageBox.Show("Updated Successfully.");
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
+            }
+        }
+
+        private void upwilbl_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                cmdbl = new MySqlCommandBuilder(adap3);
+                adap3.Update(dt4);
+                MessageBox.Show("Updated Successfully.");
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
+            }
         }
 
 
@@ -247,16 +289,15 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
-                var message = ex.ToString();
-                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
-                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
+
+                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
         }
 
         private void customerdataview_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             inflbl.Visible = false;
-            Cursor = Cursors.WaitCursor;
+           
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = this.customerdataview.Rows[e.RowIndex];               
@@ -266,6 +307,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 contactlbl.Text= row.Cells["contact"].Value.ToString();
                 
                 dpnl.Visible = true;
+                Cursor = Cursors.WaitCursor;
                 readdetails();
                 ppnl.Visible = true;
                 apnl.Visible = true;

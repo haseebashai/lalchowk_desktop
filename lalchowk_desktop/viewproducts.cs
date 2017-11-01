@@ -46,9 +46,8 @@ namespace Veiled_Kashmir_Admin_Panel
 
             catch (Exception ex)
             {
-                var message = ex.ToString();
-                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
-                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
+
+                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
         }
 
@@ -76,9 +75,8 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
-                var message = ex.ToString();
-                string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
-                MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
+
+                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
         }
 
@@ -132,24 +130,31 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void delbtn_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Do you want to delete the selected product ?\n"+pname, "Confirm", MessageBoxButtons.YesNo);
-            if (dr == DialogResult.Yes)
+            if (productsdataview.SelectedCells.ToString().Contains(""))
             {
-                try { 
-                cmd = ("delete from products where productid='" + pid + "'");
-                obj.nonQuery(cmd);
-                obj.closeConnection();
-                MessageBox.Show("Product Deleted.");
-                }
-
-                catch (Exception ex)
+                MessageBox.Show("Nothing to delete");
+            }
+            else
+            {
+                DialogResult dr = MessageBox.Show("Do you want to delete the selected product ?\n" + pname, "Confirm", MessageBoxButtons.YesNo);
+                if (dr == DialogResult.Yes)
                 {
-                    var message = ex.ToString();
-                    string[] split = message.Split(new string[] { " at " }, StringSplitOptions.None);
-                    MessageBox.Show("Something happened, please try again.\n\n" + split[0], "Error!");
+                    try
+                    {
+                        cmd = ("delete from products where productid='" + pid + "'");
+                        obj.nonQuery(cmd);
+                        obj.closeConnection();
+                        MessageBox.Show("Product Deleted.");
+                    }
+
+                    catch (Exception ex)
+                    {
+
+                        MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
+                    }
+                    readproducts();
+                    productsdataview.DataSource = bsource;
                 }
-                readproducts();
-                productsdataview.DataSource = bsource;
             }
         }
     }

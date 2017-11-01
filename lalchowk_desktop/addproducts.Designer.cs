@@ -364,7 +364,7 @@
             this.desctxt.Location = new System.Drawing.Point(463, 146);
             this.desctxt.Multiline = true;
             this.desctxt.Name = "desctxt";
-            this.desctxt.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.desctxt.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.desctxt.Size = new System.Drawing.Size(283, 225);
             this.desctxt.TabIndex = 19;
             this.desctxt.Leave += new System.EventHandler(this.desctxt_Leave);

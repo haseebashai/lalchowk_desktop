@@ -71,9 +71,9 @@
             // pic
             // 
             this.pic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pic.Location = new System.Drawing.Point(762, 35);
+            this.pic.Location = new System.Drawing.Point(762, 114);
             this.pic.Name = "pic";
-            this.pic.Size = new System.Drawing.Size(233, 318);
+            this.pic.Size = new System.Drawing.Size(172, 239);
             this.pic.TabIndex = 63;
             this.pic.TabStop = false;
             // 
