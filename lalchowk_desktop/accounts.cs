@@ -371,7 +371,10 @@ namespace Veiled_Kashmir_Admin_Panel
             moneypnl.Visible = false;
             bankpnl.Visible = false;
             miscpnl.Visible = false;
+            billpnl.Visible = false;
+            delpnl.Visible = false;
             rpnl.Visible = false;
+            dealpnl.Visible = false;
             totallbl.Visible = false;
         }
 
@@ -408,6 +411,9 @@ namespace Veiled_Kashmir_Admin_Panel
             bankpnl.Visible = false;
             miscpnl.Visible = false;
             rpnl.Visible = false;
+            billpnl.Visible = false;
+            delpnl.Visible = false;
+            dealpnl.Visible = false;
             totallbl.Visible = false;
         }
 
@@ -438,6 +444,9 @@ namespace Veiled_Kashmir_Admin_Panel
             exppnl.Visible = false;
             miscpnl.Visible = false;
             rpnl.Visible = false;
+            billpnl.Visible = false;
+            delpnl.Visible = false;
+            dealpnl.Visible = false;
             totallbl.Visible = false;
         }
 
@@ -469,6 +478,9 @@ namespace Veiled_Kashmir_Admin_Panel
             moneypnl.Visible = false;
             exppnl.Visible = false;
             rpnl.Visible = false;
+            billpnl.Visible = false;
+            delpnl.Visible = false;
+            dealpnl.Visible = false;
             totallbl.Visible = false;
         }
 
