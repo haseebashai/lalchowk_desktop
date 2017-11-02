@@ -11,6 +11,7 @@ using System.Net;
 using System.Web;
 using System.IO;
 using MySql.Data.MySqlClient;
+using System.Runtime.InteropServices;
 
 namespace Veiled_Kashmir_Admin_Panel
 {
@@ -23,6 +24,7 @@ namespace Veiled_Kashmir_Admin_Panel
         public sendsms()
         {
             InitializeComponent();
+
         }
 
 
@@ -44,7 +46,7 @@ namespace Veiled_Kashmir_Admin_Panel
             sbPostData.AppendFormat("&message={0}", message);
             sbPostData.AppendFormat("&sender={0}", senderId);
             sbPostData.AppendFormat("&route={0}", "4");
-          
+
             try
             {
                 //Call Send SMS API
@@ -91,55 +93,55 @@ namespace Veiled_Kashmir_Admin_Panel
                 string authKey = "180732AO0nQdUZo759f09569";             //Your authentication key
 
                 string mobileNumber = numList[i];                   //Multiple mobiles numbers separated by comma
-                
+
                 string senderId = sendertxt.Text;                        //Sender ID,While using route4 sender id should be 6 characters long.
 
                 string message = HttpUtility.UrlEncode(smstxt.Text);    //Your message to send, Add URL encoding here.
                 MessageBox.Show(numList[i]);
-                
-                       //Prepare you post parameters
-                        StringBuilder sbPostData = new StringBuilder();
-                        sbPostData.AppendFormat("authkey={0}", authKey);
-                        sbPostData.AppendFormat("&mobiles={0}", mobileNumber);
-                        sbPostData.AppendFormat("&message={0}", message);
-                        sbPostData.AppendFormat("&sender={0}", senderId);
-                        sbPostData.AppendFormat("&route={0}", "4");
 
-                        try
-                        {
-                            //Call Send SMS API
-                            string sendSMSUri = "http://api.msg91.com/api/sendhttp.php";
-                            //Create HTTPWebrequest
-                            HttpWebRequest httpWReq = (HttpWebRequest)WebRequest.Create(sendSMSUri);
-                            //Prepare and Add URL Encoded data
-                            UTF8Encoding encoding = new UTF8Encoding();
-                            byte[] data = encoding.GetBytes(sbPostData.ToString());
-                            //Specify post method
-                            httpWReq.Method = "POST";
-                            httpWReq.ContentType = "application/x-www-form-urlencoded";
-                            httpWReq.ContentLength = data.Length;
+                //Prepare you post parameters
+                StringBuilder sbPostData = new StringBuilder();
+                sbPostData.AppendFormat("authkey={0}", authKey);
+                sbPostData.AppendFormat("&mobiles={0}", mobileNumber);
+                sbPostData.AppendFormat("&message={0}", message);
+                sbPostData.AppendFormat("&sender={0}", senderId);
+                sbPostData.AppendFormat("&route={0}", "4");
 
-                            using (Stream stream = httpWReq.GetRequestStream())
-                            {
-                                stream.Write(data, 0, data.Length);
-                            }
-                            //Get the response
-                            HttpWebResponse response = (HttpWebResponse)httpWReq.GetResponse();
-                            StreamReader reader = new StreamReader(response.GetResponseStream());
-                            string responseString = reader.ReadToEnd();
+                try
+                {
+                    //Call Send SMS API
+                    string sendSMSUri = "http://api.msg91.com/api/sendhttp.php";
+                    //Create HTTPWebrequest
+                    HttpWebRequest httpWReq = (HttpWebRequest)WebRequest.Create(sendSMSUri);
+                    //Prepare and Add URL Encoded data
+                    UTF8Encoding encoding = new UTF8Encoding();
+                    byte[] data = encoding.GetBytes(sbPostData.ToString());
+                    //Specify post method
+                    httpWReq.Method = "POST";
+                    httpWReq.ContentType = "application/x-www-form-urlencoded";
+                    httpWReq.ContentLength = data.Length;
 
-                            //Close the response
-                            reader.Close();
-                            response.Close();
+                    using (Stream stream = httpWReq.GetRequestStream())
+                    {
+                        stream.Write(data, 0, data.Length);
+                    }
+                    //Get the response
+                    HttpWebResponse response = (HttpWebResponse)httpWReq.GetResponse();
+                    StreamReader reader = new StreamReader(response.GetResponseStream());
+                    string responseString = reader.ReadToEnd();
+
+                    //Close the response
+                    reader.Close();
+                    response.Close();
                     sentlbl.Visible = true;
                 }
-                        catch (SystemException ex)
-                        {
+                catch (SystemException ex)
+                {
                     sentlbl.Text = "Sending failed X";
                     sentlbl.ForeColor = Color.Red;
                     Cursor = Cursors.Arrow;
                     MessageBox.Show(ex.Message.ToString());
-                        }
+                }
 
             }
             numList.Clear();
@@ -150,7 +152,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void sendsmsbtn_Click(object sender, EventArgs e)
         {
-           
+
 
             sentlbl.Visible = false;
             if (sendertxt.Text == "")
@@ -165,7 +167,8 @@ namespace Veiled_Kashmir_Admin_Panel
             {
                 MessageBox.Show("Please enter message body.", "Error!");
             }
-            else {
+            else
+            {
                 if (loop)
                 {
                     try
@@ -182,7 +185,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     {
                         MessageBox.Show(exce.Message.ToString());
                     }
-                    
+
                 }
                 else
                 {
@@ -190,23 +193,33 @@ namespace Veiled_Kashmir_Admin_Panel
                     singlesms();
                 }
             }
-           
+
         }
 
         private void getnumbersbtn_Click(object sender, EventArgs e)
         {
+            string command = "";
+            if (limittxt.Text=="Enter LIMIT" || limittxt.Text == "")
+            {
+                command= "select distinct contact from customer where contact like '7%' or contact like '8%' or contact like '9%'  ORDER BY id "+dirbox.Text+" ";
+               
+            }else
+            {
+                command= "select distinct id, contact from customer where contact like '7%' or contact like '8%' or contact like '9%'  ORDER BY id " + dirbox.Text + " limit " + limittxt.Text + "";
+                
+            }
             int i = 0;
             string numbers = "";
             Cursor = Cursors.WaitCursor;
-            dr = obj.Query("select distinct contact from customer where contact like '7%' or contact like '8%' or contact like '9%'");
+            dr = obj.Query(command);
             while (dr.Read())
             {
                 numbers += dr["contact"].ToString();
                 numbers += "\r\n";
-
                 i++;
-            }
+            } 
             Cursor = Cursors.Arrow;
+            obj.closeConnection();
             numlisttxt.Text = numbers;
             arrow.Visible = true;
         }
@@ -219,16 +232,15 @@ namespace Veiled_Kashmir_Admin_Panel
             numbertxt.Font = new Font("MS Sans Serif", 9, FontStyle.Regular);
             numbertxt.ForeColor = Color.Black;
             numbertxt.Text = recievers.ToString();
-            
-          
+
+
         }
 
         private void numbertxt_Enter(object sender, EventArgs e)
         {
-            if(numbertxt.Text=="Enter numbers seperated with comma")
-            numbertxt.Text = "";
+            if (numbertxt.Text == "Enter numbers seperated with comma")
+                numbertxt.Text = "";
             numbertxt.Font = new Font("MS Sans Serif", 9, FontStyle.Regular);
-            numbertxt.ForeColor = Color.Black;
 
         }
 
@@ -262,5 +274,23 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             sendertxt.MaxLength = 6;
         }
+
+        private void limittxt_Enter(object sender, EventArgs e)
+        {
+            if (limittxt.Text == "Enter LIMIT")
+                limittxt.Text = "";
+        }
+
+        private void limittxt_Leave(object sender, EventArgs e)
+        {
+            if (limittxt.Text == "")
+            {
+                limittxt.ForeColor = Color.Black;
+                limittxt.Text = "Enter LIMIT";
+            }
+        }
     }
+
+
 }
+

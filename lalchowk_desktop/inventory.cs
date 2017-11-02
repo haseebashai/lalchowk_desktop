@@ -172,56 +172,54 @@ namespace Veiled_Kashmir_Admin_Panel
             }
         }
 
-        BackgroundWorker bw ;
+
+        BackgroundWorker bw;
         void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            ipnl.Enabled = true;
             upbtn.Enabled = true;
-            updlbl.Visible = false;
-            fetchlbl.Visible = false;
             pbar.Visible = false;
+            refreshlbl.Visible = false;
+            ipnl.Enabled = true;
             inventorydatagridview.DataSource = bsource;
+            
+
         }
         void bw_DoWork(object sender, DoWorkEventArgs e)
         {
-
-            try
-            {
-                adap.Fill(dt);
-                bsource = new BindingSource();
-                bsource.DataSource = dt;
-            }catch
-            {
-                MessageBox.Show("Please check your internet connection.");
-            }
+            readinventory();
+           
         }
-
         private void upbtn_Click(object sender, EventArgs e)
         {
+            upbtn.Enabled = false;
                 try
                 {
-                    cmdbl = new MySqlCommandBuilder(adap);
-                    adap.Update(dt);
-                    fetchlbl.Text = "Fetching Rows";
-                fetchlbl.Visible = true;
-                pbar.Visible = true;
-                descpnl.Visible = false;
-                upbtn.Enabled = false;
-                ipnl.Enabled = false;
-                updlbl.Visible = true;
-                inventorydatagridview.DataSource = null;
-                bw = new BackgroundWorker();
+                Cursor = Cursors.WaitCursor;
+                cmdbl = new MySqlCommandBuilder(adap);             
+                adap.Update(dt);
+
+                Cursor = Cursors.Arrow;
+                MessageBox.Show("Updated");
+                upbtn.Enabled = true;
+
+            }
+                catch (Exception ex)
+                {
+                upbtn.Enabled = true;
+                DialogResult dgr = MessageBox.Show("Cannot update, Data mismatch. Press YES to refresh the page.\n\n" + ex.Message.ToString(), "Error!",MessageBoxButtons.YesNo);
+                if (dgr == DialogResult.Yes)
+                {
+                    ipnl.Enabled = false;
+                    descpnl.Visible = false;
+                    refreshlbl.Visible = true;
+                    pbar.Visible = true;
+                    bw = new BackgroundWorker();
                     bw.DoWork += new DoWorkEventHandler(bw_DoWork);
                     bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_RunWorkerCompleted);
                     bw.RunWorkerAsync();
+                    upbtn.Enabled = false;
                 }
-                catch (Exception ex)
-                {
-                    updlbl.Text="Update failed";
-                updlbl.Visible = true;
-                fetchlbl.Text = "Database mismatch, Please refresh the page.";
-                fetchlbl.Visible = true;
-                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
+                Cursor = Cursors.Arrow;
             }
         }
       

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.inventorydatagridview = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -50,9 +50,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.descpnl = new System.Windows.Forms.Panel();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
-            this.fetchlbl = new System.Windows.Forms.Label();
             this.pbar = new System.Windows.Forms.ProgressBar();
-            this.updlbl = new System.Windows.Forms.Label();
+            this.refreshlbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.inventorydatagridview)).BeginInit();
             this.ipnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.refresh)).BeginInit();
@@ -63,14 +62,14 @@
             // 
             this.inventorydatagridview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.inventorydatagridview.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.inventorydatagridview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.inventorydatagridview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.inventorydatagridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.inventorydatagridview.Location = new System.Drawing.Point(4, 28);
             this.inventorydatagridview.Name = "inventorydatagridview";
@@ -271,41 +270,25 @@
             this.bgworker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker_DoWork);
             this.bgworker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker_RunWorkerCompleted);
             // 
-            // fetchlbl
-            // 
-            this.fetchlbl.AutoSize = true;
-            this.fetchlbl.BackColor = System.Drawing.Color.Transparent;
-            this.fetchlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fetchlbl.ForeColor = System.Drawing.Color.Black;
-            this.fetchlbl.Location = new System.Drawing.Point(889, 447);
-            this.fetchlbl.Name = "fetchlbl";
-            this.fetchlbl.Size = new System.Drawing.Size(76, 13);
-            this.fetchlbl.TabIndex = 57;
-            this.fetchlbl.Text = "Fetching Rows";
-            this.fetchlbl.Visible = false;
-            // 
             // pbar
             // 
-            this.pbar.Location = new System.Drawing.Point(839, 439);
-            this.pbar.MarqueeAnimationSpeed = 30;
+            this.pbar.Location = new System.Drawing.Point(892, 447);
             this.pbar.Name = "pbar";
-            this.pbar.Size = new System.Drawing.Size(165, 5);
+            this.pbar.Size = new System.Drawing.Size(135, 10);
             this.pbar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
-            this.pbar.TabIndex = 56;
+            this.pbar.TabIndex = 43;
             this.pbar.Visible = false;
             // 
-            // updlbl
+            // refreshlbl
             // 
-            this.updlbl.AutoSize = true;
-            this.updlbl.BackColor = System.Drawing.Color.Transparent;
-            this.updlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updlbl.ForeColor = System.Drawing.Color.Black;
-            this.updlbl.Location = new System.Drawing.Point(899, 423);
-            this.updlbl.Name = "updlbl";
-            this.updlbl.Size = new System.Drawing.Size(47, 13);
-            this.updlbl.TabIndex = 58;
-            this.updlbl.Text = "Updated";
-            this.updlbl.Visible = false;
+            this.refreshlbl.AutoSize = true;
+            this.refreshlbl.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.refreshlbl.Location = new System.Drawing.Point(920, 424);
+            this.refreshlbl.Name = "refreshlbl";
+            this.refreshlbl.Size = new System.Drawing.Size(79, 20);
+            this.refreshlbl.TabIndex = 44;
+            this.refreshlbl.Text = "Refreshing";
+            this.refreshlbl.Visible = false;
             // 
             // inventory
             // 
@@ -313,8 +296,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1162, 646);
-            this.Controls.Add(this.updlbl);
-            this.Controls.Add(this.fetchlbl);
+            this.Controls.Add(this.refreshlbl);
             this.Controls.Add(this.pbar);
             this.Controls.Add(this.descpnl);
             this.Controls.Add(this.ipnl);
@@ -355,9 +337,8 @@
         private System.ComponentModel.BackgroundWorker bgworker;
         private System.Windows.Forms.TextBox cattxt;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label fetchlbl;
-        private System.Windows.Forms.ProgressBar pbar;
-        private System.Windows.Forms.Label updlbl;
         private System.Windows.Forms.PictureBox refresh;
+        private System.Windows.Forms.ProgressBar pbar;
+        private System.Windows.Forms.Label refreshlbl;
     }
 }

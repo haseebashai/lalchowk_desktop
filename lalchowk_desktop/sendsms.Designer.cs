@@ -41,6 +41,8 @@
             this.sendertxt = new System.Windows.Forms.TextBox();
             this.arrow = new System.Windows.Forms.PictureBox();
             this.loopchk = new System.Windows.Forms.CheckBox();
+            this.limittxt = new System.Windows.Forms.TextBox();
+            this.dirbox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.arrow)).BeginInit();
             this.SuspendLayout();
             // 
@@ -118,11 +120,11 @@
             // 
             this.numlisttxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numlisttxt.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.numlisttxt.Location = new System.Drawing.Point(44, 93);
+            this.numlisttxt.Location = new System.Drawing.Point(75, 93);
             this.numlisttxt.Multiline = true;
             this.numlisttxt.Name = "numlisttxt";
             this.numlisttxt.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.numlisttxt.Size = new System.Drawing.Size(190, 329);
+            this.numlisttxt.Size = new System.Drawing.Size(159, 329);
             this.numlisttxt.TabIndex = 41;
             this.numlisttxt.Text = "Generate numbers \r\nfrom database.";
             this.numlisttxt.TextChanged += new System.EventHandler(this.numlisttxt_TextChanged);
@@ -132,7 +134,7 @@
             this.getnumbersbtn.AutoSize = true;
             this.getnumbersbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.getnumbersbtn.Depth = 0;
-            this.getnumbersbtn.Location = new System.Drawing.Point(129, 431);
+            this.getnumbersbtn.Location = new System.Drawing.Point(129, 454);
             this.getnumbersbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.getnumbersbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.getnumbersbtn.Name = "getnumbersbtn";
@@ -146,7 +148,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(41, 77);
+            this.label3.Location = new System.Drawing.Point(72, 77);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 13);
             this.label3.TabIndex = 43;
@@ -196,12 +198,38 @@
             this.loopchk.UseVisualStyleBackColor = true;
             this.loopchk.CheckedChanged += new System.EventHandler(this.loopchk_CheckedChanged);
             // 
+            // limittxt
+            // 
+            this.limittxt.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.limittxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.limittxt.ForeColor = System.Drawing.Color.Gray;
+            this.limittxt.Location = new System.Drawing.Point(147, 428);
+            this.limittxt.Name = "limittxt";
+            this.limittxt.Size = new System.Drawing.Size(87, 20);
+            this.limittxt.TabIndex = 48;
+            this.limittxt.Text = "Enter LIMIT";
+            this.limittxt.Enter += new System.EventHandler(this.limittxt_Enter);
+            this.limittxt.Leave += new System.EventHandler(this.limittxt_Leave);
+            // 
+            // dirbox
+            // 
+            this.dirbox.FormattingEnabled = true;
+            this.dirbox.Items.AddRange(new object[] {
+            "ASC",
+            "DESC"});
+            this.dirbox.Location = new System.Drawing.Point(75, 427);
+            this.dirbox.Name = "dirbox";
+            this.dirbox.Size = new System.Drawing.Size(66, 21);
+            this.dirbox.TabIndex = 49;
+            // 
             // sendsms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(750, 600);
+            this.Controls.Add(this.dirbox);
+            this.Controls.Add(this.limittxt);
             this.Controls.Add(this.loopchk);
             this.Controls.Add(this.arrow);
             this.Controls.Add(this.label4);
@@ -239,5 +267,7 @@
         private System.Windows.Forms.TextBox sendertxt;
         private System.Windows.Forms.PictureBox arrow;
         private System.Windows.Forms.CheckBox loopchk;
+        private System.Windows.Forms.TextBox limittxt;
+        private System.Windows.Forms.ComboBox dirbox;
     }
 }
