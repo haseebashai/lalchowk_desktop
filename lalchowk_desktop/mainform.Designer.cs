@@ -524,9 +524,9 @@
             this.totalordersdel.ForeColor = System.Drawing.SystemColors.Highlight;
             this.totalordersdel.Location = new System.Drawing.Point(1030, 631);
             this.totalordersdel.Name = "totalordersdel";
-            this.totalordersdel.Size = new System.Drawing.Size(102, 16);
+            this.totalordersdel.Size = new System.Drawing.Size(109, 16);
             this.totalordersdel.TabIndex = 46;
-            this.totalordersdel.Text = "Order delivered";
+            this.totalordersdel.Text = "Orders delivered";
             this.totalordersdel.Click += new System.EventHandler(this.totalordersdel_Click);
             // 
             // homelbl
