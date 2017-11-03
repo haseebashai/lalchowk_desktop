@@ -508,11 +508,11 @@
             // zero
             // 
             this.zero.AutoSize = true;
-            this.zero.Font = new System.Drawing.Font("Orator Std", 110.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.zero.Font = new System.Drawing.Font("Trajan Pro", 69.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.zero.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.zero.Location = new System.Drawing.Point(348, 217);
+            this.zero.Location = new System.Drawing.Point(386, 277);
             this.zero.Name = "zero";
-            this.zero.Size = new System.Drawing.Size(176, 197);
+            this.zero.Size = new System.Drawing.Size(103, 117);
             this.zero.TabIndex = 44;
             this.zero.Text = "0";
             // 

@@ -221,7 +221,7 @@
             // 
             this.con.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.con.ForeColor = System.Drawing.Color.Red;
-            this.con.Location = new System.Drawing.Point(987, 198);
+            this.con.Location = new System.Drawing.Point(986, 190);
             this.con.Name = "con";
             this.con.Size = new System.Drawing.Size(123, 17);
             this.con.TabIndex = 27;
@@ -230,9 +230,9 @@
             // 
             // billbtn
             // 
-            this.billbtn.Location = new System.Drawing.Point(944, 166);
+            this.billbtn.Location = new System.Drawing.Point(944, 135);
             this.billbtn.Name = "billbtn";
-            this.billbtn.Size = new System.Drawing.Size(152, 32);
+            this.billbtn.Size = new System.Drawing.Size(152, 52);
             this.billbtn.TabIndex = 26;
             this.billbtn.Text = "Confirm Delivery and Add Bill";
             this.billbtn.UseVisualStyleBackColor = true;
@@ -240,11 +240,11 @@
             // 
             // cnfbtn
             // 
-            this.cnfbtn.Location = new System.Drawing.Point(944, 69);
+            this.cnfbtn.Location = new System.Drawing.Point(944, 77);
             this.cnfbtn.Name = "cnfbtn";
-            this.cnfbtn.Size = new System.Drawing.Size(152, 89);
+            this.cnfbtn.Size = new System.Drawing.Size(152, 52);
             this.cnfbtn.TabIndex = 15;
-            this.cnfbtn.Text = "Ship and Print Reciept";
+            this.cnfbtn.Text = "Make Reciept";
             this.cnfbtn.UseVisualStyleBackColor = true;
             this.cnfbtn.Click += new System.EventHandler(this.cnfbtn_Click);
             // 

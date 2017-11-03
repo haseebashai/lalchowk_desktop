@@ -57,9 +57,9 @@
             this.ordergridview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.ordergridview.BackgroundColor = System.Drawing.Color.White;
             this.ordergridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ordergridview.Location = new System.Drawing.Point(2, 51);
+            this.ordergridview.Location = new System.Drawing.Point(3, 51);
             this.ordergridview.Name = "ordergridview";
-            this.ordergridview.Size = new System.Drawing.Size(1122, 372);
+            this.ordergridview.Size = new System.Drawing.Size(1147, 372);
             this.ordergridview.TabIndex = 1;
             this.ordergridview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ordergridview_CellClick);
             // 

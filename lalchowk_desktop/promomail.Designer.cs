@@ -419,7 +419,7 @@
         public System.Windows.Forms.Panel epnl;
         private System.Windows.Forms.OpenFileDialog attachdialog;
         public System.Windows.Forms.TextBox attachtxt;
-        private System.Windows.Forms.CheckBox checkattach;
         private System.Windows.Forms.CheckBox checkhtml;
+        public System.Windows.Forms.CheckBox checkattach;
     }
 }

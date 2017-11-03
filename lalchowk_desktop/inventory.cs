@@ -172,7 +172,6 @@ namespace Veiled_Kashmir_Admin_Panel
             }
         }
 
-
         BackgroundWorker bw;
         void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -181,21 +180,21 @@ namespace Veiled_Kashmir_Admin_Panel
             refreshlbl.Visible = false;
             ipnl.Enabled = true;
             inventorydatagridview.DataSource = bsource;
-            
+
 
         }
         void bw_DoWork(object sender, DoWorkEventArgs e)
         {
             readinventory();
-           
+
         }
         private void upbtn_Click(object sender, EventArgs e)
         {
             upbtn.Enabled = false;
-                try
-                {
+            try
+            {
                 Cursor = Cursors.WaitCursor;
-                cmdbl = new MySqlCommandBuilder(adap);             
+                cmdbl = new MySqlCommandBuilder(adap);
                 adap.Update(dt);
 
                 Cursor = Cursors.Arrow;
@@ -203,10 +202,10 @@ namespace Veiled_Kashmir_Admin_Panel
                 upbtn.Enabled = true;
 
             }
-                catch (Exception ex)
-                {
+            catch (Exception ex)
+            {
                 upbtn.Enabled = true;
-                DialogResult dgr = MessageBox.Show("Cannot update, Data mismatch. Press YES to refresh the page.\n\n" + ex.Message.ToString(), "Error!",MessageBoxButtons.YesNo);
+                DialogResult dgr = MessageBox.Show("Cannot update, Data mismatch. Press YES to refresh the page.\n\n" + ex.Message.ToString(), "Error!", MessageBoxButtons.YesNo);
                 if (dgr == DialogResult.Yes)
                 {
                     ipnl.Enabled = false;
@@ -222,7 +221,6 @@ namespace Veiled_Kashmir_Admin_Panel
                 Cursor = Cursors.Arrow;
             }
         }
-      
 
         private void cattxt_TextChanged(object sender, EventArgs e)
         {

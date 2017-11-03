@@ -71,6 +71,8 @@
             this.bgworker = new System.ComponentModel.BackgroundWorker();
             this.bgworker2 = new System.ComponentModel.BackgroundWorker();
             this.bgworker3 = new System.ComponentModel.BackgroundWorker();
+            this.rembaltxt = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.bpnl.SuspendLayout();
             this.clientpnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.accountdataview)).BeginInit();
@@ -124,6 +126,8 @@
             // 
             // clientpnl
             // 
+            this.clientpnl.Controls.Add(this.rembaltxt);
+            this.clientpnl.Controls.Add(this.label5);
             this.clientpnl.Controls.Add(this.abaltxt);
             this.clientpnl.Controls.Add(this.clientbaltxt);
             this.clientpnl.Controls.Add(this.label7);
@@ -236,7 +240,7 @@
             this.cliententrybtn.AutoSize = true;
             this.cliententrybtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.cliententrybtn.Depth = 0;
-            this.cliententrybtn.Location = new System.Drawing.Point(665, 65);
+            this.cliententrybtn.Location = new System.Drawing.Point(665, 112);
             this.cliententrybtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.cliententrybtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.cliententrybtn.Name = "cliententrybtn";
@@ -500,6 +504,23 @@
             this.bgworker3.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker3_DoWork);
             this.bgworker3.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker3_RunWorkerCompleted);
             // 
+            // rembaltxt
+            // 
+            this.rembaltxt.Location = new System.Drawing.Point(547, 74);
+            this.rembaltxt.Multiline = true;
+            this.rembaltxt.Name = "rembaltxt";
+            this.rembaltxt.Size = new System.Drawing.Size(204, 20);
+            this.rembaltxt.TabIndex = 30;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(545, 57);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(99, 13);
+            this.label5.TabIndex = 29;
+            this.label5.Text = "Remaining Balance";
+            // 
             // lifeclicks_account
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -576,5 +597,7 @@
         private System.Windows.Forms.Label aballbl;
         private System.Windows.Forms.TextBox abaltxt;
         private System.ComponentModel.BackgroundWorker bgworker3;
+        private System.Windows.Forms.TextBox rembaltxt;
+        private System.Windows.Forms.Label label5;
     }
 }

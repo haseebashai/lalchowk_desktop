@@ -216,12 +216,11 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void cnfbtn_Click(object sender, EventArgs e)
         {try { 
-            DialogResult dr = MessageBox.Show("Open the bill format file and print the bill.\n Change the status to Shipped.", "Confirm", MessageBoxButtons.YesNo);
+            DialogResult dr = MessageBox.Show("Open the bill format file and print the bill?\n", "Confirm", MessageBoxButtons.YesNo);
             if (dr == DialogResult.Yes)
             {
                 
-                dpnl.Visible = false;
-                orderdetailview.Visible = false;
+               
 
                 OpenFileDialog bill = new OpenFileDialog();
                 bill.Filter = "All Files (*.*)|*.*";
@@ -232,10 +231,6 @@ namespace Veiled_Kashmir_Admin_Panel
                     filename = bill.FileName;
                 }
                 Process.Start(filename);
-
-                cmd = "update orders set status='Shipped' where orderid='" + orderid + "'";
-                obj.nonQuery(cmd);
-
 
                 //  receipt rc = new receipt(orderid);
                 // rc.ShowDialog();

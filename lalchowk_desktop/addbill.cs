@@ -83,7 +83,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     pm.epnl.Location = new Point(-300, 1);
                     pm.attachtxt.Visible = true;
                     pm.elistlbl.Text = "";
-
+                    pm.checkattach.Checked = true;
                     dg.dialogpnl.Controls.Add(pm);
                     pm.loadingdg();
                     dg.Text = "Send Email";
@@ -157,7 +157,7 @@ namespace Veiled_Kashmir_Admin_Panel
             pm.epnl.Location = new Point(-300, 1);
             pm.attachtxt.Visible = true;
             pm.elistlbl.Text = "";
-
+            pm.checkattach.Checked = true;
             dg.dialogpnl.Controls.Add(pm);
             pm.loadingdg();
             dg.Text = "Send Email";

@@ -170,7 +170,7 @@ namespace Veiled_Kashmir_Admin_Panel
             try
             {
                 aconn.Open();
-                mysqlcmd = new MySqlCommand("insert into client_accounts(`client`, `email`, `amount`,`date`,`balance`,`comments`,`spent_on`) values ('" + clientnametxt.Text + "','" + clientemailtxt.Text + "','" + clientamounttxt.Text + "','" + clientdatetxt.Text + "','"+clientbaltxt.Text+"','" + clientcmtstxt.Text + "','" + clientspenttxt.Text + "')", aconn);
+                mysqlcmd = new MySqlCommand("insert into client_accounts(`client`, `email`, `amount`,`date`,`actualbalance`,`comments`,`spent_on`,`remainingbal`) values ('" + clientnametxt.Text + "','" + clientemailtxt.Text + "','" + clientamounttxt.Text + "','" + clientdatetxt.Text + "','"+clientbaltxt.Text+"','" + clientcmtstxt.Text + "','" + clientspenttxt.Text + "','"+rembaltxt.Text+"')", aconn);
                 mysqlcmd.ExecuteNonQuery();
                 MessageBox.Show("Entry added.");
                 aconn.Close();
@@ -187,6 +187,7 @@ namespace Veiled_Kashmir_Admin_Panel
             clientbaltxt.Text = "";
             clientcmtstxt.Text = "";
             clientspenttxt.Text = "";
+            rembaltxt.Text = "";
             readclients();
             accountdataview.DataSource = bsource;
 
