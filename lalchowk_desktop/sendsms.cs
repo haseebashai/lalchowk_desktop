@@ -133,7 +133,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     //Close the response
                     reader.Close();
                     response.Close();
-                    sentlbl.Visible = true;
+                    
                 }
                 catch (SystemException ex)
                 {
@@ -180,6 +180,7 @@ namespace Veiled_Kashmir_Admin_Panel
                             numList.Add(number);
                         }
                         loopsms();
+                        sentlbl.Visible = true;
                     }
                     catch (Exception exce)
                     {
@@ -199,28 +200,30 @@ namespace Veiled_Kashmir_Admin_Panel
         private void getnumbersbtn_Click(object sender, EventArgs e)
         {
             string command = "";
-            if (limittxt.Text=="Enter LIMIT" || limittxt.Text == "")
+            if (limittxt.Text == "Enter LIMIT" || limittxt.Text == "" || offsettxt.Text == "Enter Offset" || offsettxt.Text == "")
             {
-                command= "select distinct contact from customer where contact like '7%' or contact like '8%' or contact like '9%'  ORDER BY id "+dirbox.Text+" ";
-               
-            }else
-            {
-                command= "select distinct id, contact from customer where contact like '7%' or contact like '8%' or contact like '9%'  ORDER BY id " + dirbox.Text + " limit " + limittxt.Text + "";
-                
+                MessageBox.Show("Enter Limit and offset.");
+
             }
-            int i = 0;
-            string numbers = "";
-            Cursor = Cursors.WaitCursor;
-            dr = obj.Query(command);
-            while (dr.Read())
+            else
             {
-                numbers += dr["contact"].ToString();
-                numbers += "\r\n";
-                i++;
-            } 
-            Cursor = Cursors.Arrow;
-            obj.closeConnection();
-            numlisttxt.Text = numbers;
+                command = "select distinct contact from customer where contact like '7%' or contact like '8%' or contact like '9%'  ORDER BY id LIMIT " + limittxt.Text + " OFFSET " + offsettxt.Text + "";
+
+
+                int i = 0;
+                string numbers = "";
+                Cursor = Cursors.WaitCursor;
+                dr = obj.Query(command);
+                while (dr.Read())
+                {
+                    numbers += dr["contact"].ToString();
+                    numbers += "\r\n";
+                    i++;
+                }
+                Cursor = Cursors.Arrow;
+                obj.closeConnection();
+                numlisttxt.Text = numbers;
+            }
             arrow.Visible = true;
         }
 
@@ -287,6 +290,21 @@ namespace Veiled_Kashmir_Admin_Panel
             {
                 limittxt.ForeColor = Color.Black;
                 limittxt.Text = "Enter LIMIT";
+            }
+        }
+
+        private void offsettxt_Enter(object sender, EventArgs e)
+        {
+            if (offsettxt.Text == "Enter Offset")
+                offsettxt.Text = "";
+        }
+
+        private void offsettxt_Leave(object sender, EventArgs e)
+        {
+            if (offsettxt.Text == "")
+            {
+                offsettxt.ForeColor = Color.Black;
+                offsettxt.Text = "Enter Offset";
             }
         }
     }

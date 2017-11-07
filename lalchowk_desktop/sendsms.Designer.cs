@@ -42,7 +42,7 @@
             this.arrow = new System.Windows.Forms.PictureBox();
             this.loopchk = new System.Windows.Forms.CheckBox();
             this.limittxt = new System.Windows.Forms.TextBox();
-            this.dirbox = new System.Windows.Forms.ComboBox();
+            this.offsettxt = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.arrow)).BeginInit();
             this.SuspendLayout();
             // 
@@ -134,7 +134,7 @@
             this.getnumbersbtn.AutoSize = true;
             this.getnumbersbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.getnumbersbtn.Depth = 0;
-            this.getnumbersbtn.Location = new System.Drawing.Point(129, 454);
+            this.getnumbersbtn.Location = new System.Drawing.Point(129, 450);
             this.getnumbersbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.getnumbersbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.getnumbersbtn.Name = "getnumbersbtn";
@@ -203,24 +203,26 @@
             this.limittxt.BackColor = System.Drawing.Color.WhiteSmoke;
             this.limittxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.limittxt.ForeColor = System.Drawing.Color.Gray;
-            this.limittxt.Location = new System.Drawing.Point(147, 428);
+            this.limittxt.Location = new System.Drawing.Point(159, 428);
             this.limittxt.Name = "limittxt";
-            this.limittxt.Size = new System.Drawing.Size(87, 20);
+            this.limittxt.Size = new System.Drawing.Size(75, 20);
             this.limittxt.TabIndex = 48;
             this.limittxt.Text = "Enter LIMIT";
             this.limittxt.Enter += new System.EventHandler(this.limittxt_Enter);
             this.limittxt.Leave += new System.EventHandler(this.limittxt_Leave);
             // 
-            // dirbox
+            // offsettxt
             // 
-            this.dirbox.FormattingEnabled = true;
-            this.dirbox.Items.AddRange(new object[] {
-            "ASC",
-            "DESC"});
-            this.dirbox.Location = new System.Drawing.Point(75, 427);
-            this.dirbox.Name = "dirbox";
-            this.dirbox.Size = new System.Drawing.Size(66, 21);
-            this.dirbox.TabIndex = 49;
+            this.offsettxt.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.offsettxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.offsettxt.ForeColor = System.Drawing.Color.Gray;
+            this.offsettxt.Location = new System.Drawing.Point(75, 428);
+            this.offsettxt.Name = "offsettxt";
+            this.offsettxt.Size = new System.Drawing.Size(75, 20);
+            this.offsettxt.TabIndex = 50;
+            this.offsettxt.Text = "Enter Offset";
+            this.offsettxt.Enter += new System.EventHandler(this.offsettxt_Enter);
+            this.offsettxt.Leave += new System.EventHandler(this.offsettxt_Leave);
             // 
             // sendsms
             // 
@@ -228,7 +230,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(750, 600);
-            this.Controls.Add(this.dirbox);
+            this.Controls.Add(this.offsettxt);
             this.Controls.Add(this.limittxt);
             this.Controls.Add(this.loopchk);
             this.Controls.Add(this.arrow);
@@ -268,6 +270,6 @@
         private System.Windows.Forms.PictureBox arrow;
         private System.Windows.Forms.CheckBox loopchk;
         private System.Windows.Forms.TextBox limittxt;
-        private System.Windows.Forms.ComboBox dirbox;
+        private System.Windows.Forms.TextBox offsettxt;
     }
 }
