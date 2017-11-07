@@ -97,7 +97,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 string senderId = sendertxt.Text;                        //Sender ID,While using route4 sender id should be 6 characters long.
 
                 string message = HttpUtility.UrlEncode(smstxt.Text);    //Your message to send, Add URL encoding here.
-                MessageBox.Show(numList[i]);
+              
 
                 //Prepare you post parameters
                 StringBuilder sbPostData = new StringBuilder();
