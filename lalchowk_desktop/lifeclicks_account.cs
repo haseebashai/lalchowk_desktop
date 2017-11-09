@@ -268,7 +268,7 @@ namespace Veiled_Kashmir_Admin_Panel
             try
             {
                 aconn.Open();
-                mysqlcmd = new MySqlCommand("SELECT balance FROM lalchowk_ac.client_accounts where client='" + clientlbl + "' order by balance desc limit 1", aconn);
+                mysqlcmd = new MySqlCommand("SELECT actualbalance FROM lalchowk_ac.client_accounts where client='" + clientlbl + "' order by actualbalance desc limit 1", aconn);
                 dr = mysqlcmd.ExecuteReader();
                 dr.Read();                
                 balance = dr[0].ToString();              

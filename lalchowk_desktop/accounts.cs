@@ -839,7 +839,15 @@ namespace Veiled_Kashmir_Admin_Panel
             salebox.Text = sale;
             purchasebox.Text = purchase;
             investbox.Text = invest;
-            profitbox.Text = (int.Parse(salebox.Text) - int.Parse(purchasebox.Text)).ToString();
+            try
+            {
+                profitbox.Text = (int.Parse(salebox.Text) - int.Parse(purchasebox.Text)).ToString();
+            }
+            catch
+            {
+                MessageBox.Show("Please check for the correct date in deliveries and dealings.");
+            }
+           
             switch (month)
             {
                 case "01":
@@ -882,6 +890,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     monlbl.Visible = false;
                     break;
             }
+            
                    
         }
 
