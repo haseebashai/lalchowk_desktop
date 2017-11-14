@@ -175,7 +175,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 j = 0;
                 while (dr.Read())
                 {
-                    
+                   
                     var recipients = new MailAddress(dr["mail"].ToString());
                     MailMessage mail = new MailMessage(from,recipients.ToString());
                     mail.From = new MailAddress(from, sendername);
@@ -197,7 +197,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     j++;
                     i += 100/emails;
                     bgworker.ReportProgress(i);
-                    
+                    Thread.Sleep(1500);
                 }
                 obj.closeConnection();
 
