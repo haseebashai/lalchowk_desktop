@@ -130,8 +130,10 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void delbtn_Click(object sender, EventArgs e)
         {
-            if (productsdataview.SelectedCells.ToString().Contains(""))
+            
+            if (pname=="")
             {
+              
                 MessageBox.Show("Nothing to delete");
             }
             else
