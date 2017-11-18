@@ -88,6 +88,7 @@ namespace Veiled_Kashmir_Admin_Panel
         private void loopsms()
         {
             Cursor = Cursors.WaitCursor;
+            System.Threading.Thread.Sleep(1000);
             for (int i = 0; i < numList.Count; i++)
             {
                 string authKey = "180732AO0nQdUZo759f09569";             //Your authentication key
@@ -137,7 +138,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 }
                 catch (SystemException ex)
                 {
-                    sentlbl.Text = "Sending failed X";
+                    sentlbl.Text = numList[i]+ "Sending failed X";
                     sentlbl.ForeColor = Color.Red;
                     Cursor = Cursors.Arrow;
                     MessageBox.Show(ex.Message.ToString());
