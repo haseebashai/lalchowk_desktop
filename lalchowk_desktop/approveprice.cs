@@ -79,7 +79,8 @@ namespace Veiled_Kashmir_Admin_Panel
             obj.nonQuery(cmd);
             MessageBox.Show("Request Approved.");
             readrequest();
-            apnl.Visible = false;
+                reqdataview.DataSource = bsource;
+                apnl.Visible = false;
         }
             catch (Exception ex)
             {
