@@ -67,6 +67,7 @@
             this.smstxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.smstxt.ForeColor = System.Drawing.SystemColors.Highlight;
             this.smstxt.Location = new System.Drawing.Point(348, 288);
+            this.smstxt.MaxLength = 160;
             this.smstxt.Multiline = true;
             this.smstxt.Name = "smstxt";
             this.smstxt.Size = new System.Drawing.Size(362, 134);
