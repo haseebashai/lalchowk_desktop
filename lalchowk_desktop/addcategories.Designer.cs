@@ -143,9 +143,9 @@
             // 
             // epnl
             // 
+            this.epnl.Controls.Add(this.tcpnl);
             this.epnl.Controls.Add(this.fcpnl);
             this.epnl.Controls.Add(this.scpnl);
-            this.epnl.Controls.Add(this.tcpnl);
             this.epnl.Location = new System.Drawing.Point(3, 55);
             this.epnl.Name = "epnl";
             this.epnl.Size = new System.Drawing.Size(1159, 177);
@@ -486,6 +486,8 @@
             // tyes
             // 
             this.tyes.AutoSize = true;
+            this.tyes.Checked = true;
+            this.tyes.CheckState = System.Windows.Forms.CheckState.Checked;
             this.tyes.Location = new System.Drawing.Point(16, 130);
             this.tyes.Name = "tyes";
             this.tyes.Size = new System.Drawing.Size(44, 17);
