@@ -32,6 +32,8 @@
             this.cexpbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.clientbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.clientpnl = new System.Windows.Forms.Panel();
+            this.rembaltxt = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.abaltxt = new System.Windows.Forms.TextBox();
             this.clientbaltxt = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -71,8 +73,19 @@
             this.bgworker = new System.ComponentModel.BackgroundWorker();
             this.bgworker2 = new System.ComponentModel.BackgroundWorker();
             this.bgworker3 = new System.ComponentModel.BackgroundWorker();
-            this.rembaltxt = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.vdrbtn = new MaterialSkin.Controls.MaterialFlatButton();
+            this.label16 = new System.Windows.Forms.Label();
+            this.vnametxt = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.paidtxt = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.paydatetxt = new System.Windows.Forms.TextBox();
+            this.vaddbtn = new MaterialSkin.Controls.MaterialFlatButton();
+            this.label13 = new System.Windows.Forms.Label();
+            this.rbaltxt = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.vcmtstxt = new System.Windows.Forms.TextBox();
+            this.vpnl = new System.Windows.Forms.Panel();
             this.bpnl.SuspendLayout();
             this.clientpnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.accountdataview)).BeginInit();
@@ -80,10 +93,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.loadingaccpic)).BeginInit();
             this.epnl.SuspendLayout();
             this.cexppnl.SuspendLayout();
+            this.vpnl.SuspendLayout();
             this.SuspendLayout();
             // 
             // bpnl
             // 
+            this.bpnl.Controls.Add(this.vdrbtn);
             this.bpnl.Controls.Add(this.cexpbtn);
             this.bpnl.Controls.Add(this.clientbtn);
             this.bpnl.Location = new System.Drawing.Point(2, 2);
@@ -149,6 +164,23 @@
             this.clientpnl.Name = "clientpnl";
             this.clientpnl.Size = new System.Drawing.Size(1148, 164);
             this.clientpnl.TabIndex = 47;
+            // 
+            // rembaltxt
+            // 
+            this.rembaltxt.Location = new System.Drawing.Point(547, 74);
+            this.rembaltxt.Multiline = true;
+            this.rembaltxt.Name = "rembaltxt";
+            this.rembaltxt.Size = new System.Drawing.Size(204, 20);
+            this.rembaltxt.TabIndex = 30;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(545, 57);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(99, 13);
+            this.label5.TabIndex = 29;
+            this.label5.Text = "Remaining Balance";
             // 
             // abaltxt
             // 
@@ -365,6 +397,7 @@
             // 
             // epnl
             // 
+            this.epnl.Controls.Add(this.vpnl);
             this.epnl.Controls.Add(this.clientpnl);
             this.epnl.Controls.Add(this.cexppnl);
             this.epnl.Location = new System.Drawing.Point(6, 45);
@@ -504,22 +537,137 @@
             this.bgworker3.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker3_DoWork);
             this.bgworker3.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker3_RunWorkerCompleted);
             // 
-            // rembaltxt
+            // vdrbtn
             // 
-            this.rembaltxt.Location = new System.Drawing.Point(547, 74);
-            this.rembaltxt.Multiline = true;
-            this.rembaltxt.Name = "rembaltxt";
-            this.rembaltxt.Size = new System.Drawing.Size(204, 20);
-            this.rembaltxt.TabIndex = 30;
+            this.vdrbtn.AutoSize = true;
+            this.vdrbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.vdrbtn.Depth = 0;
+            this.vdrbtn.Location = new System.Drawing.Point(285, 2);
+            this.vdrbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.vdrbtn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.vdrbtn.Name = "vdrbtn";
+            this.vdrbtn.Primary = false;
+            this.vdrbtn.Size = new System.Drawing.Size(130, 36);
+            this.vdrbtn.TabIndex = 43;
+            this.vdrbtn.Text = "Vendor Balance";
+            this.vdrbtn.UseVisualStyleBackColor = true;
+            this.vdrbtn.Click += new System.EventHandler(this.vdrbtn_Click);
             // 
-            // label5
+            // label16
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(545, 57);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(99, 13);
-            this.label5.TabIndex = 29;
-            this.label5.Text = "Remaining Balance";
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(2, 8);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(67, 13);
+            this.label16.TabIndex = 0;
+            this.label16.Text = "Vendorname";
+            // 
+            // vnametxt
+            // 
+            this.vnametxt.Location = new System.Drawing.Point(5, 25);
+            this.vnametxt.Name = "vnametxt";
+            this.vnametxt.Size = new System.Drawing.Size(204, 20);
+            this.vnametxt.TabIndex = 1;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(2, 57);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(28, 13);
+            this.label15.TabIndex = 2;
+            this.label15.Text = "Paid";
+            // 
+            // paidtxt
+            // 
+            this.paidtxt.Location = new System.Drawing.Point(5, 74);
+            this.paidtxt.Name = "paidtxt";
+            this.paidtxt.Size = new System.Drawing.Size(204, 20);
+            this.paidtxt.TabIndex = 3;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(2, 111);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(46, 13);
+            this.label14.TabIndex = 4;
+            this.label14.Text = "Paydate";
+            // 
+            // paydatetxt
+            // 
+            this.paydatetxt.Location = new System.Drawing.Point(5, 128);
+            this.paydatetxt.Name = "paydatetxt";
+            this.paydatetxt.Size = new System.Drawing.Size(204, 20);
+            this.paydatetxt.TabIndex = 5;
+            // 
+            // vaddbtn
+            // 
+            this.vaddbtn.AutoSize = true;
+            this.vaddbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.vaddbtn.Depth = 0;
+            this.vaddbtn.Location = new System.Drawing.Point(531, 113);
+            this.vaddbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.vaddbtn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.vaddbtn.Name = "vaddbtn";
+            this.vaddbtn.Primary = false;
+            this.vaddbtn.Size = new System.Drawing.Size(85, 36);
+            this.vaddbtn.TabIndex = 17;
+            this.vaddbtn.Text = "ADD Entry";
+            this.vaddbtn.UseVisualStyleBackColor = true;
+            this.vaddbtn.Click += new System.EventHandler(this.vaddbtn_Click);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(275, 8);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(99, 13);
+            this.label13.TabIndex = 18;
+            this.label13.Text = "Remaining Balance";
+            // 
+            // rbaltxt
+            // 
+            this.rbaltxt.Location = new System.Drawing.Point(278, 25);
+            this.rbaltxt.Name = "rbaltxt";
+            this.rbaltxt.Size = new System.Drawing.Size(204, 20);
+            this.rbaltxt.TabIndex = 19;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(276, 57);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(56, 13);
+            this.label9.TabIndex = 26;
+            this.label9.Text = "Comments";
+            // 
+            // vcmtstxt
+            // 
+            this.vcmtstxt.Location = new System.Drawing.Point(279, 74);
+            this.vcmtstxt.Multiline = true;
+            this.vcmtstxt.Name = "vcmtstxt";
+            this.vcmtstxt.Size = new System.Drawing.Size(204, 74);
+            this.vcmtstxt.TabIndex = 27;
+            // 
+            // vpnl
+            // 
+            this.vpnl.Controls.Add(this.vcmtstxt);
+            this.vpnl.Controls.Add(this.label9);
+            this.vpnl.Controls.Add(this.rbaltxt);
+            this.vpnl.Controls.Add(this.label13);
+            this.vpnl.Controls.Add(this.vaddbtn);
+            this.vpnl.Controls.Add(this.paydatetxt);
+            this.vpnl.Controls.Add(this.label14);
+            this.vpnl.Controls.Add(this.paidtxt);
+            this.vpnl.Controls.Add(this.label15);
+            this.vpnl.Controls.Add(this.vnametxt);
+            this.vpnl.Controls.Add(this.label16);
+            this.vpnl.Location = new System.Drawing.Point(3, 0);
+            this.vpnl.Name = "vpnl";
+            this.vpnl.Size = new System.Drawing.Size(1148, 164);
+            this.vpnl.TabIndex = 49;
+            this.vpnl.Visible = false;
             // 
             // lifeclicks_account
             // 
@@ -547,6 +695,8 @@
             this.epnl.ResumeLayout(false);
             this.cexppnl.ResumeLayout(false);
             this.cexppnl.PerformLayout();
+            this.vpnl.ResumeLayout(false);
+            this.vpnl.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -599,5 +749,18 @@
         private System.ComponentModel.BackgroundWorker bgworker3;
         private System.Windows.Forms.TextBox rembaltxt;
         private System.Windows.Forms.Label label5;
+        private MaterialSkin.Controls.MaterialFlatButton vdrbtn;
+        public System.Windows.Forms.Panel vpnl;
+        private System.Windows.Forms.TextBox vcmtstxt;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox rbaltxt;
+        private System.Windows.Forms.Label label13;
+        private MaterialSkin.Controls.MaterialFlatButton vaddbtn;
+        private System.Windows.Forms.TextBox paydatetxt;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox paidtxt;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox vnametxt;
+        private System.Windows.Forms.Label label16;
     }
 }

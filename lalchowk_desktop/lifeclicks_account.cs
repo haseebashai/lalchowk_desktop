@@ -161,8 +161,9 @@ namespace Veiled_Kashmir_Admin_Panel
             abaltxt.Visible = false;
             cexppnl.Visible = false;
             clientpnl.Visible = true;
+            vpnl.Visible = false;
 
-           
+
         }
 
         private void cliententrybtn_Click(object sender, EventArgs e)
@@ -227,7 +228,11 @@ namespace Veiled_Kashmir_Admin_Panel
             panelhide();
             loadingshow();
             btndisable();
+          
             bgworker2.RunWorkerAsync();
+
+
+            vpnl.Visible = false;
             clientpnl.Visible = false;
             cexppnl.Visible = true;
         }
@@ -339,6 +344,81 @@ namespace Veiled_Kashmir_Admin_Panel
 
                 MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
+        }
+
+        private void vdrbtn_Click(object sender, EventArgs e)
+        {
+            panelhide();
+            loadingshow();
+            btndisable();
+            BackgroundWorker bgworker4 = new BackgroundWorker();
+            bgworker4.RunWorkerCompleted += Bgworker4_RunWorkerCompleted;
+            bgworker4.DoWork += Bgworker4_DoWork;
+            bgworker4.RunWorkerAsync();
+
+
+            cexppnl.Visible = false;
+            clientpnl.Visible = false;
+            vpnl.Visible = true;
+        }
+
+        private void Bgworker4_DoWork(object sender, DoWorkEventArgs e)
+        {
+            readbalance();
+        }
+
+        private void Bgworker4_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            btnenable();
+            panelshow();
+            accountdataview.DataSource = bsource;
+        }
+
+        private void vaddbtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                aconn.Open();
+                mysqlcmd = new MySqlCommand("insert into vbalance(`vendorname`, `paid`,`paydate`,`remaining_balance`,`comments`) values ('" + vnametxt.Text + "','" + paidtxt.Text + "','" + paydatetxt.Text + "','" + rbaltxt.Text + "','" +vcmtstxt.Text + "')", aconn);
+                mysqlcmd.ExecuteNonQuery();
+                MessageBox.Show("Entry added.");
+                aconn.Close();
+                vnametxt.Text = "";
+                paidtxt.Text = "";
+                paydatetxt.Text = "";
+                rbaltxt.Text = "";
+                vcmtstxt.Text = "";
+            }
+
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
+            }
+
+            readbalance();
+            accountdataview.DataSource = bsource;
+
+        }
+
+        public void readbalance()
+        {
+            try
+            {
+                aconn.Open();
+                adap = new MySqlDataAdapter("select * from vbalance", aconn);
+                dt = new DataTable();
+                adap.Fill(dt);
+                aconn.Close();
+                bsource = new BindingSource();
+                bsource.DataSource = dt;
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
+            }
+
         }
     }
 }
