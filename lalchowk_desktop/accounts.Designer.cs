@@ -1596,6 +1596,7 @@
             // 
             // epnl
             // 
+            this.epnl.Controls.Add(this.exppnl);
             this.epnl.Controls.Add(this.rpnl);
             this.epnl.Controls.Add(this.moneypnl);
             this.epnl.Controls.Add(this.billpnl);
@@ -1603,7 +1604,6 @@
             this.epnl.Controls.Add(this.dealpnl);
             this.epnl.Controls.Add(this.bankpnl);
             this.epnl.Controls.Add(this.miscpnl);
-            this.epnl.Controls.Add(this.exppnl);
             this.epnl.Location = new System.Drawing.Point(7, 41);
             this.epnl.Name = "epnl";
             this.epnl.Size = new System.Drawing.Size(1139, 179);
