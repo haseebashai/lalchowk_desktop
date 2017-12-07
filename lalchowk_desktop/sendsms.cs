@@ -208,7 +208,7 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             else
             {
-                command = "select distinct contact from customer where contact like '7%' or contact like '8%' or contact like '9%'  ORDER BY id LIMIT " + limittxt.Text + " OFFSET " + offsettxt.Text + "";
+                command = "select distinct contact from customer where subscribed =1 and contact like '7%' or contact like '8%' or contact like '9%'  ORDER BY id LIMIT " + limittxt.Text + " OFFSET " + offsettxt.Text + "";
 
 
                 int i = 0;
