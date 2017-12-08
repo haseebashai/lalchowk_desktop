@@ -74,7 +74,7 @@ namespace Veiled_Kashmir_Admin_Panel
             if (userinfo.loggedin == true)
                 signout();
             changelabel("Welcome, " + userinfo.username + "");
-
+            pageload.Visible = true;
 
         }
         BackgroundWorker bw;
@@ -82,60 +82,7 @@ namespace Veiled_Kashmir_Admin_Panel
         PictureBox refresh;
         Label refreshlbl;
         int placedcount, shippedcount;
-        private void readorders()
-        {
-            
-            try {
-                con.Open();
-                adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='placed';", con);
-                dt = new DataTable();
-                adap.Fill(dt);
-                con.Close();
-                bsource = new BindingSource();
-                bsource.DataSource = dt;
-                placedcount = dt.Rows.Count;
-
-
-                con.Open();
-                adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='shipped';", con);
-                dt = new DataTable();
-                adap.Fill(dt);
-                con.Close();
-                bsource2 = new BindingSource();
-                bsource2.DataSource = dt;
-                shippedcount=dt.Rows.Count;
-               
-
-                dr = obj.Query("Select count(status) from orders where status='placed'");
-                dr.Read();
-                atten = dr[0].ToString();
-                obj.closeConnection();
-
-                dr = obj.Query("select sum(dealerprice*quantity) from orderdetails where orderid in(SELECT orderid FROM orders where status = 'placed');");
-                dr.Read();
-                cost = dr[0].ToString();
-                obj.closeConnection();
-
-
-                dr = obj.Query("SELECT count(status) FROM orders where status='delivered'");
-                dr.Read();
-                order = dr[0].ToString();
-                obj.closeConnection();
-
-                starterror = false;
-
-
-            }
-            catch (Exception ex)
-            {
-               
-                MessageBox.Show("Something happened.\nPlease check your internet connection and click Refresh.\n\n" , "Error!");
-            
-            starterror = true;
-
- 
-            }
-        }
+      
         void bw_DoWork(object sender, DoWorkEventArgs e)
         {
             refresh = new PictureBox()
@@ -143,7 +90,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 Image = Properties.Resources.refresh,
                 Size = new Size(80, 70),
                 SizeMode = PictureBoxSizeMode.StretchImage,
-                Location = new Point(437, 212),
+                Location = new Point(480, 220),
                 Cursor = Cursors.Hand,
             };
 
@@ -154,7 +101,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 ForeColor = SystemColors.Highlight,
                 Font = new Font("MS Sans Seriff", 14, FontStyle.Regular),
                 Text = "Refresh",
-                Location = new Point(442, 289),
+                Location = new Point(485, 297),
             };
 
         }
@@ -510,6 +457,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 dg.Show();
                 msg.Show();
             }
+            msglbl.Visible = false;
 
         }
 
@@ -773,6 +721,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void bgworker_DoWork(object sender, DoWorkEventArgs e)
         {
+            
             try
             {
                 dr = obj.Query("select count(id) from bookrequests where processed ='0'");
@@ -780,7 +729,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 string count = dr[0].ToString();
                 obj.closeConnection();
 
-              
+                bgworker.ReportProgress(20);
 
                 dr = obj.Query("select count(messageid) from messages where messageid>60 and reply is null");
                 dr.Read();
@@ -790,45 +739,102 @@ namespace Veiled_Kashmir_Admin_Panel
              
 
                 object[] arg = { count, msg };
-                bgworker.ReportProgress(60,arg);
+                bgworker.ReportProgress(40,arg);
 
               
 
-                readorders();
-            }
-            catch { obj.closeConnection(); }
+             
+                    con.Open();
+                    adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='placed';", con);
+                    dt = new DataTable();
+                    adap.Fill(dt);
+                    con.Close();
+                    bsource = new BindingSource();
+                    bsource.DataSource = dt;
+                    placedcount = dt.Rows.Count;
+                    bgworker.ReportProgress(50);
+
+                    con.Open();
+                    adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='shipped';", con);
+                    dt = new DataTable();
+                    adap.Fill(dt);
+                    con.Close();
+                    bsource2 = new BindingSource();
+                    bsource2.DataSource = dt;
+                    shippedcount = dt.Rows.Count;
+                    bgworker.ReportProgress(60);
+
+                    dr = obj.Query("Select count(status) from orders where status='placed'");
+                    dr.Read();
+                    atten = dr[0].ToString();
+                    obj.closeConnection();
+                    bgworker.ReportProgress(80);
+
+                    dr = obj.Query("select sum(dealerprice*quantity) from orderdetails where orderid in(SELECT orderid FROM orders where status = 'placed');");
+                    dr.Read();
+                    cost = dr[0].ToString();
+                    obj.closeConnection();
+                    bgworker.ReportProgress(100);
+
+                    dr = obj.Query("SELECT count(status) FROM orders where status='delivered'");
+                    dr.Read();
+                    order = dr[0].ToString();
+                    obj.closeConnection();
+
+                    
+                    starterror = false;
+
+
+                }
+                catch (Exception ex)
+                {
+                    obj.closeConnection(); con.Close();
+                    MessageBox.Show("Something happened.\nPlease check your internet connection and click Refresh.\n\n", "Error!");
+
+                    starterror = true;
+
+
+                }
+               
         }
 
         private void bgworker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
+            pageload.Value = e.ProgressPercentage;
+
             Object[] arg = (object[])e.UserState;
-
-            string count = (string)arg[0];
-            string msg = (string)arg[1];
-            if (count == "0")
-            {
-                rcountlbl.Visible = false;
-            }
+            if (arg == null) { }
             else
             {
-                rcountlbl.Text = count;
-                rcountlbl.Visible = true;
-            }
 
-            if (msg == "0")
-            {
-                msglbl.Visible = false;
-            }
-            else
-            {
-                msglbl.Text = msg;
-                msglbl.Visible = true;
+                string count = (string)arg[0];
+                string msg = (string)arg[1];
+                if (count == "0")
+                {
+                    rcountlbl.Visible = false;
+                }
+                else
+                {
+                    rcountlbl.Text = count;
+                    rcountlbl.Visible = true;
+                }
+
+                if (msg == "0")
+                {
+                    msglbl.Visible = false;
+                }
+                else
+                {
+                    msglbl.Text = msg;
+                    msglbl.Visible = true;
+                }
             }
         }
 
 
         private void bgworker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            pageload.Value = 100;
             
             if (shippedcount == 0 && placedcount == 0 && starterror==false)
             {
@@ -864,6 +870,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
                     loadingpic.Visible = false;
                     loadinglbl.Visible = false;
+                    pageload.Visible = false;
                     placedh.Visible = true;
                     shippedh.Visible = true;
                     shippedlbl.Visible = true;
@@ -886,6 +893,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
             loadingpic.Visible = false;
             loadinglbl.Visible = false;
+            pageload.Visible = false;
             placedh.Visible = true;
             shippedh.Visible = true;
             shippedlbl.Visible = true;

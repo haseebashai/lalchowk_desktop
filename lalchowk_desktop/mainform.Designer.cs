@@ -82,6 +82,7 @@
             this.loadingpic = new System.Windows.Forms.PictureBox();
             this.loadinglbl = new System.Windows.Forms.Label();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
+            this.pageload = new System.Windows.Forms.ProgressBar();
             this.navpnl.SuspendLayout();
             this.navtitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -516,17 +517,18 @@
             this.cntpnl.Controls.Add(this.shippedlbl);
             this.cntpnl.Controls.Add(this.placedlbl);
             this.cntpnl.Controls.Add(this.attention);
+            this.cntpnl.Controls.Add(this.shippeddataview);
             this.cntpnl.Controls.Add(this.costlbl);
             this.cntpnl.Controls.Add(this.attentionlbl);
             this.cntpnl.Controls.Add(this.orderslbl);
             this.cntpnl.Controls.Add(this.ordersdlbl);
             this.cntpnl.Controls.Add(this.deliveredh);
-            this.cntpnl.Controls.Add(this.shippeddataview);
             this.cntpnl.Controls.Add(this.shippedh);
             this.cntpnl.Controls.Add(this.placeddataview);
             this.cntpnl.Controls.Add(this.placedh);
             this.cntpnl.Controls.Add(this.loadingpic);
             this.cntpnl.Controls.Add(this.loadinglbl);
+            this.cntpnl.Controls.Add(this.pageload);
             this.cntpnl.Location = new System.Drawing.Point(201, 0);
             this.cntpnl.Name = "cntpnl";
             this.cntpnl.Size = new System.Drawing.Size(1162, 722);
@@ -778,7 +780,7 @@
             // loadingpic
             // 
             this.loadingpic.Image = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.loader;
-            this.loadingpic.Location = new System.Drawing.Point(437, 212);
+            this.loadingpic.Location = new System.Drawing.Point(495, 212);
             this.loadingpic.Name = "loadingpic";
             this.loadingpic.Size = new System.Drawing.Size(87, 88);
             this.loadingpic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -791,7 +793,7 @@
             this.loadinglbl.AutoSize = true;
             this.loadinglbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.loadinglbl.ForeColor = System.Drawing.Color.Black;
-            this.loadinglbl.Location = new System.Drawing.Point(432, 299);
+            this.loadinglbl.Location = new System.Drawing.Point(490, 299);
             this.loadinglbl.Name = "loadinglbl";
             this.loadinglbl.Size = new System.Drawing.Size(101, 25);
             this.loadinglbl.TabIndex = 42;
@@ -805,6 +807,15 @@
             this.bgworker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker_DoWork);
             this.bgworker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgworker_ProgressChanged);
             this.bgworker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker_RunWorkerCompleted);
+            // 
+            // pageload
+            // 
+            this.pageload.ForeColor = System.Drawing.Color.Red;
+            this.pageload.Location = new System.Drawing.Point(0, 0);
+            this.pageload.Name = "pageload";
+            this.pageload.Size = new System.Drawing.Size(1161, 4);
+            this.pageload.TabIndex = 45;
+            this.pageload.Visible = false;
             // 
             // mainform
             // 
@@ -886,5 +897,6 @@
         private MaterialSkin.Controls.MaterialFlatButton bookbtn;
         private System.Windows.Forms.Label rcountlbl;
         private System.Windows.Forms.Label msglbl;
+        private System.Windows.Forms.ProgressBar pageload;
     }
 }
