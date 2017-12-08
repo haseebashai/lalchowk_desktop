@@ -41,6 +41,7 @@
             this.approvebtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.signinlbl = new System.Windows.Forms.Label();
             this.navpnl = new System.Windows.Forms.Panel();
+            this.bookbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.smsbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.settingsbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.label1 = new System.Windows.Forms.Label();
@@ -79,6 +80,8 @@
             this.loadingpic = new System.Windows.Forms.PictureBox();
             this.loadinglbl = new System.Windows.Forms.Label();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
+            this.rcountlbl = new System.Windows.Forms.Label();
+            this.msglbl = new System.Windows.Forms.Label();
             this.navpnl.SuspendLayout();
             this.navtitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -171,9 +174,9 @@
             // signinlbl
             // 
             this.signinlbl.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.signinlbl.Location = new System.Drawing.Point(7, 648);
+            this.signinlbl.Location = new System.Drawing.Point(51, 666);
             this.signinlbl.Name = "signinlbl";
-            this.signinlbl.Size = new System.Drawing.Size(192, 25);
+            this.signinlbl.Size = new System.Drawing.Size(88, 25);
             this.signinlbl.TabIndex = 9;
             this.signinlbl.Text = "Welcome, admin";
             this.signinlbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -183,6 +186,9 @@
             // 
             this.navpnl.BackColor = System.Drawing.Color.White;
             this.navpnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.navpnl.Controls.Add(this.msglbl);
+            this.navpnl.Controls.Add(this.rcountlbl);
+            this.navpnl.Controls.Add(this.bookbtn);
             this.navpnl.Controls.Add(this.smsbtn);
             this.navpnl.Controls.Add(this.settingsbtn);
             this.navpnl.Controls.Add(this.label1);
@@ -207,6 +213,22 @@
             this.navpnl.Name = "navpnl";
             this.navpnl.Size = new System.Drawing.Size(200, 689);
             this.navpnl.TabIndex = 10;
+            // 
+            // bookbtn
+            // 
+            this.bookbtn.AutoSize = true;
+            this.bookbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.bookbtn.Depth = 0;
+            this.bookbtn.Location = new System.Drawing.Point(20, 569);
+            this.bookbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.bookbtn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.bookbtn.Name = "bookbtn";
+            this.bookbtn.Primary = false;
+            this.bookbtn.Size = new System.Drawing.Size(119, 36);
+            this.bookbtn.TabIndex = 37;
+            this.bookbtn.Text = "Book Requests";
+            this.bookbtn.UseVisualStyleBackColor = true;
+            this.bookbtn.Click += new System.EventHandler(this.bookbtn_Click);
             // 
             // smsbtn
             // 
@@ -256,7 +278,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label2.Location = new System.Drawing.Point(3, 592);
+            this.label2.Location = new System.Drawing.Point(4, 614);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(63, 16);
             this.label2.TabIndex = 34;
@@ -283,7 +305,7 @@
             this.clientbtn.AutoSize = true;
             this.clientbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.clientbtn.Depth = 0;
-            this.clientbtn.Location = new System.Drawing.Point(20, 612);
+            this.clientbtn.Location = new System.Drawing.Point(21, 634);
             this.clientbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.clientbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.clientbtn.Name = "clientbtn";
@@ -755,6 +777,34 @@
             this.bgworker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker_DoWork);
             this.bgworker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker_RunWorkerCompleted);
             // 
+            // rcountlbl
+            // 
+            this.rcountlbl.AutoSize = true;
+            this.rcountlbl.BackColor = System.Drawing.Color.Red;
+            this.rcountlbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.rcountlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rcountlbl.ForeColor = System.Drawing.Color.White;
+            this.rcountlbl.Location = new System.Drawing.Point(139, 569);
+            this.rcountlbl.Name = "rcountlbl";
+            this.rcountlbl.Size = new System.Drawing.Size(33, 18);
+            this.rcountlbl.TabIndex = 38;
+            this.rcountlbl.Text = "req";
+            this.rcountlbl.Visible = false;
+            // 
+            // msglbl
+            // 
+            this.msglbl.AutoSize = true;
+            this.msglbl.BackColor = System.Drawing.Color.Red;
+            this.msglbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.msglbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.msglbl.ForeColor = System.Drawing.Color.White;
+            this.msglbl.Location = new System.Drawing.Point(150, 284);
+            this.msglbl.Name = "msglbl";
+            this.msglbl.Size = new System.Drawing.Size(39, 18);
+            this.msglbl.TabIndex = 39;
+            this.msglbl.Text = "msg";
+            this.msglbl.Visible = false;
+            // 
             // mainform
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -832,5 +882,8 @@
         private System.Windows.Forms.Label zero;
         private System.Windows.Forms.Label totalordersdel;
         private System.Windows.Forms.Label homelbl;
+        private MaterialSkin.Controls.MaterialFlatButton bookbtn;
+        private System.Windows.Forms.Label rcountlbl;
+        private System.Windows.Forms.Label msglbl;
     }
 }

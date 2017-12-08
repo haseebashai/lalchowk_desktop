@@ -35,34 +35,86 @@ namespace Veiled_Kashmir_Admin_Panel
             loadingnormal();
 
             bgworker.RunWorkerAsync();
+
+            BackgroundWorker bookreq = new BackgroundWorker();
+            bookreq.DoWork += Bookreq_DoWork;
+            bookreq.RunWorkerCompleted += Bookreq_RunWorkerCompleted;
+            bookreq.RunWorkerAsync();
+
             //     loadingform();
         }
 
-    /*    private void loadingform()
+        private void Bookreq_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            Form loading = new Form();
-            loading.Size = new Size(50, 50);
-            loading.FormBorderStyle = FormBorderStyle.FixedDialog;
-            loading.ControlBox = false;
-            loading.BackColor = Color.LightBlue;
-            loading.StartPosition = FormStartPosition.CenterScreen;
-            loading.Controls.Add(new Label() { Text = "LOADING...", Font = new Font("trajan pro", Font.Size, FontStyle.Bold) });
+            Object[] arg = e.Result as Object[];
+            
+            string count = (string)arg[0];
+            string msg = (string)arg[1];
+            if (count == "0")
+            {
+                rcountlbl.Visible = false;
+            }else
+            {
+                rcountlbl.Text = count;
+                rcountlbl.Visible = true;
+            }
 
+            if (msg == "0")
+            {
+                msglbl.Visible = false;
+            }else
+            {
+                msglbl.Text = msg;
+                msglbl.Visible = true;
+            }
+        }
+
+        private void Bookreq_DoWork(object sender, DoWorkEventArgs e)
+        {
             try
             {
-                loading.Show();
-               
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-                loading.Close();
-            }
-            finally {
-                loading.Close();
-            }
+                dr = obj.Query("select count(id) from bookrequests where processed ='0'");
+                dr.Read();
+                string count = dr[0].ToString();
+            
+                obj.closeConnection();
+                dr = obj.Query("select count(messageid) from messages where messageid>60 and reply is null");
+                dr.Read();
+                string msg = dr[0].ToString();
+             
+                obj.closeConnection();
 
-        }*/
+                object[] arg = { count, msg };
+                e.Result = arg;
+
+            }catch { obj.closeConnection(); }
+        }
+
+        /*    private void loadingform()
+            {
+                Form loading = new Form();
+                loading.Size = new Size(50, 50);
+                loading.FormBorderStyle = FormBorderStyle.FixedDialog;
+                loading.ControlBox = false;
+                loading.BackColor = Color.LightBlue;
+                loading.StartPosition = FormStartPosition.CenterScreen;
+                loading.Controls.Add(new Label() { Text = "LOADING...", Font = new Font("trajan pro", Font.Size, FontStyle.Bold) });
+
+                try
+                {
+                    loading.Show();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                    loading.Close();
+                }
+                finally {
+                    loading.Close();
+                }
+
+            }*/
 
         private void mainform_Load(object sender, EventArgs e)
         {
@@ -735,8 +787,21 @@ namespace Veiled_Kashmir_Admin_Panel
             }
         }
 
-    
-       
+        private void bookbtn_Click(object sender, EventArgs e)
+        {
+            dialogcontainer dg = new dialogcontainer();
+            dg.Size = new Size(860, 650);
+            books bk = new books(dg);
+            bk.TopLevel = false;
+            dg.dialogpnl.Controls.Add(bk);
+            bk.loadingdg();
+            dg.Text = "Book Requests";
+
+
+            dg.Show();
+            bk.Show();
+            rcountlbl.Visible = false;
+        }
 
         public void loadingnormal()
         {

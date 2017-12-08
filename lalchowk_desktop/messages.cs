@@ -119,11 +119,8 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void delbtn_Click(object sender, EventArgs e)
         {
-            if (messagesdataview.SelectedCells.ToString().Contains("")){
-                MessageBox.Show("Nothing to delete");
-            }
-            else {
-                DialogResult dgr = MessageBox.Show("Do you want to delete this message?", "Confirm!", MessageBoxButtons.YesNo);
+           
+                DialogResult dgr = MessageBox.Show("Do you want to delete this message from \n "+emaillbl.Text+" ?", "Confirm!", MessageBoxButtons.YesNo);
                 if (dgr == DialogResult.Yes)
                 {
                     try
@@ -143,7 +140,7 @@ namespace Veiled_Kashmir_Admin_Panel
                         MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
                     }
                 }
-            }
+            
         }
     }
 }
