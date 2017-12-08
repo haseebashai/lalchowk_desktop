@@ -36,60 +36,12 @@ namespace Veiled_Kashmir_Admin_Panel
 
             bgworker.RunWorkerAsync();
 
-            BackgroundWorker bookreq = new BackgroundWorker();
-            bookreq.DoWork += Bookreq_DoWork;
-            bookreq.RunWorkerCompleted += Bookreq_RunWorkerCompleted;
-            bookreq.RunWorkerAsync();
+          
 
             //     loadingform();
         }
 
-        private void Bookreq_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            Object[] arg = e.Result as Object[];
-            
-            string count = (string)arg[0];
-            string msg = (string)arg[1];
-            if (count == "0")
-            {
-                rcountlbl.Visible = false;
-            }else
-            {
-                rcountlbl.Text = count;
-                rcountlbl.Visible = true;
-            }
-
-            if (msg == "0")
-            {
-                msglbl.Visible = false;
-            }else
-            {
-                msglbl.Text = msg;
-                msglbl.Visible = true;
-            }
-        }
-
-        private void Bookreq_DoWork(object sender, DoWorkEventArgs e)
-        {
-            try
-            {
-                dr = obj.Query("select count(id) from bookrequests where processed ='0'");
-                dr.Read();
-                string count = dr[0].ToString();
-            
-                obj.closeConnection();
-                dr = obj.Query("select count(messageid) from messages where messageid>60 and reply is null");
-                dr.Read();
-                string msg = dr[0].ToString();
-             
-                obj.closeConnection();
-
-                object[] arg = { count, msg };
-                e.Result = arg;
-
-            }catch { obj.closeConnection(); }
-        }
-
+      
         /*    private void loadingform()
             {
                 Form loading = new Form();
@@ -821,11 +773,63 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void bgworker_DoWork(object sender, DoWorkEventArgs e)
         {
-            readorders();
+            try
+            {
+                dr = obj.Query("select count(id) from bookrequests where processed ='0'");
+                dr.Read();
+                string count = dr[0].ToString();
+                obj.closeConnection();
+
+              
+
+                dr = obj.Query("select count(messageid) from messages where messageid>60 and reply is null");
+                dr.Read();
+                string msg = dr[0].ToString();
+                obj.closeConnection();
+
+             
+
+                object[] arg = { count, msg };
+                bgworker.ReportProgress(60,arg);
+
+              
+
+                readorders();
+            }
+            catch { obj.closeConnection(); }
         }
+
+        private void bgworker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            Object[] arg = (object[])e.UserState;
+
+            string count = (string)arg[0];
+            string msg = (string)arg[1];
+            if (count == "0")
+            {
+                rcountlbl.Visible = false;
+            }
+            else
+            {
+                rcountlbl.Text = count;
+                rcountlbl.Visible = true;
+            }
+
+            if (msg == "0")
+            {
+                msglbl.Visible = false;
+            }
+            else
+            {
+                msglbl.Text = msg;
+                msglbl.Visible = true;
+            }
+        }
+
 
         private void bgworker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            
             if (shippedcount == 0 && placedcount == 0 && starterror==false)
             {
 
