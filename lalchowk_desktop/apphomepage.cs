@@ -97,6 +97,18 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             readoffers();
             readhomepage2();
+            readitems();
+        }
+
+        private void readitems()
+        {
+            con.Open();
+            adap = new MySqlDataAdapter("SELECT * FROM homepage2 where homeid >6", con);
+            dt1 = new DataTable();
+            adap.Fill(dt1);
+            con.Close();
+            bsource3 = new BindingSource();
+            bsource3.DataSource = dt1;
         }
 
         private void bgworker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -318,6 +330,7 @@ namespace Veiled_Kashmir_Admin_Panel
             dr = obj.Query("SELECT productname,productid FROM lalchowk.products WHERE stock>0 ORDER BY RAND() LIMIT 16 ");
            
             List<string> productid = new List<string>();
+                List<string> productname = new List<string>();
 
             int i = 0;
             int homeid = 35;
@@ -325,7 +338,7 @@ namespace Veiled_Kashmir_Admin_Panel
             {
                 
                 productid.Add(dr["productid"].ToString());
-                   
+                    productname.Add(dr["productname"].ToString());
                 i++;
                 
 
@@ -336,15 +349,13 @@ namespace Veiled_Kashmir_Admin_Panel
                     for (i = 0; i < 16; i++)
                      {
                    
-                        cmd = "update homepage2 set link='" + productid[i] + "' where homeid='" + homeid + "'";
+                        cmd = "update homepage2 set link='" + productid[i] + "',title='"+productname[i]+"' where homeid='" + homeid + "'";
                         obj.nonQuery(cmd);
                         obj.closeConnection();
 
                         homeid++;
                     }
-                    itemsdataview.DataSource = null;
-                    adap.Fill(dt1);
-                    bsource3.DataSource = dt1;
+                    readitems();
                     itemsdataview.DataSource = bsource3;
                     MessageBox.Show("Updated.");
                 }
@@ -426,13 +437,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 bsource2 = new BindingSource();
                 bsource2.DataSource = dt;
 
-                con.Open();
-                adap = new MySqlDataAdapter("SELECT * FROM homepage2 where homeid >6", con);
-                dt1 = new DataTable();
-                adap.Fill(dt1);
-                con.Close();
-                bsource3 = new BindingSource();
-                bsource3.DataSource = dt1;
+               
                 
                 dr = obj.Query("select picture,link from homepage2 where homeid='1'");
                 dr.Read();

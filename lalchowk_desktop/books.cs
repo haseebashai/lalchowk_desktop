@@ -86,27 +86,38 @@ namespace Veiled_Kashmir_Admin_Panel
                 booknametxt.Text = row.Cells["bookname"].Value.ToString();
                 detailstxt.Text = row.Cells["details"].Value.ToString();
                 email = row.Cells["email"].Value.ToString();
-                if (email == "null")
-                {   
-                    
-                    emailtxt.Text = "New customer";
-                }else
+                
+                if (email == "")
                 {
-                    temailbtn.Visible = true;
-                    emailtxt.Text = email;
                 }
-                dpnl.Visible = true;
+                else
+                {
+                    if (email == "null")
+                    {
+
+                        emailtxt.Text = "New customer";
+                    }
+                    else
+                    {
+                        temailbtn.Visible = true;
+                        emailtxt.Text = email;
+                    }
+                    dpnl.Visible = true;
+                }
+              
             }
         }
 
         private void Trueemail_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-          
-          
 
-            string mail = (string)e.Result;
-            emailtxt.Text = mail;
-            temailbtn.Enabled = true;
+
+            try
+            {
+                string mail = (string)e.Result;
+                emailtxt.Text = mail;
+                temailbtn.Enabled = true;
+            }catch { }
         }
 
         private void Trueemail_DoWork(object sender, DoWorkEventArgs e)
@@ -131,6 +142,33 @@ namespace Veiled_Kashmir_Admin_Panel
             trueemail.RunWorkerCompleted += Trueemail_RunWorkerCompleted;
             trueemail.RunWorkerAsync();
 
+        }
+
+        private void delbtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (id == null || email=="")
+                {
+                    MessageBox.Show("Select a request first.", "Error!");
+                }
+                else
+                {
+                    DialogResult dgr = MessageBox.Show("Sure you want to delete this book request\n" + booknametxt.Text + "\nby\n" + nametxt.Text + " ?", "Confirm!", MessageBoxButtons.YesNo);
+                    if (dgr == DialogResult.Yes)
+                    {
+                        Cursor = Cursors.WaitCursor;
+                        string cmd = "delete from bookrequests where id='" + id + "'";
+                        obj.nonQuery(cmd);
+                        MessageBox.Show("Request deleted.", "Deleted");
+                        id = null;
+                        readreqs();
+                        booksdataview.DataSource = bsource;
+                        Cursor = Cursors.Arrow;
+                        dpnl.Visible = false;
+                    }
+                }
+            }catch { Cursor = Cursors.Arrow; }
         }
 
         private void pbtn_Click(object sender, EventArgs e)
