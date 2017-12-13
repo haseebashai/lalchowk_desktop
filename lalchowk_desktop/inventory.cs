@@ -369,6 +369,7 @@ namespace Veiled_Kashmir_Admin_Panel
         string id;
         private void listbtn_Click(object sender, EventArgs e)
         {
+
             listbtn.Enabled = false;
             if (catidtxt.Text == "")
             {
@@ -378,6 +379,7 @@ namespace Veiled_Kashmir_Admin_Panel
             else
             {
                 id = catidtxt.Text;
+                loadinglbl.Visible = true;
                 bgworker.RunWorkerAsync();
             }
         }
@@ -406,6 +408,7 @@ namespace Veiled_Kashmir_Admin_Panel
             ipnl.Visible = true;
             upbtn.Visible = true;
             listbtn.Enabled = true;
+            loadinglbl.Visible = false;
 
 
         }    
