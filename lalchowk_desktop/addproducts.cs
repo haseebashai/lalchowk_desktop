@@ -38,7 +38,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
             loadingdg();
             addppnl.Enabled = false;
-           
+            Cursor = Cursors.WaitCursor;
             bgworker.RunWorkerAsync();
 
 
@@ -54,7 +54,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void bgworker_DoWork(object sender, DoWorkEventArgs e)
         {
-            Cursor = Cursors.WaitCursor;
+            
             readfirst();
             readsecond();
             readsuppliers();
@@ -73,6 +73,7 @@ namespace Veiled_Kashmir_Admin_Panel
             dg.lbl.ForeColor = SystemColors.Highlight;
             dg.lbl.Text = "Add Products";
             Cursor = Cursors.Arrow;
+           
         }
 
        
@@ -100,7 +101,8 @@ namespace Veiled_Kashmir_Admin_Panel
                
             }
             catch (Exception ex)
-            {             
+            {
+                obj.closeConnection();
                 MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
         }
@@ -117,6 +119,7 @@ namespace Veiled_Kashmir_Admin_Panel
         }
             catch (Exception ex)
             {
+                obj.closeConnection();
                 MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
         }
@@ -137,6 +140,7 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
+                obj.closeConnection();
                 MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
 
@@ -160,6 +164,7 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
+                obj.closeConnection();
                 MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
 
@@ -182,6 +187,7 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
+                obj.closeConnection();
                 MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
         }
@@ -337,6 +343,7 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
+                obj.closeConnection();
                 MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
 
 
@@ -522,6 +529,7 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (WebException ex)
             {
+                obj.closeConnection();
                 MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
 
                 return null;
@@ -613,12 +621,16 @@ namespace Veiled_Kashmir_Admin_Panel
 
         }
 
+      
+
         private void pidtxt_TextChanged(object sender, EventArgs e)
         {
-            pictxt.Text = pidtxt.Text + "-1.jpg";
+            gidtxt.Text = pidtxt.Text;
+            pictxt.Text = pidtxt.Text + ".jpg";
             p2txt.Text= pidtxt.Text + "-2.jpg";
             p3txt.Text= pidtxt.Text + "-3.jpg";
             p4txt.Text = pidtxt.Text + "-4.jpg";
+            p5txt.Text = pidtxt.Text + "-5.jpg";
         }
 
         private void pic4_Click(object sender, EventArgs e)
@@ -695,6 +707,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     }
                 catch (WebException ex)
                 {
+                    obj.closeConnection();
                     MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
 
 

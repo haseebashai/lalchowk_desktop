@@ -43,6 +43,9 @@
             this.loopchk = new System.Windows.Forms.CheckBox();
             this.limittxt = new System.Windows.Forms.TextBox();
             this.offsettxt = new System.Windows.Forms.TextBox();
+            this.tolbl = new System.Windows.Forms.Label();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.maxcountlbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.arrow)).BeginInit();
             this.SuspendLayout();
             // 
@@ -225,12 +228,48 @@
             this.offsettxt.Enter += new System.EventHandler(this.offsettxt_Enter);
             this.offsettxt.Leave += new System.EventHandler(this.offsettxt_Leave);
             // 
+            // tolbl
+            // 
+            this.tolbl.AutoSize = true;
+            this.tolbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tolbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.tolbl.Location = new System.Drawing.Point(345, 433);
+            this.tolbl.Name = "tolbl";
+            this.tolbl.Size = new System.Drawing.Size(16, 13);
+            this.tolbl.TabIndex = 51;
+            this.tolbl.Text = "to";
+            this.tolbl.Visible = false;
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(348, 450);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(149, 10);
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progressBar1.TabIndex = 52;
+            this.progressBar1.Visible = false;
+            // 
+            // maxcountlbl
+            // 
+            this.maxcountlbl.AutoSize = true;
+            this.maxcountlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.maxcountlbl.ForeColor = System.Drawing.Color.Black;
+            this.maxcountlbl.Location = new System.Drawing.Point(415, 462);
+            this.maxcountlbl.Name = "maxcountlbl";
+            this.maxcountlbl.Size = new System.Drawing.Size(16, 13);
+            this.maxcountlbl.TabIndex = 53;
+            this.maxcountlbl.Text = "to";
+            this.maxcountlbl.Visible = false;
+            // 
             // sendsms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(750, 600);
+            this.Controls.Add(this.maxcountlbl);
+            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.tolbl);
             this.Controls.Add(this.offsettxt);
             this.Controls.Add(this.limittxt);
             this.Controls.Add(this.loopchk);
@@ -272,5 +311,8 @@
         private System.Windows.Forms.CheckBox loopchk;
         private System.Windows.Forms.TextBox limittxt;
         private System.Windows.Forms.TextBox offsettxt;
+        private System.Windows.Forms.Label tolbl;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Label maxcountlbl;
     }
 }

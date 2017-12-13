@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.inventorydatagridview = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -45,35 +45,48 @@
             this.updatebtn = new System.Windows.Forms.Button();
             this.upbtn = new System.Windows.Forms.Button();
             this.ipnl = new System.Windows.Forms.Panel();
-            this.refresh = new System.Windows.Forms.PictureBox();
             this.cattxt = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.descpnl = new System.Windows.Forms.Panel();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
             this.pbar = new System.Windows.Forms.ProgressBar();
             this.refreshlbl = new System.Windows.Forms.Label();
+            this.invpnl = new System.Windows.Forms.Panel();
+            this.spnl = new System.Windows.Forms.Panel();
+            this.catsuplbl = new System.Windows.Forms.Label();
+            this.catidtxt = new System.Windows.Forms.TextBox();
+            this.allinvbtn = new System.Windows.Forms.Button();
+            this.clearbtn = new System.Windows.Forms.Button();
+            this.listbtn = new System.Windows.Forms.Button();
+            this.suplbl = new System.Windows.Forms.Label();
+            this.thirdlbl = new System.Windows.Forms.Label();
+            this.seclbl = new System.Windows.Forms.Label();
+            this.supbox = new System.Windows.Forms.ComboBox();
+            this.thirdbox = new System.Windows.Forms.ComboBox();
+            this.secbox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.inventorydatagridview)).BeginInit();
             this.ipnl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.refresh)).BeginInit();
             this.descpnl.SuspendLayout();
+            this.invpnl.SuspendLayout();
+            this.spnl.SuspendLayout();
             this.SuspendLayout();
             // 
             // inventorydatagridview
             // 
             this.inventorydatagridview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.inventorydatagridview.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.inventorydatagridview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.inventorydatagridview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.inventorydatagridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.inventorydatagridview.Location = new System.Drawing.Point(4, 28);
             this.inventorydatagridview.Name = "inventorydatagridview";
-            this.inventorydatagridview.Size = new System.Drawing.Size(1148, 389);
+            this.inventorydatagridview.Size = new System.Drawing.Size(1148, 364);
             this.inventorydatagridview.TabIndex = 0;
             this.inventorydatagridview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.inventorydatagridview_CellClick);
             this.inventorydatagridview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.inventorydatagridview_CellClick);
@@ -170,7 +183,7 @@
             this.desctxtbox.Multiline = true;
             this.desctxtbox.Name = "desctxtbox";
             this.desctxtbox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.desctxtbox.Size = new System.Drawing.Size(371, 224);
+            this.desctxtbox.Size = new System.Drawing.Size(371, 199);
             this.desctxtbox.TabIndex = 36;
             // 
             // label7
@@ -185,7 +198,7 @@
             // 
             // updatebtn
             // 
-            this.updatebtn.Location = new System.Drawing.Point(602, 83);
+            this.updatebtn.Location = new System.Drawing.Point(602, 70);
             this.updatebtn.Name = "updatebtn";
             this.updatebtn.Size = new System.Drawing.Size(61, 62);
             this.updatebtn.TabIndex = 38;
@@ -195,7 +208,7 @@
             // 
             // upbtn
             // 
-            this.upbtn.Location = new System.Drawing.Point(1033, 421);
+            this.upbtn.Location = new System.Drawing.Point(1033, 461);
             this.upbtn.Name = "upbtn";
             this.upbtn.Size = new System.Drawing.Size(122, 36);
             this.upbtn.TabIndex = 40;
@@ -205,7 +218,6 @@
             // 
             // ipnl
             // 
-            this.ipnl.Controls.Add(this.refresh);
             this.ipnl.Controls.Add(this.cattxt);
             this.ipnl.Controls.Add(this.label1);
             this.ipnl.Controls.Add(this.inventorydatagridview);
@@ -217,23 +229,11 @@
             this.ipnl.Controls.Add(this.label4);
             this.ipnl.Controls.Add(this.brandtxt);
             this.ipnl.Controls.Add(this.label5);
-            this.ipnl.Location = new System.Drawing.Point(3, 2);
+            this.ipnl.Location = new System.Drawing.Point(3, 66);
             this.ipnl.Name = "ipnl";
-            this.ipnl.Size = new System.Drawing.Size(1156, 419);
+            this.ipnl.Size = new System.Drawing.Size(1156, 394);
             this.ipnl.TabIndex = 41;
             this.ipnl.Visible = false;
-            // 
-            // refresh
-            // 
-            this.refresh.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.refresh;
-            this.refresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.refresh.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.refresh.Location = new System.Drawing.Point(1132, 3);
-            this.refresh.Name = "refresh";
-            this.refresh.Size = new System.Drawing.Size(21, 21);
-            this.refresh.TabIndex = 31;
-            this.refresh.TabStop = false;
-            this.refresh.Click += new System.EventHandler(this.refresh_Click);
             // 
             // cattxt
             // 
@@ -259,9 +259,9 @@
             this.descpnl.Controls.Add(this.updatebtn);
             this.descpnl.Controls.Add(this.desctxtbox);
             this.descpnl.Controls.Add(this.label7);
-            this.descpnl.Location = new System.Drawing.Point(3, 420);
+            this.descpnl.Location = new System.Drawing.Point(3, 459);
             this.descpnl.Name = "descpnl";
-            this.descpnl.Size = new System.Drawing.Size(671, 226);
+            this.descpnl.Size = new System.Drawing.Size(671, 203);
             this.descpnl.TabIndex = 42;
             this.descpnl.Visible = false;
             // 
@@ -272,7 +272,7 @@
             // 
             // pbar
             // 
-            this.pbar.Location = new System.Drawing.Point(892, 447);
+            this.pbar.Location = new System.Drawing.Point(892, 487);
             this.pbar.Name = "pbar";
             this.pbar.Size = new System.Drawing.Size(135, 10);
             this.pbar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
@@ -283,35 +283,177 @@
             // 
             this.refreshlbl.AutoSize = true;
             this.refreshlbl.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.refreshlbl.Location = new System.Drawing.Point(920, 424);
+            this.refreshlbl.Location = new System.Drawing.Point(920, 464);
             this.refreshlbl.Name = "refreshlbl";
             this.refreshlbl.Size = new System.Drawing.Size(79, 20);
             this.refreshlbl.TabIndex = 44;
             this.refreshlbl.Text = "Refreshing";
             this.refreshlbl.Visible = false;
             // 
+            // invpnl
+            // 
+            this.invpnl.Controls.Add(this.spnl);
+            this.invpnl.Controls.Add(this.ipnl);
+            this.invpnl.Controls.Add(this.refreshlbl);
+            this.invpnl.Controls.Add(this.upbtn);
+            this.invpnl.Controls.Add(this.pbar);
+            this.invpnl.Controls.Add(this.descpnl);
+            this.invpnl.Location = new System.Drawing.Point(1, -3);
+            this.invpnl.Name = "invpnl";
+            this.invpnl.Size = new System.Drawing.Size(1159, 662);
+            this.invpnl.TabIndex = 45;
+            this.invpnl.Visible = false;
+            // 
+            // spnl
+            // 
+            this.spnl.BackColor = System.Drawing.Color.LightYellow;
+            this.spnl.Controls.Add(this.catsuplbl);
+            this.spnl.Controls.Add(this.catidtxt);
+            this.spnl.Controls.Add(this.allinvbtn);
+            this.spnl.Controls.Add(this.clearbtn);
+            this.spnl.Controls.Add(this.listbtn);
+            this.spnl.Controls.Add(this.suplbl);
+            this.spnl.Controls.Add(this.thirdlbl);
+            this.spnl.Controls.Add(this.seclbl);
+            this.spnl.Controls.Add(this.supbox);
+            this.spnl.Controls.Add(this.thirdbox);
+            this.spnl.Controls.Add(this.secbox);
+            this.spnl.Location = new System.Drawing.Point(3, 7);
+            this.spnl.Name = "spnl";
+            this.spnl.Size = new System.Drawing.Size(1152, 50);
+            this.spnl.TabIndex = 45;
+            this.spnl.Visible = false;
+            // 
+            // catsuplbl
+            // 
+            this.catsuplbl.AutoSize = true;
+            this.catsuplbl.Location = new System.Drawing.Point(623, 3);
+            this.catsuplbl.Name = "catsuplbl";
+            this.catsuplbl.Size = new System.Drawing.Size(63, 13);
+            this.catsuplbl.TabIndex = 46;
+            this.catsuplbl.Text = "Category ID";
+            // 
+            // catidtxt
+            // 
+            this.catidtxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.catidtxt.Location = new System.Drawing.Point(626, 23);
+            this.catidtxt.Name = "catidtxt";
+            this.catidtxt.Size = new System.Drawing.Size(90, 20);
+            this.catidtxt.TabIndex = 45;
+            // 
+            // allinvbtn
+            // 
+            this.allinvbtn.Location = new System.Drawing.Point(1004, 9);
+            this.allinvbtn.Name = "allinvbtn";
+            this.allinvbtn.Size = new System.Drawing.Size(122, 36);
+            this.allinvbtn.TabIndex = 44;
+            this.allinvbtn.Text = "Download all inventory";
+            this.allinvbtn.UseVisualStyleBackColor = true;
+            this.allinvbtn.Click += new System.EventHandler(this.allinvbtn_Click);
+            // 
+            // clearbtn
+            // 
+            this.clearbtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.clearbtn.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.clearbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.clearbtn.Location = new System.Drawing.Point(835, 12);
+            this.clearbtn.Name = "clearbtn";
+            this.clearbtn.Size = new System.Drawing.Size(89, 31);
+            this.clearbtn.TabIndex = 42;
+            this.clearbtn.Text = "Clear";
+            this.clearbtn.UseVisualStyleBackColor = true;
+            this.clearbtn.Click += new System.EventHandler(this.clearbtn_Click);
+            // 
+            // listbtn
+            // 
+            this.listbtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.listbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.listbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.listbtn.Location = new System.Drawing.Point(742, 12);
+            this.listbtn.Name = "listbtn";
+            this.listbtn.Size = new System.Drawing.Size(87, 31);
+            this.listbtn.TabIndex = 41;
+            this.listbtn.Text = "List Products";
+            this.listbtn.UseVisualStyleBackColor = true;
+            this.listbtn.Click += new System.EventHandler(this.listbtn_Click);
+            // 
+            // suplbl
+            // 
+            this.suplbl.AutoSize = true;
+            this.suplbl.Location = new System.Drawing.Point(431, 3);
+            this.suplbl.Name = "suplbl";
+            this.suplbl.Size = new System.Drawing.Size(45, 13);
+            this.suplbl.TabIndex = 31;
+            this.suplbl.Text = "Supplier";
+            // 
+            // thirdlbl
+            // 
+            this.thirdlbl.AutoSize = true;
+            this.thirdlbl.Location = new System.Drawing.Point(233, 3);
+            this.thirdlbl.Name = "thirdlbl";
+            this.thirdlbl.Size = new System.Drawing.Size(75, 13);
+            this.thirdlbl.TabIndex = 29;
+            this.thirdlbl.Text = "Third category";
+            // 
+            // seclbl
+            // 
+            this.seclbl.AutoSize = true;
+            this.seclbl.Location = new System.Drawing.Point(16, 3);
+            this.seclbl.Name = "seclbl";
+            this.seclbl.Size = new System.Drawing.Size(88, 13);
+            this.seclbl.TabIndex = 27;
+            this.seclbl.Text = "Second category";
+            // 
+            // supbox
+            // 
+            this.supbox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.supbox.FormattingEnabled = true;
+            this.supbox.Location = new System.Drawing.Point(434, 22);
+            this.supbox.Name = "supbox";
+            this.supbox.Size = new System.Drawing.Size(162, 21);
+            this.supbox.TabIndex = 2;
+            this.supbox.SelectedIndexChanged += new System.EventHandler(this.supbox_SelectedIndexChanged);
+            // 
+            // thirdbox
+            // 
+            this.thirdbox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.thirdbox.FormattingEnabled = true;
+            this.thirdbox.Location = new System.Drawing.Point(236, 22);
+            this.thirdbox.Name = "thirdbox";
+            this.thirdbox.Size = new System.Drawing.Size(181, 21);
+            this.thirdbox.TabIndex = 1;
+            this.thirdbox.SelectedIndexChanged += new System.EventHandler(this.thirdbox_SelectedIndexChanged);
+            // 
+            // secbox
+            // 
+            this.secbox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.secbox.FormattingEnabled = true;
+            this.secbox.Location = new System.Drawing.Point(19, 22);
+            this.secbox.Name = "secbox";
+            this.secbox.Size = new System.Drawing.Size(200, 21);
+            this.secbox.TabIndex = 0;
+            this.secbox.SelectedIndexChanged += new System.EventHandler(this.secbox_SelectedIndexChanged);
+            // 
             // inventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1162, 646);
-            this.Controls.Add(this.refreshlbl);
-            this.Controls.Add(this.pbar);
-            this.Controls.Add(this.descpnl);
-            this.Controls.Add(this.ipnl);
-            this.Controls.Add(this.upbtn);
+            this.ClientSize = new System.Drawing.Size(1162, 660);
+            this.Controls.Add(this.invpnl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "inventory";
             this.Text = "research";
             ((System.ComponentModel.ISupportInitialize)(this.inventorydatagridview)).EndInit();
             this.ipnl.ResumeLayout(false);
             this.ipnl.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.refresh)).EndInit();
             this.descpnl.ResumeLayout(false);
             this.descpnl.PerformLayout();
+            this.invpnl.ResumeLayout(false);
+            this.invpnl.PerformLayout();
+            this.spnl.ResumeLayout(false);
+            this.spnl.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -337,8 +479,20 @@
         private System.ComponentModel.BackgroundWorker bgworker;
         private System.Windows.Forms.TextBox cattxt;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox refresh;
         private System.Windows.Forms.ProgressBar pbar;
         private System.Windows.Forms.Label refreshlbl;
+        private System.Windows.Forms.Panel invpnl;
+        private System.Windows.Forms.Panel spnl;
+        private System.Windows.Forms.Button clearbtn;
+        private System.Windows.Forms.Button listbtn;
+        private System.Windows.Forms.Label suplbl;
+        private System.Windows.Forms.Label thirdlbl;
+        private System.Windows.Forms.Label seclbl;
+        private System.Windows.Forms.ComboBox supbox;
+        private System.Windows.Forms.ComboBox thirdbox;
+        private System.Windows.Forms.ComboBox secbox;
+        private System.Windows.Forms.Button allinvbtn;
+        private System.Windows.Forms.Label catsuplbl;
+        private System.Windows.Forms.TextBox catidtxt;
     }
 }

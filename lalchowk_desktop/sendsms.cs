@@ -85,20 +85,124 @@ namespace Veiled_Kashmir_Admin_Panel
             Cursor = Cursors.Arrow;
         }
 
-        private void loopsms()
+     
+        BackgroundWorker smsloop = new BackgroundWorker();
+        string sentfrom;
+        private void sendsmsbtn_Click(object sender, EventArgs e)
         {
-            Cursor = Cursors.WaitCursor;
-            System.Threading.Thread.Sleep(1000);
+
+            sendsmsbtn.Enabled=false;
+            sentlbl.Visible = false;
+            if (sendertxt.Text == "")
+            {
+                MessageBox.Show("Please enter sender.", "Error!");
+                sendsmsbtn.Enabled = true;
+            }
+            else if (numbertxt.Text == "" || numbertxt.Text == "Enter numbers seperated with comma")
+            {
+                MessageBox.Show("Please enter recievers.", "Error!");
+                sendsmsbtn.Enabled = true;
+            }
+            else if (smstxt.Text == "")
+            {
+                MessageBox.Show("Please enter message body.", "Error!");
+                sendsmsbtn.Enabled = true;
+            }
+            else
+            {
+                if (loop)
+                {
+                    try
+                    {
+                        sentfrom = sendertxt.Text;
+                        string[] txtNumbers = numbertxt.Text.Split(',');
+                        foreach (string nbr in txtNumbers)
+                        {
+                            string number = nbr;
+                            numList.Add(number);
+                        }
+                        progressBar1.Maximum = numList.Count;
+                        smsloop.DoWork += Smsloop_DoWork;
+                        smsloop.RunWorkerCompleted += Smsloop_RunWorkerCompleted;
+                        smsloop.WorkerReportsProgress = true;
+                        smsloop.ProgressChanged += Smsloop_ProgressChanged;
+                        smsloop.RunWorkerAsync();
+                  
+                       
+                    }
+                    catch (Exception exce)
+                    {
+                        MessageBox.Show(exce.Message.ToString());
+                        sendsmsbtn.Enabled = true;
+                    }
+
+                }
+                else
+                {
+
+                    singlesms();
+                    sendsmsbtn.Enabled = true;
+                }
+            }
+
+        }
+
+        private void Smsloop_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            
+           
+            progressBar1.Visible = true;
+            
+            string count = (string)e.UserState;
+            tolbl.Text = "Sending to: " + count;
+            maxcountlbl.Text = "(" + e.ProgressPercentage.ToString() + "/" + numList.Count + ")";
+            maxcountlbl.Visible = true;
+            progressBar1.Value = e.ProgressPercentage;
+            tolbl.Visible = true;
+        }
+
+        private void Smsloop_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            string result = (string)e.Result;
+            if (result == "fail")
+            {
+                sentlbl.Text = "Sending to some numbers failed X";
+                sentlbl.ForeColor = Color.Red;
+                sentlbl.Visible = true;
+            }
+            else
+            {
+                sentlbl.Text = "MESSAGE SENT ✔";
+                sentlbl.ForeColor = Color.Green;
+                sentlbl.Visible = true;
+                tolbl.Text = "All Messages sent.";
+                progressBar1.Value = progressBar1.Maximum;
+                maxcountlbl.Text = "(" + numList.Count + "/" + numList.Count + ")";
+                MessageBox.Show("Messages sent.", "Success!");
+            }
+            sendsmsbtn.Enabled = true;
+            numList.Clear();
+
+
+        }
+
+
+        private void Smsloop_DoWork(object sender, DoWorkEventArgs e)
+        {
+           
+            
             for (int i = 0; i < numList.Count; i++)
             {
+                
+                smsloop.ReportProgress(i, numList[i]);
                 string authKey = "180732AO0nQdUZo759f09569";             //Your authentication key
 
                 string mobileNumber = numList[i];                   //Multiple mobiles numbers separated by comma
 
-                string senderId = sendertxt.Text;                        //Sender ID,While using route4 sender id should be 6 characters long.
+                string senderId = sentfrom;                        //Sender ID,While using route4 sender id should be 6 characters long.
 
                 string message = HttpUtility.UrlEncode(smstxt.Text);    //Your message to send, Add URL encoding here.
-              
+                
 
                 //Prepare you post parameters
                 StringBuilder sbPostData = new StringBuilder();
@@ -107,6 +211,8 @@ namespace Veiled_Kashmir_Admin_Panel
                 sbPostData.AppendFormat("&message={0}", message);
                 sbPostData.AppendFormat("&sender={0}", senderId);
                 sbPostData.AppendFormat("&route={0}", "4");
+
+               
 
                 try
                 {
@@ -134,99 +240,56 @@ namespace Veiled_Kashmir_Admin_Panel
                     //Close the response
                     reader.Close();
                     response.Close();
-                    
+
                 }
                 catch (SystemException ex)
                 {
-                    sentlbl.Text = numList[i]+ "Sending failed X";
-                    sentlbl.ForeColor = Color.Red;
-                    Cursor = Cursors.Arrow;
+                    e.Result = "fail";
+                   
+                    
                     MessageBox.Show(ex.Message.ToString());
                 }
-
+                System.Threading.Thread.Sleep(1000);
             }
-            numList.Clear();
-            Cursor = Cursors.Arrow;
-
-        }
-
-
-        private void sendsmsbtn_Click(object sender, EventArgs e)
-        {
-
-
-            sentlbl.Visible = false;
-            if (sendertxt.Text == "")
-            {
-                MessageBox.Show("Please enter sender.", "Error!");
-            }
-            else if (numbertxt.Text == "" || numbertxt.Text == "Enter numbers seperated with comma")
-            {
-                MessageBox.Show("Please enter recievers.", "Error!");
-            }
-            else if (smstxt.Text == "")
-            {
-                MessageBox.Show("Please enter message body.", "Error!");
-            }
-            else
-            {
-                if (loop)
-                {
-                    try
-                    {
-                        string[] txtNumbers = numbertxt.Text.Split(',');
-                        foreach (string nbr in txtNumbers)
-                        {
-                            string number = nbr;
-                            numList.Add(number);
-                        }
-                        loopsms();
-                        sentlbl.Visible = true;
-                    }
-                    catch (Exception exce)
-                    {
-                        MessageBox.Show(exce.Message.ToString());
-                    }
-
-                }
-                else
-                {
-
-                    singlesms();
-                }
-            }
-
+           
+           
         }
 
         private void getnumbersbtn_Click(object sender, EventArgs e)
         {
-            string command = "";
-            if (limittxt.Text == "Enter LIMIT" || limittxt.Text == "" || offsettxt.Text == "Enter Offset" || offsettxt.Text == "")
-            {
-                MessageBox.Show("Enter Limit and offset.");
-
-            }
-            else
-            {
-                command = "select distinct contact from customer where subscribed =1 and contact like '7%' or contact like '8%' or contact like '9%'  ORDER BY id LIMIT " + limittxt.Text + " OFFSET " + offsettxt.Text + "";
-
-
-                int i = 0;
-                string numbers = "";
-                Cursor = Cursors.WaitCursor;
-                dr = obj.Query(command);
-                while (dr.Read())
+            
+            try {
+                string command = "";
+                if (limittxt.Text == "Enter LIMIT" || limittxt.Text == "" || offsettxt.Text == "Enter Offset" || offsettxt.Text == "")
                 {
-                    numbers += dr["contact"].ToString();
-                    numbers += "\r\n";
-                    i++;
+                    MessageBox.Show("Enter Limit and offset.");
+
                 }
-                Cursor = Cursors.Arrow;
+                else
+                {
+                    command = "select distinct contact from customer where subscribed =1 and contact like '7%' or contact like '8%' or contact like '9%'  ORDER BY id LIMIT " + limittxt.Text + " OFFSET " + offsettxt.Text + "";
+
+
+                    int i = 0;
+                    string numbers = "";
+                    Cursor = Cursors.WaitCursor;
+                    dr = obj.Query(command);
+                    while (dr.Read())
+                    {
+                        numbers += dr["contact"].ToString();
+                        numbers += "\r\n";
+                        i++;
+                    }
+                    Cursor = Cursors.Arrow;
+                    obj.closeConnection();
+                    numlisttxt.Text = numbers;
+                }
+                arrow.Visible = true;
+            }catch
+            {
                 obj.closeConnection();
-                numlisttxt.Text = numbers;
             }
-            arrow.Visible = true;
-        }
+            }
 
         List<string> numList = new List<string>();
         private void arrow_Click(object sender, EventArgs e)
@@ -269,6 +332,7 @@ namespace Veiled_Kashmir_Admin_Panel
             if (loopchk.Checked)
             {
                 loop = true;
+
             }
             else
                 loop = false;

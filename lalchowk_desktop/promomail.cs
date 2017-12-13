@@ -99,10 +99,12 @@ namespace Veiled_Kashmir_Admin_Panel
             frombox.DisplayMember = "Text";
             var items = new[]
             {
-                new {Text="support@lalchowk.in"},
-                new {Text="feedback@lalchowk.in"},
+                new {Text="support@lalchowk.in"},               
+                new {Text ="promo@lalchowk.in"},
                 new {Text="info@lalchowk.in"},
+                new {Text="feedback@lalchowk.in"},
                 new {Text="hr@lalchowk.in"}
+                
 
             };
             frombox.DataSource = items;
@@ -137,10 +139,11 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
-
+                obj.closeConnection();
+                aconn.Close();
                 MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
-            aconn.Close();
+            
         }
 
         private void checkattach_CheckedChanged(object sender, EventArgs e)
@@ -197,7 +200,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     j++;
                     i += 100/emails;
                     bgworker.ReportProgress(i);
-                    Thread.Sleep(1500);
+                    Thread.Sleep(2000);
                 }
                 obj.closeConnection();
 
@@ -244,6 +247,10 @@ namespace Veiled_Kashmir_Admin_Panel
                     sendername = "Lalchowk Info";
                     from = "info@lalchowk.in";
                     break;
+                case "promo@lalchowk.in":
+                    sendername = "Lalchowk Promos";
+                    from = "promo@lalchowk.in";
+                    break;
                 case "hr@lalchowk.in":
                     sendername = "Human Resources";
                     from = "hr@lalchowk.in";
@@ -269,7 +276,7 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
-
+                aconn.Close();
                 MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
             Cursor = Cursors.Arrow;
@@ -331,7 +338,7 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
-
+                aconn.Close();
                 MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
         }
@@ -489,6 +496,8 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
+                obj.closeConnection();
+                aconn.Close();
                 Cursor = Cursors.Arrow;
                 MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }

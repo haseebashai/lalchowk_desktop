@@ -81,7 +81,7 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
-
+                obj.closeConnection();
                 MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
         }
@@ -223,7 +223,7 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
-
+                obj.closeConnection();
                 MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
         }
@@ -243,42 +243,48 @@ namespace Veiled_Kashmir_Admin_Panel
         }
         private void addbtn_Click(object sender, EventArgs e)
         {
-            if (gidtxt.Text == "")
+            try
             {
-                MessageBox.Show("Product undefined!, Enter GroupdID.");
-            }
-            else
-            {
-                if (pic.BackgroundImage == null)
+                if (gidtxt.Text == "")
                 {
-                    DialogResult dgr = MessageBox.Show("Do you want to update database only ?", "Warning!", MessageBoxButtons.YesNo);
-                    if (dgr == DialogResult.Yes)
+                    MessageBox.Show("Product undefined!, Enter GroupdID.");
+                }
+                else
+                {
+                    if (pic.BackgroundImage == null)
                     {
-                        cmd = "insert into pictures (`groupid`, `picture`) " +
-                         "values ('" + gidtxt.Text + @"','" + ptxt.Text + "')";
-                        obj.nonQuery(cmd);
-                        MessageBox.Show("Image address added in database, please upload the picture seperately now.");
-                        readpictures();
-                        picturesdataview.DataSource = bsource;
-                    }
-                    else
-                    {
-
-                        try
+                        DialogResult dgr = MessageBox.Show("Do you want to update database only ?", "Warning!", MessageBoxButtons.YesNo);
+                        if (dgr == DialogResult.Yes)
                         {
-                            timer.Start();
-                            addbtn.Enabled = false;
-                            picworker.RunWorkerAsync();
+                            cmd = "insert into pictures (`groupid`, `picture`) " +
+                             "values ('" + gidtxt.Text + @"','" + ptxt.Text + "')";
+                            obj.nonQuery(cmd);
+                            MessageBox.Show("Image address added in database, please upload the picture seperately now.");
+                            readpictures();
+                            picturesdataview.DataSource = bsource;
                         }
-                        catch (WebException ex)
+                        else
                         {
 
-                            MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
+                            try
+                            {
+                                timer.Start();
+                                addbtn.Enabled = false;
+                                picworker.RunWorkerAsync();
+                            }
+                            catch (WebException ex)
+                            {
+
+                                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
+                            }
+
+
                         }
-
-
                     }
                 }
+            }catch
+            {
+                obj.closeConnection();
             }
         }
         
@@ -295,7 +301,7 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
-
+                con.Close();
                 MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
         }
