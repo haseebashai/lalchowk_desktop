@@ -15,15 +15,15 @@ namespace Veiled_Kashmir_Admin_Panel
     public partial class inventory : Form
     {
         DBConnect obj = new DBConnect();
-        String cmd, sc;
+        String cmd;
         MySqlConnection con;
         MySqlDataAdapter adap;
-        bool nametxtok, desctxtok, editnametxtok, editdesctxtok;
+   
         MySqlDataReader dr;
         DataTable dt;
         MySqlCommandBuilder cmdbl;
         BindingSource bsource;
-        bool secondcat = false, thirdcat = false, supplier = false;
+      
         
 
         private dialogcontainer dg = null;
@@ -52,6 +52,8 @@ namespace Veiled_Kashmir_Admin_Panel
             secbox.SelectedIndex = -1;
             thirdbox.SelectedIndex = -1;
             supbox.SelectedIndex = -1;
+            catidtxt.Text = "";
+          
             invpnl.Visible = true;
             spnl.Visible = true;
         }
@@ -284,49 +286,44 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void secbox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (secbox.SelectedIndex > 0)
+            if (secbox.SelectedIndex != -1)
             {
-                seclbl.Font = new Font(seclbl.Font, FontStyle.Bold);
-                thirdlbl.Font = new Font(thirdlbl.Font, FontStyle.Regular);
-                suplbl.Font = new Font(suplbl.Font, FontStyle.Regular);
-                secondcat = true;
-                thirdcat = false;
-                supplier = false;
+               
                 string id = secbox.Text.Split(':')[0];
                 catidtxt.Text = id;
-                catsuplbl.Text = "Category ID";
+                if (supbox.SelectedIndex > 0)
+                {
+                    catsuplbl.Text = "Category ID";
+                }
             }
         }
 
         private void thirdbox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (thirdbox.SelectedIndex > 0)
+            if (thirdbox.SelectedIndex != -1)
             {
-                seclbl.Font = new Font(seclbl.Font, FontStyle.Regular);
-                thirdlbl.Font = new Font(thirdlbl.Font, FontStyle.Bold);
-                suplbl.Font = new Font(suplbl.Font, FontStyle.Regular);
-                secondcat = false;
-                thirdcat = true;
-                supplier = false;
+              
                 string id = thirdbox.Text.Split(':')[0];
                 catidtxt.Text = id;
-                catsuplbl.Text = "Category ID";
+                if (supbox.SelectedIndex > 0)
+                {
+                    catsuplbl.Text = "Category ID";
+                }
             }
         }
 
         private void supbox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (supbox.SelectedIndex > 0)
+            if (supbox.SelectedIndex != -1)
             {
-                seclbl.Font = new Font(seclbl.Font, FontStyle.Regular);
-                thirdlbl.Font = new Font(thirdlbl.Font, FontStyle.Regular);
-                suplbl.Font = new Font(suplbl.Font, FontStyle.Bold);
-                secondcat = false;
-                thirdcat = false;
-                supplier = true;
+
+              
                 string id = supbox.Text.Split(':')[0];
                 catidtxt.Text = id;
-                catsuplbl.Text = "Supplier ID";
+                if (supbox.SelectedIndex > 0)
+                {
+                    catsuplbl.Text = "Supplier ID";
+                }
             }
         }
 
@@ -336,6 +333,12 @@ namespace Veiled_Kashmir_Admin_Panel
             thirdbox.SelectedIndex = -1;
             supbox.SelectedIndex = -1;
             catidtxt.Text = "";
+            pidtxt.Text = "";
+            searchtxt.Text = "";
+            catsuplbl.Text = "Cat/Sup ID";
+            catsuplbl.Font = new Font(catsuplbl.Font, FontStyle.Regular);
+            plbl.Font = new Font(plbl.Font, FontStyle.Regular);
+            searchlbl.Font = new Font(searchlbl.Font, FontStyle.Regular);
         }
 
       
@@ -366,21 +369,84 @@ namespace Veiled_Kashmir_Admin_Panel
             Cursor = Cursors.Arrow;
         }
 
-        string id;
+        bool cat = false, proid = false;
+
+        private void pidtxt_TextChanged(object sender, EventArgs e)
+        {
+            cat = false;
+            proid = true;
+                catsuplbl.Font = new Font(catsuplbl.Font, FontStyle.Regular);
+            catsuplbl.Text = "Cat/Sup ID";
+                plbl.Font = new Font(plbl.Font, FontStyle.Bold);
+            searchlbl.Font = new Font(searchlbl.Font, FontStyle.Regular);
+            search = false;
+
+        }
+
+        private void catidtxt_TextChanged_1(object sender, EventArgs e)
+        {
+            string id = catidtxt.Text;
+            cat = true;
+            proid = false;
+            search = false;
+
+            if (id.Trim().StartsWith("s") || id.Trim().StartsWith("t"))
+            {
+                catsuplbl.Text = "Category ID";
+                catsuplbl.Font = new Font(catsuplbl.Font, FontStyle.Bold);
+                plbl.Font = new Font(plbl.Font, FontStyle.Regular);
+                searchlbl.Font = new Font(searchlbl.Font, FontStyle.Regular);
+
+            }
+            else if (Regex.IsMatch(id, @"^\d"))
+            {
+                catsuplbl.Text = "Supplier ID";
+                catsuplbl.Font = new Font(catsuplbl.Font, FontStyle.Bold);
+                plbl.Font = new Font(plbl.Font, FontStyle.Regular);
+                searchlbl.Font = new Font(searchlbl.Font, FontStyle.Regular);
+
+            }
+        }
+
+        private void searchtxt_TextChanged(object sender, EventArgs e)
+        {
+            cat = false;
+            proid = false;
+            search = true;
+            catsuplbl.Font = new Font(catsuplbl.Font, FontStyle.Regular);
+            catsuplbl.Text = "Cat/Sup ID";
+            plbl.Font = new Font(plbl.Font, FontStyle.Regular);
+            searchlbl.Font = new Font(searchlbl.Font, FontStyle.Bold);
+        }
+
+        string id; bool search = false;
         private void listbtn_Click(object sender, EventArgs e)
         {
 
             listbtn.Enabled = false;
-            if (catidtxt.Text == "")
+            if (catidtxt.Text == "" && pidtxt.Text=="" && searchtxt.Text=="")
             {
                 MessageBox.Show("Please select an option first.", "Error!");
                 listbtn.Enabled = true;
             }
             else
             {
-                id = catidtxt.Text;
-                loadinglbl.Visible = true;
-                bgworker.RunWorkerAsync();
+                if (cat)
+                {
+                    id = catidtxt.Text;
+                    loadinglbl.Visible = true;
+                    bgworker.RunWorkerAsync();
+                }else if (proid)
+                {
+                    id = pidtxt.Text;
+                    loadinglbl.Visible = true;
+                    bgworker.RunWorkerAsync();
+                }else if (search)
+                {
+                    id = searchtxt.Text;
+                    loadinglbl.Visible = true;
+                    bgworker.RunWorkerAsync();
+                }
             }
         }
 
@@ -402,14 +468,25 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void bgworker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-           
-          
-            inventorydatagridview.DataSource = bsource;
-            ipnl.Visible = true;
-            upbtn.Visible = true;
-            listbtn.Enabled = true;
-            loadinglbl.Visible = false;
 
+            if (dt.Rows.Count == 0)
+            {
+                ipnl.Visible = false;
+                descpnl.Visible = false;
+                upbtn.Visible = false;
+                listbtn.Enabled = true;
+                loadinglbl.Visible = false;
+                MessageBox.Show("Zero rows returned.\n\n- Please make sure that category selected is final.\n- Supplier or Product ID is correct.", "Error!");
+
+            }
+            else
+            {
+                inventorydatagridview.DataSource = bsource;
+                ipnl.Visible = true;
+                upbtn.Visible = true;
+                listbtn.Enabled = true;
+                loadinglbl.Visible = false;
+            }
 
         }    
 
@@ -419,17 +496,26 @@ namespace Veiled_Kashmir_Admin_Panel
                 con = new MySqlConnection();
                 con.ConnectionString = "SERVER=182.50.133.78;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah";
                 con.Open();
-                if (secondcat == true || thirdcat == true)
+
+                if(catsuplbl.Text=="Category ID" && catsuplbl.Font.Bold)
                 {
                     adap = new MySqlDataAdapter("select * from products where categoryid='" + id + "'", con);
-                } else if (supplier)
+                }
+                else if(catsuplbl.Text == "Supplier ID" && catsuplbl.Font.Bold)
                 {
                     adap = new MySqlDataAdapter("select * from products where supplierid='" + id + "'", con);
                 }
-                else if (secondcat == false && thirdcat == false && supplier == false)
+                else if(plbl.Text=="Product ID" && plbl.Font.Bold==true && catsuplbl.Font.Bold == false)
                 {
-                    adap = new MySqlDataAdapter("select * from products where categoryid='" + id + "'", con);
+                    
+                    adap = new MySqlDataAdapter("select * from products where productid='" + id + "'", con);
                 }
+                else if (search)
+                {
+                   
+                    adap = new MySqlDataAdapter("select * from products where productname like '%" + id + "%'", con);
+                }
+
                 dt = new DataTable();
                 adap.Fill(dt);
                 con.Close();

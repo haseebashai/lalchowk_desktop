@@ -142,5 +142,29 @@ namespace Veiled_Kashmir_Admin_Panel
                 }
             
         }
+
+        private void updatebtn_Click(object sender, EventArgs e)
+        {
+            DialogResult dgr = MessageBox.Show("Have you replied to this message seperately ? \n " + emaillbl.Text + " ?", "Confirm!", MessageBoxButtons.YesNo);
+            if (dgr == DialogResult.Yes)
+            {
+                try
+                {
+                    string cmd = "update messages set reply ='Replied in mail.' where messageid='" + midlbl.Text + "'";
+                    obj.nonQuery(cmd);
+                    obj.closeConnection();
+                    MessageBox.Show("Updated.");
+                    Cursor = Cursors.WaitCursor;
+                    readmsgs();
+                    messagesdataview.DataSource = bsource;
+                    Cursor = Cursors.Arrow;
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
+                }
+            }
+        }
     }
 }

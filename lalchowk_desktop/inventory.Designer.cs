@@ -53,6 +53,7 @@
             this.refreshlbl = new System.Windows.Forms.Label();
             this.invpnl = new System.Windows.Forms.Panel();
             this.spnl = new System.Windows.Forms.Panel();
+            this.loadinglbl = new System.Windows.Forms.Label();
             this.catsuplbl = new System.Windows.Forms.Label();
             this.catidtxt = new System.Windows.Forms.TextBox();
             this.allinvbtn = new System.Windows.Forms.Button();
@@ -64,7 +65,10 @@
             this.supbox = new System.Windows.Forms.ComboBox();
             this.thirdbox = new System.Windows.Forms.ComboBox();
             this.secbox = new System.Windows.Forms.ComboBox();
-            this.loadinglbl = new System.Windows.Forms.Label();
+            this.plbl = new System.Windows.Forms.Label();
+            this.pidtxt = new System.Windows.Forms.TextBox();
+            this.searchtxt = new System.Windows.Forms.TextBox();
+            this.searchlbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.inventorydatagridview)).BeginInit();
             this.ipnl.SuspendLayout();
             this.descpnl.SuspendLayout();
@@ -308,6 +312,10 @@
             // spnl
             // 
             this.spnl.BackColor = System.Drawing.Color.LightYellow;
+            this.spnl.Controls.Add(this.searchlbl);
+            this.spnl.Controls.Add(this.searchtxt);
+            this.spnl.Controls.Add(this.plbl);
+            this.spnl.Controls.Add(this.pidtxt);
             this.spnl.Controls.Add(this.loadinglbl);
             this.spnl.Controls.Add(this.catsuplbl);
             this.spnl.Controls.Add(this.catidtxt);
@@ -326,28 +334,41 @@
             this.spnl.TabIndex = 45;
             this.spnl.Visible = false;
             // 
+            // loadinglbl
+            // 
+            this.loadinglbl.AutoSize = true;
+            this.loadinglbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loadinglbl.ForeColor = System.Drawing.Color.Red;
+            this.loadinglbl.Location = new System.Drawing.Point(864, 41);
+            this.loadinglbl.Name = "loadinglbl";
+            this.loadinglbl.Size = new System.Drawing.Size(54, 13);
+            this.loadinglbl.TabIndex = 47;
+            this.loadinglbl.Text = "Loading...";
+            this.loadinglbl.Visible = false;
+            // 
             // catsuplbl
             // 
             this.catsuplbl.AutoSize = true;
-            this.catsuplbl.Location = new System.Drawing.Point(623, 1);
+            this.catsuplbl.Location = new System.Drawing.Point(568, 1);
             this.catsuplbl.Name = "catsuplbl";
-            this.catsuplbl.Size = new System.Drawing.Size(63, 13);
+            this.catsuplbl.Size = new System.Drawing.Size(61, 13);
             this.catsuplbl.TabIndex = 46;
-            this.catsuplbl.Text = "Category ID";
+            this.catsuplbl.Text = "Cat/Sup ID";
             // 
             // catidtxt
             // 
             this.catidtxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.catidtxt.Location = new System.Drawing.Point(626, 21);
+            this.catidtxt.Location = new System.Drawing.Point(571, 21);
             this.catidtxt.Name = "catidtxt";
-            this.catidtxt.Size = new System.Drawing.Size(90, 20);
+            this.catidtxt.Size = new System.Drawing.Size(69, 20);
             this.catidtxt.TabIndex = 45;
+            this.catidtxt.TextChanged += new System.EventHandler(this.catidtxt_TextChanged_1);
             // 
             // allinvbtn
             // 
-            this.allinvbtn.Location = new System.Drawing.Point(1004, 7);
+            this.allinvbtn.Location = new System.Drawing.Point(1077, 7);
             this.allinvbtn.Name = "allinvbtn";
-            this.allinvbtn.Size = new System.Drawing.Size(122, 36);
+            this.allinvbtn.Size = new System.Drawing.Size(72, 36);
             this.allinvbtn.TabIndex = 44;
             this.allinvbtn.Text = "Download all inventory";
             this.allinvbtn.UseVisualStyleBackColor = true;
@@ -358,7 +379,7 @@
             this.clearbtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.clearbtn.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.clearbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.clearbtn.Location = new System.Drawing.Point(835, 10);
+            this.clearbtn.Location = new System.Drawing.Point(960, 10);
             this.clearbtn.Name = "clearbtn";
             this.clearbtn.Size = new System.Drawing.Size(89, 31);
             this.clearbtn.TabIndex = 42;
@@ -371,7 +392,7 @@
             this.listbtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.listbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.listbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.listbtn.Location = new System.Drawing.Point(742, 10);
+            this.listbtn.Location = new System.Drawing.Point(867, 10);
             this.listbtn.Name = "listbtn";
             this.listbtn.Size = new System.Drawing.Size(87, 31);
             this.listbtn.TabIndex = 41;
@@ -382,7 +403,7 @@
             // suplbl
             // 
             this.suplbl.AutoSize = true;
-            this.suplbl.Location = new System.Drawing.Point(431, 1);
+            this.suplbl.Location = new System.Drawing.Point(391, 1);
             this.suplbl.Name = "suplbl";
             this.suplbl.Size = new System.Drawing.Size(45, 13);
             this.suplbl.TabIndex = 31;
@@ -391,7 +412,7 @@
             // thirdlbl
             // 
             this.thirdlbl.AutoSize = true;
-            this.thirdlbl.Location = new System.Drawing.Point(233, 1);
+            this.thirdlbl.Location = new System.Drawing.Point(206, 1);
             this.thirdlbl.Name = "thirdlbl";
             this.thirdlbl.Size = new System.Drawing.Size(75, 13);
             this.thirdlbl.TabIndex = 29;
@@ -400,7 +421,7 @@
             // seclbl
             // 
             this.seclbl.AutoSize = true;
-            this.seclbl.Location = new System.Drawing.Point(16, 1);
+            this.seclbl.Location = new System.Drawing.Point(2, 1);
             this.seclbl.Name = "seclbl";
             this.seclbl.Size = new System.Drawing.Size(88, 13);
             this.seclbl.TabIndex = 27;
@@ -410,7 +431,7 @@
             // 
             this.supbox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.supbox.FormattingEnabled = true;
-            this.supbox.Location = new System.Drawing.Point(434, 20);
+            this.supbox.Location = new System.Drawing.Point(394, 20);
             this.supbox.Name = "supbox";
             this.supbox.Size = new System.Drawing.Size(162, 21);
             this.supbox.TabIndex = 2;
@@ -420,7 +441,7 @@
             // 
             this.thirdbox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.thirdbox.FormattingEnabled = true;
-            this.thirdbox.Location = new System.Drawing.Point(236, 20);
+            this.thirdbox.Location = new System.Drawing.Point(209, 20);
             this.thirdbox.Name = "thirdbox";
             this.thirdbox.Size = new System.Drawing.Size(181, 21);
             this.thirdbox.TabIndex = 1;
@@ -430,23 +451,47 @@
             // 
             this.secbox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.secbox.FormattingEnabled = true;
-            this.secbox.Location = new System.Drawing.Point(19, 20);
+            this.secbox.Location = new System.Drawing.Point(5, 20);
             this.secbox.Name = "secbox";
             this.secbox.Size = new System.Drawing.Size(200, 21);
             this.secbox.TabIndex = 0;
             this.secbox.SelectedIndexChanged += new System.EventHandler(this.secbox_SelectedIndexChanged);
             // 
-            // loadinglbl
+            // plbl
             // 
-            this.loadinglbl.AutoSize = true;
-            this.loadinglbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loadinglbl.ForeColor = System.Drawing.Color.Red;
-            this.loadinglbl.Location = new System.Drawing.Point(739, 41);
-            this.loadinglbl.Name = "loadinglbl";
-            this.loadinglbl.Size = new System.Drawing.Size(54, 13);
-            this.loadinglbl.TabIndex = 47;
-            this.loadinglbl.Text = "Loading...";
-            this.loadinglbl.Visible = false;
+            this.plbl.AutoSize = true;
+            this.plbl.Location = new System.Drawing.Point(641, 1);
+            this.plbl.Name = "plbl";
+            this.plbl.Size = new System.Drawing.Size(58, 13);
+            this.plbl.TabIndex = 49;
+            this.plbl.Text = "Product ID";
+            // 
+            // pidtxt
+            // 
+            this.pidtxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.pidtxt.Location = new System.Drawing.Point(644, 21);
+            this.pidtxt.Name = "pidtxt";
+            this.pidtxt.Size = new System.Drawing.Size(69, 20);
+            this.pidtxt.TabIndex = 48;
+            this.pidtxt.TextChanged += new System.EventHandler(this.pidtxt_TextChanged);
+            // 
+            // searchtxt
+            // 
+            this.searchtxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.searchtxt.Location = new System.Drawing.Point(719, 21);
+            this.searchtxt.Name = "searchtxt";
+            this.searchtxt.Size = new System.Drawing.Size(140, 20);
+            this.searchtxt.TabIndex = 50;
+            this.searchtxt.TextChanged += new System.EventHandler(this.searchtxt_TextChanged);
+            // 
+            // searchlbl
+            // 
+            this.searchlbl.AutoSize = true;
+            this.searchlbl.Location = new System.Drawing.Point(716, 1);
+            this.searchlbl.Name = "searchlbl";
+            this.searchlbl.Size = new System.Drawing.Size(80, 13);
+            this.searchlbl.TabIndex = 51;
+            this.searchlbl.Text = "Search product";
             // 
             // inventory
             // 
@@ -509,5 +554,9 @@
         private System.Windows.Forms.Label catsuplbl;
         private System.Windows.Forms.TextBox catidtxt;
         private System.Windows.Forms.Label loadinglbl;
+        private System.Windows.Forms.Label plbl;
+        private System.Windows.Forms.TextBox pidtxt;
+        private System.Windows.Forms.Label searchlbl;
+        private System.Windows.Forms.TextBox searchtxt;
     }
 }

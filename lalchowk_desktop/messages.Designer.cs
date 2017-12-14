@@ -42,6 +42,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.sendbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.msgpnl = new System.Windows.Forms.Panel();
+            this.updatebtn = new System.Windows.Forms.Button();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.messagesdataview)).BeginInit();
             this.mpnl.SuspendLayout();
@@ -73,6 +74,7 @@
             // 
             // mpnl
             // 
+            this.mpnl.Controls.Add(this.updatebtn);
             this.mpnl.Controls.Add(this.delbtn);
             this.mpnl.Controls.Add(this.msgtxt);
             this.mpnl.Controls.Add(this.label2);
@@ -204,6 +206,16 @@
             this.msgpnl.TabIndex = 31;
             this.msgpnl.Visible = false;
             // 
+            // updatebtn
+            // 
+            this.updatebtn.Location = new System.Drawing.Point(739, 1);
+            this.updatebtn.Name = "updatebtn";
+            this.updatebtn.Size = new System.Drawing.Size(51, 19);
+            this.updatebtn.TabIndex = 31;
+            this.updatebtn.Text = "Replied";
+            this.updatebtn.UseVisualStyleBackColor = true;
+            this.updatebtn.Click += new System.EventHandler(this.updatebtn_Click);
+            // 
             // bgworker
             // 
             this.bgworker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker_DoWork);
@@ -246,5 +258,6 @@
         private System.ComponentModel.BackgroundWorker bgworker;
         private System.Windows.Forms.Button delbtn;
         public System.Windows.Forms.Panel msgpnl;
+        private System.Windows.Forms.Button updatebtn;
     }
 }
