@@ -53,6 +53,10 @@
             this.refreshlbl = new System.Windows.Forms.Label();
             this.invpnl = new System.Windows.Forms.Panel();
             this.spnl = new System.Windows.Forms.Panel();
+            this.searchlbl = new System.Windows.Forms.Label();
+            this.searchtxt = new System.Windows.Forms.TextBox();
+            this.plbl = new System.Windows.Forms.Label();
+            this.pidtxt = new System.Windows.Forms.TextBox();
             this.loadinglbl = new System.Windows.Forms.Label();
             this.catsuplbl = new System.Windows.Forms.Label();
             this.catidtxt = new System.Windows.Forms.TextBox();
@@ -65,10 +69,6 @@
             this.supbox = new System.Windows.Forms.ComboBox();
             this.thirdbox = new System.Windows.Forms.ComboBox();
             this.secbox = new System.Windows.Forms.ComboBox();
-            this.plbl = new System.Windows.Forms.Label();
-            this.pidtxt = new System.Windows.Forms.TextBox();
-            this.searchtxt = new System.Windows.Forms.TextBox();
-            this.searchlbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.inventorydatagridview)).BeginInit();
             this.ipnl.SuspendLayout();
             this.descpnl.SuspendLayout();
@@ -334,6 +334,42 @@
             this.spnl.TabIndex = 45;
             this.spnl.Visible = false;
             // 
+            // searchlbl
+            // 
+            this.searchlbl.AutoSize = true;
+            this.searchlbl.Location = new System.Drawing.Point(716, 1);
+            this.searchlbl.Name = "searchlbl";
+            this.searchlbl.Size = new System.Drawing.Size(80, 13);
+            this.searchlbl.TabIndex = 51;
+            this.searchlbl.Text = "Search product";
+            // 
+            // searchtxt
+            // 
+            this.searchtxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.searchtxt.Location = new System.Drawing.Point(719, 21);
+            this.searchtxt.Name = "searchtxt";
+            this.searchtxt.Size = new System.Drawing.Size(140, 20);
+            this.searchtxt.TabIndex = 50;
+            this.searchtxt.TextChanged += new System.EventHandler(this.searchtxt_TextChanged);
+            // 
+            // plbl
+            // 
+            this.plbl.AutoSize = true;
+            this.plbl.Location = new System.Drawing.Point(641, 1);
+            this.plbl.Name = "plbl";
+            this.plbl.Size = new System.Drawing.Size(58, 13);
+            this.plbl.TabIndex = 49;
+            this.plbl.Text = "Product ID";
+            // 
+            // pidtxt
+            // 
+            this.pidtxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.pidtxt.Location = new System.Drawing.Point(644, 21);
+            this.pidtxt.Name = "pidtxt";
+            this.pidtxt.Size = new System.Drawing.Size(69, 20);
+            this.pidtxt.TabIndex = 48;
+            this.pidtxt.TextChanged += new System.EventHandler(this.pidtxt_TextChanged);
+            // 
             // loadinglbl
             // 
             this.loadinglbl.AutoSize = true;
@@ -457,44 +493,9 @@
             this.secbox.TabIndex = 0;
             this.secbox.SelectedIndexChanged += new System.EventHandler(this.secbox_SelectedIndexChanged);
             // 
-            // plbl
-            // 
-            this.plbl.AutoSize = true;
-            this.plbl.Location = new System.Drawing.Point(641, 1);
-            this.plbl.Name = "plbl";
-            this.plbl.Size = new System.Drawing.Size(58, 13);
-            this.plbl.TabIndex = 49;
-            this.plbl.Text = "Product ID";
-            // 
-            // pidtxt
-            // 
-            this.pidtxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.pidtxt.Location = new System.Drawing.Point(644, 21);
-            this.pidtxt.Name = "pidtxt";
-            this.pidtxt.Size = new System.Drawing.Size(69, 20);
-            this.pidtxt.TabIndex = 48;
-            this.pidtxt.TextChanged += new System.EventHandler(this.pidtxt_TextChanged);
-            // 
-            // searchtxt
-            // 
-            this.searchtxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.searchtxt.Location = new System.Drawing.Point(719, 21);
-            this.searchtxt.Name = "searchtxt";
-            this.searchtxt.Size = new System.Drawing.Size(140, 20);
-            this.searchtxt.TabIndex = 50;
-            this.searchtxt.TextChanged += new System.EventHandler(this.searchtxt_TextChanged);
-            // 
-            // searchlbl
-            // 
-            this.searchlbl.AutoSize = true;
-            this.searchlbl.Location = new System.Drawing.Point(716, 1);
-            this.searchlbl.Name = "searchlbl";
-            this.searchlbl.Size = new System.Drawing.Size(80, 13);
-            this.searchlbl.TabIndex = 51;
-            this.searchlbl.Text = "Search product";
-            // 
             // inventory
             // 
+            this.AcceptButton = this.listbtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;

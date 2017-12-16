@@ -68,6 +68,7 @@
             this.ordergridview = new System.Windows.Forms.DataGridView();
             this.formlbl = new System.Windows.Forms.Label();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
+            this.updbtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.orderpnl.SuspendLayout();
             this.dpnl.SuspendLayout();
@@ -94,9 +95,11 @@
             // 
             // delbtn
             // 
-            this.delbtn.Location = new System.Drawing.Point(1060, 22);
+            this.delbtn.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.delbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.delbtn.Location = new System.Drawing.Point(1085, 22);
             this.delbtn.Name = "delbtn";
-            this.delbtn.Size = new System.Drawing.Size(75, 23);
+            this.delbtn.Size = new System.Drawing.Size(69, 23);
             this.delbtn.TabIndex = 13;
             this.delbtn.Text = "Delete";
             this.delbtn.UseVisualStyleBackColor = true;
@@ -187,6 +190,7 @@
             // 
             // dpnl
             // 
+            this.dpnl.Controls.Add(this.updbtn);
             this.dpnl.Controls.Add(this.con);
             this.dpnl.Controls.Add(this.billbtn);
             this.dpnl.Controls.Add(this.cnfbtn);
@@ -221,7 +225,7 @@
             // 
             this.con.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.con.ForeColor = System.Drawing.Color.Red;
-            this.con.Location = new System.Drawing.Point(986, 190);
+            this.con.Location = new System.Drawing.Point(986, 206);
             this.con.Name = "con";
             this.con.Size = new System.Drawing.Size(123, 17);
             this.con.TabIndex = 27;
@@ -230,7 +234,7 @@
             // 
             // billbtn
             // 
-            this.billbtn.Location = new System.Drawing.Point(944, 135);
+            this.billbtn.Location = new System.Drawing.Point(944, 151);
             this.billbtn.Name = "billbtn";
             this.billbtn.Size = new System.Drawing.Size(152, 52);
             this.billbtn.TabIndex = 26;
@@ -240,7 +244,7 @@
             // 
             // cnfbtn
             // 
-            this.cnfbtn.Location = new System.Drawing.Point(944, 77);
+            this.cnfbtn.Location = new System.Drawing.Point(944, 93);
             this.cnfbtn.Name = "cnfbtn";
             this.cnfbtn.Size = new System.Drawing.Size(152, 52);
             this.cnfbtn.TabIndex = 15;
@@ -498,6 +502,18 @@
             this.bgworker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker_DoWork);
             this.bgworker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker_RunWorkerCompleted);
             // 
+            // updbtn
+            // 
+            this.updbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.updbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.updbtn.Location = new System.Drawing.Point(944, 45);
+            this.updbtn.Name = "updbtn";
+            this.updbtn.Size = new System.Drawing.Size(152, 42);
+            this.updbtn.TabIndex = 14;
+            this.updbtn.Text = "Update Details";
+            this.updbtn.UseVisualStyleBackColor = true;
+            this.updbtn.Click += new System.EventHandler(this.updbtn_Click);
+            // 
             // orders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -564,5 +580,6 @@
         private System.ComponentModel.BackgroundWorker bgworker;
         public System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label formlbl;
+        private System.Windows.Forms.Button updbtn;
     }
 }

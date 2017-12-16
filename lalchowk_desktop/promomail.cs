@@ -128,7 +128,7 @@ namespace Veiled_Kashmir_Admin_Panel
                
                 aconn.Close();
 
-                dr = obj.Query("SELECT mail FROM customer ORDER BY id LIMIT " + emails + " OFFSET " + maillist + " ");
+                dr = obj.Query("SELECT concat(id,':    ',mail) as mail FROM customer ORDER BY id LIMIT " + emails + " OFFSET " + maillist + " ");
                 dt = new DataTable();
                 dt.Columns.Add("mail", typeof(String));
                 dt.Load(dr);
@@ -156,7 +156,6 @@ namespace Veiled_Kashmir_Admin_Panel
               
         }
 
-      
         private string sendmail(string from)
         {
 
@@ -215,7 +214,7 @@ namespace Veiled_Kashmir_Admin_Panel
             catch (Exception ex)
             {
                 obj.closeConnection();
-                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
+                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message, "Error!");
             
 
             if (myData.Count == 0)
@@ -434,7 +433,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 catch (Exception ex)
                 {
 
-                    MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
+                    MessageBox.Show("Something happened, please try again.\n\n" + ex.Message, "Error!");
                 }
                 Cursor = Cursors.Arrow;
                 }
@@ -466,8 +465,8 @@ namespace Veiled_Kashmir_Admin_Panel
             {
                     
                 aconn.Open();
-                mycmd = new MySqlCommand("update emailno set eid = (eid + '" + emails + "') where id=1", aconn);
-                mycmd.ExecuteNonQuery();
+                mycmd = new MySqlCommand("update emailno set eid = (eid + '" + myData.Count + "') where id=1", aconn); //emails
+                    mycmd.ExecuteNonQuery();
                 aconn.Close();
                    
                     
@@ -486,7 +485,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 
 
                 aconn.Open();
-                mycmd = new MySqlCommand("update emailno set eid = ((eid + '" + myData.Count + "')-1) where id=1", aconn);
+                mycmd = new MySqlCommand("update emailno set eid = ((eid + " + myData.Count + ")-1) where id=1", aconn);
                 mycmd.ExecuteNonQuery();
                 aconn.Close();
                     Cursor = Cursors.Arrow;
@@ -501,6 +500,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 Cursor = Cursors.Arrow;
                 MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
+            myData.Clear();
             readlist();
             emailno.Text = maillist.ToString();
             recno.Text = emails.ToString();
