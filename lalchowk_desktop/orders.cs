@@ -63,7 +63,7 @@ namespace Veiled_Kashmir_Admin_Panel
             bsource.DataSource = dt;
             
 
-            dr = obj.Query("select count(orderid) from orderdetails");
+            dr = obj.Query("select count(orderid) from orders");
             dr.Read();
             ordervar = dr[0].ToString();
             obj.closeConnection();
