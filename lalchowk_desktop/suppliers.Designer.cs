@@ -70,6 +70,7 @@
             // 
             // supplierdatagridview
             // 
+            this.supplierdatagridview.AllowUserToAddRows = false;
             this.supplierdatagridview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.supplierdatagridview.BackgroundColor = System.Drawing.Color.White;
             this.supplierdatagridview.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;

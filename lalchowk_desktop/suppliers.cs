@@ -183,6 +183,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     obj.nonQuery(cmd);
                     MessageBox.Show("Supplier removed successfully.");
                     readsuppliers();
+                    supplierdatagridview.DataSource = bsource;
                     dpnl.Visible = false;
                 }
                 
