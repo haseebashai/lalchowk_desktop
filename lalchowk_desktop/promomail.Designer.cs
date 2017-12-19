@@ -75,6 +75,7 @@
             // 
             // frombox
             // 
+            this.frombox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.frombox.FormattingEnabled = true;
             this.frombox.Location = new System.Drawing.Point(628, 548);
             this.frombox.Name = "frombox";

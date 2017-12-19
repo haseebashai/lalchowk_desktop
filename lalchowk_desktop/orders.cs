@@ -16,7 +16,7 @@ namespace Veiled_Kashmir_Admin_Panel
     {
         DBConnect obj = new DBConnect();
         String orderid,email, addressid,cmd, productid, productname, price, quantity, size,dealerprice,shipping, filename,amount,ordervar;
-        MySqlDataReader dr;
+        MySqlDataReader dr,dr1;
         DataTable dt,dt1,dt2,dt3;
         MySqlCommand mysqlcmd;
         MySqlDataAdapter adap;
@@ -142,15 +142,7 @@ namespace Veiled_Kashmir_Admin_Panel
         private void orderdetails()
         {
             try { 
-            dr = obj.Query("SELECT * FROM orderdetails where orderid='"+orderid+"'");
-            dt1 = new DataTable();
-            dt1.Load(dr);
-            obj.closeConnection();
-            BindingSource bsource = new BindingSource();
-            bsource.DataSource = dt1;
-            orderdetailview.DataSource = bsource;
-            
-            orderdetailview.Visible = true;
+           
         }
             catch (Exception ex)
             {
@@ -285,60 +277,91 @@ namespace Veiled_Kashmir_Admin_Panel
             obj.closeConnection();
         }
 
-        private void readproduct()
-        {try { 
-            dr = obj.Query("SELECT productid FROM orderdetails where orderid='" + orderid + "'");
-            dt2 = new DataTable();
-            dt2.Columns.Add("productid", typeof(String));
-            dt2.Load(dr);
-            obj.closeConnection();
-            proid.DisplayMember = "productid";
-            proid.DataSource = dt2;
-
-            dr = obj.Query("SELECT productname FROM orderdetails where orderid='" + orderid + "'");
-            dt3 = new DataTable();
-            dt3.Columns.Add("productname", typeof(String));
-            dt3.Load(dr);
-            obj.closeConnection();
-            proname.DisplayMember = "productname";
-            proname.DataSource = dt3;
-
-            dr = obj.Query("select (amount+shipping) from orders where orderid='" + orderid + "'");
-            dr.Read();
-            amountlbl.Text = dr[0].ToString();
-            obj.closeConnection();
-        }
-            catch (Exception ex)
-            {
-                obj.closeConnection();
-                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
-            }
-        }
-           
-
         private void ordergridview_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            Cursor = Cursors.WaitCursor;
-            if (e.RowIndex >= 0)
+            try
             {
-                DataGridViewRow row = this.ordergridview.Rows[e.RowIndex];
-                orderid = row.Cells["orderid"].Value.ToString();
-                email = row.Cells["mail"].Value.ToString();
-                shipping = row.Cells["shipping"].Value.ToString();
-                namelbl.Text = row.Cells["name"].Value.ToString();
-                address1lbl.Text = row.Cells["address1"].Value.ToString();
-                address2lbl.Text = row.Cells["address2"].Value.ToString();
-                pinlbl.Text = row.Cells["pincode"].Value.ToString();
-                citylbl.Text = row.Cells["city"].Value.ToString();
-                contactlbl.Text = row.Cells["contact"].Value.ToString();
-                orderlbl.Text = orderid;
-                dpnl.Visible = true;
-               
-           //     readaddress();
-                orderdetails();
-                readproduct();
+                orderdetailview.Visible = false;
+                dpnl.Visible = false;
+                loadinglbl.Visible = true;
+
+                if (e.RowIndex >= 0)
+                {
+                    DataGridViewRow row = this.ordergridview.Rows[e.RowIndex];
+                    orderid = row.Cells["orderid"].Value.ToString();
+                    email = row.Cells["mail"].Value.ToString();
+                    shipping = row.Cells["shipping"].Value.ToString();
+                    namelbl.Text = row.Cells["name"].Value.ToString();
+                    address1lbl.Text = row.Cells["address1"].Value.ToString();
+                    address2lbl.Text = row.Cells["address2"].Value.ToString();
+                    pinlbl.Text = row.Cells["pincode"].Value.ToString();
+                    citylbl.Text = row.Cells["city"].Value.ToString();
+                    contactlbl.Text = row.Cells["contact"].Value.ToString();
+                    string amount = row.Cells["amount"].Value.ToString();
+                    int result = int.Parse(amount) + int.Parse(shipping);
+                    amountlbl.Text = result.ToString();
+                    orderlbl.Text = orderid;
+                    proname.Items.Clear();
+
+
+                    BackgroundWorker details = new BackgroundWorker();
+
+                    details.DoWork += (o, a) =>
+                    {
+                        try
+                        {
+
+                            dr = obj.Query("SELECT * FROM orderdetails where orderid='" + orderid + "'");
+                            dt1 = new DataTable();
+                            dt1.Load(dr);
+                            obj.closeConnection();
+                            BindingSource bsource1 = new BindingSource();
+                            bsource1.DataSource = dt1;
+
+
+                            a.Result = bsource1;
+
+                        }
+                        catch
+                        {
+                            obj.closeConnection();
+                        }
+                    };
+
+                    details.RunWorkerCompleted += (c, d) =>
+                    {
+                        orderdetailview.Visible = true;
+                        dpnl.Visible = true;
+                        loadinglbl.Visible = false;
+
+                        BindingSource bsource1 = d.Result as BindingSource;
+                        orderdetailview.DataSource = bsource1;
+                        orderdetailview.Visible = true;
+
+                        int count = int.Parse(orderdetailview.RowCount.ToString());
+
+                        for (int i = 0; i < count; i++)
+                        {
+                            proname.Items.Add(orderdetailview.Rows[i].Cells[0].Value.ToString() + ":   " + orderdetailview.Rows[i].Cells[3].Value.ToString());
+                        }
+
+                    };
+                    while (details.IsBusy)
+                        details.CancelAsync();
+                    obj.closeConnection();
+                    details.RunWorkerAsync();
+
+
+                }
+
             }
-            Cursor = Cursors.Arrow;
+            catch
+            {
+                obj.closeConnection();
+            }
+           
         }
+
+
     }
 }

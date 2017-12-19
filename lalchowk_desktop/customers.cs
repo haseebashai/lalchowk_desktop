@@ -24,6 +24,13 @@ namespace Veiled_Kashmir_Admin_Panel
         MySqlConnection con= new MySqlConnection( "SERVER=182.50.133.78;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah");
         PictureBox loading = new PictureBox();
 
+        private void substxt_TextChanged(object sender, EventArgs e)
+        {
+            DataView dv = new DataView(dt1);
+            dv.RowFilter = string.Format("Convert([subscribed],System.String) LIKE '%{0}%'", substxt.Text);
+            customerdataview.DataSource = dv;
+        }
+
         private container hp = null;
         private dialogcontainer dg = null;
         DataTable dt,dt1,dt2,dt3,dt4;
@@ -90,7 +97,7 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             
             readcustomers();
-            readcount();
+           
         }
 
         private void bgworker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -116,35 +123,58 @@ namespace Veiled_Kashmir_Admin_Panel
            
         }
 
-    /*    int numberOfPoints = 0;
-        private void timer_Tick(object sender, EventArgs e)
+        /*    int numberOfPoints = 0;
+            private void timer_Tick(object sender, EventArgs e)
+            {
+
+                int maxPoints = 5;                                       //loading sign on timer
+
+                dg.lbl.BorderStyle = BorderStyle.FixedSingle;
+                dg.lbl.ForeColor = Color.Red;
+                dg.lbl.Text = "Loading" + new string('.', numberOfPoints);
+                numberOfPoints = (numberOfPoints + 1) % (maxPoints + 1);
+            }
+            */
+
+        private void custupdbtn_Click(object sender, EventArgs e)
         {
-            
-            int maxPoints = 5;                                       //loading sign on timer
-           
-            dg.lbl.BorderStyle = BorderStyle.FixedSingle;
-            dg.lbl.ForeColor = Color.Red;
-            dg.lbl.Text = "Loading" + new string('.', numberOfPoints);
-            numberOfPoints = (numberOfPoints + 1) % (maxPoints + 1);
-        }
-        */
-      
-        private void readcustomers()
-        {
+            Cursor = Cursors.WaitCursor;
             try
             {
-                dr = obj.Query("select * from customer");
-
-                dt1 = new DataTable();
-                dt1.Load(dr);
-                obj.closeConnection();
-                bsource = new BindingSource();
-
-                bsource.DataSource = dt1;
+                cmdbl = new MySqlCommandBuilder(adap);
+                adap.Update(dt1);
+                MessageBox.Show("Updated Successfully.");
             }
             catch (Exception ex)
             {
 
+                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
+            }
+            Cursor = Cursors.Arrow;
+        }
+
+        private void readcustomers()
+        {
+            try
+            {
+
+                con.Open();
+                adap = new MySqlDataAdapter("select * from customer order by id asc", con);
+                dt1 = new DataTable();
+                adap.Fill(dt1);
+                con.Close();
+                bsource = new BindingSource();
+                bsource.DataSource = dt1;
+
+                dr = obj.Query("select count(*) from customer");
+                dr.Read();
+                count = dr[0].ToString();
+                obj.closeConnection();
+            }
+            catch (Exception ex)
+            {
+                con.Close();
+                obj.closeConnection();
                 MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
 
@@ -168,21 +198,6 @@ namespace Veiled_Kashmir_Admin_Panel
             pm.Show();
         }
 
-
-        private void readcount()
-        {try { 
-            dr = obj.Query("select count(*) from customer");
-            dr.Read();
-            count = dr[0].ToString();
-            obj.closeConnection();
-        }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
-            }
-        }
-       
 
         private void readdetails()
         {
@@ -228,7 +243,7 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
-
+                con.Close();
                 MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
             con.Close();

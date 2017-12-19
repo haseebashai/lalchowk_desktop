@@ -100,6 +100,12 @@ namespace Veiled_Kashmir_Admin_Panel
                 case "hr@lalchowk.in":
                     sendername = "Human Resources";
                     break;
+                case "promo@lalchowk.in":
+                    sendername = "Lalchowk Promos";
+                    break;
+                case "noreply@lalchowk.in":
+                    sendername = "Lalchowk";
+                    break;
                 default:
                     MessageBox.Show("select a valid email.");
                     break;
@@ -135,7 +141,9 @@ namespace Veiled_Kashmir_Admin_Panel
                 new {Text="support@lalchowk.in"},
                 new {Text="feedback@lalchowk.in"},
                 new {Text="info@lalchowk.in"},
-                new {Text="hr@lalchowk.in"}
+                new {Text="hr@lalchowk.in"},
+                 new {Text ="promo@lalchowk.in"},
+                 new {Text="noreply@lalchowk.in"}
 
             };
             frombox.DataSource = items;

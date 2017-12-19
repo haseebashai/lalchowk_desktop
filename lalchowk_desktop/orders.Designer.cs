@@ -40,10 +40,10 @@
             this.emailtxt = new System.Windows.Forms.TextBox();
             this.orderpnl = new System.Windows.Forms.Panel();
             this.dpnl = new System.Windows.Forms.Panel();
+            this.updbtn = new System.Windows.Forms.Button();
             this.con = new System.Windows.Forms.Label();
             this.billbtn = new System.Windows.Forms.Button();
             this.cnfbtn = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.orderlbl = new System.Windows.Forms.Label();
             this.contactlbl = new System.Windows.Forms.Label();
@@ -51,7 +51,6 @@
             this.citylbl = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pinlbl = new System.Windows.Forms.Label();
-            this.proid = new System.Windows.Forms.ListBox();
             this.namelbl = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.address2lbl = new System.Windows.Forms.Label();
@@ -68,7 +67,7 @@
             this.ordergridview = new System.Windows.Forms.DataGridView();
             this.formlbl = new System.Windows.Forms.Label();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
-            this.updbtn = new System.Windows.Forms.Button();
+            this.loadinglbl = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.orderpnl.SuspendLayout();
             this.dpnl.SuspendLayout();
@@ -183,6 +182,7 @@
             this.orderpnl.Controls.Add(this.dpnl);
             this.orderpnl.Controls.Add(this.orderdetailview);
             this.orderpnl.Controls.Add(this.ordergridview);
+            this.orderpnl.Controls.Add(this.loadinglbl);
             this.orderpnl.Location = new System.Drawing.Point(0, 49);
             this.orderpnl.Name = "orderpnl";
             this.orderpnl.Size = new System.Drawing.Size(1162, 616);
@@ -194,7 +194,6 @@
             this.dpnl.Controls.Add(this.con);
             this.dpnl.Controls.Add(this.billbtn);
             this.dpnl.Controls.Add(this.cnfbtn);
-            this.dpnl.Controls.Add(this.label6);
             this.dpnl.Controls.Add(this.label5);
             this.dpnl.Controls.Add(this.orderlbl);
             this.dpnl.Controls.Add(this.contactlbl);
@@ -202,7 +201,6 @@
             this.dpnl.Controls.Add(this.citylbl);
             this.dpnl.Controls.Add(this.panel2);
             this.dpnl.Controls.Add(this.pinlbl);
-            this.dpnl.Controls.Add(this.proid);
             this.dpnl.Controls.Add(this.namelbl);
             this.dpnl.Controls.Add(this.label8);
             this.dpnl.Controls.Add(this.address2lbl);
@@ -220,6 +218,18 @@
             this.dpnl.Size = new System.Drawing.Size(1156, 238);
             this.dpnl.TabIndex = 26;
             this.dpnl.Visible = false;
+            // 
+            // updbtn
+            // 
+            this.updbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.updbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.updbtn.Location = new System.Drawing.Point(944, 45);
+            this.updbtn.Name = "updbtn";
+            this.updbtn.Size = new System.Drawing.Size(152, 42);
+            this.updbtn.TabIndex = 14;
+            this.updbtn.Text = "Update Details";
+            this.updbtn.UseVisualStyleBackColor = true;
+            this.updbtn.Click += new System.EventHandler(this.updbtn_Click);
             // 
             // con
             // 
@@ -251,16 +261,6 @@
             this.cnfbtn.Text = "Make Reciept";
             this.cnfbtn.UseVisualStyleBackColor = true;
             this.cnfbtn.Click += new System.EventHandler(this.cnfbtn_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(113, 10);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(47, 12);
-            this.label6.TabIndex = 25;
-            this.label6.Text = "ProductID";
             // 
             // label5
             // 
@@ -297,7 +297,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(282, 10);
+            this.label7.Location = new System.Drawing.Point(245, 10);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(64, 12);
             this.label7.TabIndex = 4;
@@ -330,19 +330,6 @@
             this.pinlbl.Size = new System.Drawing.Size(71, 29);
             this.pinlbl.TabIndex = 21;
             this.pinlbl.Text = "pincode";
-            // 
-            // proid
-            // 
-            this.proid.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.proid.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.proid.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.proid.FormattingEnabled = true;
-            this.proid.ItemHeight = 16;
-            this.proid.Location = new System.Drawing.Point(113, 33);
-            this.proid.Name = "proid";
-            this.proid.SelectionMode = System.Windows.Forms.SelectionMode.None;
-            this.proid.Size = new System.Drawing.Size(60, 192);
-            this.proid.TabIndex = 6;
             // 
             // namelbl
             // 
@@ -411,9 +398,9 @@
             this.proname.FormattingEnabled = true;
             this.proname.HorizontalScrollbar = true;
             this.proname.ItemHeight = 16;
-            this.proname.Location = new System.Drawing.Point(179, 33);
+            this.proname.Location = new System.Drawing.Point(116, 33);
             this.proname.Name = "proname";
-            this.proname.Size = new System.Drawing.Size(256, 192);
+            this.proname.Size = new System.Drawing.Size(319, 192);
             this.proname.TabIndex = 17;
             // 
             // panel3
@@ -464,6 +451,7 @@
             // 
             // orderdetailview
             // 
+            this.orderdetailview.AllowUserToAddRows = false;
             this.orderdetailview.BackgroundColor = System.Drawing.Color.White;
             this.orderdetailview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.orderdetailview.Location = new System.Drawing.Point(3, 240);
@@ -475,6 +463,7 @@
             // 
             // ordergridview
             // 
+            this.ordergridview.AllowUserToAddRows = false;
             this.ordergridview.BackgroundColor = System.Drawing.Color.White;
             this.ordergridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ordergridview.Location = new System.Drawing.Point(3, 3);
@@ -502,17 +491,18 @@
             this.bgworker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker_DoWork);
             this.bgworker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker_RunWorkerCompleted);
             // 
-            // updbtn
+            // loadinglbl
             // 
-            this.updbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
-            this.updbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.updbtn.Location = new System.Drawing.Point(944, 45);
-            this.updbtn.Name = "updbtn";
-            this.updbtn.Size = new System.Drawing.Size(152, 42);
-            this.updbtn.TabIndex = 14;
-            this.updbtn.Text = "Update Details";
-            this.updbtn.UseVisualStyleBackColor = true;
-            this.updbtn.Click += new System.EventHandler(this.updbtn_Click);
+            this.loadinglbl.AutoSize = true;
+            this.loadinglbl.BackColor = System.Drawing.Color.Transparent;
+            this.loadinglbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loadinglbl.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.loadinglbl.Location = new System.Drawing.Point(506, 293);
+            this.loadinglbl.Name = "loadinglbl";
+            this.loadinglbl.Size = new System.Drawing.Size(118, 17);
+            this.loadinglbl.TabIndex = 27;
+            this.loadinglbl.Text = "Loading Details...";
+            this.loadinglbl.Visible = false;
             // 
             // orders
             // 
@@ -529,6 +519,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.orderpnl.ResumeLayout(false);
+            this.orderpnl.PerformLayout();
             this.dpnl.ResumeLayout(false);
             this.dpnl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.orderdetailview)).EndInit();
@@ -560,7 +551,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label amountlbl;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ListBox proid;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.ListBox proname;
         private System.Windows.Forms.Label namelbl;
@@ -568,7 +558,6 @@
         private System.Windows.Forms.Label contactlbl;
         private System.Windows.Forms.Label citylbl;
         private System.Windows.Forms.Label pinlbl;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox paymenttxt;
         private System.Windows.Forms.TextBox statustxt;
         private System.Windows.Forms.Label label3;
@@ -581,5 +570,6 @@
         public System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label formlbl;
         private System.Windows.Forms.Button updbtn;
+        private System.Windows.Forms.Label loadinglbl;
     }
 }

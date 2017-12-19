@@ -99,13 +99,13 @@ namespace Veiled_Kashmir_Admin_Panel
             frombox.DisplayMember = "Text";
             var items = new[]
             {
-                new {Text="support@lalchowk.in"},               
+                new {Text="support@lalchowk.in"},
                 new {Text ="promo@lalchowk.in"},
                 new {Text="info@lalchowk.in"},
+                 new {Text="noreply@lalchowk.in"},
                 new {Text="feedback@lalchowk.in"},
                 new {Text="hr@lalchowk.in"}
                 
-
             };
             frombox.DataSource = items;
 
@@ -128,7 +128,7 @@ namespace Veiled_Kashmir_Admin_Panel
                
                 aconn.Close();
 
-                dr = obj.Query("SELECT concat(id,':    ',mail) as mail FROM customer ORDER BY id LIMIT " + emails + " OFFSET " + maillist + " ");
+                dr = obj.Query("SELECT concat(id,':    ',mail) as mail FROM customer where subscribed=1 ORDER BY id LIMIT " + emails + " OFFSET " + maillist + " ");
                 dt = new DataTable();
                 dt.Columns.Add("mail", typeof(String));
                 dt.Load(dr);
@@ -171,7 +171,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 Smtpobj.DeliveryMethod = SmtpDeliveryMethod.Network;
 
                
-                dr =obj.Query(" SELECT mail FROM customer ORDER BY id LIMIT " + emails + " OFFSET " + maillist + "");
+                dr =obj.Query(" SELECT mail FROM customer where subscribed=1 ORDER BY id LIMIT " + emails + " OFFSET " + maillist + "");
 
                 i = 0;
                 j = 0;
@@ -254,6 +254,11 @@ namespace Veiled_Kashmir_Admin_Panel
                     sendername = "Human Resources";
                     from = "hr@lalchowk.in";
                     break;
+                case "noreply@lalchowk.in":
+                    sendername = "Lalchowk";
+                    from = "noreply@lalchowk.in";
+                    break;
+                   
                 default:
                     MessageBox.Show("select a valid email.");
                     break;

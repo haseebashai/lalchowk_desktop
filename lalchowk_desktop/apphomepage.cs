@@ -327,7 +327,7 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             try { 
             Cursor = Cursors.WaitCursor;
-            dr = obj.Query("SELECT productname,productid FROM lalchowk.products WHERE stock>0 ORDER BY RAND() LIMIT 16 ");
+            dr = obj.Query("SELECT productname,productid FROM lalchowk.products WHERE stock>0 and picture !='defaultbook.jpg' ORDER BY RAND() LIMIT 16 ");
            
             List<string> productid = new List<string>();
                 List<string> productname = new List<string>();
@@ -379,7 +379,7 @@ namespace Veiled_Kashmir_Admin_Panel
             try
             {
                 Cursor = Cursors.WaitCursor;
-                dr = obj.Query("SELECT productname,picture,productid FROM lalchowk.products WHERE stock>0 ORDER BY RAND() LIMIT 4 ");
+                dr = obj.Query("SELECT productname,picture,productid FROM lalchowk.products WHERE stock>0 and picture !='defaultbook.jpg' ORDER BY RAND() LIMIT 4 ");
                 List<string> productname = new List<string>();
                 List<string> picture = new List<string>();
                 List<string> productid = new List<string>();
