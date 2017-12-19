@@ -191,14 +191,16 @@ namespace Veiled_Kashmir_Admin_Panel
                 MessageBox.Show("Order deleted.");
                 dpnl.Visible = false;
                 orderdetailview.Visible = false;
+                    Cursor = Cursors.WaitCursor;
                 readorders();
                 orlbl.Text = ordervar;
                 ordergridview.DataSource = bsource;
-            }
+                    Cursor = Cursors.Arrow;
+                }
         }
             catch (Exception ex)
             {
-
+                Cursor = Cursors.Arrow;
                 MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
 

@@ -18,7 +18,7 @@ namespace Veiled_Kashmir_Admin_Panel
         String email, username,orderid,count,cmd;
         bool status, nametxtok, desctxtok, editnametxtok, editdesctxtok, parknametxtok, parkdesctxtok, editparktxtok, editparkdesctxtok, sancnametxtok, sancdesctxtok, editsanctnametxtok, editsancdesctxtok;
         BindingSource bsource;
-        MySqlDataAdapter adap,adap1,adap2,adap3;
+        MySqlDataAdapter adap,adap1,adap2,adap3,adap4;
         MySqlDataReader dr,dr2,dr3;
         MySqlCommandBuilder cmdbl;
         MySqlConnection con= new MySqlConnection( "SERVER=182.50.133.78;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah");
@@ -198,56 +198,6 @@ namespace Veiled_Kashmir_Admin_Panel
             pm.Show();
         }
 
-
-        private void readdetails()
-        {
-            try
-            {
-                con.Open();
-                adap2 = new MySqlDataAdapter("select * from cartitems where email='" + email + "'", con);             
-                dt3 = new DataTable();
-                adap2.Fill(dt3);
-                con.Close();
-                BindingSource bsource = new BindingSource();
-                bsource.DataSource = dt3;
-                cartdataview.DataSource = bsource;
-
-                con.Open();
-                adap3 = new MySqlDataAdapter("select * from wishlist where email='" + email + "'", con);               
-                dt4 = new DataTable();
-                adap3.Fill(dt4);
-                con.Close();
-                BindingSource bsource2 = new BindingSource();
-                bsource2.DataSource = dt4;
-                wishlistdataview.DataSource = bsource2;
-
-                con.Open();
-                adap1 = new MySqlDataAdapter("select * from orders where email='" + email + "'", con);
-                dt2 = new DataTable();
-                adap1.Fill(dt2);
-                con.Close();
-                BindingSource bsource3 = new BindingSource();
-                bsource3.DataSource = dt2;
-                ordersdataview.DataSource = bsource3;
-
-                con.Open();
-                adap = new MySqlDataAdapter("select * from addresses where email='" + email + "'", con);
-                dt = new DataTable();
-                adap.Fill(dt);
-                con.Close();
-                BindingSource bsource4 = new BindingSource();
-                bsource4.DataSource = dt;
-                addressdataview.DataSource = bsource4;
-
-
-            }
-            catch (Exception ex)
-            {
-                con.Close();
-                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
-            }
-            con.Close();
-        }
         private void uporlbl_Click(object sender, EventArgs e)
         {
             try
@@ -298,8 +248,8 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             try
             {
-                cmdbl = new MySqlCommandBuilder(adap);
-                adap.Update(dt) ;
+                cmdbl = new MySqlCommandBuilder(adap4);
+                adap4.Update(dt) ;
                 MessageBox.Show("Updated Successfully.");
             }
             catch (Exception ex)
@@ -311,7 +261,13 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void customerdataview_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            customerdataview.Enabled = false;
+            loadinglbl.Visible = true;
             inflbl.Visible = false;
+            dpnl.Visible = false;
+            apnl.Visible = false;
+            ppnl.Visible = false;
+
            
             if (e.RowIndex >= 0)
             {
@@ -320,13 +276,139 @@ namespace Veiled_Kashmir_Admin_Panel
                 emaillbl.Text = row.Cells["mail"].Value.ToString();
                 namelbl.Text= row.Cells["name"].Value.ToString();
                 contactlbl.Text= row.Cells["contact"].Value.ToString();
-                
-                dpnl.Visible = true;
-                Cursor = Cursors.WaitCursor;
-                readdetails();
-                ppnl.Visible = true;
-                apnl.Visible = true;
-                Cursor = Cursors.Arrow;
+
+                BackgroundWorker details = new BackgroundWorker();
+                details.WorkerReportsProgress = true;
+
+                details.DoWork += (o, a)=>
+                {
+
+                    try
+                    {
+                        con.Open();
+                        adap2 = new MySqlDataAdapter("select * from cartitems where email='" + email + "'", con);
+                        dt3 = new DataTable();
+                        adap2.Fill(dt3);
+                        con.Close();
+                        BindingSource bsource5 = new BindingSource();
+                        bsource5.DataSource = dt3;
+
+                        details.ReportProgress(25);
+                        
+
+                        con.Open();
+                        adap3 = new MySqlDataAdapter("select * from wishlist where email='" + email + "'", con);
+                        dt4 = new DataTable();
+                        adap3.Fill(dt4);
+                        con.Close();
+                        BindingSource bsource2 = new BindingSource();
+                        bsource2.DataSource = dt4;
+
+                        details.ReportProgress(50);
+
+                        con.Open();
+                        adap1 = new MySqlDataAdapter("select * from orders where email='" + email + "'", con);
+                        dt2 = new DataTable();
+                        adap1.Fill(dt2);
+                        con.Close();
+                        BindingSource bsource3 = new BindingSource();
+                        bsource3.DataSource = dt2;
+
+                        details.ReportProgress(75);
+
+                        details.ReportProgress(99);
+
+                        con.Open();
+                        adap4 = new MySqlDataAdapter("select * from addresses where email='" + email + "'", con);
+                        dt = new DataTable();
+                        adap4.Fill(dt);
+                        con.Close();
+                        BindingSource bsource4 = new BindingSource();
+                        bsource4.DataSource = dt;
+
+                        details.ReportProgress(100);
+
+                        object[] arg = {bsource5,bsource2,bsource3,bsource4 };
+                        a.Result =arg;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        con.Close();
+                        MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
+                    }
+                  
+
+
+                };
+
+                details.ProgressChanged += (b, c) => 
+                {
+                    int progress= c.ProgressPercentage;
+                    if (progress == 25)
+                    {
+                        loadinglbl.Text = "Loading details... (25%)";
+                        
+                    }else
+                    if (progress == 50)
+                    {
+                        loadinglbl.Text = "Loading details... (50%)";
+                       
+                    }else
+                    if (progress == 75)
+                    {
+                        loadinglbl.Text = "Loading details... (75%)";
+                       
+                    }else
+                    if (progress == 99)
+                    {
+                        loadinglbl.Text = "Loading details... (99%)";
+                     
+                    }
+                    else
+                    if (progress == 100)
+                    {
+                        loadinglbl.Text = "Loading details... (100%)";
+
+                    }
+
+
+
+                };
+
+                details.RunWorkerCompleted += (d, x) => 
+                {
+                    try
+                    {
+                        object[] arg = x.Result as object[];
+                        BindingSource bsource5 = arg[0] as BindingSource;
+                        BindingSource bsource2 = arg[1] as BindingSource;
+                        BindingSource bsource3 = arg[2] as BindingSource;
+                        BindingSource bsource4 = arg[3] as BindingSource;
+
+                        cartdataview.DataSource = bsource5;
+                        wishlistdataview.DataSource = bsource2;
+                        ordersdataview.DataSource = bsource3;
+                        addressdataview.DataSource = bsource4;
+                        customerdataview.Enabled = true;
+                        loadinglbl.Visible = false;
+                        loadinglbl.Text = "Loading details... (0%)";
+                        dpnl.Visible = true;
+                        ppnl.Visible = true;
+                        apnl.Visible = true;
+                    }
+                    catch { }
+
+                };
+                while (details.IsBusy)
+                    details.CancelAsync();
+                con.Close();
+                details.RunWorkerAsync();
+              
+                //Cursor = Cursors.WaitCursor;
+                //readdetails();
+               
+                //Cursor = Cursors.Arrow;
                
             }
         }
