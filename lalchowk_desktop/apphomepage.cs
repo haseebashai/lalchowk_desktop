@@ -195,6 +195,13 @@ namespace Veiled_Kashmir_Admin_Panel
                 p3titlevar, p3subvar, p3picvar, p3linkvar, p4titlevar, p4subvar, p4picvar, p4linkvar,fileaddress,filename,fullpath,
                 directory,uploaddir;
 
+        private void idtxt_TextChanged(object sender, EventArgs e)
+        {
+            DataView dv = new DataView(dt);
+            dv.RowFilter = string.Format("convert([productid],System.String) LIKE '%{0}%'", idtxt.Text);
+            productsdataview.DataSource = dv;
+        }
+
         bool rightpicture = false, leftpicture = false;
         private void rightpic_Click(object sender, EventArgs e)
         {
@@ -245,6 +252,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 g.Dispose();
                 myimage.Dispose();
                 leftpic.BackgroundImage = clone;
+
                 leftpic.BackgroundImageLayout = ImageLayout.Stretch;
                 fullpath = Path.GetFullPath(fileaddress).TrimEnd(Path.DirectorySeparatorChar);
                 directory = Path.GetDirectoryName(fullpath) + "\\";
@@ -269,15 +277,19 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void uploadleftpic()
         {
-            
-            File.Move(fileaddress, directory + lefttxt.Text);
-            uploaddir = directory + lefttxt.Text;
-            UploadFileToFtp("ftp://lalchowk.in/httpdocs/lalchowk/pictures/", uploaddir);
+            try
+            {
+                File.Move(fileaddress, directory + lefttxt.Text);
+                uploaddir = directory + lefttxt.Text;
+                UploadFileToFtp("ftp://lalchowk.in/httpdocs/lalchowk/pictures/", uploaddir);
 
-            cmd = "update homepage2 set picture='" + lefttxt.Text + "',link='" + leftlink.Text + "' where homeid='1'";
-            obj.nonQuery(cmd);
-            obj.closeConnection();
-          
+                cmd = "update homepage2 set picture='" + lefttxt.Text + "',link='" + leftlink.Text + "' where homeid='1'";
+                obj.nonQuery(cmd);
+                obj.closeConnection();
+            }catch
+            {
+                obj.closeConnection();
+            }
         }
 
 
@@ -318,7 +330,7 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
-
+                obj.closeConnection();
                 MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
         }
@@ -361,6 +373,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 }
                 catch (Exception ex)
                 {
+                    obj.closeConnection();
                     Cursor = Cursors.Arrow;
                     MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
                 }
@@ -368,6 +381,7 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
+                obj.closeConnection();
                 Cursor = Cursors.Arrow;
                 MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
@@ -419,7 +433,7 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
-
+                obj.closeConnection();
                 MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
 
@@ -430,7 +444,7 @@ namespace Veiled_Kashmir_Admin_Panel
             try
             {
                 con.Open();
-                adap = new MySqlDataAdapter("SELECT productid, productname, picture, stock, price, categoryid FROM products", con);
+                adap = new MySqlDataAdapter("SELECT productid, productname, picture, stock, price, categoryid FROM products where stock>0", con);
                 dt = new DataTable();
                 adap.Fill(dt);
                 con.Close();
@@ -496,7 +510,8 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
-
+                obj.closeConnection();
+                con.Close();
                 MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
         }
@@ -506,7 +521,7 @@ namespace Veiled_Kashmir_Admin_Panel
         private void fcattxt_TextChanged(object sender, EventArgs e)
         {
             DataView dv = new DataView(dt);
-            dv.RowFilter = string.Format("categoryid LIKE '%{0}%'", fcattxt.Text);
+            dv.RowFilter = string.Format("productname LIKE '%{0}%'", fcattxt.Text);
             productsdataview.DataSource = dv;
         }
 
@@ -542,7 +557,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
             catch (Exception ex)
             {
-
+                obj.closeConnection();
                 MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
         }
@@ -557,7 +572,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
             catch (Exception ex)
             {
-
+                obj.closeConnection();
                 MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
         }
@@ -585,7 +600,7 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
-
+                obj.closeConnection();
                 MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
             Cursor = Cursors.WaitCursor;
@@ -623,7 +638,7 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
-
+                obj.closeConnection();
                 MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
         }
@@ -639,7 +654,7 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
-
+                obj.closeConnection();
                 MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
         }
@@ -660,7 +675,7 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex)
             {
-
+                obj.closeConnection();
                 MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
         }

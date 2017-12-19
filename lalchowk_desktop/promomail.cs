@@ -468,14 +468,14 @@ namespace Veiled_Kashmir_Admin_Panel
             try { 
             if (returned == null)
             {
-                    
+                   
                 aconn.Open();
                 mycmd = new MySqlCommand("update emailno set eid = (eid + '" + myData.Count + "') where id=1", aconn); //emails
                     mycmd.ExecuteNonQuery();
                 aconn.Close();
-                   
-                    
-            }
+                    Cursor = Cursors.Arrow;
+
+                }
             else if (returned == "shit")
             {
                 MessageBox.Show("Please check your internet connection.");
@@ -506,6 +506,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
             myData.Clear();
+            Cursor = Cursors.WaitCursor;
             readlist();
             emailno.Text = maillist.ToString();
             recno.Text = emails.ToString();

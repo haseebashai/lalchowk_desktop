@@ -78,7 +78,7 @@
             this.shiptxt.Location = new System.Drawing.Point(321, 262);
             this.shiptxt.Name = "shiptxt";
             this.shiptxt.Size = new System.Drawing.Size(120, 20);
-            this.shiptxt.TabIndex = 2;
+            this.shiptxt.TabIndex = 7;
             // 
             // label3
             // 
@@ -94,7 +94,7 @@
             this.amtxt.Location = new System.Drawing.Point(59, 262);
             this.amtxt.Name = "amtxt";
             this.amtxt.Size = new System.Drawing.Size(120, 20);
-            this.amtxt.TabIndex = 4;
+            this.amtxt.TabIndex = 6;
             // 
             // label4
             // 
@@ -110,7 +110,7 @@
             this.citytxt.Location = new System.Drawing.Point(321, 194);
             this.citytxt.Name = "citytxt";
             this.citytxt.Size = new System.Drawing.Size(205, 20);
-            this.citytxt.TabIndex = 6;
+            this.citytxt.TabIndex = 5;
             // 
             // label5
             // 
@@ -126,7 +126,7 @@
             this.pintxt.Location = new System.Drawing.Point(59, 194);
             this.pintxt.Name = "pintxt";
             this.pintxt.Size = new System.Drawing.Size(205, 20);
-            this.pintxt.TabIndex = 8;
+            this.pintxt.TabIndex = 4;
             // 
             // label6
             // 
@@ -142,7 +142,7 @@
             this.contxt.Location = new System.Drawing.Point(321, 126);
             this.contxt.Name = "contxt";
             this.contxt.Size = new System.Drawing.Size(205, 20);
-            this.contxt.TabIndex = 10;
+            this.contxt.TabIndex = 3;
             // 
             // label7
             // 
@@ -158,7 +158,7 @@
             this.add2txt.Location = new System.Drawing.Point(59, 126);
             this.add2txt.Name = "add2txt";
             this.add2txt.Size = new System.Drawing.Size(205, 20);
-            this.add2txt.TabIndex = 12;
+            this.add2txt.TabIndex = 2;
             // 
             // label8
             // 
@@ -174,7 +174,7 @@
             this.add1txt.Location = new System.Drawing.Point(321, 67);
             this.add1txt.Name = "add1txt";
             this.add1txt.Size = new System.Drawing.Size(205, 20);
-            this.add1txt.TabIndex = 14;
+            this.add1txt.TabIndex = 1;
             // 
             // updbtn
             // 
@@ -201,6 +201,7 @@
             // 
             // editorderdetails
             // 
+            this.AcceptButton = this.updbtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;

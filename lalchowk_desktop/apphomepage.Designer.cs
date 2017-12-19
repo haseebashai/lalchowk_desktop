@@ -40,7 +40,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.upddpbtn = new System.Windows.Forms.Button();
             this.productsdataview = new System.Windows.Forms.DataGridView();
-            this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.fcattxt = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -88,6 +87,8 @@
             this.hpnl = new System.Windows.Forms.Panel();
             this.randlist = new System.Windows.Forms.Button();
             this.randbtn = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.idtxt = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.leftpic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rightpic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productsdataview)).BeginInit();
@@ -215,33 +216,22 @@
             this.productsdataview.TabIndex = 52;
             this.productsdataview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.productsdataview_CellClick);
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label5.Location = new System.Drawing.Point(722, 7);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(64, 17);
-            this.label5.TabIndex = 53;
-            this.label5.Text = "Products";
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label6.Location = new System.Drawing.Point(882, 7);
+            this.label6.Location = new System.Drawing.Point(722, 5);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(119, 17);
+            this.label6.Size = new System.Drawing.Size(99, 17);
             this.label6.TabIndex = 54;
-            this.label6.Text = "Filter by Category";
+            this.label6.Text = "Filter by Name";
             // 
             // fcattxt
             // 
-            this.fcattxt.Location = new System.Drawing.Point(1002, 4);
+            this.fcattxt.Location = new System.Drawing.Point(821, 4);
             this.fcattxt.Name = "fcattxt";
-            this.fcattxt.Size = new System.Drawing.Size(147, 20);
+            this.fcattxt.Size = new System.Drawing.Size(135, 20);
             this.fcattxt.TabIndex = 55;
             this.fcattxt.TextChanged += new System.EventHandler(this.fcattxt_TextChanged);
             // 
@@ -639,6 +629,8 @@
             // 
             // hpnl
             // 
+            this.hpnl.Controls.Add(this.label1);
+            this.hpnl.Controls.Add(this.idtxt);
             this.hpnl.Controls.Add(this.randlist);
             this.hpnl.Controls.Add(this.randbtn);
             this.hpnl.Controls.Add(this.label3);
@@ -664,7 +656,6 @@
             this.hpnl.Controls.Add(this.upd4btn);
             this.hpnl.Controls.Add(this.productsdataview);
             this.hpnl.Controls.Add(this.updbbtn);
-            this.hpnl.Controls.Add(this.label5);
             this.hpnl.Controls.Add(this.itemsdataview);
             this.hpnl.Controls.Add(this.label6);
             this.hpnl.Controls.Add(this.label8);
@@ -722,6 +713,25 @@
             this.randbtn.UseVisualStyleBackColor = true;
             this.randbtn.Click += new System.EventHandler(this.randbtn_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label1.Location = new System.Drawing.Point(962, 4);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(75, 17);
+            this.label1.TabIndex = 106;
+            this.label1.Text = "Filter by ID";
+            // 
+            // idtxt
+            // 
+            this.idtxt.Location = new System.Drawing.Point(1043, 4);
+            this.idtxt.Name = "idtxt";
+            this.idtxt.Size = new System.Drawing.Size(106, 20);
+            this.idtxt.TabIndex = 107;
+            this.idtxt.TextChanged += new System.EventHandler(this.idtxt_TextChanged);
+            // 
             // apphomepage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -764,7 +774,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button upddpbtn;
         private System.Windows.Forms.DataGridView productsdataview;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox fcattxt;
         private System.Windows.Forms.Label label7;
@@ -812,5 +821,7 @@
         private System.Windows.Forms.Panel hpnl;
         private System.Windows.Forms.Button randbtn;
         private System.Windows.Forms.Button randlist;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox idtxt;
     }
 }

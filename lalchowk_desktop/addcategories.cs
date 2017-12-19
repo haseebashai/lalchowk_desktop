@@ -252,10 +252,31 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             if (picdialog.ShowDialog() == DialogResult.OK)
             {
+                //fileaddress = picdialog.FileName;
+                //filename = picdialog.SafeFileName;
+                //Image myimage = new Bitmap(fileaddress);
+                //spic.BackgroundImage = myimage;
+                //spic.BackgroundImageLayout = ImageLayout.Stretch;
+                //fullpath = Path.GetFullPath(fileaddress).TrimEnd(Path.DirectorySeparatorChar);
+                //directory = Path.GetDirectoryName(fullpath) + "\\";
+                //spictxt.Text = Path.GetFileName(fullpath);
+
                 fileaddress = picdialog.FileName;
                 filename = picdialog.SafeFileName;
                 Image myimage = new Bitmap(fileaddress);
-                spic.BackgroundImage = myimage;
+                Bitmap clone = new Bitmap(myimage.Width, myimage.Height);
+
+                Graphics g = Graphics.FromImage(clone);
+                g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.None;
+                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+                g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighSpeed;
+
+                g.DrawImage(myimage, 0, 0, myimage.Width, myimage.Height);
+
+                g.Dispose();
+                myimage.Dispose();
+                spic.BackgroundImage = clone;
+
                 spic.BackgroundImageLayout = ImageLayout.Stretch;
                 fullpath = Path.GetFullPath(fileaddress).TrimEnd(Path.DirectorySeparatorChar);
                 directory = Path.GetDirectoryName(fullpath) + "\\";
@@ -316,14 +337,37 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             if (picdialog.ShowDialog() == DialogResult.OK)
             {
+                //fileaddress = picdialog.FileName;
+                //filename = picdialog.SafeFileName;
+                //Image myimage = new Bitmap(fileaddress);
+                //tpic.BackgroundImage = myimage;
+                //tpic.BackgroundImageLayout = ImageLayout.Stretch;
+                //fullpath = Path.GetFullPath(fileaddress).TrimEnd(Path.DirectorySeparatorChar);
+                //directory = Path.GetDirectoryName(fullpath) + "\\";
+                //tpictxt.Text = Path.GetFileName(fullpath);
+
+
                 fileaddress = picdialog.FileName;
                 filename = picdialog.SafeFileName;
                 Image myimage = new Bitmap(fileaddress);
-                tpic.BackgroundImage = myimage;
+                Bitmap clone = new Bitmap(myimage.Width, myimage.Height);
+
+                Graphics g = Graphics.FromImage(clone);
+                g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.None;
+                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+                g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighSpeed;
+
+                g.DrawImage(myimage, 0, 0, myimage.Width, myimage.Height);
+
+                g.Dispose();
+                myimage.Dispose();
+                tpic.BackgroundImage = clone;
+
                 tpic.BackgroundImageLayout = ImageLayout.Stretch;
                 fullpath = Path.GetFullPath(fileaddress).TrimEnd(Path.DirectorySeparatorChar);
                 directory = Path.GetDirectoryName(fullpath) + "\\";
                 tpictxt.Text = Path.GetFileName(fullpath);
+              
 
             }
         }
@@ -453,10 +497,32 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             if (picdialog.ShowDialog() == DialogResult.OK)
             {
+                //fileaddress = picdialog.FileName;
+                //filename = picdialog.SafeFileName;
+                //Image myimage = new Bitmap(fileaddress);
+                //fpic.BackgroundImage = myimage;
+                //fpic.BackgroundImageLayout = ImageLayout.Stretch;
+                //fullpath = Path.GetFullPath(fileaddress).TrimEnd(Path.DirectorySeparatorChar);
+                //directory = Path.GetDirectoryName(fullpath) + "\\";
+                //fpictxt.Text = Path.GetFileName(fullpath);
+
+
                 fileaddress = picdialog.FileName;
                 filename = picdialog.SafeFileName;
                 Image myimage = new Bitmap(fileaddress);
-                fpic.BackgroundImage = myimage;
+                Bitmap clone = new Bitmap(myimage.Width, myimage.Height);
+
+                Graphics g = Graphics.FromImage(clone);
+                g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.None;
+                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+                g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighSpeed;
+
+                g.DrawImage(myimage, 0, 0, myimage.Width, myimage.Height);
+
+                g.Dispose();
+                myimage.Dispose();
+                fpic.BackgroundImage = clone;
+
                 fpic.BackgroundImageLayout = ImageLayout.Stretch;
                 fullpath = Path.GetFullPath(fileaddress).TrimEnd(Path.DirectorySeparatorChar);
                 directory = Path.GetDirectoryName(fullpath) + "\\";
