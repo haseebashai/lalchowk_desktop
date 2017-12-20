@@ -590,10 +590,10 @@ namespace Veiled_Kashmir_Admin_Panel
 
             dg.Text = "Send Email";
 
-            
 
-            pm.Show();
             dg.Show();
+            pm.Show();
+            
             Cursor = Cursors.Arrow;
         }
 
