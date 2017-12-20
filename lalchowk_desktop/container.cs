@@ -40,5 +40,17 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             this.WindowState = FormWindowState.Minimized;
         }
+
+        private void container_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            FormCollection fc = Application.OpenForms;
+            if (fc.Count > 3)
+            {
+                e.Cancel = true;
+                MessageBox.Show("Some functions are running in other windows, close them first.","Warning!");
+                e.Cancel = true;
+            }
+          
+        }
     }
 }

@@ -593,7 +593,7 @@ namespace Veiled_Kashmir_Admin_Panel
             
 
             pm.Show();
-            dg.ShowDialog();
+            dg.Show();
             Cursor = Cursors.Arrow;
         }
 
