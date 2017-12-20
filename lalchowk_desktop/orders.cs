@@ -49,8 +49,16 @@ namespace Veiled_Kashmir_Admin_Panel
            
             dg.Text = "Edit Order details";
 
-            dg.Show(); 
             edit.Show();
+            dg.ShowDialog();
+            Cursor = Cursors.WaitCursor;
+            readorders();
+            ordergridview.DataSource = bsource;
+            Cursor = Cursors.Arrow;
+            ordergridview.CurrentCell = ordergridview.Rows[int.Parse(orderidcount)].Cells[0] ;
+            orderdetailview.Visible = false;
+            dpnl.Visible = false;
+            loadinglbl.Visible = false;
         }
 
         private void readorders()
@@ -184,10 +192,12 @@ namespace Veiled_Kashmir_Admin_Panel
             DialogResult dr = MessageBox.Show("Delete order and all its details with OrderID: "+orderid+" ?", "Confirm", MessageBoxButtons.YesNo);
             if (dr == DialogResult.Yes)
             {
+                    Cursor = Cursors.WaitCursor;
                 cmd = "Delete from orders where orderid='" + orderid + "'";
                 obj.nonQuery(cmd);
                 cmd = "Delete from orderdetails where orderid='" + orderid + "'";
                 obj.nonQuery(cmd);
+                    Cursor = Cursors.Arrow;
                 MessageBox.Show("Order deleted.");
                 dpnl.Visible = false;
                 orderdetailview.Visible = false;
@@ -195,6 +205,10 @@ namespace Veiled_Kashmir_Admin_Panel
                 readorders();
                 orlbl.Text = ordervar;
                 ordergridview.DataSource = bsource;
+                    ordergridview.CurrentCell = ordergridview.Rows[int.Parse(orderidcount)].Cells[0];
+                    orderdetailview.Visible = false;
+                    dpnl.Visible = false;
+                    loadinglbl.Visible = false;
                     Cursor = Cursors.Arrow;
                 }
         }
@@ -257,28 +271,9 @@ namespace Veiled_Kashmir_Admin_Panel
 
         }
 
-        private void readaddress()
-        {
-            try {
-                dr = obj.Query("select * from addresses where addressid='" + addressid + "'");
-                dr.Read();
-                namelbl.Text = dr["name"].ToString();
-                address1lbl.Text = dr["address1"].ToString();
-                address2lbl.Text = dr["address2"].ToString();
-                pinlbl.Text = dr["pincode"].ToString();
-                citylbl.Text = dr["city"].ToString();
-                contactlbl.Text = dr["contact"].ToString();
-                
+       
 
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
-            }
-            obj.closeConnection();
-        }
-
+        string orderidcount;
         private void ordergridview_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -289,20 +284,21 @@ namespace Veiled_Kashmir_Admin_Panel
 
                 if (e.RowIndex >= 0)
                 {
+                    
                     DataGridViewRow row = this.ordergridview.Rows[e.RowIndex];
                     orderid = row.Cells["orderid"].Value.ToString();
                     email = row.Cells["mail"].Value.ToString();
                     shipping = row.Cells["shipping"].Value.ToString();
                     namelbl.Text = row.Cells["name"].Value.ToString();
-                    address1lbl.Text = row.Cells["address1"].Value.ToString();
-                    address2lbl.Text = row.Cells["address2"].Value.ToString();
-                    pinlbl.Text = row.Cells["pincode"].Value.ToString();
-                    citylbl.Text = row.Cells["city"].Value.ToString();
+                    address1lbl.Text = row.Cells["address1"].Value.ToString() +", "+ row.Cells["address2"].Value.ToString()+
+                     ", "+ row.Cells["city"].Value.ToString()+", "+ row.Cells["pincode"].Value.ToString();
+                
                     contactlbl.Text = row.Cells["contact"].Value.ToString();
                     string amount = row.Cells["amount"].Value.ToString();
                     int result = int.Parse(amount) + int.Parse(shipping);
                     amountlbl.Text = result.ToString();
                     orderlbl.Text = orderid;
+                    orderidcount= e.RowIndex.ToString();
                     proname.Items.Clear();
 
 

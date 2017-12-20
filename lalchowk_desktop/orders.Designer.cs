@@ -48,12 +48,9 @@
             this.orderlbl = new System.Windows.Forms.Label();
             this.contactlbl = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.citylbl = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.pinlbl = new System.Windows.Forms.Label();
             this.namelbl = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.address2lbl = new System.Windows.Forms.Label();
             this.amountlbl = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
@@ -65,9 +62,9 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.orderdetailview = new System.Windows.Forms.DataGridView();
             this.ordergridview = new System.Windows.Forms.DataGridView();
+            this.loadinglbl = new System.Windows.Forms.Label();
             this.formlbl = new System.Windows.Forms.Label();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
-            this.loadinglbl = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.orderpnl.SuspendLayout();
             this.dpnl.SuspendLayout();
@@ -198,12 +195,9 @@
             this.dpnl.Controls.Add(this.orderlbl);
             this.dpnl.Controls.Add(this.contactlbl);
             this.dpnl.Controls.Add(this.label7);
-            this.dpnl.Controls.Add(this.citylbl);
             this.dpnl.Controls.Add(this.panel2);
-            this.dpnl.Controls.Add(this.pinlbl);
             this.dpnl.Controls.Add(this.namelbl);
             this.dpnl.Controls.Add(this.label8);
-            this.dpnl.Controls.Add(this.address2lbl);
             this.dpnl.Controls.Add(this.amountlbl);
             this.dpnl.Controls.Add(this.panel5);
             this.dpnl.Controls.Add(this.label10);
@@ -223,7 +217,7 @@
             // 
             this.updbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.updbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.updbtn.Location = new System.Drawing.Point(944, 45);
+            this.updbtn.Location = new System.Drawing.Point(944, 59);
             this.updbtn.Name = "updbtn";
             this.updbtn.Size = new System.Drawing.Size(152, 42);
             this.updbtn.TabIndex = 14;
@@ -235,7 +229,7 @@
             // 
             this.con.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.con.ForeColor = System.Drawing.Color.Red;
-            this.con.Location = new System.Drawing.Point(986, 206);
+            this.con.Location = new System.Drawing.Point(986, 220);
             this.con.Name = "con";
             this.con.Size = new System.Drawing.Size(123, 17);
             this.con.TabIndex = 27;
@@ -244,7 +238,7 @@
             // 
             // billbtn
             // 
-            this.billbtn.Location = new System.Drawing.Point(944, 151);
+            this.billbtn.Location = new System.Drawing.Point(944, 165);
             this.billbtn.Name = "billbtn";
             this.billbtn.Size = new System.Drawing.Size(152, 52);
             this.billbtn.TabIndex = 26;
@@ -254,7 +248,7 @@
             // 
             // cnfbtn
             // 
-            this.cnfbtn.Location = new System.Drawing.Point(944, 93);
+            this.cnfbtn.Location = new System.Drawing.Point(944, 107);
             this.cnfbtn.Name = "cnfbtn";
             this.cnfbtn.Size = new System.Drawing.Size(152, 52);
             this.cnfbtn.TabIndex = 15;
@@ -285,11 +279,11 @@
             // 
             // contactlbl
             // 
-            this.contactlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contactlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.contactlbl.ForeColor = System.Drawing.Color.Red;
-            this.contactlbl.Location = new System.Drawing.Point(681, 169);
+            this.contactlbl.Location = new System.Drawing.Point(682, 101);
             this.contactlbl.Name = "contactlbl";
-            this.contactlbl.Size = new System.Drawing.Size(150, 29);
+            this.contactlbl.Size = new System.Drawing.Size(150, 19);
             this.contactlbl.TabIndex = 23;
             this.contactlbl.Text = "contact";
             // 
@@ -303,16 +297,6 @@
             this.label7.TabIndex = 4;
             this.label7.Text = "Product Name";
             // 
-            // citylbl
-            // 
-            this.citylbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.citylbl.ForeColor = System.Drawing.Color.Blue;
-            this.citylbl.Location = new System.Drawing.Point(768, 198);
-            this.citylbl.Name = "citylbl";
-            this.citylbl.Size = new System.Drawing.Size(123, 29);
-            this.citylbl.TabIndex = 22;
-            this.citylbl.Text = "city";
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.LightGray;
@@ -321,21 +305,11 @@
             this.panel2.Size = new System.Drawing.Size(1, 178);
             this.panel2.TabIndex = 5;
             // 
-            // pinlbl
-            // 
-            this.pinlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pinlbl.ForeColor = System.Drawing.Color.Blue;
-            this.pinlbl.Location = new System.Drawing.Point(681, 198);
-            this.pinlbl.Name = "pinlbl";
-            this.pinlbl.Size = new System.Drawing.Size(71, 29);
-            this.pinlbl.TabIndex = 21;
-            this.pinlbl.Text = "pincode";
-            // 
             // namelbl
             // 
             this.namelbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.namelbl.ForeColor = System.Drawing.Color.Blue;
-            this.namelbl.Location = new System.Drawing.Point(682, 47);
+            this.namelbl.Location = new System.Drawing.Point(682, 77);
             this.namelbl.Name = "namelbl";
             this.namelbl.Size = new System.Drawing.Size(210, 20);
             this.namelbl.TabIndex = 20;
@@ -350,16 +324,6 @@
             this.label8.Size = new System.Drawing.Size(52, 12);
             this.label8.TabIndex = 8;
             this.label8.Text = "Grand Total";
-            // 
-            // address2lbl
-            // 
-            this.address2lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.address2lbl.ForeColor = System.Drawing.Color.Red;
-            this.address2lbl.Location = new System.Drawing.Point(681, 126);
-            this.address2lbl.Name = "address2lbl";
-            this.address2lbl.Size = new System.Drawing.Size(210, 37);
-            this.address2lbl.TabIndex = 19;
-            this.address2lbl.Text = "address2";
             // 
             // amountlbl
             // 
@@ -435,9 +399,9 @@
             // 
             this.address1lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.address1lbl.ForeColor = System.Drawing.Color.Red;
-            this.address1lbl.Location = new System.Drawing.Point(682, 72);
+            this.address1lbl.Location = new System.Drawing.Point(682, 124);
             this.address1lbl.Name = "address1lbl";
-            this.address1lbl.Size = new System.Drawing.Size(210, 49);
+            this.address1lbl.Size = new System.Drawing.Size(210, 89);
             this.address1lbl.TabIndex = 13;
             this.address1lbl.Text = "address1";
             // 
@@ -473,6 +437,19 @@
             this.ordergridview.Visible = false;
             this.ordergridview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ordergridview_CellClick);
             // 
+            // loadinglbl
+            // 
+            this.loadinglbl.AutoSize = true;
+            this.loadinglbl.BackColor = System.Drawing.Color.Transparent;
+            this.loadinglbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loadinglbl.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.loadinglbl.Location = new System.Drawing.Point(506, 293);
+            this.loadinglbl.Name = "loadinglbl";
+            this.loadinglbl.Size = new System.Drawing.Size(118, 17);
+            this.loadinglbl.TabIndex = 27;
+            this.loadinglbl.Text = "Loading Details...";
+            this.loadinglbl.Visible = false;
+            // 
             // formlbl
             // 
             this.formlbl.AutoSize = true;
@@ -490,19 +467,6 @@
             // 
             this.bgworker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker_DoWork);
             this.bgworker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker_RunWorkerCompleted);
-            // 
-            // loadinglbl
-            // 
-            this.loadinglbl.AutoSize = true;
-            this.loadinglbl.BackColor = System.Drawing.Color.Transparent;
-            this.loadinglbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loadinglbl.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.loadinglbl.Location = new System.Drawing.Point(506, 293);
-            this.loadinglbl.Name = "loadinglbl";
-            this.loadinglbl.Size = new System.Drawing.Size(118, 17);
-            this.loadinglbl.TabIndex = 27;
-            this.loadinglbl.Text = "Loading Details...";
-            this.loadinglbl.Visible = false;
             // 
             // orders
             // 
@@ -554,10 +518,7 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.ListBox proname;
         private System.Windows.Forms.Label namelbl;
-        private System.Windows.Forms.Label address2lbl;
         private System.Windows.Forms.Label contactlbl;
-        private System.Windows.Forms.Label citylbl;
-        private System.Windows.Forms.Label pinlbl;
         private System.Windows.Forms.TextBox paymenttxt;
         private System.Windows.Forms.TextBox statustxt;
         private System.Windows.Forms.Label label3;
