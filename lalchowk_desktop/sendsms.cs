@@ -46,6 +46,7 @@ namespace Veiled_Kashmir_Admin_Panel
             sbPostData.AppendFormat("&message={0}", message);
             sbPostData.AppendFormat("&sender={0}", senderId);
             sbPostData.AppendFormat("&route={0}", "4");
+            sbPostData.AppendFormat("&country={0}", "91");
 
             try
             {
@@ -170,7 +171,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 sentlbl.ForeColor = Color.Red;
                 sentlbl.Visible = true;
             }
-            else
+            else if(result=="success")
             {
                 sentlbl.Text = "MESSAGE SENT ✔";
                 sentlbl.ForeColor = Color.Green;
@@ -181,15 +182,16 @@ namespace Veiled_Kashmir_Admin_Panel
                 MessageBox.Show("Messages sent.", "Success!");
             }
             sendsmsbtn.Enabled = true;
-            numList.Clear();
+           // numList.Clear();
 
+         
 
         }
 
 
         private void Smsloop_DoWork(object sender, DoWorkEventArgs e)
         {
-           
+
             
             for (int i = 0; i < numList.Count; i++)
             {
@@ -211,8 +213,9 @@ namespace Veiled_Kashmir_Admin_Panel
                 sbPostData.AppendFormat("&message={0}", message);
                 sbPostData.AppendFormat("&sender={0}", senderId);
                 sbPostData.AppendFormat("&route={0}", "4");
+                sbPostData.AppendFormat("&country={0}", "91");
 
-               
+
 
                 try
                 {
@@ -251,8 +254,9 @@ namespace Veiled_Kashmir_Admin_Panel
                 }
                 System.Threading.Thread.Sleep(1000);
             }
-           
-           
+            e.Result = "success";
+            numList.Clear();
+
         }
 
         private void getnumbersbtn_Click(object sender, EventArgs e)
@@ -371,6 +375,13 @@ namespace Veiled_Kashmir_Admin_Panel
                 offsettxt.ForeColor = Color.Black;
                 offsettxt.Text = "Enter Offset";
             }
+        }
+
+        private void stbtn_Click(object sender, EventArgs e)
+        {
+
+            smstxt.Text = "";
+            smstxt.Text = "Dear customer, your order has been dispatched and will reach you in 30-60 mins. Please keep your phone in reach.\nTeam Lalchowk.";
         }
     }
 

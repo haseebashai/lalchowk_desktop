@@ -212,7 +212,10 @@ namespace Veiled_Kashmir_Admin_Panel
                 }
                 else
                 {
-                    cmd = ("update products set `description`='" + desctxtbox.Text + "' where `productid`='" + idlbl.Text + "'");
+                    StringBuilder desc = new StringBuilder(desctxtbox.Text);
+                    desc.Replace(@"\", @"\\").Replace("'", "\\'");
+
+                    cmd = ("update products set `description`='" + desc + "' where `productid`='" + idlbl.Text + "'");
                     obj.nonQuery(cmd);
 
                     MessageBox.Show("Description Updated.");
@@ -422,7 +425,7 @@ namespace Veiled_Kashmir_Admin_Panel
         string id; bool search = false;
         private void listbtn_Click(object sender, EventArgs e)
         {
-
+            descpnl.Visible = false;
             listbtn.Enabled = false;
             if (catidtxt.Text == "" && pidtxt.Text=="" && searchtxt.Text=="")
             {

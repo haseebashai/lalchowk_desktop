@@ -46,6 +46,7 @@
             this.tolbl = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.maxcountlbl = new System.Windows.Forms.Label();
+            this.stbtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.arrow)).BeginInit();
             this.SuspendLayout();
             // 
@@ -261,12 +262,23 @@
             this.maxcountlbl.Text = "to";
             this.maxcountlbl.Visible = false;
             // 
+            // stbtn
+            // 
+            this.stbtn.Location = new System.Drawing.Point(282, 336);
+            this.stbtn.Name = "stbtn";
+            this.stbtn.Size = new System.Drawing.Size(60, 35);
+            this.stbtn.TabIndex = 54;
+            this.stbtn.Text = "Shipped Template";
+            this.stbtn.UseVisualStyleBackColor = true;
+            this.stbtn.Click += new System.EventHandler(this.stbtn_Click);
+            // 
             // sendsms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(750, 600);
+            this.Controls.Add(this.stbtn);
             this.Controls.Add(this.maxcountlbl);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.tolbl);
@@ -314,5 +326,6 @@
         private System.Windows.Forms.Label tolbl;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Label maxcountlbl;
+        private System.Windows.Forms.Button stbtn;
     }
 }

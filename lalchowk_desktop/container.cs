@@ -43,13 +43,13 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void container_FormClosing(object sender, FormClosingEventArgs e)
         {
-            FormCollection fc = Application.OpenForms;
-            if (fc.Count > 3)
+            DialogResult dgr = MessageBox.Show("Make sure that no other functions are running before closing.", "Warning!", MessageBoxButtons.OKCancel);
+            if (dgr == DialogResult.OK)
             {
-                e.Cancel = true;
-                MessageBox.Show("Some functions are running in other windows, close them first.","Warning!");
-                e.Cancel = true;
+                e.Cancel=false;
             }
+            else
+                e.Cancel = true;
           
         }
     }

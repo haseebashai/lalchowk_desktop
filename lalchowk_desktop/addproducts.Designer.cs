@@ -117,6 +117,7 @@
             this.inclbl = new System.Windows.Forms.Label();
             this.inclbl2 = new System.Windows.Forms.Label();
             this.addppnl = new System.Windows.Forms.Panel();
+            this.getpidbtn = new System.Windows.Forms.Button();
             this.clearpicbtn = new System.Windows.Forms.Button();
             this.uptxt = new System.Windows.Forms.Label();
             this.picprogress = new System.Windows.Forms.ProgressBar();
@@ -235,10 +236,11 @@
             // supidtxt
             // 
             this.supidtxt.AutoSize = true;
-            this.supidtxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.supidtxt.Location = new System.Drawing.Point(577, 94);
+            this.supidtxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.supidtxt.ForeColor = System.Drawing.Color.Red;
+            this.supidtxt.Location = new System.Drawing.Point(464, 583);
             this.supidtxt.Name = "supidtxt";
-            this.supidtxt.Size = new System.Drawing.Size(0, 16);
+            this.supidtxt.Size = new System.Drawing.Size(0, 13);
             this.supidtxt.TabIndex = 11;
             // 
             // nametxt
@@ -304,7 +306,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(466, 544);
+            this.label9.Location = new System.Drawing.Point(466, 535);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(31, 13);
             this.label9.TabIndex = 21;
@@ -312,7 +314,7 @@
             // 
             // mrptxt
             // 
-            this.mrptxt.Location = new System.Drawing.Point(466, 560);
+            this.mrptxt.Location = new System.Drawing.Point(466, 551);
             this.mrptxt.Name = "mrptxt";
             this.mrptxt.Size = new System.Drawing.Size(134, 20);
             this.mrptxt.TabIndex = 23;
@@ -320,7 +322,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(466, 500);
+            this.label10.Location = new System.Drawing.Point(466, 491);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(66, 13);
             this.label10.TabIndex = 23;
@@ -328,7 +330,7 @@
             // 
             // pricetxt
             // 
-            this.pricetxt.Location = new System.Drawing.Point(466, 516);
+            this.pricetxt.Location = new System.Drawing.Point(466, 507);
             this.pricetxt.Name = "pricetxt";
             this.pricetxt.Size = new System.Drawing.Size(134, 20);
             this.pricetxt.TabIndex = 22;
@@ -336,7 +338,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(466, 456);
+            this.label11.Location = new System.Drawing.Point(466, 447);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(85, 13);
             this.label11.TabIndex = 25;
@@ -344,7 +346,7 @@
             // 
             // dealertxt
             // 
-            this.dealertxt.Location = new System.Drawing.Point(466, 472);
+            this.dealertxt.Location = new System.Drawing.Point(466, 463);
             this.dealertxt.Name = "dealertxt";
             this.dealertxt.Size = new System.Drawing.Size(134, 20);
             this.dealertxt.TabIndex = 21;
@@ -681,7 +683,7 @@
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(463, 395);
+            this.label28.Location = new System.Drawing.Point(463, 386);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(31, 13);
             this.label28.TabIndex = 65;
@@ -689,7 +691,7 @@
             // 
             // tagstxt
             // 
-            this.tagstxt.Location = new System.Drawing.Point(466, 414);
+            this.tagstxt.Location = new System.Drawing.Point(466, 405);
             this.tagstxt.Name = "tagstxt";
             this.tagstxt.Size = new System.Drawing.Size(212, 20);
             this.tagstxt.TabIndex = 20;
@@ -951,6 +953,7 @@
             // 
             // addppnl
             // 
+            this.addppnl.Controls.Add(this.getpidbtn);
             this.addppnl.Controls.Add(this.clearpicbtn);
             this.addppnl.Controls.Add(this.uptxt);
             this.addppnl.Controls.Add(this.picprogress);
@@ -1045,6 +1048,16 @@
             this.addppnl.Name = "addppnl";
             this.addppnl.Size = new System.Drawing.Size(1150, 668);
             this.addppnl.TabIndex = 88;
+            // 
+            // getpidbtn
+            // 
+            this.getpidbtn.Location = new System.Drawing.Point(304, 222);
+            this.getpidbtn.Name = "getpidbtn";
+            this.getpidbtn.Size = new System.Drawing.Size(134, 36);
+            this.getpidbtn.TabIndex = 98;
+            this.getpidbtn.Text = "Get last productid (available)";
+            this.getpidbtn.UseVisualStyleBackColor = true;
+            this.getpidbtn.Click += new System.EventHandler(this.getpidbtn_Click);
             // 
             // clearpicbtn
             // 
@@ -1222,5 +1235,6 @@
         private System.Windows.Forms.Label uptxt;
         private System.Windows.Forms.ProgressBar picprogress;
         private System.Windows.Forms.Button clearpicbtn;
+        private System.Windows.Forms.Button getpidbtn;
     }
 }
