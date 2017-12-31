@@ -125,6 +125,7 @@
             this.bgworker = new System.ComponentModel.BackgroundWorker();
             this.pictimer = new System.Windows.Forms.Timer(this.components);
             this.bguploadpic = new System.ComponentModel.BackgroundWorker();
+            this.sizelbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pic1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic3)).BeginInit();
@@ -953,6 +954,7 @@
             // 
             // addppnl
             // 
+            this.addppnl.Controls.Add(this.sizelbl);
             this.addppnl.Controls.Add(this.getpidbtn);
             this.addppnl.Controls.Add(this.clearpicbtn);
             this.addppnl.Controls.Add(this.uptxt);
@@ -1117,6 +1119,16 @@
             this.bguploadpic.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bguploadpic_ProgressChanged);
             this.bguploadpic.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bguploadpic_RunWorkerCompleted);
             // 
+            // sizelbl
+            // 
+            this.sizelbl.AutoSize = true;
+            this.sizelbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sizelbl.Location = new System.Drawing.Point(850, 69);
+            this.sizelbl.Name = "sizelbl";
+            this.sizelbl.Size = new System.Drawing.Size(0, 13);
+            this.sizelbl.TabIndex = 99;
+            this.sizelbl.Visible = false;
+            // 
             // addproducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1236,5 +1248,6 @@
         private System.Windows.Forms.ProgressBar picprogress;
         private System.Windows.Forms.Button clearpicbtn;
         private System.Windows.Forms.Button getpidbtn;
+        private System.Windows.Forms.Label sizelbl;
     }
 }

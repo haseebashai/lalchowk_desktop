@@ -19,7 +19,7 @@ namespace Veiled_Kashmir_Admin_Panel
         MySqlDataReader dr,dr1;
         DataTable dt,dt1,dt2,dt3;
         MySqlCommand mysqlcmd;
-        MySqlDataAdapter adap;
+        MySqlDataAdapter adap,adap1;
         MySqlConnection conn =new MySqlConnection("SERVER = 182.50.133.78; DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah");
         BindingSource bsource;
         MySqlCommandBuilder cmdbl;
@@ -27,6 +27,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private dialogcontainer dg = null;
         private container hp = null;
+
         public orders(Form hpcopy,Form dgcopy)
         {
             dg = dgcopy as dialogcontainer;
@@ -146,20 +147,6 @@ namespace Veiled_Kashmir_Admin_Panel
             ordergridview.DataSource = dv;
         }
 
-
-        private void orderdetails()
-        {
-            try { 
-           
-        }
-            catch (Exception ex)
-            {
-                obj.closeConnection();
-                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
-            }
-        }
-        
-        
 
         private void paymenttxt_TextChanged(object sender, EventArgs e)
         {
@@ -309,9 +296,12 @@ namespace Veiled_Kashmir_Admin_Panel
                         try
                         {
 
-                            dr = obj.Query("SELECT * FROM orderdetails where orderid='" + orderid + "'");
+                            //dr = obj.Query("SELECT * FROM orderdetails where orderid='" + orderid + "'");
+                            //dt1 = new DataTable();
+                            //dt1.Load(dr);
+                            adap1 = new MySqlDataAdapter("SELECT * FROM orderdetails where orderid='" + orderid + "'", conn);
                             dt1 = new DataTable();
-                            dt1.Load(dr);
+                            adap1.Fill(dt1);
                             obj.closeConnection();
                             BindingSource bsource1 = new BindingSource();
                             bsource1.DataSource = dt1;
@@ -335,12 +325,12 @@ namespace Veiled_Kashmir_Admin_Panel
                         BindingSource bsource1 = d.Result as BindingSource;
                         orderdetailview.DataSource = bsource1;
                         orderdetailview.Visible = true;
-
+                        deupdbtn.Visible = true;
                         int count = int.Parse(orderdetailview.RowCount.ToString());
 
                         for (int i = 0; i < count; i++)
                         {
-                            proname.Items.Add(orderdetailview.Rows[i].Cells[0].Value.ToString() + ":   " + orderdetailview.Rows[i].Cells[3].Value.ToString());
+                            proname.Items.Add(orderdetailview.Rows[i].Cells[2].Value.ToString() + ":   " + orderdetailview.Rows[i].Cells[3].Value.ToString());
                         }
 
                     };
@@ -358,6 +348,21 @@ namespace Veiled_Kashmir_Admin_Panel
                 obj.closeConnection();
             }
            
+        }
+        private void deupdbtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                cmdbl = new MySqlCommandBuilder(adap1);
+                adap1.Update(dt1);
+                MessageBox.Show("Order Updated.");
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Something happened, please try again.\n\n" + ex.ToString(), "Error!");
+            }
         }
 
 

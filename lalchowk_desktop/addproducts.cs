@@ -311,7 +311,7 @@ namespace Veiled_Kashmir_Admin_Panel
                         if (dgr == DialogResult.Yes) {
                             cmd = "update products set picture='" + name.Text + "' where productid='" + pidtxt.Text + "'";
                             obj.nonQuery(cmd);
-                            bguploadpic.ReportProgress(100);
+                            
                             MessageBox.Show("Image address added in database, please upload the picture seperately now.");
                             success = true;
                             return name.Text;
@@ -357,7 +357,7 @@ namespace Veiled_Kashmir_Admin_Panel
        
         private void bguploadpic_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            picprogress.Value = e.ProgressPercentage;
+      //      picprogress.Value = e.ProgressPercentage;
         }
 
         string displayname;
@@ -403,6 +403,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 uptxt.Text = "Upload Successful. " + displayname ;
                 pictext.Clear();
                 picture.BackgroundImage = null;
+                sizelbl.Text = "";
             }else if (uploadfailed)
             {
                 uptxt.ForeColor = Color.Red;
@@ -410,7 +411,7 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             else
             {
-
+                sizelbl.Visible = false;
                 uptxt.Visible = false;
                 picprogress.Visible = false;
               
@@ -460,6 +461,7 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             picprogress.Value = 0;
             uptxt.Visible = true;
+            sizelbl.Visible = true;
             
 
             picprogress.Visible = true;
@@ -748,21 +750,44 @@ namespace Veiled_Kashmir_Admin_Panel
                 request.UsePassive = true;
                 request.UseBinary = true;
                 request.KeepAlive = true;
-                
-                using (var fileStream = File.OpenRead(filePath))
+
+
+                Stream ftpStream = request.GetRequestStream();
+                FileStream file = File.OpenRead(filePath);
+                picprogress.Invoke(
+                  (MethodInvoker)delegate { picprogress.Value = 0; picprogress.Maximum = (int)file.Length / 1000; uptxt.Text = fileName; });
+
+                byte[] buffer = new byte[10240];
+                int bytesRead = 0;
+
+
+
+                while ((bytesRead = file.Read(buffer, 0, buffer.Length)) > 0)
                 {
-                    using (var requestStream = request.GetRequestStream())
-                    {
-                        fileStream.CopyTo(requestStream);
-                        requestStream.Close();
-                    }
+
+                    ftpStream.Write(buffer, 0, bytesRead);
+                    picprogress.Invoke((MethodInvoker)delegate { picprogress.Value = (int)file.Position / 1000; sizelbl.Text = picprogress.Value.ToString() + "/" + picprogress.Maximum + " KB"; });
                 }
+
+                file.Close();
+                ftpStream.Close();
+              
+        
+                
+                //using (var fileStream = File.OpenRead(filePath))
+                //{
+                //    using (var requestStream = request.GetRequestStream())
+                //    {
+                //        fileStream.CopyTo(requestStream);
+                //        requestStream.Close();
+                //    }
+                //}
                 
 
-                //      var response = (FtpWebResponse)request.GetResponse();
-                //    MessageBox.Show("Image uploaded successfully.\nSuccess Response code: " + response.StatusDescription);
+                ////      var response = (FtpWebResponse)request.GetResponse();
+                ////    MessageBox.Show("Image uploaded successfully.\nSuccess Response code: " + response.StatusDescription);
 
-                //  response.Close();
+                ////  response.Close();
 
 
             }
@@ -958,227 +983,5 @@ namespace Veiled_Kashmir_Admin_Panel
             Cursor = Cursors.Arrow;
         }
 
-
-        /*    private void fnametxt_Leave(object sender, EventArgs e)
-              {
-                  flbl.Visible = false;
-                  fnameok = true;
-                  if (Regex.IsMatch(fnametxt.Text, @"[0-9]"))
-                  {
-                      flbl.Text = "That can't possibly be your first name";
-                      flbl.Visible = true;
-                      fnameok = false;
-                  }
-                  if (fnametxt.Text.Length > 25 || fnametxt.Text.Length < 2)
-
-                  {
-                      flbl.Text = "Thats not even a name";
-                      flbl.Visible = true;
-                      fnameok = false;
-                  }
-                  if (fnametxt.Text.Contains("'"))
-                  {
-
-                      flbl.Text = "Don't try to trick me";
-                      flbl.Visible = true;
-                      fnameok = false;
-                  }
-
-              }
-
-              private void lnametxt_Leave(object sender, EventArgs e)
-              {
-                  llbl.Visible = false;
-                  lnameok = true;
-                  if (Regex.IsMatch(lnametxt.Text, @"[0-9]"))
-                  {
-                      llbl.Text = "Write your real last name";
-                      llbl.Visible = true;
-                      lnameok = false;
-                  }
-                  if (lnametxt.Text.Length > 25 || lnametxt.Text.Length < 2)
-
-                  {
-                      llbl.Text = "I don't believe it";
-                      llbl.Visible = true;
-                      lnameok = false;
-                  }
-                  if (lnametxt.Text.Contains("'"))
-                  {
-
-                      llbl.Text = "Enter a valid last name";
-                      llbl.Visible = true;
-                      lnameok = false;
-                  }
-              }
-
-
-
-              private void updatebtn_Click(object sender, EventArgs e)
-              {
-
-                  if (fnameok && lnameok && emailok && passwordok && confirmok && phoneok && dobok == true)
-                  {
-                      String cmd;
-                      inclbl.Visible = false;
-                      cmd = "Update admin set fname='" + fnametxt.Text + "',lname='" + lnametxt.Text + "',email='" + emailtxt.Text + "',password='" + pwdtxt.Text + "',contact='" + phonetxt.Text + "',DOB='" + yeartxt.Text + "//" + montxt.Text + "//" + daytxt.Text + "' where username='" + userinfo.username + "';";
-                      obj.nonQuery(cmd);
-                      MessageBox.Show("Details Successfully Updated.");
-
-                       }
-                  else
-                            {
-                                  inclbl.Visible = true;
-                            } 
-                      }
-
-
-
-              private void daytxt_Leave(object sender, EventArgs e)
-              {
-                  dlbl.Visible = false;
-                  dobok = true;
-                  DateTime dt;
-                  if (!DateTime.TryParse(daytxt.Text + "/" + montxt.Text + "/" + yeartxt.Text, new System.Globalization.CultureInfo("en-GB"), System.Globalization.DateTimeStyles.None, out dt))
-                  {
-                      dlbl.Visible = true;
-                      dobok = false;
-                  }
-                  if (dt > System.DateTime.Today)
-                  {
-                      dlbl.Visible = true;
-                      dobok = false;
-                  }
-              }
-
-              private void cancelbtn_Click(object sender, EventArgs e)
-              {
-                  mainform mf = new mainform(hp);
-                  mf.TopLevel = false;
-                  hp.mainpnl.Controls.Clear();
-                  hp.mainpnl.Controls.Add(mf);
-                  mf.Show();
-              }
-
-
-
-              private void montxt_Leave(object sender, EventArgs e)
-              {
-                  dlbl.Visible = false;
-                  dobok = true;
-                  DateTime dt;
-                  if (!DateTime.TryParse(daytxt.Text + "/" + montxt.Text + "/" + yeartxt.Text, new System.Globalization.CultureInfo("en-GB"), System.Globalization.DateTimeStyles.None, out dt))
-                  {
-                      dlbl.Visible = true;
-                      dobok = false;
-                  }
-                  if (dt > System.DateTime.Today)
-                  {
-                      dlbl.Visible = true;
-                      dobok = false;
-                  }
-              }
-
-              private void yeartxt_Leave(object sender, EventArgs e)
-              {
-                  dlbl.Visible = false;
-                  dobok = true;
-                  DateTime dt;
-                  if (!DateTime.TryParse(daytxt.Text + "/" + montxt.Text + "/" + yeartxt.Text, new System.Globalization.CultureInfo("en-GB"), System.Globalization.DateTimeStyles.None, out dt))
-                  {
-                      dlbl.Visible = true;
-                      dobok = false;
-                  }
-                  if (dt > System.DateTime.Today)
-                  {
-                      dlbl.Visible = true;
-                      dobok = false;
-                  }
-              }
-
-              private void pwdtxt_Leave(object sender, EventArgs e)
-              {
-                  passlbl.Visible = false;
-                  passwordok = true;
-                  if (!Regex.IsMatch(pwdtxt.Text, @"(?!^[0-9]*$)(?!^[a-zA-Z]*$)^(.{8,15})$"))
-                  {
-
-                      passlbl.Visible = true;
-                      passwordok = false;
-                  }
-
-                  if (!pwdtxt.Text.Equals(confirmtxt.Text))
-
-                  {
-                      if (!confirmtxt.Text.Equals(""))
-                      {
-                          confirmlbl.Visible = true;
-                          confirmok = false;
-                      }
-                  }
-                  else
-                  {
-                      confirmlbl.Visible = false;
-                      confirmok = true;
-                  }
-                  if (pwdtxt.Text.Contains("'"))
-                  {
-
-                      passlbl.Visible = true;
-                      passwordok = false;
-                  }
-              }
-
-              private void confirmtxt_Leave(object sender, EventArgs e)
-              {
-                  confirmlbl.Visible = false;
-                  confirmok = true;
-                  if (!pwdtxt.Text.Equals(confirmtxt.Text))
-                  {
-                      confirmlbl.Visible = true;
-                      confirmok = false;
-                  }
-              }
-
-              private void phonetxt_Leave(object sender, EventArgs e)
-              {
-                  plbl.Visible = false;
-                  phoneok = true;
-                  if (!Regex.IsMatch(phonetxt.Text, @"^[0-9]{10}$"))
-                  {
-                      plbl.Text = "I won't call, I promise";
-                      plbl.Visible = true;
-                      phoneok = false;
-                  }
-              }
-
-
-              private void emailtxt_Leave(object sender, EventArgs e)
-              {
-                  elbl.Visible = false;
-                  emailok = true;
-                  if (!Regex.IsMatch(emailtxt.Text, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,4})+)$"))
-                  {
-
-                      elbl.Visible = true;
-                      emailok = false;
-                  }
-                  else
-                  {
-                      int i = obj.Count("Select Count(*) from admin where email='" + emailtxt.Text + "';");
-                      if (i != 0)
-                      {
-                          dr = obj.Query("Select * from admin where email='" + emailtxt.Text + "';");
-                          dr.Read();
-                          if (!dr[0].ToString().Equals(userinfo.username))
-                          {
-                              elbl.Text = "Email already exists";
-                              elbl.Visible = true;
-                              emailok = false;
-                          }
-                          obj.closeConnection();
-                      }
-                  }
-              } */
     }
 }

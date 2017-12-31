@@ -65,6 +65,7 @@
             this.loadinglbl = new System.Windows.Forms.Label();
             this.formlbl = new System.Windows.Forms.Label();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
+            this.deupdbtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.orderpnl.SuspendLayout();
             this.dpnl.SuspendLayout();
@@ -187,6 +188,7 @@
             // 
             // dpnl
             // 
+            this.dpnl.Controls.Add(this.deupdbtn);
             this.dpnl.Controls.Add(this.updbtn);
             this.dpnl.Controls.Add(this.con);
             this.dpnl.Controls.Add(this.billbtn);
@@ -468,6 +470,19 @@
             this.bgworker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker_DoWork);
             this.bgworker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker_RunWorkerCompleted);
             // 
+            // deupdbtn
+            // 
+            this.deupdbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.deupdbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.deupdbtn.Location = new System.Drawing.Point(1101, 2);
+            this.deupdbtn.Name = "deupdbtn";
+            this.deupdbtn.Size = new System.Drawing.Size(54, 23);
+            this.deupdbtn.TabIndex = 28;
+            this.deupdbtn.Text = "Update";
+            this.deupdbtn.UseVisualStyleBackColor = true;
+            this.deupdbtn.Visible = false;
+            this.deupdbtn.Click += new System.EventHandler(this.deupdbtn_Click);
+            // 
             // orders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -532,5 +547,6 @@
         private System.Windows.Forms.Label formlbl;
         private System.Windows.Forms.Button updbtn;
         private System.Windows.Forms.Label loadinglbl;
+        private System.Windows.Forms.Button deupdbtn;
     }
 }

@@ -339,7 +339,7 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             try { 
             Cursor = Cursors.WaitCursor;
-            dr = obj.Query("SELECT productname,productid FROM lalchowk.products WHERE stock>0 and picture !='defaultbook.jpg' ORDER BY RAND() LIMIT 16 ");
+            dr = obj.Query("SELECT productname,productid FROM lalchowk.products WHERE stock>0 and price>0 and picture !='defaultbook.jpg' ORDER BY RAND() LIMIT 16 ");
            
             List<string> productid = new List<string>();
                 List<string> productname = new List<string>();
@@ -362,6 +362,8 @@ namespace Veiled_Kashmir_Admin_Panel
                      {
                    
                         cmd = "update homepage2 set link='" + productid[i] + "',title='"+productname[i]+"' where homeid='" + homeid + "'";
+                        obj.nonQuery(cmd);
+                        cmd = "update homepage3 set link='" + productid[i] + "',title='" + productname[i] + "' where homeid='" + homeid + "'";
                         obj.nonQuery(cmd);
                         obj.closeConnection();
 
@@ -552,6 +554,8 @@ namespace Veiled_Kashmir_Admin_Panel
             try {
                 cmd = "update homepage2 set title='" + p1title.Text + "',subtitle='" + p1sub.Text + "',picture='" + p1pic.Text + "',link='" + p1link.Text + "' where homeid='3'";
                 obj.nonQuery(cmd);
+                cmd = "update homepage3 set title='" + p1title.Text + "',subtitle='" + p1sub.Text + "',picture='" + p1pic.Text + "',link='" + p1link.Text + "' where homeid='3'";
+                obj.nonQuery(cmd);
                 MessageBox.Show("Updated.");
             }
 
@@ -566,6 +570,8 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             try {
                 cmd = "update homepage2 set title='" + p2title.Text + "',subtitle='" + p2sub.Text + "',picture='" + p2pic.Text + "',link='" + p2link.Text + "' where homeid='4'";
+                obj.nonQuery(cmd);
+                cmd = "update homepage3 set title='" + p2title.Text + "',subtitle='" + p2sub.Text + "',picture='" + p2pic.Text + "',link='" + p2link.Text + "' where homeid='4'";
                 obj.nonQuery(cmd);
                 MessageBox.Show("Updated.");
             }
@@ -634,6 +640,8 @@ namespace Veiled_Kashmir_Admin_Panel
             try {
                 cmd = "update homepage2 set title='" + p3title.Text + "',subtitle='" + p3sub.Text + "',picture='" + p3pic.Text + "',link='" + p3link.Text + "' where homeid='5'";
                 obj.nonQuery(cmd);
+                cmd = "update homepage3 set title='" + p3title.Text + "',subtitle='" + p3sub.Text + "',picture='" + p3pic.Text + "',link='" + p3link.Text + "' where homeid='5'";
+                obj.nonQuery(cmd);
                 MessageBox.Show("Updated.");
             }
             catch (Exception ex)
@@ -647,10 +655,13 @@ namespace Veiled_Kashmir_Admin_Panel
         private void u4_Click(object sender, EventArgs e)
         {
             try
-            { 
-            cmd = "update homepage2 set title='" + p4title.Text + "',subtitle='" + p4sub.Text + "',picture='" + p4pic.Text + "',link='" + p4link.Text + "' where homeid='6'";
-            obj.nonQuery(cmd);
-            MessageBox.Show("Updated.");
+            {
+                cmd = "update homepage2 set title='" + p4title.Text + "',subtitle='" + p4sub.Text + "',picture='" + p4pic.Text + "',link='" + p4link.Text + "' where homeid='6'";
+                obj.nonQuery(cmd);
+                cmd = "update homepage3 set title='" + p4title.Text + "',subtitle='" + p4sub.Text + "',picture='" + p4pic.Text + "',link='" + p4link.Text + "' where homeid='6'";
+                obj.nonQuery(cmd);
+                MessageBox.Show("Updated.");
+            
             }
             catch (Exception ex)
             {
@@ -662,7 +673,9 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void upd4btn_Click(object sender, EventArgs e)
         {
+            Cursor = Cursors.WaitCursor;
             try {
+               
                 cmd = "update homepage2 set title='" + p1title.Text + "',subtitle='" + p1sub.Text + "',picture='" + p1pic.Text + "',link='" + p1link.Text + "' where homeid='3'";
                 obj.nonQuery(cmd);
                 cmd = "update homepage2 set title='" + p2title.Text + "',subtitle='" + p2sub.Text + "',picture='" + p2pic.Text + "',link='" + p2link.Text + "' where homeid='4'";
@@ -671,6 +684,14 @@ namespace Veiled_Kashmir_Admin_Panel
                 obj.nonQuery(cmd);
                 cmd = "update homepage2 set title='" + p4title.Text + "',subtitle='" + p4sub.Text + "',picture='" + p4pic.Text + "',link='" + p4link.Text + "' where homeid='6'";
                 obj.nonQuery(cmd);
+                cmd = "update homepage3 set title='" + p1title.Text + "',subtitle='" + p1sub.Text + "',picture='" + p1pic.Text + "',link='" + p1link.Text + "' where homeid='3'";
+                obj.nonQuery(cmd);
+                cmd = "update homepage3 set title='" + p2title.Text + "',subtitle='" + p2sub.Text + "',picture='" + p2pic.Text + "',link='" + p2link.Text + "' where homeid='4'";
+                obj.nonQuery(cmd);
+                cmd = "update homepage3 set title='" + p3title.Text + "',subtitle='" + p3sub.Text + "',picture='" + p3pic.Text + "',link='" + p3link.Text + "' where homeid='5'";
+                obj.nonQuery(cmd);
+                cmd = "update homepage3 set title='" + p4title.Text + "',subtitle='" + p4sub.Text + "',picture='" + p4pic.Text + "',link='" + p4link.Text + "' where homeid='6'";
+                obj.nonQuery(cmd);
                 MessageBox.Show("Updated.");
             }
             catch (Exception ex)
@@ -678,6 +699,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 obj.closeConnection();
                 MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
+            Cursor = Cursors.Arrow;
         }
 
         private void updbbtn_Click(object sender, EventArgs e)
