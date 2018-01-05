@@ -158,9 +158,13 @@ namespace Veiled_Kashmir_Admin_Panel
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = this.inventorydatagridview.Rows[e.RowIndex];
+                dp.SizeMode = PictureBoxSizeMode.StretchImage;
+                dp.ImageLocation = "http://lalchowk.in/lalchowk/pictures/" + row.Cells["picture"].Value.ToString();
                 idlbl.Text = row.Cells["productid"].Value.ToString();
                 productlbl.Text = row.Cells["productname"].Value.ToString();              
                 desctxtbox.Text = row.Cells["description"].Value.ToString();
+                dp.SizeMode = PictureBoxSizeMode.StretchImage;
+                dp.ImageLocation= "http://lalchowk.in/lalchowk/pictures/"+ row.Cells["picture"].Value.ToString();
                 descpnl.Visible = true;
                
             }
@@ -446,7 +450,9 @@ namespace Veiled_Kashmir_Admin_Panel
                     bgworker.RunWorkerAsync();
                 }else if (search)
                 {
-                    id = searchtxt.Text;
+                    StringBuilder search = new StringBuilder(searchtxt.Text);
+                        search.Replace(@"'", "\\'").Replace(@"\", "\\");
+                    id = search.ToString() ;
                     loadinglbl.Visible = true;
                     bgworker.RunWorkerAsync();
                 }
@@ -516,7 +522,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 else if (search)
                 {
                    
-                    adap = new MySqlDataAdapter("select * from products where productname like '%" + id + "%'", con);
+                    adap = new MySqlDataAdapter("select * from products where tags like '%" + id + "%'", con);
                 }
 
                 dt = new DataTable();

@@ -117,6 +117,7 @@
             this.inclbl = new System.Windows.Forms.Label();
             this.inclbl2 = new System.Windows.Forms.Label();
             this.addppnl = new System.Windows.Forms.Panel();
+            this.sizelbl = new System.Windows.Forms.Label();
             this.getpidbtn = new System.Windows.Forms.Button();
             this.clearpicbtn = new System.Windows.Forms.Button();
             this.uptxt = new System.Windows.Forms.Label();
@@ -125,7 +126,6 @@
             this.bgworker = new System.ComponentModel.BackgroundWorker();
             this.pictimer = new System.Windows.Forms.Timer(this.components);
             this.bguploadpic = new System.ComponentModel.BackgroundWorker();
-            this.sizelbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pic1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic3)).BeginInit();
@@ -136,6 +136,7 @@
             // 
             // firstcat
             // 
+            this.firstcat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.firstcat.FormattingEnabled = true;
             this.firstcat.Location = new System.Drawing.Point(118, 29);
             this.firstcat.Name = "firstcat";
@@ -165,6 +166,7 @@
             // 
             // seccat
             // 
+            this.seccat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.seccat.FormattingEnabled = true;
             this.seccat.Location = new System.Drawing.Point(401, 28);
             this.seccat.Name = "seccat";
@@ -192,6 +194,7 @@
             // 
             // thirdcat
             // 
+            this.thirdcat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.thirdcat.FormattingEnabled = true;
             this.thirdcat.Location = new System.Drawing.Point(685, 28);
             this.thirdcat.Name = "thirdcat";
@@ -227,6 +230,7 @@
             // 
             // supplierlist
             // 
+            this.supplierlist.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.supplierlist.FormattingEnabled = true;
             this.supplierlist.Location = new System.Drawing.Point(401, 87);
             this.supplierlist.Name = "supplierlist";
@@ -1051,6 +1055,16 @@
             this.addppnl.Size = new System.Drawing.Size(1150, 668);
             this.addppnl.TabIndex = 88;
             // 
+            // sizelbl
+            // 
+            this.sizelbl.AutoSize = true;
+            this.sizelbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sizelbl.Location = new System.Drawing.Point(850, 69);
+            this.sizelbl.Name = "sizelbl";
+            this.sizelbl.Size = new System.Drawing.Size(0, 13);
+            this.sizelbl.TabIndex = 99;
+            this.sizelbl.Visible = false;
+            // 
             // getpidbtn
             // 
             this.getpidbtn.Location = new System.Drawing.Point(304, 222);
@@ -1118,16 +1132,6 @@
             this.bguploadpic.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bguploadpic_DoWork);
             this.bguploadpic.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bguploadpic_ProgressChanged);
             this.bguploadpic.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bguploadpic_RunWorkerCompleted);
-            // 
-            // sizelbl
-            // 
-            this.sizelbl.AutoSize = true;
-            this.sizelbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sizelbl.Location = new System.Drawing.Point(850, 69);
-            this.sizelbl.Name = "sizelbl";
-            this.sizelbl.Size = new System.Drawing.Size(0, 13);
-            this.sizelbl.TabIndex = 99;
-            this.sizelbl.Visible = false;
             // 
             // addproducts
             // 

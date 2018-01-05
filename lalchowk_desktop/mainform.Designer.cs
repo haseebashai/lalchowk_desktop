@@ -287,9 +287,9 @@
             this.settingsbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.settingsbtn.Name = "settingsbtn";
             this.settingsbtn.Primary = false;
-            this.settingsbtn.Size = new System.Drawing.Size(110, 36);
+            this.settingsbtn.Size = new System.Drawing.Size(106, 36);
             this.settingsbtn.TabIndex = 35;
-            this.settingsbtn.Text = "OTP/PINCODES";
+            this.settingsbtn.Text = "App settings";
             this.settingsbtn.UseVisualStyleBackColor = true;
             this.settingsbtn.Click += new System.EventHandler(this.settingsbtn_Click);
             // 

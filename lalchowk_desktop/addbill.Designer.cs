@@ -601,6 +601,7 @@
             this.Name = "addbill";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Bill";
+            this.Load += new System.EventHandler(this.addbill_Load);
             ((System.ComponentModel.ISupportInitialize)(this.closebtn)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

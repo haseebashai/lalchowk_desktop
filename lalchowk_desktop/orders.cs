@@ -202,7 +202,7 @@ namespace Veiled_Kashmir_Admin_Panel
             catch (Exception ex)
             {
                 Cursor = Cursors.Arrow;
-                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
+                obj.closeConnection();
             }
 
         }
@@ -279,7 +279,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     namelbl.Text = row.Cells["name"].Value.ToString();
                     address1lbl.Text = row.Cells["address1"].Value.ToString() +", "+ row.Cells["address2"].Value.ToString()+
                      ", "+ row.Cells["city"].Value.ToString()+", "+ row.Cells["pincode"].Value.ToString();
-                
+                    string status= row.Cells["status"].Value.ToString();
                     contactlbl.Text = row.Cells["contact"].Value.ToString();
                     string amount = row.Cells["amount"].Value.ToString();
                     int result = int.Parse(amount) + int.Parse(shipping);
@@ -331,6 +331,20 @@ namespace Veiled_Kashmir_Admin_Panel
                         for (int i = 0; i < count; i++)
                         {
                             proname.Items.Add(orderdetailview.Rows[i].Cells[2].Value.ToString() + ":   " + orderdetailview.Rows[i].Cells[3].Value.ToString());
+                        }
+                        if (status == "Delivered")
+                        {
+                            billbtn.Text = "Delivered";
+                            billbtn.Enabled = false;
+                        }else if(status == "Cancelled")
+                        {
+                            billbtn.Text = "Cancelled";
+                            billbtn.Enabled = false;
+                        }
+                        else
+                        {   
+                            billbtn.Text = "Confirm Delivery and Add Bill";
+                            billbtn.Enabled = true;
                         }
 
                     };

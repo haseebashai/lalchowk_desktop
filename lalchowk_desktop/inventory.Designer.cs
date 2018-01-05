@@ -69,11 +69,13 @@
             this.supbox = new System.Windows.Forms.ComboBox();
             this.thirdbox = new System.Windows.Forms.ComboBox();
             this.secbox = new System.Windows.Forms.ComboBox();
+            this.dp = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.inventorydatagridview)).BeginInit();
             this.ipnl.SuspendLayout();
             this.descpnl.SuspendLayout();
             this.invpnl.SuspendLayout();
             this.spnl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dp)).BeginInit();
             this.SuspendLayout();
             // 
             // inventorydatagridview
@@ -169,7 +171,7 @@
             this.productlbl.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.productlbl.Location = new System.Drawing.Point(6, 29);
             this.productlbl.Name = "productlbl";
-            this.productlbl.Size = new System.Drawing.Size(213, 59);
+            this.productlbl.Size = new System.Drawing.Size(213, 49);
             this.productlbl.TabIndex = 32;
             // 
             // idlbl
@@ -259,6 +261,7 @@
             // 
             // descpnl
             // 
+            this.descpnl.Controls.Add(this.dp);
             this.descpnl.Controls.Add(this.idlbl);
             this.descpnl.Controls.Add(this.productlbl);
             this.descpnl.Controls.Add(this.updatebtn);
@@ -266,7 +269,7 @@
             this.descpnl.Controls.Add(this.label7);
             this.descpnl.Location = new System.Drawing.Point(3, 459);
             this.descpnl.Name = "descpnl";
-            this.descpnl.Size = new System.Drawing.Size(671, 203);
+            this.descpnl.Size = new System.Drawing.Size(883, 203);
             this.descpnl.TabIndex = 42;
             this.descpnl.Visible = false;
             // 
@@ -493,6 +496,14 @@
             this.secbox.TabIndex = 0;
             this.secbox.SelectedIndexChanged += new System.EventHandler(this.secbox_SelectedIndexChanged);
             // 
+            // dp
+            // 
+            this.dp.Location = new System.Drawing.Point(9, 90);
+            this.dp.Name = "dp";
+            this.dp.Size = new System.Drawing.Size(103, 110);
+            this.dp.TabIndex = 39;
+            this.dp.TabStop = false;
+            // 
             // inventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -512,6 +523,7 @@
             this.invpnl.PerformLayout();
             this.spnl.ResumeLayout(false);
             this.spnl.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dp)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -558,5 +570,6 @@
         private System.Windows.Forms.TextBox pidtxt;
         private System.Windows.Forms.Label searchlbl;
         private System.Windows.Forms.TextBox searchtxt;
+        private System.Windows.Forms.PictureBox dp;
     }
 }

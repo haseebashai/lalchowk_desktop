@@ -119,6 +119,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void apbtn_Click(object sender, EventArgs e)
         {
+            Cursor = Cursors.WaitCursor;
             try
             {
                 cmd = "Update orders set status='Cancelled' where orderid='" + oidlbl.Text + "'";
@@ -135,6 +136,7 @@ namespace Veiled_Kashmir_Admin_Panel
             readorders();
             ordergridview.DataSource = bsource;
             apnl.Visible = false;
+            Cursor = Cursors.Arrow;
         }
 
     }

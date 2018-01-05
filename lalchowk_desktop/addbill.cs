@@ -54,6 +54,7 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             try
             {
+                Cursor = Cursors.WaitCursor;
                 cmd = "update orders set status='Delivered' where orderid='" + otxt.Text + "'";
                 obj.nonQuery(cmd);
                 obj.closeConnection();
@@ -97,12 +98,14 @@ namespace Veiled_Kashmir_Admin_Panel
                     Close();
                 }
             }
+            Cursor = Cursors.Arrow;
 
         }
 
         private void addprobtn_Click(object sender, EventArgs e)
         { try
             {
+                Cursor = Cursors.WaitCursor;
                 if (supidtxt.Text == "")
                 {
                     MessageBox.Show("Add Supplier first.");
@@ -136,6 +139,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 aconn.Close();
                 MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
+            Cursor = Cursors.Arrow;
         }
     
 
@@ -168,6 +172,11 @@ namespace Veiled_Kashmir_Admin_Panel
             dg.Show();
 
             pm.Show();
+        }
+
+        private void addbill_Load(object sender, EventArgs e)
+        {
+
         }
 
         private void addsupbtn_Click(object sender, EventArgs e)

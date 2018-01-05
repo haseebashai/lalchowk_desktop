@@ -265,6 +265,84 @@ namespace Veiled_Kashmir_Admin_Panel
 
         }
 
+        private void delbtn_Click(object sender, EventArgs e)
+        {
+            panelhide();
+            loadingshow();
+
+            BackgroundWorker charges = new BackgroundWorker();
+            charges.DoWork += (o, a) => 
+            {
+                try
+                {
+                    adap = new MySqlDataAdapter("select * from del", con);
+                    dt = new DataTable();
+                    adap.Fill(dt);
+                    bsource = new BindingSource();
+                    bsource.DataSource = dt;
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
+                }
+            };
+            charges.RunWorkerCompleted += (o, b) => 
+            {
+                settingsdataview.DataSource = bsource;
+               
+                settingsdataview.Location = new Point(3, 134);
+                updbtn.Location = new Point(1018, 282);
+                spnl.Visible = true;
+                panelshow();
+                loadingaccpic.Visible = false;
+            };
+            charges.RunWorkerAsync();
+
+
+            ppnl.Visible = false;
+            settingsdataview.BringToFront();
+        }
+
+        private void appverbtn_Click(object sender, EventArgs e)
+        {
+            panelhide();
+            loadingshow();
+
+            BackgroundWorker versions = new BackgroundWorker();
+            versions.DoWork += (o, a) =>
+            {
+                try
+                {
+                    adap = new MySqlDataAdapter("select * from versions", con);
+                    dt = new DataTable();
+                    adap.Fill(dt);
+                    bsource = new BindingSource();
+                    bsource.DataSource = dt;
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
+                }
+            };
+            versions.RunWorkerCompleted += (o, b) =>
+            {
+                settingsdataview.DataSource = bsource;
+
+                settingsdataview.Location = new Point(3, 134);
+                updbtn.Location = new Point(1018, 282);
+                spnl.Visible = true;
+                panelshow();
+                loadingaccpic.Visible = false;
+            };
+            versions.RunWorkerAsync();
+
+
+            ppnl.Visible = false;
+            settingsdataview.BringToFront();
+        }
+
         private void updbtn_Click(object sender, EventArgs e)
         {
             try
@@ -297,5 +375,7 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             pintxt.SelectionStart = 0;
         }
+
+       
     }
 }
