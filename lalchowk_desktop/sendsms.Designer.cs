@@ -47,6 +47,7 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.maxcountlbl = new System.Windows.Forms.Label();
             this.stbtn = new System.Windows.Forms.Button();
+            this.charlbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.arrow)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,6 +77,7 @@
             this.smstxt.Name = "smstxt";
             this.smstxt.Size = new System.Drawing.Size(362, 134);
             this.smstxt.TabIndex = 3;
+            this.smstxt.TextChanged += new System.EventHandler(this.smstxt_TextChanged);
             // 
             // numbertxt
             // 
@@ -272,12 +274,23 @@
             this.stbtn.UseVisualStyleBackColor = true;
             this.stbtn.Click += new System.EventHandler(this.stbtn_Click);
             // 
+            // charlbl
+            // 
+            this.charlbl.AutoSize = true;
+            this.charlbl.Location = new System.Drawing.Point(658, 272);
+            this.charlbl.Name = "charlbl";
+            this.charlbl.Size = new System.Drawing.Size(30, 13);
+            this.charlbl.TabIndex = 55;
+            this.charlbl.Text = "(1/1)";
+            this.charlbl.Visible = false;
+            // 
             // sendsms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(750, 600);
+            this.Controls.Add(this.charlbl);
             this.Controls.Add(this.stbtn);
             this.Controls.Add(this.maxcountlbl);
             this.Controls.Add(this.progressBar1);
@@ -310,7 +323,6 @@
 
         private MaterialSkin.Controls.MaterialFlatButton sendsmsbtn;
         private System.Windows.Forms.TextBox smstxt;
-        private System.Windows.Forms.TextBox numbertxt;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label sentlbl;
@@ -327,5 +339,7 @@
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Label maxcountlbl;
         private System.Windows.Forms.Button stbtn;
+        public System.Windows.Forms.TextBox numbertxt;
+        private System.Windows.Forms.Label charlbl;
     }
 }

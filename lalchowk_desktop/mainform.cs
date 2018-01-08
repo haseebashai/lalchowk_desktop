@@ -646,7 +646,7 @@ namespace Veiled_Kashmir_Admin_Panel
         private void smsbtn_Click(object sender, EventArgs e)
         {
             dialogcontainer dg = new dialogcontainer();
-            sendsms sms = new sendsms();
+            sendsms sms = new sendsms("");
             sms.TopLevel = false;
             dg.dialogpnl.Controls.Add(sms);
             dg.lbl.Text = "Send SMS";
@@ -721,16 +721,22 @@ namespace Veiled_Kashmir_Admin_Panel
         }
 
         BackgroundWorker products;
+        string id,contact;
         private void placeddataview_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            plbl.Visible = true;
+            shipbtn.Visible = false;
+            sendsmsbtn.Visible = false;
+            cancelbtn.Visible = false;
             ppnl.Controls.Clear();
             placeddataview.Enabled = false;
-            plbl.Visible = true;
+            
             if (e.RowIndex >= 0)
             {
 
                 DataGridViewRow row = this.placeddataview.Rows[e.RowIndex];
-                string id = row.Cells["orderid"].Value.ToString();
+                id = row.Cells["orderid"].Value.ToString();
+                contact = row.Cells["contact"].Value.ToString();
                 products = new BackgroundWorker();
                 products.DoWork += Products_DoWork;
                 products.RunWorkerCompleted += Products_RunWorkerCompleted;
@@ -777,8 +783,97 @@ namespace Veiled_Kashmir_Admin_Panel
                 }
                 ppnl.Visible = true;
                 plbl.Visible = false;
+                shipbtn.Visible = true;
+                sendsmsbtn.Visible = true;
+                cancelbtn.Visible = true;
             }
         }
+
+        private void shipbtn_Click(object sender, EventArgs e)
+        {
+                                                                                                                                                 Cursor = Cursors.WaitCursor;
+            try
+            {
+                DialogResult dgr = MessageBox.Show("Change status to Shipped for orderid '" + id + "'", "Confirm!", MessageBoxButtons.YesNo);
+                if (dgr == DialogResult.Yes)
+                {
+                    string cmd = "Update orders set status='Shipped' where orderid='" + id + "'";
+                    obj.nonQuery(cmd);
+                    con.Open();
+
+                    adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='placed';", con);
+                    dt = new DataTable();
+                    adap.Fill(dt);
+                    con.Close();
+                    bsource = new BindingSource();
+                    bsource.DataSource = dt;
+                    placeddataview.DataSource = bsource;
+
+                    con.Open();
+                    adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='shipped';", con);
+                    dt = new DataTable();
+                    adap.Fill(dt);
+                    con.Close();
+                    bsource2 = new BindingSource();
+                    bsource2.DataSource = dt;
+                    shippeddataview.DataSource = bsource2;
+                    shippeddataview.Visible = true;
+                    ppnl.Visible = false;
+                    shipbtn.Visible = false;
+                    sendsmsbtn.Visible = false;
+                    cancelbtn.Visible = false;
+                }
+            }
+            catch
+            {
+                obj.closeConnection();
+            }
+            Cursor = Cursors.Arrow;
+        }
+
+        private void sendsmsbtn_Click(object sender, EventArgs e)
+        {
+            dialogcontainer dg = new dialogcontainer();
+            sendsms sms = new sendsms(contact);
+            sms.TopLevel = false;
+            dg.dialogpnl.Controls.Add(sms);
+            dg.lbl.Text = "Send SMS";
+            dg.Text = "Send SMS";
+            dg.Size = new Size(800, 600);
+            sms.numbertxt.Font = new Font("MS Sans Serif", 9, FontStyle.Regular);
+            dg.Show();
+            sms.Show();
+        }
+        private void cancelbtn_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            try
+            {
+                DialogResult dgr = MessageBox.Show("Cancel Order '" + id + "'", "Confirm!", MessageBoxButtons.YesNo);
+                if (dgr == DialogResult.Yes)
+                {
+                    string cmd = "Update orders set status='Cancelled' where orderid='" + id + "'";
+                    obj.nonQuery(cmd);
+                   
+                    foreach (string products in pid)
+                    {
+                       
+                        cmd = "Update products set stock=stock+1 where productid ='" + products + "'";
+                        obj.nonQuery(cmd);
+                    }
+                    MessageBox.Show("Order cancelled.");
+                }
+            }
+            catch (Exception ex)
+            {
+                obj.closeConnection();
+                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
+            }
+            Cursor = Cursors.Arrow;
+        }
+
+        List<string> prds = new List<string>();
+        List<string> pid = new List<string>();
         private void Products_DoWork(object sender, DoWorkEventArgs e)
         {
             try
@@ -786,16 +881,18 @@ namespace Veiled_Kashmir_Admin_Panel
                 
                     string id = e.Argument as string;
                     List<details> dobj = new List<details>();
-                    List<string> prds = new List<string>();
+                   
 
                     dr = obj.Query("select productid from orderdetails where orderid ='" + id + "'");
                     while (dr.Read())
                     {
                         prds.Add(dr[0].ToString());
+                        pid.Add(dr[0].ToString());
                     }
                     obj.closeConnection();
 
-                    foreach (String products in prds)
+               
+                foreach (String products in prds)
                     {
 
                         dr = obj.Query("select productid,productname,price,quantity,dealerprice,picture from orderdetails where productid='" + products + "'and orderid='" + id + "'");

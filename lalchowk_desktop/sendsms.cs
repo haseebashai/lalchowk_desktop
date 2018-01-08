@@ -21,9 +21,17 @@ namespace Veiled_Kashmir_Admin_Panel
         DBConnect obj = new DBConnect();
         MySqlDataReader dr;
 
-        public sendsms()
+        public sendsms(string contact)
         {
             InitializeComponent();
+            if (contact == "")
+            {
+
+            }
+            else
+            {
+                numbertxt.Text = contact;
+            }
 
         }
 
@@ -383,8 +391,18 @@ namespace Veiled_Kashmir_Admin_Panel
             smstxt.Text = "";
             smstxt.Text = "Dear customer, your order has been dispatched and will reach you in 30-60 mins. Please keep your phone in reach.\nTeam Lalchowk.";
         }
+
+       
+        private void smstxt_TextChanged(object sender, EventArgs e)
+        {
+            charlbl.Visible = true;
+            int max = 160;
+            int charac= smstxt.Text.Length;
+            charlbl.Text = "(" + (max-charac) + "/160)";
+        }
     }
-
-
 }
+
+
+
 

@@ -56,10 +56,16 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             
             readfirst();
-          //  readsecond();
-            readsuppliers();
+
+            dr = obj.Query("select distinct concat(supplierid,':  ',name) as name from suppliers");
+            DataTable dt = new DataTable();
+            dt.Columns.Add("name", typeof(String));
+            dt.Load(dr);
+            obj.closeConnection();
             
-           
+            supplierlist.DataSource = dt;
+
+
         }
 
         private void bgworker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -67,7 +73,7 @@ namespace Veiled_Kashmir_Admin_Panel
             
             firstcat.DisplayMember = "categoryname";
             firstcat.SelectedIndex = -1;
-            
+           
             supplierlist.DisplayMember = "name";
             supplierlist.SelectedIndex = -1;        
             addppnl.Enabled = true;
@@ -97,7 +103,7 @@ namespace Veiled_Kashmir_Admin_Panel
             dt.Columns.Add("categoryname", typeof(String));            
             dt.Load(dr);
             obj.closeConnection();
-            //    firstcat.DisplayMember = "categoryname";
+                firstcat.DisplayMember = "categoryname";
                 firstcat.DataSource = dt;
               
                
@@ -188,27 +194,7 @@ namespace Veiled_Kashmir_Admin_Panel
             Cursor = Cursors.Arrow;
         }
 
-        
-
-
-        private void readsuppliers()
-        {try {
-               
-                dr = obj.Query("select distinct concat(supplierid,':  ',name) as name from suppliers");
-            DataTable dt = new DataTable();
-            dt.Columns.Add("name", typeof(String));
-            dt.Load(dr);
-            obj.closeConnection();
-            supplierlist.DisplayMember = "name";
-            supplierlist.DataSource = dt;
-               
-            }
-            catch (Exception ex)
-            {
-                obj.closeConnection();
-                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
-            }
-        }
+       
 
         private void clearall()
         {
@@ -244,6 +230,7 @@ namespace Veiled_Kashmir_Admin_Panel
             p3txt.Text = "";
             p4txt.Text = "";
             p5txt.Text = "";
+            dctxt.Text = "";
 
         }
         private void cancelbtn_Click(object sender, EventArgs e)
@@ -670,7 +657,27 @@ namespace Veiled_Kashmir_Admin_Panel
             Cursor = Cursors.Arrow;
         }
 
-     
+        private void dcbtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (int.Parse(dctxt.Text) < 10)
+                {
+                    dctxt.Text = 0 + dctxt.Text;
+                }
+
+                string sub = "0." + dctxt.Text;
+
+                double sub2 = double.Parse(sub);
+
+                double n = double.Parse(mrptxt.Text);
+
+                n = n - (n * sub2);
+                pricetxt.Text = n.ToString();
+            }catch { }
+        }
+
+
         private void pidtxt_TextChanged(object sender, EventArgs e)
         {
             gidtxt.Text = pidtxt.Text;
@@ -976,12 +983,54 @@ namespace Veiled_Kashmir_Admin_Panel
                     s2.Replace("'", "\\'");
 
                     supplierid = supplierlist.Text.Split(':')[0];
-
-                    if (sizetxt.Text == "" || dname5txt.Text == "" || dname5.Text == "")
+                    string size, dn5, d5, color,brand;
+                    if(sizetxt.Text == "")
                     {
-                        cmd = "insert into products (`productid`, `supplierid`, `productname`,`tags`, `groupid`,`categoryid`,`color`, `mrp`, `price`, `dealerprice`, `stock`, `description`, `detailname1`, `detailname2`, `detailname3`, `detailname4`,`detailname5`, `detail1`, `detail2`, `detail3`, `detail4`,`detail5`,`brand`,`size`,`requeststatus`) " +
-                           "values ('" + pidtxt.Text + "','" + supplierid + "', '" + s + "','" + s + " " + tagstxt.Text + "','" + gidtxt.Text + "', '" + catbox.Text + "','" + colourtxt.Text + "','" + mrptxt.Text + "','" + pricetxt.Text + "','" + dealertxt.Text + "','" + stocktxt.Text + "','" + s2 + "','" + dname1txt.Text + "','" + dname2txt.Text + "','" + dname3txt.Text + "','" + dname4txt.Text + "',null,'" + dname1.Text + "','" + dname2.Text + "','" + dname3.Text + "','" + dname4.Text + "',null,'" + s1 + "',null,'Approved')";
-                        obj.nonQuery(cmd);
+                        size = "NULL";
+                    }else
+                    {
+                        size = "'" + sizetxt.Text + "'";
+                    }
+                    if (dname5txt.Text == "")
+                    {
+                        dn5 = "NULL";
+                    }
+                    else
+                    {
+                        dn5 = "'" + dname5txt.Text + "'";
+                    }
+                    if (dname5.Text == "")
+                    {
+                        d5 = "NULL";
+                    }
+                    else
+                    {
+                        d5 = "'" + dname5.Text + "'";
+                    }
+                    if (colourtxt.Text == "")
+                    {
+                        color = "NULL";
+                    }
+                    else
+                    {
+                        color = "'" + colourtxt.Text + "'";
+                    }
+                    if (s1==null)
+                    {
+                        brand = "NULL";
+                    }
+                    else
+                    {
+                       brand = s1.ToString();
+                    }
+
+
+                    //if ( || dname5txt.Text == "" || dname5.Text == "")
+                    //{
+                    if (s == null || catbox.Text == "")
+                    {
+                        MessageBox.Show("Add details first.", "Error!");
+                       
                         //}
                         //else if(dname5txt.Text == "" || dname5.Text == "")
                         //{
@@ -989,23 +1038,29 @@ namespace Veiled_Kashmir_Admin_Panel
                         //    cmd = "insert into products (`productid`, `supplierid`, `productname`,`tags`, `groupid`,`categoryid`,`color`, `mrp`, `price`, `dealerprice`, `stock`, `description`, `detailname1`, `detailname2`, `detailname3`, `detailname4`,`detailname5`, `detail1`, `detail2`, `detail3`, `detail4`,`detail5`,`brand`,`size`,`requeststatus`) " +
                         //       "values ('" + pidtxt.Text + "','" + supplierid + "', '" + s + "','" + s + " " + tagstxt.Text + "','" + gidtxt.Text + "', '" + catbox.Text + "','" + colourtxt.Text + "','" + mrptxt.Text + "','" + pricetxt.Text + "','" + dealertxt.Text + "','" + stocktxt.Text + "','" + s2 + "','" + dname1txt.Text + "','" + dname2txt.Text + "','" + dname3txt.Text + "','" + dname4txt.Text + "',null,'" + dname1.Text + "','" + dname2.Text + "','" + dname3.Text + "','" + dname4.Text + "',null,'" + s1 + "','" + sizetxt.Text + "','Approved')";
                         //    obj.nonQuery(cmd);
-                    }
-                    else
+                        //}
+                        //else
+                        //{
+                        //    cmd = "insert into products (`productid`, `supplierid`, `productname`,`tags`, `groupid`,`categoryid`,`color`, `mrp`, `price`, `dealerprice`, `stock`, `description`, `detailname1`, `detailname2`, `detailname3`, `detailname4`, `detailname5`, `detail1`, `detail2`, `detail3`, `detail4`, `detail5`,`brand`,`size`,`requeststatus`) " +
+                        //          "values ('" + pidtxt.Text + "','" + supplierid + "', '" + s + "','" + s + " " + tagstxt.Text + "','" + gidtxt.Text + "', '" + catbox.Text + "','" + colourtxt.Text + "','" + mrptxt.Text + "','" + pricetxt.Text + "','" + dealertxt.Text + "','" + stocktxt.Text + "','" + s2 + "','" + dname1txt.Text + "','" + dname2txt.Text + "','" + dname3txt.Text + "','" + dname4txt.Text + "','" + dname5txt.Text + "','" + dname1.Text + "','" + dname2.Text + "','" + dname3.Text + "','" + dname4.Text + "','" + dname5.Text + "','" + s1 + "','" + sizetxt.Text + "','Approved')";
+                        //    obj.nonQuery(cmd);
+                        //}
+
+                        //   int productid = obj.Count("SELECT LAST_INSERT_ID()");
+
+
+
+                       
+
+                    }else
                     {
-                        cmd = "insert into products (`productid`, `supplierid`, `productname`,`tags`, `groupid`,`categoryid`,`color`, `mrp`, `price`, `dealerprice`, `stock`, `description`, `detailname1`, `detailname2`, `detailname3`, `detailname4`, `detailname5`, `detail1`, `detail2`, `detail3`, `detail4`, `detail5`,`brand`,`size`,`requeststatus`) " +
-                              "values ('" + pidtxt.Text + "','" + supplierid + "', '" + s + "','" + s + " " + tagstxt.Text + "','" + gidtxt.Text + "', '" + catbox.Text + "','" + colourtxt.Text + "','" + mrptxt.Text + "','" + pricetxt.Text + "','" + dealertxt.Text + "','" + stocktxt.Text + "','" + s2 + "','" + dname1txt.Text + "','" + dname2txt.Text + "','" + dname3txt.Text + "','" + dname4txt.Text + "','" + dname5txt.Text + "','" + dname1.Text + "','" + dname2.Text + "','" + dname3.Text + "','" + dname4.Text + "','" + dname5.Text + "','" + s1 + "','" + sizetxt.Text + "','Approved')";
+                        cmd = "insert into products (`productid`, `supplierid`, `productname`,`tags`, `groupid`,`categoryid`,`color`, `mrp`, `price`, `dealerprice`, `stock`, `description`, `detailname1`, `detailname2`, `detailname3`, `detailname4`,`detailname5`, `detail1`, `detail2`, `detail3`, `detail4`,`detail5`,`brand`,`size`,`requeststatus`) " +
+                            "values ('" + pidtxt.Text + "','" + supplierid + "', '" + s + "','" + s + " " + tagstxt.Text + "','" + gidtxt.Text + "', '" + catbox.Text + "'," + color + ",'" + mrptxt.Text + "','" + pricetxt.Text + "','" + dealertxt.Text + "','" + stocktxt.Text + "','" + s2 + "','" + dname1txt.Text + "','" + dname2txt.Text + "','" + dname3txt.Text + "','" + dname4txt.Text + "'," + dn5 + ",'" + dname1.Text + "','" + dname2.Text + "','" + dname3.Text + "','" + dname4.Text + "'," + d5 + ","+brand+"," + size + ",'Approved')";
                         obj.nonQuery(cmd);
+                        obj.closeConnection();
+
+                        MessageBox.Show("Product successfully added.");
                     }
-
-                    //   int productid = obj.Count("SELECT LAST_INSERT_ID()");
-
-
-
-                    obj.closeConnection();
-
-                    MessageBox.Show("Product successfully added.");
-
-
 
 
 

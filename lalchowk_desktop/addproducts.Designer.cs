@@ -126,6 +126,9 @@
             this.bgworker = new System.ComponentModel.BackgroundWorker();
             this.pictimer = new System.Windows.Forms.Timer(this.components);
             this.bguploadpic = new System.ComponentModel.BackgroundWorker();
+            this.dctxt = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.dcbtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pic1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic3)).BeginInit();
@@ -958,6 +961,9 @@
             // 
             // addppnl
             // 
+            this.addppnl.Controls.Add(this.dcbtn);
+            this.addppnl.Controls.Add(this.dctxt);
+            this.addppnl.Controls.Add(this.label29);
             this.addppnl.Controls.Add(this.sizelbl);
             this.addppnl.Controls.Add(this.getpidbtn);
             this.addppnl.Controls.Add(this.clearpicbtn);
@@ -1133,6 +1139,32 @@
             this.bguploadpic.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bguploadpic_ProgressChanged);
             this.bguploadpic.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bguploadpic_RunWorkerCompleted);
             // 
+            // dctxt
+            // 
+            this.dctxt.Location = new System.Drawing.Point(612, 507);
+            this.dctxt.Name = "dctxt";
+            this.dctxt.Size = new System.Drawing.Size(66, 20);
+            this.dctxt.TabIndex = 101;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(612, 491);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(66, 13);
+            this.label29.TabIndex = 100;
+            this.label29.Text = "Discount (%)";
+            // 
+            // dcbtn
+            // 
+            this.dcbtn.Location = new System.Drawing.Point(683, 507);
+            this.dcbtn.Name = "dcbtn";
+            this.dcbtn.Size = new System.Drawing.Size(63, 20);
+            this.dcbtn.TabIndex = 102;
+            this.dcbtn.Text = "Calculate";
+            this.dcbtn.UseVisualStyleBackColor = true;
+            this.dcbtn.Click += new System.EventHandler(this.dcbtn_Click);
+            // 
             // addproducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1253,5 +1285,8 @@
         private System.Windows.Forms.Button clearpicbtn;
         private System.Windows.Forms.Button getpidbtn;
         private System.Windows.Forms.Label sizelbl;
+        private System.Windows.Forms.Button dcbtn;
+        private System.Windows.Forms.TextBox dctxt;
+        private System.Windows.Forms.Label label29;
     }
 }
