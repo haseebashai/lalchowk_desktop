@@ -31,6 +31,8 @@ namespace Veiled_Kashmir_Admin_Panel
             else
             {
                 numbertxt.Text = contact;
+                sendertxt.Text = "LALCHK";
+                smstxt.Focus();
             }
 
         }

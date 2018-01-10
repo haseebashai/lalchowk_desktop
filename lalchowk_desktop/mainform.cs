@@ -402,33 +402,33 @@ namespace Veiled_Kashmir_Admin_Panel
             Cursor = Cursors.Arrow;
         }
 
-        private void cobtn_Click(object sender, EventArgs e)
-        {
-            if (cntpnl.Contains(placeddataview))
-            {
-                Cursor = Cursors.WaitCursor;
-                cancelorders co = new cancelorders(this);
-                cntpnl.Controls.Clear();
-                co.TopLevel = false;
-                cntpnl.Controls.Add(co);
-                co.loadingnormal();
-                co.Show();
-                Cursor = Cursors.Arrow;
-            }
-            else
-            {
-                dialogcontainer dg = new dialogcontainer();
-                cancelorders co = new cancelorders(dg);
-                co.TopLevel = false;
+        //private void cobtn_Click(object sender, EventArgs e)
+        //{
+        //    if (cntpnl.Contains(placeddataview))
+        //    {
+        //        Cursor = Cursors.WaitCursor;
+        //        cancelorders co = new cancelorders(this);
+        //        cntpnl.Controls.Clear();
+        //        co.TopLevel = false;
+        //        cntpnl.Controls.Add(co);
+        //        co.loadingnormal();
+        //        co.Show();
+        //        Cursor = Cursors.Arrow;
+        //    }
+        //    else
+        //    {
+        //        dialogcontainer dg = new dialogcontainer();
+        //        cancelorders co = new cancelorders(dg);
+        //        co.TopLevel = false;
 
-                dg.dialogpnl.Controls.Add(co);
-                co.loadingdg();
-                dg.Text = "Cancel Order";
+        //        dg.dialogpnl.Controls.Add(co);
+        //        co.loadingdg();
+        //        dg.Text = "Cancel Order";
 
-                dg.Show();
-                co.Show();
-            }
-        }
+        //        dg.Show();
+        //        co.Show();
+        //    }
+        //}
 
         private void msgbtn_Click(object sender, EventArgs e)
         {
@@ -808,6 +808,12 @@ namespace Veiled_Kashmir_Admin_Panel
                     bsource = new BindingSource();
                     bsource.DataSource = dt;
                     placeddataview.DataSource = bsource;
+                    placeddataview.Columns["shipdate"].Visible = false;
+                    placeddataview.Columns["deliverdate"].Visible = false;
+                    placeddataview.Columns["paymentconfirmed"].Visible = false;
+                    placeddataview.Columns["email"].Visible = false;
+                    placeddataview.Columns["transanctionid"].Visible = false;
+                    placeddataview.Columns["paymenttype"].Visible = false;
 
                     con.Open();
                     adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='shipped';", con);
@@ -817,11 +823,23 @@ namespace Veiled_Kashmir_Admin_Panel
                     bsource2 = new BindingSource();
                     bsource2.DataSource = dt;
                     shippeddataview.DataSource = bsource2;
+                   
+                    try { 
+                    shippeddataview.Columns["shipdate"].Visible = false;
+                    shippeddataview.Columns["deliverdate"].Visible = false;
+                    shippeddataview.Columns["paymentconfirmed"].Visible = false;
+                    shippeddataview.Columns["email"].Visible = false;
+                    shippeddataview.Columns["transanctionid"].Visible = false;
+                    shippeddataview.Columns["paymenttype"].Visible = false;
+                    }
+                    catch { }
                     shippeddataview.Visible = true;
                     ppnl.Visible = false;
                     shipbtn.Visible = false;
                     sendsmsbtn.Visible = false;
                     cancelbtn.Visible = false;
+                    shippedh.Visible = true;
+                    shippedlbl.Visible = true;
                 }
             }
             catch
@@ -863,6 +881,22 @@ namespace Veiled_Kashmir_Admin_Panel
                     }
                     MessageBox.Show("Order cancelled.");
                 }
+                adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='placed';", con);
+                dt = new DataTable();
+                adap.Fill(dt);
+                con.Close();
+                bsource = new BindingSource();
+                bsource.DataSource = dt;
+                placeddataview.DataSource = bsource;
+                try { 
+                placeddataview.Columns["shipdate"].Visible = false;
+                placeddataview.Columns["deliverdate"].Visible = false;
+                placeddataview.Columns["paymentconfirmed"].Visible = false;
+                placeddataview.Columns["email"].Visible = false;
+                placeddataview.Columns["transanctionid"].Visible = false;
+                placeddataview.Columns["paymenttype"].Visible = false;
+                }
+                catch { }
             }
             catch (Exception ex)
             {
@@ -1076,7 +1110,22 @@ namespace Veiled_Kashmir_Admin_Panel
                     attention.Visible = true; placedlbl.Visible = true; deliveredh.Visible = true; orderslbl.Visible = true;
 
                     placeddataview.DataSource = bsource;
-                    shippeddataview.DataSource = bsource2;
+                    try
+                    {
+                        placeddataview.Columns["shipdate"].Visible = false;
+                        placeddataview.Columns["deliverdate"].Visible = false;
+                        placeddataview.Columns["paymentconfirmed"].Visible = false;
+                        placeddataview.Columns["email"].Visible = false;
+                        placeddataview.Columns["transanctionid"].Visible = false;
+                        placeddataview.Columns["paymenttype"].Visible = false;
+                        shippeddataview.DataSource = bsource2;
+                        shippeddataview.Columns["shipdate"].Visible = false;
+                        shippeddataview.Columns["deliverdate"].Visible = false;
+                        shippeddataview.Columns["paymentconfirmed"].Visible = false;
+                        shippeddataview.Columns["email"].Visible = false;
+                        shippeddataview.Columns["transanctionid"].Visible = false;
+                        shippeddataview.Columns["paymenttype"].Visible = false;
+                    }catch { }
                     placeddataview.Visible = true;
                     if(shippedcount == 0)
                     {
@@ -1111,7 +1160,26 @@ namespace Veiled_Kashmir_Admin_Panel
             attention.Visible = true; placedlbl.Visible = true; deliveredh.Visible = true; orderslbl.Visible = true;
 
             placeddataview.DataSource = bsource;
+            try { 
+            placeddataview.Columns["shipdate"].Visible = false;
+            placeddataview.Columns["deliverdate"].Visible = false;
+            placeddataview.Columns["paymentconfirmed"].Visible = false;
+            placeddataview.Columns["email"].Visible = false;
+            placeddataview.Columns["transanctionid"].Visible = false;
+            placeddataview.Columns["paymenttype"].Visible = false;
+            }
+            catch { }
+
             shippeddataview.DataSource = bsource2;
+            try { 
+            shippeddataview.Columns["shipdate"].Visible = false;
+            shippeddataview.Columns["deliverdate"].Visible = false;
+            shippeddataview.Columns["paymentconfirmed"].Visible = false;
+            shippeddataview.Columns["email"].Visible = false;
+            shippeddataview.Columns["transanctionid"].Visible = false;
+            shippeddataview.Columns["paymenttype"].Visible = false;
+            }
+            catch { }
             placeddataview.Visible = true;
             shippeddataview.Visible = true;
             attentionlbl.Text = "> " + atten + " Order(s) need your Attention ASAP!";

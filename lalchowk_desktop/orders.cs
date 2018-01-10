@@ -64,7 +64,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void readorders()
         {try { 
-            adap = new MySqlDataAdapter("SELECT customer.mail,orders.*  FROM lalchowk.orders inner join customer on customer.email=orders.email;",conn);
+            adap = new MySqlDataAdapter("SELECT customer.mail,orders.*  FROM lalchowk.orders inner join customer on customer.email=orders.email order by orderid desc;",conn);
             dt = new DataTable();
             adap.Fill(dt);
             obj.closeConnection();
@@ -112,6 +112,12 @@ namespace Veiled_Kashmir_Admin_Panel
             panel1.Visible = true;
             ordergridview.Visible = true;
             ordergridview.DataSource = bsource;
+            ordergridview.Columns["shipdate"].Visible = false;
+            ordergridview.Columns["deliverdate"].Visible = false;
+            ordergridview.Columns["paymentconfirmed"].Visible = false;
+            ordergridview.Columns["email"].Visible = false;
+            ordergridview.Columns["transanctionid"].Visible = false;
+            ordergridview.Columns["paymenttype"].Visible = false;
             orlbl.Text = ordervar;
         }
 
@@ -151,7 +157,7 @@ namespace Veiled_Kashmir_Admin_Panel
         private void paymenttxt_TextChanged(object sender, EventArgs e)
         {
             DataView dv = new DataView(dt);
-            dv.RowFilter = string.Format("paymenttype LIKE '%{0}%'", paymenttxt.Text);
+            dv.RowFilter = string.Format("name LIKE '%{0}%'", paymenttxt.Text);
             ordergridview.DataSource = dv;
         }
 
@@ -164,14 +170,11 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void billbtn_Click(object sender, EventArgs e)
         {
-            if (productid == null)
-                con.Visible = true;
-            else
-            {
-                addbill ab = new addbill(orderlbl.Text, email, amountlbl.Text, productid, productname, price, quantity, size, dealerprice, shipping);
+           
+                addbill ab = new addbill(orderlbl.Text, email, amountlbl.Text);
                 ab.ShowDialog();
                 productid = null;
-            }
+            
         }
 
         private void delbtn_Click(object sender, EventArgs e)
@@ -209,7 +212,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void orderdetailview_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            con.Visible = false;
+           
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = this.orderdetailview.Rows[e.RowIndex];
@@ -335,16 +338,16 @@ namespace Veiled_Kashmir_Admin_Panel
                         if (status == "Delivered")
                         {
                             billbtn.Text = "Delivered";
-                            billbtn.Enabled = false;
+                            
                         }else if(status == "Cancelled")
                         {
                             billbtn.Text = "Cancelled";
-                            billbtn.Enabled = false;
+                           
                         }
                         else
                         {   
                             billbtn.Text = "Confirm Delivery and Add Bill";
-                            billbtn.Enabled = true;
+                           
                         }
 
                     };

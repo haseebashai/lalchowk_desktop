@@ -40,8 +40,8 @@
             this.emailtxt = new System.Windows.Forms.TextBox();
             this.orderpnl = new System.Windows.Forms.Panel();
             this.dpnl = new System.Windows.Forms.Panel();
+            this.deupdbtn = new System.Windows.Forms.Button();
             this.updbtn = new System.Windows.Forms.Button();
-            this.con = new System.Windows.Forms.Label();
             this.billbtn = new System.Windows.Forms.Button();
             this.cnfbtn = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -65,7 +65,6 @@
             this.loadinglbl = new System.Windows.Forms.Label();
             this.formlbl = new System.Windows.Forms.Label();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
-            this.deupdbtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.orderpnl.SuspendLayout();
             this.dpnl.SuspendLayout();
@@ -153,9 +152,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(438, 5);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(74, 13);
+            this.label4.Size = new System.Drawing.Size(38, 13);
             this.label4.TabIndex = 6;
-            this.label4.Text = "Payment type:";
+            this.label4.Text = "Name:";
             // 
             // label2
             // 
@@ -190,7 +189,6 @@
             // 
             this.dpnl.Controls.Add(this.deupdbtn);
             this.dpnl.Controls.Add(this.updbtn);
-            this.dpnl.Controls.Add(this.con);
             this.dpnl.Controls.Add(this.billbtn);
             this.dpnl.Controls.Add(this.cnfbtn);
             this.dpnl.Controls.Add(this.label5);
@@ -215,6 +213,19 @@
             this.dpnl.TabIndex = 26;
             this.dpnl.Visible = false;
             // 
+            // deupdbtn
+            // 
+            this.deupdbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.deupdbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.deupdbtn.Location = new System.Drawing.Point(1101, 2);
+            this.deupdbtn.Name = "deupdbtn";
+            this.deupdbtn.Size = new System.Drawing.Size(54, 23);
+            this.deupdbtn.TabIndex = 28;
+            this.deupdbtn.Text = "Update";
+            this.deupdbtn.UseVisualStyleBackColor = true;
+            this.deupdbtn.Visible = false;
+            this.deupdbtn.Click += new System.EventHandler(this.deupdbtn_Click);
+            // 
             // updbtn
             // 
             this.updbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
@@ -226,17 +237,6 @@
             this.updbtn.Text = "Update Details";
             this.updbtn.UseVisualStyleBackColor = true;
             this.updbtn.Click += new System.EventHandler(this.updbtn_Click);
-            // 
-            // con
-            // 
-            this.con.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.con.ForeColor = System.Drawing.Color.Red;
-            this.con.Location = new System.Drawing.Point(986, 220);
-            this.con.Name = "con";
-            this.con.Size = new System.Drawing.Size(123, 17);
-            this.con.TabIndex = 27;
-            this.con.Text = "Select product from list";
-            this.con.Visible = false;
             // 
             // billbtn
             // 
@@ -430,6 +430,7 @@
             // ordergridview
             // 
             this.ordergridview.AllowUserToAddRows = false;
+            this.ordergridview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.ordergridview.BackgroundColor = System.Drawing.Color.White;
             this.ordergridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ordergridview.Location = new System.Drawing.Point(3, 3);
@@ -469,19 +470,6 @@
             // 
             this.bgworker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker_DoWork);
             this.bgworker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker_RunWorkerCompleted);
-            // 
-            // deupdbtn
-            // 
-            this.deupdbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
-            this.deupdbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.deupdbtn.Location = new System.Drawing.Point(1101, 2);
-            this.deupdbtn.Name = "deupdbtn";
-            this.deupdbtn.Size = new System.Drawing.Size(54, 23);
-            this.deupdbtn.TabIndex = 28;
-            this.deupdbtn.Text = "Update";
-            this.deupdbtn.UseVisualStyleBackColor = true;
-            this.deupdbtn.Visible = false;
-            this.deupdbtn.Click += new System.EventHandler(this.deupdbtn_Click);
             // 
             // orders
             // 
@@ -539,7 +527,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel dpnl;
         private System.Windows.Forms.Button billbtn;
-        private System.Windows.Forms.Label con;
         private System.Windows.Forms.Label orlbl;
         private System.Windows.Forms.Button delbtn;
         private System.ComponentModel.BackgroundWorker bgworker;

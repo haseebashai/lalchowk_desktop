@@ -56,15 +56,11 @@
             this.msgbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.accbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.expbtn = new MaterialSkin.Controls.MaterialFlatButton();
-            this.cobtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.ordersbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.navtitle = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.navtxt = new System.Windows.Forms.Label();
             this.cntpnl = new System.Windows.Forms.Panel();
-            this.cancelbtn = new System.Windows.Forms.Button();
-            this.shipbtn = new System.Windows.Forms.Button();
-            this.sendsmsbtn = new System.Windows.Forms.Button();
             this.zeropnl = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.zero = new System.Windows.Forms.Label();
@@ -87,6 +83,9 @@
             this.plbl = new System.Windows.Forms.Label();
             this.ppnl = new System.Windows.Forms.FlowLayoutPanel();
             this.placeddataview = new System.Windows.Forms.DataGridView();
+            this.cancelbtn = new System.Windows.Forms.Button();
+            this.shipbtn = new System.Windows.Forms.Button();
+            this.sendsmsbtn = new System.Windows.Forms.Button();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
             this.navpnl.SuspendLayout();
             this.navtitle.SuspendLayout();
@@ -209,7 +208,6 @@
             this.navpnl.Controls.Add(this.signoutlbl);
             this.navpnl.Controls.Add(this.signinlbl);
             this.navpnl.Controls.Add(this.expbtn);
-            this.navpnl.Controls.Add(this.cobtn);
             this.navpnl.Controls.Add(this.productsbtn);
             this.navpnl.Controls.Add(this.approvebtn);
             this.navpnl.Controls.Add(this.customersbtn);
@@ -227,7 +225,7 @@
             this.msglbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.msglbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.msglbl.ForeColor = System.Drawing.Color.White;
-            this.msglbl.Location = new System.Drawing.Point(150, 284);
+            this.msglbl.Location = new System.Drawing.Point(150, 249);
             this.msglbl.Name = "msglbl";
             this.msglbl.Size = new System.Drawing.Size(39, 18);
             this.msglbl.TabIndex = 39;
@@ -241,7 +239,7 @@
             this.rcountlbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.rcountlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rcountlbl.ForeColor = System.Drawing.Color.White;
-            this.rcountlbl.Location = new System.Drawing.Point(139, 569);
+            this.rcountlbl.Location = new System.Drawing.Point(139, 534);
             this.rcountlbl.Name = "rcountlbl";
             this.rcountlbl.Size = new System.Drawing.Size(33, 18);
             this.rcountlbl.TabIndex = 38;
@@ -253,7 +251,7 @@
             this.bookbtn.AutoSize = true;
             this.bookbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.bookbtn.Depth = 0;
-            this.bookbtn.Location = new System.Drawing.Point(20, 569);
+            this.bookbtn.Location = new System.Drawing.Point(20, 534);
             this.bookbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.bookbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.bookbtn.Name = "bookbtn";
@@ -269,7 +267,7 @@
             this.smsbtn.AutoSize = true;
             this.smsbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.smsbtn.Depth = 0;
-            this.smsbtn.Location = new System.Drawing.Point(20, 534);
+            this.smsbtn.Location = new System.Drawing.Point(20, 499);
             this.smsbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.smsbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.smsbtn.Name = "smsbtn";
@@ -285,7 +283,7 @@
             this.settingsbtn.AutoSize = true;
             this.settingsbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.settingsbtn.Depth = 0;
-            this.settingsbtn.Location = new System.Drawing.Point(20, 498);
+            this.settingsbtn.Location = new System.Drawing.Point(20, 463);
             this.settingsbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.settingsbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.settingsbtn.Name = "settingsbtn";
@@ -323,7 +321,7 @@
             this.categorybtn.AutoSize = true;
             this.categorybtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.categorybtn.Depth = 0;
-            this.categorybtn.Location = new System.Drawing.Point(20, 463);
+            this.categorybtn.Location = new System.Drawing.Point(20, 428);
             this.categorybtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.categorybtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.categorybtn.Name = "categorybtn";
@@ -355,7 +353,7 @@
             this.sendmailbtn.AutoSize = true;
             this.sendmailbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.sendmailbtn.Depth = 0;
-            this.sendmailbtn.Location = new System.Drawing.Point(20, 427);
+            this.sendmailbtn.Location = new System.Drawing.Point(20, 392);
             this.sendmailbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.sendmailbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.sendmailbtn.Name = "sendmailbtn";
@@ -371,7 +369,7 @@
             this.caboutbtn.AutoSize = true;
             this.caboutbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.caboutbtn.Depth = 0;
-            this.caboutbtn.Location = new System.Drawing.Point(20, 392);
+            this.caboutbtn.Location = new System.Drawing.Point(20, 357);
             this.caboutbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.caboutbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.caboutbtn.Name = "caboutbtn";
@@ -387,7 +385,7 @@
             this.homepagebtn.AutoSize = true;
             this.homepagebtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.homepagebtn.Depth = 0;
-            this.homepagebtn.Location = new System.Drawing.Point(20, 356);
+            this.homepagebtn.Location = new System.Drawing.Point(20, 321);
             this.homepagebtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.homepagebtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.homepagebtn.Name = "homepagebtn";
@@ -403,7 +401,7 @@
             this.msgbtn.AutoSize = true;
             this.msgbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.msgbtn.Depth = 0;
-            this.msgbtn.Location = new System.Drawing.Point(20, 284);
+            this.msgbtn.Location = new System.Drawing.Point(20, 249);
             this.msgbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.msgbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.msgbtn.Name = "msgbtn";
@@ -419,7 +417,7 @@
             this.accbtn.AutoSize = true;
             this.accbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.accbtn.Depth = 0;
-            this.accbtn.Location = new System.Drawing.Point(20, 320);
+            this.accbtn.Location = new System.Drawing.Point(20, 285);
             this.accbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.accbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.accbtn.Name = "accbtn";
@@ -445,22 +443,6 @@
             this.expbtn.Text = "Expenditure";
             this.expbtn.UseVisualStyleBackColor = true;
             this.expbtn.Click += new System.EventHandler(this.expbtn_Click);
-            // 
-            // cobtn
-            // 
-            this.cobtn.AutoSize = true;
-            this.cobtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.cobtn.Depth = 0;
-            this.cobtn.Location = new System.Drawing.Point(20, 248);
-            this.cobtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.cobtn.MouseState = MaterialSkin.MouseState.HOVER;
-            this.cobtn.Name = "cobtn";
-            this.cobtn.Primary = false;
-            this.cobtn.Size = new System.Drawing.Size(119, 36);
-            this.cobtn.TabIndex = 17;
-            this.cobtn.Text = "Cancel Orders";
-            this.cobtn.UseVisualStyleBackColor = true;
-            this.cobtn.Click += new System.EventHandler(this.cobtn_Click);
             // 
             // ordersbtn
             // 
@@ -518,9 +500,6 @@
             // cntpnl
             // 
             this.cntpnl.BackColor = System.Drawing.Color.White;
-            this.cntpnl.Controls.Add(this.cancelbtn);
-            this.cntpnl.Controls.Add(this.shipbtn);
-            this.cntpnl.Controls.Add(this.sendsmsbtn);
             this.cntpnl.Controls.Add(this.zeropnl);
             this.cntpnl.Controls.Add(this.shippedlbl);
             this.cntpnl.Controls.Add(this.placedlbl);
@@ -539,52 +518,13 @@
             this.cntpnl.Controls.Add(this.plbl);
             this.cntpnl.Controls.Add(this.ppnl);
             this.cntpnl.Controls.Add(this.placeddataview);
+            this.cntpnl.Controls.Add(this.cancelbtn);
+            this.cntpnl.Controls.Add(this.shipbtn);
+            this.cntpnl.Controls.Add(this.sendsmsbtn);
             this.cntpnl.Location = new System.Drawing.Point(201, 0);
             this.cntpnl.Name = "cntpnl";
             this.cntpnl.Size = new System.Drawing.Size(1162, 722);
             this.cntpnl.TabIndex = 12;
-            // 
-            // cancelbtn
-            // 
-            this.cancelbtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cancelbtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.cancelbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cancelbtn.Location = new System.Drawing.Point(1095, 334);
-            this.cancelbtn.Name = "cancelbtn";
-            this.cancelbtn.Size = new System.Drawing.Size(57, 42);
-            this.cancelbtn.TabIndex = 50;
-            this.cancelbtn.Text = "Cancel Order";
-            this.cancelbtn.UseVisualStyleBackColor = true;
-            this.cancelbtn.Visible = false;
-            this.cancelbtn.Click += new System.EventHandler(this.cancelbtn_Click);
-            // 
-            // shipbtn
-            // 
-            this.shipbtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.shipbtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.shipbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.shipbtn.Location = new System.Drawing.Point(1095, 254);
-            this.shipbtn.Name = "shipbtn";
-            this.shipbtn.Size = new System.Drawing.Size(57, 28);
-            this.shipbtn.TabIndex = 49;
-            this.shipbtn.Text = "Shipped";
-            this.shipbtn.UseVisualStyleBackColor = true;
-            this.shipbtn.Visible = false;
-            this.shipbtn.Click += new System.EventHandler(this.shipbtn_Click);
-            // 
-            // sendsmsbtn
-            // 
-            this.sendsmsbtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.sendsmsbtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.sendsmsbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.sendsmsbtn.Location = new System.Drawing.Point(1095, 296);
-            this.sendsmsbtn.Name = "sendsmsbtn";
-            this.sendsmsbtn.Size = new System.Drawing.Size(57, 28);
-            this.sendsmsbtn.TabIndex = 0;
-            this.sendsmsbtn.Text = "SMS";
-            this.sendsmsbtn.UseVisualStyleBackColor = true;
-            this.sendsmsbtn.Visible = false;
-            this.sendsmsbtn.Click += new System.EventHandler(this.sendsmsbtn_Click);
             // 
             // zeropnl
             // 
@@ -688,7 +628,7 @@
             // shippeddataview
             // 
             this.shippeddataview.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             this.shippeddataview.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.shippeddataview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.shippeddataview.BackgroundColor = System.Drawing.Color.White;
@@ -883,6 +823,48 @@
             this.placeddataview.TabIndex = 31;
             this.placeddataview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.placeddataview_CellContentClick);
             // 
+            // cancelbtn
+            // 
+            this.cancelbtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cancelbtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.cancelbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cancelbtn.Location = new System.Drawing.Point(1095, 334);
+            this.cancelbtn.Name = "cancelbtn";
+            this.cancelbtn.Size = new System.Drawing.Size(57, 42);
+            this.cancelbtn.TabIndex = 50;
+            this.cancelbtn.Text = "Cancel Order";
+            this.cancelbtn.UseVisualStyleBackColor = true;
+            this.cancelbtn.Visible = false;
+            this.cancelbtn.Click += new System.EventHandler(this.cancelbtn_Click);
+            // 
+            // shipbtn
+            // 
+            this.shipbtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.shipbtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.shipbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.shipbtn.Location = new System.Drawing.Point(1095, 254);
+            this.shipbtn.Name = "shipbtn";
+            this.shipbtn.Size = new System.Drawing.Size(57, 28);
+            this.shipbtn.TabIndex = 49;
+            this.shipbtn.Text = "Shipped";
+            this.shipbtn.UseVisualStyleBackColor = true;
+            this.shipbtn.Visible = false;
+            this.shipbtn.Click += new System.EventHandler(this.shipbtn_Click);
+            // 
+            // sendsmsbtn
+            // 
+            this.sendsmsbtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.sendsmsbtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.sendsmsbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.sendsmsbtn.Location = new System.Drawing.Point(1095, 296);
+            this.sendsmsbtn.Name = "sendsmsbtn";
+            this.sendsmsbtn.Size = new System.Drawing.Size(57, 28);
+            this.sendsmsbtn.TabIndex = 0;
+            this.sendsmsbtn.Text = "SMS";
+            this.sendsmsbtn.UseVisualStyleBackColor = true;
+            this.sendsmsbtn.Visible = false;
+            this.sendsmsbtn.Click += new System.EventHandler(this.sendsmsbtn_Click);
+            // 
             // bgworker
             // 
             this.bgworker.WorkerReportsProgress = true;
@@ -932,7 +914,6 @@
         private System.Windows.Forms.Panel navpnl;
         private MaterialSkin.Controls.MaterialFlatButton ordersbtn;
         private MaterialSkin.Controls.MaterialFlatButton expbtn;
-        private MaterialSkin.Controls.MaterialFlatButton cobtn;
         private System.Windows.Forms.Panel navtitle;
         public System.Windows.Forms.Panel cntpnl;
         private MaterialSkin.Controls.MaterialFlatButton accbtn;
