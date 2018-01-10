@@ -880,6 +880,7 @@ namespace Veiled_Kashmir_Admin_Panel
                         obj.nonQuery(cmd);
                     }
                     MessageBox.Show("Order cancelled.");
+                    ppnl.Visible = false;
                 }
                 adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='placed';", con);
                 dt = new DataTable();

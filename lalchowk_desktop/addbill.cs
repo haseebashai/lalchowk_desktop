@@ -165,46 +165,54 @@ namespace Veiled_Kashmir_Admin_Panel
         {
 
             Cursor = Cursors.WaitCursor;
+            string payment="";
             try
             {
-                string payment;
-                if (yes.Checked)
+                if (yes.Checked==false && no.Checked==false)
                 {
-                    payment = "'1'";
+                    MessageBox.Show("Please select payment type.", "Error!");
                 }
                 else
                 {
-                    payment = "'0'";
+                   
+                    if (yes.Checked)
+                    {
+                        payment = "1";
+                    }
+                    else if (no.Checked)
+                    {
+                        payment = "0";
+                    }
+
+
+                    int count = int.Parse(orderdetailview.RowCount.ToString());
+
+                    for (int i = 0; i < count; i++)
+                    {
+
+
+                        StringBuilder pname = new StringBuilder(orderdetailview.Rows[i].Cells[3].Value.ToString());
+                        pname.Replace(@"'", "\\'").Replace(@"\", "\\");
+                        
+                        aconn.Open();
+                        mysqlcmd = new MySqlCommand("insert into dealing(`orderid`,`productid`,`productname`,`count`,`amount`,"
+                            + "`dealerprice`,`pickupdate`,`paymentdone`,`paymentdate`,`comments`,`supplierid`,`suppliername`)values ('" + orderdetailview.Rows[i].Cells[1].Value.ToString() + //orderid
+                            "','" + orderdetailview.Rows[i].Cells[2].Value.ToString() +  //proid
+                            "','" + pname + //proname
+                            "','" + orderdetailview.Rows[i].Cells[5].Value.ToString() +  //quantity
+                            "','" + orderdetailview.Rows[i].Cells[4].Value.ToString() +  //price
+                            "','" + orderdetailview.Rows[i].Cells[8].Value.ToString() +  //dp
+                            "','" + pickuptxt.Text +
+                            "','" + payment +
+                            "','" + paymenttxt.Text +
+                            "','" + commentstxt.Text + "','" + orderdetailview.Rows[i].Cells[11].Value.ToString() +  //supid
+                            "','" + orderdetailview.Rows[i].Cells[12].Value.ToString() + "')", aconn);  //supname
+                        mysqlcmd.ExecuteNonQuery();
+                        aconn.Close();
+
+                    }
+                    MessageBox.Show("Product bill Added.");
                 }
-
-                int count = int.Parse(orderdetailview.RowCount.ToString());
-
-                for (int i = 0; i < count; i++)
-                {
-                    StringBuilder pname = new StringBuilder(orderdetailview.Rows[i].Cells[3].Value.ToString());
-                    pname.Replace(@"'", "\\'").Replace(@"\", "\\");
-
-                    aconn.Open();
-                    mysqlcmd = new MySqlCommand("insert into dealing(`orderid`,`productid`,`productname`,`count`,`amount`," +
-                        "`dealerprice`,`pickupdate`,`paymentdone`,`paymentdate`,`comments`,`supplierid`,`suppliername`)" +
-                        "values ('" + orderdetailview.Rows[i].Cells[1].Value.ToString() + //orderid
-                        "','" + orderdetailview.Rows[i].Cells[2].Value.ToString() +  //proid
-                        "','" + pname + //proname
-                        "','" + orderdetailview.Rows[i].Cells[5].Value.ToString() +  //quantity
-                        "','" + orderdetailview.Rows[i].Cells[4].Value.ToString() +  //price
-                        "','" + orderdetailview.Rows[i].Cells[8].Value.ToString() +  //dp
-                        "','" + pickuptxt.Text +
-                        "'," + payment +
-                        ",'" + paymenttxt.Text +
-                        "','" + commentstxt.Text +
-                        "','" + orderdetailview.Rows[i].Cells[11].Value.ToString() + //supid
-                        "','" + orderdetailview.Rows[i].Cells[12].Value.ToString() + "'", aconn);  //supname
-                    mysqlcmd.ExecuteNonQuery();
-                    aconn.Close();
-
-                }
-                MessageBox.Show("Product bill Added.");
-
                 //Cursor = Cursors.WaitCursor;
                 //if (supidtxt.Text == "")
                 //{
@@ -237,7 +245,7 @@ namespace Veiled_Kashmir_Admin_Panel
             catch (Exception ex)
             {
                 aconn.Close();
-                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
+                MessageBox.Show("Something happened, please try again.\n\n" + ex.ToString(), "Error!");
             }
             Cursor = Cursors.Arrow;
         }

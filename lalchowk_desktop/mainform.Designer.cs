@@ -532,7 +532,7 @@
             this.zeropnl.Controls.Add(this.zero);
             this.zeropnl.Controls.Add(this.totalordersdel);
             this.zeropnl.Controls.Add(this.homelbl);
-            this.zeropnl.Location = new System.Drawing.Point(0, 0);
+            this.zeropnl.Location = new System.Drawing.Point(19, 417);
             this.zeropnl.Name = "zeropnl";
             this.zeropnl.Size = new System.Drawing.Size(1162, 722);
             this.zeropnl.TabIndex = 44;

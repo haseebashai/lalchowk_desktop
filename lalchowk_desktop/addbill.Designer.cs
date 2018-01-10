@@ -395,7 +395,7 @@
             // 
             this.supbox.Enabled = false;
             this.supbox.FormattingEnabled = true;
-            this.supbox.Location = new System.Drawing.Point(203, 23);
+            this.supbox.Location = new System.Drawing.Point(232, 23);
             this.supbox.Name = "supbox";
             this.supbox.Size = new System.Drawing.Size(216, 21);
             this.supbox.TabIndex = 111;
