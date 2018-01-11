@@ -889,13 +889,17 @@ namespace Veiled_Kashmir_Admin_Panel
                 bsource = new BindingSource();
                 bsource.DataSource = dt;
                 placeddataview.DataSource = bsource;
-                try { 
+                try {
+                    shipbtn.Visible = false;
+                    sendsmsbtn.Visible = false;
+                    cancelbtn.Visible = false;
                 placeddataview.Columns["shipdate"].Visible = false;
                 placeddataview.Columns["deliverdate"].Visible = false;
                 placeddataview.Columns["paymentconfirmed"].Visible = false;
                 placeddataview.Columns["email"].Visible = false;
                 placeddataview.Columns["transanctionid"].Visible = false;
                 placeddataview.Columns["paymenttype"].Visible = false;
+
                 }
                 catch { }
             }

@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bpnl = new System.Windows.Forms.Panel();
+            this.delbtn = new System.Windows.Forms.Button();
             this.dpnl = new System.Windows.Forms.Panel();
             this.temailbtn = new System.Windows.Forms.Button();
             this.pbtn = new MaterialSkin.Controls.MaterialFlatButton();
@@ -44,7 +45,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.emailtxt = new System.Windows.Forms.TextBox();
             this.booksdataview = new System.Windows.Forms.DataGridView();
-            this.delbtn = new System.Windows.Forms.Button();
             this.bpnl.SuspendLayout();
             this.dpnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.booksdataview)).BeginInit();
@@ -61,6 +61,17 @@
             this.bpnl.Size = new System.Drawing.Size(834, 584);
             this.bpnl.TabIndex = 23;
             this.bpnl.Visible = false;
+            // 
+            // delbtn
+            // 
+            this.delbtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.delbtn.Location = new System.Drawing.Point(779, 326);
+            this.delbtn.Name = "delbtn";
+            this.delbtn.Size = new System.Drawing.Size(53, 23);
+            this.delbtn.TabIndex = 37;
+            this.delbtn.Text = "Delete";
+            this.delbtn.UseVisualStyleBackColor = true;
+            this.delbtn.Click += new System.EventHandler(this.delbtn_Click);
             // 
             // dpnl
             // 
@@ -192,17 +203,18 @@
             // 
             // booksdataview
             // 
+            this.booksdataview.AllowUserToAddRows = false;
             this.booksdataview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.booksdataview.BackgroundColor = System.Drawing.Color.White;
             this.booksdataview.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.booksdataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.booksdataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.booksdataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.booksdataview.GridColor = System.Drawing.SystemColors.Control;
             this.booksdataview.Location = new System.Drawing.Point(3, 3);
@@ -211,17 +223,6 @@
             this.booksdataview.TabIndex = 21;
             this.booksdataview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.booksdataview_CellClick);
             this.booksdataview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.booksdataview_CellClick);
-            // 
-            // delbtn
-            // 
-            this.delbtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.delbtn.Location = new System.Drawing.Point(779, 326);
-            this.delbtn.Name = "delbtn";
-            this.delbtn.Size = new System.Drawing.Size(53, 23);
-            this.delbtn.TabIndex = 37;
-            this.delbtn.Text = "Delete";
-            this.delbtn.UseVisualStyleBackColor = true;
-            this.delbtn.Click += new System.EventHandler(this.delbtn_Click);
             // 
             // books
             // 

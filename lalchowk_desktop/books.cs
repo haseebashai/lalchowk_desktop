@@ -89,6 +89,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 
                 if (email == "")
                 {
+                    emailtxt.Text = "New customer";
                 }
                 else
                 {
@@ -104,7 +105,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     }
                     dpnl.Visible = true;
                 }
-              
+                dpnl.Visible = true;
             }
         }
 
@@ -148,7 +149,7 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             try
             {
-                if (id == null || email=="")
+                if (id == null)
                 {
                     MessageBox.Show("Select a request first.", "Error!");
                 }
