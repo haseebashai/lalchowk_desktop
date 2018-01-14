@@ -477,26 +477,27 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void bgworker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-
-            if (dt.Rows.Count == 0)
+            try
             {
-                ipnl.Visible = false;
-                descpnl.Visible = false;
-                upbtn.Visible = false;
-                listbtn.Enabled = true;
-                loadinglbl.Visible = false;
-                MessageBox.Show("Zero rows returned.\n\n- Please make sure that category selected is final.\n- Supplier or Product ID is correct.", "Error!");
+                if (dt.Rows.Count == 0)
+                {
+                    ipnl.Visible = false;
+                    descpnl.Visible = false;
+                    upbtn.Visible = false;
+                    listbtn.Enabled = true;
+                    loadinglbl.Visible = false;
+                    MessageBox.Show("Zero rows returned.\n\n- Please make sure that category selected is final.\n- Supplier or Product ID is correct.", "Error!");
 
-            }
-            else
-            {
-                inventorydatagridview.DataSource = bsource;
-                ipnl.Visible = true;
-                upbtn.Visible = true;
-                listbtn.Enabled = true;
-                loadinglbl.Visible = false;
-            }
-
+                }
+                else
+                {
+                    inventorydatagridview.DataSource = bsource;
+                    ipnl.Visible = true;
+                    upbtn.Visible = true;
+                    listbtn.Enabled = true;
+                    loadinglbl.Visible = false;
+                }
+            }catch { }
         }    
 
         private void readinventory()

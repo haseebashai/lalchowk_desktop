@@ -62,6 +62,8 @@
             this.paymenttxt = new System.Windows.Forms.TextBox();
             this.loadinglbl = new System.Windows.Forms.Label();
             this.supbox = new System.Windows.Forms.ComboBox();
+            this.contacttxt = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.closebtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderdetailview)).BeginInit();
             this.SuspendLayout();
@@ -184,7 +186,6 @@
             // 
             // utxt
             // 
-            this.utxt.Enabled = false;
             this.utxt.Location = new System.Drawing.Point(85, 518);
             this.utxt.Name = "utxt";
             this.utxt.Size = new System.Drawing.Size(204, 20);
@@ -192,7 +193,6 @@
             // 
             // otxt
             // 
-            this.otxt.Enabled = false;
             this.otxt.Location = new System.Drawing.Point(85, 466);
             this.otxt.Name = "otxt";
             this.otxt.Size = new System.Drawing.Size(204, 20);
@@ -400,12 +400,31 @@
             this.supbox.Size = new System.Drawing.Size(216, 21);
             this.supbox.TabIndex = 111;
             // 
+            // contacttxt
+            // 
+            this.contacttxt.Location = new System.Drawing.Point(85, 622);
+            this.contacttxt.Name = "contacttxt";
+            this.contacttxt.Size = new System.Drawing.Size(204, 20);
+            this.contacttxt.TabIndex = 113;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(82, 605);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(44, 13);
+            this.label2.TabIndex = 112;
+            this.label2.Text = "Contact";
+            // 
             // addbill
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(671, 661);
+            this.Controls.Add(this.contacttxt);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.supbox);
             this.Controls.Add(this.orderdetailview);
             this.Controls.Add(this.no);
@@ -487,5 +506,7 @@
         private System.Windows.Forms.TextBox paymenttxt;
         private System.Windows.Forms.Label loadinglbl;
         private System.Windows.Forms.ComboBox supbox;
+        private System.Windows.Forms.TextBox contacttxt;
+        private System.Windows.Forms.Label label2;
     }
 }

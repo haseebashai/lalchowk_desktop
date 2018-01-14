@@ -135,6 +135,12 @@
     <Compile Include="addcategories.Designer.cs">
       <DependentUpon>addcategories.cs</DependentUpon>
     </Compile>
+    <Compile Include="addorder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addorder.Designer.cs">
+      <DependentUpon>addorder.cs</DependentUpon>
+    </Compile>
     <Compile Include="apphomepage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -328,6 +334,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="addcategories.resx">
       <DependentUpon>addcategories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="addorder.resx">
+      <DependentUpon>addorder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="apphomepage.resx">
       <DependentUpon>apphomepage.cs</DependentUpon>
@@ -533,6 +542,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\arrow.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\upload %281%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

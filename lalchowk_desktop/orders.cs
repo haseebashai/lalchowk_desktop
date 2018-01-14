@@ -18,9 +18,11 @@ namespace Veiled_Kashmir_Admin_Panel
         String orderid,email, addressid,cmd, productid, productname, price, quantity, size,dealerprice,shipping, filename,amount,ordervar;
         MySqlDataReader dr,dr1;
         DataTable dt,dt1,dt2,dt3;
-        MySqlCommand mysqlcmd;
+        MySqlCommand mysqlcmd,mysqlcmd1;
         MySqlDataAdapter adap,adap1;
         MySqlConnection conn =new MySqlConnection("SERVER = 182.50.133.78; DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah");
+        MySqlConnection aconn = new MySqlConnection("SERVER=182.50.133.78;DATABASE=lalchowk_ac;USER=lalchowkac;PASSWORD=Lalchowk@123uzmah");
+
         BindingSource bsource;
         MySqlCommandBuilder cmdbl;
         PictureBox loading = new PictureBox();
@@ -171,7 +173,7 @@ namespace Veiled_Kashmir_Admin_Panel
         private void billbtn_Click(object sender, EventArgs e)
         {
            
-                addbill ab = new addbill(orderlbl.Text, email, amountlbl.Text);
+                addbill ab = new addbill(orderlbl.Text, email, amountlbl.Text,contactlbl.Text);
                 ab.ShowDialog();
                 productid = null;
             
@@ -271,6 +273,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 orderdetailview.Visible = false;
                 dpnl.Visible = false;
                 loadinglbl.Visible = true;
+                billlbl.Visible = false;
 
                 if (e.RowIndex >= 0)
                 {
@@ -356,6 +359,33 @@ namespace Veiled_Kashmir_Admin_Panel
                     obj.closeConnection();
                     details.RunWorkerAsync();
 
+                    BackgroundWorker bill = new BackgroundWorker();
+                    bill.DoWork += (o, a) => 
+                    {
+                        try
+                        {
+                            aconn.Open();
+                            mysqlcmd1 = new MySqlCommand("select count(orderid) from lalchowk_ac.billing where orderid='"+orderid+"'", aconn);
+                            dr = mysqlcmd1.ExecuteReader();
+                            dr.Read();
+                            int count = int.Parse(dr[0].ToString());
+                           
+                            aconn.Close();
+
+                            a.Result = count;
+                        }catch { aconn.Close(); }
+
+                    };
+                    bill.RunWorkerCompleted += (o, b) => 
+                    {
+                        int count = (int)b.Result;
+
+                        if (count > 0)
+                        {
+                            billlbl.Visible = true;
+                        }
+                    };
+                    bill.RunWorkerAsync();
 
                 }
 

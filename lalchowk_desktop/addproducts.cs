@@ -1033,7 +1033,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     {
                         desc="'"+descr+"'";
                     }
-                    MessageBox.Show(desc);
+                   
                     //if ( || dname5txt.Text == "" || dname5.Text == "")
                     //{
                     if (s == null || catbox.Text == "")

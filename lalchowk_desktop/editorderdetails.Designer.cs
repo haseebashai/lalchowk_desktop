@@ -46,6 +46,8 @@
             this.add1txt = new System.Windows.Forms.TextBox();
             this.updbtn = new System.Windows.Forms.Button();
             this.titlelbl = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.statustxt = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // nametxt
@@ -67,7 +69,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(321, 243);
+            this.label2.Location = new System.Drawing.Point(234, 243);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(48, 13);
             this.label2.TabIndex = 3;
@@ -75,7 +77,7 @@
             // 
             // shiptxt
             // 
-            this.shiptxt.Location = new System.Drawing.Point(321, 262);
+            this.shiptxt.Location = new System.Drawing.Point(234, 262);
             this.shiptxt.Name = "shiptxt";
             this.shiptxt.Size = new System.Drawing.Size(120, 20);
             this.shiptxt.TabIndex = 7;
@@ -199,6 +201,22 @@
             this.titlelbl.TabIndex = 17;
             this.titlelbl.Text = "Name";
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(406, 243);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(37, 13);
+            this.label9.TabIndex = 18;
+            this.label9.Text = "Status";
+            // 
+            // statustxt
+            // 
+            this.statustxt.Location = new System.Drawing.Point(406, 262);
+            this.statustxt.Name = "statustxt";
+            this.statustxt.Size = new System.Drawing.Size(120, 20);
+            this.statustxt.TabIndex = 19;
+            // 
             // editorderdetails
             // 
             this.AcceptButton = this.updbtn;
@@ -206,6 +224,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(628, 462);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.statustxt);
             this.Controls.Add(this.titlelbl);
             this.Controls.Add(this.updbtn);
             this.Controls.Add(this.label8);
@@ -252,5 +272,7 @@
         private System.Windows.Forms.TextBox add1txt;
         private System.Windows.Forms.Button updbtn;
         private System.Windows.Forms.Label titlelbl;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox statustxt;
     }
 }

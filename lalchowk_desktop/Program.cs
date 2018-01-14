@@ -119,7 +119,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 {
                     MySqlCommand cmd = new MySqlCommand(command, conn);
                     count = int.Parse(cmd.ExecuteScalar() + "");
-                    this.closeConnection();
+                //    this.closeConnection();
                     return (count);
 
                 }

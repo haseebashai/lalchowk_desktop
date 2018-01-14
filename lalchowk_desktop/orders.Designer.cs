@@ -60,6 +60,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.address1lbl = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.billlbl = new System.Windows.Forms.Label();
             this.orderdetailview = new System.Windows.Forms.DataGridView();
             this.ordergridview = new System.Windows.Forms.DataGridView();
             this.loadinglbl = new System.Windows.Forms.Label();
@@ -207,6 +208,7 @@
             this.dpnl.Controls.Add(this.label9);
             this.dpnl.Controls.Add(this.address1lbl);
             this.dpnl.Controls.Add(this.panel4);
+            this.dpnl.Controls.Add(this.billlbl);
             this.dpnl.Location = new System.Drawing.Point(3, 374);
             this.dpnl.Name = "dpnl";
             this.dpnl.Size = new System.Drawing.Size(1156, 238);
@@ -415,6 +417,18 @@
             this.panel4.Size = new System.Drawing.Size(1, 178);
             this.panel4.TabIndex = 14;
             // 
+            // billlbl
+            // 
+            this.billlbl.AutoSize = true;
+            this.billlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.billlbl.ForeColor = System.Drawing.Color.Blue;
+            this.billlbl.Location = new System.Drawing.Point(988, 221);
+            this.billlbl.Name = "billlbl";
+            this.billlbl.Size = new System.Drawing.Size(68, 15);
+            this.billlbl.TabIndex = 29;
+            this.billlbl.Text = "Bills added";
+            this.billlbl.Visible = false;
+            // 
             // orderdetailview
             // 
             this.orderdetailview.AllowUserToAddRows = false;
@@ -535,5 +549,6 @@
         private System.Windows.Forms.Button updbtn;
         private System.Windows.Forms.Label loadinglbl;
         private System.Windows.Forms.Button deupdbtn;
+        private System.Windows.Forms.Label billlbl;
     }
 }

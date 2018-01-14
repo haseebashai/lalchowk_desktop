@@ -22,10 +22,11 @@ namespace Veiled_Kashmir_Admin_Panel
 
 
 
-        public addbill(string orderlbl, string email, string amount)
+        public addbill(string orderlbl, string email, string amount,string contact)
         {
             InitializeComponent();
             otxt.Text = orderlbl;
+            contacttxt.Text = contact;
             addprobtn.Enabled = false;
             BackgroundWorker orderdetails = new BackgroundWorker();
             orderdetails.DoWork += (o, a) => 
@@ -121,7 +122,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 aconn.Open();
                 mysqlcmd = new MySqlCommand("insert into billing(`orderid`, `user`, `amount`,`deliverydate`,`billno`) values ('" + otxt.Text + "','" + utxt.Text + "','" + atxt.Text + "','" + dtxt.Text + "','bill" + btxt.Text + "')", aconn);
                 mysqlcmd.ExecuteNonQuery();
-                mysqlcmd = new MySqlCommand("insert into deliveries(`orderid`, `email`, `amount`,`status`,`date`) values ('" + otxt.Text + "','" + utxt.Text + "','" + atxt.Text + "','Delivered','" + dtxt.Text + "')", aconn);
+                mysqlcmd = new MySqlCommand("insert into deliveries(`orderid`, `email`, `amount`,`status`,`date`,`contact`) values ('" + otxt.Text + "','" + utxt.Text + "','" + atxt.Text + "','Delivered','" + dtxt.Text + "','"+contacttxt.Text+"')", aconn);
                 mysqlcmd.ExecuteNonQuery();
                 aconn.Close();
 
@@ -212,6 +213,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
                     }
                     MessageBox.Show("Product bill Added.");
+                    addprobtn.Enabled = false;
                 }
                 //Cursor = Cursors.WaitCursor;
                 //if (supidtxt.Text == "")

@@ -704,6 +704,21 @@ namespace Veiled_Kashmir_Admin_Panel
             rcountlbl.Visible = false;
         }
 
+        private void addorderbtn_Click(object sender, EventArgs e)
+        {
+            dialogcontainer dg = new dialogcontainer();
+            dg.Size = new Size(950, 700);
+            addorder ao= new addorder(dg);
+            ao.TopLevel = false;
+            dg.dialogpnl.Controls.Add(ao);
+            ao.loadingdg();
+            dg.Text = "Add new order";
+
+
+            dg.Show();
+            ao.Show();
+        }
+
         public void loadingnormal()
         {
 
