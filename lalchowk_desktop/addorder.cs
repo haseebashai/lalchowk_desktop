@@ -85,6 +85,8 @@ namespace Veiled_Kashmir_Admin_Panel
                             { MessageBox.Show(ex.ToString()); obj.closeConnection(); }
                         }
                         MessageBox.Show("Order added successfully.", "Success.");
+                        pidtxt.Text = "";
+                        pidtxt.Visible = false;
                     }
                 }
             }
