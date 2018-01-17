@@ -16,7 +16,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         MySqlDataAdapter adap;
         DataTable dt;
-        MySqlConnection con = new MySqlConnection("SERVER=182.50.133.78;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah");
+        MySqlConnection con = new MySqlConnection("SERVER=182.50.133.78;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah;Convert Zero Datetime=True");
         DBConnect obj = new DBConnect();
         MySqlDataReader dr;
 
