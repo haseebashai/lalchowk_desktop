@@ -66,6 +66,10 @@
             this.loadinglbl = new System.Windows.Forms.Label();
             this.formlbl = new System.Windows.Forms.Label();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
+            this.ordttxt = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.ordidtxt = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.orderpnl.SuspendLayout();
             this.dpnl.SuspendLayout();
@@ -75,6 +79,10 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.ordidtxt);
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.ordttxt);
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.delbtn);
             this.panel1.Controls.Add(this.orlbl);
             this.panel1.Controls.Add(this.label12);
@@ -125,16 +133,17 @@
             // 
             // statustxt
             // 
-            this.statustxt.Location = new System.Drawing.Point(713, 22);
+            this.statustxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.statustxt.Location = new System.Drawing.Point(842, 22);
             this.statustxt.Name = "statustxt";
-            this.statustxt.Size = new System.Drawing.Size(215, 20);
+            this.statustxt.Size = new System.Drawing.Size(115, 20);
             this.statustxt.TabIndex = 9;
             this.statustxt.TextChanged += new System.EventHandler(this.statustxt_TextChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(710, 5);
+            this.label3.Location = new System.Drawing.Point(839, 5);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(40, 13);
             this.label3.TabIndex = 8;
@@ -142,16 +151,17 @@
             // 
             // paymenttxt
             // 
-            this.paymenttxt.Location = new System.Drawing.Point(441, 22);
+            this.paymenttxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.paymenttxt.Location = new System.Drawing.Point(334, 22);
             this.paymenttxt.Name = "paymenttxt";
-            this.paymenttxt.Size = new System.Drawing.Size(215, 20);
+            this.paymenttxt.Size = new System.Drawing.Size(157, 20);
             this.paymenttxt.TabIndex = 7;
             this.paymenttxt.TextChanged += new System.EventHandler(this.paymenttxt_TextChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(438, 5);
+            this.label4.Location = new System.Drawing.Point(331, 5);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(38, 13);
             this.label4.TabIndex = 6;
@@ -161,7 +171,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Location = new System.Drawing.Point(178, 6);
+            this.label2.Location = new System.Drawing.Point(171, 6);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 13);
             this.label2.TabIndex = 2;
@@ -169,9 +179,10 @@
             // 
             // emailtxt
             // 
-            this.emailtxt.Location = new System.Drawing.Point(179, 22);
+            this.emailtxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.emailtxt.Location = new System.Drawing.Point(172, 22);
             this.emailtxt.Name = "emailtxt";
-            this.emailtxt.Size = new System.Drawing.Size(215, 20);
+            this.emailtxt.Size = new System.Drawing.Size(136, 20);
             this.emailtxt.TabIndex = 1;
             this.emailtxt.TextChanged += new System.EventHandler(this.emailtxt_TextChanged);
             // 
@@ -485,6 +496,42 @@
             this.bgworker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker_DoWork);
             this.bgworker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker_RunWorkerCompleted);
             // 
+            // ordttxt
+            // 
+            this.ordttxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.ordttxt.Location = new System.Drawing.Point(680, 22);
+            this.ordttxt.Name = "ordttxt";
+            this.ordttxt.Size = new System.Drawing.Size(135, 20);
+            this.ordttxt.TabIndex = 15;
+            this.ordttxt.TextChanged += new System.EventHandler(this.ordttxt_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(677, 5);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(62, 13);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Order Date:";
+            // 
+            // ordidtxt
+            // 
+            this.ordidtxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.ordidtxt.Location = new System.Drawing.Point(517, 22);
+            this.ordidtxt.Name = "ordidtxt";
+            this.ordidtxt.Size = new System.Drawing.Size(135, 20);
+            this.ordidtxt.TabIndex = 17;
+            this.ordidtxt.TextChanged += new System.EventHandler(this.ordidtxt_TextChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(514, 5);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(50, 13);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "Order ID:";
+            // 
             // orders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -550,5 +597,9 @@
         private System.Windows.Forms.Label loadinglbl;
         private System.Windows.Forms.Button deupdbtn;
         private System.Windows.Forms.Label billlbl;
+        private System.Windows.Forms.TextBox ordidtxt;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox ordttxt;
+        private System.Windows.Forms.Label label1;
     }
 }

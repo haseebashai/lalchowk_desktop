@@ -27,6 +27,20 @@ namespace Veiled_Kashmir_Admin_Panel
         MySqlCommandBuilder cmdbl;
         PictureBox loading = new PictureBox();
 
+        private void ordidtxt_TextChanged(object sender, EventArgs e)
+        {
+            DataView dv = new DataView(dt);
+            dv.RowFilter = string.Format("convert([orderid],System.String) LIKE '%{0}%'", ordidtxt.Text);
+            ordergridview.DataSource = dv;
+        }
+
+        private void ordttxt_TextChanged(object sender, EventArgs e)
+        {
+            DataView dv = new DataView(dt);
+            dv.RowFilter = string.Format("convert([timestamp],System.String) LIKE '%{0}%'", ordttxt.Text);
+            ordergridview.DataSource = dv;
+        }
+
         private dialogcontainer dg = null;
         private container hp = null;
 
