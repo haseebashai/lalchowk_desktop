@@ -52,6 +52,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 contxt.Text = arg[6] as String;
                 citytxt.Text = arg[7] as String;
                 statustxt.Text = arg[8] as string;
+                counttxt.Text = arg[9] as string;
 
             }
             catch (Exception ex) 
@@ -66,7 +67,7 @@ namespace Veiled_Kashmir_Admin_Panel
             {
                 string orderid = e.Argument as string;
                
-                dr = obj.Query("select amount,shipping,name,address1,address2,pincode,contact,city,status from orders where orderid='" + orderid + "'");
+                dr = obj.Query("select amount,shipping,name,address1,address2,pincode,contact,city,status,itemcount from orders where orderid='" + orderid + "'");
                 dr.Read();
                 string amount = dr[0].ToString();
                 string shipping = dr[1].ToString();
@@ -77,8 +78,9 @@ namespace Veiled_Kashmir_Admin_Panel
                 string con = dr[6].ToString();
                 string city = dr[7].ToString();
                 string status = dr[8].ToString();
+                string count = dr[9].ToString();
                 obj.closeConnection();
-                object[] arg = {amount,shipping,name,add1,add2,pin,con,city,status};
+                object[] arg = {amount,shipping,name,add1,add2,pin,con,city,status,count};
               
                 e.Result = arg;
 
@@ -98,7 +100,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     Cursor = Cursors.WaitCursor;
 
                     string cmd = "update orders set amount='" + amtxt.Text + "',shipping='" + shiptxt.Text + "',name='" + nametxt.Text + "',address1='" + add1txt.Text + "'" +
-                        ",address2='" + add2txt.Text + "',pincode='" + pintxt.Text + "',contact='" + contxt.Text + "',city='" + citytxt.Text + "',status='"+statustxt.Text+"' where orderid='" + id + "'";
+                        ",address2='" + add2txt.Text + "',pincode='" + pintxt.Text + "',contact='" + contxt.Text + "',city='" + citytxt.Text + "',status='"+statustxt.Text+"',itemcount='"+counttxt.Text+"' where orderid='" + id + "'";
                     obj.nonQuery(cmd);
                     Cursor = Cursors.Arrow;
                     MessageBox.Show("Updated.");

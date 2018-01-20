@@ -48,6 +48,8 @@
             this.titlelbl = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.statustxt = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.counttxt = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // nametxt
@@ -204,7 +206,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(406, 243);
+            this.label9.Location = new System.Drawing.Point(234, 320);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(37, 13);
             this.label9.TabIndex = 18;
@@ -212,10 +214,26 @@
             // 
             // statustxt
             // 
-            this.statustxt.Location = new System.Drawing.Point(406, 262);
+            this.statustxt.Location = new System.Drawing.Point(234, 339);
             this.statustxt.Name = "statustxt";
             this.statustxt.Size = new System.Drawing.Size(120, 20);
             this.statustxt.TabIndex = 19;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(396, 243);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(58, 13);
+            this.label10.TabIndex = 20;
+            this.label10.Text = "Item Count";
+            // 
+            // counttxt
+            // 
+            this.counttxt.Location = new System.Drawing.Point(396, 262);
+            this.counttxt.Name = "counttxt";
+            this.counttxt.Size = new System.Drawing.Size(130, 20);
+            this.counttxt.TabIndex = 21;
             // 
             // editorderdetails
             // 
@@ -224,6 +242,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(628, 462);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.counttxt);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.statustxt);
             this.Controls.Add(this.titlelbl);
@@ -274,5 +294,7 @@
         private System.Windows.Forms.Label titlelbl;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox statustxt;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox counttxt;
     }
 }

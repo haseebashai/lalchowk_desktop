@@ -132,7 +132,6 @@ namespace Veiled_Kashmir_Admin_Panel
             ordergridview.Columns["deliverdate"].Visible = false;
             ordergridview.Columns["paymentconfirmed"].Visible = false;
             ordergridview.Columns["email"].Visible = false;
-            ordergridview.Columns["transanctionid"].Visible = false;
             ordergridview.Columns["paymenttype"].Visible = false;
             orlbl.Text = ordervar;
         }
@@ -392,12 +391,16 @@ namespace Veiled_Kashmir_Admin_Panel
                     };
                     bill.RunWorkerCompleted += (o, b) => 
                     {
-                        int count = (int)b.Result;
-
-                        if (count > 0)
+                        try
                         {
-                            billlbl.Visible = true;
-                        }
+                            int count = (int)b.Result;
+
+                            if (count > 0)
+                            {
+                                billlbl.Visible = true;
+                            }
+                            else { }
+                        }catch { }
                     };
                     bill.RunWorkerAsync();
 
