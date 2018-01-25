@@ -54,17 +54,20 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void bgworker_DoWork(object sender, DoWorkEventArgs e)
         {
-            
-            readfirst();
+            try
+            {
+                readfirst();
 
-            dr = obj.Query("select distinct concat(supplierid,':  ',name) as name from suppliers");
-            DataTable dt = new DataTable();
-            dt.Columns.Add("name", typeof(String));
-            dt.Load(dr);
-            obj.closeConnection();
-            
-            supplierlist.DataSource = dt;
+                dr = obj.Query("select distinct concat(supplierid,':  ',name) as name from suppliers");
+                DataTable dt = new DataTable();
+                dt.Columns.Add("name", typeof(String));
+                dt.Load(dr);
+                obj.closeConnection();
 
+                supplierlist.DataSource = dt;
+               
+            }
+            catch { obj.closeConnection(); }
 
         }
 
@@ -72,10 +75,10 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             
             firstcat.DisplayMember = "categoryname";
-           // firstcat.SelectedIndex = -1;
+       //     firstcat.SelectedIndex = -1;
            
             supplierlist.DisplayMember = "name";
-            supplierlist.SelectedIndex = -1;        
+            supplierlist.SelectedIndex = -1;
             addppnl.Enabled = true;
             dg.loadingimage.Visible = false;
             dg.lbl.ForeColor = SystemColors.Highlight;
@@ -138,7 +141,7 @@ namespace Veiled_Kashmir_Admin_Panel
             catch (Exception ex)
             {
                 //obj.closeConnection();
-                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
+             //   MessageBox.Show("Something happened, please try again.\n\n" + ex.ToString(), "Error!");
             }
         }
 
@@ -156,7 +159,7 @@ namespace Veiled_Kashmir_Admin_Panel
             obj.closeConnection();
            
             seccat.DataSource = dt;
-         //       seccat.SelectedIndex = -1;
+            //    seccat.SelectedIndex = -1;
                 seccat.DisplayMember = "categoryname";
             }
             catch (Exception ex)
