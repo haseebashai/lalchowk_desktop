@@ -64,6 +64,7 @@
             this.supbox = new System.Windows.Forms.ComboBox();
             this.contacttxt = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.billlbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.closebtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderdetailview)).BeginInit();
             this.SuspendLayout();
@@ -307,6 +308,8 @@
             // yes
             // 
             this.yes.AutoSize = true;
+            this.yes.Checked = true;
+            this.yes.CheckState = System.Windows.Forms.CheckState.Checked;
             this.yes.ForeColor = System.Drawing.Color.Black;
             this.yes.Location = new System.Drawing.Point(82, 280);
             this.yes.Name = "yes";
@@ -417,12 +420,25 @@
             this.label2.TabIndex = 112;
             this.label2.Text = "Contact";
             // 
+            // billlbl
+            // 
+            this.billlbl.AutoSize = true;
+            this.billlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.billlbl.ForeColor = System.Drawing.Color.Red;
+            this.billlbl.Location = new System.Drawing.Point(468, 364);
+            this.billlbl.Name = "billlbl";
+            this.billlbl.Size = new System.Drawing.Size(105, 15);
+            this.billlbl.TabIndex = 114;
+            this.billlbl.Text = "Bill already added";
+            this.billlbl.Visible = false;
+            // 
             // addbill
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(671, 661);
+            this.Controls.Add(this.billlbl);
             this.Controls.Add(this.contacttxt);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.supbox);
@@ -508,5 +524,6 @@
         private System.Windows.Forms.ComboBox supbox;
         private System.Windows.Forms.TextBox contacttxt;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label billlbl;
     }
 }

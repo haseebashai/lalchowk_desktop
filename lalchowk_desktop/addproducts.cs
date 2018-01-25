@@ -72,7 +72,7 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             
             firstcat.DisplayMember = "categoryname";
-            firstcat.SelectedIndex = -1;
+           // firstcat.SelectedIndex = -1;
            
             supplierlist.DisplayMember = "name";
             supplierlist.SelectedIndex = -1;        
@@ -156,7 +156,7 @@ namespace Veiled_Kashmir_Admin_Panel
             obj.closeConnection();
            
             seccat.DataSource = dt;
-                seccat.SelectedIndex = -1;
+         //       seccat.SelectedIndex = -1;
                 seccat.DisplayMember = "categoryname";
             }
             catch (Exception ex)
@@ -181,7 +181,7 @@ namespace Veiled_Kashmir_Admin_Panel
             dt.Load(dr);
             obj.closeConnection();
                 thirdcat.DataSource = dt;
-                thirdcat.SelectedIndex = -1;
+            //    thirdcat.SelectedIndex = -1;
                 thirdcat.DisplayMember = "categoryname";
             
                

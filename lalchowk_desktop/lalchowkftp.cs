@@ -185,12 +185,14 @@ namespace Veiled_Kashmir_Admin_Panel
             {
                 DataGridViewRow row = this.ftpdataview.Rows[e.RowIndex];
                 pathurl = row.Cells["path"].Value.ToString();
-                filetxt.Text = pathurl.Split('/').Last();
-                string ftpurl = pathurl.Replace("ftp://", "http://").Replace("httpdocs/", "");             
-                ftppic.ImageLocation = ftpurl;
-                string ext = Path.GetExtension(pathurl);
+                string ext = Path.GetExtension(pathurl);            
+                
                 if (ext != "")
                 {
+                    filetxt.Text = pathurl.Split('/').Last();
+                    string ftpurl = pathurl.Replace("ftp://", "http://").Replace("httpdocs/", "");
+                    ftppic.ImageLocation = ftpurl;
+
                     NetworkCredential credentials = new NetworkCredential("Lalchowk", "Lalchowk@123");
                     FtpWebRequest sizeRequest = (FtpWebRequest)WebRequest.Create(pathurl);
                     sizeRequest.Credentials = credentials;
@@ -200,6 +202,9 @@ namespace Veiled_Kashmir_Admin_Panel
                     filesize.ForeColor = SystemColors.Highlight;
                     filesize.Location = new Point(845, 450);
                     filesize.Visible = true;
+                }else
+                {
+                    dirtxt.Text= pathurl.Split('/').Last(); 
                 }
 
 
@@ -281,7 +286,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
 
                     using (Stream ftpStream = request.GetResponse().GetResponseStream())
-                    using (Stream fileStream = File.Create(@downloadpath + filename))
+                    using (Stream fileStream = File.Create(downloadpath + "\\" + filename))
                     {
                         byte[] buffer = new byte[10240];
                         int read;

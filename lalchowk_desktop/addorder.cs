@@ -59,7 +59,8 @@ namespace Veiled_Kashmir_Admin_Panel
                         string cmd = "INSERT INTO orders(`email`, `amount`,`timestamp`,`shipping`,`paymenttype`, `transanctionid`,`itemcount`,`status`,`name`,`address1`,`address2`,`contact`,`pincode`,`city`,`loyaltybonus`) values ('" + email + "','" + amounttxt.Text
                             + "',DATE_ADD(CURRENT_TIMESTAMP, INTERVAL 750 MINUTE),'" + shiptxt.Text + "','Cash on Delivery','SW','" + counttxt.Text + "','" + statustxt.Text + "','" + nametxt.Text + "','" + add1txt.Text + "','" + add2txt.Text + "','" + contacttxt.Text + "','" + pintxt.Text + "','" + citytxt.Text + "','" + loyaltxt.Text + "')";
                         obj.nonQuery(cmd);
-                        int orderid = obj.Count("SELECT LAST_INSERT_ID()");
+                    //    int orderid = obj.Count("SELECT LAST_INSERT_ID()");
+                      
                         obj.closeConnection();
                         pidtxt.Text = pidtxt.Text.Remove(pidtxt.Text.Length - 1);
                         string[] pids = pidtxt.Text.Split(',');
@@ -75,11 +76,13 @@ namespace Veiled_Kashmir_Admin_Panel
                                 string dp = dr[3].ToString();
                                 string pic = dr[4].ToString();
                                 obj.closeConnection();
-                                StringBuilder pname = new StringBuilder(name);
-                                pname.Replace(@"'", "\'").Replace(@"\", "\\");
-                                string cmd1 = "insert into orderdetails(`orderid`,`productid`,`productname`,`price`,`quantity`,`discount`,`mrp`,`dealerprice`,`size`,`picture`)values('" + orderid + "','" + pid + "','" + pname + "','" + price + "','1','0','" + mrp + "','" + dp + "',NULL,'" + pic + "')";
-                                obj.nonQuery(cmd1);
 
+                              
+                                StringBuilder pname = new StringBuilder(name);
+                                pname.Replace(@"'", "\\'").Replace(@"\", "\\");
+                                string cmd1 = "insert into orderdetails(`orderid`,`productid`,`productname`,`price`,`quantity`,`discount`,`mrp`,`dealerprice`,`size`,`picture`)values('" + userinfo.orid + "','" + pid + "','" + pname + "','" + price + "','1','0','" + mrp + "','" + dp + "',NULL,'" + pic + "')";
+                                obj.nonQuery(cmd1);
+                               
                             }
                             catch (Exception ex)
                             { MessageBox.Show(ex.ToString()); obj.closeConnection(); }
@@ -87,10 +90,11 @@ namespace Veiled_Kashmir_Admin_Panel
                         MessageBox.Show("Order added successfully.", "Success.");
                         pidtxt.Text = "";
                         pidtxt.Visible = false;
+                        addorderbtn.Enabled = false;
                     }
                 }
             }
-            catch (Exception ex) { MessageBox.Show(ex.Message); obj.closeConnection(); }
+            catch (Exception ex) { MessageBox.Show(ex.Message); obj.closeConnection(); addorderbtn.Enabled = true; }
             Cursor = Cursors.Arrow;
         }
 
@@ -182,6 +186,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 }
                
                 pidtxt.Visible = true;
+                addorderbtn.Enabled = true;
             }catch { }
         }
     }

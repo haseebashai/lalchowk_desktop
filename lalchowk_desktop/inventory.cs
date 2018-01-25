@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.Text.RegularExpressions;
+using System.Net;
+using System.IO;
 
 namespace Veiled_Kashmir_Admin_Panel
 {
@@ -18,13 +20,13 @@ namespace Veiled_Kashmir_Admin_Panel
         String cmd;
         MySqlConnection con;
         MySqlDataAdapter adap;
-   
+
         MySqlDataReader dr;
         DataTable dt;
         MySqlCommandBuilder cmdbl;
         BindingSource bsource;
-      
-        
+
+
 
         private dialogcontainer dg = null;
         private container hp = null;
@@ -53,7 +55,7 @@ namespace Veiled_Kashmir_Admin_Panel
             thirdbox.SelectedIndex = -1;
             supbox.SelectedIndex = -1;
             catidtxt.Text = "";
-          
+
             invpnl.Visible = true;
             spnl.Visible = true;
         }
@@ -90,7 +92,7 @@ namespace Veiled_Kashmir_Admin_Panel
             catch (Exception ex)
             {
                 obj.closeConnection();
-                
+
             }
         }
 
@@ -153,33 +155,37 @@ namespace Veiled_Kashmir_Admin_Panel
 
         }
 
+        string picadd;
         private void inventorydatagridview_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = this.inventorydatagridview.Rows[e.RowIndex];
-                dp.SizeMode = PictureBoxSizeMode.StretchImage;
-                dp.ImageLocation = "http://lalchowk.in/lalchowk/pictures/" + row.Cells["picture"].Value.ToString();
+                //dp.SizeMode = PictureBoxSizeMode.StretchImage;
+                //dp.ImageLocation = "http://lalchowk.in/lalchowk/pictures/" + row.Cells["picture"].Value.ToString();
+                progresspc.Text = "";
+                progresspc.Visible = false;
                 idlbl.Text = row.Cells["productid"].Value.ToString();
-                productlbl.Text = row.Cells["productname"].Value.ToString();              
+                productlbl.Text = row.Cells["productname"].Value.ToString();
                 desctxtbox.Text = row.Cells["description"].Value.ToString();
+                picadd = row.Cells["picture"].Value.ToString();
                 dp.SizeMode = PictureBoxSizeMode.StretchImage;
-                dp.ImageLocation= "http://lalchowk.in/lalchowk/pictures/"+ row.Cells["picture"].Value.ToString();
+                dp.ImageLocation = "http://lalchowk.in/lalchowk/pictures/" + picadd;
                 descpnl.Visible = true;
-               
+
             }
         }
 
-      
+
 
         public static string RemoveSpecialCharacters(string str)
         {
 
             if (!Regex.IsMatch(str, @"[a-zA-Z0-9@#$%&*+\-_(),+':;?.,![\]\s\\/{}]+$"))
             {
-                
+
                 MessageBox.Show("Abnormal Special Character found, Please remove it and proceed.");
-                
+
             }
             return (str);
 
@@ -208,7 +214,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 //s1.Replace("'", "\\'");
                 //s1.Replace("‘", "");
 
-                if (!Regex.IsMatch(desctxtbox.Text, @"^([a-zA-Z0-9@#$%&*+\-_(),+':;?.,![\]\s\\/{}""|]+)$")&& desctxtbox.Text!="")
+                if (!Regex.IsMatch(desctxtbox.Text, @"^([a-zA-Z0-9@#$%&*+\-_(),+':;?.,![\]\s\\/{}""|]+)$") && desctxtbox.Text != "")
                 {
 
                     MessageBox.Show("Abnormal Special Character found, Please remove it and proceed.");
@@ -295,7 +301,7 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             if (secbox.SelectedIndex != -1)
             {
-               
+
                 string id = secbox.Text.Split(':')[0];
                 catidtxt.Text = id;
                 if (supbox.SelectedIndex > 0)
@@ -309,7 +315,7 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             if (thirdbox.SelectedIndex != -1)
             {
-              
+
                 string id = thirdbox.Text.Split(':')[0];
                 catidtxt.Text = id;
                 if (supbox.SelectedIndex > 0)
@@ -324,7 +330,7 @@ namespace Veiled_Kashmir_Admin_Panel
             if (supbox.SelectedIndex != -1)
             {
 
-              
+
                 string id = supbox.Text.Split(':')[0];
                 catidtxt.Text = id;
                 if (supbox.SelectedIndex > 0)
@@ -348,7 +354,7 @@ namespace Veiled_Kashmir_Admin_Panel
             searchlbl.Font = new Font(searchlbl.Font, FontStyle.Regular);
         }
 
-      
+
 
         private void allinvbtn_Click(object sender, EventArgs e)
         {
@@ -359,7 +365,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 con.ConnectionString = "SERVER=182.50.133.78;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah";
                 con.Open();
                 adap = new MySqlDataAdapter("select * from products", con);
-                
+
                 dt = new DataTable();
                 adap.Fill(dt);
                 con.Close();
@@ -382,9 +388,9 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             cat = false;
             proid = true;
-                catsuplbl.Font = new Font(catsuplbl.Font, FontStyle.Regular);
+            catsuplbl.Font = new Font(catsuplbl.Font, FontStyle.Regular);
             catsuplbl.Text = "Cat/Sup ID";
-                plbl.Font = new Font(plbl.Font, FontStyle.Bold);
+            plbl.Font = new Font(plbl.Font, FontStyle.Bold);
             searchlbl.Font = new Font(searchlbl.Font, FontStyle.Regular);
             search = false;
 
@@ -431,7 +437,7 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             descpnl.Visible = false;
             listbtn.Enabled = false;
-            if (catidtxt.Text == "" && pidtxt.Text=="" && searchtxt.Text=="")
+            if (catidtxt.Text == "" && pidtxt.Text == "" && searchtxt.Text == "")
             {
                 MessageBox.Show("Please select an option first.", "Error!");
                 listbtn.Enabled = true;
@@ -443,16 +449,16 @@ namespace Veiled_Kashmir_Admin_Panel
                     id = catidtxt.Text;
                     loadinglbl.Visible = true;
                     bgworker.RunWorkerAsync();
-                }else if (proid)
+                } else if (proid)
                 {
                     id = pidtxt.Text;
                     loadinglbl.Visible = true;
                     bgworker.RunWorkerAsync();
-                }else if (search)
+                } else if (search)
                 {
                     StringBuilder search = new StringBuilder(searchtxt.Text);
-                        search.Replace(@"'", "\\'").Replace(@"\", "\\");
-                    id = search.ToString() ;
+                    search.Replace(@"'", "\\'").Replace(@"\", "\\");
+                    id = search.ToString();
                     loadinglbl.Visible = true;
                     bgworker.RunWorkerAsync();
                 }
@@ -497,8 +503,100 @@ namespace Veiled_Kashmir_Admin_Panel
                     listbtn.Enabled = true;
                     loadinglbl.Visible = false;
                 }
-            }catch { }
-        }    
+            } catch { }
+        }
+
+        private void dldpic_Click(object sender, EventArgs e)
+        {
+            using (var folderDialog = new FolderBrowserDialog())
+            {
+                if (folderDialog.ShowDialog() == DialogResult.OK)
+                {
+                    dldpic.Enabled = false;
+                    dldpic.Text = "Downloading...";
+                    string downloadpath = folderDialog.SelectedPath;
+
+                    BackgroundWorker pic = new BackgroundWorker();
+                    pic.DoWork += (o, a) =>
+                    {
+                        try
+                        {
+                            string url = "ftp://lalchowk.in/httpdocs/lalchowk/pictures/" + picadd;
+                            string ext = Path.GetExtension(url);
+                            if (ext != "")
+                            {
+
+                                NetworkCredential credentials = new NetworkCredential("Lalchowk", "Lalchowk@123");
+
+                                // Query size of the file to be downloaded
+                                FtpWebRequest sizeRequest = (FtpWebRequest)WebRequest.Create(url);
+                                sizeRequest.Credentials = credentials;
+                                sizeRequest.Method = WebRequestMethods.Ftp.GetFileSize;
+                                long size = sizeRequest.GetResponse().ContentLength / 1000;
+          
+
+
+                                // Download the file
+                                FtpWebRequest request = (FtpWebRequest)WebRequest.Create(url);
+                                request.Credentials = credentials;
+                                request.Timeout = 10000;
+                                request.Method = WebRequestMethods.Ftp.DownloadFile;
+                                string filename = url.Substring(url.LastIndexOf("/") + 1);
+
+
+
+                                using (Stream ftpStream = request.GetResponse().GetResponseStream())
+                                using (Stream fileStream = File.Create(downloadpath + "\\" + filename))
+                                {
+                                    byte[] buffer = new byte[10240];
+                                    int read;
+                                    int total = 0;
+                                    while ((read = ftpStream.Read(buffer, 0, buffer.Length)) > 0)
+                                    {
+                                        fileStream.Write(buffer, 0, read);
+                                        total += read;
+
+                                        progresspc.Invoke(
+                                            (MethodInvoker)delegate { progresspc.Visible = true; progresspc.Text = "(" + total / 1000 + "/" + size + ") KB"; });
+                                    }
+                                }
+                                a.Result = "success";
+                            }
+                           
+
+                        }
+                        catch (Exception ex) { MessageBox.Show(ex.ToString()); a.Result = "fail"; }
+                    };
+
+
+                    pic.RunWorkerCompleted += (o, b) =>
+                    {
+                        try
+                        {
+                            string result = b.Result as string;
+                            if (result == "success")
+                            {
+                                MessageBox.Show("Picture downloaded.");
+                                progresspc.Text = "";
+                                
+                            }
+                            else if (result == "fail")
+                            {
+                                MessageBox.Show("Download failed.");
+                            }
+                           dldpic.Text = "Download";
+                           dldpic.Enabled = true;
+                        }
+                        catch { }
+                    };
+
+                    pic.RunWorkerAsync();
+
+
+                }
+            }         
+        }
+       
 
         private void readinventory()
         {

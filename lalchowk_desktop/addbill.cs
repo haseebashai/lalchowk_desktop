@@ -28,6 +28,38 @@ namespace Veiled_Kashmir_Admin_Panel
             otxt.Text = orderlbl;
             contacttxt.Text = contact;
             addprobtn.Enabled = false;
+
+            BackgroundWorker bill = new BackgroundWorker();
+            bill.DoWork += (o, a) =>
+            {
+                try
+                {
+                    aconn.Open();
+                    drcmd = new MySqlCommand("select count(orderid) from deliveries where orderid='" + orderlbl + "'", aconn);
+                    dr = drcmd.ExecuteReader();
+                    dr.Read();
+                    int count = int.Parse(dr[0].ToString());
+                    aconn.Close();
+                    a.Result = count;
+                }catch { aconn.Close(); }
+            };
+            bill.RunWorkerCompleted += (o, b) =>
+            {
+                try
+                {
+                    int count = (int)b.Result;
+
+                    if (count ==1)
+                    {
+                        billlbl.Visible = true;
+                    }
+                    else { billlbl.Visible = false; }
+                }
+                catch { }
+            };
+            bill.RunWorkerAsync();
+
+
             BackgroundWorker orderdetails = new BackgroundWorker();
             orderdetails.DoWork += (o, a) => 
             {

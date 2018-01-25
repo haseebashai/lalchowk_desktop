@@ -48,6 +48,7 @@
             this.cattxt = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.descpnl = new System.Windows.Forms.Panel();
+            this.dp = new System.Windows.Forms.PictureBox();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
             this.pbar = new System.Windows.Forms.ProgressBar();
             this.refreshlbl = new System.Windows.Forms.Label();
@@ -69,13 +70,14 @@
             this.supbox = new System.Windows.Forms.ComboBox();
             this.thirdbox = new System.Windows.Forms.ComboBox();
             this.secbox = new System.Windows.Forms.ComboBox();
-            this.dp = new System.Windows.Forms.PictureBox();
+            this.dldpic = new System.Windows.Forms.Label();
+            this.progresspc = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.inventorydatagridview)).BeginInit();
             this.ipnl.SuspendLayout();
             this.descpnl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dp)).BeginInit();
             this.invpnl.SuspendLayout();
             this.spnl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dp)).BeginInit();
             this.SuspendLayout();
             // 
             // inventorydatagridview
@@ -261,6 +263,8 @@
             // 
             // descpnl
             // 
+            this.descpnl.Controls.Add(this.progresspc);
+            this.descpnl.Controls.Add(this.dldpic);
             this.descpnl.Controls.Add(this.dp);
             this.descpnl.Controls.Add(this.idlbl);
             this.descpnl.Controls.Add(this.productlbl);
@@ -272,6 +276,14 @@
             this.descpnl.Size = new System.Drawing.Size(883, 203);
             this.descpnl.TabIndex = 42;
             this.descpnl.Visible = false;
+            // 
+            // dp
+            // 
+            this.dp.Location = new System.Drawing.Point(9, 90);
+            this.dp.Name = "dp";
+            this.dp.Size = new System.Drawing.Size(103, 110);
+            this.dp.TabIndex = 39;
+            this.dp.TabStop = false;
             // 
             // bgworker
             // 
@@ -496,13 +508,30 @@
             this.secbox.TabIndex = 0;
             this.secbox.SelectedIndexChanged += new System.EventHandler(this.secbox_SelectedIndexChanged);
             // 
-            // dp
+            // dldpic
             // 
-            this.dp.Location = new System.Drawing.Point(9, 90);
-            this.dp.Name = "dp";
-            this.dp.Size = new System.Drawing.Size(103, 110);
-            this.dp.TabIndex = 39;
-            this.dp.TabStop = false;
+            this.dldpic.AutoSize = true;
+            this.dldpic.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dldpic.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dldpic.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.dldpic.Location = new System.Drawing.Point(114, 182);
+            this.dldpic.Name = "dldpic";
+            this.dldpic.Size = new System.Drawing.Size(55, 13);
+            this.dldpic.TabIndex = 40;
+            this.dldpic.Text = "Download";
+            this.dldpic.Click += new System.EventHandler(this.dldpic_Click);
+            // 
+            // progresspc
+            // 
+            this.progresspc.AutoSize = true;
+            this.progresspc.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.progresspc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.progresspc.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.progresspc.Location = new System.Drawing.Point(118, 155);
+            this.progresspc.Name = "progresspc";
+            this.progresspc.Size = new System.Drawing.Size(0, 13);
+            this.progresspc.TabIndex = 41;
+            this.progresspc.Visible = false;
             // 
             // inventory
             // 
@@ -519,11 +548,11 @@
             this.ipnl.PerformLayout();
             this.descpnl.ResumeLayout(false);
             this.descpnl.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dp)).EndInit();
             this.invpnl.ResumeLayout(false);
             this.invpnl.PerformLayout();
             this.spnl.ResumeLayout(false);
             this.spnl.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dp)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -571,5 +600,7 @@
         private System.Windows.Forms.Label searchlbl;
         private System.Windows.Forms.TextBox searchtxt;
         private System.Windows.Forms.PictureBox dp;
+        private System.Windows.Forms.Label dldpic;
+        private System.Windows.Forms.Label progresspc;
     }
 }

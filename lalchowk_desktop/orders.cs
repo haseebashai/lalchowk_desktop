@@ -41,6 +41,17 @@ namespace Veiled_Kashmir_Admin_Panel
             ordergridview.DataSource = dv;
         }
 
+        private void refresh_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            ordergridview.Enabled = false;
+            orderdetailview.Visible = false;
+            dpnl.Visible = false;
+            billlbl.Visible = false;
+            refresh.Enabled = false;
+            bgworker.RunWorkerAsync();
+        }
+
         private dialogcontainer dg = null;
         private container hp = null;
 
@@ -134,6 +145,9 @@ namespace Veiled_Kashmir_Admin_Panel
             ordergridview.Columns["email"].Visible = false;
             ordergridview.Columns["paymenttype"].Visible = false;
             orlbl.Text = ordervar;
+            refresh.Enabled = true;
+            ordergridview.Enabled = true;
+            Cursor = Cursors.Arrow;
         }
 
 
@@ -337,35 +351,38 @@ namespace Veiled_Kashmir_Admin_Panel
 
                     details.RunWorkerCompleted += (c, d) =>
                     {
-                        orderdetailview.Visible = true;
-                        dpnl.Visible = true;
-                        loadinglbl.Visible = false;
-
-                        BindingSource bsource1 = d.Result as BindingSource;
-                        orderdetailview.DataSource = bsource1;
-                        orderdetailview.Visible = true;
-                        deupdbtn.Visible = true;
-                        int count = int.Parse(orderdetailview.RowCount.ToString());
-
-                        for (int i = 0; i < count; i++)
+                        try
                         {
-                            proname.Items.Add(orderdetailview.Rows[i].Cells[2].Value.ToString() + ":   " + orderdetailview.Rows[i].Cells[3].Value.ToString());
-                        }
-                        if (status == "Delivered")
-                        {
-                            billbtn.Text = "Delivered";
-                            
-                        }else if(status == "Cancelled")
-                        {
-                            billbtn.Text = "Cancelled";
-                           
-                        }
-                        else
-                        {   
-                            billbtn.Text = "Confirm Delivery and Add Bill";
-                           
-                        }
+                            orderdetailview.Visible = true;
+                            dpnl.Visible = true;
+                            loadinglbl.Visible = false;
 
+                            BindingSource bsource1 = d.Result as BindingSource;
+                            orderdetailview.DataSource = bsource1;
+                            orderdetailview.Visible = true;
+                            deupdbtn.Visible = true;
+                            int count = int.Parse(orderdetailview.RowCount.ToString());
+
+                            for (int i = 0; i < count; i++)
+                            {
+                                proname.Items.Add(orderdetailview.Rows[i].Cells[2].Value.ToString() + ":   " + orderdetailview.Rows[i].Cells[3].Value.ToString());
+                            }
+                            if (status == "Delivered")
+                            {
+                                billbtn.Text = "Delivered";
+
+                            }
+                            else if (status == "Cancelled")
+                            {
+                                billbtn.Text = "Cancelled";
+
+                            }
+                            else
+                            {
+                                billbtn.Text = "Confirm Delivery and Add Bill";
+
+                            }
+                        }catch { }
                     };
                     while (details.IsBusy)
                         details.CancelAsync();
@@ -402,6 +419,7 @@ namespace Veiled_Kashmir_Admin_Panel
                             else { }
                         }catch { }
                     };
+                   
                     bill.RunWorkerAsync();
 
                 }

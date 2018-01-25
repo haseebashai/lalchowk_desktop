@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.ordidtxt = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.ordttxt = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.delbtn = new System.Windows.Forms.Button();
             this.orlbl = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -66,19 +70,18 @@
             this.loadinglbl = new System.Windows.Forms.Label();
             this.formlbl = new System.Windows.Forms.Label();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
-            this.ordttxt = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.ordidtxt = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.refresh = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.orderpnl.SuspendLayout();
             this.dpnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.orderdetailview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ordergridview)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.refresh)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.refresh);
             this.panel1.Controls.Add(this.ordidtxt);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.ordttxt);
@@ -98,6 +101,42 @@
             this.panel1.TabIndex = 0;
             this.panel1.Visible = false;
             // 
+            // ordidtxt
+            // 
+            this.ordidtxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.ordidtxt.Location = new System.Drawing.Point(517, 22);
+            this.ordidtxt.Name = "ordidtxt";
+            this.ordidtxt.Size = new System.Drawing.Size(135, 20);
+            this.ordidtxt.TabIndex = 17;
+            this.ordidtxt.TextChanged += new System.EventHandler(this.ordidtxt_TextChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(514, 5);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(50, 13);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "Order ID:";
+            // 
+            // ordttxt
+            // 
+            this.ordttxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.ordttxt.Location = new System.Drawing.Point(680, 22);
+            this.ordttxt.Name = "ordttxt";
+            this.ordttxt.Size = new System.Drawing.Size(135, 20);
+            this.ordttxt.TabIndex = 15;
+            this.ordttxt.TextChanged += new System.EventHandler(this.ordttxt_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(677, 5);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(62, 13);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Order Date:";
+            // 
             // delbtn
             // 
             this.delbtn.FlatAppearance.BorderColor = System.Drawing.Color.Red;
@@ -115,7 +154,7 @@
             this.orlbl.AutoSize = true;
             this.orlbl.BackColor = System.Drawing.Color.Transparent;
             this.orlbl.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.orlbl.Location = new System.Drawing.Point(72, 22);
+            this.orlbl.Location = new System.Drawing.Point(72, 27);
             this.orlbl.Name = "orlbl";
             this.orlbl.Size = new System.Drawing.Size(0, 13);
             this.orlbl.TabIndex = 11;
@@ -125,7 +164,7 @@
             this.label12.AutoSize = true;
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label12.Location = new System.Drawing.Point(3, 22);
+            this.label12.Location = new System.Drawing.Point(3, 27);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(68, 13);
             this.label12.TabIndex = 10;
@@ -496,41 +535,17 @@
             this.bgworker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker_DoWork);
             this.bgworker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker_RunWorkerCompleted);
             // 
-            // ordttxt
+            // refresh
             // 
-            this.ordttxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.ordttxt.Location = new System.Drawing.Point(680, 22);
-            this.ordttxt.Name = "ordttxt";
-            this.ordttxt.Size = new System.Drawing.Size(135, 20);
-            this.ordttxt.TabIndex = 15;
-            this.ordttxt.TextChanged += new System.EventHandler(this.ordttxt_TextChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(677, 5);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 13);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "Order Date:";
-            // 
-            // ordidtxt
-            // 
-            this.ordidtxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.ordidtxt.Location = new System.Drawing.Point(517, 22);
-            this.ordidtxt.Name = "ordidtxt";
-            this.ordidtxt.Size = new System.Drawing.Size(135, 20);
-            this.ordidtxt.TabIndex = 17;
-            this.ordidtxt.TextChanged += new System.EventHandler(this.ordidtxt_TextChanged);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(514, 5);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(50, 13);
-            this.label6.TabIndex = 16;
-            this.label6.Text = "Order ID:";
+            this.refresh.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.refresh;
+            this.refresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.refresh.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.refresh.Location = new System.Drawing.Point(7, 3);
+            this.refresh.Name = "refresh";
+            this.refresh.Size = new System.Drawing.Size(21, 21);
+            this.refresh.TabIndex = 97;
+            this.refresh.TabStop = false;
+            this.refresh.Click += new System.EventHandler(this.refresh_Click);
             // 
             // orders
             // 
@@ -552,6 +567,7 @@
             this.dpnl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.orderdetailview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ordergridview)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.refresh)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -601,5 +617,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox ordttxt;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox refresh;
     }
 }

@@ -26,6 +26,7 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             public static bool loggedin;
             public static String username;
+            public static long orid;
         }
 
 
@@ -78,7 +79,8 @@ namespace Veiled_Kashmir_Admin_Panel
                 {
                     MySqlCommand cmd = new MySqlCommand(command, conn);
                     cmd.ExecuteNonQuery();
-                    this.closeConnection();
+                    userinfo.orid = cmd.LastInsertedId;
+                this.closeConnection();
                 }
 
             }
