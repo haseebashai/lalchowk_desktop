@@ -972,118 +972,127 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             else
             {
-                Cursor = Cursors.WaitCursor;
-                try
+                if (nametxt.Text == "" || pidtxt.Text == "")
                 {
-                    StringBuilder s = new StringBuilder(nametxt.Text);
-                    s.Replace(@"\", @"\\");
-                    s.Replace("'", "\\'");
-                    StringBuilder s1 = new StringBuilder(brandtxt.Text);
-                    s1.Replace(@"\", @"\\");
-                    s1.Replace("'", "\\'");
-                    string brandname = s1.ToString();
-                    StringBuilder s2 = new StringBuilder(desctxt.Text);
-                    s2.Replace(@"\", @"\\");
-                    s2.Replace("'", "\\'");
-                    string descr = s2.ToString();
-
-                    supplierid = supplierlist.Text.Split(':')[0];
-                    string size, dn5, d5, color,bran,desc;
-                    if(sizetxt.Text == "")
-                    {
-                        size = "NULL";
-                    }else
-                    {
-                        size = "'" + sizetxt.Text + "'";
-                    }
-                    if (dname5txt.Text == "")
-                    {
-                        dn5 = "NULL";
-                    }
-                    else
-                    {
-                        dn5 = "'" + dname5txt.Text + "'";
-                    }
-                    if (dname5.Text == "")
-                    {
-                        d5 = "NULL";
-                    }
-                    else
-                    {
-                        d5 = "'" + dname5.Text + "'";
-                    }
-                    if (colourtxt.Text == "")
-                    {
-                        color = "NULL";
-                    }
-                    else
-                    {
-                        color = "'" + colourtxt.Text + "'";
-                    }
-                    if (brandname=="")
-                    {
-                        bran = "NULL";
-                    }
-                    else
-                    {
-                       bran = "'"+brandname+"'";
-                    }
-                    if (descr == "")
-                    {
-                        desc = "NULL";
-                    }
-                    else
-                    {
-                        desc="'"+descr+"'";
-                    }
-                   
-                    //if ( || dname5txt.Text == "" || dname5.Text == "")
-                    //{
-                    if (s == null || catbox.Text == "")
-                    {
-                        MessageBox.Show("Add details first.", "Error!");
-                       
-                        //}
-                        //else if(dname5txt.Text == "" || dname5.Text == "")
-                        //{
-                        //    MessageBox.Show("null");
-                        //    cmd = "insert into products (`productid`, `supplierid`, `productname`,`tags`, `groupid`,`categoryid`,`color`, `mrp`, `price`, `dealerprice`, `stock`, `description`, `detailname1`, `detailname2`, `detailname3`, `detailname4`,`detailname5`, `detail1`, `detail2`, `detail3`, `detail4`,`detail5`,`brand`,`size`,`requeststatus`) " +
-                        //       "values ('" + pidtxt.Text + "','" + supplierid + "', '" + s + "','" + s + " " + tagstxt.Text + "','" + gidtxt.Text + "', '" + catbox.Text + "','" + colourtxt.Text + "','" + mrptxt.Text + "','" + pricetxt.Text + "','" + dealertxt.Text + "','" + stocktxt.Text + "','" + s2 + "','" + dname1txt.Text + "','" + dname2txt.Text + "','" + dname3txt.Text + "','" + dname4txt.Text + "',null,'" + dname1.Text + "','" + dname2.Text + "','" + dname3.Text + "','" + dname4.Text + "',null,'" + s1 + "','" + sizetxt.Text + "','Approved')";
-                        //    obj.nonQuery(cmd);
-                        //}
-                        //else
-                        //{
-                        //    cmd = "insert into products (`productid`, `supplierid`, `productname`,`tags`, `groupid`,`categoryid`,`color`, `mrp`, `price`, `dealerprice`, `stock`, `description`, `detailname1`, `detailname2`, `detailname3`, `detailname4`, `detailname5`, `detail1`, `detail2`, `detail3`, `detail4`, `detail5`,`brand`,`size`,`requeststatus`) " +
-                        //          "values ('" + pidtxt.Text + "','" + supplierid + "', '" + s + "','" + s + " " + tagstxt.Text + "','" + gidtxt.Text + "', '" + catbox.Text + "','" + colourtxt.Text + "','" + mrptxt.Text + "','" + pricetxt.Text + "','" + dealertxt.Text + "','" + stocktxt.Text + "','" + s2 + "','" + dname1txt.Text + "','" + dname2txt.Text + "','" + dname3txt.Text + "','" + dname4txt.Text + "','" + dname5txt.Text + "','" + dname1.Text + "','" + dname2.Text + "','" + dname3.Text + "','" + dname4.Text + "','" + dname5.Text + "','" + s1 + "','" + sizetxt.Text + "','Approved')";
-                        //    obj.nonQuery(cmd);
-                        //}
-
-                        //   int productid = obj.Count("SELECT LAST_INSERT_ID()");
-
-
-
-                       
-
-                    }else
-                    {
-                        cmd = "insert into products (`productid`, `supplierid`, `productname`,`tags`, `groupid`,`categoryid`,`color`, `mrp`, `price`, `dealerprice`, `stock`, `description`, `detailname1`, `detailname2`, `detailname3`, `detailname4`,`detailname5`, `detail1`, `detail2`, `detail3`, `detail4`,`detail5`,`brand`,`size`,`requeststatus`) " +
-                            "values ('" + pidtxt.Text + "','" + supplierid + "', '" + s + "','" + s + " " + tagstxt.Text + "','" + gidtxt.Text + "', '" + catbox.Text + "'," + color + ",'" + mrptxt.Text + "','" + pricetxt.Text + "','" + dealertxt.Text + "','" + stocktxt.Text + "'," + desc + ",'" + dname1txt.Text + "','" + dname2txt.Text + "','" + dname3txt.Text + "','" + dname4txt.Text + "'," + dn5 + ",'" + dname1.Text + "','" + dname2.Text + "','" + dname3.Text + "','" + dname4.Text + "'," + d5 + ","+bran+"," + size + ",'Approved')";
-                        obj.nonQuery(cmd);
-                        obj.closeConnection();
-
-                        MessageBox.Show("Product successfully added.");
-                    }
-
-
-
-                    //clearall();
-
-
+                    MessageBox.Show("Enter details first.", "Error!");
                 }
-                catch (Exception ex)
+                else
                 {
-                    obj.closeConnection();
-                    MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
+                    Cursor = Cursors.WaitCursor;
+                    try
+                    {
+                        StringBuilder s = new StringBuilder(nametxt.Text);
+                        s.Replace(@"\", @"\\");
+                        s.Replace("'", "\\'");
+                        StringBuilder s1 = new StringBuilder(brandtxt.Text);
+                        s1.Replace(@"\", @"\\");
+                        s1.Replace("'", "\\'");
+                        string brandname = s1.ToString();
+                        StringBuilder s2 = new StringBuilder(desctxt.Text);
+                        s2.Replace(@"\", @"\\");
+                        s2.Replace("'", "\\'");
+                        string descr = s2.ToString();
+
+                        supplierid = supplierlist.Text.Split(':')[0];
+                        string size, dn5, d5, color, bran, desc;
+                        if (sizetxt.Text == "")
+                        {
+                            size = "NULL";
+                        }
+                        else
+                        {
+                            size = "'" + sizetxt.Text + "'";
+                        }
+                        if (dname5txt.Text == "")
+                        {
+                            dn5 = "NULL";
+                        }
+                        else
+                        {
+                            dn5 = "'" + dname5txt.Text + "'";
+                        }
+                        if (dname5.Text == "")
+                        {
+                            d5 = "NULL";
+                        }
+                        else
+                        {
+                            d5 = "'" + dname5.Text + "'";
+                        }
+                        if (colourtxt.Text == "")
+                        {
+                            color = "NULL";
+                        }
+                        else
+                        {
+                            color = "'" + colourtxt.Text + "'";
+                        }
+                        if (brandname == "")
+                        {
+                            bran = "NULL";
+                        }
+                        else
+                        {
+                            bran = "'" + brandname + "'";
+                        }
+                        if (descr == "")
+                        {
+                            desc = "NULL";
+                        }
+                        else
+                        {
+                            desc = "'" + descr + "'";
+                        }
+
+                        //if ( || dname5txt.Text == "" || dname5.Text == "")
+                        //{
+                        if (s == null || catbox.Text == "")
+                        {
+                            MessageBox.Show("Add details first.", "Error!");
+
+                            //}
+                            //else if(dname5txt.Text == "" || dname5.Text == "")
+                            //{
+                            //    MessageBox.Show("null");
+                            //    cmd = "insert into products (`productid`, `supplierid`, `productname`,`tags`, `groupid`,`categoryid`,`color`, `mrp`, `price`, `dealerprice`, `stock`, `description`, `detailname1`, `detailname2`, `detailname3`, `detailname4`,`detailname5`, `detail1`, `detail2`, `detail3`, `detail4`,`detail5`,`brand`,`size`,`requeststatus`) " +
+                            //       "values ('" + pidtxt.Text + "','" + supplierid + "', '" + s + "','" + s + " " + tagstxt.Text + "','" + gidtxt.Text + "', '" + catbox.Text + "','" + colourtxt.Text + "','" + mrptxt.Text + "','" + pricetxt.Text + "','" + dealertxt.Text + "','" + stocktxt.Text + "','" + s2 + "','" + dname1txt.Text + "','" + dname2txt.Text + "','" + dname3txt.Text + "','" + dname4txt.Text + "',null,'" + dname1.Text + "','" + dname2.Text + "','" + dname3.Text + "','" + dname4.Text + "',null,'" + s1 + "','" + sizetxt.Text + "','Approved')";
+                            //    obj.nonQuery(cmd);
+                            //}
+                            //else
+                            //{
+                            //    cmd = "insert into products (`productid`, `supplierid`, `productname`,`tags`, `groupid`,`categoryid`,`color`, `mrp`, `price`, `dealerprice`, `stock`, `description`, `detailname1`, `detailname2`, `detailname3`, `detailname4`, `detailname5`, `detail1`, `detail2`, `detail3`, `detail4`, `detail5`,`brand`,`size`,`requeststatus`) " +
+                            //          "values ('" + pidtxt.Text + "','" + supplierid + "', '" + s + "','" + s + " " + tagstxt.Text + "','" + gidtxt.Text + "', '" + catbox.Text + "','" + colourtxt.Text + "','" + mrptxt.Text + "','" + pricetxt.Text + "','" + dealertxt.Text + "','" + stocktxt.Text + "','" + s2 + "','" + dname1txt.Text + "','" + dname2txt.Text + "','" + dname3txt.Text + "','" + dname4txt.Text + "','" + dname5txt.Text + "','" + dname1.Text + "','" + dname2.Text + "','" + dname3.Text + "','" + dname4.Text + "','" + dname5.Text + "','" + s1 + "','" + sizetxt.Text + "','Approved')";
+                            //    obj.nonQuery(cmd);
+                            //}
+
+                            //   int productid = obj.Count("SELECT LAST_INSERT_ID()");
+
+
+
+
+
+                        }
+                        else
+                        {
+                            cmd = "insert into products (`productid`, `supplierid`, `productname`,`tags`, `groupid`,`categoryid`,`color`, `mrp`, `price`, `dealerprice`, `stock`, `description`, `detailname1`, `detailname2`, `detailname3`, `detailname4`,`detailname5`, `detail1`, `detail2`, `detail3`, `detail4`,`detail5`,`brand`,`size`,`requeststatus`) " +
+                                "values ('" + pidtxt.Text + "','" + supplierid + "', '" + s + "','" + s + " " + tagstxt.Text + "','" + gidtxt.Text + "', '" + catbox.Text + "'," + color + ",'" + mrptxt.Text + "','" + pricetxt.Text + "','" + dealertxt.Text + "','" + stocktxt.Text + "'," + desc + ",'" + dname1txt.Text + "','" + dname2txt.Text + "','" + dname3txt.Text + "','" + dname4txt.Text + "'," + dn5 + ",'" + dname1.Text + "','" + dname2.Text + "','" + dname3.Text + "','" + dname4.Text + "'," + d5 + "," + bran + "," + size + ",'Approved')";
+                            obj.nonQuery(cmd);
+                            obj.closeConnection();
+
+                            MessageBox.Show("Product successfully added.");
+                        }
+
+
+
+                        //clearall();
+
+
+                    }
+                    catch (Exception ex)
+                    {
+                        obj.closeConnection();
+                        MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
+                    }
                 }
                 Cursor = Cursors.Arrow;
             }
