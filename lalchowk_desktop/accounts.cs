@@ -137,7 +137,7 @@ namespace Veiled_Kashmir_Admin_Panel
             try
             {
                 aconn.Open();
-                adap = new MySqlDataAdapter("select * from expenses", aconn);
+                adap = new MySqlDataAdapter("select * from expenses order by eid desc", aconn);
                 dt = new DataTable();
                 adap.Fill(dt);
                 aconn.Close();
@@ -163,7 +163,7 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             try { 
             aconn.Open();
-            adap = new MySqlDataAdapter("select * from moneypool", aconn);
+            adap = new MySqlDataAdapter("select * from moneypool order by mid desc", aconn);
             dt = new DataTable();
             adap.Fill(dt);
             aconn.Close();
@@ -180,7 +180,7 @@ namespace Veiled_Kashmir_Admin_Panel
         public void readbank()
         {try {
             aconn.Open();
-            adap = new MySqlDataAdapter("select * from bankdetails", aconn);
+            adap = new MySqlDataAdapter("select * from bankdetails order by bid desc", aconn);
             dt = new DataTable();
             adap.Fill(dt);
             aconn.Close();
@@ -197,7 +197,7 @@ namespace Veiled_Kashmir_Admin_Panel
         public void readmisc()
         {try { 
             aconn.Open();
-            adap = new MySqlDataAdapter("select * from misc", aconn);
+            adap = new MySqlDataAdapter("select * from misc order by mid desc", aconn);
             dt = new DataTable();
             adap.Fill(dt);
             aconn.Close();
@@ -214,7 +214,7 @@ namespace Veiled_Kashmir_Admin_Panel
         public void readbilling()
         {try { 
             aconn.Open();
-            adap = new MySqlDataAdapter("select * from billing", aconn);
+            adap = new MySqlDataAdapter("select * from billing order by bid desc", aconn);
             dt = new DataTable();
             adap.Fill(dt);
             aconn.Close();
@@ -241,7 +241,7 @@ namespace Veiled_Kashmir_Admin_Panel
         public void readdeliveries()
         {try { 
             aconn.Open();
-            adap = new MySqlDataAdapter("select * from deliveries", aconn);
+            adap = new MySqlDataAdapter("select * from deliveries where status='delivered' order by did desc", aconn);
             dt = new DataTable();
             adap.Fill(dt);
             aconn.Close();
@@ -250,7 +250,7 @@ namespace Veiled_Kashmir_Admin_Panel
            
 
             aconn.Open();
-            cmd = new MySqlCommand("select count(did) from deliveries", aconn);
+            cmd = new MySqlCommand("select count(did) from deliveries where status='delivered'", aconn);
             dr = cmd.ExecuteReader();
             dr.Read();
             total= dr[0].ToString();
@@ -267,7 +267,7 @@ namespace Veiled_Kashmir_Admin_Panel
         public void readdealings()
         {try { 
             aconn.Open();
-            adap = new MySqlDataAdapter("select * from dealing", aconn);
+            adap = new MySqlDataAdapter("select * from dealing order by did desc", aconn);
             dt = new DataTable();
             adap.Fill(dt);
             aconn.Close();

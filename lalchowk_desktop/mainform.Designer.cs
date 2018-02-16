@@ -62,11 +62,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.navtxt = new System.Windows.Forms.Label();
             this.cntpnl = new System.Windows.Forms.Panel();
-            this.zeropnl = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.zero = new System.Windows.Forms.Label();
-            this.totalordersdel = new System.Windows.Forms.Label();
-            this.homelbl = new System.Windows.Forms.Label();
+            this.billslbl = new System.Windows.Forms.Label();
+            this.billsh = new System.Windows.Forms.Label();
             this.shippedlbl = new System.Windows.Forms.Label();
             this.placedlbl = new System.Windows.Forms.Label();
             this.attention = new System.Windows.Forms.PictureBox();
@@ -87,16 +84,21 @@
             this.cancelbtn = new System.Windows.Forms.Button();
             this.shipbtn = new System.Windows.Forms.Button();
             this.sendsmsbtn = new System.Windows.Forms.Button();
+            this.zeropnl = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.zero = new System.Windows.Forms.Label();
+            this.totalordersdel = new System.Windows.Forms.Label();
+            this.homelbl = new System.Windows.Forms.Label();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
             this.navpnl.SuspendLayout();
             this.navtitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.cntpnl.SuspendLayout();
-            this.zeropnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.attention)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.shippeddataview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.loadingpic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.placeddataview)).BeginInit();
+            this.zeropnl.SuspendLayout();
             this.SuspendLayout();
             // 
             // signoutlbl
@@ -519,7 +521,8 @@
             // cntpnl
             // 
             this.cntpnl.BackColor = System.Drawing.Color.White;
-            this.cntpnl.Controls.Add(this.zeropnl);
+            this.cntpnl.Controls.Add(this.billslbl);
+            this.cntpnl.Controls.Add(this.billsh);
             this.cntpnl.Controls.Add(this.shippedlbl);
             this.cntpnl.Controls.Add(this.placedlbl);
             this.cntpnl.Controls.Add(this.attention);
@@ -545,65 +548,27 @@
             this.cntpnl.Size = new System.Drawing.Size(1162, 722);
             this.cntpnl.TabIndex = 12;
             // 
-            // zeropnl
+            // billslbl
             // 
-            this.zeropnl.Controls.Add(this.label3);
-            this.zeropnl.Controls.Add(this.zero);
-            this.zeropnl.Controls.Add(this.totalordersdel);
-            this.zeropnl.Controls.Add(this.homelbl);
-            this.zeropnl.Location = new System.Drawing.Point(0, 0);
-            this.zeropnl.Name = "zeropnl";
-            this.zeropnl.Size = new System.Drawing.Size(1162, 722);
-            this.zeropnl.TabIndex = 44;
-            this.zeropnl.Visible = false;
+            this.billslbl.AutoSize = true;
+            this.billslbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.billslbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.billslbl.Location = new System.Drawing.Point(1000, 630);
+            this.billslbl.Name = "billslbl";
+            this.billslbl.Size = new System.Drawing.Size(0, 24);
+            this.billslbl.TabIndex = 52;
             // 
-            // label3
+            // billsh
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label3.Location = new System.Drawing.Point(457, 351);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(173, 17);
-            this.label3.TabIndex = 45;
-            this.label3.Text = "Orders have been placed.";
-            // 
-            // zero
-            // 
-            this.zero.AutoSize = true;
-            this.zero.Font = new System.Drawing.Font("Trajan Pro", 69.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.zero.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.zero.Location = new System.Drawing.Point(386, 277);
-            this.zero.Name = "zero";
-            this.zero.Size = new System.Drawing.Size(103, 117);
-            this.zero.TabIndex = 44;
-            this.zero.Text = "0";
-            // 
-            // totalordersdel
-            // 
-            this.totalordersdel.AutoSize = true;
-            this.totalordersdel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.totalordersdel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalordersdel.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.totalordersdel.Location = new System.Drawing.Point(1030, 631);
-            this.totalordersdel.Name = "totalordersdel";
-            this.totalordersdel.Size = new System.Drawing.Size(109, 16);
-            this.totalordersdel.TabIndex = 46;
-            this.totalordersdel.Text = "Orders delivered";
-            this.totalordersdel.Click += new System.EventHandler(this.totalordersdel_Click);
-            // 
-            // homelbl
-            // 
-            this.homelbl.AutoSize = true;
-            this.homelbl.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.homelbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.homelbl.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.homelbl.Location = new System.Drawing.Point(1030, 660);
-            this.homelbl.Name = "homelbl";
-            this.homelbl.Size = new System.Drawing.Size(77, 17);
-            this.homelbl.TabIndex = 47;
-            this.homelbl.Text = "Homepage";
-            this.homelbl.Click += new System.EventHandler(this.homelbl_Click);
+            this.billsh.AutoSize = true;
+            this.billsh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.billsh.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.billsh.Location = new System.Drawing.Point(1001, 611);
+            this.billsh.Name = "billsh";
+            this.billsh.Size = new System.Drawing.Size(79, 16);
+            this.billsh.TabIndex = 51;
+            this.billsh.Text = "Bills added:";
+            this.billsh.Visible = false;
             // 
             // shippedlbl
             // 
@@ -884,6 +849,66 @@
             this.sendsmsbtn.Visible = false;
             this.sendsmsbtn.Click += new System.EventHandler(this.sendsmsbtn_Click);
             // 
+            // zeropnl
+            // 
+            this.zeropnl.Controls.Add(this.label3);
+            this.zeropnl.Controls.Add(this.zero);
+            this.zeropnl.Controls.Add(this.totalordersdel);
+            this.zeropnl.Controls.Add(this.homelbl);
+            this.zeropnl.Location = new System.Drawing.Point(14, 706);
+            this.zeropnl.Name = "zeropnl";
+            this.zeropnl.Size = new System.Drawing.Size(1162, 722);
+            this.zeropnl.TabIndex = 44;
+            this.zeropnl.Visible = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label3.Location = new System.Drawing.Point(457, 351);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(173, 17);
+            this.label3.TabIndex = 45;
+            this.label3.Text = "Orders have been placed.";
+            // 
+            // zero
+            // 
+            this.zero.AutoSize = true;
+            this.zero.Font = new System.Drawing.Font("Trajan Pro", 69.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.zero.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.zero.Location = new System.Drawing.Point(386, 277);
+            this.zero.Name = "zero";
+            this.zero.Size = new System.Drawing.Size(103, 117);
+            this.zero.TabIndex = 44;
+            this.zero.Text = "0";
+            // 
+            // totalordersdel
+            // 
+            this.totalordersdel.AutoSize = true;
+            this.totalordersdel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.totalordersdel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalordersdel.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.totalordersdel.Location = new System.Drawing.Point(1030, 631);
+            this.totalordersdel.Name = "totalordersdel";
+            this.totalordersdel.Size = new System.Drawing.Size(109, 16);
+            this.totalordersdel.TabIndex = 46;
+            this.totalordersdel.Text = "Orders delivered";
+            this.totalordersdel.Click += new System.EventHandler(this.totalordersdel_Click);
+            // 
+            // homelbl
+            // 
+            this.homelbl.AutoSize = true;
+            this.homelbl.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.homelbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.homelbl.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.homelbl.Location = new System.Drawing.Point(1030, 660);
+            this.homelbl.Name = "homelbl";
+            this.homelbl.Size = new System.Drawing.Size(77, 17);
+            this.homelbl.TabIndex = 47;
+            this.homelbl.Text = "Homepage";
+            this.homelbl.Click += new System.EventHandler(this.homelbl_Click);
+            // 
             // bgworker
             // 
             this.bgworker.WorkerReportsProgress = true;
@@ -898,6 +923,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1363, 725);
+            this.Controls.Add(this.zeropnl);
             this.Controls.Add(this.navtitle);
             this.Controls.Add(this.cntpnl);
             this.Controls.Add(this.navpnl);
@@ -912,12 +938,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.cntpnl.ResumeLayout(false);
             this.cntpnl.PerformLayout();
-            this.zeropnl.ResumeLayout(false);
-            this.zeropnl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.attention)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.shippeddataview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.loadingpic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.placeddataview)).EndInit();
+            this.zeropnl.ResumeLayout(false);
+            this.zeropnl.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -978,5 +1004,7 @@
         private System.Windows.Forms.Button sendsmsbtn;
         private System.Windows.Forms.Button cancelbtn;
         private System.Windows.Forms.Button addorderbtn;
+        private System.Windows.Forms.Label billslbl;
+        private System.Windows.Forms.Label billsh;
     }
 }

@@ -19,12 +19,15 @@ namespace Veiled_Kashmir_Admin_Panel
 
         DBConnect obj = new DBConnect();
         MySqlConnection con = new MySqlConnection("SERVER=182.50.133.78;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah");
+        MySqlConnection aconn = new MySqlConnection("SERVER=182.50.133.78;DATABASE=lalchowk_ac;USER=lalchowkac;PASSWORD=Lalchowk@123uzmah");
         MySqlDataAdapter adap;
         DataTable dt;
         MySqlDataReader dr;
         BindingSource bsource, bsource2;
-        string order, cost, atten;
+        string order, cost, atten, billno;
         PictureBox loading = new PictureBox();
+        BackgroundWorker bills;
+        MySqlCommand cmd;
 
         private container hp = null;
         public mainform(Form hpcopy)
@@ -35,7 +38,7 @@ namespace Veiled_Kashmir_Admin_Panel
             loadingnormal();
 
             bgworker.RunWorkerAsync();
-
+            
 
 
             //     loadingform();
@@ -806,7 +809,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void shipbtn_Click(object sender, EventArgs e)
         {
-                                                                                                                                                 Cursor = Cursors.WaitCursor;
+            Cursor = Cursors.WaitCursor;
             try
             {
                 DialogResult dgr = MessageBox.Show("Change status to Shipped for orderid '" + id + "'", "Confirm!", MessageBoxButtons.YesNo);
@@ -974,6 +977,9 @@ namespace Veiled_Kashmir_Admin_Panel
             }
         }
 
+
+
+
         private void bgworker_DoWork(object sender, DoWorkEventArgs e)
         {
             
@@ -1029,15 +1035,24 @@ namespace Veiled_Kashmir_Admin_Panel
                     dr.Read();
                     cost = dr[0].ToString();
                     obj.closeConnection();
-                    bgworker.ReportProgress(100);
+                    
 
                     dr = obj.Query("SELECT count(status) FROM orders where status='delivered'");
                     dr.Read();
                     order = dr[0].ToString();
                     obj.closeConnection();
+                bgworker.ReportProgress(100);
 
-                    
-                    starterror = false;
+                aconn.Open();
+                cmd = new MySqlCommand("select count(did) from deliveries where status='delivered'", aconn);
+                dr = cmd.ExecuteReader();
+                dr.Read();
+                billno = dr[0].ToString();
+                aconn.Close();
+
+                
+
+                starterror = false;
 
 
                 }
@@ -1127,7 +1142,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     loadinglbl.Visible = false;
                     pageload.Visible = false;
                     placedh.Visible = true;
-                    attention.Visible = true; placedlbl.Visible = true; deliveredh.Visible = true; orderslbl.Visible = true;
+                    attention.Visible = true; placedlbl.Visible = true; deliveredh.Visible = true; orderslbl.Visible = true; billsh.Visible = true;
 
                     placeddataview.DataSource = bsource;
                     try
@@ -1163,6 +1178,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     attentionlbl.Text = "> " + atten + " Order(s) need your Attention ASAP!";
                     costlbl.Text = "> Will cost Rs. " + cost + "/-";
                     ordersdlbl.Text = order;
+                    billslbl.Text = billno;
                 }
 
             }          
@@ -1177,7 +1193,7 @@ namespace Veiled_Kashmir_Admin_Panel
             placedh.Visible = true;
             shippedh.Visible = true;
             shippedlbl.Visible = true;
-            attention.Visible = true; placedlbl.Visible = true; deliveredh.Visible = true; orderslbl.Visible = true;
+            attention.Visible = true; placedlbl.Visible = true; deliveredh.Visible = true; orderslbl.Visible = true; billsh.Visible = true;
 
             placeddataview.DataSource = bsource;
             try { 
@@ -1210,6 +1226,7 @@ namespace Veiled_Kashmir_Admin_Panel
             }else
             costlbl.Text = "> Will cost Rs. " + cost + "/-";
             ordersdlbl.Text = order;
+            billslbl.Text = billno;
         }
     }
 

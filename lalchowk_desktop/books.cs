@@ -59,7 +59,7 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             try
             {
-                adap = new MySqlDataAdapter("select * from bookrequests", con);
+                adap = new MySqlDataAdapter("select * from bookrequests order by id desc", con);
                 dt = new DataTable();
                 adap.Fill(dt);
                 bsource = new BindingSource();
@@ -170,6 +170,20 @@ namespace Veiled_Kashmir_Admin_Panel
                     }
                 }
             }catch { Cursor = Cursors.Arrow; }
+        }
+
+        private void smsbtn_Click(object sender, EventArgs e)
+        {
+            dialogcontainer dg = new dialogcontainer();
+            sendsms sms = new sendsms(contxt.Text);
+            sms.TopLevel = false;
+            dg.dialogpnl.Controls.Add(sms);
+            dg.lbl.Text = "Send SMS";
+            dg.Text = "Send SMS";
+            dg.Size = new Size(800, 600);
+            sms.numbertxt.Font = new Font("MS Sans Serif", 9, FontStyle.Regular);
+            dg.Show();
+            sms.Show();
         }
 
         private void pbtn_Click(object sender, EventArgs e)

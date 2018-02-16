@@ -48,6 +48,8 @@
             this.maxcountlbl = new System.Windows.Forms.Label();
             this.stbtn = new System.Windows.Forms.Button();
             this.charlbl = new System.Windows.Forms.Label();
+            this.reqbtn = new MaterialSkin.Controls.MaterialFlatButton();
+            this.orderbtn = new MaterialSkin.Controls.MaterialFlatButton();
             ((System.ComponentModel.ISupportInitialize)(this.arrow)).BeginInit();
             this.SuspendLayout();
             // 
@@ -127,7 +129,7 @@
             // 
             this.numlisttxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numlisttxt.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.numlisttxt.Location = new System.Drawing.Point(75, 93);
+            this.numlisttxt.Location = new System.Drawing.Point(75, 34);
             this.numlisttxt.Multiline = true;
             this.numlisttxt.Name = "numlisttxt";
             this.numlisttxt.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -141,21 +143,21 @@
             this.getnumbersbtn.AutoSize = true;
             this.getnumbersbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.getnumbersbtn.Depth = 0;
-            this.getnumbersbtn.Location = new System.Drawing.Point(129, 450);
+            this.getnumbersbtn.Location = new System.Drawing.Point(65, 394);
             this.getnumbersbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.getnumbersbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.getnumbersbtn.Name = "getnumbersbtn";
             this.getnumbersbtn.Primary = false;
-            this.getnumbersbtn.Size = new System.Drawing.Size(105, 36);
+            this.getnumbersbtn.Size = new System.Drawing.Size(181, 36);
             this.getnumbersbtn.TabIndex = 42;
-            this.getnumbersbtn.Text = "Get numbers";
+            this.getnumbersbtn.Text = "Get customer numbers";
             this.getnumbersbtn.UseVisualStyleBackColor = true;
             this.getnumbersbtn.Click += new System.EventHandler(this.getnumbersbtn_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(72, 77);
+            this.label3.Location = new System.Drawing.Point(72, 18);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 13);
             this.label3.TabIndex = 43;
@@ -210,7 +212,7 @@
             this.limittxt.BackColor = System.Drawing.Color.WhiteSmoke;
             this.limittxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.limittxt.ForeColor = System.Drawing.Color.Gray;
-            this.limittxt.Location = new System.Drawing.Point(159, 428);
+            this.limittxt.Location = new System.Drawing.Point(159, 369);
             this.limittxt.Name = "limittxt";
             this.limittxt.Size = new System.Drawing.Size(75, 20);
             this.limittxt.TabIndex = 48;
@@ -223,7 +225,7 @@
             this.offsettxt.BackColor = System.Drawing.Color.WhiteSmoke;
             this.offsettxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.offsettxt.ForeColor = System.Drawing.Color.Gray;
-            this.offsettxt.Location = new System.Drawing.Point(75, 428);
+            this.offsettxt.Location = new System.Drawing.Point(75, 369);
             this.offsettxt.Name = "offsettxt";
             this.offsettxt.Size = new System.Drawing.Size(75, 20);
             this.offsettxt.TabIndex = 50;
@@ -284,12 +286,46 @@
             this.charlbl.Text = "(1/1)";
             this.charlbl.Visible = false;
             // 
+            // reqbtn
+            // 
+            this.reqbtn.AutoSize = true;
+            this.reqbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.reqbtn.Depth = 0;
+            this.reqbtn.Location = new System.Drawing.Point(65, 464);
+            this.reqbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.reqbtn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.reqbtn.Name = "reqbtn";
+            this.reqbtn.Primary = false;
+            this.reqbtn.Size = new System.Drawing.Size(256, 36);
+            this.reqbtn.TabIndex = 56;
+            this.reqbtn.Text = "Get numbers from book requests";
+            this.reqbtn.UseVisualStyleBackColor = true;
+            this.reqbtn.Click += new System.EventHandler(this.reqbtn_Click);
+            // 
+            // orderbtn
+            // 
+            this.orderbtn.AutoSize = true;
+            this.orderbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.orderbtn.Depth = 0;
+            this.orderbtn.Location = new System.Drawing.Point(65, 428);
+            this.orderbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.orderbtn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.orderbtn.Name = "orderbtn";
+            this.orderbtn.Primary = false;
+            this.orderbtn.Size = new System.Drawing.Size(201, 36);
+            this.orderbtn.TabIndex = 57;
+            this.orderbtn.Text = "Get numbers from orders";
+            this.orderbtn.UseVisualStyleBackColor = true;
+            this.orderbtn.Click += new System.EventHandler(this.orderbtn_Click);
+            // 
             // sendsms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(750, 600);
+            this.Controls.Add(this.orderbtn);
+            this.Controls.Add(this.reqbtn);
             this.Controls.Add(this.charlbl);
             this.Controls.Add(this.stbtn);
             this.Controls.Add(this.maxcountlbl);
@@ -341,5 +377,7 @@
         private System.Windows.Forms.Button stbtn;
         public System.Windows.Forms.TextBox numbertxt;
         private System.Windows.Forms.Label charlbl;
+        private MaterialSkin.Controls.MaterialFlatButton reqbtn;
+        private MaterialSkin.Controls.MaterialFlatButton orderbtn;
     }
 }

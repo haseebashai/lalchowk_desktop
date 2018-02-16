@@ -38,7 +38,7 @@ namespace Veiled_Kashmir_Admin_Panel
         public void readordersdelivered()
         {try { 
             con.Open();
-            adap = new MySqlDataAdapter("select * from orders where status='delivered'", con);
+            adap = new MySqlDataAdapter("select * from orders where status='delivered' order by orderid desc", con);
             dt = new DataTable();
             adap.Fill(dt);
             bsource = new BindingSource();
@@ -46,7 +46,7 @@ namespace Veiled_Kashmir_Admin_Panel
         }
             catch (Exception ex)
             {
-
+                con.Close();
                 MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
 
@@ -55,7 +55,7 @@ namespace Veiled_Kashmir_Admin_Panel
         public void readordersplaced()
         {try { 
             con.Open();
-            adap = new MySqlDataAdapter("select * from orders where status='placed'", con);
+            adap = new MySqlDataAdapter("select * from orders where status='placed' order by orderid desc", con);
             dt = new DataTable();
             adap.Fill(dt);
             bsource = new BindingSource();
@@ -63,7 +63,7 @@ namespace Veiled_Kashmir_Admin_Panel
         }
             catch (Exception ex)
             {
-
+                con.Close();
                 MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
         }
@@ -71,7 +71,7 @@ namespace Veiled_Kashmir_Admin_Panel
         public void readordershipped()
         {try { 
             con.Open();
-            adap = new MySqlDataAdapter("select * from orders where status='shipped'", con);
+            adap = new MySqlDataAdapter("select * from orders where status='shipped' order by orderid desc", con);
             dt = new DataTable();
             adap.Fill(dt);
             bsource = new BindingSource();
@@ -79,7 +79,7 @@ namespace Veiled_Kashmir_Admin_Panel
         }
             catch (Exception ex)
             {
-
+                con.Close();
                 MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
         }
@@ -87,7 +87,7 @@ namespace Veiled_Kashmir_Admin_Panel
         public void readpurchasecost()
         {try { 
             con.Open();
-            adap = new MySqlDataAdapter("select * from lalchowk.orderdetails where productid in (SELECT productid FROM lalchowk.orderdetails where orderid in (SELECT orderid FROM lalchowk.orders where status = 'delivered'))", con);
+            adap = new MySqlDataAdapter("select * from lalchowk.orderdetails where productid in (SELECT productid FROM lalchowk.orderdetails where orderid in (SELECT orderid FROM lalchowk.orders where status = 'delivered')) order by orderdetailid desc", con);
             dt = new DataTable();
             adap.Fill(dt);
             bsource = new BindingSource();
@@ -95,7 +95,7 @@ namespace Veiled_Kashmir_Admin_Panel
         }
             catch (Exception ex)
             {
-
+                con.Close();
                 MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
         }
@@ -103,7 +103,7 @@ namespace Veiled_Kashmir_Admin_Panel
         public void readprofit()
         {try { 
             con.Open();
-            adap = new MySqlDataAdapter("select orderdetailid,orderid,productid,productname,price,quantity,dealerprice,size,price-dealerprice as profit from orderdetails where orderid in (SELECT orderid FROM orders where status = 'delivered')", con);
+            adap = new MySqlDataAdapter("select orderdetailid,orderid,productid,productname,price,quantity,dealerprice,size,price-dealerprice as profit from orderdetails where orderid in (SELECT orderid FROM orders where status = 'delivered') order by orderdetailid desc", con);
             dt = new DataTable();
             adap.Fill(dt);
             bsource = new BindingSource();
@@ -111,7 +111,7 @@ namespace Veiled_Kashmir_Admin_Panel
         }
             catch (Exception ex)
             {
-
+                con.Close();
                 MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
         }
@@ -135,7 +135,7 @@ namespace Veiled_Kashmir_Admin_Panel
         public void readshipping()
         {try { 
             con.Open();
-            adap = new MySqlDataAdapter("select orderid, email, shipdate,shipping from lalchowk.orders where status ='delivered'",con);
+            adap = new MySqlDataAdapter("select orderid, email, shipdate,shipping from lalchowk.orders where status ='delivered' and shipping >0 order by orderid desc", con);
             dt = new DataTable();
             adap.Fill(dt);
             bsource = new BindingSource();
@@ -143,7 +143,7 @@ namespace Veiled_Kashmir_Admin_Panel
         }
             catch (Exception ex)
             {
-
+                con.Close();
                 MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
         }

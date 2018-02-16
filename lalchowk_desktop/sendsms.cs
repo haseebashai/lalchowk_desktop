@@ -297,8 +297,9 @@ namespace Veiled_Kashmir_Admin_Panel
                     Cursor = Cursors.Arrow;
                     obj.closeConnection();
                     numlisttxt.Text = numbers;
+                    arrow.Visible = true;
                 }
-                arrow.Visible = true;
+                
             }catch
             {
                 obj.closeConnection();
@@ -402,8 +403,85 @@ namespace Veiled_Kashmir_Admin_Panel
             int charac= smstxt.Text.Length;
             charlbl.Text = "(" + (max-charac) + "/160)";
         }
+
+        private void orderbtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string command = "";
+                if (limittxt.Text == "Enter LIMIT" || limittxt.Text == "" || offsettxt.Text == "Enter Offset" || offsettxt.Text == "")
+                {
+                    MessageBox.Show("Enter Limit and offset.");
+
+                }
+                else
+                {
+                    command = "select distinct contact from orders where contact like '7%' or contact like '8%' or contact like '9%'  ORDER BY orderid LIMIT " + limittxt.Text + " OFFSET " + offsettxt.Text + "";
+
+
+                    int i = 0;
+                    string numbers = "";
+                    Cursor = Cursors.WaitCursor;
+                    dr = obj.Query(command);
+                    while (dr.Read())
+                    {
+                        numbers += dr["contact"].ToString();
+                        numbers += "\r\n";
+                        i++;
+                    }
+                    Cursor = Cursors.Arrow;
+                    obj.closeConnection();
+                    numlisttxt.Text = numbers;
+                    arrow.Visible = true;
+                }
+                
+            }
+            catch
+            {
+                obj.closeConnection();
+            }
+        }
+
+        private void reqbtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string command = "";
+                if (limittxt.Text == "Enter LIMIT" || limittxt.Text == "" || offsettxt.Text == "Enter Offset" || offsettxt.Text == "")
+                {
+                    MessageBox.Show("Enter Limit and offset.");
+
+                }
+                else
+                {
+                    command = "select distinct contact from bookrequests where contact like '7%' or contact like '8%' or contact like '9%'  ORDER BY id LIMIT " + limittxt.Text + " OFFSET " + offsettxt.Text + "";
+
+
+                    int i = 0;
+                    string numbers = "";
+                    Cursor = Cursors.WaitCursor;
+                    dr = obj.Query(command);
+                    while (dr.Read())
+                    {
+                        numbers += dr["contact"].ToString();
+                        numbers += "\r\n";
+                        i++;
+                    }
+                    Cursor = Cursors.Arrow;
+                    obj.closeConnection();
+                    numlisttxt.Text = numbers;
+                    arrow.Visible = true;
+                }
+
+            }
+            catch
+            {
+                obj.closeConnection();
+            }
+        }
     }
 }
+  
 
 
 

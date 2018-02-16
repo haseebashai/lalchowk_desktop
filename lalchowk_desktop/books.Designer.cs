@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bpnl = new System.Windows.Forms.Panel();
             this.delbtn = new System.Windows.Forms.Button();
             this.dpnl = new System.Windows.Forms.Panel();
@@ -45,6 +45,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.emailtxt = new System.Windows.Forms.TextBox();
             this.booksdataview = new System.Windows.Forms.DataGridView();
+            this.smsbtn = new System.Windows.Forms.Button();
             this.bpnl.SuspendLayout();
             this.dpnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.booksdataview)).BeginInit();
@@ -75,6 +76,7 @@
             // 
             // dpnl
             // 
+            this.dpnl.Controls.Add(this.smsbtn);
             this.dpnl.Controls.Add(this.temailbtn);
             this.dpnl.Controls.Add(this.pbtn);
             this.dpnl.Controls.Add(this.label4);
@@ -109,7 +111,7 @@
             this.pbtn.AutoSize = true;
             this.pbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.pbtn.Depth = 0;
-            this.pbtn.Location = new System.Drawing.Point(671, 148);
+            this.pbtn.Location = new System.Drawing.Point(667, 122);
             this.pbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.pbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.pbtn.Name = "pbtn";
@@ -207,14 +209,14 @@
             this.booksdataview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.booksdataview.BackgroundColor = System.Drawing.Color.White;
             this.booksdataview.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.booksdataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.booksdataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.booksdataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.booksdataview.GridColor = System.Drawing.SystemColors.Control;
             this.booksdataview.Location = new System.Drawing.Point(3, 3);
@@ -223,6 +225,18 @@
             this.booksdataview.TabIndex = 21;
             this.booksdataview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.booksdataview_CellClick);
             this.booksdataview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.booksdataview_CellClick);
+            // 
+            // smsbtn
+            // 
+            this.smsbtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.smsbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.smsbtn.Location = new System.Drawing.Point(667, 55);
+            this.smsbtn.Name = "smsbtn";
+            this.smsbtn.Size = new System.Drawing.Size(89, 35);
+            this.smsbtn.TabIndex = 37;
+            this.smsbtn.Text = "Send SMS";
+            this.smsbtn.UseVisualStyleBackColor = true;
+            this.smsbtn.Click += new System.EventHandler(this.smsbtn_Click);
             // 
             // books
             // 
@@ -260,5 +274,6 @@
         private MaterialSkin.Controls.MaterialFlatButton pbtn;
         private System.Windows.Forms.Button temailbtn;
         private System.Windows.Forms.Button delbtn;
+        private System.Windows.Forms.Button smsbtn;
     }
 }
