@@ -32,7 +32,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void readmsgs()
         {try {
-            dr = obj.Query("SELECT customer.mail,messages.*  FROM lalchowk.messages inner join customer on customer.email=messages.email");
+            dr = obj.Query("SELECT customer.mail,messages.*  FROM lalchowk.messages inner join customer on customer.email=messages.email order by messageid desc");
             dt = new DataTable();
             dt.Load(dr);
             obj.closeConnection();
@@ -68,8 +68,22 @@ namespace Veiled_Kashmir_Admin_Panel
          
             mail ml = new mail(emaillbl.Text,sublbl.Text,msgtxt.Text,midlbl.Text);
             ml.ShowDialog();
-            readmsgs();
-            messagesdataview.DataSource = bsource;
+
+            BackgroundWorker msg = new BackgroundWorker();
+            msg.DoWork += (o, a) => 
+            {
+                readmsgs();
+            };
+
+            msg.RunWorkerCompleted += (o, b) => 
+            {
+                try
+                {
+                    messagesdataview.DataSource = bsource;
+                }catch { }
+            };
+            msg.RunWorkerAsync();
+            
         }
 
         private void bgworker_DoWork(object sender, DoWorkEventArgs e)

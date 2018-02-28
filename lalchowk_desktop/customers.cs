@@ -159,7 +159,7 @@ namespace Veiled_Kashmir_Admin_Panel
             {
 
                 con.Open();
-                adap = new MySqlDataAdapter("select * from customer order by id asc", con);
+                adap = new MySqlDataAdapter("select * from customer order by id desc", con);
                 dt1 = new DataTable();
                 adap.Fill(dt1);
                 con.Close();

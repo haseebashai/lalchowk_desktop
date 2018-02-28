@@ -22,6 +22,33 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             dg = dgcopy as dialogcontainer;
             InitializeComponent();
+
+            BackgroundWorker pin = new BackgroundWorker();
+            pin.DoWork += (o, a) => 
+            {
+                try
+                {
+                  
+                    dr = obj.Query("select distinct concat(pincode,':  ',area) as pincode from pincodes order by pincode asc");
+                    DataTable dt = new DataTable();
+                    dt.Columns.Add("pincode", typeof(String));
+                    dt.Load(dr);
+                    obj.closeConnection();
+
+                    pinbox.DataSource = dt;
+
+                }
+                catch { obj.closeConnection(); }
+            };
+            pin.RunWorkerCompleted += (o, b) => 
+            {
+                try
+                {
+                    pinbox.DisplayMember = "pincode";
+                    pinbox.SelectedIndex = -1;
+                }catch { };
+            };
+            pin.RunWorkerAsync();
         }
 
 

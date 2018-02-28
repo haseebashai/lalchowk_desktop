@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.searchlbl = new System.Windows.Forms.Label();
             this.pintxt = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -63,6 +63,8 @@
             this.loadinglbl = new System.Windows.Forms.Label();
             this.dp = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pinbox = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.inventorydatagridview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dp)).BeginInit();
             this.SuspendLayout();
@@ -310,14 +312,14 @@
             this.inventorydatagridview.AllowUserToAddRows = false;
             this.inventorydatagridview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.inventorydatagridview.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.inventorydatagridview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.inventorydatagridview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.inventorydatagridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.inventorydatagridview.Location = new System.Drawing.Point(12, 62);
             this.inventorydatagridview.Name = "inventorydatagridview";
@@ -330,7 +332,7 @@
             this.addbtn.Enabled = false;
             this.addbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.addbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addbtn.Location = new System.Drawing.Point(512, 223);
+            this.addbtn.Location = new System.Drawing.Point(282, 232);
             this.addbtn.Name = "addbtn";
             this.addbtn.Size = new System.Drawing.Size(250, 39);
             this.addbtn.TabIndex = 80;
@@ -389,6 +391,25 @@
             this.panel1.Size = new System.Drawing.Size(716, 1);
             this.panel1.TabIndex = 85;
             // 
+            // pinbox
+            // 
+            this.pinbox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.pinbox.FormattingEnabled = true;
+            this.pinbox.Location = new System.Drawing.Point(667, 250);
+            this.pinbox.Name = "pinbox";
+            this.pinbox.Size = new System.Drawing.Size(189, 21);
+            this.pinbox.TabIndex = 86;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(667, 230);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(99, 16);
+            this.label13.TabIndex = 87;
+            this.label13.Text = "Check Pincode";
+            // 
             // addorder
             // 
             this.AcceptButton = this.searchbtn;
@@ -396,6 +417,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(915, 594);
+            this.Controls.Add(this.pinbox);
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dp);
             this.Controls.Add(this.loadinglbl);
@@ -475,5 +498,7 @@
         private System.Windows.Forms.Label loadinglbl;
         private System.Windows.Forms.PictureBox dp;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ComboBox pinbox;
+        private System.Windows.Forms.Label label13;
     }
 }

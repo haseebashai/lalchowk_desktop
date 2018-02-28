@@ -50,6 +50,7 @@
             this.charlbl = new System.Windows.Forms.Label();
             this.reqbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.orderbtn = new MaterialSkin.Controls.MaterialFlatButton();
+            this.btbtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.arrow)).BeginInit();
             this.SuspendLayout();
             // 
@@ -268,7 +269,7 @@
             // 
             // stbtn
             // 
-            this.stbtn.Location = new System.Drawing.Point(282, 336);
+            this.stbtn.Location = new System.Drawing.Point(282, 300);
             this.stbtn.Name = "stbtn";
             this.stbtn.Size = new System.Drawing.Size(60, 35);
             this.stbtn.TabIndex = 54;
@@ -318,12 +319,23 @@
             this.orderbtn.UseVisualStyleBackColor = true;
             this.orderbtn.Click += new System.EventHandler(this.orderbtn_Click);
             // 
+            // btbtn
+            // 
+            this.btbtn.Location = new System.Drawing.Point(282, 341);
+            this.btbtn.Name = "btbtn";
+            this.btbtn.Size = new System.Drawing.Size(60, 35);
+            this.btbtn.TabIndex = 58;
+            this.btbtn.Text = "Book Not Available";
+            this.btbtn.UseVisualStyleBackColor = true;
+            this.btbtn.Click += new System.EventHandler(this.btbtn_Click);
+            // 
             // sendsms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(750, 600);
+            this.Controls.Add(this.btbtn);
             this.Controls.Add(this.orderbtn);
             this.Controls.Add(this.reqbtn);
             this.Controls.Add(this.charlbl);
@@ -379,5 +391,6 @@
         private System.Windows.Forms.Label charlbl;
         private MaterialSkin.Controls.MaterialFlatButton reqbtn;
         private MaterialSkin.Controls.MaterialFlatButton orderbtn;
+        private System.Windows.Forms.Button btbtn;
     }
 }

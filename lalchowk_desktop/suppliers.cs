@@ -102,10 +102,11 @@ namespace Veiled_Kashmir_Admin_Panel
             adap.Fill(dt);
             bsource = new BindingSource();
             bsource.DataSource = dt;
+                con.Close();
             }
             catch (Exception ex)
             {
-
+                con.Close();
                 MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
 
@@ -138,30 +139,34 @@ namespace Veiled_Kashmir_Admin_Panel
         string supid;
         private void supplierdatagridview_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            try
             {
-                DataGridViewRow row = this.supplierdatagridview.Rows[e.RowIndex];
-                supid = row.Cells["supplierid"].Value.ToString();
-                supplierlbl.Text = row.Cells["name"].Value.ToString();
-                contactlbl.Text = row.Cells["contactname"].Value.ToString();
-                addresslbl.Text = row.Cells["address"].Value.ToString();
-                phonelbl.Text = row.Cells["phone"].Value.ToString();
-                emaillbl.Text = row.Cells["email"].Value.ToString();
-
-                productcount = obj.Count("select count(*) from products where supplierid = '" + supid + "'");
-                if (productcount == 0)
+                if (e.RowIndex >= 0)
                 {
-                    countlbl.Text = "supplier has " + productcount.ToString() + " products listed currently.";
-                    
+                    DataGridViewRow row = this.supplierdatagridview.Rows[e.RowIndex];
+                    supid = row.Cells["supplierid"].Value.ToString();
+                    supplierlbl.Text = row.Cells["name"].Value.ToString();
+                    contactlbl.Text = row.Cells["contactname"].Value.ToString();
+                    addresslbl.Text = row.Cells["address"].Value.ToString();
+                    phonelbl.Text = row.Cells["phone"].Value.ToString();
+                    emaillbl.Text = row.Cells["email"].Value.ToString();
 
+                    productcount = obj.Count("select count(*) from products where supplierid = '" + supid + "'");
+                    obj.closeConnection();
+                    if (productcount == 0)
+                    {
+                        countlbl.Text = "supplier has " + productcount.ToString() + " products listed currently.";
+
+
+                    }
+                    else
+                    {
+                        countlbl.Text = "supplier has " + productcount.ToString() + " products listed currently. Cannot remove Supplier unless all products are removed first.";
+                        countlbl.Visible = true;
+                    }
+                    dpnl.Visible = true;
                 }
-                else
-                {
-                    countlbl.Text = "supplier has " + productcount.ToString() + " products listed currently. Cannot remove Supplier unless all products are removed first.";
-                    countlbl.Visible = true;
-                }
-                dpnl.Visible = true;
-            }
+            }catch { obj.closeConnection(); }
            
         }
 
@@ -184,12 +189,14 @@ namespace Veiled_Kashmir_Admin_Panel
                     MessageBox.Show("Supplier removed successfully.");
                     readsuppliers();
                     supplierdatagridview.DataSource = bsource;
+                    con.Close();
                     dpnl.Visible = false;
                 }
                 
             }
             else
             {
+                con.Close();
                 MessageBox.Show("Cannot remove Supplier while the products are listed.");
             }
 

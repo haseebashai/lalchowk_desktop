@@ -755,6 +755,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 DataGridViewRow row = this.placeddataview.Rows[e.RowIndex];
                 id = row.Cells["orderid"].Value.ToString();
                 contact = row.Cells["contact"].Value.ToString();
+                status = row.Cells["status"].Value.ToString();
                 products = new BackgroundWorker();
                 products.DoWork += Products_DoWork;
                 products.RunWorkerCompleted += Products_RunWorkerCompleted;
@@ -769,6 +770,7 @@ namespace Veiled_Kashmir_Admin_Panel
         private void Products_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             placeddataview.Enabled = true;
+            shippeddataview.Enabled = true;
             if (!e.Cancelled)
             {
                 List<details> dobj = (List<details>)e.Result;
@@ -778,7 +780,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
                     TextBox t1 = new TextBox()
                     {
-                        Size = new Size(180, 115),
+                        Size = new Size(230, 115),
                         Text = "ID: " + details.Pid + "\r\n" + "Name: " + details.Pname + "\r\n"
                         + "Price: " + details.Price + "\r\n" + "Quantity: " + details.Quantity + "\r\n"
                         + "Dealer Price: " + details.Dp,
@@ -799,9 +801,17 @@ namespace Veiled_Kashmir_Admin_Panel
                     ppnl.Controls.Add(p1);
                     ppnl.Controls.Add(t1);
                 }
+              
+                if (status == "Placed")
+                {
+                    shipbtn.Visible = true;
+                }else if (status == "Shipped")
+                {
+                    shipbtn.Visible = false;
+                }
                 ppnl.Visible = true;
                 plbl.Visible = false;
-                shipbtn.Visible = true;
+               
                 sendsmsbtn.Visible = true;
                 cancelbtn.Visible = true;
             }
@@ -930,6 +940,65 @@ namespace Veiled_Kashmir_Admin_Panel
         }
 
         List<string> prds = new List<string>();
+        string status;
+        private void shippeddataview_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            plbl.Visible = true;
+            shipbtn.Visible = false;
+            sendsmsbtn.Visible = false;
+            cancelbtn.Visible = false;
+            ppnl.Controls.Clear();
+            shippeddataview.Enabled = false;
+
+            if (e.RowIndex >= 0)
+            {
+
+                DataGridViewRow row = this.shippeddataview.Rows[e.RowIndex];
+                id = row.Cells["orderid"].Value.ToString();
+                contact = row.Cells["contact"].Value.ToString();
+                status= row.Cells["status"].Value.ToString();
+                products = new BackgroundWorker();
+                products.DoWork += Products_DoWork;
+                products.RunWorkerCompleted += Products_RunWorkerCompleted;
+                products.WorkerSupportsCancellation = true;
+                if (products.IsBusy)
+                    products.CancelAsync();
+                else if (!products.CancellationPending)
+                    products.RunWorkerAsync(id);
+            }
+        }
+
+        private void shippeddataview_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.RowIndex >= 0)
+                {
+                    DataGridViewRow row = this.shippeddataview.Rows[e.RowIndex];
+                    id = row.Cells["orderid"].Value.ToString();
+                    int amount= int.Parse(row.Cells["amount"].Value.ToString());
+                    int shipping = int.Parse(row.Cells["shipping"].Value.ToString());
+                    int result= int.Parse(retolbl.Text) + (amount + shipping);
+                    retolbl.Text = result.ToString();
+
+                    totallbl.Visible = true;
+                    retolbl.Visible = true;
+                    clearlbl.Visible = true;
+
+
+                }
+            }catch { }
+         }
+
+        private void clearlbl_Click(object sender, EventArgs e)
+        {
+            retolbl.Text = "0";
+            totallbl.Visible = false;
+            retolbl.Visible = false;
+            clearlbl.Visible = false;
+
+        }
+
         List<string> pid = new List<string>();
         private void Products_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -1070,7 +1139,28 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void bgworker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
+            placeddataview.Enabled = false;
             pageload.Value = e.ProgressPercentage;
+            if (e.ProgressPercentage == 50)
+            {
+                loadingpic.Visible = false;
+                loadinglbl.Visible = false;
+               
+                placedh.Visible = true;
+
+                placeddataview.DataSource = bsource;
+                try
+                {
+                    placeddataview.Columns["shipdate"].Visible = false;
+                    placeddataview.Columns["deliverdate"].Visible = false;
+                    placeddataview.Columns["paymentconfirmed"].Visible = false;
+                    placeddataview.Columns["email"].Visible = false;
+                    placeddataview.Columns["transanctionid"].Visible = false;
+                    placeddataview.Columns["paymenttype"].Visible = false;
+                }
+                catch { }
+                placeddataview.Visible = true;
+            }
 
             Object[] arg = (object[])e.UserState;
             if (arg == null) { }
@@ -1162,7 +1252,8 @@ namespace Veiled_Kashmir_Admin_Panel
                         shippeddataview.Columns["paymenttype"].Visible = false;
                     }catch { }
                     placeddataview.Visible = true;
-                    if(shippedcount == 0)
+                    placeddataview.Enabled = true;
+                    if (shippedcount == 0)
                     {
                         shippeddataview.Visible = false;
                         shippedh.Visible = false;

@@ -676,7 +676,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 double n = double.Parse(mrptxt.Text);
 
                 n = n - (n * sub2);
-                pricetxt.Text = n.ToString();
+                dealertxt.Text = n.ToString();
             }catch { }
         }
 

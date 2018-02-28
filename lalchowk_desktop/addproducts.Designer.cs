@@ -117,6 +117,9 @@
             this.inclbl = new System.Windows.Forms.Label();
             this.inclbl2 = new System.Windows.Forms.Label();
             this.addppnl = new System.Windows.Forms.Panel();
+            this.dcbtn = new System.Windows.Forms.Button();
+            this.dctxt = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
             this.sizelbl = new System.Windows.Forms.Label();
             this.getpidbtn = new System.Windows.Forms.Button();
             this.clearpicbtn = new System.Windows.Forms.Button();
@@ -126,9 +129,6 @@
             this.bgworker = new System.ComponentModel.BackgroundWorker();
             this.pictimer = new System.Windows.Forms.Timer(this.components);
             this.bguploadpic = new System.ComponentModel.BackgroundWorker();
-            this.dctxt = new System.Windows.Forms.TextBox();
-            this.label29 = new System.Windows.Forms.Label();
-            this.dcbtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pic1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic3)).BeginInit();
@@ -314,7 +314,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(466, 535);
+            this.label9.Location = new System.Drawing.Point(466, 442);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(31, 13);
             this.label9.TabIndex = 21;
@@ -322,10 +322,10 @@
             // 
             // mrptxt
             // 
-            this.mrptxt.Location = new System.Drawing.Point(466, 551);
+            this.mrptxt.Location = new System.Drawing.Point(466, 458);
             this.mrptxt.Name = "mrptxt";
             this.mrptxt.Size = new System.Drawing.Size(134, 20);
-            this.mrptxt.TabIndex = 23;
+            this.mrptxt.TabIndex = 21;
             // 
             // label10
             // 
@@ -346,7 +346,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(466, 447);
+            this.label11.Location = new System.Drawing.Point(466, 538);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(85, 13);
             this.label11.TabIndex = 25;
@@ -354,10 +354,10 @@
             // 
             // dealertxt
             // 
-            this.dealertxt.Location = new System.Drawing.Point(466, 463);
+            this.dealertxt.Location = new System.Drawing.Point(466, 554);
             this.dealertxt.Name = "dealertxt";
             this.dealertxt.Size = new System.Drawing.Size(134, 20);
-            this.dealertxt.TabIndex = 21;
+            this.dealertxt.TabIndex = 23;
             // 
             // label12
             // 
@@ -1061,6 +1061,32 @@
             this.addppnl.Size = new System.Drawing.Size(1150, 668);
             this.addppnl.TabIndex = 88;
             // 
+            // dcbtn
+            // 
+            this.dcbtn.Location = new System.Drawing.Point(683, 507);
+            this.dcbtn.Name = "dcbtn";
+            this.dcbtn.Size = new System.Drawing.Size(63, 20);
+            this.dcbtn.TabIndex = 102;
+            this.dcbtn.Text = "Calculate";
+            this.dcbtn.UseVisualStyleBackColor = true;
+            this.dcbtn.Click += new System.EventHandler(this.dcbtn_Click);
+            // 
+            // dctxt
+            // 
+            this.dctxt.Location = new System.Drawing.Point(612, 507);
+            this.dctxt.Name = "dctxt";
+            this.dctxt.Size = new System.Drawing.Size(66, 20);
+            this.dctxt.TabIndex = 101;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(612, 491);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(66, 13);
+            this.label29.TabIndex = 100;
+            this.label29.Text = "Discount (%)";
+            // 
             // sizelbl
             // 
             this.sizelbl.AutoSize = true;
@@ -1138,32 +1164,6 @@
             this.bguploadpic.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bguploadpic_DoWork);
             this.bguploadpic.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bguploadpic_ProgressChanged);
             this.bguploadpic.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bguploadpic_RunWorkerCompleted);
-            // 
-            // dctxt
-            // 
-            this.dctxt.Location = new System.Drawing.Point(612, 507);
-            this.dctxt.Name = "dctxt";
-            this.dctxt.Size = new System.Drawing.Size(66, 20);
-            this.dctxt.TabIndex = 101;
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(612, 491);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(66, 13);
-            this.label29.TabIndex = 100;
-            this.label29.Text = "Discount (%)";
-            // 
-            // dcbtn
-            // 
-            this.dcbtn.Location = new System.Drawing.Point(683, 507);
-            this.dcbtn.Name = "dcbtn";
-            this.dcbtn.Size = new System.Drawing.Size(63, 20);
-            this.dcbtn.TabIndex = 102;
-            this.dcbtn.Text = "Calculate";
-            this.dcbtn.UseVisualStyleBackColor = true;
-            this.dcbtn.Click += new System.EventHandler(this.dcbtn_Click);
             // 
             // addproducts
             // 

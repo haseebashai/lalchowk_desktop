@@ -824,10 +824,20 @@ namespace Veiled_Kashmir_Admin_Panel
             dr.Read();
             invest = dr[0].ToString();
             aconn.Close();
-        }
+
+                aconn.Open();
+                cmd = new MySqlCommand(" SELECT count(did) from deliveries where date like '%-" + month + "-%'", aconn); //" + month + "
+                dr = cmd.ExecuteReader();
+                dr.Read();
+                order = dr[0].ToString();
+
+                aconn.Close();
+
+            }
             catch (Exception ex)
             {
                 aconn.Close();
+                
                 MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
         }
@@ -840,6 +850,7 @@ namespace Veiled_Kashmir_Admin_Panel
             salebox.Text = sale;
             purchasebox.Text = purchase;
             investbox.Text = invest;
+            orlbl.Text = order;
             try
             {
                 profitbox.Text = (int.Parse(salebox.Text) - int.Parse(purchasebox.Text)).ToString();
@@ -895,7 +906,7 @@ namespace Veiled_Kashmir_Admin_Panel
                    
         }
 
-        string sale, purchase, invest;
+        string sale, purchase, invest, order;
         private void revbtn_Click(object sender, EventArgs e)
         {
 

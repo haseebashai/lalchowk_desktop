@@ -479,6 +479,12 @@ namespace Veiled_Kashmir_Admin_Panel
                 obj.closeConnection();
             }
         }
+
+        private void btbtn_Click(object sender, EventArgs e)
+        {
+            smstxt.Text = "";
+            smstxt.Text = "Dear customer, your requested book '   ' is currently not available. We hope to serve you better next time. Lalchowk Support";
+        }
     }
 }
   

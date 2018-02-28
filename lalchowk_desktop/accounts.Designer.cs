@@ -134,6 +134,8 @@
             this.totallbl = new System.Windows.Forms.Label();
             this.revbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.rpnl = new System.Windows.Forms.Panel();
+            this.orlbl = new System.Windows.Forms.Label();
+            this.label49 = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
             this.investbox = new System.Windows.Forms.TextBox();
             this.label47 = new System.Windows.Forms.Label();
@@ -304,7 +306,6 @@
             // 
             // baltxt
             // 
-            this.baltxt.Enabled = false;
             this.baltxt.Location = new System.Drawing.Point(278, 25);
             this.baltxt.Name = "baltxt";
             this.baltxt.Size = new System.Drawing.Size(204, 20);
@@ -1297,6 +1298,8 @@
             // 
             // rpnl
             // 
+            this.rpnl.Controls.Add(this.orlbl);
+            this.rpnl.Controls.Add(this.label49);
             this.rpnl.Controls.Add(this.label48);
             this.rpnl.Controls.Add(this.investbox);
             this.rpnl.Controls.Add(this.label47);
@@ -1330,10 +1333,30 @@
             this.rpnl.TabIndex = 41;
             this.rpnl.Visible = false;
             // 
+            // orlbl
+            // 
+            this.orlbl.AutoSize = true;
+            this.orlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.orlbl.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.orlbl.Location = new System.Drawing.Point(996, 84);
+            this.orlbl.Name = "orlbl";
+            this.orlbl.Size = new System.Drawing.Size(24, 20);
+            this.orlbl.TabIndex = 40;
+            this.orlbl.Text = "lbl";
+            // 
+            // label49
+            // 
+            this.label49.AutoSize = true;
+            this.label49.Location = new System.Drawing.Point(983, 64);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(41, 13);
+            this.label49.TabIndex = 39;
+            this.label49.Text = "Orders:";
+            // 
             // label48
             // 
             this.label48.AutoSize = true;
-            this.label48.Location = new System.Drawing.Point(844, 116);
+            this.label48.Location = new System.Drawing.Point(805, 116);
             this.label48.Name = "label48";
             this.label48.Size = new System.Drawing.Size(51, 13);
             this.label48.TabIndex = 38;
@@ -1341,7 +1364,7 @@
             // 
             // investbox
             // 
-            this.investbox.Location = new System.Drawing.Point(906, 113);
+            this.investbox.Location = new System.Drawing.Point(867, 113);
             this.investbox.Multiline = true;
             this.investbox.Name = "investbox";
             this.investbox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -1351,7 +1374,7 @@
             // label47
             // 
             this.label47.AutoSize = true;
-            this.label47.Location = new System.Drawing.Point(861, 91);
+            this.label47.Location = new System.Drawing.Point(822, 91);
             this.label47.Name = "label47";
             this.label47.Size = new System.Drawing.Size(34, 13);
             this.label47.TabIndex = 36;
@@ -1360,7 +1383,7 @@
             // label46
             // 
             this.label46.AutoSize = true;
-            this.label46.Location = new System.Drawing.Point(861, 66);
+            this.label46.Location = new System.Drawing.Point(822, 66);
             this.label46.Name = "label46";
             this.label46.Size = new System.Drawing.Size(31, 13);
             this.label46.TabIndex = 35;
@@ -1368,7 +1391,7 @@
             // 
             // purchasebox
             // 
-            this.purchasebox.Location = new System.Drawing.Point(906, 63);
+            this.purchasebox.Location = new System.Drawing.Point(867, 63);
             this.purchasebox.Multiline = true;
             this.purchasebox.Name = "purchasebox";
             this.purchasebox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -1377,7 +1400,7 @@
             // 
             // profitbox
             // 
-            this.profitbox.Location = new System.Drawing.Point(906, 88);
+            this.profitbox.Location = new System.Drawing.Point(867, 88);
             this.profitbox.Multiline = true;
             this.profitbox.Name = "profitbox";
             this.profitbox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -1386,7 +1409,7 @@
             // 
             // salebox
             // 
-            this.salebox.Location = new System.Drawing.Point(906, 38);
+            this.salebox.Location = new System.Drawing.Point(867, 38);
             this.salebox.Multiline = true;
             this.salebox.Name = "salebox";
             this.salebox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -1396,7 +1419,7 @@
             // monlbl
             // 
             this.monlbl.AutoSize = true;
-            this.monlbl.Location = new System.Drawing.Point(957, 13);
+            this.monlbl.Location = new System.Drawing.Point(918, 13);
             this.monlbl.Name = "monlbl";
             this.monlbl.Size = new System.Drawing.Size(37, 13);
             this.monlbl.TabIndex = 31;
@@ -1405,7 +1428,7 @@
             // revlbl
             // 
             this.revlbl.AutoSize = true;
-            this.revlbl.Location = new System.Drawing.Point(861, 41);
+            this.revlbl.Location = new System.Drawing.Point(822, 41);
             this.revlbl.Name = "revlbl";
             this.revlbl.Size = new System.Drawing.Size(31, 13);
             this.revlbl.TabIndex = 30;
@@ -1414,7 +1437,7 @@
             // label37
             // 
             this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(834, 13);
+            this.label37.Location = new System.Drawing.Point(795, 13);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(126, 13);
             this.label37.TabIndex = 29;
@@ -1897,5 +1920,7 @@
         private System.ComponentModel.BackgroundWorker bgworker6;
         private System.ComponentModel.BackgroundWorker bgworker7;
         private System.ComponentModel.BackgroundWorker bgworker8;
+        private System.Windows.Forms.Label orlbl;
+        private System.Windows.Forms.Label label49;
     }
 }
