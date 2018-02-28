@@ -367,7 +367,7 @@ namespace Veiled_Kashmir_Admin_Panel
         }
 
 
-        private void navtxt_Click(object sender, EventArgs e)
+        public void navtxt_Click(object sender, EventArgs e)
         {
             Cursor = Cursors.WaitCursor;
             mainform mf = new mainform(hp);
@@ -709,6 +709,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void addorderbtn_Click(object sender, EventArgs e)
         {
+          
             dialogcontainer dg = new dialogcontainer();
             dg.Size = new Size(950, 700);
             addorder ao= new addorder(dg);

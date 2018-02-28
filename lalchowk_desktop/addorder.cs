@@ -18,9 +18,11 @@ namespace Veiled_Kashmir_Admin_Panel
         MySqlDataReader dr;
 
         private dialogcontainer dg = null;
+      
         public addorder(Form dgcopy)
         {
             dg = dgcopy as dialogcontainer;
+            
             InitializeComponent();
 
             BackgroundWorker pin = new BackgroundWorker();
@@ -86,6 +88,7 @@ namespace Veiled_Kashmir_Admin_Panel
                         string cmd = "INSERT INTO orders(`email`, `amount`,`timestamp`,`shipping`,`paymenttype`, `transanctionid`,`itemcount`,`status`,`name`,`address1`,`address2`,`contact`,`pincode`,`city`,`loyaltybonus`) values ('" + email + "','" + amounttxt.Text
                             + "',DATE_ADD(CURRENT_TIMESTAMP, INTERVAL 750 MINUTE),'" + shiptxt.Text + "','Cash on Delivery','SW','" + counttxt.Text + "','" + statustxt.Text + "','" + nametxt.Text + "','" + add1txt.Text + "','" + add2txt.Text + "','" + contacttxt.Text + "','" + pintxt.Text + "','" + citytxt.Text + "','" + loyaltxt.Text + "')";
                         obj.nonQuery(cmd);
+                        long orderid = userinfo.orid;
                     //    int orderid = obj.Count("SELECT LAST_INSERT_ID()");
                       
                         obj.closeConnection();
@@ -93,6 +96,7 @@ namespace Veiled_Kashmir_Admin_Panel
                         string[] pids = pidtxt.Text.Split(',');
                         foreach (string pid in pids)
                         {
+                            MessageBox.Show(orderid.ToString());
                             try
                             {
                                 dr = obj.Query("select productname,price,mrp,dealerprice,picture from products where productid='" + pid + "'");
@@ -107,7 +111,7 @@ namespace Veiled_Kashmir_Admin_Panel
                               
                                 StringBuilder pname = new StringBuilder(name);
                                 pname.Replace(@"'", "\\'").Replace(@"\", "\\");
-                                string cmd1 = "insert into orderdetails(`orderid`,`productid`,`productname`,`price`,`quantity`,`discount`,`mrp`,`dealerprice`,`size`,`picture`)values('" + userinfo.orid + "','" + pid + "','" + pname + "','" + price + "','1','0','" + mrp + "','" + dp + "',NULL,'" + pic + "')";
+                                string cmd1 = "insert into orderdetails(`orderid`,`productid`,`productname`,`price`,`quantity`,`discount`,`mrp`,`dealerprice`,`size`,`picture`)values('" + orderid + "','" + pid + "','" + pname + "','" + price + "','1','0','" + mrp + "','" + dp + "',NULL,'" + pic + "')";
                                 obj.nonQuery(cmd1);
                                
                             }
@@ -198,7 +202,6 @@ namespace Veiled_Kashmir_Admin_Panel
                 }
             }catch { }
         }
-
         private void addbtn_Click(object sender, EventArgs e)
         {
             try
