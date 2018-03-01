@@ -202,6 +202,16 @@ namespace Veiled_Kashmir_Admin_Panel
                 }
             }catch { }
         }
+
+        private void pinbox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (pinbox.SelectedIndex > -1)
+            {
+                pintxt.Text = pinbox.Text.Split(':')[0];
+
+            }
+        }
+
         private void addbtn_Click(object sender, EventArgs e)
         {
             try

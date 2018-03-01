@@ -297,6 +297,12 @@ namespace Veiled_Kashmir_Admin_Panel
                 yes.Checked = false;
         }
 
+        private void pickuptxt_TextChanged(object sender, EventArgs e)
+        {
+            paymenttxt.Text = pickuptxt.Text;
+            dtxt.Text = pickuptxt.Text;
+        }
+
         private void sendmailbtn_Click(object sender, EventArgs e)
         {
             dialogcontainer dg = new dialogcontainer();

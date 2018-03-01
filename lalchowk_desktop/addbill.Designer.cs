@@ -346,6 +346,7 @@
             this.pickuptxt.Name = "pickuptxt";
             this.pickuptxt.Size = new System.Drawing.Size(204, 20);
             this.pickuptxt.TabIndex = 103;
+            this.pickuptxt.TextChanged += new System.EventHandler(this.pickuptxt_TextChanged);
             // 
             // commentstxt
             // 

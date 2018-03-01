@@ -263,25 +263,26 @@ namespace Veiled_Kashmir_Admin_Panel
                             readpictures();
                             picturesdataview.DataSource = bsource;
                         }
-                        else
+                    }
+                    else
+                    {
+
+                        try
+                        {
+                            timer.Start();
+                            addbtn.Enabled = false;
+                            picworker.RunWorkerAsync();
+                        }
+                        catch (WebException ex)
                         {
 
-                            try
-                            {
-                                timer.Start();
-                                addbtn.Enabled = false;
-                                picworker.RunWorkerAsync();
-                            }
-                            catch (WebException ex)
-                            {
-
-                                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
-                            }
-
-
+                            MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
                         }
+
+
                     }
-                }
+                    }
+                
             }catch
             {
                 obj.closeConnection();
@@ -292,7 +293,7 @@ namespace Veiled_Kashmir_Admin_Panel
         private void readpictures()
         {try { 
             con.Open();
-            adap = new MySqlDataAdapter("select * from pictures", con);
+            adap = new MySqlDataAdapter("select * from pictures order by pictureid desc", con);
             dt = new DataTable();
             adap.Fill(dt);
             con.Close();

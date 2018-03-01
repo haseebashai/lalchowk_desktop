@@ -395,16 +395,17 @@
             // 
             this.pinbox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.pinbox.FormattingEnabled = true;
-            this.pinbox.Location = new System.Drawing.Point(667, 250);
+            this.pinbox.Location = new System.Drawing.Point(649, 250);
             this.pinbox.Name = "pinbox";
-            this.pinbox.Size = new System.Drawing.Size(189, 21);
+            this.pinbox.Size = new System.Drawing.Size(150, 21);
             this.pinbox.TabIndex = 86;
+            this.pinbox.SelectedIndexChanged += new System.EventHandler(this.pinbox_SelectedIndexChanged);
             // 
             // label13
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(667, 230);
+            this.label13.Location = new System.Drawing.Point(649, 230);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(99, 16);
             this.label13.TabIndex = 87;
