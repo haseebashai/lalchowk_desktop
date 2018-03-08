@@ -468,19 +468,24 @@ namespace Veiled_Kashmir_Admin_Panel
             try { 
             if (returned == null)
             {
-                    BackgroundWorker email1 = new BackgroundWorker();
-                    email1.DoWork += (o, a) => 
-                    {
-                        aconn.Open();
-                        mycmd = new MySqlCommand("update emailno set eid = (eid + '" + myData.Count + "') where id=1", aconn); //emails
-                        mycmd.ExecuteNonQuery();
-                        aconn.Close();
-                    };
-                    email1.RunWorkerCompleted += (o, b) => 
-                    {
-                        Cursor = Cursors.Arrow;
-                    };
-                    email1.RunWorkerAsync();
+                    aconn.Open();
+                    mycmd = new MySqlCommand("update emailno set eid = (eid + '" + myData.Count + "') where id=1", aconn); //emails
+                    mycmd.ExecuteNonQuery();
+                    aconn.Close();
+                    //BackgroundWorker email1 = new BackgroundWorker();
+                    //email1.DoWork += (o, a) => 
+                    //{
+                    //    aconn.Open();
+                    //    mycmd = new MySqlCommand("update emailno set eid = (eid + '" + myData.Count + "') where id=1", aconn); //emails
+                    //    mycmd.ExecuteNonQuery();
+                    //    aconn.Close();
+                    //};
+                    //email1.RunWorkerCompleted += (o, b) => 
+                    //{
+                    //    Cursor = Cursors.Arrow;
+                    //    aconn.Close();
+                    //};
+                    //email1.RunWorkerAsync();
                     
                 }
             else if (returned == "shit")
@@ -514,21 +519,13 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             myData.Clear();
             Cursor = Cursors.WaitCursor;
-            BackgroundWorker email = new BackgroundWorker();
-            email.DoWork += (o, a) => 
-            {
-                readlist();
-            };
-            email.RunWorkerCompleted += (o, b) => 
-            {
+            readlist();
                 emailno.Text = maillist.ToString();
                 recno.Text = emails.ToString();
                 elistlbl.Text = "Send email to " + recno.Text + " customers today or enter a single email ID.";
                 emaillist.DisplayMember = "mail";
                 Cursor = Cursors.Arrow;
-            };
-            email.RunWorkerAsync();
-            
+           
 
 
         }
