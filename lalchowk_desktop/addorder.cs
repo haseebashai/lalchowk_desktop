@@ -96,7 +96,7 @@ namespace Veiled_Kashmir_Admin_Panel
                         string[] pids = pidtxt.Text.Split(',');
                         foreach (string pid in pids)
                         {
-                            MessageBox.Show(orderid.ToString());
+                           // MessageBox.Show(orderid.ToString());
                             try
                             {
                                 dr = obj.Query("select productname,price,mrp,dealerprice,picture from products where productid='" + pid + "'");

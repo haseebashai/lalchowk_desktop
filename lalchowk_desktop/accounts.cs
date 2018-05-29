@@ -805,28 +805,28 @@ namespace Veiled_Kashmir_Admin_Panel
             try { 
             readrevenue();
             aconn.Open();
-            cmd = new MySqlCommand(" SELECT sum(amount) from deliveries where status='delivered' and date like '%-" + month + "-%'", aconn);
+            cmd = new MySqlCommand(" SELECT sum(amount) from deliveries where status='delivered' and date like '%-" + month + "-2018'", aconn);
             dr = cmd.ExecuteReader();
             dr.Read();
             sale = dr[0].ToString();
             aconn.Close();
 
             aconn.Open();
-            cmd = new MySqlCommand(" SELECT sum(dealerprice) from dealing where pickupdate like '%-" + month + "-%'", aconn);
+            cmd = new MySqlCommand(" SELECT sum(dealerprice) from dealing where pickupdate like '%-" + month + "-2018'", aconn);
             dr = cmd.ExecuteReader();
             dr.Read();
             purchase = dr[0].ToString();
             aconn.Close();
 
             aconn.Open();
-            cmd = new MySqlCommand(" SELECT sum(amount) from expenses where purchasedate like '%-" + month + "-%'", aconn);
+            cmd = new MySqlCommand(" SELECT sum(amount) from expenses where purchasedate like '%-" + month + "-2018'", aconn);
             dr = cmd.ExecuteReader();
             dr.Read();
             invest = dr[0].ToString();
             aconn.Close();
 
                 aconn.Open();
-                cmd = new MySqlCommand(" SELECT count(did) from deliveries where date like '%-" + month + "-%'", aconn); //" + month + "
+                cmd = new MySqlCommand(" SELECT count(did) from deliveries where date like '%-" + month + "-2018'", aconn); //" + month + "
                 dr = cmd.ExecuteReader();
                 dr.Read();
                 order = dr[0].ToString();
@@ -937,7 +937,7 @@ namespace Veiled_Kashmir_Admin_Panel
         private void addrbtn_Click(object sender, EventArgs e)
         {try { 
             aconn.Open();
-            mysqlcmd = new MySqlCommand("insert into revenue(`month`, `year`,`sale`,`profit`,`invested`,`reason`,`gross_profit`,`purchase_cost`) values ('" + monthtxt.Text + "','" + yeartxt.Text + "','" + saletxt.Text + "','" + profittxt.Text + "','"+investedtxt.Text+"','"+ireasontxt.Text+"','"+gprofittxt.Text+"','"+pcosttxt.Text+"')", aconn);
+            mysqlcmd = new MySqlCommand("insert into revenue(`month`, `year`,`sale`,`profit`,`invested`,`reason`,`gross_profit`,`purchase_cost`,`orders`) values ('" + monthtxt.Text + "','" + yeartxt.Text + "','" + saletxt.Text + "','" + profittxt.Text + "','"+investedtxt.Text+"','"+ireasontxt.Text+"','"+gprofittxt.Text+"','"+pcosttxt.Text+"','"+ordtxt.Text+"')", aconn);
             mysqlcmd.ExecuteNonQuery();
             MessageBox.Show("Entry added.");
             aconn.Close();
@@ -949,6 +949,7 @@ namespace Veiled_Kashmir_Admin_Panel
             ireasontxt.Text = "";
             gprofittxt.Text = "";
             pcosttxt.Text = "";
+            ordtxt.Text = "";
 
             readrevenue();
             accountdataview.DataSource = bsource;

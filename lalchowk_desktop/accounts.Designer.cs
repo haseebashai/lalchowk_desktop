@@ -178,6 +178,8 @@
             this.bgworker6 = new System.ComponentModel.BackgroundWorker();
             this.bgworker7 = new System.ComponentModel.BackgroundWorker();
             this.bgworker8 = new System.ComponentModel.BackgroundWorker();
+            this.ordtxt = new System.Windows.Forms.TextBox();
+            this.label50 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.accountdataview)).BeginInit();
             this.exppnl.SuspendLayout();
             this.moneypnl.SuspendLayout();
@@ -703,6 +705,7 @@
             this.ballbl.Size = new System.Drawing.Size(120, 16);
             this.ballbl.TabIndex = 28;
             this.ballbl.Text = "Balance remaining";
+            this.ballbl.Visible = false;
             // 
             // banklbl
             // 
@@ -714,6 +717,7 @@
             this.banklbl.Size = new System.Drawing.Size(92, 16);
             this.banklbl.TabIndex = 29;
             this.banklbl.Text = "Bank Balance";
+            this.banklbl.Visible = false;
             // 
             // billbtn
             // 
@@ -1298,6 +1302,8 @@
             // 
             // rpnl
             // 
+            this.rpnl.Controls.Add(this.ordtxt);
+            this.rpnl.Controls.Add(this.label50);
             this.rpnl.Controls.Add(this.orlbl);
             this.rpnl.Controls.Add(this.label49);
             this.rpnl.Controls.Add(this.label48);
@@ -1482,7 +1488,7 @@
             this.ireasontxt.Location = new System.Drawing.Point(521, 75);
             this.ireasontxt.Multiline = true;
             this.ireasontxt.Name = "ireasontxt";
-            this.ireasontxt.Size = new System.Drawing.Size(204, 39);
+            this.ireasontxt.Size = new System.Drawing.Size(204, 19);
             this.ireasontxt.TabIndex = 23;
             // 
             // label43
@@ -1619,7 +1625,6 @@
             // 
             // epnl
             // 
-            this.epnl.Controls.Add(this.exppnl);
             this.epnl.Controls.Add(this.rpnl);
             this.epnl.Controls.Add(this.moneypnl);
             this.epnl.Controls.Add(this.billpnl);
@@ -1627,6 +1632,7 @@
             this.epnl.Controls.Add(this.dealpnl);
             this.epnl.Controls.Add(this.bankpnl);
             this.epnl.Controls.Add(this.miscpnl);
+            this.epnl.Controls.Add(this.exppnl);
             this.epnl.Location = new System.Drawing.Point(7, 41);
             this.epnl.Name = "epnl";
             this.epnl.Size = new System.Drawing.Size(1139, 179);
@@ -1722,6 +1728,23 @@
             // 
             this.bgworker8.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker8_DoWork);
             this.bgworker8.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker8_RunWorkerCompleted);
+            // 
+            // ordtxt
+            // 
+            this.ordtxt.Location = new System.Drawing.Point(521, 129);
+            this.ordtxt.Multiline = true;
+            this.ordtxt.Name = "ordtxt";
+            this.ordtxt.Size = new System.Drawing.Size(73, 19);
+            this.ordtxt.TabIndex = 42;
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Location = new System.Drawing.Point(518, 111);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(38, 13);
+            this.label50.TabIndex = 41;
+            this.label50.Text = "Orders";
             // 
             // accounts
             // 
@@ -1922,5 +1945,7 @@
         private System.ComponentModel.BackgroundWorker bgworker8;
         private System.Windows.Forms.Label orlbl;
         private System.Windows.Forms.Label label49;
+        private System.Windows.Forms.TextBox ordtxt;
+        private System.Windows.Forms.Label label50;
     }
 }
