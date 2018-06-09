@@ -41,7 +41,9 @@ namespace Veiled_Kashmir_Admin_Panel
         private void singlesms()
         {
             Cursor = Cursors.WaitCursor;
-            string authKey = "180732AO0nQdUZo759f09569";             //Your authentication key
+            //     string authKey = "180732AO0nQdUZo759f09569";             //Your authentication key
+
+            string authKey = "219357Aj6P2wTP5b1902ab";
 
             string mobileNumber = numbertxt.Text;                   //Multiple mobiles numbers separated by comma
 
@@ -207,7 +209,7 @@ namespace Veiled_Kashmir_Admin_Panel
             {
                 
                 smsloop.ReportProgress(i, numList[i]);
-                string authKey = "180732AO0nQdUZo759f09569";             //Your authentication key
+                string authKey = "219357Aj6P2wTP5b1902ab";             //Your authentication key
 
                 string mobileNumber = numList[i];                   //Multiple mobiles numbers separated by comma
 
