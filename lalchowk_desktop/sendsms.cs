@@ -264,7 +264,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     
                     MessageBox.Show(ex.Message.ToString());
                 }
-                System.Threading.Thread.Sleep(1000);
+                System.Threading.Thread.Sleep(5000);
             }
             e.Result = "success";
             numList.Clear();
