@@ -264,7 +264,9 @@ namespace Veiled_Kashmir_Admin_Panel
                     
                     MessageBox.Show(ex.Message.ToString());
                 }
-                System.Threading.Thread.Sleep(5000);
+                Random rnd = new Random();
+                int time = rnd.Next(1000, 6000);
+                System.Threading.Thread.Sleep(time);
             }
             e.Result = "success";
             numList.Clear();
@@ -485,7 +487,9 @@ namespace Veiled_Kashmir_Admin_Panel
         private void btbtn_Click(object sender, EventArgs e)
         {
             smstxt.Text = "";
-            smstxt.Text = "Dear customer, your requested book '   ' is currently not available. We hope to serve you better next time. Lalchowk Support";
+            smstxt.Text = "Dear customer, your requested book ' ' is currently not available. We hope to serve you better next time. Lalchowk Support";
+
+           
         }
     }
 }
