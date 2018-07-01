@@ -805,18 +805,19 @@ namespace Veiled_Kashmir_Admin_Panel
             try { 
             readrevenue();
             aconn.Open();
-            cmd = new MySqlCommand(" SELECT sum(amount) from deliveries where status='delivered' and date like '%-" + month + "-2018'", aconn);
+            cmd = new MySqlCommand(" SELECT sum(amount) from deliveries where status='delivered' and date like '%-" + month + "-2018'", aconn); 
             dr = cmd.ExecuteReader();
             dr.Read();
             sale = dr[0].ToString();
             aconn.Close();
 
             aconn.Open();
-            cmd = new MySqlCommand(" SELECT sum(dealerprice) from dealing where pickupdate like '%-" + month + "-2018'", aconn);
-            dr = cmd.ExecuteReader();
+            cmd = new MySqlCommand(" SELECT sum(dealerprice*count) from dealing where pickupdate like '%-" + month + "-2018'", aconn); 
+                dr = cmd.ExecuteReader();
             dr.Read();
             purchase = dr[0].ToString();
             aconn.Close();
+
 
             aconn.Open();
             cmd = new MySqlCommand(" SELECT sum(amount) from expenses where purchasedate like '%-" + month + "-2018'", aconn);
