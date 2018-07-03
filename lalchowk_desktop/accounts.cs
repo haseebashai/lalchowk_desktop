@@ -214,7 +214,7 @@ namespace Veiled_Kashmir_Admin_Panel
         public void readbilling()
         {try { 
             aconn.Open();
-            adap = new MySqlDataAdapter("select * from billing order by bid desc", aconn);
+            adap = new MySqlDataAdapter("select * from billing order by orderid desc", aconn);
             dt = new DataTable();
             adap.Fill(dt);
             aconn.Close();
@@ -241,7 +241,7 @@ namespace Veiled_Kashmir_Admin_Panel
         public void readdeliveries()
         {try { 
             aconn.Open();
-            adap = new MySqlDataAdapter("select * from deliveries where status='delivered' order by did desc", aconn);
+            adap = new MySqlDataAdapter("select * from deliveries where status='delivered' order by orderid desc", aconn);
             dt = new DataTable();
             adap.Fill(dt);
             aconn.Close();
@@ -267,7 +267,7 @@ namespace Veiled_Kashmir_Admin_Panel
         public void readdealings()
         {try { 
             aconn.Open();
-            adap = new MySqlDataAdapter("select * from dealing order by did desc", aconn);
+            adap = new MySqlDataAdapter("select * from dealing order by orderid desc", aconn);
             dt = new DataTable();
             adap.Fill(dt);
             aconn.Close();
@@ -303,7 +303,7 @@ namespace Veiled_Kashmir_Admin_Panel
             
 
             aconn.Open();
-            cmd = new MySqlCommand("SELECT date FROM lalchowk_ac.deliveries ORDER BY did DESC LIMIT 1;", aconn);
+            cmd = new MySqlCommand("SELECT date FROM lalchowk_ac.deliveries ORDER BY orderid DESC LIMIT 1;", aconn);
             dr = cmd.ExecuteReader();
             dr.Read();
             
@@ -813,7 +813,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
             aconn.Open();
             cmd = new MySqlCommand(" SELECT sum(dealerprice*count) from dealing where pickupdate like '%-" + month + "-2018'", aconn); 
-                dr = cmd.ExecuteReader();
+            dr = cmd.ExecuteReader();
             dr.Read();
             purchase = dr[0].ToString();
             aconn.Close();
