@@ -93,6 +93,7 @@
             this.numbertxt.Size = new System.Drawing.Size(362, 165);
             this.numbertxt.TabIndex = 2;
             this.numbertxt.Text = "Enter numbers seperated with comma";
+            this.numbertxt.TextChanged += new System.EventHandler(this.numbertxt_TextChanged);
             this.numbertxt.Enter += new System.EventHandler(this.numbertxt_Enter);
             this.numbertxt.Leave += new System.EventHandler(this.numbertxt_Leave);
             // 
@@ -104,6 +105,7 @@
             this.label1.Size = new System.Drawing.Size(55, 13);
             this.label1.TabIndex = 38;
             this.label1.Text = "Recievers";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -113,6 +115,7 @@
             this.label2.Size = new System.Drawing.Size(66, 13);
             this.label2.TabIndex = 39;
             this.label2.Text = "Text to send";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // sentlbl
             // 
@@ -125,6 +128,7 @@
             this.sentlbl.TabIndex = 40;
             this.sentlbl.Text = "MESSAGE SENT ✔";
             this.sentlbl.Visible = false;
+            this.sentlbl.Click += new System.EventHandler(this.sentlbl_Click);
             // 
             // numlisttxt
             // 
@@ -172,6 +176,7 @@
             this.label4.Size = new System.Drawing.Size(41, 13);
             this.label4.TabIndex = 45;
             this.label4.Text = "Sender";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // sendertxt
             // 
@@ -182,6 +187,7 @@
             this.sendertxt.Name = "sendertxt";
             this.sendertxt.Size = new System.Drawing.Size(140, 23);
             this.sendertxt.TabIndex = 1;
+            this.sendertxt.TextChanged += new System.EventHandler(this.sendertxt_TextChanged);
             this.sendertxt.Enter += new System.EventHandler(this.sendertxt_Enter);
             // 
             // arrow
@@ -245,6 +251,7 @@
             this.tolbl.TabIndex = 51;
             this.tolbl.Text = "to";
             this.tolbl.Visible = false;
+            this.tolbl.Click += new System.EventHandler(this.tolbl_Click);
             // 
             // progressBar1
             // 
@@ -254,6 +261,7 @@
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.progressBar1.TabIndex = 52;
             this.progressBar1.Visible = false;
+            this.progressBar1.Click += new System.EventHandler(this.progressBar1_Click);
             // 
             // maxcountlbl
             // 
@@ -266,6 +274,7 @@
             this.maxcountlbl.TabIndex = 53;
             this.maxcountlbl.Text = "to";
             this.maxcountlbl.Visible = false;
+            this.maxcountlbl.Click += new System.EventHandler(this.maxcountlbl_Click);
             // 
             // stbtn
             // 
@@ -286,6 +295,7 @@
             this.charlbl.TabIndex = 55;
             this.charlbl.Text = "(1/1)";
             this.charlbl.Visible = false;
+            this.charlbl.Click += new System.EventHandler(this.charlbl_Click);
             // 
             // reqbtn
             // 

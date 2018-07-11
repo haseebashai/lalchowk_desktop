@@ -52,6 +52,20 @@ namespace Veiled_Kashmir_Admin_Panel
             bgworker.RunWorkerAsync();
         }
 
+        private void addfiltxt_TextChanged(object sender, EventArgs e)
+        {
+            DataView dv = new DataView(dt);
+            dv.RowFilter = string.Format("address1 LIKE '%{0}%'", addfiltxt.Text);
+            ordergridview.DataSource = dv;
+        }
+
+        private void confiltxt_TextChanged(object sender, EventArgs e)
+        {
+            DataView dv = new DataView(dt);
+            dv.RowFilter = string.Format("convert([contact],System.String) LIKE '%{0}%'", confiltxt.Text);
+            ordergridview.DataSource = dv;
+        }
+
         private dialogcontainer dg = null;
         private container hp = null;
 

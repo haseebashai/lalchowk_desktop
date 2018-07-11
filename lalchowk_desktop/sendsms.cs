@@ -127,6 +127,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 {
                     try
                     {
+                        
                         sentfrom = sendertxt.Text;
                         string[] txtNumbers = numbertxt.Text.Split(',');
                         foreach (string nbr in txtNumbers)
@@ -145,7 +146,8 @@ namespace Veiled_Kashmir_Admin_Panel
                     }
                     catch (Exception exce)
                     {
-                        MessageBox.Show(exce.Message.ToString());
+                        sentlbl.Visible = true;
+                        sentlbl.Text= exce.Message.ToString();
                         sendsmsbtn.Enabled = true;
                     }
 
@@ -403,9 +405,9 @@ namespace Veiled_Kashmir_Admin_Panel
         private void smstxt_TextChanged(object sender, EventArgs e)
         {
             charlbl.Visible = true;
-            int max = 160;
+            int max = 320;
             int charac= smstxt.Text.Length;
-            charlbl.Text = "(" + (max-charac) + "/160)";
+            charlbl.Text = "(" + (max-charac) + "/320)";
         }
 
         private void orderbtn_Click(object sender, EventArgs e)
@@ -490,6 +492,56 @@ namespace Veiled_Kashmir_Admin_Panel
             smstxt.Text = "Dear customer, your requested book ' ' is currently not available. We hope to serve you better next time. Lalchowk Support";
 
            
+        }
+
+        private void maxcountlbl_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void progressBar1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tolbl_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void sendertxt_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void sentlbl_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void numbertxt_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void charlbl_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.searchlbl = new System.Windows.Forms.Label();
             this.pintxt = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -65,6 +65,11 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pinbox = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
+            this.addtocartbtn = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.bonustxt = new System.Windows.Forms.TextBox();
+            this.addbonusbtn = new System.Windows.Forms.Button();
+            this.tempbox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.inventorydatagridview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dp)).BeginInit();
             this.SuspendLayout();
@@ -72,7 +77,7 @@
             // searchlbl
             // 
             this.searchlbl.AutoSize = true;
-            this.searchlbl.Location = new System.Drawing.Point(713, 385);
+            this.searchlbl.Location = new System.Drawing.Point(713, 379);
             this.searchlbl.Name = "searchlbl";
             this.searchlbl.Size = new System.Drawing.Size(46, 13);
             this.searchlbl.TabIndex = 53;
@@ -81,7 +86,7 @@
             // pintxt
             // 
             this.pintxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.pintxt.Location = new System.Drawing.Point(716, 405);
+            this.pintxt.Location = new System.Drawing.Point(716, 399);
             this.pintxt.Name = "pintxt";
             this.pintxt.Size = new System.Drawing.Size(140, 20);
             this.pintxt.TabIndex = 10;
@@ -158,7 +163,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(210, 451);
+            this.label6.Location = new System.Drawing.Point(210, 436);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(37, 13);
             this.label6.TabIndex = 63;
@@ -167,7 +172,7 @@
             // statustxt
             // 
             this.statustxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.statustxt.Location = new System.Drawing.Point(213, 471);
+            this.statustxt.Location = new System.Drawing.Point(213, 456);
             this.statustxt.Name = "statustxt";
             this.statustxt.Size = new System.Drawing.Size(130, 20);
             this.statustxt.TabIndex = 12;
@@ -194,11 +199,11 @@
             // 
             this.addorderbtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.addorderbtn.Enabled = false;
-            this.addorderbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.addorderbtn.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.addorderbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addorderbtn.Location = new System.Drawing.Point(620, 494);
+            this.addorderbtn.Location = new System.Drawing.Point(680, 494);
             this.addorderbtn.Name = "addorderbtn";
-            this.addorderbtn.Size = new System.Drawing.Size(236, 88);
+            this.addorderbtn.Size = new System.Drawing.Size(176, 88);
             this.addorderbtn.TabIndex = 66;
             this.addorderbtn.Text = "ADD ORDER";
             this.addorderbtn.UseVisualStyleBackColor = true;
@@ -207,7 +212,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(40, 385);
+            this.label1.Location = new System.Drawing.Point(40, 379);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(54, 13);
             this.label1.TabIndex = 70;
@@ -216,7 +221,7 @@
             // add1txt
             // 
             this.add1txt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.add1txt.Location = new System.Drawing.Point(43, 405);
+            this.add1txt.Location = new System.Drawing.Point(43, 399);
             this.add1txt.Name = "add1txt";
             this.add1txt.Size = new System.Drawing.Size(229, 20);
             this.add1txt.TabIndex = 7;
@@ -224,7 +229,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(289, 385);
+            this.label8.Location = new System.Drawing.Point(289, 379);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(54, 13);
             this.label8.TabIndex = 68;
@@ -233,7 +238,7 @@
             // add2txt
             // 
             this.add2txt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.add2txt.Location = new System.Drawing.Point(292, 405);
+            this.add2txt.Location = new System.Drawing.Point(292, 399);
             this.add2txt.Name = "add2txt";
             this.add2txt.Size = new System.Drawing.Size(230, 20);
             this.add2txt.TabIndex = 8;
@@ -241,7 +246,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(40, 451);
+            this.label9.Location = new System.Drawing.Point(40, 436);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(44, 13);
             this.label9.TabIndex = 76;
@@ -250,7 +255,7 @@
             // contacttxt
             // 
             this.contacttxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.contacttxt.Location = new System.Drawing.Point(43, 471);
+            this.contacttxt.Location = new System.Drawing.Point(43, 456);
             this.contacttxt.Name = "contacttxt";
             this.contacttxt.Size = new System.Drawing.Size(140, 20);
             this.contacttxt.TabIndex = 11;
@@ -258,7 +263,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(543, 385);
+            this.label10.Location = new System.Drawing.Point(543, 379);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(24, 13);
             this.label10.TabIndex = 74;
@@ -267,7 +272,7 @@
             // citytxt
             // 
             this.citytxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.citytxt.Location = new System.Drawing.Point(546, 405);
+            this.citytxt.Location = new System.Drawing.Point(546, 399);
             this.citytxt.Name = "citytxt";
             this.citytxt.Size = new System.Drawing.Size(143, 20);
             this.citytxt.TabIndex = 9;
@@ -312,14 +317,14 @@
             this.inventorydatagridview.AllowUserToAddRows = false;
             this.inventorydatagridview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.inventorydatagridview.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.inventorydatagridview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.inventorydatagridview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.inventorydatagridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.inventorydatagridview.Location = new System.Drawing.Point(12, 62);
             this.inventorydatagridview.Name = "inventorydatagridview";
@@ -344,7 +349,7 @@
             // 
             this.pidtxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.pidtxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.pidtxt.Location = new System.Drawing.Point(416, 494);
+            this.pidtxt.Location = new System.Drawing.Point(488, 494);
             this.pidtxt.Multiline = true;
             this.pidtxt.Name = "pidtxt";
             this.pidtxt.Size = new System.Drawing.Size(186, 88);
@@ -411,6 +416,59 @@
             this.label13.TabIndex = 87;
             this.label13.Text = "Check Pincode";
             // 
+            // addtocartbtn
+            // 
+            this.addtocartbtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.addtocartbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.addtocartbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addtocartbtn.Location = new System.Drawing.Point(328, 494);
+            this.addtocartbtn.Name = "addtocartbtn";
+            this.addtocartbtn.Size = new System.Drawing.Size(154, 88);
+            this.addtocartbtn.TabIndex = 88;
+            this.addtocartbtn.Text = "Add Item(s) to Cart Instead";
+            this.addtocartbtn.UseVisualStyleBackColor = true;
+            this.addtocartbtn.Click += new System.EventHandler(this.addtocartbtn_Click);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(40, 518);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(96, 13);
+            this.label14.TabIndex = 90;
+            this.label14.Text = "Add Bonus to User";
+            // 
+            // bonustxt
+            // 
+            this.bonustxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.bonustxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bonustxt.Location = new System.Drawing.Point(43, 538);
+            this.bonustxt.Name = "bonustxt";
+            this.bonustxt.Size = new System.Drawing.Size(93, 20);
+            this.bonustxt.TabIndex = 89;
+            // 
+            // addbonusbtn
+            // 
+            this.addbonusbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.addbonusbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addbonusbtn.Location = new System.Drawing.Point(146, 532);
+            this.addbonusbtn.Name = "addbonusbtn";
+            this.addbonusbtn.Size = new System.Drawing.Size(75, 26);
+            this.addbonusbtn.TabIndex = 91;
+            this.addbonusbtn.Text = "Add Bonus";
+            this.addbonusbtn.UseVisualStyleBackColor = true;
+            this.addbonusbtn.Click += new System.EventHandler(this.addbonusbtn_Click);
+            // 
+            // tempbox
+            // 
+            this.tempbox.AutoSize = true;
+            this.tempbox.Location = new System.Drawing.Point(43, 564);
+            this.tempbox.Name = "tempbox";
+            this.tempbox.Size = new System.Drawing.Size(85, 17);
+            this.tempbox.TabIndex = 92;
+            this.tempbox.Text = "Temporary ?";
+            this.tempbox.UseVisualStyleBackColor = true;
+            // 
             // addorder
             // 
             this.AcceptButton = this.searchbtn;
@@ -418,6 +476,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(915, 594);
+            this.Controls.Add(this.tempbox);
+            this.Controls.Add(this.addbonusbtn);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.bonustxt);
+            this.Controls.Add(this.addtocartbtn);
             this.Controls.Add(this.pinbox);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.panel1);
@@ -501,5 +564,10 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ComboBox pinbox;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Button addtocartbtn;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox bonustxt;
+        private System.Windows.Forms.Button addbonusbtn;
+        private System.Windows.Forms.CheckBox tempbox;
     }
 }

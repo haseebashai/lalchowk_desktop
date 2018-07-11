@@ -712,7 +712,7 @@ namespace Veiled_Kashmir_Admin_Panel
           
             dialogcontainer dg = new dialogcontainer();
             dg.Size = new Size(950, 700);
-            addorder ao= new addorder(dg);
+            addorder ao= new addorder(dg,"");
             ao.TopLevel = false;
             dg.dialogpnl.Controls.Add(ao);
             ao.loadingdg();
@@ -998,6 +998,21 @@ namespace Veiled_Kashmir_Admin_Panel
             retolbl.Visible = false;
             clearlbl.Visible = false;
 
+        }
+
+        private void cartbtn_Click(object sender, EventArgs e)
+        {
+            dialogcontainer dg = new dialogcontainer();
+            cartitems cart = new cartitems(dg);
+            cart.TopLevel = false;
+            dg.dialogpnl.Controls.Add(cart);
+            cart.loadingdg();
+            dg.lbl.Text = "Cart";
+            dg.Text = "Cart Items";
+            dg.Size = new Size(830, 700);
+
+            dg.Show();
+            cart.Show();
         }
 
         List<string> pid = new List<string>();

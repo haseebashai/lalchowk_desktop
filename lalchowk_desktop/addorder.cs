@@ -19,11 +19,21 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private dialogcontainer dg = null;
       
-        public addorder(Form dgcopy)
+        public addorder(Form dgcopy,string email)
         {
             dg = dgcopy as dialogcontainer;
             
             InitializeComponent();
+            string emailt = email;
+            if (emailt != string.Empty)
+            {
+                emailtxt.Text = emailt;
+            }
+            else
+            {
+                emailtxt.Text = "lalchowkonline@gmail.com";
+            }
+
 
             BackgroundWorker pin = new BackgroundWorker();
             pin.DoWork += (o, a) => 
@@ -210,6 +220,78 @@ namespace Veiled_Kashmir_Admin_Panel
                 pintxt.Text = pinbox.Text.Split(':')[0];
 
             }
+        }
+
+        private void addtocartbtn_Click(object sender, EventArgs e)
+        {
+            if (emailtxt.Text == "")
+            {
+                MessageBox.Show("Please enter user account email first.", "Error");
+            }
+            else
+            {
+                if (pidtxt.Text != string.Empty)
+                {
+                    string email = md5hash(emailtxt.Text);
+                    pidtxt.Text = pidtxt.Text.Remove(pidtxt.Text.Length - 1);
+                    string[] pids = pidtxt.Text.Split(',');
+                    Cursor = Cursors.WaitCursor;
+                    foreach (string pid in pids)
+                    {
+                        try
+                        {
+
+                            string cmd1 = "insert into cartitems(`email`,`productid`,`quantity`)values('" + email + "','" + pid + "','1')";
+                            obj.nonQuery(cmd1);
+
+                        }
+                        catch (Exception ex)
+                        { MessageBox.Show(ex.ToString()); obj.closeConnection(); }
+
+                    }
+                    Cursor = Cursors.Arrow;
+                    MessageBox.Show("Items added to cart successfully.", "Success.");
+                    pidtxt.Text = "";
+                    pidtxt.Visible = false;
+                }
+                else
+                {
+                    MessageBox.Show("Add products first.", "Error!");
+                }
+            }
+        }
+
+        private void addbonusbtn_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            if (tempbox.Checked)
+            {
+                try
+                {
+
+                    string cmd1 = "update customer set bonus='"+bonustxt.Text+"',temp=1 where mail='"+emailtxt.Text+"'";
+                    obj.nonQuery(cmd1);
+                    MessageBox.Show("Temporary Bonus added to user.", "Success");
+                    obj.closeConnection();
+                }
+                catch (Exception ex)
+                { MessageBox.Show(ex.ToString()); obj.closeConnection(); }
+            }
+            else
+            {
+                try
+                {
+
+                    string cmd1 = "update customer set bonus='" + bonustxt.Text + "',temp=0 where mail='" + emailtxt.Text + "'";
+                    obj.nonQuery(cmd1);
+                    MessageBox.Show("Bonus added to user.", "Success");
+                    obj.closeConnection();
+                }
+                catch (Exception ex)
+                { MessageBox.Show(ex.ToString()); obj.closeConnection(); }
+
+            }
+            Cursor = Cursors.Arrow;
         }
 
         private void addbtn_Click(object sender, EventArgs e)
