@@ -147,7 +147,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     catch (Exception exce)
                     {
                         sentlbl.Visible = true;
-                        sentlbl.Text= exce.Message.ToString();
+                        MessageBox.Show( exce.Message.ToString());
                         sendsmsbtn.Enabled = true;
                     }
 
@@ -262,9 +262,9 @@ namespace Veiled_Kashmir_Admin_Panel
                 catch (SystemException ex)
                 {
                     e.Result = "fail";
-                   
-                    
-                    MessageBox.Show(ex.Message.ToString());
+
+
+                    sentlbl.Text = ex.Message.ToString();
                 }
                 Random rnd = new Random();
                 int time = rnd.Next(1000, 6000);

@@ -1009,7 +1009,7 @@ namespace Veiled_Kashmir_Admin_Panel
             cart.loadingdg();
             dg.lbl.Text = "Cart";
             dg.Text = "Cart Items";
-            dg.Size = new Size(830, 700);
+            dg.Size = new Size(830, 720);
 
             dg.Show();
             cart.Show();

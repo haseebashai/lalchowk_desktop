@@ -165,25 +165,38 @@ namespace Veiled_Kashmir_Admin_Panel
                 aconn.Close();
                 MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
-            DialogResult dgr = MessageBox.Show("Do you want to send confirmation mail with e-bill?", "Confirm", MessageBoxButtons.YesNo);
+            DialogResult dgr = MessageBox.Show("Do you want to send feedback SMS?", "Confirm", MessageBoxButtons.YesNo);
             {
                 if (dgr == DialogResult.Yes)
                 {
                     dialogcontainer dg = new dialogcontainer();
-                    promomail pm = new promomail(utxt.Text, dg);
-                    pm.TopLevel = false;
-                    dg.Size = new Size(700, 715);
-                    pm.epnl.Location = new Point(-300, 1);
-                    pm.attachtxt.Visible = true;
-                    pm.elistlbl.Text = "";
-                    pm.checkattach.Checked = true;
-                    dg.dialogpnl.Controls.Add(pm);
-                    pm.loadingdg();
-                    dg.Text = "Send Email";
-
+                    sendsms sms = new sendsms(contacttxt.Text);
+                    sms.TopLevel = false;
+                    dg.dialogpnl.Controls.Add(sms);
+                    dg.lbl.Text = "Send SMS";
+                    dg.Text = "Send SMS";
+                    dg.Size = new Size(800, 600);
+                    sms.numbertxt.Font = new Font("MS Sans Serif", 9, FontStyle.Regular);
+                    sms.smstxt.Text = "Dear Customer, We would love to hear from you regarding your recent purchase and our services. Please click on the following link and leave your feedback. https://bit.ly/lalchowkonline";
                     dg.Show();
+                    sms.Show();
 
-                    pm.Show();
+
+                    //dialogcontainer dg = new dialogcontainer();
+                    //promomail pm = new promomail(utxt.Text, dg);
+                    //pm.TopLevel = false;
+                    //dg.Size = new Size(700, 715);
+                    //pm.epnl.Location = new Point(-300, 1);
+                    //pm.attachtxt.Visible = true;
+                    //pm.elistlbl.Text = "";
+                    //pm.checkattach.Checked = true;
+                    //dg.dialogpnl.Controls.Add(pm);
+                    //pm.loadingdg();
+                    //dg.Text = "Send Email";
+
+                    //dg.Show();
+
+                    //pm.Show();
                 }
                 else
                 {

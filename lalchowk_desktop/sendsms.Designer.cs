@@ -380,7 +380,6 @@
         #endregion
 
         private MaterialSkin.Controls.MaterialFlatButton sendsmsbtn;
-        private System.Windows.Forms.TextBox smstxt;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label sentlbl;
@@ -402,5 +401,6 @@
         private MaterialSkin.Controls.MaterialFlatButton reqbtn;
         private MaterialSkin.Controls.MaterialFlatButton orderbtn;
         private System.Windows.Forms.Button btbtn;
+        public System.Windows.Forms.TextBox smstxt;
     }
 }
