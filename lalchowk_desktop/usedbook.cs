@@ -140,7 +140,7 @@ namespace Veiled_Kashmir_Admin_Panel
             try
             {
                 Cursor = Cursors.WaitCursor;
-                string cmd = "update bookrequests set processed='1' where id='" + id + "'";
+                string cmd = "update sellbookrequests set processed='1' where id='" + id + "'";
                 obj.nonQuery(cmd);
                 con.Close();
                 Cursor = Cursors.Arrow;

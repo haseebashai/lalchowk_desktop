@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnl1 = new System.Windows.Forms.Panel();
+            this.updatebtn = new System.Windows.Forms.Button();
             this.countlbl = new System.Windows.Forms.Label();
             this.changebtn = new System.Windows.Forms.Button();
             this.upbookbtn = new MaterialSkin.Controls.MaterialFlatButton();
@@ -134,7 +135,6 @@
             this.inclbl2 = new System.Windows.Forms.Label();
             this.picdialog = new System.Windows.Forms.OpenFileDialog();
             this.formlbl = new System.Windows.Forms.Label();
-            this.updatebtn = new System.Windows.Forms.Button();
             this.pnl1.SuspendLayout();
             this.dpnl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.booklistview)).BeginInit();
@@ -150,17 +150,28 @@
             this.pnl1.Controls.Add(this.countlbl);
             this.pnl1.Controls.Add(this.changebtn);
             this.pnl1.Controls.Add(this.upbookbtn);
-            this.pnl1.Controls.Add(this.dpnl2);
             this.pnl1.Controls.Add(this.booklistview);
             this.pnl1.Controls.Add(this.selldataview);
             this.pnl1.Controls.Add(this.reqbtn);
             this.pnl1.Controls.Add(this.sellerbtn);
             this.pnl1.Controls.Add(this.dpnl);
+            this.pnl1.Controls.Add(this.dpnl2);
             this.pnl1.Location = new System.Drawing.Point(1, 30);
             this.pnl1.Name = "pnl1";
             this.pnl1.Size = new System.Drawing.Size(1161, 649);
             this.pnl1.TabIndex = 0;
             this.pnl1.Visible = false;
+            // 
+            // updatebtn
+            // 
+            this.updatebtn.Location = new System.Drawing.Point(626, 402);
+            this.updatebtn.Name = "updatebtn";
+            this.updatebtn.Size = new System.Drawing.Size(95, 23);
+            this.updatebtn.TabIndex = 53;
+            this.updatebtn.Text = "Update";
+            this.updatebtn.UseVisualStyleBackColor = true;
+            this.updatebtn.Visible = false;
+            this.updatebtn.Click += new System.EventHandler(this.updatebtn_Click);
             // 
             // countlbl
             // 
@@ -318,14 +329,14 @@
             this.booklistview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.booklistview.BackgroundColor = System.Drawing.Color.White;
             this.booklistview.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.booklistview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.booklistview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.booklistview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.booklistview.GridColor = System.Drawing.SystemColors.Control;
             this.booklistview.Location = new System.Drawing.Point(727, 51);
@@ -340,14 +351,14 @@
             this.selldataview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.selldataview.BackgroundColor = System.Drawing.Color.White;
             this.selldataview.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.selldataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.selldataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.selldataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.selldataview.GridColor = System.Drawing.SystemColors.Control;
             this.selldataview.Location = new System.Drawing.Point(11, 51);
@@ -1236,17 +1247,6 @@
             this.formlbl.TabIndex = 52;
             this.formlbl.Text = "Loading";
             this.formlbl.Visible = false;
-            // 
-            // updatebtn
-            // 
-            this.updatebtn.Location = new System.Drawing.Point(626, 402);
-            this.updatebtn.Name = "updatebtn";
-            this.updatebtn.Size = new System.Drawing.Size(95, 23);
-            this.updatebtn.TabIndex = 53;
-            this.updatebtn.Text = "Update";
-            this.updatebtn.UseVisualStyleBackColor = true;
-            this.updatebtn.Visible = false;
-            this.updatebtn.Click += new System.EventHandler(this.updatebtn_Click);
             // 
             // usedbook
             // 
