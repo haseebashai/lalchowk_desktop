@@ -800,15 +800,17 @@ namespace Veiled_Kashmir_Admin_Panel
             accountdataview.DataSource = dv;
         }
 
+        string shipping;
         private void bgworker8_DoWork(object sender, DoWorkEventArgs e)
         {
             try { 
             readrevenue();
             aconn.Open();
-            cmd = new MySqlCommand(" SELECT sum(amount) from deliveries where status='delivered' and date like '%-" + month + "-2018'", aconn); 
+            cmd = new MySqlCommand(" SELECT sum(amount),sum(shipping) from deliveries where status='delivered' and date like '%-" + month + "-2018'", aconn); 
             dr = cmd.ExecuteReader();
             dr.Read();
             sale = dr[0].ToString();
+            shipping = dr[1].ToString();
             aconn.Close();
 
             aconn.Open();
@@ -852,6 +854,7 @@ namespace Veiled_Kashmir_Admin_Panel
             purchasebox.Text = purchase;
             investbox.Text = invest;
             orlbl.Text = order;
+            shiptxt.Text = shipping;
             try
             {
                 profitbox.Text = (int.Parse(salebox.Text) - int.Parse(purchasebox.Text)).ToString();
@@ -1001,7 +1004,7 @@ namespace Veiled_Kashmir_Admin_Panel
             {
                 try
                 {
-                    profittxt.Text = (int.Parse(saletxt.Text) - int.Parse(pcosttxt.Text)).ToString();
+                    profittxt.Text = (int.Parse(saletxt.Text) - int.Parse(pcosttxt.Text) + int.Parse(shiptxt.Text)).ToString();
                 }
                 catch (Exception ex)
                 {

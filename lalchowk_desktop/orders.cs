@@ -66,6 +66,21 @@ namespace Veiled_Kashmir_Admin_Panel
             ordergridview.DataSource = dv;
         }
 
+        private void smsbtn_Click(object sender, EventArgs e)
+        {
+            dialogcontainer dg = new dialogcontainer();
+            sendsms sms = new sendsms(contactlbl.Text);
+            sms.TopLevel = false;
+            dg.dialogpnl.Controls.Add(sms);
+            dg.lbl.Text = "Send SMS";
+            dg.Text = "Send SMS";
+            dg.Size = new Size(800, 600);
+            sms.numbertxt.Font = new Font("MS Sans Serif", 9, FontStyle.Regular);
+            sms.smstxt.Text = "Dear Customer, We would love to hear from you regarding your recent purchase and our services. Please click on the following link and leave your feedback. https://bit.ly/lalchowkonline";
+            dg.Show();
+            sms.Show();
+        }
+
         private dialogcontainer dg = null;
         private container hp = null;
 
@@ -214,7 +229,7 @@ namespace Veiled_Kashmir_Admin_Panel
         private void billbtn_Click(object sender, EventArgs e)
         {
            
-                addbill ab = new addbill(orderlbl.Text, email, amountlbl.Text,contactlbl.Text);
+                addbill ab = new addbill(orderlbl.Text, email, amountlbl.Text,contactlbl.Text,shipping);
                 ab.ShowDialog();
                 productid = null;
             
@@ -333,7 +348,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     amountlbl.Text = result.ToString();
                     orderlbl.Text = orderid;
                     orderidcount= e.RowIndex.ToString();
-                    proname.Items.Clear();
+                    
 
 
                     BackgroundWorker details = new BackgroundWorker();
@@ -377,10 +392,10 @@ namespace Veiled_Kashmir_Admin_Panel
                             deupdbtn.Visible = true;
                             int count = int.Parse(orderdetailview.RowCount.ToString());
 
-                            for (int i = 0; i < count; i++)
-                            {
-                                proname.Items.Add(orderdetailview.Rows[i].Cells[2].Value.ToString() + ":   " + orderdetailview.Rows[i].Cells[3].Value.ToString());
-                            }
+                            //for (int i = 0; i < count; i++)
+                            //{
+                            //    proname.Items.Add(orderdetailview.Rows[i].Cells[2].Value.ToString() + ":   " + orderdetailview.Rows[i].Cells[3].Value.ToString());
+                            //}
                             if (status == "Delivered")
                             {
                                 billbtn.Text = "Delivered";

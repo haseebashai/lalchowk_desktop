@@ -65,6 +65,8 @@
             this.contacttxt = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.billlbl = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.shiptxt = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.closebtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderdetailview)).BeginInit();
             this.SuspendLayout();
@@ -172,7 +174,7 @@
             // 
             this.atxt.Location = new System.Drawing.Point(85, 569);
             this.atxt.Name = "atxt";
-            this.atxt.Size = new System.Drawing.Size(204, 20);
+            this.atxt.Size = new System.Drawing.Size(87, 20);
             this.atxt.TabIndex = 61;
             // 
             // label18
@@ -181,9 +183,9 @@
             this.label18.ForeColor = System.Drawing.Color.Black;
             this.label18.Location = new System.Drawing.Point(82, 552);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(43, 13);
+            this.label18.Size = new System.Drawing.Size(70, 13);
             this.label18.TabIndex = 60;
-            this.label18.Text = "Amount";
+            this.label18.Text = "Total Amount";
             // 
             // utxt
             // 
@@ -433,12 +435,32 @@
             this.billlbl.Text = "Bill already added";
             this.billlbl.Visible = false;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(218, 552);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(48, 13);
+            this.label3.TabIndex = 115;
+            this.label3.Text = "Shipping";
+            // 
+            // shiptxt
+            // 
+            this.shiptxt.Location = new System.Drawing.Point(221, 569);
+            this.shiptxt.Multiline = true;
+            this.shiptxt.Name = "shiptxt";
+            this.shiptxt.Size = new System.Drawing.Size(65, 20);
+            this.shiptxt.TabIndex = 116;
+            // 
             // addbill
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(671, 661);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.shiptxt);
             this.Controls.Add(this.billlbl);
             this.Controls.Add(this.contacttxt);
             this.Controls.Add(this.label2);
@@ -526,5 +548,7 @@
         private System.Windows.Forms.TextBox contacttxt;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label billlbl;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox shiptxt;
     }
 }

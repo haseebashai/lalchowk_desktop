@@ -167,13 +167,13 @@
             // purlbl
             // 
             this.purlbl.AutoSize = true;
-            this.purlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.purlbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.purlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.purlbl.ForeColor = System.Drawing.Color.Red;
             this.purlbl.Location = new System.Drawing.Point(36, 560);
             this.purlbl.Name = "purlbl";
-            this.purlbl.Size = new System.Drawing.Size(24, 20);
+            this.purlbl.Size = new System.Drawing.Size(237, 20);
             this.purlbl.TabIndex = 10;
-            this.purlbl.Text = "lbl";
+            this.purlbl.Text = "\" Not maintained here anymore \"";
             // 
             // panel2
             // 
@@ -246,13 +246,13 @@
             // profitlbl
             // 
             this.profitlbl.AutoSize = true;
-            this.profitlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.profitlbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.profitlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.profitlbl.ForeColor = System.Drawing.Color.Red;
             this.profitlbl.Location = new System.Drawing.Point(481, 314);
             this.profitlbl.Name = "profitlbl";
-            this.profitlbl.Size = new System.Drawing.Size(24, 20);
+            this.profitlbl.Size = new System.Drawing.Size(237, 20);
             this.profitlbl.TabIndex = 42;
-            this.profitlbl.Text = "lbl";
+            this.profitlbl.Text = "\" Not maintained here anymore \"";
             // 
             // label8
             // 

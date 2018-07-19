@@ -145,7 +145,7 @@ namespace Veiled_Kashmir_Admin_Panel
             cos= dr[0].ToString();
             obj.closeConnection();
 
-            dr = obj.Query("select count(productid) from products where supplierid='12' or supplierid='13' or supplierid='14' or supplierid='24' or supplierid='21' or supplierid='27' or supplierid='28' or supplierid='29'");
+            dr = obj.Query("select count(productid) from products where supplierid='12' or supplierid='13' or supplierid='14' or supplierid='24' or supplierid='21' or supplierid='27' or supplierid='28' or supplierid='29' or supplierid='30'");
             dr.Read();
             book= dr[0].ToString();
             obj.closeConnection();

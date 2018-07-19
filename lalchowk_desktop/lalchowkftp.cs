@@ -384,7 +384,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 {
                     ftpupbtn.Enabled = true;
 
-                    MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
+                    MessageBox.Show( ex.Message.ToString(), "Error!");
                 }
 
 
@@ -440,7 +440,8 @@ namespace Veiled_Kashmir_Admin_Panel
                          upbar.Visible = false; uplbl.Visible = false;
                      });
                          
-                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
+                MessageBox.Show( ex.Message.ToString(), "Error!");
+                ftpupbtn.Enabled = true;
             }
         }
 

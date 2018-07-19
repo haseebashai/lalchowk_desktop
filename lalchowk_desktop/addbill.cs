@@ -22,7 +22,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
 
 
-        public addbill(string orderlbl, string email, string amount,string contact)
+        public addbill(string orderlbl, string email, string amount,string contact,string shipping)
         {
             InitializeComponent();
             otxt.Text = orderlbl;
@@ -119,6 +119,7 @@ namespace Veiled_Kashmir_Admin_Panel
             utxt.Text = email;
             int total = int.Parse(amount);
             atxt.Text = total.ToString();
+            shiptxt.Text = shipping;
 
             //proidtxt.Text = productid;
             //pronametxt.Text = productname;
@@ -154,7 +155,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 aconn.Open();
                 mysqlcmd = new MySqlCommand("insert into billing(`orderid`, `user`, `amount`,`deliverydate`,`billno`) values ('" + otxt.Text + "','" + utxt.Text + "','" + atxt.Text + "','" + dtxt.Text + "','bill" + btxt.Text + "')", aconn);
                 mysqlcmd.ExecuteNonQuery();
-                mysqlcmd = new MySqlCommand("insert into deliveries(`orderid`, `email`, `amount`,`status`,`date`,`contact`) values ('" + otxt.Text + "','" + utxt.Text + "','" + atxt.Text + "','Delivered','" + dtxt.Text + "','"+contacttxt.Text+"')", aconn);
+                mysqlcmd = new MySqlCommand("insert into deliveries(`orderid`, `email`, `amount`,`status`,`date`,`contact`,`shipping`) values ('" + otxt.Text + "','" + utxt.Text + "','" + atxt.Text + "','Delivered','" + dtxt.Text + "','"+contacttxt.Text+"','"+shiptxt.Text+"')", aconn);
                 mysqlcmd.ExecuteNonQuery();
                 aconn.Close();
 

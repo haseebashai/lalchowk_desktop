@@ -87,9 +87,9 @@ namespace Veiled_Kashmir_Admin_Panel
             ordersdvlbl.Text = ordersdv;
             ordersplbl.Text = ordersp;
             orderspvlbl.Text = orderspv;
-            purlbl.Text = pur;
+           // purlbl.Text = pur;
             shiplbl.Text = shipvar;
-            readprofit();
+           // readprofit();
             epnl.Visible = true;
 
 
@@ -110,10 +110,10 @@ namespace Veiled_Kashmir_Admin_Panel
             orderspv = dr[1].ToString();
             obj.closeConnection();
 
-            dr = obj.Query("select sum(dealerprice * quantity) from lalchowk.orderdetails where orderid in (SELECT orderid FROM lalchowk.orders where status = 'delivered');");
-            dr.Read();
-            pur = dr[0].ToString();
-            obj.closeConnection();
+            //dr = obj.Query("select sum(dealerprice * quantity) from lalchowk.orderdetails where orderid in (SELECT orderid FROM lalchowk.orders where status = 'delivered');");
+            //dr.Read();
+            //pur = dr[0].ToString();
+            //obj.closeConnection();
 
             dr = obj.Query("select sum(shipping) from lalchowk.orders where status ='delivered'");
             dr.Read();
@@ -132,7 +132,7 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             try
             {
-                profitlbl.Text = ((int.Parse(ordersdvlbl.Text) - int.Parse(purlbl.Text)) - int.Parse(shiplbl.Text)).ToString();
+           //     profitlbl.Text = ((int.Parse(ordersdvlbl.Text) - int.Parse(purlbl.Text)) - int.Parse(shiplbl.Text)).ToString();
             }
             catch (Exception ex)
             {

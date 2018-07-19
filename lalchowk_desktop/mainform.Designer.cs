@@ -38,9 +38,10 @@
             this.productsbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.customersbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.suppliersbtn = new MaterialSkin.Controls.MaterialFlatButton();
-            this.approvebtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.signinlbl = new System.Windows.Forms.Label();
             this.navpnl = new System.Windows.Forms.Panel();
+            this.sellreqlbl = new System.Windows.Forms.Label();
+            this.usedbookbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.cartbtn = new System.Windows.Forms.Button();
             this.addorderbtn = new System.Windows.Forms.Button();
             this.msglbl = new System.Windows.Forms.Label();
@@ -53,7 +54,6 @@
             this.categorybtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.clientbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.sendmailbtn = new MaterialSkin.Controls.MaterialFlatButton();
-            this.caboutbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.homepagebtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.msgbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.accbtn = new MaterialSkin.Controls.MaterialFlatButton();
@@ -167,22 +167,6 @@
             this.suppliersbtn.UseVisualStyleBackColor = true;
             this.suppliersbtn.Click += new System.EventHandler(this.suppliersbtn_Click);
             // 
-            // approvebtn
-            // 
-            this.approvebtn.AutoSize = true;
-            this.approvebtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.approvebtn.Depth = 0;
-            this.approvebtn.Location = new System.Drawing.Point(20, 228);
-            this.approvebtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.approvebtn.MouseState = MaterialSkin.MouseState.HOVER;
-            this.approvebtn.Name = "approvebtn";
-            this.approvebtn.Primary = false;
-            this.approvebtn.Size = new System.Drawing.Size(115, 36);
-            this.approvebtn.TabIndex = 15;
-            this.approvebtn.Text = "approve price";
-            this.approvebtn.UseVisualStyleBackColor = true;
-            this.approvebtn.Click += new System.EventHandler(this.approvebtn_Click);
-            // 
             // signinlbl
             // 
             this.signinlbl.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -198,6 +182,8 @@
             // 
             this.navpnl.BackColor = System.Drawing.Color.White;
             this.navpnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.navpnl.Controls.Add(this.sellreqlbl);
+            this.navpnl.Controls.Add(this.usedbookbtn);
             this.navpnl.Controls.Add(this.cartbtn);
             this.navpnl.Controls.Add(this.addorderbtn);
             this.navpnl.Controls.Add(this.msglbl);
@@ -210,7 +196,6 @@
             this.navpnl.Controls.Add(this.categorybtn);
             this.navpnl.Controls.Add(this.clientbtn);
             this.navpnl.Controls.Add(this.sendmailbtn);
-            this.navpnl.Controls.Add(this.caboutbtn);
             this.navpnl.Controls.Add(this.homepagebtn);
             this.navpnl.Controls.Add(this.msgbtn);
             this.navpnl.Controls.Add(this.accbtn);
@@ -218,14 +203,43 @@
             this.navpnl.Controls.Add(this.signinlbl);
             this.navpnl.Controls.Add(this.expbtn);
             this.navpnl.Controls.Add(this.productsbtn);
-            this.navpnl.Controls.Add(this.approvebtn);
             this.navpnl.Controls.Add(this.customersbtn);
             this.navpnl.Controls.Add(this.suppliersbtn);
             this.navpnl.Controls.Add(this.ordersbtn);
-            this.navpnl.Location = new System.Drawing.Point(0, 11);
+            this.navpnl.Location = new System.Drawing.Point(0, 12);
             this.navpnl.Name = "navpnl";
             this.navpnl.Size = new System.Drawing.Size(200, 689);
             this.navpnl.TabIndex = 10;
+            // 
+            // sellreqlbl
+            // 
+            this.sellreqlbl.AutoSize = true;
+            this.sellreqlbl.BackColor = System.Drawing.Color.Red;
+            this.sellreqlbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.sellreqlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sellreqlbl.ForeColor = System.Drawing.Color.White;
+            this.sellreqlbl.Location = new System.Drawing.Point(164, 514);
+            this.sellreqlbl.Name = "sellreqlbl";
+            this.sellreqlbl.Size = new System.Drawing.Size(33, 18);
+            this.sellreqlbl.TabIndex = 43;
+            this.sellreqlbl.Text = "req";
+            this.sellreqlbl.Visible = false;
+            // 
+            // usedbookbtn
+            // 
+            this.usedbookbtn.AutoSize = true;
+            this.usedbookbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.usedbookbtn.Depth = 0;
+            this.usedbookbtn.Location = new System.Drawing.Point(20, 514);
+            this.usedbookbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.usedbookbtn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.usedbookbtn.Name = "usedbookbtn";
+            this.usedbookbtn.Primary = false;
+            this.usedbookbtn.Size = new System.Drawing.Size(145, 36);
+            this.usedbookbtn.TabIndex = 42;
+            this.usedbookbtn.Text = "Used Book Section";
+            this.usedbookbtn.UseVisualStyleBackColor = true;
+            this.usedbookbtn.Click += new System.EventHandler(this.usedbookbtn_Click);
             // 
             // cartbtn
             // 
@@ -266,7 +280,7 @@
             this.msglbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.msglbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.msglbl.ForeColor = System.Drawing.Color.White;
-            this.msglbl.Location = new System.Drawing.Point(104, 265);
+            this.msglbl.Location = new System.Drawing.Point(104, 228);
             this.msglbl.Name = "msglbl";
             this.msglbl.Size = new System.Drawing.Size(39, 18);
             this.msglbl.TabIndex = 39;
@@ -280,7 +294,7 @@
             this.rcountlbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.rcountlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rcountlbl.ForeColor = System.Drawing.Color.White;
-            this.rcountlbl.Location = new System.Drawing.Point(139, 550);
+            this.rcountlbl.Location = new System.Drawing.Point(139, 478);
             this.rcountlbl.Name = "rcountlbl";
             this.rcountlbl.Size = new System.Drawing.Size(33, 18);
             this.rcountlbl.TabIndex = 38;
@@ -292,7 +306,7 @@
             this.bookbtn.AutoSize = true;
             this.bookbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.bookbtn.Depth = 0;
-            this.bookbtn.Location = new System.Drawing.Point(20, 550);
+            this.bookbtn.Location = new System.Drawing.Point(20, 478);
             this.bookbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.bookbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.bookbtn.Name = "bookbtn";
@@ -308,7 +322,7 @@
             this.smsbtn.AutoSize = true;
             this.smsbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.smsbtn.Depth = 0;
-            this.smsbtn.Location = new System.Drawing.Point(20, 515);
+            this.smsbtn.Location = new System.Drawing.Point(20, 443);
             this.smsbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.smsbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.smsbtn.Name = "smsbtn";
@@ -324,7 +338,7 @@
             this.settingsbtn.AutoSize = true;
             this.settingsbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.settingsbtn.Depth = 0;
-            this.settingsbtn.Location = new System.Drawing.Point(20, 479);
+            this.settingsbtn.Location = new System.Drawing.Point(20, 407);
             this.settingsbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.settingsbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.settingsbtn.Name = "settingsbtn";
@@ -362,7 +376,7 @@
             this.categorybtn.AutoSize = true;
             this.categorybtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.categorybtn.Depth = 0;
-            this.categorybtn.Location = new System.Drawing.Point(20, 444);
+            this.categorybtn.Location = new System.Drawing.Point(20, 372);
             this.categorybtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.categorybtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.categorybtn.Name = "categorybtn";
@@ -394,7 +408,7 @@
             this.sendmailbtn.AutoSize = true;
             this.sendmailbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.sendmailbtn.Depth = 0;
-            this.sendmailbtn.Location = new System.Drawing.Point(20, 408);
+            this.sendmailbtn.Location = new System.Drawing.Point(20, 336);
             this.sendmailbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.sendmailbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.sendmailbtn.Name = "sendmailbtn";
@@ -405,28 +419,12 @@
             this.sendmailbtn.UseVisualStyleBackColor = true;
             this.sendmailbtn.Click += new System.EventHandler(this.sendmailbtn_Click);
             // 
-            // caboutbtn
-            // 
-            this.caboutbtn.AutoSize = true;
-            this.caboutbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.caboutbtn.Depth = 0;
-            this.caboutbtn.Location = new System.Drawing.Point(20, 373);
-            this.caboutbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.caboutbtn.MouseState = MaterialSkin.MouseState.HOVER;
-            this.caboutbtn.Name = "caboutbtn";
-            this.caboutbtn.Primary = false;
-            this.caboutbtn.Size = new System.Drawing.Size(70, 36);
-            this.caboutbtn.TabIndex = 24;
-            this.caboutbtn.Text = "Policies";
-            this.caboutbtn.UseVisualStyleBackColor = true;
-            this.caboutbtn.Click += new System.EventHandler(this.caboutbtn_Click);
-            // 
             // homepagebtn
             // 
             this.homepagebtn.AutoSize = true;
             this.homepagebtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.homepagebtn.Depth = 0;
-            this.homepagebtn.Location = new System.Drawing.Point(20, 337);
+            this.homepagebtn.Location = new System.Drawing.Point(20, 300);
             this.homepagebtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.homepagebtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.homepagebtn.Name = "homepagebtn";
@@ -442,7 +440,7 @@
             this.msgbtn.AutoSize = true;
             this.msgbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.msgbtn.Depth = 0;
-            this.msgbtn.Location = new System.Drawing.Point(20, 265);
+            this.msgbtn.Location = new System.Drawing.Point(20, 228);
             this.msgbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.msgbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.msgbtn.Name = "msgbtn";
@@ -458,7 +456,7 @@
             this.accbtn.AutoSize = true;
             this.accbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.accbtn.Depth = 0;
-            this.accbtn.Location = new System.Drawing.Point(20, 301);
+            this.accbtn.Location = new System.Drawing.Point(20, 264);
             this.accbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.accbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.accbtn.Name = "accbtn";
@@ -1017,7 +1015,6 @@
         private MaterialSkin.Controls.MaterialFlatButton productsbtn;
         private MaterialSkin.Controls.MaterialFlatButton suppliersbtn;
         private MaterialSkin.Controls.MaterialFlatButton customersbtn;
-        private MaterialSkin.Controls.MaterialFlatButton approvebtn;
         private System.Windows.Forms.Label signinlbl;
         private System.Windows.Forms.Panel navpnl;
         private MaterialSkin.Controls.MaterialFlatButton ordersbtn;
@@ -1037,7 +1034,6 @@
         private System.Windows.Forms.Label placedlbl;
         private MaterialSkin.Controls.MaterialFlatButton msgbtn;
         private MaterialSkin.Controls.MaterialFlatButton homepagebtn;
-        private MaterialSkin.Controls.MaterialFlatButton caboutbtn;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label navtxt;
         private System.Windows.Forms.Label shippedlbl;
@@ -1073,5 +1069,7 @@
         private System.Windows.Forms.Label totallbl;
         private System.Windows.Forms.Label clearlbl;
         private System.Windows.Forms.Button cartbtn;
+        private MaterialSkin.Controls.MaterialFlatButton usedbookbtn;
+        private System.Windows.Forms.Label sellreqlbl;
     }
 }

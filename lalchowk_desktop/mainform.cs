@@ -339,31 +339,31 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void approvebtn_Click(object sender, EventArgs e)
         {
-            if (cntpnl.Contains(placeddataview))
-            {
-                Cursor = Cursors.WaitCursor;
-                approveprice ap = new approveprice(hp, this);
-                cntpnl.Controls.Clear();
-                ap.TopLevel = false;
-                cntpnl.Visible = true;
-                cntpnl.Controls.Add(ap);
-                ap.loadingnormal();
-                ap.Show();
-                Cursor = Cursors.Arrow;
-            }
-            else
-            {
-                dialogcontainer dg = new dialogcontainer();
-                approveprice ap = new approveprice(hp, dg);
-                ap.TopLevel = false;
+            //if (cntpnl.Contains(placeddataview))
+            //{
+            //    Cursor = Cursors.WaitCursor;
+            //    approveprice ap = new approveprice(hp, this);
+            //    cntpnl.Controls.Clear();
+            //    ap.TopLevel = false;
+            //    cntpnl.Visible = true;
+            //    cntpnl.Controls.Add(ap);
+            //    ap.loadingnormal();
+            //    ap.Show();
+            //    Cursor = Cursors.Arrow;
+            //}
+            //else
+            //{
+            //    dialogcontainer dg = new dialogcontainer();
+            //    approveprice ap = new approveprice(hp, dg);
+            //    ap.TopLevel = false;
 
-                dg.dialogpnl.Controls.Add(ap);
-                ap.loadingdg();
-                dg.Text = "Review Price";
+            //    dg.dialogpnl.Controls.Add(ap);
+            //    ap.loadingdg();
+            //    dg.Text = "Review Price";
 
-                dg.Show();
-                ap.Show();
-            }
+            //    dg.Show();
+            //    ap.Show();
+            //}
         }
 
 
@@ -498,33 +498,33 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void caboutbtn_Click(object sender, EventArgs e)
         {
-            if (cntpnl.Contains(placeddataview))
-            {
-                Cursor = Cursors.WaitCursor;
-                terms tr = new terms(hp, this);
-                tr.TopLevel = false;
-                cntpnl.Controls.Clear();
-                cntpnl.Visible = true;
-                cntpnl.Controls.Add(tr);
-                tr.loadingnormal();
+            //if (cntpnl.Contains(placeddataview))
+            //{
+            //    Cursor = Cursors.WaitCursor;
+            //    terms tr = new terms(hp, this);
+            //    tr.TopLevel = false;
+            //    cntpnl.Controls.Clear();
+            //    cntpnl.Visible = true;
+            //    cntpnl.Controls.Add(tr);
+            //    tr.loadingnormal();
 
-                tr.Show();
-                Cursor = Cursors.Arrow;
-            }
-            else
-            {
-                dialogcontainer dg = new dialogcontainer();
-                terms tr = new terms(hp, dg);
-                tr.TopLevel = false;
-                dg.Size = new Size(900, 715);
-                dg.dialogpnl.Controls.Add(tr);
-                tr.loadingdg();
-                dg.Text = "Policies";
+            //    tr.Show();
+            //    Cursor = Cursors.Arrow;
+            //}
+            //else
+            //{
+            //    dialogcontainer dg = new dialogcontainer();
+            //    terms tr = new terms(hp, dg);
+            //    tr.TopLevel = false;
+            //    dg.Size = new Size(900, 715);
+            //    dg.dialogpnl.Controls.Add(tr);
+            //    tr.loadingdg();
+            //    dg.Text = "Policies";
 
 
-                dg.Show();
-                tr.Show();
-            }
+            //    dg.Show();
+            //    tr.Show();
+            //}
         }
 
         private void clientbtn_Click(object sender, EventArgs e)
@@ -1015,6 +1015,36 @@ namespace Veiled_Kashmir_Admin_Panel
             cart.Show();
         }
 
+        private void usedbookbtn_Click(object sender, EventArgs e)
+        {
+            //if (cntpnl.Contains(placeddataview))
+            //{
+                Cursor = Cursors.WaitCursor;
+                usedbook usb=new usedbook(hp);
+                cntpnl.Controls.Clear();
+                usb.TopLevel = false;
+                cntpnl.Visible = true;
+                cntpnl.Controls.Add(usb);
+                 usb.loadingnormal();
+                usb.Show();
+            sellreqlbl.Visible = false;
+            Cursor = Cursors.Arrow;
+         //   }
+            //else
+            //{
+            //    dialogcontainer dg = new dialogcontainer();
+            //    usedbook usb = new usedbook(dg);
+            //    usb.TopLevel = false;
+
+            //    dg.dialogpnl.Controls.Add(usb);
+            //   // usb.loadingdg();
+            //    dg.Text = "Review Price";
+
+            //    dg.Show();
+            //    usb.Show();
+            //}
+        }
+
         List<string> pid = new List<string>();
         private void Products_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -1082,9 +1112,14 @@ namespace Veiled_Kashmir_Admin_Panel
                 string msg = dr[0].ToString();
                 obj.closeConnection();
 
-             
+                dr = obj.Query("select count(id) from sellbookrequests where processed ='0'");
+                dr.Read();
+                string scount = dr[0].ToString();
+                obj.closeConnection();
 
-                object[] arg = { count, msg };
+
+
+                object[] arg = { count, msg,scount };
                 bgworker.ReportProgress(40,arg);
 
               
@@ -1185,6 +1220,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
                 string count = (string)arg[0];
                 string msg = (string)arg[1];
+                string scount = (string)arg[2];
                 if (count == "0")
                 {
                     rcountlbl.Visible = false;
@@ -1204,6 +1240,16 @@ namespace Veiled_Kashmir_Admin_Panel
                     msglbl.Text = msg;
                     msglbl.Visible = true;
                 }
+                if (scount == "0")
+                {
+                    sellreqlbl.Visible = false;
+                }
+                else
+                {
+                    sellreqlbl.Text = scount;
+                    sellreqlbl.Visible = true;
+                }
+
             }
         }
 

@@ -62,6 +62,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.smstxtloop = new System.Windows.Forms.TextBox();
             this.cartsmsbtn = new MaterialSkin.Controls.MaterialFlatButton();
+            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.cartdataview)).BeginInit();
             this.pnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.refresh)).BeginInit();
@@ -363,6 +364,7 @@
             // 
             // smspnl
             // 
+            this.smspnl.Controls.Add(this.label10);
             this.smspnl.Controls.Add(this.sentlbl2);
             this.smspnl.Controls.Add(this.label9);
             this.smspnl.Controls.Add(this.label8);
@@ -453,6 +455,16 @@
             this.cartsmsbtn.UseVisualStyleBackColor = true;
             this.cartsmsbtn.Click += new System.EventHandler(this.cartsmsbtn_Click);
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.ForeColor = System.Drawing.Color.Red;
+            this.label10.Location = new System.Drawing.Point(515, 30);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(63, 13);
+            this.label10.TabIndex = 75;
+            this.label10.Text = "Do Not Use";
+            // 
             // cartitems
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -507,5 +519,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox smstxtloop;
         private MaterialSkin.Controls.MaterialFlatButton cartsmsbtn;
+        private System.Windows.Forms.Label label10;
     }
 }

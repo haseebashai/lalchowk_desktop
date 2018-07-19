@@ -44,7 +44,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 Image = Properties.Resources.loading,
                 Size = new Size(40, 30),
                 SizeMode = PictureBoxSizeMode.StretchImage,
-                Location = new Point(72, 0),
+                Location = new Point(76, 0),
             };
             this.Controls.Add(loading);
             loading.BringToFront();
@@ -376,6 +376,19 @@ namespace Veiled_Kashmir_Admin_Panel
             pintxt.SelectionStart = 0;
         }
 
-       
+        private void caboutbtn_Click(object sender, EventArgs e)
+        {
+            dialogcontainer dg = new dialogcontainer();
+            terms tr = new terms(this,dg);
+            tr.TopLevel = false;
+            dg.Size = new Size(900, 715);
+            dg.dialogpnl.Controls.Add(tr);
+            tr.loadingdg();
+            dg.Text = "Policies";
+
+
+            dg.Show();
+            tr.Show();
+        }
     }
 }

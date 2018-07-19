@@ -46,6 +46,7 @@
             this.loadinglbl = new System.Windows.Forms.Label();
             this.settingsdataview = new System.Windows.Forms.DataGridView();
             this.bpnl = new System.Windows.Forms.Panel();
+            this.appverbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.delbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.verbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.pinbtn = new MaterialSkin.Controls.MaterialFlatButton();
@@ -54,7 +55,7 @@
             this.bgpincodes = new System.ComponentModel.BackgroundWorker();
             this.bgverification = new System.ComponentModel.BackgroundWorker();
             this.formlbl = new System.Windows.Forms.Label();
-            this.appverbtn = new MaterialSkin.Controls.MaterialFlatButton();
+            this.caboutbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.spnl.SuspendLayout();
             this.epnl.SuspendLayout();
             this.ppnl.SuspendLayout();
@@ -247,6 +248,7 @@
             // 
             // bpnl
             // 
+            this.bpnl.Controls.Add(this.caboutbtn);
             this.bpnl.Controls.Add(this.appverbtn);
             this.bpnl.Controls.Add(this.delbtn);
             this.bpnl.Controls.Add(this.verbtn);
@@ -257,6 +259,22 @@
             this.bpnl.Size = new System.Drawing.Size(1153, 50);
             this.bpnl.TabIndex = 1;
             this.bpnl.Visible = false;
+            // 
+            // appverbtn
+            // 
+            this.appverbtn.AutoSize = true;
+            this.appverbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.appverbtn.Depth = 0;
+            this.appverbtn.Location = new System.Drawing.Point(559, 8);
+            this.appverbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.appverbtn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.appverbtn.Name = "appverbtn";
+            this.appverbtn.Primary = false;
+            this.appverbtn.Size = new System.Drawing.Size(99, 36);
+            this.appverbtn.TabIndex = 23;
+            this.appverbtn.Text = "App Version";
+            this.appverbtn.UseVisualStyleBackColor = true;
+            this.appverbtn.Click += new System.EventHandler(this.appverbtn_Click);
             // 
             // delbtn
             // 
@@ -348,21 +366,21 @@
             this.formlbl.TabIndex = 102;
             this.formlbl.Text = "OTP/Pincodes";
             // 
-            // appverbtn
+            // caboutbtn
             // 
-            this.appverbtn.AutoSize = true;
-            this.appverbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.appverbtn.Depth = 0;
-            this.appverbtn.Location = new System.Drawing.Point(559, 8);
-            this.appverbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.appverbtn.MouseState = MaterialSkin.MouseState.HOVER;
-            this.appverbtn.Name = "appverbtn";
-            this.appverbtn.Primary = false;
-            this.appverbtn.Size = new System.Drawing.Size(99, 36);
-            this.appverbtn.TabIndex = 23;
-            this.appverbtn.Text = "App Version";
-            this.appverbtn.UseVisualStyleBackColor = true;
-            this.appverbtn.Click += new System.EventHandler(this.appverbtn_Click);
+            this.caboutbtn.AutoSize = true;
+            this.caboutbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.caboutbtn.Depth = 0;
+            this.caboutbtn.Location = new System.Drawing.Point(705, 8);
+            this.caboutbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.caboutbtn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.caboutbtn.Name = "caboutbtn";
+            this.caboutbtn.Primary = false;
+            this.caboutbtn.Size = new System.Drawing.Size(70, 36);
+            this.caboutbtn.TabIndex = 25;
+            this.caboutbtn.Text = "Policies";
+            this.caboutbtn.UseVisualStyleBackColor = true;
+            this.caboutbtn.Click += new System.EventHandler(this.caboutbtn_Click);
             // 
             // Settings
             // 
@@ -418,5 +436,6 @@
         private System.Windows.Forms.MaskedTextBox pintxt;
         private MaterialSkin.Controls.MaterialFlatButton delbtn;
         private MaterialSkin.Controls.MaterialFlatButton appverbtn;
+        private MaterialSkin.Controls.MaterialFlatButton caboutbtn;
     }
 }

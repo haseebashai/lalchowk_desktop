@@ -134,6 +134,8 @@
             this.totallbl = new System.Windows.Forms.Label();
             this.revbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.rpnl = new System.Windows.Forms.Panel();
+            this.ordtxt = new System.Windows.Forms.TextBox();
+            this.label50 = new System.Windows.Forms.Label();
             this.orlbl = new System.Windows.Forms.Label();
             this.label49 = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
@@ -178,8 +180,8 @@
             this.bgworker6 = new System.ComponentModel.BackgroundWorker();
             this.bgworker7 = new System.ComponentModel.BackgroundWorker();
             this.bgworker8 = new System.ComponentModel.BackgroundWorker();
-            this.ordtxt = new System.Windows.Forms.TextBox();
-            this.label50 = new System.Windows.Forms.Label();
+            this.label51 = new System.Windows.Forms.Label();
+            this.shiptxt = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.accountdataview)).BeginInit();
             this.exppnl.SuspendLayout();
             this.moneypnl.SuspendLayout();
@@ -1302,6 +1304,8 @@
             // 
             // rpnl
             // 
+            this.rpnl.Controls.Add(this.label51);
+            this.rpnl.Controls.Add(this.shiptxt);
             this.rpnl.Controls.Add(this.ordtxt);
             this.rpnl.Controls.Add(this.label50);
             this.rpnl.Controls.Add(this.orlbl);
@@ -1338,6 +1342,23 @@
             this.rpnl.Size = new System.Drawing.Size(1148, 164);
             this.rpnl.TabIndex = 41;
             this.rpnl.Visible = false;
+            // 
+            // ordtxt
+            // 
+            this.ordtxt.Location = new System.Drawing.Point(521, 129);
+            this.ordtxt.Multiline = true;
+            this.ordtxt.Name = "ordtxt";
+            this.ordtxt.Size = new System.Drawing.Size(73, 19);
+            this.ordtxt.TabIndex = 42;
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Location = new System.Drawing.Point(518, 111);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(38, 13);
+            this.label50.TabIndex = 41;
+            this.label50.Text = "Orders";
             // 
             // orlbl
             // 
@@ -1530,9 +1551,9 @@
             this.label39.AutoSize = true;
             this.label39.Location = new System.Drawing.Point(275, 57);
             this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(31, 13);
+            this.label39.Size = new System.Drawing.Size(84, 13);
             this.label39.TabIndex = 18;
-            this.label39.Text = "Profit";
+            this.label39.Text = "Profit + Shipping";
             // 
             // addrbtn
             // 
@@ -1729,22 +1750,23 @@
             this.bgworker8.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker8_DoWork);
             this.bgworker8.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker8_RunWorkerCompleted);
             // 
-            // ordtxt
+            // label51
             // 
-            this.ordtxt.Location = new System.Drawing.Point(521, 129);
-            this.ordtxt.Multiline = true;
-            this.ordtxt.Name = "ordtxt";
-            this.ordtxt.Size = new System.Drawing.Size(73, 19);
-            this.ordtxt.TabIndex = 42;
+            this.label51.AutoSize = true;
+            this.label51.Location = new System.Drawing.Point(805, 142);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(48, 13);
+            this.label51.TabIndex = 44;
+            this.label51.Text = "Shipping";
             // 
-            // label50
+            // shiptxt
             // 
-            this.label50.AutoSize = true;
-            this.label50.Location = new System.Drawing.Point(518, 111);
-            this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(38, 13);
-            this.label50.TabIndex = 41;
-            this.label50.Text = "Orders";
+            this.shiptxt.Location = new System.Drawing.Point(867, 139);
+            this.shiptxt.Multiline = true;
+            this.shiptxt.Name = "shiptxt";
+            this.shiptxt.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.shiptxt.Size = new System.Drawing.Size(98, 19);
+            this.shiptxt.TabIndex = 43;
             // 
             // accounts
             // 
@@ -1947,5 +1969,7 @@
         private System.Windows.Forms.Label label49;
         private System.Windows.Forms.TextBox ordtxt;
         private System.Windows.Forms.Label label50;
+        private System.Windows.Forms.Label label51;
+        private System.Windows.Forms.TextBox shiptxt;
     }
 }
