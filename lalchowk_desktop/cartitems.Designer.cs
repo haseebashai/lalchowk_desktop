@@ -54,19 +54,21 @@
             this.delbtn = new System.Windows.Forms.Button();
             this.addtocartbtn = new System.Windows.Forms.Button();
             this.pnl = new System.Windows.Forms.Panel();
-            this.refresh = new System.Windows.Forms.PictureBox();
+            this.emailbtn = new System.Windows.Forms.Button();
             this.smspnl = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
             this.sentlbl2 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.smstxtloop = new System.Windows.Forms.TextBox();
             this.cartsmsbtn = new MaterialSkin.Controls.MaterialFlatButton();
-            this.label10 = new System.Windows.Forms.Label();
+            this.wishbtn = new System.Windows.Forms.Button();
+            this.refresh = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.cartdataview)).BeginInit();
             this.pnl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.refresh)).BeginInit();
             this.smspnl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.refresh)).BeginInit();
             this.SuspendLayout();
             // 
             // cartdataview
@@ -308,7 +310,7 @@
             this.delbtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.delbtn.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.delbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.delbtn.Location = new System.Drawing.Point(682, 87);
+            this.delbtn.Location = new System.Drawing.Point(682, 101);
             this.delbtn.Name = "delbtn";
             this.delbtn.Size = new System.Drawing.Size(108, 56);
             this.delbtn.TabIndex = 77;
@@ -321,7 +323,7 @@
             this.addtocartbtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.addtocartbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.addtocartbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addtocartbtn.Location = new System.Drawing.Point(682, 176);
+            this.addtocartbtn.Location = new System.Drawing.Point(682, 163);
             this.addtocartbtn.Name = "addtocartbtn";
             this.addtocartbtn.Size = new System.Drawing.Size(108, 84);
             this.addtocartbtn.TabIndex = 89;
@@ -331,6 +333,8 @@
             // 
             // pnl
             // 
+            this.pnl.Controls.Add(this.wishbtn);
+            this.pnl.Controls.Add(this.emailbtn);
             this.pnl.Controls.Add(this.refresh);
             this.pnl.Controls.Add(this.smspnl);
             this.pnl.Controls.Add(this.label5);
@@ -350,17 +354,18 @@
             this.pnl.TabIndex = 90;
             this.pnl.Visible = false;
             // 
-            // refresh
+            // emailbtn
             // 
-            this.refresh.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.refresh;
-            this.refresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.refresh.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.refresh.Location = new System.Drawing.Point(767, 15);
-            this.refresh.Name = "refresh";
-            this.refresh.Size = new System.Drawing.Size(21, 21);
-            this.refresh.TabIndex = 98;
-            this.refresh.TabStop = false;
-            this.refresh.Click += new System.EventHandler(this.refresh_Click);
+            this.emailbtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.emailbtn.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.emailbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.emailbtn.Location = new System.Drawing.Point(682, 253);
+            this.emailbtn.Name = "emailbtn";
+            this.emailbtn.Size = new System.Drawing.Size(108, 34);
+            this.emailbtn.TabIndex = 99;
+            this.emailbtn.Text = "Send Email";
+            this.emailbtn.UseVisualStyleBackColor = true;
+            this.emailbtn.Click += new System.EventHandler(this.emailbtn_Click);
             // 
             // smspnl
             // 
@@ -388,6 +393,16 @@
             this.smspnl.Size = new System.Drawing.Size(784, 335);
             this.smspnl.TabIndex = 90;
             this.smspnl.Visible = false;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.ForeColor = System.Drawing.Color.Red;
+            this.label10.Location = new System.Drawing.Point(515, 30);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(63, 13);
+            this.label10.TabIndex = 75;
+            this.label10.Text = "Do Not Use";
             // 
             // sentlbl2
             // 
@@ -455,15 +470,27 @@
             this.cartsmsbtn.UseVisualStyleBackColor = true;
             this.cartsmsbtn.Click += new System.EventHandler(this.cartsmsbtn_Click);
             // 
-            // label10
+            // wishbtn
             // 
-            this.label10.AutoSize = true;
-            this.label10.ForeColor = System.Drawing.Color.Red;
-            this.label10.Location = new System.Drawing.Point(515, 30);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(63, 13);
-            this.label10.TabIndex = 75;
-            this.label10.Text = "Do Not Use";
+            this.wishbtn.Location = new System.Drawing.Point(682, 42);
+            this.wishbtn.Name = "wishbtn";
+            this.wishbtn.Size = new System.Drawing.Size(108, 35);
+            this.wishbtn.TabIndex = 100;
+            this.wishbtn.Text = "Check Wishlist";
+            this.wishbtn.UseVisualStyleBackColor = true;
+            this.wishbtn.Click += new System.EventHandler(this.wishbtn_Click);
+            // 
+            // refresh
+            // 
+            this.refresh.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.refresh;
+            this.refresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.refresh.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.refresh.Location = new System.Drawing.Point(769, 6);
+            this.refresh.Name = "refresh";
+            this.refresh.Size = new System.Drawing.Size(21, 21);
+            this.refresh.TabIndex = 98;
+            this.refresh.TabStop = false;
+            this.refresh.Click += new System.EventHandler(this.refresh_Click);
             // 
             // cartitems
             // 
@@ -478,9 +505,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.cartdataview)).EndInit();
             this.pnl.ResumeLayout(false);
             this.pnl.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.refresh)).EndInit();
             this.smspnl.ResumeLayout(false);
             this.smspnl.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.refresh)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -520,5 +547,7 @@
         private System.Windows.Forms.TextBox smstxtloop;
         private MaterialSkin.Controls.MaterialFlatButton cartsmsbtn;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button emailbtn;
+        private System.Windows.Forms.Button wishbtn;
     }
 }

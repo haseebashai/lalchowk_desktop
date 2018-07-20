@@ -52,19 +52,42 @@ namespace Veiled_Kashmir_Admin_Panel
             try
             {
                 con.Open();
-                adap = new MySqlDataAdapter("SELECT cartitems.cartid,customer.name,customer.mail,customer.contact,cartitems.productid,products.productname FROM customer LEFT JOIN cartitems ON (customer.email=cartitems.email) left join products on (cartitems.productid=products.productid) where products.stock>0 and customer.contact!=''", con);
+                adap = new MySqlDataAdapter("SELECT cartitems.cartid,customer.name,customer.mail,customer.contact,cartitems.productid,products.productname FROM customer LEFT JOIN cartitems ON (customer.email=cartitems.email) left join products on (cartitems.productid=products.productid) where products.stock>0 and customer.contact!='' order by cartid desc", con);
                 dt = new DataTable();
                 adap.Fill(dt);
                 con.Close();
                 bsource = new BindingSource();
                 bsource.DataSource = dt;
-               
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
+
+      
+
+        
+        private void readwishlist()
+        {
+            try
+            {
+                con.Open();
+                adap = new MySqlDataAdapter("SELECT wishlist.wishlistid,customer.name,customer.mail,customer.contact,wishlist.productid,products.productname FROM customer LEFT JOIN wishlist ON (customer.email=wishlist.email) left join products on (wishlist.productid=products.productid) where products.stock>0 and customer.contact!='' order by wishlistid desc", con);
+                dt = new DataTable();
+                adap.Fill(dt);
+                con.Close();
+                bsource = new BindingSource();
+                bsource.DataSource = dt;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
 
         public void loadingdg()
         {
@@ -78,17 +101,22 @@ namespace Veiled_Kashmir_Admin_Panel
         string productname,name,email;
         private void cartdataview_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            try
             {
-                DataGridViewRow row = this.cartdataview.Rows[e.RowIndex];
-                numbertxt.Text = row.Cells["contact"].Value.ToString();
-                cartid = int.Parse(row.Cells["cartid"].Value.ToString());
-                productid= int.Parse(row.Cells["productid"].Value.ToString());
-                productname = row.Cells["productname"].Value.ToString();
-                name= row.Cells["name"].Value.ToString();
-                email= row.Cells["mail"].Value.ToString();
-                smspnl.Visible = true;
-            }
+               
+                    if (e.RowIndex >= 0)
+                    {
+                        DataGridViewRow row = this.cartdataview.Rows[e.RowIndex];
+                        numbertxt.Text = row.Cells["contact"].Value.ToString();
+                        cartid = int.Parse(row.Cells["cartid"].Value.ToString());
+                        productid = int.Parse(row.Cells["productid"].Value.ToString());
+                        productname = row.Cells["productname"].Value.ToString();
+                        name = row.Cells["name"].Value.ToString();
+                        email = row.Cells["mail"].Value.ToString();
+                        smspnl.Visible = true;
+                    }
+               
+            }catch(Exception ex) { MessageBox.Show(ex.Message.ToString()); }
         }
 
         private void emailtxt_TextChanged(object sender, EventArgs e)
@@ -265,6 +293,47 @@ namespace Veiled_Kashmir_Admin_Panel
             loop.WorkerReportsProgress = true;
             loop.RunWorkerAsync();
 
+        }
+
+        private void emailbtn_Click(object sender, EventArgs e)
+        {
+            if (email == null)
+            {
+                MessageBox.Show("Please select a user first.");
+
+            }
+            else
+            {
+                dialogcontainer dg = new dialogcontainer();
+                promomail pm = new promomail(email, dg);
+                pm.TopLevel = false;
+                dg.Size = new Size(700, 715);
+                pm.epnl.Location = new Point(-300, 1);
+                pm.elistlbl.Text = "";
+
+                dg.dialogpnl.Controls.Add(pm);
+                pm.loadingdg();
+                dg.Text = "Send Email";
+
+                dg.Show();
+
+                pm.Show();
+            }
+        }
+
+        private void wishbtn_Click(object sender, EventArgs e)
+        {
+            dialogcontainer dg = new dialogcontainer();
+            wishlist wish = new wishlist(dg);
+            wish.TopLevel = false;
+            dg.dialogpnl.Controls.Add(wish);
+            wish.loadingdg();
+            dg.lbl.Text = "Loading";
+            dg.Text = "Wishlist Items";
+            dg.Size = new Size(830, 720);
+
+            dg.Show();
+            wish.Show();
         }
 
         private void nametxt_TextChanged(object sender, EventArgs e)

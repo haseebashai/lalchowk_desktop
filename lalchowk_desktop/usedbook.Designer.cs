@@ -28,25 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnl1 = new System.Windows.Forms.Panel();
             this.updatebtn = new System.Windows.Forms.Button();
             this.countlbl = new System.Windows.Forms.Label();
             this.changebtn = new System.Windows.Forms.Button();
             this.upbookbtn = new MaterialSkin.Controls.MaterialFlatButton();
-            this.dpnl2 = new System.Windows.Forms.Panel();
-            this.addbtn = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.sadditxt = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.saddtxt = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.salttxt = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.scontacttxt = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.snametxt = new System.Windows.Forms.TextBox();
             this.booklistview = new System.Windows.Forms.DataGridView();
             this.selldataview = new System.Windows.Forms.DataGridView();
             this.reqbtn = new MaterialSkin.Controls.MaterialFlatButton();
@@ -65,6 +53,18 @@
             this.nametxt = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.emailtxt = new System.Windows.Forms.TextBox();
+            this.dpnl2 = new System.Windows.Forms.Panel();
+            this.addbtn = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.sadditxt = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.saddtxt = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.salttxt = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.scontacttxt = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.snametxt = new System.Windows.Forms.TextBox();
             this.uppnl = new System.Windows.Forms.Panel();
             this.upsuclbl = new System.Windows.Forms.Label();
             this.upbtn = new System.Windows.Forms.Button();
@@ -113,7 +113,6 @@
             this.dname1 = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
-            this.pic1 = new System.Windows.Forms.PictureBox();
             this.dname2txt = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.dname2 = new System.Windows.Forms.TextBox();
@@ -135,11 +134,12 @@
             this.inclbl2 = new System.Windows.Forms.Label();
             this.picdialog = new System.Windows.Forms.OpenFileDialog();
             this.formlbl = new System.Windows.Forms.Label();
+            this.pic1 = new System.Windows.Forms.PictureBox();
             this.pnl1.SuspendLayout();
-            this.dpnl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.booklistview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.selldataview)).BeginInit();
             this.dpnl.SuspendLayout();
+            this.dpnl2.SuspendLayout();
             this.uppnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic1)).BeginInit();
             this.SuspendLayout();
@@ -210,133 +210,20 @@
             this.upbookbtn.UseVisualStyleBackColor = true;
             this.upbookbtn.Click += new System.EventHandler(this.upbookbtn_Click);
             // 
-            // dpnl2
-            // 
-            this.dpnl2.Controls.Add(this.addbtn);
-            this.dpnl2.Controls.Add(this.label6);
-            this.dpnl2.Controls.Add(this.sadditxt);
-            this.dpnl2.Controls.Add(this.label7);
-            this.dpnl2.Controls.Add(this.saddtxt);
-            this.dpnl2.Controls.Add(this.label8);
-            this.dpnl2.Controls.Add(this.salttxt);
-            this.dpnl2.Controls.Add(this.label9);
-            this.dpnl2.Controls.Add(this.scontacttxt);
-            this.dpnl2.Controls.Add(this.label10);
-            this.dpnl2.Controls.Add(this.snametxt);
-            this.dpnl2.Location = new System.Drawing.Point(11, 431);
-            this.dpnl2.Name = "dpnl2";
-            this.dpnl2.Size = new System.Drawing.Size(721, 193);
-            this.dpnl2.TabIndex = 49;
-            this.dpnl2.Visible = false;
-            // 
-            // addbtn
-            // 
-            this.addbtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.addbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addbtn.Location = new System.Drawing.Point(596, 80);
-            this.addbtn.Name = "addbtn";
-            this.addbtn.Size = new System.Drawing.Size(114, 58);
-            this.addbtn.TabIndex = 37;
-            this.addbtn.Text = "Add Seller";
-            this.addbtn.UseVisualStyleBackColor = true;
-            this.addbtn.Click += new System.EventHandler(this.addbtn_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(316, 103);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(88, 13);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Additional Details";
-            // 
-            // sadditxt
-            // 
-            this.sadditxt.Location = new System.Drawing.Point(318, 122);
-            this.sadditxt.Multiline = true;
-            this.sadditxt.Name = "sadditxt";
-            this.sadditxt.Size = new System.Drawing.Size(253, 62);
-            this.sadditxt.TabIndex = 8;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(318, 13);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(45, 13);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "Address";
-            // 
-            // saddtxt
-            // 
-            this.saddtxt.Location = new System.Drawing.Point(318, 32);
-            this.saddtxt.Multiline = true;
-            this.saddtxt.Name = "saddtxt";
-            this.saddtxt.Size = new System.Drawing.Size(253, 58);
-            this.saddtxt.TabIndex = 6;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(24, 145);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(89, 13);
-            this.label8.TabIndex = 5;
-            this.label8.Text = "Alternate Contact";
-            // 
-            // salttxt
-            // 
-            this.salttxt.Location = new System.Drawing.Point(24, 164);
-            this.salttxt.Name = "salttxt";
-            this.salttxt.Size = new System.Drawing.Size(253, 20);
-            this.salttxt.TabIndex = 4;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(24, 77);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(44, 13);
-            this.label9.TabIndex = 3;
-            this.label9.Text = "Contact";
-            // 
-            // scontacttxt
-            // 
-            this.scontacttxt.Location = new System.Drawing.Point(24, 96);
-            this.scontacttxt.Name = "scontacttxt";
-            this.scontacttxt.Size = new System.Drawing.Size(253, 20);
-            this.scontacttxt.TabIndex = 2;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(24, 13);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(35, 13);
-            this.label10.TabIndex = 1;
-            this.label10.Text = "Name";
-            // 
-            // snametxt
-            // 
-            this.snametxt.Location = new System.Drawing.Point(24, 32);
-            this.snametxt.Name = "snametxt";
-            this.snametxt.Size = new System.Drawing.Size(253, 20);
-            this.snametxt.TabIndex = 0;
-            // 
             // booklistview
             // 
             this.booklistview.AllowUserToAddRows = false;
             this.booklistview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.booklistview.BackgroundColor = System.Drawing.Color.White;
             this.booklistview.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.booklistview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.booklistview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.booklistview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.booklistview.GridColor = System.Drawing.SystemColors.Control;
             this.booklistview.Location = new System.Drawing.Point(727, 51);
@@ -351,14 +238,14 @@
             this.selldataview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.selldataview.BackgroundColor = System.Drawing.Color.White;
             this.selldataview.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.selldataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.selldataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.selldataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.selldataview.GridColor = System.Drawing.SystemColors.Control;
             this.selldataview.Location = new System.Drawing.Point(11, 51);
@@ -541,6 +428,119 @@
             this.emailtxt.Name = "emailtxt";
             this.emailtxt.Size = new System.Drawing.Size(253, 20);
             this.emailtxt.TabIndex = 0;
+            // 
+            // dpnl2
+            // 
+            this.dpnl2.Controls.Add(this.addbtn);
+            this.dpnl2.Controls.Add(this.label6);
+            this.dpnl2.Controls.Add(this.sadditxt);
+            this.dpnl2.Controls.Add(this.label7);
+            this.dpnl2.Controls.Add(this.saddtxt);
+            this.dpnl2.Controls.Add(this.label8);
+            this.dpnl2.Controls.Add(this.salttxt);
+            this.dpnl2.Controls.Add(this.label9);
+            this.dpnl2.Controls.Add(this.scontacttxt);
+            this.dpnl2.Controls.Add(this.label10);
+            this.dpnl2.Controls.Add(this.snametxt);
+            this.dpnl2.Location = new System.Drawing.Point(11, 431);
+            this.dpnl2.Name = "dpnl2";
+            this.dpnl2.Size = new System.Drawing.Size(721, 193);
+            this.dpnl2.TabIndex = 49;
+            this.dpnl2.Visible = false;
+            // 
+            // addbtn
+            // 
+            this.addbtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.addbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addbtn.Location = new System.Drawing.Point(596, 80);
+            this.addbtn.Name = "addbtn";
+            this.addbtn.Size = new System.Drawing.Size(114, 58);
+            this.addbtn.TabIndex = 37;
+            this.addbtn.Text = "Add Seller";
+            this.addbtn.UseVisualStyleBackColor = true;
+            this.addbtn.Click += new System.EventHandler(this.addbtn_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(316, 103);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(88, 13);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Additional Details";
+            // 
+            // sadditxt
+            // 
+            this.sadditxt.Location = new System.Drawing.Point(318, 122);
+            this.sadditxt.Multiline = true;
+            this.sadditxt.Name = "sadditxt";
+            this.sadditxt.Size = new System.Drawing.Size(253, 62);
+            this.sadditxt.TabIndex = 8;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(318, 13);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(45, 13);
+            this.label7.TabIndex = 7;
+            this.label7.Text = "Address";
+            // 
+            // saddtxt
+            // 
+            this.saddtxt.Location = new System.Drawing.Point(318, 32);
+            this.saddtxt.Multiline = true;
+            this.saddtxt.Name = "saddtxt";
+            this.saddtxt.Size = new System.Drawing.Size(253, 58);
+            this.saddtxt.TabIndex = 6;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(24, 145);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(89, 13);
+            this.label8.TabIndex = 5;
+            this.label8.Text = "Alternate Contact";
+            // 
+            // salttxt
+            // 
+            this.salttxt.Location = new System.Drawing.Point(24, 164);
+            this.salttxt.Name = "salttxt";
+            this.salttxt.Size = new System.Drawing.Size(253, 20);
+            this.salttxt.TabIndex = 4;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(24, 77);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(44, 13);
+            this.label9.TabIndex = 3;
+            this.label9.Text = "Contact";
+            // 
+            // scontacttxt
+            // 
+            this.scontacttxt.Location = new System.Drawing.Point(24, 96);
+            this.scontacttxt.Name = "scontacttxt";
+            this.scontacttxt.Size = new System.Drawing.Size(253, 20);
+            this.scontacttxt.TabIndex = 2;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(24, 13);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(35, 13);
+            this.label10.TabIndex = 1;
+            this.label10.Text = "Name";
+            // 
+            // snametxt
+            // 
+            this.snametxt.Location = new System.Drawing.Point(24, 32);
+            this.snametxt.Name = "snametxt";
+            this.snametxt.Size = new System.Drawing.Size(253, 20);
+            this.snametxt.TabIndex = 0;
             // 
             // uppnl
             // 
@@ -1048,19 +1048,6 @@
             this.label20.TabIndex = 135;
             this.label20.Text = "Detail 1";
             // 
-            // pic1
-            // 
-            this.pic1.BackColor = System.Drawing.Color.Transparent;
-            this.pic1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pic1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pic1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pic1.Location = new System.Drawing.Point(862, 201);
-            this.pic1.Name = "pic1";
-            this.pic1.Size = new System.Drawing.Size(220, 163);
-            this.pic1.TabIndex = 146;
-            this.pic1.TabStop = false;
-            this.pic1.Click += new System.EventHandler(this.pic1_Click);
-            // 
             // dname2txt
             // 
             this.dname2txt.Location = new System.Drawing.Point(31, 367);
@@ -1248,6 +1235,19 @@
             this.formlbl.Text = "Loading";
             this.formlbl.Visible = false;
             // 
+            // pic1
+            // 
+            this.pic1.BackColor = System.Drawing.Color.Transparent;
+            this.pic1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pic1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pic1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pic1.Location = new System.Drawing.Point(862, 201);
+            this.pic1.Name = "pic1";
+            this.pic1.Size = new System.Drawing.Size(220, 163);
+            this.pic1.TabIndex = 146;
+            this.pic1.TabStop = false;
+            this.pic1.Click += new System.EventHandler(this.pic1_Click);
+            // 
             // usedbook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1262,12 +1262,12 @@
             this.Text = "usedbook";
             this.pnl1.ResumeLayout(false);
             this.pnl1.PerformLayout();
-            this.dpnl2.ResumeLayout(false);
-            this.dpnl2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.booklistview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.selldataview)).EndInit();
             this.dpnl.ResumeLayout(false);
             this.dpnl.PerformLayout();
+            this.dpnl2.ResumeLayout(false);
+            this.dpnl2.PerformLayout();
             this.uppnl.ResumeLayout(false);
             this.uppnl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic1)).EndInit();

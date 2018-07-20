@@ -1007,7 +1007,7 @@ namespace Veiled_Kashmir_Admin_Panel
             cart.TopLevel = false;
             dg.dialogpnl.Controls.Add(cart);
             cart.loadingdg();
-            dg.lbl.Text = "Cart";
+            dg.lbl.Text = "Loading";
             dg.Text = "Cart Items";
             dg.Size = new Size(830, 720);
 
@@ -1043,6 +1043,19 @@ namespace Veiled_Kashmir_Admin_Panel
             //    dg.Show();
             //    usb.Show();
             //}
+        }
+
+        private void blogbtn_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            blog blog = new blog();
+            cntpnl.Controls.Clear();
+            blog.TopLevel = false;
+            cntpnl.Visible = true;
+            cntpnl.Controls.Add(blog);
+            blog.loadingnormal();
+            blog.Show();
+            Cursor = Cursors.Arrow;
         }
 
         List<string> pid = new List<string>();

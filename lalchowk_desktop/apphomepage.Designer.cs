@@ -79,16 +79,21 @@
             this.u4 = new System.Windows.Forms.Label();
             this.offersdataview = new System.Windows.Forms.DataGridView();
             this.updoffers = new System.Windows.Forms.Button();
-            this.rowdelbtn = new System.Windows.Forms.Button();
             this.ppic = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
             this.hpnl = new System.Windows.Forms.Panel();
-            this.randlist = new System.Windows.Forms.Button();
-            this.randbtn = new System.Windows.Forms.Button();
+            this.opictxt = new System.Windows.Forms.TextBox();
+            this.upofferbtn = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.offerpic = new System.Windows.Forms.PictureBox();
+            this.commandtxt = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.idtxt = new System.Windows.Forms.TextBox();
+            this.randlist = new System.Windows.Forms.Button();
+            this.randbtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.leftpic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rightpic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productsdataview)).BeginInit();
@@ -100,6 +105,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.offersdataview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ppic)).BeginInit();
             this.hpnl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.offerpic)).BeginInit();
             this.SuspendLayout();
             // 
             // formlbl
@@ -120,16 +126,16 @@
             this.label2.ForeColor = System.Drawing.SystemColors.Highlight;
             this.label2.Location = new System.Drawing.Point(3, 220);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(187, 24);
+            this.label2.Size = new System.Drawing.Size(240, 24);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Change Homepage2";
+            this.label2.Text = "Change Homepage Picture";
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Silver;
-            this.panel3.Location = new System.Drawing.Point(7, 213);
+            this.panel3.Location = new System.Drawing.Point(7, 210);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(700, 1);
+            this.panel3.Size = new System.Drawing.Size(950, 1);
             this.panel3.TabIndex = 41;
             // 
             // leftpic
@@ -210,9 +216,9 @@
             this.productsdataview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.productsdataview.BackgroundColor = System.Drawing.Color.White;
             this.productsdataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.productsdataview.Location = new System.Drawing.Point(725, 27);
+            this.productsdataview.Location = new System.Drawing.Point(725, 244);
             this.productsdataview.Name = "productsdataview";
-            this.productsdataview.Size = new System.Drawing.Size(424, 658);
+            this.productsdataview.Size = new System.Drawing.Size(424, 441);
             this.productsdataview.TabIndex = 52;
             this.productsdataview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.productsdataview_CellClick);
             // 
@@ -221,7 +227,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label6.Location = new System.Drawing.Point(722, 5);
+            this.label6.Location = new System.Drawing.Point(722, 219);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(99, 17);
             this.label6.TabIndex = 54;
@@ -229,7 +235,7 @@
             // 
             // fcattxt
             // 
-            this.fcattxt.Location = new System.Drawing.Point(821, 4);
+            this.fcattxt.Location = new System.Drawing.Point(821, 218);
             this.fcattxt.Name = "fcattxt";
             this.fcattxt.Size = new System.Drawing.Size(135, 20);
             this.fcattxt.TabIndex = 55;
@@ -575,7 +581,7 @@
             // 
             // updoffers
             // 
-            this.updoffers.Location = new System.Drawing.Point(426, 80);
+            this.updoffers.Location = new System.Drawing.Point(426, 131);
             this.updoffers.Name = "updoffers";
             this.updoffers.Size = new System.Drawing.Size(75, 62);
             this.updoffers.TabIndex = 99;
@@ -583,22 +589,12 @@
             this.updoffers.UseVisualStyleBackColor = true;
             this.updoffers.Click += new System.EventHandler(this.updoffers_Click);
             // 
-            // rowdelbtn
-            // 
-            this.rowdelbtn.Location = new System.Drawing.Point(426, 174);
-            this.rowdelbtn.Name = "rowdelbtn";
-            this.rowdelbtn.Size = new System.Drawing.Size(75, 19);
-            this.rowdelbtn.TabIndex = 100;
-            this.rowdelbtn.Text = "Delete Row";
-            this.rowdelbtn.UseVisualStyleBackColor = true;
-            this.rowdelbtn.Click += new System.EventHandler(this.rowdelbtn_Click);
-            // 
             // ppic
             // 
             this.ppic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ppic.Location = new System.Drawing.Point(557, 27);
+            this.ppic.Location = new System.Drawing.Point(993, 27);
             this.ppic.Name = "ppic";
-            this.ppic.Size = new System.Drawing.Size(162, 166);
+            this.ppic.Size = new System.Drawing.Size(156, 167);
             this.ppic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ppic.TabIndex = 101;
             this.ppic.TabStop = false;
@@ -629,6 +625,12 @@
             // 
             // hpnl
             // 
+            this.hpnl.Controls.Add(this.opictxt);
+            this.hpnl.Controls.Add(this.upofferbtn);
+            this.hpnl.Controls.Add(this.label15);
+            this.hpnl.Controls.Add(this.offerpic);
+            this.hpnl.Controls.Add(this.commandtxt);
+            this.hpnl.Controls.Add(this.label5);
             this.hpnl.Controls.Add(this.label1);
             this.hpnl.Controls.Add(this.idtxt);
             this.hpnl.Controls.Add(this.randlist);
@@ -639,7 +641,6 @@
             this.hpnl.Controls.Add(this.panel3);
             this.hpnl.Controls.Add(this.ppic);
             this.hpnl.Controls.Add(this.leftpic);
-            this.hpnl.Controls.Add(this.rowdelbtn);
             this.hpnl.Controls.Add(this.rightpic);
             this.hpnl.Controls.Add(this.updoffers);
             this.hpnl.Controls.Add(this.lefttxt);
@@ -693,6 +694,86 @@
             this.hpnl.TabIndex = 104;
             this.hpnl.Visible = false;
             // 
+            // opictxt
+            // 
+            this.opictxt.Location = new System.Drawing.Point(551, 177);
+            this.opictxt.Name = "opictxt";
+            this.opictxt.Size = new System.Drawing.Size(156, 20);
+            this.opictxt.TabIndex = 113;
+            this.opictxt.TextChanged += new System.EventHandler(this.opictxt_TextChanged);
+            // 
+            // upofferbtn
+            // 
+            this.upofferbtn.Location = new System.Drawing.Point(836, 170);
+            this.upofferbtn.Name = "upofferbtn";
+            this.upofferbtn.Size = new System.Drawing.Size(80, 23);
+            this.upofferbtn.TabIndex = 112;
+            this.upofferbtn.Text = "Upload Offer";
+            this.upofferbtn.UseVisualStyleBackColor = true;
+            this.upofferbtn.Click += new System.EventHandler(this.upofferbtn_Click);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label15.Location = new System.Drawing.Point(723, 27);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(134, 24);
+            this.label15.TabIndex = 111;
+            this.label15.Text = "Add New Offer";
+            // 
+            // offerpic
+            // 
+            this.offerpic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.offerpic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.offerpic.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.offerpic.Location = new System.Drawing.Point(551, 26);
+            this.offerpic.Name = "offerpic";
+            this.offerpic.Size = new System.Drawing.Size(156, 145);
+            this.offerpic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.offerpic.TabIndex = 110;
+            this.offerpic.TabStop = false;
+            this.offerpic.Click += new System.EventHandler(this.offerpic_Click);
+            // 
+            // commandtxt
+            // 
+            this.commandtxt.Location = new System.Drawing.Point(727, 91);
+            this.commandtxt.Multiline = true;
+            this.commandtxt.Name = "commandtxt";
+            this.commandtxt.Size = new System.Drawing.Size(189, 73);
+            this.commandtxt.TabIndex = 108;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label5.Location = new System.Drawing.Point(724, 71);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(71, 17);
+            this.label5.TabIndex = 109;
+            this.label5.Text = "Command";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label1.Location = new System.Drawing.Point(962, 218);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(75, 17);
+            this.label1.TabIndex = 106;
+            this.label1.Text = "Filter by ID";
+            // 
+            // idtxt
+            // 
+            this.idtxt.Location = new System.Drawing.Point(1043, 218);
+            this.idtxt.Name = "idtxt";
+            this.idtxt.Size = new System.Drawing.Size(106, 20);
+            this.idtxt.TabIndex = 107;
+            this.idtxt.TextChanged += new System.EventHandler(this.idtxt_TextChanged);
+            // 
             // randlist
             // 
             this.randlist.Location = new System.Drawing.Point(3, 660);
@@ -712,25 +793,6 @@
             this.randbtn.Text = "Randomize";
             this.randbtn.UseVisualStyleBackColor = true;
             this.randbtn.Click += new System.EventHandler(this.randbtn_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(962, 4);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 17);
-            this.label1.TabIndex = 106;
-            this.label1.Text = "Filter by ID";
-            // 
-            // idtxt
-            // 
-            this.idtxt.Location = new System.Drawing.Point(1043, 4);
-            this.idtxt.Name = "idtxt";
-            this.idtxt.Size = new System.Drawing.Size(106, 20);
-            this.idtxt.TabIndex = 107;
-            this.idtxt.TextChanged += new System.EventHandler(this.idtxt_TextChanged);
             // 
             // apphomepage
             // 
@@ -755,6 +817,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ppic)).EndInit();
             this.hpnl.ResumeLayout(false);
             this.hpnl.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.offerpic)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -813,7 +876,6 @@
         private System.Windows.Forms.Label u4;
         private System.Windows.Forms.DataGridView offersdataview;
         private System.Windows.Forms.Button updoffers;
-        private System.Windows.Forms.Button rowdelbtn;
         private System.Windows.Forms.PictureBox ppic;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label3;
@@ -823,5 +885,11 @@
         private System.Windows.Forms.Button randlist;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox idtxt;
+        private System.Windows.Forms.Button upofferbtn;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.PictureBox offerpic;
+        private System.Windows.Forms.TextBox commandtxt;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox opictxt;
     }
 }

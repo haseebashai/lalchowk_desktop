@@ -147,6 +147,12 @@
     <Compile Include="apphomepage.Designer.cs">
       <DependentUpon>apphomepage.cs</DependentUpon>
     </Compile>
+    <Compile Include="blog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="blog.Designer.cs">
+      <DependentUpon>blog.cs</DependentUpon>
+    </Compile>
     <Compile Include="books.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -341,6 +347,12 @@
     <Compile Include="viewproducts.Designer.cs">
       <DependentUpon>viewproducts.cs</DependentUpon>
     </Compile>
+    <Compile Include="wishlist.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="wishlist.Designer.cs">
+      <DependentUpon>wishlist.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="addbill.resx">
       <DependentUpon>addbill.cs</DependentUpon>
     </EmbeddedResource>
@@ -352,6 +364,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="apphomepage.resx">
       <DependentUpon>apphomepage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="blog.resx">
+      <DependentUpon>blog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="books.resx">
       <DependentUpon>books.cs</DependentUpon>
@@ -459,6 +474,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="viewproducts.resx">
       <DependentUpon>viewproducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="wishlist.resx">
+      <DependentUpon>wishlist.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />

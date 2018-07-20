@@ -198,6 +198,79 @@ namespace Veiled_Kashmir_Admin_Panel
                 p3titlevar, p3subvar, p3picvar, p3linkvar, p4titlevar, p4subvar, p4picvar, p4linkvar,fileaddress,filename,fullpath,
                 directory,uploaddir;
 
+        private void opictxt_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void upofferbtn_Click(object sender, EventArgs e)
+        {
+            if (opictxt.Text == "")
+            {
+                MessageBox.Show("Please Upload Picture first.");
+            }
+            else
+            {
+                Cursor = Cursors.WaitCursor;
+                upofferpic();
+                readoffers();
+                offersdataview.DataSource = bsource;
+                
+            }
+            Cursor = Cursors.Arrow;
+        }
+
+        private void offerpic_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog picdialog = new OpenFileDialog();
+            if (picdialog.ShowDialog() == DialogResult.OK)
+            {
+                fileaddress = picdialog.FileName;
+                filename = picdialog.SafeFileName;
+                Image myimage = new Bitmap(fileaddress);
+                Bitmap clone = new Bitmap(myimage.Width, myimage.Height);
+
+                Graphics g = Graphics.FromImage(clone);
+                g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.None;
+                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+                g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighSpeed;
+
+                g.DrawImage(myimage, 0, 0, myimage.Width, myimage.Height);
+
+                g.Dispose();
+                myimage.Dispose();
+                offerpic.BackgroundImage = clone;
+                offerpic.BackgroundImageLayout = ImageLayout.Stretch;
+                fullpath = Path.GetFullPath(fileaddress).TrimEnd(Path.DirectorySeparatorChar);
+                directory = Path.GetDirectoryName(fullpath) + "\\";
+                opictxt.Text = Path.GetFileName(fullpath);
+
+            }
+        }
+
+        private void upofferpic()
+        {
+            try
+            {
+                File.Move(fileaddress, directory + opictxt.Text);
+                uploaddir = directory + opictxt.Text;
+                UploadFileToFtp("ftp://lalchowk.in/httpdocs/lalchowk/pictures/", uploaddir);
+
+                cmd = "insert into offers (`picture`,`command`)values('"+opictxt.Text+"','"+commandtxt.Text+"')";
+                obj.nonQuery(cmd);
+                obj.closeConnection();
+                MessageBox.Show("Picture uploaded successfully.", "Success");
+                opictxt.Text = "";
+                commandtxt.Text = "";
+                offerpic.BackgroundImage = null;
+            }
+            catch
+            {
+                obj.closeConnection();
+            }
+        }
+
+
         private void idtxt_TextChanged(object sender, EventArgs e)
         {
             DataView dv = new DataView(dt);
