@@ -201,65 +201,54 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             posttxt.Text=posttxt.Text+ "<a href="+"https://link here"+">title here</a>";
         }
-        bool article = false;
-        
-        private void articlebox_CheckedChanged(object sender, EventArgs e)
+
+        private void uppicbtn_Click(object sender, EventArgs e)
         {
-            if (articlebox.Checked)
+            try
             {
-                artpnl.Visible = true;
-                article = true;
-          
+                if (artpic.BackgroundImage == null)
+                {
+                    MessageBox.Show("Please select picture first.");
+                }
+                else
+                {
+                    Cursor = Cursors.WaitCursor;
+                    File.Move(fileaddress, directory + pictxt.Text);
+                    uploaddir = directory + pictxt.Text;
+                    UploadFileToFtp("ftp://lalchowk.in/httpdocs/blog/images/", uploaddir);
+                    MessageBox.Show("Picture Uploaded.", "Success");
+                    
+                }
+
             }
-            else if (articlebox.Checked == false)
-            {
-                artpnl.Visible = false;
-                article = false;
-             
-            }
+            catch(Exception ex) { MessageBox.Show(ex.Message.ToString()); }
+            Cursor = Cursors.Arrow;
         }
+
         private void upblogbtn_Click(object sender, EventArgs e)
         {
             Cursor = Cursors.WaitCursor;
             try
             {
-                StringBuilder post = new StringBuilder(posttxt.Text);
-                post.Replace(@"\", @"\\").Replace("'", "\\'");
-                StringBuilder arttitle = new StringBuilder(arttitletxt.Text);
-                arttitle.Replace(@"\", @"\\").Replace("'", "\\'");
-                StringBuilder artcontent = new StringBuilder(artcontxt.Text);
-                artcontent.Replace(@"\", @"\\").Replace("'", "\\'");
-
-                if (article)
+                if (dptxt.Text == "")
                 {
-                    if (artpic.BackgroundImage == null)
-                    {
-                        MessageBox.Show("Please Select Picture First.","Error");
-                    }
-                    else
-                    {
-                        File.Move(fileaddress, directory + pictxt.Text);
-                        uploaddir = directory + pictxt.Text;
-                        UploadFileToFtp("ftp://lalchowk.in/httpdocs/lalchowk/blog/images/", uploaddir);
-
-                        string cmd = "insert into posts (`post_date`,`post_content`,`post_status`,`post_type`,`post_has_article`,`article_title`,`article_content`,`article_picture`,`author`)" +
-                            "values(DATE_ADD(CURRENT_TIMESTAMP, INTERVAL 750 MINUTE),'" + post + "','" + pstatustxt.Text + "','" + ptypetxt.Text + "','1','" + arttitle + "','" + artcontent + "','" + pictxt.Text + "','" + authtxt.Text + "')";
-                        obj.nonQuery(cmd);
-                        obj.closeConnection();
-                        MessageBox.Show("Blog Post Uploaded with Article.", "Success");
-                    }
-                }else if (article == false)
+                    MessageBox.Show("Please write display picture name first.", "Error");
+                }
+                else
                 {
+                    StringBuilder post = new StringBuilder(posttxt.Text);
+                    post.Replace(@"\", @"\\").Replace("'", "\\'");
+                    StringBuilder arttitle = new StringBuilder(arttitletxt.Text);
+                    arttitle.Replace(@"\", @"\\").Replace("'", "\\'");
+                    StringBuilder artcontent = new StringBuilder(artcontxt.Text);
+                    artcontent.Replace(@"\", @"\\").Replace("'", "\\'");
 
-                    string cmd = "insert into posts (`post_date`,`post_content`,`post_status`,`post_type`,`post_has_article`,`author`)" +
-                       "values(DATE_ADD(CURRENT_TIMESTAMP, INTERVAL 750 MINUTE),'" + post + "','" + pstatustxt.Text + "','" + ptypetxt.Text + "','0','" + authtxt.Text + "')";
+                    string cmd = "insert into posts (`post_date`,`post_content`,`post_status`,`post_type`,`post_has_article`,`article_title`,`article_content`,`article_picture`,`author`)" +
+                        "values(DATE_ADD(CURRENT_TIMESTAMP, INTERVAL 750 MINUTE),'" + post + "','" + pstatustxt.Text + "','" + ptypetxt.Text + "','1','" + arttitle + "','" + artcontent + "','" + dptxt.Text + "','" + authtxt.Text + "')";
                     obj.nonQuery(cmd);
                     obj.closeConnection();
-                    MessageBox.Show("Blog Post Uploaded without Article.", "Success");
+                    MessageBox.Show("Blog Post Uploaded\n\nPlease add tags in the Edit Posts tab now.", "Success");
                 }
-                
-
-
             }
             catch(Exception ex) { obj.closeConnection();MessageBox.Show(ex.Message.ToString()); }
 
@@ -269,30 +258,33 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void artpic_Click(object sender, EventArgs e)
         {
-            OpenFileDialog picdialog = new OpenFileDialog();
-            if (picdialog.ShowDialog() == DialogResult.OK)
+            try
             {
-                fileaddress = picdialog.FileName;
-                filename = picdialog.SafeFileName;
-                Image myimage = new Bitmap(fileaddress);
-                Bitmap clone = new Bitmap(myimage.Width, myimage.Height);
+                OpenFileDialog picdialog = new OpenFileDialog();
+                if (picdialog.ShowDialog() == DialogResult.OK)
+                {
+                    fileaddress = picdialog.FileName;
+                    filename = picdialog.SafeFileName;
+                    Image myimage = new Bitmap(fileaddress);
+                    Bitmap clone = new Bitmap(myimage.Width, myimage.Height);
 
-                Graphics g = Graphics.FromImage(clone);
-                g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.None;
-                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
-                g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighSpeed;
+                    Graphics g = Graphics.FromImage(clone);
+                    g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.None;
+                    g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+                    g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighSpeed;
 
-                g.DrawImage(myimage, 0, 0, myimage.Width, myimage.Height);
+                    g.DrawImage(myimage, 0, 0, myimage.Width, myimage.Height);
 
-                g.Dispose();
-                myimage.Dispose();
-                artpic.BackgroundImage = clone;
-                artpic.BackgroundImageLayout = ImageLayout.Stretch;
-                fullpath = Path.GetFullPath(fileaddress).TrimEnd(Path.DirectorySeparatorChar);
-                directory = Path.GetDirectoryName(fullpath) + "\\";
-                pictxt.Text = Path.GetFileName(fullpath);
+                    g.Dispose();
+                    myimage.Dispose();
+                    artpic.BackgroundImage = clone;
+                    artpic.BackgroundImageLayout = ImageLayout.Stretch;
+                    fullpath = Path.GetFullPath(fileaddress).TrimEnd(Path.DirectorySeparatorChar);
+                    directory = Path.GetDirectoryName(fullpath) + "\\";
+                    pictxt.Text = Path.GetFileName(fullpath);
 
-            }
+                }
+            }catch(Exception ex) { MessageBox.Show(ex.Message.ToString()); }
         }
 
       
@@ -313,17 +305,18 @@ namespace Veiled_Kashmir_Admin_Panel
                 {
                     using (var requestStream = request.GetRequestStream())
                     {
+
                         fileStream.CopyTo(requestStream);
                         requestStream.Close();
                     }
                 }
-
+               
 
             }
             catch (Exception ex)
             {
 
-                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
+                MessageBox.Show( ex.ToString(), "Error!");
             }
         }
        
