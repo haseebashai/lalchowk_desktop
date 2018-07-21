@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.formlbl = new System.Windows.Forms.Label();
             this.pnl = new System.Windows.Forms.Panel();
             this.newpnl = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.dptxt = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -71,8 +73,14 @@
             this.updpbtn = new System.Windows.Forms.Button();
             this.updbtn = new System.Windows.Forms.Button();
             this.blogdataview = new System.Windows.Forms.DataGridView();
-            this.dptxt = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.editarttxt = new System.Windows.Forms.TextBox();
+            this.editartbtn = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.authdptxt = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.pviewtxt = new System.Windows.Forms.TextBox();
             this.pnl.SuspendLayout();
             this.newpnl.SuspendLayout();
             this.artpnl.SuspendLayout();
@@ -97,10 +105,10 @@
             // 
             // pnl
             // 
-            this.pnl.Controls.Add(this.newpnl);
             this.pnl.Controls.Add(this.editbtn);
             this.pnl.Controls.Add(this.panel1);
             this.pnl.Controls.Add(this.newbtn);
+            this.pnl.Controls.Add(this.newpnl);
             this.pnl.Controls.Add(this.editpnl);
             this.pnl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnl.Location = new System.Drawing.Point(0, 0);
@@ -110,6 +118,10 @@
             // 
             // newpnl
             // 
+            this.newpnl.Controls.Add(this.label14);
+            this.newpnl.Controls.Add(this.pviewtxt);
+            this.newpnl.Controls.Add(this.label13);
+            this.newpnl.Controls.Add(this.authdptxt);
             this.newpnl.Controls.Add(this.label8);
             this.newpnl.Controls.Add(this.dptxt);
             this.newpnl.Controls.Add(this.label12);
@@ -131,6 +143,22 @@
             this.newpnl.Name = "newpnl";
             this.newpnl.Size = new System.Drawing.Size(1133, 580);
             this.newpnl.TabIndex = 191;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(705, 457);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(203, 13);
+            this.label8.TabIndex = 175;
+            this.label8.Text = "Article Display Picture (please upload first)";
+            // 
+            // dptxt
+            // 
+            this.dptxt.Location = new System.Drawing.Point(708, 473);
+            this.dptxt.Name = "dptxt";
+            this.dptxt.Size = new System.Drawing.Size(204, 20);
+            this.dptxt.TabIndex = 7;
             // 
             // label12
             // 
@@ -198,9 +226,9 @@
             this.upblogbtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.upblogbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.upblogbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.upblogbtn.Location = new System.Drawing.Point(909, 501);
+            this.upblogbtn.Location = new System.Drawing.Point(954, 479);
             this.upblogbtn.Name = "upblogbtn";
-            this.upblogbtn.Size = new System.Drawing.Size(204, 52);
+            this.upblogbtn.Size = new System.Drawing.Size(164, 52);
             this.upblogbtn.TabIndex = 8;
             this.upblogbtn.Text = "Upload Blog Post";
             this.upblogbtn.UseVisualStyleBackColor = true;
@@ -303,7 +331,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(494, 457);
+            this.label2.Location = new System.Drawing.Point(494, 446);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 13);
             this.label2.TabIndex = 162;
@@ -311,7 +339,7 @@
             // 
             // pstatustxt
             // 
-            this.pstatustxt.Location = new System.Drawing.Point(497, 473);
+            this.pstatustxt.Location = new System.Drawing.Point(497, 462);
             this.pstatustxt.Name = "pstatustxt";
             this.pstatustxt.Size = new System.Drawing.Size(134, 20);
             this.pstatustxt.TabIndex = 5;
@@ -319,7 +347,7 @@
             // ptype
             // 
             this.ptype.AutoSize = true;
-            this.ptype.Location = new System.Drawing.Point(494, 502);
+            this.ptype.Location = new System.Drawing.Point(494, 491);
             this.ptype.Name = "ptype";
             this.ptype.Size = new System.Drawing.Size(55, 13);
             this.ptype.TabIndex = 160;
@@ -327,7 +355,7 @@
             // 
             // ptypetxt
             // 
-            this.ptypetxt.Location = new System.Drawing.Point(497, 518);
+            this.ptypetxt.Location = new System.Drawing.Point(497, 507);
             this.ptypetxt.Name = "ptypetxt";
             this.ptypetxt.Size = new System.Drawing.Size(134, 20);
             this.ptypetxt.TabIndex = 6;
@@ -423,14 +451,18 @@
             // tagpnl
             // 
             this.tagpnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tagpnl.Controls.Add(this.panel2);
+            this.tagpnl.Controls.Add(this.editartbtn);
+            this.tagpnl.Controls.Add(this.label9);
+            this.tagpnl.Controls.Add(this.editarttxt);
             this.tagpnl.Controls.Add(this.addtagbtn);
             this.tagpnl.Controls.Add(this.label7);
             this.tagpnl.Controls.Add(this.tagtxt);
             this.tagpnl.Controls.Add(this.postidlbl);
             this.tagpnl.Controls.Add(this.label6);
-            this.tagpnl.Location = new System.Drawing.Point(750, 290);
+            this.tagpnl.Location = new System.Drawing.Point(658, 290);
             this.tagpnl.Name = "tagpnl";
-            this.tagpnl.Size = new System.Drawing.Size(377, 286);
+            this.tagpnl.Size = new System.Drawing.Size(469, 285);
             this.tagpnl.TabIndex = 160;
             this.tagpnl.Visible = false;
             // 
@@ -439,7 +471,7 @@
             this.addtagbtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.addtagbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.addtagbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addtagbtn.Location = new System.Drawing.Point(215, 149);
+            this.addtagbtn.Location = new System.Drawing.Point(338, 245);
             this.addtagbtn.Name = "addtagbtn";
             this.addtagbtn.Size = new System.Drawing.Size(103, 32);
             this.addtagbtn.TabIndex = 161;
@@ -451,7 +483,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(47, 106);
+            this.label7.Location = new System.Drawing.Point(29, 253);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(36, 16);
             this.label7.TabIndex = 160;
@@ -459,7 +491,7 @@
             // 
             // tagtxt
             // 
-            this.tagtxt.Location = new System.Drawing.Point(95, 105);
+            this.tagtxt.Location = new System.Drawing.Point(77, 252);
             this.tagtxt.Name = "tagtxt";
             this.tagtxt.Size = new System.Drawing.Size(223, 20);
             this.tagtxt.TabIndex = 159;
@@ -469,7 +501,7 @@
             this.postidlbl.AutoSize = true;
             this.postidlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.postidlbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.postidlbl.Location = new System.Drawing.Point(233, 18);
+            this.postidlbl.Location = new System.Drawing.Point(169, 209);
             this.postidlbl.Name = "postidlbl";
             this.postidlbl.Size = new System.Drawing.Size(0, 18);
             this.postidlbl.TabIndex = 158;
@@ -479,7 +511,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.label6.Location = new System.Drawing.Point(92, 20);
+            this.label6.Location = new System.Drawing.Point(29, 212);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(135, 16);
             this.label6.TabIndex = 157;
@@ -490,9 +522,9 @@
             this.descpnl.Controls.Add(this.label21);
             this.descpnl.Controls.Add(this.desctxt);
             this.descpnl.Controls.Add(this.updpbtn);
-            this.descpnl.Location = new System.Drawing.Point(17, 241);
+            this.descpnl.Location = new System.Drawing.Point(17, 231);
             this.descpnl.Name = "descpnl";
-            this.descpnl.Size = new System.Drawing.Size(727, 336);
+            this.descpnl.Size = new System.Drawing.Size(614, 346);
             this.descpnl.TabIndex = 159;
             this.descpnl.Visible = false;
             // 
@@ -500,7 +532,7 @@
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(3, 0);
+            this.label21.Location = new System.Drawing.Point(3, 5);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(157, 16);
             this.label21.TabIndex = 156;
@@ -509,7 +541,7 @@
             // desctxt
             // 
             this.desctxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.desctxt.Location = new System.Drawing.Point(6, 19);
+            this.desctxt.Location = new System.Drawing.Point(6, 28);
             this.desctxt.Multiline = true;
             this.desctxt.Name = "desctxt";
             this.desctxt.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -521,9 +553,9 @@
             this.updpbtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.updpbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.updpbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.updpbtn.Location = new System.Drawing.Point(609, 156);
+            this.updpbtn.Location = new System.Drawing.Point(500, 0);
             this.updpbtn.Name = "updpbtn";
-            this.updpbtn.Size = new System.Drawing.Size(103, 32);
+            this.updpbtn.Size = new System.Drawing.Size(103, 27);
             this.updpbtn.TabIndex = 10;
             this.updpbtn.Text = "Update Content";
             this.updpbtn.UseVisualStyleBackColor = true;
@@ -536,7 +568,7 @@
             this.updbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.updbtn.Location = new System.Drawing.Point(1013, 231);
             this.updbtn.Name = "updbtn";
-            this.updbtn.Size = new System.Drawing.Size(114, 37);
+            this.updbtn.Size = new System.Drawing.Size(114, 27);
             this.updbtn.TabIndex = 158;
             this.updbtn.Text = "Update";
             this.updbtn.UseVisualStyleBackColor = true;
@@ -548,14 +580,14 @@
             this.blogdataview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.blogdataview.BackgroundColor = System.Drawing.Color.White;
             this.blogdataview.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.blogdataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.blogdataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.blogdataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.blogdataview.GridColor = System.Drawing.SystemColors.Control;
             this.blogdataview.Location = new System.Drawing.Point(17, 6);
@@ -564,21 +596,78 @@
             this.blogdataview.TabIndex = 157;
             this.blogdataview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.blogdataview_CellContentClick);
             // 
-            // dptxt
+            // label9
             // 
-            this.dptxt.Location = new System.Drawing.Point(909, 473);
-            this.dptxt.Name = "dptxt";
-            this.dptxt.Size = new System.Drawing.Size(204, 20);
-            this.dptxt.TabIndex = 7;
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(3, 6);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(119, 16);
+            this.label9.TabIndex = 163;
+            this.label9.Text = "Edit Article Content";
             // 
-            // label8
+            // editarttxt
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(906, 457);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(171, 13);
-            this.label8.TabIndex = 175;
-            this.label8.Text = "Display Picture (please upload first)";
+            this.editarttxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editarttxt.Location = new System.Drawing.Point(6, 25);
+            this.editarttxt.Multiline = true;
+            this.editarttxt.Name = "editarttxt";
+            this.editarttxt.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.editarttxt.Size = new System.Drawing.Size(458, 112);
+            this.editarttxt.TabIndex = 162;
+            // 
+            // editartbtn
+            // 
+            this.editartbtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.editartbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.editartbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.editartbtn.Location = new System.Drawing.Point(338, 143);
+            this.editartbtn.Name = "editartbtn";
+            this.editartbtn.Size = new System.Drawing.Size(126, 32);
+            this.editartbtn.TabIndex = 164;
+            this.editartbtn.Text = "Update Article Content";
+            this.editartbtn.UseVisualStyleBackColor = true;
+            this.editartbtn.Click += new System.EventHandler(this.editartbtn_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel2.Location = new System.Drawing.Point(17, 191);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(433, 1);
+            this.panel2.TabIndex = 190;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(705, 502);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(150, 13);
+            this.label13.TabIndex = 177;
+            this.label13.Text = "Author DP (please upload first)";
+            // 
+            // authdptxt
+            // 
+            this.authdptxt.Location = new System.Drawing.Point(708, 518);
+            this.authdptxt.Name = "authdptxt";
+            this.authdptxt.Size = new System.Drawing.Size(204, 20);
+            this.authdptxt.TabIndex = 176;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(494, 535);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(59, 13);
+            this.label14.TabIndex = 179;
+            this.label14.Text = "Post Views";
+            // 
+            // pviewtxt
+            // 
+            this.pviewtxt.Location = new System.Drawing.Point(497, 551);
+            this.pviewtxt.Name = "pviewtxt";
+            this.pviewtxt.Size = new System.Drawing.Size(134, 20);
+            this.pviewtxt.TabIndex = 178;
             // 
             // blog
             // 
@@ -656,5 +745,13 @@
         private System.Windows.Forms.ProgressBar progressBar2;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox dptxt;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button editartbtn;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox editarttxt;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox pviewtxt;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox authdptxt;
     }
 }

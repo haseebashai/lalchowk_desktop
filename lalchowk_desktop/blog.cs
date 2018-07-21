@@ -122,6 +122,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 DataGridViewRow row = this.blogdataview.Rows[e.RowIndex];
                 postid = int.Parse(row.Cells["post_ID"].Value.ToString());
                 desctxt.Text = row.Cells["post_content"].Value.ToString();
+                editarttxt.Text = row.Cells["article_content"].Value.ToString();
                 postidlbl.Text = postid.ToString();
                 descpnl.Visible = true;
                 tagpnl.Visible = true;
@@ -202,6 +203,26 @@ namespace Veiled_Kashmir_Admin_Panel
             posttxt.Text=posttxt.Text+ "<a href="+"https://link here"+">title here</a>";
         }
 
+        private void editartbtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                StringBuilder article = new StringBuilder(editarttxt.Text);
+                article.Replace(@"\", @"\\").Replace("'", "\\'");
+
+                string cmd = ("update posts set `article_content`='" + article + "' where `post_ID`='" + postid + "'");
+                obj.nonQuery(cmd);
+
+                MessageBox.Show("Article Content Updated.", "Success");
+                readposts();
+                blogdataview.DataSource = bsource;
+                descpnl.Visible = false;
+                tagpnl.Visible = false;
+
+            }
+            catch (Exception ex) { obj.closeConnection(); MessageBox.Show(ex.Message.ToString()); }
+        }
+
         private void uppicbtn_Click(object sender, EventArgs e)
         {
             try
@@ -243,8 +264,8 @@ namespace Veiled_Kashmir_Admin_Panel
                     StringBuilder artcontent = new StringBuilder(artcontxt.Text);
                     artcontent.Replace(@"\", @"\\").Replace("'", "\\'");
 
-                    string cmd = "insert into posts (`post_date`,`post_content`,`post_status`,`post_type`,`post_has_article`,`article_title`,`article_content`,`article_picture`,`author`)" +
-                        "values(DATE_ADD(CURRENT_TIMESTAMP, INTERVAL 750 MINUTE),'" + post + "','" + pstatustxt.Text + "','" + ptypetxt.Text + "','1','" + arttitle + "','" + artcontent + "','" + dptxt.Text + "','" + authtxt.Text + "')";
+                    string cmd = "insert into posts (`post_date`,`post_content`,`post_status`,`post_type`,`post_has_article`,`article_title`,`article_content`,`article_picture`,`author`,`author_picture`,`post_views`)" +
+                        "values(DATE_ADD(CURRENT_TIMESTAMP, INTERVAL 750 MINUTE),'" + post + "','" + pstatustxt.Text + "','" + ptypetxt.Text + "','1','" + arttitle + "','" + artcontent + "','" + dptxt.Text + "','" + authtxt.Text + "','"+authdptxt.Text+"','"+pviewtxt.Text+"')";
                     obj.nonQuery(cmd);
                     obj.closeConnection();
                     MessageBox.Show("Blog Post Uploaded\n\nPlease add tags in the Edit Posts tab now.", "Success");
