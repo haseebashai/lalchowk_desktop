@@ -494,53 +494,12 @@ namespace Veiled_Kashmir_Admin_Panel
            
         }
 
-        private void maxcountlbl_Click(object sender, EventArgs e)
+      
+
+        private void feedbtn_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void progressBar1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tolbl_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void sendertxt_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void sentlbl_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void numbertxt_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void charlbl_Click(object sender, EventArgs e)
-        {
+            smstxt.Text = "";
+            smstxt.Text = "Dear Customer, hope you had a nice shopping experience with www.lalchowk.in. We would love to read your reviews on Google play store here: bit.ly/lalchowkonline or our social media handles.";
 
         }
     }
