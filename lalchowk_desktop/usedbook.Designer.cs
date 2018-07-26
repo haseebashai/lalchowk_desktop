@@ -113,6 +113,7 @@
             this.dname1 = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
+            this.pic1 = new System.Windows.Forms.PictureBox();
             this.dname2txt = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.dname2 = new System.Windows.Forms.TextBox();
@@ -134,7 +135,6 @@
             this.inclbl2 = new System.Windows.Forms.Label();
             this.picdialog = new System.Windows.Forms.OpenFileDialog();
             this.formlbl = new System.Windows.Forms.Label();
-            this.pic1 = new System.Windows.Forms.PictureBox();
             this.pnl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.booklistview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.selldataview)).BeginInit();
@@ -1048,6 +1048,19 @@
             this.label20.TabIndex = 135;
             this.label20.Text = "Detail 1";
             // 
+            // pic1
+            // 
+            this.pic1.BackColor = System.Drawing.Color.Transparent;
+            this.pic1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pic1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pic1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pic1.Location = new System.Drawing.Point(862, 201);
+            this.pic1.Name = "pic1";
+            this.pic1.Size = new System.Drawing.Size(220, 163);
+            this.pic1.TabIndex = 146;
+            this.pic1.TabStop = false;
+            this.pic1.Click += new System.EventHandler(this.pic1_Click);
+            // 
             // dname2txt
             // 
             this.dname2txt.Location = new System.Drawing.Point(31, 367);
@@ -1235,28 +1248,15 @@
             this.formlbl.Text = "Loading";
             this.formlbl.Visible = false;
             // 
-            // pic1
-            // 
-            this.pic1.BackColor = System.Drawing.Color.Transparent;
-            this.pic1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pic1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pic1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pic1.Location = new System.Drawing.Point(862, 201);
-            this.pic1.Name = "pic1";
-            this.pic1.Size = new System.Drawing.Size(220, 163);
-            this.pic1.TabIndex = 146;
-            this.pic1.TabStop = false;
-            this.pic1.Click += new System.EventHandler(this.pic1_Click);
-            // 
             // usedbook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1162, 681);
-            this.Controls.Add(this.uppnl);
             this.Controls.Add(this.formlbl);
             this.Controls.Add(this.pnl1);
+            this.Controls.Add(this.uppnl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "usedbook";
             this.Text = "usedbook";

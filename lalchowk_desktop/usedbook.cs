@@ -131,6 +131,7 @@ namespace Veiled_Kashmir_Admin_Panel
             dg.Text = "Send SMS";
             dg.Size = new Size(800, 600);
             sms.numbertxt.Font = new Font("MS Sans Serif", 9, FontStyle.Regular);
+            sms.smstxt.Text = "Thank you for contacting Lalchowk. Here is the procedure to sell books with us:1.Drop your books at our office i.e ( Hotel Bombay Gujarat, Palladium Lane - Lalchowk).2.Quality and condition check would be done on the book(s) and new suitable price would be set for the book(s).3.After setting a suitable price, we will charge flat 25 % from the new fixed amount.4.Once we get the customer, you will get a notification regarding the purchase and the said amount would be transferred through a preferable mode.5.Delivery process will be covered by our team.For further queries please contact on 9906523492";
             dg.Show();
             sms.Show();
         }
