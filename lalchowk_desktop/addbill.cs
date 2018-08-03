@@ -237,26 +237,31 @@ namespace Veiled_Kashmir_Admin_Panel
                     for (int i = 0; i < count; i++)
                     {
 
+                        try
+                        {
+                            StringBuilder pname = new StringBuilder(orderdetailview.Rows[i].Cells[3].Value.ToString());
+                            pname.Replace(@"'", "\\'").Replace(@"\", "\\");
 
-                        StringBuilder pname = new StringBuilder(orderdetailview.Rows[i].Cells[3].Value.ToString());
-                        pname.Replace(@"'", "\\'").Replace(@"\", "\\");
-                        
-                        aconn.Open();
-                        mysqlcmd = new MySqlCommand("insert into dealing(`orderid`,`productid`,`productname`,`count`,`amount`,"
-                            + "`dealerprice`,`pickupdate`,`paymentdone`,`paymentdate`,`comments`,`supplierid`,`suppliername`)values ('" + orderdetailview.Rows[i].Cells[1].Value.ToString() + //orderid
-                            "','" + orderdetailview.Rows[i].Cells[2].Value.ToString() +  //proid
-                            "','" + pname + //proname
-                            "','" + orderdetailview.Rows[i].Cells[5].Value.ToString() +  //quantity
-                            "','" + orderdetailview.Rows[i].Cells[4].Value.ToString() +  //price
-                            "','" + orderdetailview.Rows[i].Cells[8].Value.ToString() +  //dp
-                            "','" + pickuptxt.Text +
-                            "','" + payment +
-                            "','" + paymenttxt.Text +
-                            "','" + commentstxt.Text + "','" + orderdetailview.Rows[i].Cells[11].Value.ToString() +  //supid
-                            "','" + orderdetailview.Rows[i].Cells[12].Value.ToString() + "')", aconn);  //supname
-                        mysqlcmd.ExecuteNonQuery();
-                        aconn.Close();
+                            aconn.Open();
+                            mysqlcmd = new MySqlCommand("insert into dealing(`orderid`,`productid`,`productname`,`count`,`amount`,"
+                                + "`dealerprice`,`pickupdate`,`paymentdone`,`paymentdate`,`comments`,`supplierid`,`suppliername`)values ('" + orderdetailview.Rows[i].Cells[1].Value.ToString() + //orderid
+                                "','" + orderdetailview.Rows[i].Cells[2].Value.ToString() +  //proid
+                                "','" + pname + //proname
+                                "','" + orderdetailview.Rows[i].Cells[5].Value.ToString() +  //quantity
+                                "','" + orderdetailview.Rows[i].Cells[4].Value.ToString() +  //price
+                                "','" + orderdetailview.Rows[i].Cells[8].Value.ToString() +  //dp
+                                "','" + pickuptxt.Text +
+                                "','" + payment +
+                                "','" + paymenttxt.Text +
+                                "','" + commentstxt.Text + "','" + orderdetailview.Rows[i].Cells[11].Value.ToString() +  //supid
+                                "','" + orderdetailview.Rows[i].Cells[12].Value.ToString() + "')", aconn);  //supname
+                            mysqlcmd.ExecuteNonQuery();
+                            aconn.Close();
 
+                            string cmd = "update products set dealerprice= '" + orderdetailview.Rows[i].Cells[8].Value.ToString() + "' where productid='" + orderdetailview.Rows[i].Cells[2].Value.ToString() + "' ";
+                            obj.nonQuery(cmd);
+                            obj.closeConnection();
+                        }catch(Exception ex) { MessageBox.Show(ex.Message.ToString()); }
                     }
                     MessageBox.Show("Product bill Added.");
                     addprobtn.Enabled = false;

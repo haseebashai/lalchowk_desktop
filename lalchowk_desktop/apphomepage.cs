@@ -437,10 +437,12 @@ namespace Veiled_Kashmir_Admin_Panel
                 {
                     for (i = 0; i < 18; i++)
                      {
-                   
+
                         //cmd = "update homepage2 set link='" + productid[i] + "',title='"+productname[i]+"' where homeid='" + homeid + "'";
                         //obj.nonQuery(cmd);
-                        cmd = "update homepage3 set link='" + productid[i] + "',title='" + productname[i] + "' where homeid='" + homeid + "'";
+                        StringBuilder name = new StringBuilder(productname[i]);
+                        name.Replace(@"'", "\\'").Replace(@"\", "\\");
+                        cmd = "update homepage3 set link='" + productid[i] + "',title='" + name + "' where homeid='" + homeid + "'";
                         obj.nonQuery(cmd);
                         obj.closeConnection();
 
