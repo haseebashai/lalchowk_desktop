@@ -73,6 +73,7 @@
             this.loadinglbl = new System.Windows.Forms.Label();
             this.formlbl = new System.Windows.Forms.Label();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
+            this.cancelbtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.refresh)).BeginInit();
             this.orderpnl.SuspendLayout();
@@ -230,7 +231,7 @@
             this.statustxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.statustxt.Location = new System.Drawing.Point(924, 22);
             this.statustxt.Name = "statustxt";
-            this.statustxt.Size = new System.Drawing.Size(58, 20);
+            this.statustxt.Size = new System.Drawing.Size(79, 20);
             this.statustxt.TabIndex = 9;
             this.statustxt.TextChanged += new System.EventHandler(this.statustxt_TextChanged);
             // 
@@ -293,6 +294,7 @@
             // 
             // dpnl
             // 
+            this.dpnl.Controls.Add(this.cancelbtn);
             this.dpnl.Controls.Add(this.smsbtn);
             this.dpnl.Controls.Add(this.deupdbtn);
             this.dpnl.Controls.Add(this.updbtn);
@@ -569,6 +571,18 @@
             this.bgworker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker_DoWork);
             this.bgworker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker_RunWorkerCompleted);
             // 
+            // cancelbtn
+            // 
+            this.cancelbtn.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.cancelbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cancelbtn.Location = new System.Drawing.Point(1001, 3);
+            this.cancelbtn.Name = "cancelbtn";
+            this.cancelbtn.Size = new System.Drawing.Size(94, 22);
+            this.cancelbtn.TabIndex = 31;
+            this.cancelbtn.Text = "Cancel Order";
+            this.cancelbtn.UseVisualStyleBackColor = true;
+            this.cancelbtn.Click += new System.EventHandler(this.cancelbtn_Click);
+            // 
             // orders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -642,5 +656,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox addfiltxt;
         private System.Windows.Forms.Button smsbtn;
+        private System.Windows.Forms.Button cancelbtn;
     }
 }

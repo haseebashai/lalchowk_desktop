@@ -81,6 +81,37 @@ namespace Veiled_Kashmir_Admin_Panel
             sms.Show();
         }
 
+        private void cancelbtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult dgr = MessageBox.Show("Cancel Order '" + orderlbl.Text + "'", "Confirm!", MessageBoxButtons.YesNo);
+                if (dgr == DialogResult.Yes)
+                {
+                    string cmd = "Update orders set status='Cancelled' where orderid='" + orderlbl.Text + "'";
+                    obj.nonQuery(cmd);
+
+                   
+                    MessageBox.Show("Order cancelled.");
+                    Cursor = Cursors.WaitCursor;
+                    readorders();
+                    ordergridview.DataSource = bsource;
+                    Cursor = Cursors.Arrow;
+                    ordergridview.CurrentCell = ordergridview.Rows[int.Parse(orderidcount)].Cells[0];
+                    orderdetailview.Visible = false;
+                    dpnl.Visible = false;
+                    loadinglbl.Visible = false;
+                }
+               
+            }
+            catch (Exception ex)
+            {
+                obj.closeConnection();
+                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
+            }
+            Cursor = Cursors.Arrow;
+        }
+
         private dialogcontainer dg = null;
         private container hp = null;
 
