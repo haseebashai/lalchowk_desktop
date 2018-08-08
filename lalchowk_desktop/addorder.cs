@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.Text.RegularExpressions;
 
 namespace Veiled_Kashmir_Admin_Panel
 {
@@ -168,7 +169,21 @@ namespace Veiled_Kashmir_Admin_Panel
                         try
                         {
                             string id = (string)a.Argument;
-                            dr = obj.Query("select productid,supplierid,productname,mrp,price,dealerprice,stock,detail1,detail2,picture from products where tags like '%" + id + "%'");
+                            string pattern = @"\s";
+                            String[] words = Regex.Split(id, pattern);
+                            string cmd = "select productid,supplierid,productname,mrp,price,dealerprice,stock,detail1,detail2,picture from products where ";
+                            int x = 0;
+                            foreach (var word in words)
+                            {
+                                if (x == 0)
+                                    cmd = cmd + "tags like '%" + word + "%'";
+                                else
+                                    cmd = cmd + "and tags like '%" + word + "%'";
+                                x++;
+
+                            }
+
+                            dr = obj.Query(cmd);
                             DataTable dt = new DataTable();
                             dt.Load(dr);
                             obj.closeConnection();

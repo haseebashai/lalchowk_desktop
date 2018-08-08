@@ -403,7 +403,7 @@ namespace Veiled_Kashmir_Admin_Panel
             proid = false;
             search = false;
 
-            if (id.Trim().StartsWith("s") || id.Trim().StartsWith("t"))
+            if (id.Trim().StartsWith("s") || id.Trim().StartsWith("t") || id.Trim().StartsWith("u"))
             {
                 catsuplbl.Text = "Category ID";
                 catsuplbl.Font = new Font(catsuplbl.Font, FontStyle.Bold);
@@ -503,7 +503,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     listbtn.Enabled = true;
                     loadinglbl.Visible = false;
                 }
-            } catch { }
+            } catch { listbtn.Enabled = true; }
         }
 
         private void dldpic_Click(object sender, EventArgs e)
@@ -620,8 +620,21 @@ namespace Veiled_Kashmir_Admin_Panel
                 }
                 else if (search)
                 {
-                   
-                    adap = new MySqlDataAdapter("select * from products where tags like '%" + id + "%'", con);
+                    string pattern=@"\s";
+                    String[] words = Regex.Split(id,pattern);
+                    
+                    string cmd = "select * from products where ";
+                    int x = 0;
+                    foreach (var word in words)
+                    {
+                        if (x == 0)
+	                      cmd =cmd + "tags like '%" + word + "%'";
+                        else
+                          cmd =cmd + "and tags like '%" + word + "%'";	
+                        x++;
+                       
+                    }
+                    adap = new MySqlDataAdapter(cmd, con);
                 }
 
                 dt = new DataTable();
