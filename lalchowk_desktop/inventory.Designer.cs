@@ -48,6 +48,8 @@
             this.cattxt = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.descpnl = new System.Windows.Forms.Panel();
+            this.progresspc = new System.Windows.Forms.Label();
+            this.dldpic = new System.Windows.Forms.Label();
             this.dp = new System.Windows.Forms.PictureBox();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
             this.pbar = new System.Windows.Forms.ProgressBar();
@@ -70,8 +72,6 @@
             this.supbox = new System.Windows.Forms.ComboBox();
             this.thirdbox = new System.Windows.Forms.ComboBox();
             this.secbox = new System.Windows.Forms.ComboBox();
-            this.dldpic = new System.Windows.Forms.Label();
-            this.progresspc = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.inventorydatagridview)).BeginInit();
             this.ipnl.SuspendLayout();
             this.descpnl.SuspendLayout();
@@ -276,6 +276,31 @@
             this.descpnl.Size = new System.Drawing.Size(883, 203);
             this.descpnl.TabIndex = 42;
             this.descpnl.Visible = false;
+            // 
+            // progresspc
+            // 
+            this.progresspc.AutoSize = true;
+            this.progresspc.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.progresspc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.progresspc.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.progresspc.Location = new System.Drawing.Point(118, 155);
+            this.progresspc.Name = "progresspc";
+            this.progresspc.Size = new System.Drawing.Size(0, 13);
+            this.progresspc.TabIndex = 41;
+            this.progresspc.Visible = false;
+            // 
+            // dldpic
+            // 
+            this.dldpic.AutoSize = true;
+            this.dldpic.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dldpic.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dldpic.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.dldpic.Location = new System.Drawing.Point(114, 182);
+            this.dldpic.Name = "dldpic";
+            this.dldpic.Size = new System.Drawing.Size(55, 13);
+            this.dldpic.TabIndex = 40;
+            this.dldpic.Text = "Download";
+            this.dldpic.Click += new System.EventHandler(this.dldpic_Click);
             // 
             // dp
             // 
@@ -508,33 +533,9 @@
             this.secbox.TabIndex = 0;
             this.secbox.SelectedIndexChanged += new System.EventHandler(this.secbox_SelectedIndexChanged);
             // 
-            // dldpic
-            // 
-            this.dldpic.AutoSize = true;
-            this.dldpic.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dldpic.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dldpic.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.dldpic.Location = new System.Drawing.Point(114, 182);
-            this.dldpic.Name = "dldpic";
-            this.dldpic.Size = new System.Drawing.Size(55, 13);
-            this.dldpic.TabIndex = 40;
-            this.dldpic.Text = "Download";
-            this.dldpic.Click += new System.EventHandler(this.dldpic_Click);
-            // 
-            // progresspc
-            // 
-            this.progresspc.AutoSize = true;
-            this.progresspc.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.progresspc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.progresspc.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.progresspc.Location = new System.Drawing.Point(118, 155);
-            this.progresspc.Name = "progresspc";
-            this.progresspc.Size = new System.Drawing.Size(0, 13);
-            this.progresspc.TabIndex = 41;
-            this.progresspc.Visible = false;
-            // 
             // inventory
             // 
+            this.AcceptButton = this.listbtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;

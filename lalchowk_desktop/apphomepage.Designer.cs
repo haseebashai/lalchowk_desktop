@@ -94,6 +94,7 @@
             this.idtxt = new System.Windows.Forms.TextBox();
             this.randlist = new System.Windows.Forms.Button();
             this.randbtn = new System.Windows.Forms.Button();
+            this.label16 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.leftpic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rightpic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productsdataview)).BeginInit();
@@ -142,7 +143,7 @@
             // 
             this.leftpic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.leftpic.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.leftpic.Location = new System.Drawing.Point(10, 256);
+            this.leftpic.Location = new System.Drawing.Point(10, 249);
             this.leftpic.Name = "leftpic";
             this.leftpic.Size = new System.Drawing.Size(112, 112);
             this.leftpic.TabIndex = 42;
@@ -153,7 +154,7 @@
             // 
             this.rightpic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.rightpic.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rightpic.Location = new System.Drawing.Point(121, 256);
+            this.rightpic.Location = new System.Drawing.Point(121, 249);
             this.rightpic.Name = "rightpic";
             this.rightpic.Size = new System.Drawing.Size(112, 112);
             this.rightpic.TabIndex = 43;
@@ -162,7 +163,7 @@
             // 
             // lefttxt
             // 
-            this.lefttxt.Location = new System.Drawing.Point(7, 375);
+            this.lefttxt.Location = new System.Drawing.Point(7, 368);
             this.lefttxt.Name = "lefttxt";
             this.lefttxt.Size = new System.Drawing.Size(112, 20);
             this.lefttxt.TabIndex = 44;
@@ -170,7 +171,7 @@
             // 
             // righttxt
             // 
-            this.righttxt.Location = new System.Drawing.Point(125, 375);
+            this.righttxt.Location = new System.Drawing.Point(125, 368);
             this.righttxt.Name = "righttxt";
             this.righttxt.Size = new System.Drawing.Size(112, 20);
             this.righttxt.TabIndex = 45;
@@ -178,16 +179,16 @@
             // 
             // rightlink
             // 
-            this.rightlink.Location = new System.Drawing.Point(125, 401);
+            this.rightlink.Location = new System.Drawing.Point(59, 418);
             this.rightlink.Name = "rightlink";
-            this.rightlink.Size = new System.Drawing.Size(61, 20);
+            this.rightlink.Size = new System.Drawing.Size(178, 20);
             this.rightlink.TabIndex = 49;
             // 
             // leftlink
             // 
-            this.leftlink.Location = new System.Drawing.Point(59, 401);
+            this.leftlink.Location = new System.Drawing.Point(59, 394);
             this.leftlink.Name = "leftlink";
-            this.leftlink.Size = new System.Drawing.Size(60, 20);
+            this.leftlink.Size = new System.Drawing.Size(178, 20);
             this.leftlink.TabIndex = 48;
             // 
             // label4
@@ -195,15 +196,15 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label4.Location = new System.Drawing.Point(4, 402);
+            this.label4.Location = new System.Drawing.Point(12, 395);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(34, 17);
+            this.label4.Size = new System.Drawing.Size(32, 17);
             this.label4.TabIndex = 50;
-            this.label4.Text = "Link";
+            this.label4.Text = "Left";
             // 
             // upddpbtn
             // 
-            this.upddpbtn.Location = new System.Drawing.Point(7, 438);
+            this.upddpbtn.Location = new System.Drawing.Point(7, 444);
             this.upddpbtn.Name = "upddpbtn";
             this.upddpbtn.Size = new System.Drawing.Size(230, 25);
             this.upddpbtn.TabIndex = 51;
@@ -625,6 +626,7 @@
             // 
             // hpnl
             // 
+            this.hpnl.Controls.Add(this.label16);
             this.hpnl.Controls.Add(this.opictxt);
             this.hpnl.Controls.Add(this.upofferbtn);
             this.hpnl.Controls.Add(this.label15);
@@ -700,7 +702,6 @@
             this.opictxt.Name = "opictxt";
             this.opictxt.Size = new System.Drawing.Size(156, 20);
             this.opictxt.TabIndex = 113;
-            this.opictxt.TextChanged += new System.EventHandler(this.opictxt_TextChanged);
             // 
             // upofferbtn
             // 
@@ -793,6 +794,17 @@
             this.randbtn.Text = "Randomize";
             this.randbtn.UseVisualStyleBackColor = true;
             this.randbtn.Click += new System.EventHandler(this.randbtn_Click);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label16.Location = new System.Drawing.Point(12, 421);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(41, 17);
+            this.label16.TabIndex = 114;
+            this.label16.Text = "Right";
             // 
             // apphomepage
             // 
@@ -891,5 +903,6 @@
         private System.Windows.Forms.TextBox commandtxt;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox opictxt;
+        private System.Windows.Forms.Label label16;
     }
 }

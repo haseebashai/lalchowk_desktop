@@ -596,7 +596,6 @@ namespace Veiled_Kashmir_Admin_Panel
                 }
             }         
         }
-       
 
         private void readinventory()
         {

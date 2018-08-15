@@ -680,6 +680,26 @@ namespace Veiled_Kashmir_Admin_Panel
             }catch { }
         }
 
+        private void odisbtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (int.Parse(odistxt.Text) < 10)
+                {
+                    odistxt.Text = 0 + odistxt.Text;
+                }
+
+                string sub = "0." + odistxt.Text;
+
+                double sub2 = double.Parse(sub);
+
+                double n = double.Parse(mrptxt.Text);
+
+                n = n - (n * sub2);
+                pricetxt.Text = n.ToString();
+            }
+            catch { }
+        }
 
         private void pidtxt_TextChanged(object sender, EventArgs e)
         {

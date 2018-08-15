@@ -198,11 +198,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 p3titlevar, p3subvar, p3picvar, p3linkvar, p4titlevar, p4subvar, p4picvar, p4linkvar,fileaddress,filename,fullpath,
                 directory,uploaddir;
 
-        private void opictxt_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
+      
         private void upofferbtn_Click(object sender, EventArgs e)
         {
             if (opictxt.Text == "")
@@ -255,7 +251,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 File.Move(fileaddress, directory + opictxt.Text);
                 uploaddir = directory + opictxt.Text;
                 UploadFileToFtp("ftp://lalchowk.in/httpdocs/lalchowk/pictures/", uploaddir);
-
+               
                 cmd = "insert into offers (`picture`,`command`)values('"+opictxt.Text+"','"+commandtxt.Text+"')";
                 obj.nonQuery(cmd);
                 obj.closeConnection();
@@ -264,8 +260,9 @@ namespace Veiled_Kashmir_Admin_Panel
                 commandtxt.Text = "";
                 offerpic.BackgroundImage = null;
             }
-            catch
+            catch(Exception ex)
             {
+                MessageBox.Show(ex.Message);
                 obj.closeConnection();
             }
         }
@@ -346,7 +343,9 @@ namespace Veiled_Kashmir_Admin_Panel
 
                 UploadFileToFtp("ftp://lalchowk.in/httpdocs/lalchowk/pictures/", uploaddir);
 
-                cmd = "update homepage3 set picture='" + righttxt.Text + "',link='" + rightlink.Text + "' where homeid='2'";
+                cmd = "update homepage3 set picture='" + righttxt.Text + "' where homeid='2'";
+                obj.nonQuery(cmd);
+                cmd = "update split set command='" + rightlink.Text + "' where pic='rightpic'";
                 obj.nonQuery(cmd);
                 obj.closeConnection();
             }catch { obj.closeConnection(); }
@@ -360,7 +359,9 @@ namespace Veiled_Kashmir_Admin_Panel
                 uploaddir = directory + lefttxt.Text;
                 UploadFileToFtp("ftp://lalchowk.in/httpdocs/lalchowk/pictures/", uploaddir);
 
-                cmd = "update homepage3 set picture='" + lefttxt.Text + "',link='" + leftlink.Text + "' where homeid='1'";
+                cmd = "update homepage3 set picture='" + lefttxt.Text + "'where homeid='1'";
+                obj.nonQuery(cmd);
+                cmd = "update split set command='" + leftlink.Text + "' where pic='leftpic'";
                 obj.nonQuery(cmd);
                 obj.closeConnection();
             }catch
@@ -532,15 +533,14 @@ namespace Veiled_Kashmir_Admin_Panel
                 bsource2 = new BindingSource();
                 bsource2.DataSource = dt;
 
-               
-                
-                dr = obj.Query("select picture,link from homepage3 where homeid='1'");
+
+                dr = obj.Query("select homepage3.picture,split.command from homepage3 inner JOIN split ON (homepage3.link=split.pic) where link='leftpic'");
                 dr.Read();
                 lefttxtvar = dr[0].ToString();
                 leftlinkvar = dr[1].ToString();
                 obj.closeConnection();
 
-                dr = obj.Query("select picture,link from homepage3 where homeid='2'");
+                dr = obj.Query("select homepage3.picture,split.command from homepage3 inner JOIN split ON (homepage3.link=split.pic) where link='rightpic'");
                 dr.Read();
                 righttxtvar = dr[0].ToString();
                 rightlinkvar = dr[1].ToString();
