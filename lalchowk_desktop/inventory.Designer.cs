@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.inventorydatagridview = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -72,6 +72,7 @@
             this.supbox = new System.Windows.Forms.ComboBox();
             this.thirdbox = new System.Windows.Forms.ComboBox();
             this.secbox = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.inventorydatagridview)).BeginInit();
             this.ipnl.SuspendLayout();
             this.descpnl.SuspendLayout();
@@ -84,14 +85,14 @@
             // 
             this.inventorydatagridview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.inventorydatagridview.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.inventorydatagridview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.inventorydatagridview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.inventorydatagridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.inventorydatagridview.Location = new System.Drawing.Point(4, 28);
             this.inventorydatagridview.Name = "inventorydatagridview";
@@ -263,6 +264,7 @@
             // 
             // descpnl
             // 
+            this.descpnl.Controls.Add(this.label6);
             this.descpnl.Controls.Add(this.progresspc);
             this.descpnl.Controls.Add(this.dldpic);
             this.descpnl.Controls.Add(this.dp);
@@ -533,6 +535,16 @@
             this.secbox.TabIndex = 0;
             this.secbox.SelectedIndexChanged += new System.EventHandler(this.secbox_SelectedIndexChanged);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Trebuchet MS", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(136, 4);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(89, 32);
+            this.label6.TabIndex = 42;
+            this.label6.Text = "use ctrl + enter \r\nfor new line";
+            // 
             // inventory
             // 
             this.AcceptButton = this.listbtn;
@@ -603,5 +615,6 @@
         private System.Windows.Forms.PictureBox dp;
         private System.Windows.Forms.Label dldpic;
         private System.Windows.Forms.Label progresspc;
+        private System.Windows.Forms.Label label6;
     }
 }

@@ -69,14 +69,14 @@ namespace Veiled_Kashmir_Admin_Panel
         private void smsbtn_Click(object sender, EventArgs e)
         {
             dialogcontainer dg = new dialogcontainer();
-            sendsms sms = new sendsms(contactlbl.Text);
+            sendsms sms = new sendsms(contactlbl.Text,"",namelbl.Text);
             sms.TopLevel = false;
             dg.dialogpnl.Controls.Add(sms);
             dg.lbl.Text = "Send SMS";
             dg.Text = "Send SMS";
             dg.Size = new Size(800, 600);
             sms.numbertxt.Font = new Font("MS Sans Serif", 9, FontStyle.Regular);
-            sms.smstxt.Text = "Dear Customer, We would love to hear from you regarding your recent purchase and our services. Please click on the following link and leave your feedback. https://bit.ly/lalchowkonline";
+            sms.smstxt.Text = "Dear "+namelbl.Text+", We would love to hear from you regarding your recent purchase and our services. Please click on the following link and leave your feedback. https://bit.ly/lalchowkonline";
             dg.Show();
             sms.Show();
         }
@@ -260,7 +260,7 @@ namespace Veiled_Kashmir_Admin_Panel
         private void billbtn_Click(object sender, EventArgs e)
         {
            
-                addbill ab = new addbill(orderlbl.Text, email, amountlbl.Text,contactlbl.Text,shipping);
+                addbill ab = new addbill(orderlbl.Text, email, amountlbl.Text,contactlbl.Text,shipping,namelbl.Text);
                 ab.ShowDialog();
                 productid = null;
             

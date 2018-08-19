@@ -124,7 +124,7 @@ namespace Veiled_Kashmir_Admin_Panel
         private void smsbtn_Click(object sender, EventArgs e)
         {
             dialogcontainer dg = new dialogcontainer();
-            sendsms sms = new sendsms(contxt.Text);
+            sendsms sms = new sendsms(contxt.Text,"","");
             sms.TopLevel = false;
             dg.dialogpnl.Controls.Add(sms);
             dg.lbl.Text = "Send SMS";
@@ -286,6 +286,9 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void upbookbtn_Click(object sender, EventArgs e)
         {
+           
+            dpnl.Visible = false;
+            dpnl2.Visible = false;
             uppnl.Visible = true;
             loadingnormal();
             selldataview.Visible = false;

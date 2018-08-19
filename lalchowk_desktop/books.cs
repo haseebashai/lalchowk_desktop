@@ -175,7 +175,7 @@ namespace Veiled_Kashmir_Admin_Panel
         private void smsbtn_Click(object sender, EventArgs e)
         {
             dialogcontainer dg = new dialogcontainer();
-            sendsms sms = new sendsms(contxt.Text);
+            sendsms sms = new sendsms(contxt.Text,booknametxt.Text,nametxt.Text);
             sms.TopLevel = false;
             dg.dialogpnl.Controls.Add(sms);
             dg.lbl.Text = "Send SMS";

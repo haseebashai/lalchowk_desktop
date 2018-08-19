@@ -649,7 +649,7 @@ namespace Veiled_Kashmir_Admin_Panel
         private void smsbtn_Click(object sender, EventArgs e)
         {
             dialogcontainer dg = new dialogcontainer();
-            sendsms sms = new sendsms("");
+            sendsms sms = new sendsms("","","");
             sms.TopLevel = false;
             dg.dialogpnl.Controls.Add(sms);
             dg.lbl.Text = "Send SMS";
@@ -783,7 +783,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     {
                         Size = new Size(230, 115),
                         Text = "ID: " + details.Pid + "\r\n" + "Name: " + details.Pname + "\r\n"
-                        + "Price: " + details.Price + "\r\n" + "Quantity: " + details.Quantity + "\r\n"
+                        + "Publisher: "+details.Publisher+ "\r\n"+ "Price: " + details.Price + "\r\n" + "Quantity: " + details.Quantity + "\r\n"
                         + "Dealer Price: " + details.Dp,
                         Multiline = true,
                         BorderStyle = BorderStyle.None,
@@ -881,7 +881,7 @@ namespace Veiled_Kashmir_Admin_Panel
         private void sendsmsbtn_Click(object sender, EventArgs e)
         {
             dialogcontainer dg = new dialogcontainer();
-            sendsms sms = new sendsms(contact);
+            sendsms sms = new sendsms(contact,"","");
             sms.TopLevel = false;
             dg.dialogpnl.Controls.Add(sms);
             dg.lbl.Text = "Send SMS";
@@ -1080,7 +1080,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 foreach (String products in prds)
                     {
 
-                        dr = obj.Query("select productid,productname,price,quantity,dealerprice,picture from orderdetails where productid='" + products + "'and orderid='" + id + "'");
+                        dr = obj.Query("select orderdetails.productid,orderdetails.productname,orderdetails.price,orderdetails.quantity,orderdetails.dealerprice,orderdetails.picture,products.detail2 from orderdetails inner join products on (orderdetails.productid="+products+" and products.productid="+products+") and orderdetails.orderid="+id+"");
                         dr.Read();
 
                         string pid = dr[0].ToString();
@@ -1089,9 +1089,10 @@ namespace Veiled_Kashmir_Admin_Panel
                         string quantity = dr[3].ToString();
                         string dp = dr[4].ToString();
                         string pic = dr[5].ToString();
+                        string pub = dr[6].ToString();
 
                         obj.closeConnection();
-                        dobj.Add(new details(pid, pname, price, quantity, dp, pic));
+                        dobj.Add(new details(pid, pname, price, quantity, dp, pic,pub));
 
 
                     }
@@ -1404,8 +1405,9 @@ namespace Veiled_Kashmir_Admin_Panel
         private string quantity;
         private string dp;
         private string picture;
+        private string publisher;
 
-        public details(string pid, string pname, string price, string quantity, string dp,string picture)
+        public details(string pid, string pname, string price, string quantity, string dp,string picture,string publisher)
         {
             this.pid = pid;
             this.pname = pname;
@@ -1413,6 +1415,7 @@ namespace Veiled_Kashmir_Admin_Panel
             this.quantity = quantity;
             this.dp = dp;
             this.picture = picture;
+            this.publisher = publisher;
         }
 
         public string Pid
@@ -1445,6 +1448,11 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             get { return picture; }
             set { picture = value; }
+        }
+        public string Publisher
+        {
+            get { return publisher; }
+            set { publisher = value; }
         }
     }
 }

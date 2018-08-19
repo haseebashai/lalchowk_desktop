@@ -15,18 +15,19 @@ namespace Veiled_Kashmir_Admin_Panel
     {
         DBConnect obj = new DBConnect();
         MySqlCommand mysqlcmd, drcmd;
-        string cmd;
+        string cmd,cname;
         MySqlConnection aconn = new MySqlConnection("SERVER=182.50.133.78;DATABASE=lalchowk_ac;USER=lalchowkac;PASSWORD=Lalchowk@123uzmah");
         MySqlDataReader dr;
         DataTable dt1;
 
 
 
-        public addbill(string orderlbl, string email, string amount,string contact,string shipping)
+        public addbill(string orderlbl, string email, string amount,string contact,string shipping,string name)
         {
             InitializeComponent();
             otxt.Text = orderlbl;
             contacttxt.Text = contact;
+            cname = name;
             addprobtn.Enabled = false;
 
             BackgroundWorker bill = new BackgroundWorker();
@@ -171,14 +172,14 @@ namespace Veiled_Kashmir_Admin_Panel
                 if (dgr == DialogResult.Yes)
                 {
                     dialogcontainer dg = new dialogcontainer();
-                    sendsms sms = new sendsms(contacttxt.Text);
+                    sendsms sms = new sendsms(contacttxt.Text,"","");
                     sms.TopLevel = false;
                     dg.dialogpnl.Controls.Add(sms);
                     dg.lbl.Text = "Send SMS";
                     dg.Text = "Send SMS";
                     dg.Size = new Size(800, 600);
                     sms.numbertxt.Font = new Font("MS Sans Serif", 9, FontStyle.Regular);
-                    sms.smstxt.Text = "Dear Customer, We would love to hear from you regarding your recent purchase and our services. Please click on the following link and leave your feedback. https://bit.ly/lalchowkonline";
+                    sms.smstxt.Text = "Dear "+cname+", We would love to hear from you regarding your recent purchase and our services. Please click on the following link and leave your feedback. https://bit.ly/lalchowkonline";
                     dg.Show();
                     sms.Show();
 

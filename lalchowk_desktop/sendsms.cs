@@ -20,17 +20,23 @@ namespace Veiled_Kashmir_Admin_Panel
 
         DBConnect obj = new DBConnect();
         MySqlDataReader dr;
+        string bname,cname;
 
-        public sendsms(string contact)
+
+        public sendsms(string contact, string bookname,string name)
         {
             InitializeComponent();
-            if (contact == "")
+            if (contact == ""||bookname==""||name=="")
             {
-
+                numbertxt.Text = contact;
+               
+                sendertxt.Text = "LALCHK";
             }
             else
             {
                 numbertxt.Text = contact;
+                bname = bookname;
+                cname = name;
                 sendertxt.Text = "LALCHK";
                 smstxt.Focus();
             }
@@ -489,7 +495,7 @@ namespace Veiled_Kashmir_Admin_Panel
         private void btbtn_Click(object sender, EventArgs e)
         {
             smstxt.Text = "";
-            smstxt.Text = "Dear customer, your requested book ' ' is currently not available. We hope to serve you better next time. Lalchowk Support";
+            smstxt.Text = "Dear "+cname+", your requested book ' "+bname+" ' is currently not available. We hope to serve you better next time. Lalchowk Support";
 
            
         }
