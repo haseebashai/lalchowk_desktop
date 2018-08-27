@@ -27,7 +27,7 @@ namespace Veiled_Kashmir_Admin_Panel
         private void substxt_TextChanged(object sender, EventArgs e)
         {
             DataView dv = new DataView(dt1);
-            dv.RowFilter = string.Format("Convert([subscribed],System.String) LIKE '%{0}%'", substxt.Text);
+            dv.RowFilter = string.Format("Convert([contact],System.String) LIKE '%{0}%'", substxt.Text);
             customerdataview.DataSource = dv;
         }
 

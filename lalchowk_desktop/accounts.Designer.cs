@@ -76,8 +76,6 @@
             this.updbtn = new System.Windows.Forms.Button();
             this.costlbl = new System.Windows.Forms.Label();
             this.moneylbl = new System.Windows.Forms.Label();
-            this.ballbl = new System.Windows.Forms.Label();
-            this.banklbl = new System.Windows.Forms.Label();
             this.billbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.delbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.billpnl = new System.Windows.Forms.Panel();
@@ -134,6 +132,8 @@
             this.totallbl = new System.Windows.Forms.Label();
             this.revbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.rpnl = new System.Windows.Forms.Panel();
+            this.label51 = new System.Windows.Forms.Label();
+            this.shiptxt = new System.Windows.Forms.TextBox();
             this.ordtxt = new System.Windows.Forms.TextBox();
             this.label50 = new System.Windows.Forms.Label();
             this.orlbl = new System.Windows.Forms.Label();
@@ -180,8 +180,8 @@
             this.bgworker6 = new System.ComponentModel.BackgroundWorker();
             this.bgworker7 = new System.ComponentModel.BackgroundWorker();
             this.bgworker8 = new System.ComponentModel.BackgroundWorker();
-            this.label51 = new System.Windows.Forms.Label();
-            this.shiptxt = new System.Windows.Forms.TextBox();
+            this.ticketbtn = new System.Windows.Forms.Button();
+            this.ticketlbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.accountdataview)).BeginInit();
             this.exppnl.SuspendLayout();
             this.moneypnl.SuspendLayout();
@@ -696,30 +696,6 @@
             this.moneylbl.Size = new System.Drawing.Size(129, 16);
             this.moneylbl.TabIndex = 27;
             this.moneylbl.Text = "Total Money pooled";
-            // 
-            // ballbl
-            // 
-            this.ballbl.AutoSize = true;
-            this.ballbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ballbl.ForeColor = System.Drawing.Color.Blue;
-            this.ballbl.Location = new System.Drawing.Point(4, 52);
-            this.ballbl.Name = "ballbl";
-            this.ballbl.Size = new System.Drawing.Size(120, 16);
-            this.ballbl.TabIndex = 28;
-            this.ballbl.Text = "Balance remaining";
-            this.ballbl.Visible = false;
-            // 
-            // banklbl
-            // 
-            this.banklbl.AutoSize = true;
-            this.banklbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.banklbl.ForeColor = System.Drawing.Color.Blue;
-            this.banklbl.Location = new System.Drawing.Point(353, 10);
-            this.banklbl.Name = "banklbl";
-            this.banklbl.Size = new System.Drawing.Size(92, 16);
-            this.banklbl.TabIndex = 29;
-            this.banklbl.Text = "Bank Balance";
-            this.banklbl.Visible = false;
             // 
             // billbtn
             // 
@@ -1250,7 +1226,7 @@
             this.refresh.Cursor = System.Windows.Forms.Cursors.Hand;
             this.refresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.refresh.ForeColor = System.Drawing.Color.Gray;
-            this.refresh.Location = new System.Drawing.Point(353, 52);
+            this.refresh.Location = new System.Drawing.Point(5, 52);
             this.refresh.Name = "refresh";
             this.refresh.Size = new System.Drawing.Size(100, 16);
             this.refresh.TabIndex = 36;
@@ -1342,6 +1318,24 @@
             this.rpnl.Size = new System.Drawing.Size(1148, 164);
             this.rpnl.TabIndex = 41;
             this.rpnl.Visible = false;
+            // 
+            // label51
+            // 
+            this.label51.AutoSize = true;
+            this.label51.Location = new System.Drawing.Point(805, 142);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(48, 13);
+            this.label51.TabIndex = 44;
+            this.label51.Text = "Shipping";
+            // 
+            // shiptxt
+            // 
+            this.shiptxt.Location = new System.Drawing.Point(867, 139);
+            this.shiptxt.Multiline = true;
+            this.shiptxt.Name = "shiptxt";
+            this.shiptxt.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.shiptxt.Size = new System.Drawing.Size(98, 19);
+            this.shiptxt.TabIndex = 43;
             // 
             // ordtxt
             // 
@@ -1621,14 +1615,14 @@
             // 
             // dpnl
             // 
+            this.dpnl.Controls.Add(this.ticketlbl);
+            this.dpnl.Controls.Add(this.ticketbtn);
             this.dpnl.Controls.Add(this.moneylbl);
             this.dpnl.Controls.Add(this.costlbl);
-            this.dpnl.Controls.Add(this.ballbl);
-            this.dpnl.Controls.Add(this.banklbl);
             this.dpnl.Controls.Add(this.refresh);
             this.dpnl.Location = new System.Drawing.Point(7, 622);
             this.dpnl.Name = "dpnl";
-            this.dpnl.Size = new System.Drawing.Size(606, 94);
+            this.dpnl.Size = new System.Drawing.Size(645, 94);
             this.dpnl.TabIndex = 42;
             this.dpnl.Visible = false;
             // 
@@ -1750,23 +1744,26 @@
             this.bgworker8.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker8_DoWork);
             this.bgworker8.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker8_RunWorkerCompleted);
             // 
-            // label51
+            // ticketbtn
             // 
-            this.label51.AutoSize = true;
-            this.label51.Location = new System.Drawing.Point(805, 142);
-            this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(48, 13);
-            this.label51.TabIndex = 44;
-            this.label51.Text = "Shipping";
+            this.ticketbtn.Location = new System.Drawing.Point(305, 10);
+            this.ticketbtn.Name = "ticketbtn";
+            this.ticketbtn.Size = new System.Drawing.Size(164, 22);
+            this.ticketbtn.TabIndex = 50;
+            this.ticketbtn.Text = "Calculate Average Ticket Size";
+            this.ticketbtn.UseVisualStyleBackColor = true;
+            this.ticketbtn.Click += new System.EventHandler(this.ticketbtn_Click);
             // 
-            // shiptxt
+            // ticketlbl
             // 
-            this.shiptxt.Location = new System.Drawing.Point(867, 139);
-            this.shiptxt.Multiline = true;
-            this.shiptxt.Name = "shiptxt";
-            this.shiptxt.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.shiptxt.Size = new System.Drawing.Size(98, 19);
-            this.shiptxt.TabIndex = 43;
+            this.ticketlbl.AutoSize = true;
+            this.ticketlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ticketlbl.ForeColor = System.Drawing.Color.Blue;
+            this.ticketlbl.Location = new System.Drawing.Point(305, 39);
+            this.ticketlbl.Name = "ticketlbl";
+            this.ticketlbl.Size = new System.Drawing.Size(0, 13);
+            this.ticketlbl.TabIndex = 51;
+            this.ticketlbl.Visible = false;
             // 
             // accounts
             // 
@@ -1865,8 +1862,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label costlbl;
         private System.Windows.Forms.Label moneylbl;
-        private System.Windows.Forms.Label ballbl;
-        private System.Windows.Forms.Label banklbl;
         private MaterialSkin.Controls.MaterialFlatButton billbtn;
         private MaterialSkin.Controls.MaterialFlatButton delbtn;
         public System.Windows.Forms.Panel billpnl;
@@ -1971,5 +1966,7 @@
         private System.Windows.Forms.Label label50;
         private System.Windows.Forms.Label label51;
         private System.Windows.Forms.TextBox shiptxt;
+        private System.Windows.Forms.Label ticketlbl;
+        private System.Windows.Forms.Button ticketbtn;
     }
 }

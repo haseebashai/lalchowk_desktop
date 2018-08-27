@@ -33,7 +33,6 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.closebtn = new System.Windows.Forms.PictureBox();
             this.btxt = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.dtxt = new System.Windows.Forms.TextBox();
@@ -67,7 +66,6 @@
             this.billlbl = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.shiptxt = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.closebtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderdetailview)).BeginInit();
             this.SuspendLayout();
             // 
@@ -105,18 +103,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1, 660);
             this.panel2.TabIndex = 53;
-            // 
-            // closebtn
-            // 
-            this.closebtn.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.turn_on;
-            this.closebtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.closebtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.closebtn.Location = new System.Drawing.Point(634, 11);
-            this.closebtn.Name = "closebtn";
-            this.closebtn.Size = new System.Drawing.Size(25, 25);
-            this.closebtn.TabIndex = 55;
-            this.closebtn.TabStop = false;
-            this.closebtn.Click += new System.EventHandler(this.closebtn_Click);
             // 
             // btxt
             // 
@@ -491,19 +477,17 @@
             this.Controls.Add(this.label19);
             this.Controls.Add(this.otxt);
             this.Controls.Add(this.label20);
-            this.Controls.Add(this.closebtn);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.loadinglbl);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "addbill";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Bill";
-            ((System.ComponentModel.ISupportInitialize)(this.closebtn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderdetailview)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -516,7 +500,6 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.PictureBox closebtn;
         private System.Windows.Forms.TextBox btxt;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.TextBox dtxt;

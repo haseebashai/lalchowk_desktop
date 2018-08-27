@@ -740,7 +740,7 @@ namespace Veiled_Kashmir_Admin_Panel
         }
 
         BackgroundWorker products;
-        string id,contact;
+        string id,contact,name;
         private void placeddataview_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             plbl.Visible = true;
@@ -757,6 +757,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 id = row.Cells["orderid"].Value.ToString();
                 contact = row.Cells["contact"].Value.ToString();
                 status = row.Cells["status"].Value.ToString();
+                name= row.Cells["name"].Value.ToString();
                 products = new BackgroundWorker();
                 products.DoWork += Products_DoWork;
                 products.RunWorkerCompleted += Products_RunWorkerCompleted;
@@ -881,13 +882,14 @@ namespace Veiled_Kashmir_Admin_Panel
         private void sendsmsbtn_Click(object sender, EventArgs e)
         {
             dialogcontainer dg = new dialogcontainer();
-            sendsms sms = new sendsms(contact,"","");
+            sendsms sms = new sendsms(contact,"",name);
             sms.TopLevel = false;
             dg.dialogpnl.Controls.Add(sms);
             dg.lbl.Text = "Send SMS";
             dg.Text = "Send SMS";
             dg.Size = new Size(800, 600);
             sms.numbertxt.Font = new Font("MS Sans Serif", 9, FontStyle.Regular);
+            sms.smstxt.Text="Dear "+ name+", ";
             dg.Show();
             sms.Show();
         }

@@ -337,19 +337,19 @@ namespace Veiled_Kashmir_Admin_Panel
             costlbl.Text = "Total Cost spent: Rs. " + dr[0].ToString();
             aconn.Close();
 
-            aconn.Open();
-            cmd = new MySqlCommand(" SELECT balance FROM expenses ORDER BY eid DESC LIMIT 1", aconn);
-            dr = cmd.ExecuteReader();
-            dr.Read();
-            ballbl.Text = "Balance in hand: Rs. " + dr[0].ToString();
-            aconn.Close();
+            //aconn.Open();
+            //cmd = new MySqlCommand(" SELECT balance FROM expenses ORDER BY eid DESC LIMIT 1", aconn);
+            //dr = cmd.ExecuteReader();
+            //dr.Read();
+            //ballbl.Text = "Balance in hand: Rs. " + dr[0].ToString();
+            //aconn.Close();
 
-            aconn.Open();
-            cmd = new MySqlCommand(" SELECT closingbal FROM bankdetails ORDER BY bid DESC LIMIT 1", aconn);
-            dr = cmd.ExecuteReader();
-            dr.Read();
-            banklbl.Text = "Bank balance: Rs. " + dr[0].ToString();
-            aconn.Close();
+            //aconn.Open();
+            //cmd = new MySqlCommand(" SELECT closingbal FROM bankdetails ORDER BY bid DESC LIMIT 1", aconn);
+            //dr = cmd.ExecuteReader();
+            //dr.Read();
+            //banklbl.Text = "Bank balance: Rs. " + dr[0].ToString();
+            //aconn.Close();
         }
             catch (Exception ex)
             {
@@ -908,6 +908,43 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             
                    
+        }
+
+        private void ticketbtn_Click(object sender, EventArgs e)
+        {
+            ticketlbl.Visible = false;
+            Cursor = Cursors.WaitCursor;
+            int amount, count;
+            try {
+
+                aconn.Open();
+                cmd = new MySqlCommand("select count(did) from deliveries where status='delivered'", aconn);
+                dr = cmd.ExecuteReader();
+                dr.Read();
+                count = int.Parse(dr[0].ToString());
+
+                aconn.Close();
+
+                aconn.Open();
+                cmd = new MySqlCommand("select sum(amount) from deliveries where status='delivered'", aconn);
+                dr = cmd.ExecuteReader();
+                dr.Read();
+                amount = int.Parse(dr[0].ToString());
+
+                aconn.Close();
+
+
+
+                ticketlbl.Visible = true;
+                ticketlbl.Text = "Total orders delivered: "+count+", amounts to: "+amount+"\nTicket size: Rs. "+(amount / count).ToString();
+
+            }
+            catch(Exception ex) {
+
+                MessageBox.Show(ex.Message);
+                ticketlbl.Visible = false;
+            }
+            Cursor = Cursors.Arrow;
         }
 
         string sale, purchase, invest, order;

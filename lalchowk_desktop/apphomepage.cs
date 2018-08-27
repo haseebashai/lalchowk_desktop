@@ -345,10 +345,10 @@ namespace Veiled_Kashmir_Admin_Panel
 
                 cmd = "update homepage3 set picture='" + righttxt.Text + "' where homeid='2'";
                 obj.nonQuery(cmd);
-                cmd = "update split set command='" + rightlink.Text + "' where pic='rightpic'";
-                obj.nonQuery(cmd);
+                //cmd = "update split set command='" + rightlink.Text + "' where pic='rightpic'";
+                //obj.nonQuery(cmd);
                 obj.closeConnection();
-            }catch { obj.closeConnection(); }
+            }catch(Exception ex) { MessageBox.Show(ex.ToString()); obj.closeConnection(); }
         }
 
         private void uploadleftpic()
@@ -361,11 +361,11 @@ namespace Veiled_Kashmir_Admin_Panel
 
                 cmd = "update homepage3 set picture='" + lefttxt.Text + "'where homeid='1'";
                 obj.nonQuery(cmd);
-                cmd = "update split set command='" + leftlink.Text + "' where pic='leftpic'";
-                obj.nonQuery(cmd);
+                //cmd = "update split set command='" + leftlink.Text + "' where pic='leftpic'";
+                //obj.nonQuery(cmd);
                 obj.closeConnection();
-            }catch
-            {
+            }catch (Exception ex)
+            { MessageBox.Show(ex.ToString());
                 obj.closeConnection();
             }
         }
@@ -388,7 +388,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     catch (Exception ex)
                     {
 
-                        MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
+                        MessageBox.Show("Something happened, please try again.\n\n" + ex.ToString(), "Error!");
                     }
                 }
                 else if(rightpicture==false || leftpicture==false)

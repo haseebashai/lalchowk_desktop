@@ -404,7 +404,7 @@ namespace Veiled_Kashmir_Admin_Panel
         {
 
             smstxt.Text = "";
-            smstxt.Text = "Dear customer, your order has been dispatched and will reach you in 30-60 mins. Please keep your phone in reach.\nTeam Lalchowk.";
+            smstxt.Text = "Dear "+cname+", your order has been dispatched and will reach you in 30-60 mins. Please keep your phone in reach.\nTeam Lalchowk.";
         }
 
        
