@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -146,123 +147,146 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void billaddbtn_Click(object sender, EventArgs e)
         {
-            try
+            if (!Regex.IsMatch(dtxt.Text, @"^([0-9-]+)$") && dtxt.Text != "")
             {
-                Cursor = Cursors.WaitCursor;
-                cmd = "update orders set status='Delivered' where orderid='" + otxt.Text + "'";
-                obj.nonQuery(cmd);
-                obj.closeConnection();
 
-                aconn.Open();
-                mysqlcmd = new MySqlCommand("insert into billing(`orderid`, `user`, `amount`,`deliverydate`,`billno`) values ('" + otxt.Text + "','" + utxt.Text + "','" + atxt.Text + "','" + dtxt.Text + "','bill" + btxt.Text + "')", aconn);
-                mysqlcmd.ExecuteNonQuery();
-                mysqlcmd = new MySqlCommand("insert into deliveries(`orderid`, `email`, `amount`,`status`,`date`,`contact`,`shipping`) values ('" + otxt.Text + "','" + utxt.Text + "','" + atxt.Text + "','Delivered','" + dtxt.Text + "','"+contacttxt.Text+"','"+shiptxt.Text+"')", aconn);
-                mysqlcmd.ExecuteNonQuery();
-                aconn.Close();
+                MessageBox.Show("Please enter date in the following format DD-MM-YYYY");
 
-                MessageBox.Show("Bill added.");
             }
-            catch (Exception ex)
+            else
             {
-                aconn.Close();
-                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
-            }
-            DialogResult dgr = MessageBox.Show("Do you want to send feedback SMS?", "Confirm", MessageBoxButtons.YesNo);
-            {
-                if (dgr == DialogResult.Yes)
+                try
                 {
-                    dialogcontainer dg = new dialogcontainer();
-                    sendsms sms = new sendsms(contacttxt.Text,"","");
-                    sms.TopLevel = false;
-                    dg.dialogpnl.Controls.Add(sms);
-                    dg.lbl.Text = "Send SMS";
-                    dg.Text = "Send SMS";
-                    dg.Size = new Size(800, 600);
-                    sms.numbertxt.Font = new Font("MS Sans Serif", 9, FontStyle.Regular);
-                    sms.smstxt.Text = "Dear "+cname+", We would love to hear from you regarding your recent purchase and our services. Please click on the following link and leave your feedback. https://bit.ly/lalchowkonline";
-                    dg.Show();
-                    sms.Show();
 
 
-                    //dialogcontainer dg = new dialogcontainer();
-                    //promomail pm = new promomail(utxt.Text, dg);
-                    //pm.TopLevel = false;
-                    //dg.Size = new Size(700, 715);
-                    //pm.epnl.Location = new Point(-300, 1);
-                    //pm.attachtxt.Visible = true;
-                    //pm.elistlbl.Text = "";
-                    //pm.checkattach.Checked = true;
-                    //dg.dialogpnl.Controls.Add(pm);
-                    //pm.loadingdg();
-                    //dg.Text = "Send Email";
+                    Cursor = Cursors.WaitCursor;
+                    cmd = "update orders set status='Delivered' where orderid='" + otxt.Text + "'";
+                    obj.nonQuery(cmd);
+                    obj.closeConnection();
 
-                    //dg.Show();
+                    aconn.Open();
+                    mysqlcmd = new MySqlCommand("insert into billing(`orderid`, `user`, `amount`,`deliverydate`,`billno`) values ('" + otxt.Text + "','" + utxt.Text + "','" + atxt.Text + "','" + dtxt.Text + "','bill" + btxt.Text + "')", aconn);
+                    mysqlcmd.ExecuteNonQuery();
+                    mysqlcmd = new MySqlCommand("insert into deliveries(`orderid`, `email`, `amount`,`status`,`date`,`contact`,`shipping`) values ('" + otxt.Text + "','" + utxt.Text + "','" + atxt.Text + "','Delivered','" + dtxt.Text + "','" + contacttxt.Text + "','" + shiptxt.Text + "')", aconn);
+                    mysqlcmd.ExecuteNonQuery();
+                    aconn.Close();
 
-                    //pm.Show();
+                    MessageBox.Show("Bill added.");
+
                 }
-                else
+                catch (Exception ex)
                 {
-                    Close();
+                    aconn.Close();
+                    MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
                 }
-            }
-            Cursor = Cursors.Arrow;
 
+                DialogResult dgr = MessageBox.Show("Do you want to send feedback SMS?", "Confirm", MessageBoxButtons.YesNo);
+                {
+                    if (dgr == DialogResult.Yes)
+                    {
+                        dialogcontainer dg = new dialogcontainer();
+                        sendsms sms = new sendsms(contacttxt.Text, "", "");
+                        sms.TopLevel = false;
+                        dg.dialogpnl.Controls.Add(sms);
+                        dg.lbl.Text = "Send SMS";
+                        dg.Text = "Send SMS";
+                        dg.Size = new Size(800, 600);
+                        sms.numbertxt.Font = new Font("MS Sans Serif", 9, FontStyle.Regular);
+                        sms.smstxt.Text = "Dear " + cname + ", We would love to hear from you regarding your recent purchase and our services. Please click on the following link and leave your feedback. https://bit.ly/lalchowkonline";
+                        dg.Show();
+                        sms.Show();
+
+
+                        //dialogcontainer dg = new dialogcontainer();
+                        //promomail pm = new promomail(utxt.Text, dg);
+                        //pm.TopLevel = false;
+                        //dg.Size = new Size(700, 715);
+                        //pm.epnl.Location = new Point(-300, 1);
+                        //pm.attachtxt.Visible = true;
+                        //pm.elistlbl.Text = "";
+                        //pm.checkattach.Checked = true;
+                        //dg.dialogpnl.Controls.Add(pm);
+                        //pm.loadingdg();
+                        //dg.Text = "Send Email";
+
+                        //dg.Show();
+
+                        //pm.Show();
+                    }
+                    else
+                    {
+                        Close();
+                    }
+                }
+                Cursor = Cursors.Arrow;
+
+            }
         }
 
         private void addprobtn_Click(object sender, EventArgs e)
         {
 
             Cursor = Cursors.WaitCursor;
+
             string payment="";
             try
             {
-                if (yes.Checked==false && no.Checked==false)
+                if (!Regex.IsMatch(pickuptxt.Text, @"^([0-9-]+)$") && pickuptxt.Text != "")
                 {
-                    MessageBox.Show("Please select payment type.", "Error!");
+
+                    MessageBox.Show("Please enter date in the following format DD-MM-YYYY");
+
                 }
-                else
-                {
-                   
-                    if (yes.Checked)
+                else {
+                    if (yes.Checked == false && no.Checked == false)
                     {
-                        payment = "1";
+                        MessageBox.Show("Please select payment type.", "Error!");
                     }
-                    else if (no.Checked)
-                    {
-                        payment = "0";
-                    }
-
-
-                    int count = int.Parse(orderdetailview.RowCount.ToString());
-
-                    for (int i = 0; i < count; i++)
+                    else
                     {
 
-                        try
+                        if (yes.Checked)
                         {
-                            StringBuilder pname = new StringBuilder(orderdetailview.Rows[i].Cells[3].Value.ToString());
-                            pname.Replace(@"'", "\\'").Replace(@"\", "\\");
+                            payment = "1";
+                        }
+                        else if (no.Checked)
+                        {
+                            payment = "0";
+                        }
 
-                            aconn.Open();
-                            mysqlcmd = new MySqlCommand("insert into dealing(`orderid`,`productid`,`productname`,`count`,`amount`,"
-                                + "`dealerprice`,`pickupdate`,`paymentdone`,`paymentdate`,`comments`,`supplierid`,`suppliername`)values ('" + orderdetailview.Rows[i].Cells[1].Value.ToString() + //orderid
-                                "','" + orderdetailview.Rows[i].Cells[2].Value.ToString() +  //proid
-                                "','" + pname + //proname
-                                "','" + orderdetailview.Rows[i].Cells[5].Value.ToString() +  //quantity
-                                "','" + orderdetailview.Rows[i].Cells[4].Value.ToString() +  //price
-                                "','" + orderdetailview.Rows[i].Cells[8].Value.ToString() +  //dp
-                                "','" + pickuptxt.Text +
-                                "','" + payment +
-                                "','" + paymenttxt.Text +
-                                "','" + commentstxt.Text + "','" + orderdetailview.Rows[i].Cells[11].Value.ToString() +  //supid
-                                "','" + orderdetailview.Rows[i].Cells[12].Value.ToString() + "')", aconn);  //supname
-                            mysqlcmd.ExecuteNonQuery();
-                            aconn.Close();
 
-                            string cmd = "update products set dealerprice= '" + orderdetailview.Rows[i].Cells[8].Value.ToString() + "' where productid='" + orderdetailview.Rows[i].Cells[2].Value.ToString() + "' ";
-                            obj.nonQuery(cmd);
-                            obj.closeConnection();
-                        }catch(Exception ex) { MessageBox.Show(ex.Message.ToString()); }
+                        int count = int.Parse(orderdetailview.RowCount.ToString());
+
+                        for (int i = 0; i < count; i++)
+                        {
+
+                            try
+                            {
+                                StringBuilder pname = new StringBuilder(orderdetailview.Rows[i].Cells[3].Value.ToString());
+                                pname.Replace(@"'", "\\'").Replace(@"\", "\\");
+
+                                aconn.Open();
+                                mysqlcmd = new MySqlCommand("insert into dealing(`orderid`,`productid`,`productname`,`count`,`amount`,"
+                                    + "`dealerprice`,`pickupdate`,`paymentdone`,`paymentdate`,`comments`,`supplierid`,`suppliername`)values ('" + orderdetailview.Rows[i].Cells[1].Value.ToString() + //orderid
+                                    "','" + orderdetailview.Rows[i].Cells[2].Value.ToString() +  //proid
+                                    "','" + pname + //proname
+                                    "','" + orderdetailview.Rows[i].Cells[5].Value.ToString() +  //quantity
+                                    "','" + orderdetailview.Rows[i].Cells[4].Value.ToString() +  //price
+                                    "','" + orderdetailview.Rows[i].Cells[8].Value.ToString() +  //dp
+                                    "','" + pickuptxt.Text +
+                                    "','" + payment +
+                                    "','" + paymenttxt.Text +
+                                    "','" + commentstxt.Text + "','" + orderdetailview.Rows[i].Cells[11].Value.ToString() +  //supid
+                                    "','" + orderdetailview.Rows[i].Cells[12].Value.ToString() + "')", aconn);  //supname
+                                mysqlcmd.ExecuteNonQuery();
+                                aconn.Close();
+
+                                string cmd = "update products set dealerprice= '" + orderdetailview.Rows[i].Cells[8].Value.ToString() + "' where productid='" + orderdetailview.Rows[i].Cells[2].Value.ToString() + "' ";
+                                obj.nonQuery(cmd);
+                                obj.closeConnection();
+                            }
+                            catch (Exception ex) { MessageBox.Show(ex.Message.ToString()); }
+                        }
                     }
                     MessageBox.Show("Product bill Added.");
                     addprobtn.Enabled = false;

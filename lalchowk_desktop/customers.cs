@@ -16,7 +16,6 @@ namespace Veiled_Kashmir_Admin_Panel
 
         DBConnect obj = new DBConnect();
         String email, username,orderid,count,cmd;
-        bool status, nametxtok, desctxtok, editnametxtok, editdesctxtok, parknametxtok, parkdesctxtok, editparktxtok, editparkdesctxtok, sancnametxtok, sancdesctxtok, editsanctnametxtok, editsancdesctxtok;
         BindingSource bsource;
         MySqlDataAdapter adap,adap1,adap2,adap3,adap4;
         MySqlDataReader dr,dr2,dr3;

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.Text.RegularExpressions;
 
 namespace Veiled_Kashmir_Admin_Panel
 {
@@ -62,7 +63,7 @@ namespace Veiled_Kashmir_Admin_Panel
             Cursor = Cursors.Arrow;
             refresh.Enabled = true;
             accountdataview.DataSource = bsource;
-            baltxt.Text = bal;
+           
             btnenable();
             bpnl.Visible = true;
             panelshow();
@@ -145,12 +146,6 @@ namespace Veiled_Kashmir_Admin_Panel
                 bsource.DataSource = dt;
 
 
-                aconn.Open();
-                cmd = new MySqlCommand("SELECT balance FROM lalchowk_ac.expenses order by eid desc limit 1", aconn);
-                dr = cmd.ExecuteReader();
-                dr.Read();
-                bal = dr[0].ToString();
-                aconn.Close();
             }
             catch (Exception ex)
             {
@@ -361,6 +356,7 @@ namespace Veiled_Kashmir_Admin_Panel
        
         private void expbtn_Click(object sender, EventArgs e)
         {
+            rev = false;
             panelhide();
             btndisable();
             bgworker.RunWorkerAsync();
@@ -389,7 +385,15 @@ namespace Veiled_Kashmir_Admin_Panel
             btnenable();
             panelshow();
             accountdataview.DataSource = bsource;
-            
+            try
+            {
+                if (rev==false)
+                {
+                    accountdataview.Columns["Details"].Visible = false;
+                }
+            }
+            catch { };
+
 
         }
         private void loadingshow()
@@ -400,6 +404,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void moneybtn_Click(object sender, EventArgs e)
         {
+            rev = false;
             panelhide();
             loadingshow();
             btndisable();
@@ -428,11 +433,19 @@ namespace Veiled_Kashmir_Admin_Panel
             btnenable();
             panelshow();
             accountdataview.DataSource = bsource;
+            try
+            {
+                if (rev==false)
+                {
+                    accountdataview.Columns["Details"].Visible = false;
+                }
+            }
+            catch { };
         }
 
         private void bankbtn_Click(object sender, EventArgs e)
         {
-
+            rev = false;
             panelhide();
             loadingshow();
             btndisable();
@@ -463,10 +476,18 @@ namespace Veiled_Kashmir_Admin_Panel
             btnenable();
             panelshow();
             accountdataview.DataSource = bsource;
+            try
+            {
+                if (rev==false)
+                {
+                    accountdataview.Columns["Details"].Visible = false;
+                }
+            }
+            catch { };
         }
         private void miscbtn_Click(object sender, EventArgs e)
         {
-
+            rev = false;
             panelhide();
             loadingshow();
             btndisable();
@@ -487,28 +508,40 @@ namespace Veiled_Kashmir_Admin_Panel
 
 
         private void updatebtn_Click(object sender, EventArgs e)
-        {try { 
-            aconn.Open();
-            mysqlcmd = new MySqlCommand ("insert into expenses(`item`, `amount`, `purchasedate`,`balance`,`reason`) values ('" + itemtxt.Text + "','"+amounttxt.Text+"','"+datetxt.Text+"','"+baltxt.Text+"','"+reasontxt1.Text+"')",aconn);
-            mysqlcmd.ExecuteNonQuery();
-            MessageBox.Show("Entry added.");
-            aconn.Close();
-            itemtxt.Text = "";
-            amounttxt.Text="";
-            datetxt.Text = "";
-            
-            reasontxt1.Text = "";
-            
-            readexpenses();
-            accountdataview.DataSource = bsource;
-            baltxt.Text = bal;
-        }
-            catch (Exception ex)
+        {
+            if (!Regex.IsMatch(datetxt.Text, @"^([0-9-]+)$") && datetxt.Text != "")
             {
-                aconn.Close();
-                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
-            }
 
+                MessageBox.Show("Please enter date in the following format DD-MM-YYYY");
+
+            }
+            else
+            {
+
+                try
+                {
+                    aconn.Open();
+                    mysqlcmd = new MySqlCommand("insert into expenses(`item`, `amount`, `purchasedate`,`reason`) values ('" + itemtxt.Text + "','" + amounttxt.Text + "','" + datetxt.Text + "','" + reasontxt1.Text + "')", aconn);
+                    mysqlcmd.ExecuteNonQuery();
+                    MessageBox.Show("Entry added.");
+                    aconn.Close();
+                    itemtxt.Text = "";
+                    amounttxt.Text = "";
+                    datetxt.Text = "";
+
+                    reasontxt1.Text = "";
+
+                    readexpenses();
+                    accountdataview.DataSource = bsource;
+
+                }
+                catch (Exception ex)
+                {
+                    aconn.Close();
+                    MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
+                }
+
+            }
         }
 
         private void addbtn_Click(object sender, EventArgs e)
@@ -583,6 +616,14 @@ namespace Veiled_Kashmir_Admin_Panel
             btnenable();
             panelshow();
             accountdataview.DataSource = bsource;
+            MessageBox.Show(rev.ToString());
+            try
+            {
+                if (rev==false) {
+                    accountdataview.Columns["Details"].Visible = false;
+            }
+            }
+            catch(Exception ex) { MessageBox.Show(ex.Message); }
             totallbl.Text = "Total bills: " + total;
             totallbl.Visible = true;
         }
@@ -591,7 +632,7 @@ namespace Veiled_Kashmir_Admin_Panel
         private void billbtn_Click(object sender, EventArgs e)
         {
 
-
+            rev = false;
             panelhide();
             loadingshow();
             btndisable();
@@ -641,13 +682,21 @@ namespace Veiled_Kashmir_Admin_Panel
             btnenable();
             panelshow();
             accountdataview.DataSource = bsource;
+            try
+            {
+                if (rev == false)
+                {
+                    accountdataview.Columns["Details"].Visible = false;
+                }
+            }
+            catch { };
             totallbl.Text = "Total deliveries: " + total;
             totallbl.Visible = true;
         }
 
         private void delbtn_Click(object sender, EventArgs e)
         {
-
+            rev = false;
             panelhide();
             loadingshow();
             btndisable();
@@ -698,13 +747,21 @@ namespace Veiled_Kashmir_Admin_Panel
             btnenable();
             panelshow();
             accountdataview.DataSource = bsource;
+            try
+            {
+                if (rev==false)
+                {
+                    accountdataview.Columns["Details"].Visible = false;
+                }
+            }
+            catch { };
             totallbl.Text = "Total dealings: " + total;
             totallbl.Visible = true;
         }
 
         private void dealbtn_Click(object sender, EventArgs e)
         {
-
+            rev = false;
             panelhide();
             loadingshow();
             btndisable();
@@ -774,17 +831,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 yes.Checked = false;
         }
 
-        private void amounttxt_Leave(object sender, EventArgs e)
-        {
-            try {
-                int amount = int.Parse(amounttxt.Text);
-                int balance = int.Parse(baltxt.Text);
-                baltxt.Text = (balance - amount).ToString();
-            }catch(Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-            }
+       
 
         private void refresh_Click(object sender, EventArgs e)
         {
@@ -845,11 +892,19 @@ namespace Veiled_Kashmir_Admin_Panel
             }
         }
 
+        
         private void bgworker8_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             btnenable();
             panelshow();
             accountdataview.DataSource = bsource;
+            DataGridViewButtonColumn accdetails = new DataGridViewButtonColumn();
+            accdetails.UseColumnTextForButtonValue = true;
+            accdetails.Name = "Details";
+            accdetails.DataPropertyName = "View Details";
+            accdetails.Text = "View Details";
+            accountdataview.Columns.Add(accdetails);
+           
             salebox.Text = sale;
             purchasebox.Text = purchase;
             investbox.Text = invest;
@@ -947,10 +1002,87 @@ namespace Veiled_Kashmir_Admin_Panel
             Cursor = Cursors.Arrow;
         }
 
+        private void accountdataview_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try {
+                
+                if (rev)
+                {
+                    
+                    if(e.ColumnIndex >=12)
+                    {
+                        string month = accountdataview.Rows[e.RowIndex].Cells["month"].Value.ToString();
+                      
+                        int year= int.Parse(accountdataview.Rows[e.RowIndex].Cells["year"].Value.ToString());
+                        string petrol = accountdataview.Rows[e.RowIndex].Cells["petrol_cost"].Value.ToString();
+                        string purchase = accountdataview.Rows[e.RowIndex].Cells["purchase_cost"].Value.ToString();
+                        string sale = accountdataview.Rows[e.RowIndex].Cells["sale"].Value.ToString();
+                        string profit = accountdataview.Rows[e.RowIndex].Cells["profit"].Value.ToString();
+                      
+                        string mon="";
+                        switch (month)
+                        {
+                            case "January":
+                                mon = "01";
+                                break;
+                            case "February":
+                                mon="02";
+                               
+                                break;
+                            case "March":
+                                mon="03";
+                                break;
+                            case "April":
+                                mon="04";
+                                break;
+                            case "May":
+                                mon="05";
+                                break;
+                            case "June":
+                                mon="06";
+                                break;
+                            case "July":
+                                mon="07";
+                                break;
+                            case "August":
+                                mon="08";
+                                break;
+                            case "September":
+                                mon="09";
+                                break;
+                            case "October":
+                                mon="10";
+                                break;
+                            case "November":
+                                mon="11";
+                                break;
+                            case "December":
+                                mon="12";
+                                break;
+                            default:
+                                mon = "02";                             
+                                break;
+                        }
+                        
+                        revdetails rev = new revdetails(mon +"-"+ year,petrol,purchase,sale,profit);
+                        rev.Show();
+                       
+                    }
+                }
+
+            }
+            catch {
+
+
+            }
+        }
+
+
         string sale, purchase, invest, order;
+        bool rev = false;
         private void revbtn_Click(object sender, EventArgs e)
         {
-
+            rev = true;
             panelhide();
             loadingshow();
             btndisable();
@@ -978,7 +1110,7 @@ namespace Veiled_Kashmir_Admin_Panel
         private void addrbtn_Click(object sender, EventArgs e)
         {try { 
             aconn.Open();
-            mysqlcmd = new MySqlCommand("insert into revenue(`month`, `year`,`sale`,`profit`,`invested`,`reason`,`gross_profit`,`purchase_cost`,`orders`) values ('" + monthtxt.Text + "','" + yeartxt.Text + "','" + saletxt.Text + "','" + profittxt.Text + "','"+investedtxt.Text+"','"+ireasontxt.Text+"','"+gprofittxt.Text+"','"+pcosttxt.Text+"','"+ordtxt.Text+"')", aconn);
+            mysqlcmd = new MySqlCommand("insert into revenue(`month`, `year`,`sale`,`profit`,`invested`,`reason`,`gross_profit`,`purchase_cost`,`orders`,`shipping_taken`,`petrol_cost`) values ('" + monthtxt.Text + "','" + yeartxt.Text + "','" + saletxt.Text + "','" + profittxt.Text + "','"+investedtxt.Text+"','"+ireasontxt.Text+"','"+gprofittxt.Text+"','"+pcosttxt.Text+"','"+ordtxt.Text+"','"+shiptxt.Text+"','"+petroltxt.Text+"')", aconn);
             mysqlcmd.ExecuteNonQuery();
             MessageBox.Show("Entry added.");
             aconn.Close();
@@ -991,8 +1123,9 @@ namespace Veiled_Kashmir_Admin_Panel
             gprofittxt.Text = "";
             pcosttxt.Text = "";
             ordtxt.Text = "";
+                petroltxt.Text = "";
 
-            readrevenue();
+                readrevenue();
             accountdataview.DataSource = bsource;
         }
             catch (Exception ex)

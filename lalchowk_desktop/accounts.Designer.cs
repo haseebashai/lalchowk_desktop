@@ -36,8 +36,6 @@
             this.exppnl = new System.Windows.Forms.Panel();
             this.reasontxt1 = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.baltxt = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.updatebtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.datetxt = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -166,6 +164,8 @@
             this.monthtxt = new System.Windows.Forms.TextBox();
             this.label42 = new System.Windows.Forms.Label();
             this.dpnl = new System.Windows.Forms.Panel();
+            this.ticketlbl = new System.Windows.Forms.Label();
+            this.ticketbtn = new System.Windows.Forms.Button();
             this.uppnl = new System.Windows.Forms.Panel();
             this.epnl = new System.Windows.Forms.Panel();
             this.bpnl = new System.Windows.Forms.Panel();
@@ -180,8 +180,8 @@
             this.bgworker6 = new System.ComponentModel.BackgroundWorker();
             this.bgworker7 = new System.ComponentModel.BackgroundWorker();
             this.bgworker8 = new System.ComponentModel.BackgroundWorker();
-            this.ticketbtn = new System.Windows.Forms.Button();
-            this.ticketlbl = new System.Windows.Forms.Label();
+            this.petroltxt = new System.Windows.Forms.TextBox();
+            this.label52 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.accountdataview)).BeginInit();
             this.exppnl.SuspendLayout();
             this.moneypnl.SuspendLayout();
@@ -272,13 +272,12 @@
             this.accountdataview.Size = new System.Drawing.Size(1009, 400);
             this.accountdataview.TabIndex = 20;
             this.accountdataview.Visible = false;
+            this.accountdataview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.accountdataview_CellContentClick);
             // 
             // exppnl
             // 
             this.exppnl.Controls.Add(this.reasontxt1);
             this.exppnl.Controls.Add(this.label16);
-            this.exppnl.Controls.Add(this.baltxt);
-            this.exppnl.Controls.Add(this.label13);
             this.exppnl.Controls.Add(this.updatebtn);
             this.exppnl.Controls.Add(this.datetxt);
             this.exppnl.Controls.Add(this.label3);
@@ -293,36 +292,20 @@
             // 
             // reasontxt1
             // 
-            this.reasontxt1.Location = new System.Drawing.Point(278, 74);
+            this.reasontxt1.Location = new System.Drawing.Point(278, 25);
             this.reasontxt1.Multiline = true;
             this.reasontxt1.Name = "reasontxt1";
-            this.reasontxt1.Size = new System.Drawing.Size(204, 74);
+            this.reasontxt1.Size = new System.Drawing.Size(204, 123);
             this.reasontxt1.TabIndex = 21;
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(275, 57);
+            this.label16.Location = new System.Drawing.Point(273, 8);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(44, 13);
             this.label16.TabIndex = 20;
             this.label16.Text = "Reason";
-            // 
-            // baltxt
-            // 
-            this.baltxt.Location = new System.Drawing.Point(278, 25);
-            this.baltxt.Name = "baltxt";
-            this.baltxt.Size = new System.Drawing.Size(204, 20);
-            this.baltxt.TabIndex = 19;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(275, 8);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(46, 13);
-            this.label13.TabIndex = 18;
-            this.label13.Text = "Balance";
             // 
             // updatebtn
             // 
@@ -362,7 +345,6 @@
             this.amounttxt.Name = "amounttxt";
             this.amounttxt.Size = new System.Drawing.Size(204, 20);
             this.amounttxt.TabIndex = 3;
-            this.amounttxt.Leave += new System.EventHandler(this.amounttxt_Leave);
             // 
             // label2
             // 
@@ -1280,6 +1262,8 @@
             // 
             // rpnl
             // 
+            this.rpnl.Controls.Add(this.petroltxt);
+            this.rpnl.Controls.Add(this.label52);
             this.rpnl.Controls.Add(this.label51);
             this.rpnl.Controls.Add(this.shiptxt);
             this.rpnl.Controls.Add(this.ordtxt);
@@ -1339,7 +1323,7 @@
             // 
             // ordtxt
             // 
-            this.ordtxt.Location = new System.Drawing.Point(521, 129);
+            this.ordtxt.Location = new System.Drawing.Point(358, 129);
             this.ordtxt.Multiline = true;
             this.ordtxt.Name = "ordtxt";
             this.ordtxt.Size = new System.Drawing.Size(73, 19);
@@ -1348,7 +1332,7 @@
             // label50
             // 
             this.label50.AutoSize = true;
-            this.label50.Location = new System.Drawing.Point(518, 111);
+            this.label50.Location = new System.Drawing.Point(355, 111);
             this.label50.Name = "label50";
             this.label50.Size = new System.Drawing.Size(38, 13);
             this.label50.TabIndex = 41;
@@ -1466,16 +1450,16 @@
             // 
             // pcosttxt
             // 
-            this.pcosttxt.Location = new System.Drawing.Point(278, 25);
+            this.pcosttxt.Location = new System.Drawing.Point(171, 25);
             this.pcosttxt.Name = "pcosttxt";
-            this.pcosttxt.Size = new System.Drawing.Size(204, 20);
+            this.pcosttxt.Size = new System.Drawing.Size(150, 20);
             this.pcosttxt.TabIndex = 27;
             this.pcosttxt.TextChanged += new System.EventHandler(this.pcosttxt_TextChanged);
             // 
             // label45
             // 
             this.label45.AutoSize = true;
-            this.label45.Location = new System.Drawing.Point(275, 8);
+            this.label45.Location = new System.Drawing.Point(168, 8);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(76, 13);
             this.label45.TabIndex = 26;
@@ -1483,16 +1467,16 @@
             // 
             // gprofittxt
             // 
-            this.gprofittxt.Location = new System.Drawing.Point(521, 26);
+            this.gprofittxt.Location = new System.Drawing.Point(358, 26);
             this.gprofittxt.Multiline = true;
             this.gprofittxt.Name = "gprofittxt";
-            this.gprofittxt.Size = new System.Drawing.Size(204, 19);
+            this.gprofittxt.Size = new System.Drawing.Size(189, 19);
             this.gprofittxt.TabIndex = 25;
             // 
             // label44
             // 
             this.label44.AutoSize = true;
-            this.label44.Location = new System.Drawing.Point(518, 9);
+            this.label44.Location = new System.Drawing.Point(355, 9);
             this.label44.Name = "label44";
             this.label44.Size = new System.Drawing.Size(61, 13);
             this.label44.TabIndex = 24;
@@ -1500,16 +1484,16 @@
             // 
             // ireasontxt
             // 
-            this.ireasontxt.Location = new System.Drawing.Point(521, 75);
+            this.ireasontxt.Location = new System.Drawing.Point(358, 75);
             this.ireasontxt.Multiline = true;
             this.ireasontxt.Name = "ireasontxt";
-            this.ireasontxt.Size = new System.Drawing.Size(204, 19);
+            this.ireasontxt.Size = new System.Drawing.Size(189, 19);
             this.ireasontxt.TabIndex = 23;
             // 
             // label43
             // 
             this.label43.AutoSize = true;
-            this.label43.Location = new System.Drawing.Point(518, 58);
+            this.label43.Location = new System.Drawing.Point(355, 58);
             this.label43.Name = "label43";
             this.label43.Size = new System.Drawing.Size(44, 13);
             this.label43.TabIndex = 22;
@@ -1517,17 +1501,17 @@
             // 
             // investedtxt
             // 
-            this.investedtxt.Location = new System.Drawing.Point(278, 129);
+            this.investedtxt.Location = new System.Drawing.Point(171, 129);
             this.investedtxt.Multiline = true;
             this.investedtxt.Name = "investedtxt";
-            this.investedtxt.Size = new System.Drawing.Size(204, 19);
+            this.investedtxt.Size = new System.Drawing.Size(150, 19);
             this.investedtxt.TabIndex = 21;
             this.investedtxt.TextChanged += new System.EventHandler(this.investedtxt_TextChanged);
             // 
             // label38
             // 
             this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(275, 111);
+            this.label38.Location = new System.Drawing.Point(168, 111);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(76, 13);
             this.label38.TabIndex = 20;
@@ -1535,15 +1519,15 @@
             // 
             // profittxt
             // 
-            this.profittxt.Location = new System.Drawing.Point(278, 74);
+            this.profittxt.Location = new System.Drawing.Point(171, 74);
             this.profittxt.Name = "profittxt";
-            this.profittxt.Size = new System.Drawing.Size(204, 20);
+            this.profittxt.Size = new System.Drawing.Size(150, 20);
             this.profittxt.TabIndex = 19;
             // 
             // label39
             // 
             this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(275, 57);
+            this.label39.Location = new System.Drawing.Point(168, 57);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(84, 13);
             this.label39.TabIndex = 18;
@@ -1569,7 +1553,7 @@
             // 
             this.saletxt.Location = new System.Drawing.Point(5, 128);
             this.saletxt.Name = "saletxt";
-            this.saletxt.Size = new System.Drawing.Size(204, 20);
+            this.saletxt.Size = new System.Drawing.Size(128, 20);
             this.saletxt.TabIndex = 5;
             // 
             // label40
@@ -1585,7 +1569,7 @@
             // 
             this.yeartxt.Location = new System.Drawing.Point(5, 74);
             this.yeartxt.Name = "yeartxt";
-            this.yeartxt.Size = new System.Drawing.Size(204, 20);
+            this.yeartxt.Size = new System.Drawing.Size(128, 20);
             this.yeartxt.TabIndex = 3;
             // 
             // label41
@@ -1601,7 +1585,7 @@
             // 
             this.monthtxt.Location = new System.Drawing.Point(5, 25);
             this.monthtxt.Name = "monthtxt";
-            this.monthtxt.Size = new System.Drawing.Size(204, 20);
+            this.monthtxt.Size = new System.Drawing.Size(128, 20);
             this.monthtxt.TabIndex = 1;
             // 
             // label42
@@ -1626,6 +1610,27 @@
             this.dpnl.TabIndex = 42;
             this.dpnl.Visible = false;
             // 
+            // ticketlbl
+            // 
+            this.ticketlbl.AutoSize = true;
+            this.ticketlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ticketlbl.ForeColor = System.Drawing.Color.Blue;
+            this.ticketlbl.Location = new System.Drawing.Point(305, 39);
+            this.ticketlbl.Name = "ticketlbl";
+            this.ticketlbl.Size = new System.Drawing.Size(0, 13);
+            this.ticketlbl.TabIndex = 51;
+            this.ticketlbl.Visible = false;
+            // 
+            // ticketbtn
+            // 
+            this.ticketbtn.Location = new System.Drawing.Point(305, 10);
+            this.ticketbtn.Name = "ticketbtn";
+            this.ticketbtn.Size = new System.Drawing.Size(164, 22);
+            this.ticketbtn.TabIndex = 50;
+            this.ticketbtn.Text = "Calculate Average Ticket Size";
+            this.ticketbtn.UseVisualStyleBackColor = true;
+            this.ticketbtn.Click += new System.EventHandler(this.ticketbtn_Click);
+            // 
             // uppnl
             // 
             this.uppnl.Controls.Add(this.fsuplbl);
@@ -1640,6 +1645,7 @@
             // 
             // epnl
             // 
+            this.epnl.Controls.Add(this.exppnl);
             this.epnl.Controls.Add(this.rpnl);
             this.epnl.Controls.Add(this.moneypnl);
             this.epnl.Controls.Add(this.billpnl);
@@ -1647,7 +1653,6 @@
             this.epnl.Controls.Add(this.dealpnl);
             this.epnl.Controls.Add(this.bankpnl);
             this.epnl.Controls.Add(this.miscpnl);
-            this.epnl.Controls.Add(this.exppnl);
             this.epnl.Location = new System.Drawing.Point(7, 41);
             this.epnl.Name = "epnl";
             this.epnl.Size = new System.Drawing.Size(1139, 179);
@@ -1744,26 +1749,22 @@
             this.bgworker8.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker8_DoWork);
             this.bgworker8.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker8_RunWorkerCompleted);
             // 
-            // ticketbtn
+            // petroltxt
             // 
-            this.ticketbtn.Location = new System.Drawing.Point(305, 10);
-            this.ticketbtn.Name = "ticketbtn";
-            this.ticketbtn.Size = new System.Drawing.Size(164, 22);
-            this.ticketbtn.TabIndex = 50;
-            this.ticketbtn.Text = "Calculate Average Ticket Size";
-            this.ticketbtn.UseVisualStyleBackColor = true;
-            this.ticketbtn.Click += new System.EventHandler(this.ticketbtn_Click);
+            this.petroltxt.Location = new System.Drawing.Point(474, 129);
+            this.petroltxt.Multiline = true;
+            this.petroltxt.Name = "petroltxt";
+            this.petroltxt.Size = new System.Drawing.Size(73, 19);
+            this.petroltxt.TabIndex = 46;
             // 
-            // ticketlbl
+            // label52
             // 
-            this.ticketlbl.AutoSize = true;
-            this.ticketlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ticketlbl.ForeColor = System.Drawing.Color.Blue;
-            this.ticketlbl.Location = new System.Drawing.Point(305, 39);
-            this.ticketlbl.Name = "ticketlbl";
-            this.ticketlbl.Size = new System.Drawing.Size(0, 13);
-            this.ticketlbl.TabIndex = 51;
-            this.ticketlbl.Visible = false;
+            this.label52.AutoSize = true;
+            this.label52.Location = new System.Drawing.Point(471, 111);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(34, 13);
+            this.label52.TabIndex = 45;
+            this.label52.Text = "Petrol";
             // 
             // accounts
             // 
@@ -1858,8 +1859,6 @@
         private System.Windows.Forms.Button updbtn;
         private System.Windows.Forms.TextBox reasontxt1;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox baltxt;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label costlbl;
         private System.Windows.Forms.Label moneylbl;
         private MaterialSkin.Controls.MaterialFlatButton billbtn;
@@ -1968,5 +1967,7 @@
         private System.Windows.Forms.TextBox shiptxt;
         private System.Windows.Forms.Label ticketlbl;
         private System.Windows.Forms.Button ticketbtn;
+        private System.Windows.Forms.TextBox petroltxt;
+        private System.Windows.Forms.Label label52;
     }
 }

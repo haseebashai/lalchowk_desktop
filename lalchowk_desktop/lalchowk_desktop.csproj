@@ -225,6 +225,12 @@
     <Compile Include="receipt.Designer.cs">
       <DependentUpon>receipt.cs</DependentUpon>
     </Compile>
+    <Compile Include="revdetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="revdetails.Designer.cs">
+      <DependentUpon>revdetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="sendsms.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -403,6 +409,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="receipt.resx">
       <DependentUpon>receipt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="revdetails.resx">
+      <DependentUpon>revdetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="sendsms.resx">
       <DependentUpon>sendsms.cs</DependentUpon>
