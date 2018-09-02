@@ -403,7 +403,7 @@ namespace Veiled_Kashmir_Admin_Panel
             proid = false;
             search = false;
 
-            if (id.Trim().StartsWith("s") || id.Trim().StartsWith("t") || id.Trim().StartsWith("u"))
+            if (id.Trim().StartsWith("s") || id.Trim().StartsWith("t") || id.Trim().StartsWith("u") || id.Trim().StartsWith("i"))
             {
                 catsuplbl.Text = "Category ID";
                 catsuplbl.Font = new Font(catsuplbl.Font, FontStyle.Bold);
