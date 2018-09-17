@@ -17,14 +17,19 @@ namespace Veiled_Kashmir_Admin_Panel
     {
         DBConnect obj = new DBConnect();
         MySqlDataReader dr;
-
+        MySqlConnection con = new MySqlConnection("SERVER=182.50.133.78;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah");
+        MySqlCommand cmd;
         private dialogcontainer dg = null;
-      
-        public addorder(Form dgcopy,string email)
+
+        public addorder(Form dgcopy, string email)
         {
             dg = dgcopy as dialogcontainer;
-            
+
             InitializeComponent();
+            //searchtxt.AutoCompleteMode = AutoCompleteMode.Suggest;
+            //searchtxt.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            searchtxt.AutoCompleteCustomSource = userinfo.col;
+
             string emailt = email;
             if (emailt != string.Empty)
             {
@@ -35,13 +40,12 @@ namespace Veiled_Kashmir_Admin_Panel
                 emailtxt.Text = "lalchowkonline@gmail.com";
             }
 
-
             BackgroundWorker pin = new BackgroundWorker();
-            pin.DoWork += (o, a) => 
+            pin.DoWork += (o, a) =>
             {
                 try
                 {
-                  
+
                     dr = obj.Query("select distinct concat(pincode,':  ',area) as pincode from pincodes order by pincode asc");
                     DataTable dt = new DataTable();
                     dt.Columns.Add("pincode", typeof(String));
@@ -53,17 +57,56 @@ namespace Veiled_Kashmir_Admin_Panel
                 }
                 catch { obj.closeConnection(); }
             };
-            pin.RunWorkerCompleted += (o, b) => 
+            pin.RunWorkerCompleted += (o, b) =>
             {
                 try
                 {
                     pinbox.DisplayMember = "pincode";
                     pinbox.SelectedIndex = -1;
-                }catch { };
+                }
+                catch (Exception ex) { MessageBox.Show(ex.ToString()); };
             };
             pin.RunWorkerAsync();
+
         }
 
+        //private void textchange()
+        //{
+        //    con.Close();
+        //    searchtxt.AutoCompleteMode = AutoCompleteMode.Suggest;
+        //    searchtxt.AutoCompleteSource = AutoCompleteSource.CustomSource;
+        //    BackgroundWorker search = new BackgroundWorker();
+        //    search.DoWork += (o, a) =>
+        //    {
+        //        try
+        //        {
+
+        //            AutoCompleteStringCollection col = new AutoCompleteStringCollection();
+
+        //            cmd = new MySqlCommand("Select concat(productname,' @',mrp) as tags from products", con);
+
+        //            con.Open();
+        //            MySqlDataReader data = cmd.ExecuteReader();
+        //            while (data.Read())
+        //            {
+        //                string sname = data.GetString("tags");
+        //                col.Add(sname);
+        //            }
+        //            con.Close();
+        //            a.Result = col;
+
+        //        }
+        //        catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+
+        //    };
+        //    search.RunWorkerCompleted += (o, b) => {
+        //        AutoCompleteStringCollection col = b.Result as AutoCompleteStringCollection;
+        //        searchtxt.AutoCompleteCustomSource = col;
+        //    };
+        //    search.RunWorkerAsync();
+
+
+        //}
 
         public static string md5hash(string input)
         {
@@ -85,6 +128,10 @@ namespace Veiled_Kashmir_Admin_Panel
             Cursor = Cursors.WaitCursor;
             try
             {
+                if (inventorydatagridview.RowCount == 0)
+                {
+                    MessageBox.Show("Please select a product.", "Error!");
+                }else
                 if (emailtxt.Text == "" || nametxt.Text == "" || add1txt.Text == "" || amounttxt.Text == "" || contacttxt.Text == "" || statustxt.Text == "")
                 {
                     MessageBox.Show("Please fill details first.", "Error!");
@@ -100,41 +147,50 @@ namespace Veiled_Kashmir_Admin_Panel
                             + "',DATE_ADD(CURRENT_TIMESTAMP, INTERVAL 750 MINUTE),'" + shiptxt.Text + "','Cash on Delivery','SW','" + counttxt.Text + "','" + statustxt.Text + "','" + nametxt.Text + "','" + add1txt.Text + "','" + add2txt.Text + "','" + contacttxt.Text + "','" + pintxt.Text + "','" + citytxt.Text + "','" + loyaltxt.Text + "')";
                         obj.nonQuery(cmd);
                         long orderid = userinfo.orid;
-                    //    int orderid = obj.Count("SELECT LAST_INSERT_ID()");
-                      
-                        obj.closeConnection();
-                        pidtxt.Text = pidtxt.Text.Remove(pidtxt.Text.Length - 1);
-                        string[] pids = pidtxt.Text.Split(',');
-                        foreach (string pid in pids)
-                        {
-                           // MessageBox.Show(orderid.ToString());
-                            try
-                            {
-                                dr = obj.Query("select productname,price,mrp,dealerprice,picture from products where productid='" + pid + "'");
-                                dr.Read();
-                                string name = dr[0].ToString();
-                                string price = dr[1].ToString();
-                                string mrp = dr[2].ToString();
-                                string dp = dr[3].ToString();
-                                string pic = dr[4].ToString();
-                                obj.closeConnection();
+                        //    int orderid = obj.Count("SELECT LAST_INSERT_ID()");
 
-                              
-                                StringBuilder pname = new StringBuilder(name);
+                        obj.closeConnection();
+                        //pidtxt.Text = pidtxt.Text.Remove(pidtxt.Text.Length - 1);
+                        //string[] pids = pidtxt.Text.Split(',');
+                        //foreach (string pid in pids)
+                        //{
+                        //   // MessageBox.Show(orderid.ToString());
+                        try
+                        {
+                            //        dr = obj.Query("select productname,price,mrp,dealerprice,picture from products where productid='" + pid + "'");
+                            //        dr.Read();
+                            //        string name = dr[0].ToString();
+                            //        string price = dr[1].ToString();
+                            //        string mrp = dr[2].ToString();
+                            //        string dp = dr[3].ToString();
+                            //        string pic = dr[4].ToString();
+                            //        obj.closeConnection();
+
+                            for (int i = 0; i < inventorydatagridview.RowCount; i++)
+                            {
+                                StringBuilder pname = new StringBuilder(inventorydatagridview.Rows[i].Cells[1].Value.ToString());
                                 pname.Replace(@"'", "\\'").Replace(@"\", "\\");
-                                string cmd1 = "insert into orderdetails(`orderid`,`productid`,`productname`,`price`,`quantity`,`discount`,`mrp`,`dealerprice`,`size`,`picture`)values('" + orderid + "','" + pid + "','" + pname + "','" + price + "','1','0','" + mrp + "','" + dp + "',NULL,'" + pic + "')";
+                                string cmd1 = "insert into orderdetails(`orderid`,`productid`,`productname`,`price`,`quantity`,`discount`,`mrp`,`dealerprice`,`size`,`picture`)values" +
+                                    "('" + orderid + "','" + inventorydatagridview.Rows[i].Cells[0].Value.ToString() + //pid
+                                    "','" + pname + "','" + inventorydatagridview.Rows[i].Cells[4].Value.ToString() + //price
+                                    "','" + inventorydatagridview.Rows[i].Cells[5].Value.ToString() + //quan
+                                    "','" + inventorydatagridview.Rows[i].Cells[6].Value.ToString() + //dis
+                                    "','" + inventorydatagridview.Rows[i].Cells[7].Value.ToString() + //mrp
+                                    "','" + inventorydatagridview.Rows[i].Cells[8].Value.ToString() + //dp
+                                    "',NULL,'" + inventorydatagridview.Rows[i].Cells[9].Value.ToString() + "')"; //pic
                                 obj.nonQuery(cmd1);
-                               
+
+
                             }
-                            catch (Exception ex)
-                            { MessageBox.Show(ex.ToString()); obj.closeConnection(); }
                         }
-                        MessageBox.Show("Order added successfully.", "Success.");
-                        pidtxt.Text = "";
-                        pidtxt.Visible = false;
-                        addorderbtn.Enabled = false;
+                        catch (Exception ex)
+                        { MessageBox.Show(ex.ToString()); obj.closeConnection(); }
                     }
+                    MessageBox.Show("Order added successfully.", "Success.");
+                   
+                    addorderbtn.Enabled = false;
                 }
+                // }
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); obj.closeConnection(); addorderbtn.Enabled = true; }
             Cursor = Cursors.Arrow;
@@ -144,74 +200,74 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             dg.lbl.ForeColor = SystemColors.Highlight;
             dg.lbl.Text = "Add new order";
-            
+
         }
 
-        private void searchbtn_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (searchtxt.Text == "")
-                {
-                    MessageBox.Show("Please enter a product.", "Error!");
-                }
-                else
-                {
+        //private void searchbtn_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        if (searchtxt.Text == "")
+        //        {
+        //            MessageBox.Show("Please enter a product.", "Error!");
+        //        }
+        //        else
+        //        {
 
-                    loadinglbl.Visible = true;
-                    searchbtn.Enabled = false;
-                    StringBuilder search = new StringBuilder(searchtxt.Text);
-                    search.Replace(@"'", "\\'").Replace(@"\", "\\");
+        //            loadinglbl.Visible = true;
+                   
+        //            StringBuilder search = new StringBuilder(searchtxt.Text);
+        //            search.Replace(@"'", "\\'").Replace(@"\", "\\");
 
-                    BackgroundWorker bg = new BackgroundWorker();
-                    bg.DoWork += (o, a) =>
-                    {
-                        try
-                        {
-                            string id = (string)a.Argument;
-                            string pattern = @"\s";
-                            String[] words = Regex.Split(id, pattern);
-                            string cmd = "select productid,supplierid,productname,mrp,price,dealerprice,stock,detail1,detail2,picture from products where ";
-                            int x = 0;
-                            foreach (var word in words)
-                            {
-                                if (x == 0)
-                                    cmd = cmd + "tags like '%" + word + "%'";
-                                else
-                                    cmd = cmd + "and tags like '%" + word + "%'";
-                                x++;
+        //            BackgroundWorker bg = new BackgroundWorker();
+        //            bg.DoWork += (o, a) =>
+        //            {
+        //                try
+        //                {
+        //                    string id = (string)a.Argument;
+        //                    string pattern = @"\s";
+        //                    String[] words = Regex.Split(id, pattern);
+        //                    string cmd = "select productid,supplierid,productname,mrp,price,dealerprice,stock,detail1,detail2,picture from products where ";
+        //                    int x = 0;
+        //                    foreach (var word in words)
+        //                    {
+        //                        if (x == 0)
+        //                            cmd = cmd + "tags like '%" + word + "%'";
+        //                        else
+        //                            cmd = cmd + "and tags like '%" + word + "%'";
+        //                        x++;
 
-                            }
+        //                    }
 
-                            dr = obj.Query(cmd);
-                            DataTable dt = new DataTable();
-                            dt.Load(dr);
-                            obj.closeConnection();
-                            BindingSource bsource = new BindingSource();
-                            bsource.DataSource = dt;
-                            a.Result = bsource;
-                        }
-                        catch { obj.closeConnection(); }
-                    };
-                    bg.RunWorkerCompleted += (o, b) =>
-                    {
-                        try
-                        {
-                            BindingSource bsource = b.Result as BindingSource;
-                            inventorydatagridview.DataSource = bsource;
-                            inventorydatagridview.Columns["picture"].Visible = false;
-                            loadinglbl.Visible = false;
-                            searchbtn.Enabled = true;
+        //                    dr = obj.Query(cmd);
+        //                    DataTable dt = new DataTable();
+        //                    dt.Load(dr);
+        //                    obj.closeConnection();
+        //                    BindingSource bsource = new BindingSource();
+        //                    bsource.DataSource = dt;
+        //                    a.Result = bsource;
+        //                }
+        //                catch { obj.closeConnection(); }
+        //            };
+        //            bg.RunWorkerCompleted += (o, b) =>
+        //            {
+        //                try
+        //                {
+        //                    BindingSource bsource = b.Result as BindingSource;
+        //                    inventorydatagridview.DataSource = bsource;
+        //                    inventorydatagridview.Columns["picture"].Visible = false;
+        //                    loadinglbl.Visible = false;
+                           
 
 
-                        }
-                        catch { searchbtn.Enabled = true; }
-                    };
-                    bg.RunWorkerAsync(search.ToString());
-                }
-            }catch { }
-        }
-        string id,price;
+        //                }
+        //                catch(Exception ex) { MessageBox.Show(ex.Message); }
+        //            };
+        //            bg.RunWorkerAsync(search.ToString());
+        //        }
+        //    } catch { }
+        //}
+        string id, price;
         private void inventorydatagridview_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -221,11 +277,10 @@ namespace Veiled_Kashmir_Admin_Panel
                     DataGridViewRow row = this.inventorydatagridview.Rows[e.RowIndex];
                     dp.SizeMode = PictureBoxSizeMode.StretchImage;
                     dp.ImageLocation = "http://lalchowk.in/lalchowk/pictures/" + row.Cells["picture"].Value.ToString();
-                    id = row.Cells["productid"].Value.ToString();
-                    price= row.Cells["price"].Value.ToString();
-                    addbtn.Enabled = true;
+                    
+                   
                 }
-            }catch { }
+            } catch { }
         }
 
         private void pinbox_SelectedIndexChanged(object sender, EventArgs e)
@@ -239,42 +294,41 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void addtocartbtn_Click(object sender, EventArgs e)
         {
+            if (inventorydatagridview.RowCount == 0)
+            {
+                MessageBox.Show("Add Products First.", "Error!");
+            }
+            else
             if (emailtxt.Text == "")
             {
                 MessageBox.Show("Please enter user account email first.", "Error");
             }
             else
             {
-                if (pidtxt.Text != string.Empty)
+                string email = md5hash(emailtxt.Text);
+
+                Cursor = Cursors.WaitCursor;
+                for (int i = 0; i < inventorydatagridview.RowCount; i++)
                 {
-                    string email = md5hash(emailtxt.Text);
-                    pidtxt.Text = pidtxt.Text.Remove(pidtxt.Text.Length - 1);
-                    string[] pids = pidtxt.Text.Split(',');
-                    Cursor = Cursors.WaitCursor;
-                    foreach (string pid in pids)
+                    try
                     {
-                        try
-                        {
 
-                            string cmd1 = "insert into cartitems(`email`,`productid`,`quantity`)values('" + email + "','" + pid + "','1')";
-                            obj.nonQuery(cmd1);
-
-                        }
-                        catch (Exception ex)
-                        { MessageBox.Show(ex.ToString()); obj.closeConnection(); }
+                        string cmd1 = "insert into cartitems(`email`,`productid`,`quantity`)values('" + email + "','" + inventorydatagridview.Rows[i].Cells[0].Value.ToString() +
+                        "','" + inventorydatagridview.Rows[i].Cells[5].Value.ToString() + "')";
+                        obj.nonQuery(cmd1);
 
                     }
-                    Cursor = Cursors.Arrow;
-                    MessageBox.Show("Items added to cart successfully.", "Success.");
-                    pidtxt.Text = "";
-                    pidtxt.Visible = false;
+                    catch (Exception ex)
+                    { MessageBox.Show(ex.ToString()); obj.closeConnection(); }
+
                 }
-                else
-                {
-                    MessageBox.Show("Add products first.", "Error!");
-                }
+                Cursor = Cursors.Arrow;
+                MessageBox.Show("Items added to cart successfully.", "Success.");
             }
+
         }
+
+    
 
         private void addbonusbtn_Click(object sender, EventArgs e)
         {
@@ -309,22 +363,113 @@ namespace Veiled_Kashmir_Admin_Panel
             Cursor = Cursors.Arrow;
         }
 
-        private void addbtn_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
             try
             {
-                if (pidtxt.Text == "")
+                if (searchtxt.Text == "")
                 {
-                    pidtxt.Text = id + ",";
+                    MessageBox.Show("Please search a product.", "Error!");
                 }
                 else
                 {
-                    pidtxt.Text = pidtxt.Text + id + ",";
+                    string name = searchtxt.Text.Split('@')[0];
+                    StringBuilder productname = new StringBuilder(name);
+                    productname.Replace(@"'", "\\'").Replace(@"\", "\\");
+                    string mrp = searchtxt.Text.Split('@')[1];
+                    if (inventorydatagridview.RowCount == 0)
+                    {
+                        inventorydatagridview.Columns.Add("productid", "productid");
+                        inventorydatagridview.Columns.Add("productname", "productname");
+                        inventorydatagridview.Columns.Add("author", "author");
+                        inventorydatagridview.Columns.Add("publisher", "publisher");
+                        inventorydatagridview.Columns.Add("price", "price");
+                        inventorydatagridview.Columns.Add("quantity", "quantity");
+                        inventorydatagridview.Columns.Add("discount", "discount");
+                        inventorydatagridview.Columns.Add("mrp", "mrp");
+                        inventorydatagridview.Columns.Add("dealerprice", "dealerprice");
+                        inventorydatagridview.Columns.Add("picture", "picture");
+
+                        dr = obj.Query("select productid,productname,detail1,detail2,price,mrp,dealerprice,picture from products where productname='" + productname + "' and mrp='" + mrp + "'");
+                        dr.Read();
+                        inventorydatagridview.Rows.Add(dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), "1", "10", dr[5].ToString(), dr[6].ToString(), dr[7].ToString());
+                        obj.closeConnection();
+                    }
+                    else
+                    {
+                        dr = obj.Query("select productid,productname,detail1,detail2,price,mrp,dealerprice,picture from products where productname='" + productname + "' and mrp='" + mrp + "'");
+                        dr.Read();
+                        inventorydatagridview.Rows.Add(dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), "1", "10", dr[5].ToString(), dr[6].ToString(), dr[7].ToString());
+                        obj.closeConnection();
+                    }
+                    searchtxt.Text = "";
+                    addorderbtn.Enabled = true;
                 }
-               
-                pidtxt.Visible = true;
-                addorderbtn.Enabled = true;
-            }catch { }
+            }catch(Exception ex) { MessageBox.Show(ex.Message); obj.closeConnection(); }
         }
+
+        private void refresh_Click(object sender, EventArgs e)
+        {
+            refresh.Enabled = false;
+
+            loadinglbl.Visible = true;
+            searchtxt.Enabled = false;
+            try
+            {
+                con.Close();
+                
+                BackgroundWorker search = new BackgroundWorker();
+                search.WorkerReportsProgress = true;
+                search.DoWork += (o, a) =>
+                {
+
+                    search.ReportProgress(10);
+                    AutoCompleteStringCollection col1 = new AutoCompleteStringCollection();
+
+                    cmd = new MySqlCommand("Select concat(productname,' @',mrp) as tags from products", con);
+
+                    con.Open();
+                    search.ReportProgress(30);
+                    MySqlDataReader data = cmd.ExecuteReader();
+                    while (data.Read())
+                    {
+                        string sname = data.GetString("tags");
+                        col1.Add(sname);
+                    }
+                    search.ReportProgress(90);
+                    con.Close();
+                    a.Result = col1;
+                    
+                };
+                search.ProgressChanged += (o, c) =>
+                {
+                    if (c.ProgressPercentage == 10)
+                    {
+                        loadinglbl.Text = "loading...10%";
+                    }else if(c.ProgressPercentage == 30)
+                    {
+                        loadinglbl.Text = "loading...30%";
+                    }
+                    else if (c.ProgressPercentage == 90)
+                    {
+                        loadinglbl.Text = "loading...90%";
+                    }
+
+                };
+
+                search.RunWorkerCompleted += (o, b) => {
+                    userinfo.col = b.Result as AutoCompleteStringCollection;
+                    loadinglbl.Visible = false;
+                    searchtxt.Enabled = true;
+                    refresh.Enabled = true;
+                    searchtxt.AutoCompleteCustomSource = userinfo.col;
+                };
+                search.RunWorkerAsync();
+
+            }
+            catch (Exception ex) { MessageBox.Show(ex.ToString()); con.Close(); }
+            
+        }
+
     }
 }

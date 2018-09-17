@@ -49,6 +49,7 @@
             this.emailtxt = new System.Windows.Forms.TextBox();
             this.orderpnl = new System.Windows.Forms.Panel();
             this.dpnl = new System.Windows.Forms.Panel();
+            this.cancelbtn = new System.Windows.Forms.Button();
             this.smsbtn = new System.Windows.Forms.Button();
             this.deupdbtn = new System.Windows.Forms.Button();
             this.updbtn = new System.Windows.Forms.Button();
@@ -73,7 +74,6 @@
             this.loadinglbl = new System.Windows.Forms.Label();
             this.formlbl = new System.Windows.Forms.Label();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
-            this.cancelbtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.refresh)).BeginInit();
             this.orderpnl.SuspendLayout();
@@ -320,6 +320,18 @@
             this.dpnl.TabIndex = 26;
             this.dpnl.Visible = false;
             // 
+            // cancelbtn
+            // 
+            this.cancelbtn.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.cancelbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cancelbtn.Location = new System.Drawing.Point(1001, 3);
+            this.cancelbtn.Name = "cancelbtn";
+            this.cancelbtn.Size = new System.Drawing.Size(94, 22);
+            this.cancelbtn.TabIndex = 31;
+            this.cancelbtn.Text = "Cancel Order";
+            this.cancelbtn.UseVisualStyleBackColor = true;
+            this.cancelbtn.Click += new System.EventHandler(this.cancelbtn_Click);
+            // 
             // smsbtn
             // 
             this.smsbtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
@@ -517,7 +529,6 @@
             // 
             // orderdetailview
             // 
-            this.orderdetailview.AllowUserToAddRows = false;
             this.orderdetailview.BackgroundColor = System.Drawing.Color.White;
             this.orderdetailview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.orderdetailview.Location = new System.Drawing.Point(3, 240);
@@ -570,18 +581,6 @@
             // 
             this.bgworker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker_DoWork);
             this.bgworker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker_RunWorkerCompleted);
-            // 
-            // cancelbtn
-            // 
-            this.cancelbtn.FlatAppearance.BorderColor = System.Drawing.Color.Red;
-            this.cancelbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cancelbtn.Location = new System.Drawing.Point(1001, 3);
-            this.cancelbtn.Name = "cancelbtn";
-            this.cancelbtn.Size = new System.Drawing.Size(94, 22);
-            this.cancelbtn.TabIndex = 31;
-            this.cancelbtn.Text = "Cancel Order";
-            this.cancelbtn.UseVisualStyleBackColor = true;
-            this.cancelbtn.Click += new System.EventHandler(this.cancelbtn_Click);
             // 
             // orders
             // 

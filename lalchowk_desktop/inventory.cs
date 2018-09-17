@@ -100,7 +100,7 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             try {
                 DataView dv = new DataView(dt);
-                dv.RowFilter = string.Format("Convert([supplierid],System.String) LIKE '%{0}%'", supidtxt.Text);
+                dv.RowFilter = string.Format("detail1 LIKE '%{0}%'", supidtxt.Text);
                 inventorydatagridview.DataSource = dv;
             }
             catch (Exception ex)
@@ -114,7 +114,7 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             try {
                 DataView dv = new DataView(dt);
-                dv.RowFilter = string.Format("productname LIKE '%{0}%'", pronametxt.Text);
+                dv.RowFilter = string.Format("tags LIKE '%{0}%'", pronametxt.Text);
                 inventorydatagridview.DataSource = dv;
             }
             catch (Exception ex)
@@ -155,7 +155,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         }
 
-        string picadd;
+        string picadd,idlbl;
         private void inventorydatagridview_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -165,7 +165,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 //dp.ImageLocation = "http://lalchowk.in/lalchowk/pictures/" + row.Cells["picture"].Value.ToString();
                 progresspc.Text = "";
                 progresspc.Visible = false;
-                idlbl.Text = row.Cells["productid"].Value.ToString();
+                idlbl = row.Cells["productid"].Value.ToString();
                 productlbl.Text = row.Cells["productname"].Value.ToString();
                 desctxtbox.Text = row.Cells["description"].Value.ToString();
                 picadd = row.Cells["picture"].Value.ToString();
@@ -225,7 +225,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     StringBuilder desc = new StringBuilder(desctxtbox.Text);
                     desc.Replace(@"\", @"\\").Replace("'", "\\'");
 
-                    cmd = ("update products set `description`='" + desc + "' where `productid`='" + idlbl.Text + "'");
+                    cmd = ("update products set `description`='" + desc + "' where `productid`='" + idlbl + "'");
                     obj.nonQuery(cmd);
 
                     MessageBox.Show("Description Updated.");

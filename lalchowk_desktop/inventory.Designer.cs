@@ -39,7 +39,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.brandtxt = new System.Windows.Forms.TextBox();
             this.productlbl = new System.Windows.Forms.Label();
-            this.idlbl = new System.Windows.Forms.Label();
             this.desctxtbox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.updatebtn = new System.Windows.Forms.Button();
@@ -48,6 +47,7 @@
             this.cattxt = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.descpnl = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
             this.progresspc = new System.Windows.Forms.Label();
             this.dldpic = new System.Windows.Forms.Label();
             this.dp = new System.Windows.Forms.PictureBox();
@@ -72,7 +72,6 @@
             this.supbox = new System.Windows.Forms.ComboBox();
             this.thirdbox = new System.Windows.Forms.ComboBox();
             this.secbox = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.inventorydatagridview)).BeginInit();
             this.ipnl.SuspendLayout();
             this.descpnl.SuspendLayout();
@@ -115,15 +114,15 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(552, 11);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(59, 13);
+            this.label2.Size = new System.Drawing.Size(38, 13);
             this.label2.TabIndex = 22;
-            this.label2.Text = "Supplier ID";
+            this.label2.Text = "Author";
             // 
             // supidtxt
             // 
-            this.supidtxt.Location = new System.Drawing.Point(617, 4);
+            this.supidtxt.Location = new System.Drawing.Point(596, 4);
             this.supidtxt.Name = "supidtxt";
-            this.supidtxt.Size = new System.Drawing.Size(78, 20);
+            this.supidtxt.Size = new System.Drawing.Size(97, 20);
             this.supidtxt.TabIndex = 21;
             this.supidtxt.TextChanged += new System.EventHandler(this.supidtxt_TextChanged);
             // 
@@ -172,19 +171,10 @@
             // productlbl
             // 
             this.productlbl.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.productlbl.Location = new System.Drawing.Point(6, 29);
+            this.productlbl.Location = new System.Drawing.Point(8, 6);
             this.productlbl.Name = "productlbl";
-            this.productlbl.Size = new System.Drawing.Size(213, 49);
+            this.productlbl.Size = new System.Drawing.Size(211, 54);
             this.productlbl.TabIndex = 32;
-            // 
-            // idlbl
-            // 
-            this.idlbl.AutoSize = true;
-            this.idlbl.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.idlbl.Location = new System.Drawing.Point(7, 9);
-            this.idlbl.Name = "idlbl";
-            this.idlbl.Size = new System.Drawing.Size(0, 20);
-            this.idlbl.TabIndex = 31;
             // 
             // desctxtbox
             // 
@@ -268,7 +258,6 @@
             this.descpnl.Controls.Add(this.progresspc);
             this.descpnl.Controls.Add(this.dldpic);
             this.descpnl.Controls.Add(this.dp);
-            this.descpnl.Controls.Add(this.idlbl);
             this.descpnl.Controls.Add(this.productlbl);
             this.descpnl.Controls.Add(this.updatebtn);
             this.descpnl.Controls.Add(this.desctxtbox);
@@ -279,13 +268,23 @@
             this.descpnl.TabIndex = 42;
             this.descpnl.Visible = false;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Trebuchet MS", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(599, 6);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(89, 32);
+            this.label6.TabIndex = 42;
+            this.label6.Text = "use ctrl + enter \r\nfor new line";
+            // 
             // progresspc
             // 
             this.progresspc.AutoSize = true;
             this.progresspc.Cursor = System.Windows.Forms.Cursors.Hand;
             this.progresspc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.progresspc.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.progresspc.Location = new System.Drawing.Point(118, 155);
+            this.progresspc.Location = new System.Drawing.Point(124, 153);
             this.progresspc.Name = "progresspc";
             this.progresspc.Size = new System.Drawing.Size(0, 13);
             this.progresspc.TabIndex = 41;
@@ -297,7 +296,7 @@
             this.dldpic.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dldpic.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dldpic.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.dldpic.Location = new System.Drawing.Point(114, 182);
+            this.dldpic.Location = new System.Drawing.Point(124, 180);
             this.dldpic.Name = "dldpic";
             this.dldpic.Size = new System.Drawing.Size(55, 13);
             this.dldpic.TabIndex = 40;
@@ -306,9 +305,9 @@
             // 
             // dp
             // 
-            this.dp.Location = new System.Drawing.Point(9, 90);
+            this.dp.Location = new System.Drawing.Point(9, 70);
             this.dp.Name = "dp";
-            this.dp.Size = new System.Drawing.Size(103, 110);
+            this.dp.Size = new System.Drawing.Size(109, 130);
             this.dp.TabIndex = 39;
             this.dp.TabStop = false;
             // 
@@ -535,16 +534,6 @@
             this.secbox.TabIndex = 0;
             this.secbox.SelectedIndexChanged += new System.EventHandler(this.secbox_SelectedIndexChanged);
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Trebuchet MS", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(136, 4);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(89, 32);
-            this.label6.TabIndex = 42;
-            this.label6.Text = "use ctrl + enter \r\nfor new line";
-            // 
             // inventory
             // 
             this.AcceptButton = this.listbtn;
@@ -582,7 +571,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox brandtxt;
         private System.Windows.Forms.Label productlbl;
-        private System.Windows.Forms.Label idlbl;
         private System.Windows.Forms.TextBox desctxtbox;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button updatebtn;

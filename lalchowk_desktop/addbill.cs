@@ -285,7 +285,7 @@ namespace Veiled_Kashmir_Admin_Panel
                                 obj.nonQuery(cmd);
                                 obj.closeConnection();
                             }
-                            catch (Exception ex) { MessageBox.Show(ex.Message.ToString()); }
+                            catch (Exception ex) { MessageBox.Show(ex.Message.ToString()); obj.closeConnection(); aconn.Close(); }
                         }
                     }
                     MessageBox.Show("Product bill Added.");

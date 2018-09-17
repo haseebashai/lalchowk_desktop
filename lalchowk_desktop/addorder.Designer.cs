@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.searchlbl = new System.Windows.Forms.Label();
             this.pintxt = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -57,9 +57,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.searchtxt = new System.Windows.Forms.TextBox();
             this.inventorydatagridview = new System.Windows.Forms.DataGridView();
-            this.addbtn = new System.Windows.Forms.Button();
-            this.pidtxt = new System.Windows.Forms.TextBox();
-            this.searchbtn = new System.Windows.Forms.Button();
             this.loadinglbl = new System.Windows.Forms.Label();
             this.dp = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -70,8 +67,12 @@
             this.bonustxt = new System.Windows.Forms.TextBox();
             this.addbonusbtn = new System.Windows.Forms.Button();
             this.tempbox = new System.Windows.Forms.CheckBox();
+            this.addpbtn = new System.Windows.Forms.Button();
+            this.refresh = new System.Windows.Forms.PictureBox();
+            this.label15 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.inventorydatagridview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.refresh)).BeginInit();
             this.SuspendLayout();
             // 
             // searchlbl
@@ -306,10 +307,12 @@
             // 
             // searchtxt
             // 
+            this.searchtxt.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.searchtxt.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.searchtxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.searchtxt.Location = new System.Drawing.Point(12, 31);
             this.searchtxt.Name = "searchtxt";
-            this.searchtxt.Size = new System.Drawing.Size(272, 20);
+            this.searchtxt.Size = new System.Drawing.Size(456, 20);
             this.searchtxt.TabIndex = 13;
             // 
             // inventorydatagridview
@@ -317,14 +320,14 @@
             this.inventorydatagridview.AllowUserToAddRows = false;
             this.inventorydatagridview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.inventorydatagridview.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.inventorydatagridview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.inventorydatagridview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.inventorydatagridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.inventorydatagridview.Location = new System.Drawing.Point(12, 62);
             this.inventorydatagridview.Name = "inventorydatagridview";
@@ -332,48 +335,11 @@
             this.inventorydatagridview.TabIndex = 79;
             this.inventorydatagridview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.inventorydatagridview_CellClick);
             // 
-            // addbtn
-            // 
-            this.addbtn.Enabled = false;
-            this.addbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
-            this.addbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addbtn.Location = new System.Drawing.Point(282, 232);
-            this.addbtn.Name = "addbtn";
-            this.addbtn.Size = new System.Drawing.Size(250, 39);
-            this.addbtn.TabIndex = 80;
-            this.addbtn.Text = "Add Product";
-            this.addbtn.UseVisualStyleBackColor = true;
-            this.addbtn.Click += new System.EventHandler(this.addbtn_Click);
-            // 
-            // pidtxt
-            // 
-            this.pidtxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.pidtxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.pidtxt.Location = new System.Drawing.Point(488, 494);
-            this.pidtxt.Multiline = true;
-            this.pidtxt.Name = "pidtxt";
-            this.pidtxt.Size = new System.Drawing.Size(186, 88);
-            this.pidtxt.TabIndex = 81;
-            this.pidtxt.Visible = false;
-            // 
-            // searchbtn
-            // 
-            this.searchbtn.BackColor = System.Drawing.Color.Transparent;
-            this.searchbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
-            this.searchbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.searchbtn.Location = new System.Drawing.Point(299, 25);
-            this.searchbtn.Name = "searchbtn";
-            this.searchbtn.Size = new System.Drawing.Size(75, 31);
-            this.searchbtn.TabIndex = 14;
-            this.searchbtn.Text = "Search";
-            this.searchbtn.UseVisualStyleBackColor = false;
-            this.searchbtn.Click += new System.EventHandler(this.searchbtn_Click);
-            // 
             // loadinglbl
             // 
             this.loadinglbl.AutoSize = true;
             this.loadinglbl.ForeColor = System.Drawing.Color.Red;
-            this.loadinglbl.Location = new System.Drawing.Point(380, 43);
+            this.loadinglbl.Location = new System.Drawing.Point(471, 8);
             this.loadinglbl.Name = "loadinglbl";
             this.loadinglbl.Size = new System.Drawing.Size(54, 13);
             this.loadinglbl.TabIndex = 83;
@@ -421,7 +387,7 @@
             this.addtocartbtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.addtocartbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.addtocartbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addtocartbtn.Location = new System.Drawing.Point(328, 494);
+            this.addtocartbtn.Location = new System.Drawing.Point(497, 494);
             this.addtocartbtn.Name = "addtocartbtn";
             this.addtocartbtn.Size = new System.Drawing.Size(154, 88);
             this.addtocartbtn.TabIndex = 88;
@@ -469,13 +435,50 @@
             this.tempbox.Text = "Temporary ?";
             this.tempbox.UseVisualStyleBackColor = true;
             // 
+            // addpbtn
+            // 
+            this.addpbtn.BackColor = System.Drawing.Color.Transparent;
+            this.addpbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.addpbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addpbtn.Location = new System.Drawing.Point(474, 26);
+            this.addpbtn.Name = "addpbtn";
+            this.addpbtn.Size = new System.Drawing.Size(82, 29);
+            this.addpbtn.TabIndex = 95;
+            this.addpbtn.Text = "Add Product";
+            this.addpbtn.UseVisualStyleBackColor = false;
+            this.addpbtn.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // refresh
+            // 
+            this.refresh.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.refresh;
+            this.refresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.refresh.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.refresh.Location = new System.Drawing.Point(443, 4);
+            this.refresh.Name = "refresh";
+            this.refresh.Size = new System.Drawing.Size(21, 21);
+            this.refresh.TabIndex = 98;
+            this.refresh.TabStop = false;
+            this.refresh.Click += new System.EventHandler(this.refresh_Click);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(377, 9);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(60, 13);
+            this.label15.TabIndex = 99;
+            this.label15.Text = "Update List";
+            // 
             // addorder
             // 
-            this.AcceptButton = this.searchbtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(915, 594);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.refresh);
+            this.Controls.Add(this.addpbtn);
             this.Controls.Add(this.tempbox);
             this.Controls.Add(this.addbonusbtn);
             this.Controls.Add(this.label14);
@@ -486,9 +489,6 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dp);
             this.Controls.Add(this.loadinglbl);
-            this.Controls.Add(this.searchbtn);
-            this.Controls.Add(this.pidtxt);
-            this.Controls.Add(this.addbtn);
             this.Controls.Add(this.inventorydatagridview);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.searchtxt);
@@ -522,6 +522,7 @@
             this.Text = "addorder";
             ((System.ComponentModel.ISupportInitialize)(this.inventorydatagridview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.refresh)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -556,9 +557,6 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox searchtxt;
         private System.Windows.Forms.DataGridView inventorydatagridview;
-        private System.Windows.Forms.Button addbtn;
-        private System.Windows.Forms.TextBox pidtxt;
-        private System.Windows.Forms.Button searchbtn;
         private System.Windows.Forms.Label loadinglbl;
         private System.Windows.Forms.PictureBox dp;
         private System.Windows.Forms.Panel panel1;
@@ -569,5 +567,8 @@
         private System.Windows.Forms.TextBox bonustxt;
         private System.Windows.Forms.Button addbonusbtn;
         private System.Windows.Forms.CheckBox tempbox;
+        private System.Windows.Forms.Button addpbtn;
+        private System.Windows.Forms.PictureBox refresh;
+        private System.Windows.Forms.Label label15;
     }
 }

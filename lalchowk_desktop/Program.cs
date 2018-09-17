@@ -22,126 +22,128 @@ namespace Veiled_Kashmir_Admin_Panel
         }
     }
 
-        class userinfo
+    class userinfo
+    {
+        public static bool loggedin;
+        public static String username;
+        public static long orid;
+
+        public static AutoCompleteStringCollection col;
+    }
+
+
+    class DBConnect
+    {
+        MySqlConnection conn;
+
+        public DBConnect()
         {
-            public static bool loggedin;
-            public static String username;
-            public static long orid;
+            //  conn = new MySqlConnection("SERVER=localhost;DATABASE=lalchowklocal;USER=root;PASSWORD=password1;");
+
+            conn = new MySqlConnection("SERVER=182.50.133.78;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah;Convert Zero Datetime=True");
+
         }
 
 
-        class DBConnect
+
+        public bool openConnection()
         {
-            MySqlConnection conn;
-
-            public DBConnect()
+            try
             {
-                //  conn = new MySqlConnection("SERVER=localhost;DATABASE=lalchowklocal;USER=root;PASSWORD=password1;");
+                conn.Open();
 
-                conn = new MySqlConnection("SERVER=182.50.133.78;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah;Convert Zero Datetime=True");
+                return true;
+            }
+            catch (MySqlException)
+            {
+                MessageBox.Show("Cannot connect to Server.", "Error!");
+                return false;
+            }
+        }
+        public bool closeConnection()
+        {
+            try
+            {
 
+                conn.Close();
+                return true;
+            }
+            catch (MySqlException e)
+            {
+                MessageBox.Show(e.Message);
+                return false;
             }
 
-
-
-            public bool openConnection()
+        }
+        public void nonQuery(String command)
+        {
+            if (this.openConnection() == true)
             {
-                try
-                {
-                    conn.Open();
-
-                    return true;
-                }
-                catch (MySqlException)
-                {
-                    MessageBox.Show("Cannot connect to Server.","Error!");
-                    return false;
-                }
-            }
-            public bool closeConnection()
-            {
-                try
-                {
-
-                    conn.Close();
-                    return true;
-                }
-                catch (MySqlException e)
-                {
-                    MessageBox.Show(e.Message);
-                    return false;
-                }
-
-            }
-            public void nonQuery(String command)
-            {
-                if (this.openConnection() == true)
-                {
-                    MySqlCommand cmd = new MySqlCommand(command, conn);
-                    cmd.ExecuteNonQuery();
-                    userinfo.orid = cmd.LastInsertedId;
+                MySqlCommand cmd = new MySqlCommand(command, conn);
+                cmd.ExecuteNonQuery();
+                userinfo.orid = cmd.LastInsertedId;
                 this.closeConnection();
-                }
-
             }
 
+        }
 
 
-            /*      public MySqlDataAdapter AdapterQuery(String command)
+
+        /*      public MySqlDataAdapter AdapterQuery(String command)
+              {
+                  if (this.openConnection() == true)
                   {
-                      if (this.openConnection() == true)
-                      {
-                          MySqlCommand cmd = new MySqlCommand(command, conn);
-                              cmd.ExecuteNonQuery();
-                          this.closeConnection();
-                      }
-                      return (null);
+                      MySqlCommand cmd = new MySqlCommand(command, conn);
+                          cmd.ExecuteNonQuery();
+                      this.closeConnection();
+                  }
+                  return (null);
 
-                  } */
+              } */
 
 
-            public MySqlDataReader Query(String command)
+        public MySqlDataReader Query(String command)
+        {
+            MySqlDataReader datareader;
+            if (this.openConnection() == true)
             {
-                MySqlDataReader datareader;
-                if (this.openConnection() == true)
-                {
-                    MySqlCommand cmd = new MySqlCommand(command, conn);
-                    datareader = cmd.ExecuteReader();
+                MySqlCommand cmd = new MySqlCommand(command, conn);
+                datareader = cmd.ExecuteReader();
 
-                    return (datareader);
-                }
-
-                return (null);
+                return (datareader);
             }
 
-            public int Count(String command)
+            return (null);
+        }
+
+        public int Count(String command)
+        {
+            int count = -1;
+            if (this.openConnection() == true)
             {
-                int count = -1;
-                if (this.openConnection() == true)
-                {
-                    MySqlCommand cmd = new MySqlCommand(command, conn);
-                    count = int.Parse(cmd.ExecuteScalar() + "");
+                MySqlCommand cmd = new MySqlCommand(command, conn);
+                count = int.Parse(cmd.ExecuteScalar() + "");
                 //    this.closeConnection();
-                    return (count);
-
-                }
-                return (-1);
+                return (count);
 
             }
-            public float Avg(String command)
+            return (-1);
+
+        }
+        public float Avg(String command)
+        {
+            float avg = -1;
+            if (this.openConnection() == true)
             {
-                float avg = -1;
-                if (this.openConnection() == true)
-                {
-                    MySqlCommand cmd = new MySqlCommand(command, conn);
-                    avg = float.Parse(cmd.ExecuteScalar() + "");
-                    this.closeConnection();
-                    return (avg);
-
-                }
-                return (-1);
+                MySqlCommand cmd = new MySqlCommand(command, conn);
+                avg = float.Parse(cmd.ExecuteScalar() + "");
+                this.closeConnection();
+                return (avg);
 
             }
+            return (-1);
+
         }
     }
+}
 

@@ -7,13 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace Veiled_Kashmir_Admin_Panel
 {
     public partial class container : Form
     {
 
-       
+        MySqlConnection con = new MySqlConnection("SERVER=182.50.133.78;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah");
+        MySqlCommand cmd;
+
         public container()
         {
             
@@ -28,6 +31,37 @@ namespace Veiled_Kashmir_Admin_Panel
             mainpnl.Controls.Clear();
             mainpnl.Controls.Add(lg);
             lg.Show();
+
+            try
+            {
+                BackgroundWorker search = new BackgroundWorker();
+                search.DoWork += (o, a) =>
+                {
+
+
+                    AutoCompleteStringCollection col1 = new AutoCompleteStringCollection();
+
+                    cmd = new MySqlCommand("Select concat(productname,' @',mrp) as tags from products", con);
+
+                    con.Open();
+                    MySqlDataReader data = cmd.ExecuteReader();
+                    while (data.Read())
+                    {
+                        string sname = data.GetString("tags");
+                        col1.Add(sname);
+                    }
+                    con.Close();
+                    a.Result = col1;
+
+                };
+                search.RunWorkerCompleted += (o, b) => {
+                    userinfo.col = b.Result as AutoCompleteStringCollection;                
+                };
+                search.RunWorkerAsync();
+            }
+            catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+
+
         }
 
 

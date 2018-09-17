@@ -73,13 +73,14 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void mainform_Load(object sender, EventArgs e)
         {
-
+            
             if (userinfo.loggedin == true)
                 signout();
             changelabel("Welcome, " + userinfo.username + "");
             pageload.Visible = true;
+          
+    }
 
-        }
         BackgroundWorker bw;
         bool starterror = false;
         PictureBox refresh;
