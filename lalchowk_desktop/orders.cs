@@ -74,9 +74,11 @@ namespace Veiled_Kashmir_Admin_Panel
             dg.dialogpnl.Controls.Add(sms);
             dg.lbl.Text = "Send SMS";
             dg.Text = "Send SMS";
-            dg.Size = new Size(800, 600);
+            dg.Size = new Size(600, 600);
             sms.numbertxt.Font = new Font("MS Sans Serif", 9, FontStyle.Regular);
             sms.smstxt.Text = "Dear "+namelbl.Text+", We would love to hear from you regarding your recent purchase and our services. Please click on the following link and leave your feedback. https://bit.ly/lalchowkonline";
+            sms.smsnpnl.Visible = false;
+            sms.txtpnl.Location = new Point(35, 10);
             dg.Show();
             sms.Show();
         }
@@ -85,15 +87,30 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             try
             {
-                DialogResult dgr = MessageBox.Show("Cancel Order '" + orderlbl.Text + "'", "Confirm!", MessageBoxButtons.YesNo);
+                Cursor = Cursors.WaitCursor;
+                DialogResult dgr = MessageBox.Show("Press YES to cancel order '" + orderlbl.Text + "' and update stock\nPress NO to cancel order without updating stock", "Confirm!", MessageBoxButtons.YesNoCancel);
                 if (dgr == DialogResult.Yes)
                 {
+
                     string cmd = "Update orders set status='Cancelled' where orderid='" + orderlbl.Text + "'";
                     obj.nonQuery(cmd);
 
-                   
+                    List<string> pid = new List<string>();
+                    dr = obj.Query("select productid from orderdetails where orderid ='" + orderlbl.Text + "'");
+                    while (dr.Read())
+                    {
+                        pid.Add(dr[0].ToString());
+                    }
+                    obj.closeConnection();
+                    foreach (string products in pid)
+                    {
+
+                        string cmd1 = "Update products set stock=stock+1 where productid ='" + products + "'";
+                        obj.nonQuery(cmd1);
+
+                    }
                     MessageBox.Show("Order cancelled.");
-                    Cursor = Cursors.WaitCursor;
+
                     readorders();
                     ordergridview.DataSource = bsource;
                     Cursor = Cursors.Arrow;
@@ -101,13 +118,33 @@ namespace Veiled_Kashmir_Admin_Panel
                     orderdetailview.Visible = false;
                     dpnl.Visible = false;
                     loadinglbl.Visible = false;
+
+
+
+
+                } else if (dgr == DialogResult.No) {
+
+                    string cmd = "Update orders set status='Cancelled' where orderid='" + orderlbl.Text + "'";
+                    obj.nonQuery(cmd);
+                    MessageBox.Show("Order cancelled.");
+
+                    readorders();
+                    ordergridview.DataSource = bsource;
+                    Cursor = Cursors.Arrow;
+                    ordergridview.CurrentCell = ordergridview.Rows[int.Parse(orderidcount)].Cells[0];
+                    orderdetailview.Visible = false;
+                    dpnl.Visible = false;
+                    loadinglbl.Visible = false;
+
                 }
+                
+            
                
             }
             catch (Exception ex)
             {
                 obj.closeConnection();
-                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
+                MessageBox.Show( ex.Message, "Error!");
             }
             Cursor = Cursors.Arrow;
         }
@@ -357,14 +394,15 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             try
             {
-                orderdetailview.Visible = false;
-                dpnl.Visible = false;
-                loadinglbl.Visible = true;
-                billlbl.Visible = false;
+               
 
                 if (e.RowIndex >= 0)
                 {
-                    
+                    orderdetailview.Visible = false;
+                    dpnl.Visible = false;
+                    loadinglbl.Visible = true;
+                    billlbl.Visible = false;
+
                     DataGridViewRow row = this.ordergridview.Rows[e.RowIndex];
                     orderid = row.Cells["orderid"].Value.ToString();
                     email = row.Cells["mail"].Value.ToString();

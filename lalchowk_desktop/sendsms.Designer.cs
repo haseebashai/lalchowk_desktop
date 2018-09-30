@@ -52,7 +52,11 @@
             this.orderbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.btbtn = new System.Windows.Forms.Button();
             this.feedbtn = new System.Windows.Forms.Button();
+            this.smsnpnl = new System.Windows.Forms.Panel();
+            this.txtpnl = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.arrow)).BeginInit();
+            this.smsnpnl.SuspendLayout();
+            this.txtpnl.SuspendLayout();
             this.SuspendLayout();
             // 
             // sendsmsbtn
@@ -60,7 +64,7 @@
             this.sendsmsbtn.AutoSize = true;
             this.sendsmsbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.sendsmsbtn.Depth = 0;
-            this.sendsmsbtn.Location = new System.Drawing.Point(631, 431);
+            this.sendsmsbtn.Location = new System.Drawing.Point(372, 423);
             this.sendsmsbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.sendsmsbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.sendsmsbtn.Name = "sendsmsbtn";
@@ -75,7 +79,7 @@
             // 
             this.smstxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.smstxt.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.smstxt.Location = new System.Drawing.Point(348, 288);
+            this.smstxt.Location = new System.Drawing.Point(89, 280);
             this.smstxt.MaxLength = 620;
             this.smstxt.Multiline = true;
             this.smstxt.Name = "smstxt";
@@ -87,7 +91,7 @@
             // 
             this.numbertxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numbertxt.ForeColor = System.Drawing.Color.Gray;
-            this.numbertxt.Location = new System.Drawing.Point(348, 93);
+            this.numbertxt.Location = new System.Drawing.Point(89, 85);
             this.numbertxt.Multiline = true;
             this.numbertxt.Name = "numbertxt";
             this.numbertxt.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -100,7 +104,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(345, 77);
+            this.label1.Location = new System.Drawing.Point(86, 69);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 13);
             this.label1.TabIndex = 38;
@@ -109,7 +113,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(345, 270);
+            this.label2.Location = new System.Drawing.Point(86, 262);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(66, 13);
             this.label2.TabIndex = 39;
@@ -120,7 +124,7 @@
             this.sentlbl.AutoSize = true;
             this.sentlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sentlbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.sentlbl.Location = new System.Drawing.Point(628, 473);
+            this.sentlbl.Location = new System.Drawing.Point(369, 465);
             this.sentlbl.Name = "sentlbl";
             this.sentlbl.Size = new System.Drawing.Size(103, 13);
             this.sentlbl.TabIndex = 40;
@@ -131,7 +135,7 @@
             // 
             this.numlisttxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numlisttxt.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.numlisttxt.Location = new System.Drawing.Point(75, 34);
+            this.numlisttxt.Location = new System.Drawing.Point(22, 34);
             this.numlisttxt.Multiline = true;
             this.numlisttxt.Name = "numlisttxt";
             this.numlisttxt.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -145,7 +149,7 @@
             this.getnumbersbtn.AutoSize = true;
             this.getnumbersbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.getnumbersbtn.Depth = 0;
-            this.getnumbersbtn.Location = new System.Drawing.Point(65, 394);
+            this.getnumbersbtn.Location = new System.Drawing.Point(12, 394);
             this.getnumbersbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.getnumbersbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.getnumbersbtn.Name = "getnumbersbtn";
@@ -159,7 +163,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(72, 18);
+            this.label3.Location = new System.Drawing.Point(19, 18);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 13);
             this.label3.TabIndex = 43;
@@ -168,7 +172,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(345, 18);
+            this.label4.Location = new System.Drawing.Point(86, 10);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(41, 13);
             this.label4.TabIndex = 45;
@@ -179,7 +183,7 @@
             this.sendertxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.sendertxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sendertxt.ForeColor = System.Drawing.Color.Black;
-            this.sendertxt.Location = new System.Drawing.Point(348, 36);
+            this.sendertxt.Location = new System.Drawing.Point(89, 28);
             this.sendertxt.Name = "sendertxt";
             this.sendertxt.Size = new System.Drawing.Size(140, 23);
             this.sendertxt.TabIndex = 1;
@@ -201,7 +205,7 @@
             // loopchk
             // 
             this.loopchk.AutoSize = true;
-            this.loopchk.Location = new System.Drawing.Point(520, 442);
+            this.loopchk.Location = new System.Drawing.Point(261, 434);
             this.loopchk.Name = "loopchk";
             this.loopchk.Size = new System.Drawing.Size(94, 17);
             this.loopchk.TabIndex = 47;
@@ -214,7 +218,7 @@
             this.limittxt.BackColor = System.Drawing.Color.WhiteSmoke;
             this.limittxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.limittxt.ForeColor = System.Drawing.Color.Gray;
-            this.limittxt.Location = new System.Drawing.Point(159, 369);
+            this.limittxt.Location = new System.Drawing.Point(106, 369);
             this.limittxt.Name = "limittxt";
             this.limittxt.Size = new System.Drawing.Size(75, 20);
             this.limittxt.TabIndex = 48;
@@ -227,7 +231,7 @@
             this.offsettxt.BackColor = System.Drawing.Color.WhiteSmoke;
             this.offsettxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.offsettxt.ForeColor = System.Drawing.Color.Gray;
-            this.offsettxt.Location = new System.Drawing.Point(75, 369);
+            this.offsettxt.Location = new System.Drawing.Point(22, 369);
             this.offsettxt.Name = "offsettxt";
             this.offsettxt.Size = new System.Drawing.Size(75, 20);
             this.offsettxt.TabIndex = 50;
@@ -240,7 +244,7 @@
             this.tolbl.AutoSize = true;
             this.tolbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tolbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.tolbl.Location = new System.Drawing.Point(345, 433);
+            this.tolbl.Location = new System.Drawing.Point(86, 425);
             this.tolbl.Name = "tolbl";
             this.tolbl.Size = new System.Drawing.Size(16, 13);
             this.tolbl.TabIndex = 51;
@@ -249,7 +253,7 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(348, 450);
+            this.progressBar1.Location = new System.Drawing.Point(89, 442);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(149, 10);
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
@@ -261,7 +265,7 @@
             this.maxcountlbl.AutoSize = true;
             this.maxcountlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.maxcountlbl.ForeColor = System.Drawing.Color.Black;
-            this.maxcountlbl.Location = new System.Drawing.Point(415, 462);
+            this.maxcountlbl.Location = new System.Drawing.Point(156, 454);
             this.maxcountlbl.Name = "maxcountlbl";
             this.maxcountlbl.Size = new System.Drawing.Size(16, 13);
             this.maxcountlbl.TabIndex = 53;
@@ -270,9 +274,12 @@
             // 
             // stbtn
             // 
-            this.stbtn.Location = new System.Drawing.Point(273, 337);
+            this.stbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.stbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.stbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stbtn.Location = new System.Drawing.Point(14, 329);
             this.stbtn.Name = "stbtn";
-            this.stbtn.Size = new System.Drawing.Size(69, 35);
+            this.stbtn.Size = new System.Drawing.Size(69, 33);
             this.stbtn.TabIndex = 54;
             this.stbtn.Text = "Shipped Template";
             this.stbtn.UseVisualStyleBackColor = true;
@@ -281,7 +288,7 @@
             // charlbl
             // 
             this.charlbl.AutoSize = true;
-            this.charlbl.Location = new System.Drawing.Point(658, 272);
+            this.charlbl.Location = new System.Drawing.Point(399, 264);
             this.charlbl.Name = "charlbl";
             this.charlbl.Size = new System.Drawing.Size(30, 13);
             this.charlbl.TabIndex = 55;
@@ -293,7 +300,7 @@
             this.reqbtn.AutoSize = true;
             this.reqbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.reqbtn.Depth = 0;
-            this.reqbtn.Location = new System.Drawing.Point(65, 464);
+            this.reqbtn.Location = new System.Drawing.Point(12, 464);
             this.reqbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.reqbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.reqbtn.Name = "reqbtn";
@@ -309,7 +316,7 @@
             this.orderbtn.AutoSize = true;
             this.orderbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.orderbtn.Depth = 0;
-            this.orderbtn.Location = new System.Drawing.Point(65, 428);
+            this.orderbtn.Location = new System.Drawing.Point(12, 428);
             this.orderbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.orderbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.orderbtn.Name = "orderbtn";
@@ -322,9 +329,12 @@
             // 
             // btbtn
             // 
-            this.btbtn.Location = new System.Drawing.Point(273, 378);
+            this.btbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.btbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btbtn.Location = new System.Drawing.Point(14, 370);
             this.btbtn.Name = "btbtn";
-            this.btbtn.Size = new System.Drawing.Size(69, 35);
+            this.btbtn.Size = new System.Drawing.Size(69, 44);
             this.btbtn.TabIndex = 58;
             this.btbtn.Text = "Book Not Available";
             this.btbtn.UseVisualStyleBackColor = true;
@@ -332,7 +342,9 @@
             // 
             // feedbtn
             // 
-            this.feedbtn.Location = new System.Drawing.Point(273, 296);
+            this.feedbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.feedbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.feedbtn.Location = new System.Drawing.Point(14, 288);
             this.feedbtn.Name = "feedbtn";
             this.feedbtn.Size = new System.Drawing.Size(69, 35);
             this.feedbtn.TabIndex = 59;
@@ -340,42 +352,61 @@
             this.feedbtn.UseVisualStyleBackColor = true;
             this.feedbtn.Click += new System.EventHandler(this.feedbtn_Click);
             // 
+            // smsnpnl
+            // 
+            this.smsnpnl.Controls.Add(this.label3);
+            this.smsnpnl.Controls.Add(this.numlisttxt);
+            this.smsnpnl.Controls.Add(this.getnumbersbtn);
+            this.smsnpnl.Controls.Add(this.orderbtn);
+            this.smsnpnl.Controls.Add(this.limittxt);
+            this.smsnpnl.Controls.Add(this.reqbtn);
+            this.smsnpnl.Controls.Add(this.offsettxt);
+            this.smsnpnl.Location = new System.Drawing.Point(37, 9);
+            this.smsnpnl.Name = "smsnpnl";
+            this.smsnpnl.Size = new System.Drawing.Size(271, 513);
+            this.smsnpnl.TabIndex = 60;
+            // 
+            // txtpnl
+            // 
+            this.txtpnl.Controls.Add(this.label4);
+            this.txtpnl.Controls.Add(this.feedbtn);
+            this.txtpnl.Controls.Add(this.sendsmsbtn);
+            this.txtpnl.Controls.Add(this.btbtn);
+            this.txtpnl.Controls.Add(this.smstxt);
+            this.txtpnl.Controls.Add(this.charlbl);
+            this.txtpnl.Controls.Add(this.numbertxt);
+            this.txtpnl.Controls.Add(this.stbtn);
+            this.txtpnl.Controls.Add(this.label1);
+            this.txtpnl.Controls.Add(this.maxcountlbl);
+            this.txtpnl.Controls.Add(this.label2);
+            this.txtpnl.Controls.Add(this.progressBar1);
+            this.txtpnl.Controls.Add(this.sentlbl);
+            this.txtpnl.Controls.Add(this.tolbl);
+            this.txtpnl.Controls.Add(this.sendertxt);
+            this.txtpnl.Controls.Add(this.loopchk);
+            this.txtpnl.Location = new System.Drawing.Point(277, 10);
+            this.txtpnl.Name = "txtpnl";
+            this.txtpnl.Size = new System.Drawing.Size(475, 499);
+            this.txtpnl.TabIndex = 61;
+            // 
             // sendsms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(750, 600);
-            this.Controls.Add(this.feedbtn);
-            this.Controls.Add(this.btbtn);
-            this.Controls.Add(this.orderbtn);
-            this.Controls.Add(this.reqbtn);
-            this.Controls.Add(this.charlbl);
-            this.Controls.Add(this.stbtn);
-            this.Controls.Add(this.maxcountlbl);
-            this.Controls.Add(this.progressBar1);
-            this.Controls.Add(this.tolbl);
-            this.Controls.Add(this.offsettxt);
-            this.Controls.Add(this.limittxt);
-            this.Controls.Add(this.loopchk);
             this.Controls.Add(this.arrow);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.sendertxt);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.getnumbersbtn);
-            this.Controls.Add(this.numlisttxt);
-            this.Controls.Add(this.sentlbl);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.numbertxt);
-            this.Controls.Add(this.smstxt);
-            this.Controls.Add(this.sendsmsbtn);
+            this.Controls.Add(this.smsnpnl);
+            this.Controls.Add(this.txtpnl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "sendsms";
             this.Text = "sendsms";
             ((System.ComponentModel.ISupportInitialize)(this.arrow)).EndInit();
+            this.smsnpnl.ResumeLayout(false);
+            this.smsnpnl.PerformLayout();
+            this.txtpnl.ResumeLayout(false);
+            this.txtpnl.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -390,20 +421,22 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox sendertxt;
-        private System.Windows.Forms.PictureBox arrow;
         private System.Windows.Forms.CheckBox loopchk;
         private System.Windows.Forms.TextBox limittxt;
         private System.Windows.Forms.TextBox offsettxt;
         private System.Windows.Forms.Label tolbl;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Label maxcountlbl;
-        private System.Windows.Forms.Button stbtn;
         public System.Windows.Forms.TextBox numbertxt;
         private System.Windows.Forms.Label charlbl;
         private MaterialSkin.Controls.MaterialFlatButton reqbtn;
         private MaterialSkin.Controls.MaterialFlatButton orderbtn;
-        private System.Windows.Forms.Button btbtn;
         public System.Windows.Forms.TextBox smstxt;
-        private System.Windows.Forms.Button feedbtn;
+        public System.Windows.Forms.Button stbtn;
+        public System.Windows.Forms.Button btbtn;
+        public System.Windows.Forms.Button feedbtn;
+        public System.Windows.Forms.Panel smsnpnl;
+        public System.Windows.Forms.PictureBox arrow;
+        public System.Windows.Forms.Panel txtpnl;
     }
 }

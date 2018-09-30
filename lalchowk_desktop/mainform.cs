@@ -656,6 +656,9 @@ namespace Veiled_Kashmir_Admin_Panel
             dg.lbl.Text = "Send SMS";
             dg.Text = "Send SMS";
             dg.Size = new Size(800, 600);
+            sms.feedbtn.Visible = false;
+            sms.stbtn.Visible = false;
+            sms.btbtn.Visible = false;
 
             dg.Show();
             sms.Show();
@@ -695,7 +698,7 @@ namespace Veiled_Kashmir_Admin_Panel
         private void bookbtn_Click(object sender, EventArgs e)
         {
             dialogcontainer dg = new dialogcontainer();
-            dg.Size = new Size(860, 650);
+            dg.Size = new Size(860, 700);
             books bk = new books(dg);
             bk.TopLevel = false;
             dg.dialogpnl.Controls.Add(bk);
@@ -744,21 +747,22 @@ namespace Veiled_Kashmir_Admin_Panel
         string id,contact,name;
         private void placeddataview_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            plbl.Visible = true;
-            shipbtn.Visible = false;
-            sendsmsbtn.Visible = false;
-            cancelbtn.Visible = false;
-            ppnl.Controls.Clear();
-            placeddataview.Enabled = false;
             
-            if (e.RowIndex >= 0)
+            if (e.RowIndex >-1)
             {
+                plbl.Visible = true;
+                shipbtn.Visible = false;
+                sendsmsbtn.Visible = false;
+                cancelbtn.Visible = false;
+                ppnl.Controls.Clear();
+                placeddataview.Enabled = false;
 
                 DataGridViewRow row = this.placeddataview.Rows[e.RowIndex];
                 id = row.Cells["orderid"].Value.ToString();
                 contact = row.Cells["contact"].Value.ToString();
                 status = row.Cells["status"].Value.ToString();
                 name= row.Cells["name"].Value.ToString();
+                //quantity= row.Cells["quantity"].Value.ToString();
                 products = new BackgroundWorker();
                 products.DoWork += Products_DoWork;
                 products.RunWorkerCompleted += Products_RunWorkerCompleted;
@@ -888,9 +892,11 @@ namespace Veiled_Kashmir_Admin_Panel
             dg.dialogpnl.Controls.Add(sms);
             dg.lbl.Text = "Send SMS";
             dg.Text = "Send SMS";
-            dg.Size = new Size(800, 600);
+            dg.Size = new Size(600, 600);
             sms.numbertxt.Font = new Font("MS Sans Serif", 9, FontStyle.Regular);
             sms.smstxt.Text="Dear "+ name+", ";
+            sms.smsnpnl.Visible = false;
+            sms.txtpnl.Location = new Point(35, 10);
             dg.Show();
             sms.Show();
         }
@@ -899,7 +905,7 @@ namespace Veiled_Kashmir_Admin_Panel
             Cursor = Cursors.WaitCursor;
             try
             {
-                DialogResult dgr = MessageBox.Show("Cancel Order '" + id + "'", "Confirm!", MessageBoxButtons.YesNo);
+                DialogResult dgr = MessageBox.Show("Press YES to cancel order '" + id + "' and update stock\nPress NO to cancel order without updating stock", "Confirm!", MessageBoxButtons.YesNoCancel);
                 if (dgr == DialogResult.Yes)
                 {
                     string cmd = "Update orders set status='Cancelled' where orderid='" + id + "'";
@@ -913,7 +919,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     }
                     MessageBox.Show("Order cancelled.");
                     ppnl.Visible = false;
-                }
+                
                 adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='placed';", con);
                 dt = new DataTable();
                 adap.Fill(dt);
@@ -934,11 +940,43 @@ namespace Veiled_Kashmir_Admin_Panel
 
                 }
                 catch { }
+                }
+                else if (dgr == DialogResult.No)
+                {
+                    string cmd = "Update orders set status='Cancelled' where orderid='" + id + "'";
+                    obj.nonQuery(cmd);
+
+                    MessageBox.Show("Order cancelled.");
+                    ppnl.Visible = false;
+
+                    adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='placed';", con);
+                    dt = new DataTable();
+                    adap.Fill(dt);
+                    con.Close();
+                    bsource = new BindingSource();
+                    bsource.DataSource = dt;
+                    placeddataview.DataSource = bsource;
+                    try
+                    {
+                        shipbtn.Visible = false;
+                        sendsmsbtn.Visible = false;
+                        cancelbtn.Visible = false;
+                        placeddataview.Columns["shipdate"].Visible = false;
+                        placeddataview.Columns["deliverdate"].Visible = false;
+                        placeddataview.Columns["paymentconfirmed"].Visible = false;
+                        placeddataview.Columns["email"].Visible = false;
+                        placeddataview.Columns["transanctionid"].Visible = false;
+                        placeddataview.Columns["paymenttype"].Visible = false;
+
+                    }
+                    catch { }
+
+                }
             }
             catch (Exception ex)
             {
                 obj.closeConnection();
-                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
+                MessageBox.Show( ex.Message, "Error!");
             }
             Cursor = Cursors.Arrow;
         }
@@ -947,20 +985,22 @@ namespace Veiled_Kashmir_Admin_Panel
         string status;
         private void shippeddataview_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            plbl.Visible = true;
-            shipbtn.Visible = false;
-            sendsmsbtn.Visible = false;
-            cancelbtn.Visible = false;
-            ppnl.Controls.Clear();
-            shippeddataview.Enabled = false;
+            
 
-            if (e.RowIndex >= 0)
+            if (e.RowIndex >=0)
             {
+                plbl.Visible = true;
+                shipbtn.Visible = false;
+                sendsmsbtn.Visible = false;
+                cancelbtn.Visible = false;
+                ppnl.Controls.Clear();
+                shippeddataview.Enabled = false;
 
                 DataGridViewRow row = this.shippeddataview.Rows[e.RowIndex];
                 id = row.Cells["orderid"].Value.ToString();
                 contact = row.Cells["contact"].Value.ToString();
                 status= row.Cells["status"].Value.ToString();
+                name = row.Cells["name"].Value.ToString();
                 products = new BackgroundWorker();
                 products.DoWork += Products_DoWork;
                 products.RunWorkerCompleted += Products_RunWorkerCompleted;

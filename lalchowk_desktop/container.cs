@@ -45,11 +45,14 @@ namespace Veiled_Kashmir_Admin_Panel
 
                     con.Open();
                     MySqlDataReader data = cmd.ExecuteReader();
-                    while (data.Read())
+                    try
                     {
-                        string sname = data.GetString("tags");
-                        col1.Add(sname);
-                    }
+                        while (data.Read())
+                        {
+                            string sname = data.GetString("tags");
+                            col1.Add(sname);
+                        }
+                    }catch(Exception ex) { MessageBox.Show(ex.Message); }
                     con.Close();
                     a.Result = col1;
 
@@ -59,7 +62,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 };
                 search.RunWorkerAsync();
             }
-            catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
 
 
         }

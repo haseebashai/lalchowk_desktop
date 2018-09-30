@@ -187,7 +187,7 @@ namespace Veiled_Kashmir_Admin_Panel
                         { MessageBox.Show(ex.ToString()); obj.closeConnection(); }
                     }
                     MessageBox.Show("Order added successfully.", "Success.");
-                   
+                    inventorydatagridview.Columns.Clear();
                     addorderbtn.Enabled = false;
                 }
                 // }
@@ -324,6 +324,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 }
                 Cursor = Cursors.Arrow;
                 MessageBox.Show("Items added to cart successfully.", "Success.");
+                inventorydatagridview.Columns.Clear();
             }
 
         }
@@ -373,6 +374,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 }
                 else
                 {
+                    Cursor = Cursors.WaitCursor;
                     string name = searchtxt.Text.Split('@')[0];
                     StringBuilder productname = new StringBuilder(name);
                     productname.Replace(@"'", "\\'").Replace(@"\", "\\");
@@ -406,7 +408,9 @@ namespace Veiled_Kashmir_Admin_Panel
                     addorderbtn.Enabled = true;
                 }
             }catch(Exception ex) { MessageBox.Show(ex.Message); obj.closeConnection(); }
+            Cursor = Cursors.Arrow;
         }
+
 
         private void refresh_Click(object sender, EventArgs e)
         {

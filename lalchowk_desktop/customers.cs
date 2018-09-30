@@ -260,16 +260,18 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void customerdataview_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            customerdataview.Enabled = false;
-            loadinglbl.Visible = true;
-            inflbl.Visible = false;
-            dpnl.Visible = false;
-            apnl.Visible = false;
-            ppnl.Visible = false;
+            
 
            
             if (e.RowIndex >= 0)
             {
+                customerdataview.Enabled = false;
+                loadinglbl.Visible = true;
+                inflbl.Visible = false;
+                dpnl.Visible = false;
+                apnl.Visible = false;
+                ppnl.Visible = false;
+
                 DataGridViewRow row = this.customerdataview.Rows[e.RowIndex];               
                 email = row.Cells["email"].Value.ToString();
                 emaillbl.Text = row.Cells["mail"].Value.ToString();

@@ -616,7 +616,7 @@ namespace Veiled_Kashmir_Admin_Panel
             btnenable();
             panelshow();
             accountdataview.DataSource = bsource;
-            MessageBox.Show(rev.ToString());
+           
             try
             {
                 if (rev==false) {

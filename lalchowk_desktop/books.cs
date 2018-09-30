@@ -19,6 +19,7 @@ namespace Veiled_Kashmir_Admin_Panel
         MySqlConnection con = new MySqlConnection("SERVER=182.50.133.78;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah;Convert Zero Datetime=True");
         DBConnect obj = new DBConnect();
         MySqlDataReader dr;
+        MySqlCommandBuilder cmdbl;
 
         private dialogcontainer dg = null;
         BindingSource bsource;
@@ -106,6 +107,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     dpnl.Visible = true;
                 }
                 dpnl.Visible = true;
+                updbtn.Enabled = true;
             }
         }
 
@@ -180,27 +182,34 @@ namespace Veiled_Kashmir_Admin_Panel
             dg.dialogpnl.Controls.Add(sms);
             dg.lbl.Text = "Send SMS";
             dg.Text = "Send SMS";
-            dg.Size = new Size(800, 600);
+            dg.Size = new Size(600, 600);
             sms.numbertxt.Font = new Font("MS Sans Serif", 9, FontStyle.Regular);
+            sms.smsnpnl.Visible = false;
+            sms.txtpnl.Location = new Point(35, 10);
             dg.Show();
             sms.Show();
         }
 
-        private void pbtn_Click(object sender, EventArgs e)
+        private void updbtn_Click(object sender, EventArgs e)
         {
+            Cursor = Cursors.WaitCursor;
             try
             {
-                Cursor = Cursors.WaitCursor;
-                string cmd = "update bookrequests set processed='1' where id='" + id + "'";
-                obj.nonQuery(cmd);
-                con.Close();
-                Cursor = Cursors.Arrow;
-                MessageBox.Show("Updated.");
-                dpnl.Visible = false;
+                cmdbl = new MySqlCommandBuilder(adap);
+                adap.Update(dt);
+                MessageBox.Show(" Updated.");
                 readreqs();
                 booksdataview.DataSource = bsource;
+                dpnl.Visible = false;
+                updbtn.Enabled = false;
 
-            }catch { Cursor = Cursors.Arrow; }
+            }
+            catch (Exception ex)
+            {
+                obj.closeConnection();
+                MessageBox.Show( ex.Message, "Error!");
+            }
+            Cursor = Cursors.Arrow;
         }
 
     }

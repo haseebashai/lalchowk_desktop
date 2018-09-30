@@ -26,20 +26,27 @@ namespace Veiled_Kashmir_Admin_Panel
         public sendsms(string contact, string bookname,string name)
         {
             InitializeComponent();
-            if (contact == ""||bookname==""||name=="")
-            {
-                numbertxt.Text = contact;
-               
-                sendertxt.Text = "LALCHK";
-            }
-            else
-            {
-                numbertxt.Text = contact;
-                bname = bookname;
-                cname = name;
-                sendertxt.Text = "LALCHK";
-                smstxt.Focus();
-            }
+
+            numbertxt.Text = contact;
+            bname = bookname;
+            cname = name;
+            sendertxt.Text = "LALCHK";
+            smstxt.Focus();
+            //if (contact == ""||bookname==""||name=="")
+            //{
+            //    numbertxt.Text = contact;
+
+            //    sendertxt.Text = "LALCHK";
+            //}
+            //else
+            //{
+            //    numbertxt.Text = contact;
+            //    bname = bookname;
+            //    cname = name;
+            //    sendertxt.Text = "LALCHK";
+            //    smstxt.Focus();
+
+            //}
 
         }
 
@@ -402,9 +409,18 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void stbtn_Click(object sender, EventArgs e)
         {
-
             smstxt.Text = "";
-            smstxt.Text = "Dear "+cname+", your order has been dispatched and will reach you in 30-60 mins. Please keep your phone in reach.\nTeam Lalchowk.";
+            if (cname == "")
+            {
+                
+                smstxt.Text = "Dear customer, your order has been dispatched and will reach you in 30-60 mins. Please keep your phone in reach.\nTeam Lalchowk.";
+
+            }else
+            {
+                smstxt.Text = "Dear "+cname+", your order has been dispatched and will reach you in 30-60 mins. Please keep your phone in reach.\nTeam Lalchowk.";
+
+            }
+
         }
 
        
@@ -495,9 +511,18 @@ namespace Veiled_Kashmir_Admin_Panel
         private void btbtn_Click(object sender, EventArgs e)
         {
             smstxt.Text = "";
-            smstxt.Text = "Dear "+cname+", your requested book ' "+bname+" ' is currently not available. We hope to serve you better next time. Lalchowk Support";
+            if (cname == "")
+            {
+                smstxt.Text = "Dear customer, your requested book ' " + bname + " ' is currently not available. We hope to serve you better next time. Lalchowk Support";
 
-           
+
+            }
+            else
+            {
+                smstxt.Text = "Dear " + cname + ", your requested book ' " + bname + " ' is currently not available. We hope to serve you better next time. Lalchowk Support";
+
+            }
+
         }
 
       
@@ -505,8 +530,16 @@ namespace Veiled_Kashmir_Admin_Panel
         private void feedbtn_Click(object sender, EventArgs e)
         {
             smstxt.Text = "";
-            smstxt.Text = "Dear Customer, hope you had a nice shopping experience with www.lalchowk.in. We would love to read your reviews on Google play store here: bit.ly/lalchowkonline or our social media handles.";
+            
+            if (cname == "")
+            {
+                smstxt.Text = "Dear Customer, hope you had a nice shopping experience with www.lalchowk.in. We would love to read your reviews on Google play store here: bit.ly/lalchowkonline or our social media handles.";
+            }
+            else if(cname!="")
+            {
+                smstxt.Text = "Dear "+cname+", hope you had a nice shopping experience with www.lalchowk.in. We would love to read your reviews on Google play store here: bit.ly/lalchowkonline or our social media handles.";
 
+            }
         }
     }
 }
