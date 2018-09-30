@@ -417,7 +417,7 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             try { 
             Cursor = Cursors.WaitCursor;
-            dr = obj.Query("SELECT productname,productid FROM lalchowk.products WHERE stock>0 and price>0 and picture !='defaultbook.jpg' ORDER BY RAND() LIMIT 18 ");
+            dr = obj.Query("SELECT productname,productid FROM lalchowk.products WHERE productid> (select max(productid)-700 from products) and stock>0 and price>0 and picture !='defaultbook.jpg' ORDER BY RAND() desc LIMIT 18 ");
            
             List<string> productid = new List<string>();
                 List<string> productname = new List<string>();
