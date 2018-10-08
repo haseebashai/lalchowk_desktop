@@ -104,7 +104,6 @@
             // 
             // emailtxt
             // 
-            this.emailtxt.Enabled = false;
             this.emailtxt.Location = new System.Drawing.Point(56, 5);
             this.emailtxt.Name = "emailtxt";
             this.emailtxt.Size = new System.Drawing.Size(296, 20);
