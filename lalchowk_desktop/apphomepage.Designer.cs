@@ -84,6 +84,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
             this.hpnl = new System.Windows.Forms.Panel();
+            this.label16 = new System.Windows.Forms.Label();
             this.opictxt = new System.Windows.Forms.TextBox();
             this.upofferbtn = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
@@ -94,7 +95,6 @@
             this.idtxt = new System.Windows.Forms.TextBox();
             this.randlist = new System.Windows.Forms.Button();
             this.randbtn = new System.Windows.Forms.Button();
-            this.label16 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.leftpic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rightpic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productsdataview)).BeginInit();
@@ -696,6 +696,17 @@
             this.hpnl.TabIndex = 104;
             this.hpnl.Visible = false;
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label16.Location = new System.Drawing.Point(12, 421);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(41, 17);
+            this.label16.TabIndex = 114;
+            this.label16.Text = "Right";
+            // 
             // opictxt
             // 
             this.opictxt.Location = new System.Drawing.Point(551, 177);
@@ -763,15 +774,15 @@
             this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label1.Location = new System.Drawing.Point(962, 218);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 17);
+            this.label1.Size = new System.Drawing.Size(119, 17);
             this.label1.TabIndex = 106;
-            this.label1.Text = "Filter by ID";
+            this.label1.Text = "Filter by Category";
             // 
             // idtxt
             // 
-            this.idtxt.Location = new System.Drawing.Point(1043, 218);
+            this.idtxt.Location = new System.Drawing.Point(1087, 218);
             this.idtxt.Name = "idtxt";
-            this.idtxt.Size = new System.Drawing.Size(106, 20);
+            this.idtxt.Size = new System.Drawing.Size(62, 20);
             this.idtxt.TabIndex = 107;
             this.idtxt.TextChanged += new System.EventHandler(this.idtxt_TextChanged);
             // 
@@ -794,17 +805,6 @@
             this.randbtn.Text = "Randomize";
             this.randbtn.UseVisualStyleBackColor = true;
             this.randbtn.Click += new System.EventHandler(this.randbtn_Click);
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label16.Location = new System.Drawing.Point(12, 421);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(41, 17);
-            this.label16.TabIndex = 114;
-            this.label16.Text = "Right";
             // 
             // apphomepage
             // 

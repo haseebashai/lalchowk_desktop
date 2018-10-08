@@ -433,7 +433,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void notbtn_Click(object sender, EventArgs e)
         {
-            notification nf = new notification(email,emaillbl.Text);
+            notification nf = new notification(email,emaillbl.Text,"");
             nf.loadingnormal();
             nf.ShowDialog();
         }

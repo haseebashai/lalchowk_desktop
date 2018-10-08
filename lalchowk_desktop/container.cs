@@ -41,7 +41,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
                     AutoCompleteStringCollection col1 = new AutoCompleteStringCollection();
 
-                    cmd = new MySqlCommand("Select concat(productname,' @',mrp) as tags from products", con);
+                    cmd = new MySqlCommand("Select concat(productname,' @',mrp) as tags from products where productid>9999", con);
 
                     con.Open();
                     MySqlDataReader data = cmd.ExecuteReader();
@@ -52,17 +52,19 @@ namespace Veiled_Kashmir_Admin_Panel
                             string sname = data.GetString("tags");
                             col1.Add(sname);
                         }
-                    }catch(Exception ex) { MessageBox.Show(ex.Message); }
+                    }
+                    catch (Exception ex) { MessageBox.Show(ex.Message); }
                     con.Close();
                     a.Result = col1;
 
                 };
-                search.RunWorkerCompleted += (o, b) => {
-                    userinfo.col = b.Result as AutoCompleteStringCollection;                
+                search.RunWorkerCompleted += (o, b) =>
+                {
+                    userinfo.col = b.Result as AutoCompleteStringCollection;
                 };
                 search.RunWorkerAsync();
             }
-            catch (Exception ex) { MessageBox.Show(ex.Message); }
+            catch (Exception ex) { con.Close(); }// MessageBox.Show(ex.Message);
 
 
         }

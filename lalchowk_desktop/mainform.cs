@@ -744,7 +744,7 @@ namespace Veiled_Kashmir_Admin_Panel
         }
 
         BackgroundWorker products;
-        string id,contact,name;
+        string id,contact,name,email,encmail;
         private void placeddataview_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             
@@ -762,6 +762,8 @@ namespace Veiled_Kashmir_Admin_Panel
                 contact = row.Cells["contact"].Value.ToString();
                 status = row.Cells["status"].Value.ToString();
                 name= row.Cells["name"].Value.ToString();
+                email= row.Cells["mail"].Value.ToString();
+                encmail= row.Cells["email"].Value.ToString();
                 //quantity= row.Cells["quantity"].Value.ToString();
                 products = new BackgroundWorker();
                 products.DoWork += Products_DoWork;
@@ -834,6 +836,20 @@ namespace Veiled_Kashmir_Admin_Panel
                 {
                     string cmd = "Update orders set status='Shipped' where orderid='" + id + "'";
                     obj.nonQuery(cmd);
+
+                    DialogResult ntf = MessageBox.Show("Do you want to send the in-app notification ?", "Confirm!", MessageBoxButtons.YesNo);
+                    if (ntf == DialogResult.Yes)
+                        {
+                        notification nf = new notification(encmail, email,id);
+                        nf.loadingnormal();
+                        nf.Show();
+
+
+                    }                             
+                                
+                                
+                  
+
                     con.Open();
 
                     adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='placed';", con);
@@ -874,7 +890,11 @@ namespace Veiled_Kashmir_Admin_Panel
                     sendsmsbtn.Visible = false;
                     cancelbtn.Visible = false;
                     shippedh.Visible = true;
-                    shippedlbl.Visible = true;
+                  //  shippedlbl.Visible = true;
+
+
+
+
                 }
             }
             catch
@@ -1259,6 +1279,16 @@ namespace Veiled_Kashmir_Admin_Panel
                 placeddataview.DataSource = bsource;
                 try
                 {
+                    foreach (DataGridViewRow row in this.placeddataview.Rows)
+                    {
+                        int count = Convert.ToInt32(row.Cells["itemcount"].Value);
+                       
+                            if (count > 1)
+                            {
+                                placeddataview.Columns["itemcount"].DefaultCellStyle.Font = new Font(placeddataview.DefaultCellStyle.Font, FontStyle.Bold);
+                            }
+                        
+                    }
                     placeddataview.Columns["shipdate"].Visible = false;
                     placeddataview.Columns["deliverdate"].Visible = false;
                     placeddataview.Columns["paymentconfirmed"].Visible = false;
@@ -1330,8 +1360,8 @@ namespace Veiled_Kashmir_Admin_Panel
                     placedh.Visible = false;
                     placeddataview.Visible = false;
                     shippedh.Visible = false;
-                    shippedlbl.Visible = false;
-                    attention.Visible = false; placedlbl.Visible = false; deliveredh.Visible = false; orderslbl.Visible = false;
+                   // shippedlbl.Visible = false;
+                   /* attention.Visible = false; placedlbl.Visible = false;*/ deliveredh.Visible = false; //orderslbl.Visible = false;
                     shippeddataview.Visible = false;
                     loadingpic.Visible = false;
                     loadinglbl.Visible = false;
@@ -1351,7 +1381,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     loadinglbl.Visible = false;
                     pageload.Visible = false;
                     placedh.Visible = true;
-                    attention.Visible = true; placedlbl.Visible = true; deliveredh.Visible = true; orderslbl.Visible = true; billsh.Visible = true;
+                  /*  attention.Visible = true; placedlbl.Visible = true; */deliveredh.Visible = true; billsh.Visible = true; //orderslbl.Visible = true; 
 
                     placeddataview.DataSource = bsource;
                     try
@@ -1376,17 +1406,24 @@ namespace Veiled_Kashmir_Admin_Panel
                     {
                         shippeddataview.Visible = false;
                         shippedh.Visible = false;
-                        shippedlbl.Visible = false;
+                       // shippedlbl.Visible = false;
                     }
                     else
                     {
                         shippeddataview.Visible = true;
                         shippedh.Visible = true;
-                        shippedlbl.Visible = true;
+                     //   shippedlbl.Visible = true;
                     }
-                    
-                    attentionlbl.Text = "> " + atten + " Order(s) need your Attention ASAP!";
-                    costlbl.Text = "> Will cost Rs. " + cost + "/-";
+
+                    //attentionlbl.Text = "> " + atten + " Order(s) need your Attention ASAP!";
+                    //costlbl.Text = "> Will cost Rs. " + cost + "/-";
+                    if (int.Parse(order) != int.Parse(billno))
+                    {
+                        ordersdlbl.ForeColor = Color.Red;
+                        billslbl.ForeColor = Color.Red;
+                        billmismatchlbl.Visible = true;
+                        billmismatchlbl.Text = "Please add the bills for remaining orders.";
+                    }
                     ordersdlbl.Text = order;
                     billslbl.Text = billno;
                 }
@@ -1402,8 +1439,8 @@ namespace Veiled_Kashmir_Admin_Panel
             pageload.Visible = false;
             placedh.Visible = true;
             shippedh.Visible = true;
-            shippedlbl.Visible = true;
-            attention.Visible = true; placedlbl.Visible = true; deliveredh.Visible = true; orderslbl.Visible = true; billsh.Visible = true;
+          //  shippedlbl.Visible = true;
+           /* attention.Visible = true; placedlbl.Visible = true;*/ deliveredh.Visible = true; billsh.Visible = true; //orderslbl.Visible = true; 
 
             placeddataview.DataSource = bsource;
             try { 
@@ -1428,13 +1465,20 @@ namespace Veiled_Kashmir_Admin_Panel
             catch { }
             placeddataview.Visible = true;
             shippeddataview.Visible = true;
-            attentionlbl.Text = "> " + atten + " Order(s) need your Attention ASAP!";
-            int cst = int.Parse(atten);
-            if (cst == 0)
+            //attentionlbl.Text = "> " + atten + " Order(s) need your Attention ASAP!";
+            //int cst = int.Parse(atten);
+            //if (cst == 0)
+            //{
+            //    costlbl.Text = "";
+            //}else
+            //costlbl.Text = "> Will cost Rs. " + cost + "/-";
+            if (int.Parse(order) != int.Parse(billno))
             {
-                costlbl.Text = "";
-            }else
-            costlbl.Text = "> Will cost Rs. " + cost + "/-";
+                ordersdlbl.ForeColor = Color.Red;
+                billslbl.ForeColor = Color.Red;
+                billmismatchlbl.Visible = true;
+                billmismatchlbl.Text = "Please add the bills for remaining orders.";
+            }
             ordersdlbl.Text = order;
             billslbl.Text = billno;
         }

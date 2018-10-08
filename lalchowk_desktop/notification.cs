@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.Net;
 using System.IO;
+using System.Security.Cryptography;
 
 namespace Veiled_Kashmir_Admin_Panel
 {
@@ -20,18 +21,36 @@ namespace Veiled_Kashmir_Admin_Panel
         string encmail, filename, fileaddress, fullpath, directory, uploaddir,cmd, url = "http://lalchowk.in/lalchowk/pictures/";
         PictureBox loading = new PictureBox();
 
-        public notification(string encemail,string realemail)
+        public notification(string encemail,string realemail,string orderid)
         {
          
 
             InitializeComponent();
+
             bgworker.RunWorkerAsync();
-            
+                orderidbox.Text = orderid;
+         
             emailtxt.Text = realemail;
-            encmail = encemail;
+            
+                encmail = encemail;
+           
             
         }
-        
+
+        public static string md5hash(string input)
+        {
+
+            StringBuilder hash = new StringBuilder();
+            MD5CryptoServiceProvider md5provider = new MD5CryptoServiceProvider();
+            byte[] bytes = md5provider.ComputeHash(new UTF8Encoding().GetBytes(input + "Zohan123"));
+
+            for (int i = 0; i < bytes.Length; i++)
+            {
+                hash.Append(bytes[i].ToString("x2"));
+            }
+            return hash.ToString();
+        }
+
         private void readorderid()
         {try { 
             dr = obj.Query("Select orderid from orders where email='" + encmail + "'");
@@ -81,15 +100,15 @@ namespace Veiled_Kashmir_Admin_Panel
         private void sendbtn_Click_1(object sender, EventArgs e)
         {
             try {
-                
+            //    string email = md5hash(emailtxt.Text);
                 if (chkbox.Checked)
                 {
-                    cmd = ("insert into notifications (email,title,subtitle,picture) values ('" + encmail + "','" + titletxt.Text + "','" + subtxt.Text + "','"+ptxt.Text+"')");
+                    cmd = ("insert into notifications (email,title,subtitle,picture,currtime) values ('" + encmail + "','" + titletxt.Text + "','" + subtxt.Text + "','"+ptxt.Text+ "',DATE_ADD(CURRENT_TIMESTAMP, INTERVAL 750 MINUTE))");
                     obj.nonQuery(cmd);
                 }
                 else
                 {
-                    cmd = ("insert into notifications (email,title,subtitle,orderid,picture) values ('" + encmail + "','" + titletxt.Text + "','" + subtxt.Text + "','" + orderidbox.Text + "','" + ptxt.Text + "')");
+                    cmd = ("insert into notifications (email,title,subtitle,orderid,picture,currtime) values ('" + encmail + "','" + titletxt.Text + "','" + subtxt.Text + "','" + orderidbox.Text + "','" + ptxt.Text + "',DATE_ADD(CURRENT_TIMESTAMP, INTERVAL 750 MINUTE))");
                     obj.nonQuery(cmd);
                 }
                 MessageBox.Show("Notification sent sucessfully.");
@@ -103,19 +122,15 @@ namespace Veiled_Kashmir_Admin_Panel
             obj.closeConnection();
         }
 
-        private void close_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
 
         private void bgworker_DoWork(object sender, DoWorkEventArgs e)
         {
-            readorderid();
+           // readorderid();
         }
         private void bgworker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             loading.Visible = false;
-            orderidbox.DisplayMember = "orderid";
+          //  orderidbox.DisplayMember = "orderid";
             
             formlbl.Text = "Send Notification";
             npnl.Visible = true;

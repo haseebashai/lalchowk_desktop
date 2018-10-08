@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(notification));
-            this.close = new System.Windows.Forms.PictureBox();
             this.formlbl = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -52,24 +51,9 @@
             this.chkbox = new System.Windows.Forms.CheckBox();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
             this.picdialog = new System.Windows.Forms.OpenFileDialog();
-            ((System.ComponentModel.ISupportInitialize)(this.close)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic)).BeginInit();
             this.npnl.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // close
-            // 
-            this.close.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.turn_on;
-            this.close.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.close.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.close.ImageLocation = "";
-            this.close.Location = new System.Drawing.Point(538, 9);
-            this.close.Name = "close";
-            this.close.Size = new System.Drawing.Size(25, 25);
-            this.close.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.close.TabIndex = 5;
-            this.close.TabStop = false;
-            this.close.Click += new System.EventHandler(this.close_Click);
             // 
             // formlbl
             // 
@@ -289,13 +273,11 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.formlbl);
-            this.Controls.Add(this.close);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "notification";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Notification";
-            ((System.ComponentModel.ISupportInitialize)(this.close)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic)).EndInit();
             this.npnl.ResumeLayout(false);
             this.npnl.PerformLayout();
@@ -305,8 +287,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox close;
         private System.Windows.Forms.Label formlbl;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel3;

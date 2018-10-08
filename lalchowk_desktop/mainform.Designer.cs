@@ -64,18 +64,13 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.navtxt = new System.Windows.Forms.Label();
             this.cntpnl = new System.Windows.Forms.Panel();
+            this.billmismatchlbl = new System.Windows.Forms.Label();
             this.clearlbl = new System.Windows.Forms.Label();
             this.retolbl = new System.Windows.Forms.Label();
             this.totallbl = new System.Windows.Forms.Label();
             this.billslbl = new System.Windows.Forms.Label();
             this.billsh = new System.Windows.Forms.Label();
-            this.shippedlbl = new System.Windows.Forms.Label();
-            this.placedlbl = new System.Windows.Forms.Label();
-            this.attention = new System.Windows.Forms.PictureBox();
             this.shippeddataview = new System.Windows.Forms.DataGridView();
-            this.costlbl = new System.Windows.Forms.Label();
-            this.attentionlbl = new System.Windows.Forms.Label();
-            this.orderslbl = new System.Windows.Forms.Label();
             this.ordersdlbl = new System.Windows.Forms.Label();
             this.deliveredh = new System.Windows.Forms.Label();
             this.shippedh = new System.Windows.Forms.Label();
@@ -99,7 +94,6 @@
             this.navtitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.cntpnl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.attention)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.shippeddataview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.loadingpic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.placeddataview)).BeginInit();
@@ -557,18 +551,13 @@
             // cntpnl
             // 
             this.cntpnl.BackColor = System.Drawing.Color.White;
+            this.cntpnl.Controls.Add(this.billmismatchlbl);
             this.cntpnl.Controls.Add(this.clearlbl);
             this.cntpnl.Controls.Add(this.retolbl);
             this.cntpnl.Controls.Add(this.totallbl);
             this.cntpnl.Controls.Add(this.billslbl);
             this.cntpnl.Controls.Add(this.billsh);
-            this.cntpnl.Controls.Add(this.shippedlbl);
-            this.cntpnl.Controls.Add(this.placedlbl);
-            this.cntpnl.Controls.Add(this.attention);
             this.cntpnl.Controls.Add(this.shippeddataview);
-            this.cntpnl.Controls.Add(this.costlbl);
-            this.cntpnl.Controls.Add(this.attentionlbl);
-            this.cntpnl.Controls.Add(this.orderslbl);
             this.cntpnl.Controls.Add(this.ordersdlbl);
             this.cntpnl.Controls.Add(this.deliveredh);
             this.cntpnl.Controls.Add(this.shippedh);
@@ -587,6 +576,17 @@
             this.cntpnl.Size = new System.Drawing.Size(1162, 722);
             this.cntpnl.TabIndex = 12;
             // 
+            // billmismatchlbl
+            // 
+            this.billmismatchlbl.AutoSize = true;
+            this.billmismatchlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.billmismatchlbl.ForeColor = System.Drawing.Color.Red;
+            this.billmismatchlbl.Location = new System.Drawing.Point(875, 684);
+            this.billmismatchlbl.Name = "billmismatchlbl";
+            this.billmismatchlbl.Size = new System.Drawing.Size(0, 13);
+            this.billmismatchlbl.TabIndex = 56;
+            this.billmismatchlbl.Visible = false;
+            // 
             // clearlbl
             // 
             this.clearlbl.AutoSize = true;
@@ -594,7 +594,7 @@
             this.clearlbl.Cursor = System.Windows.Forms.Cursors.Hand;
             this.clearlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clearlbl.ForeColor = System.Drawing.Color.Red;
-            this.clearlbl.Location = new System.Drawing.Point(505, 620);
+            this.clearlbl.Location = new System.Drawing.Point(68, 647);
             this.clearlbl.Name = "clearlbl";
             this.clearlbl.Size = new System.Drawing.Size(19, 19);
             this.clearlbl.TabIndex = 55;
@@ -607,7 +607,7 @@
             this.retolbl.AutoSize = true;
             this.retolbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.retolbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.retolbl.Location = new System.Drawing.Point(536, 630);
+            this.retolbl.Location = new System.Drawing.Point(99, 657);
             this.retolbl.Name = "retolbl";
             this.retolbl.Size = new System.Drawing.Size(20, 24);
             this.retolbl.TabIndex = 54;
@@ -619,7 +619,7 @@
             this.totallbl.AutoSize = true;
             this.totallbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.totallbl.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.totallbl.Location = new System.Drawing.Point(537, 611);
+            this.totallbl.Location = new System.Drawing.Point(100, 638);
             this.totallbl.Name = "totallbl";
             this.totallbl.Size = new System.Drawing.Size(42, 16);
             this.totallbl.TabIndex = 53;
@@ -631,7 +631,7 @@
             this.billslbl.AutoSize = true;
             this.billslbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.billslbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.billslbl.Location = new System.Drawing.Point(1037, 630);
+            this.billslbl.Location = new System.Drawing.Point(1037, 656);
             this.billslbl.Name = "billslbl";
             this.billslbl.Size = new System.Drawing.Size(0, 24);
             this.billslbl.TabIndex = 52;
@@ -641,51 +641,12 @@
             this.billsh.AutoSize = true;
             this.billsh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.billsh.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.billsh.Location = new System.Drawing.Point(1038, 611);
+            this.billsh.Location = new System.Drawing.Point(1038, 637);
             this.billsh.Name = "billsh";
             this.billsh.Size = new System.Drawing.Size(79, 16);
             this.billsh.TabIndex = 51;
             this.billsh.Text = "Bills added:";
             this.billsh.Visible = false;
-            // 
-            // shippedlbl
-            // 
-            this.shippedlbl.AutoSize = true;
-            this.shippedlbl.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.shippedlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shippedlbl.ForeColor = System.Drawing.Color.Black;
-            this.shippedlbl.Location = new System.Drawing.Point(177, 395);
-            this.shippedlbl.Name = "shippedlbl";
-            this.shippedlbl.Size = new System.Drawing.Size(82, 16);
-            this.shippedlbl.TabIndex = 41;
-            this.shippedlbl.Text = "View Details";
-            this.shippedlbl.Visible = false;
-            this.shippedlbl.Click += new System.EventHandler(this.shippedlbl_Click);
-            // 
-            // placedlbl
-            // 
-            this.placedlbl.AutoSize = true;
-            this.placedlbl.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.placedlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.placedlbl.ForeColor = System.Drawing.Color.Black;
-            this.placedlbl.Location = new System.Drawing.Point(99, 659);
-            this.placedlbl.Name = "placedlbl";
-            this.placedlbl.Size = new System.Drawing.Size(82, 16);
-            this.placedlbl.TabIndex = 40;
-            this.placedlbl.Text = "View Details";
-            this.placedlbl.Visible = false;
-            this.placedlbl.Click += new System.EventHandler(this.placedlbl_Click);
-            // 
-            // attention
-            // 
-            this.attention.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.industrial_safety_1492046_640;
-            this.attention.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.attention.Location = new System.Drawing.Point(19, 614);
-            this.attention.Name = "attention";
-            this.attention.Size = new System.Drawing.Size(73, 65);
-            this.attention.TabIndex = 39;
-            this.attention.TabStop = false;
-            this.attention.Visible = false;
             // 
             // shippeddataview
             // 
@@ -703,7 +664,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.shippeddataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.shippeddataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.shippeddataview.Location = new System.Drawing.Point(5, 417);
+            this.shippeddataview.Location = new System.Drawing.Point(5, 447);
             this.shippeddataview.Name = "shippeddataview";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
@@ -721,46 +682,12 @@
             this.shippeddataview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.shippeddataview_CellClick);
             this.shippeddataview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.shippeddataview_CellContentClick);
             // 
-            // costlbl
-            // 
-            this.costlbl.AutoSize = true;
-            this.costlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.costlbl.ForeColor = System.Drawing.Color.Red;
-            this.costlbl.Location = new System.Drawing.Point(98, 634);
-            this.costlbl.Name = "costlbl";
-            this.costlbl.Size = new System.Drawing.Size(0, 20);
-            this.costlbl.TabIndex = 38;
-            // 
-            // attentionlbl
-            // 
-            this.attentionlbl.AutoSize = true;
-            this.attentionlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.attentionlbl.ForeColor = System.Drawing.Color.Red;
-            this.attentionlbl.Location = new System.Drawing.Point(98, 611);
-            this.attentionlbl.Name = "attentionlbl";
-            this.attentionlbl.Size = new System.Drawing.Size(0, 20);
-            this.attentionlbl.TabIndex = 37;
-            // 
-            // orderslbl
-            // 
-            this.orderslbl.AutoSize = true;
-            this.orderslbl.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.orderslbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.orderslbl.ForeColor = System.Drawing.Color.Black;
-            this.orderslbl.Location = new System.Drawing.Point(865, 663);
-            this.orderslbl.Name = "orderslbl";
-            this.orderslbl.Size = new System.Drawing.Size(82, 16);
-            this.orderslbl.TabIndex = 36;
-            this.orderslbl.Text = "View Details";
-            this.orderslbl.Visible = false;
-            this.orderslbl.Click += new System.EventHandler(this.orderslbl_Click);
-            // 
             // ordersdlbl
             // 
             this.ordersdlbl.AutoSize = true;
             this.ordersdlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ordersdlbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.ordersdlbl.Location = new System.Drawing.Point(864, 630);
+            this.ordersdlbl.Location = new System.Drawing.Point(864, 656);
             this.ordersdlbl.Name = "ordersdlbl";
             this.ordersdlbl.Size = new System.Drawing.Size(0, 24);
             this.ordersdlbl.TabIndex = 35;
@@ -770,7 +697,7 @@
             this.deliveredh.AutoSize = true;
             this.deliveredh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.deliveredh.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.deliveredh.Location = new System.Drawing.Point(864, 611);
+            this.deliveredh.Location = new System.Drawing.Point(864, 637);
             this.deliveredh.Name = "deliveredh";
             this.deliveredh.Size = new System.Drawing.Size(148, 16);
             this.deliveredh.TabIndex = 34;
@@ -782,7 +709,7 @@
             this.shippedh.AutoSize = true;
             this.shippedh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.shippedh.ForeColor = System.Drawing.Color.Navy;
-            this.shippedh.Location = new System.Drawing.Point(4, 395);
+            this.shippedh.Location = new System.Drawing.Point(4, 425);
             this.shippedh.Name = "shippedh";
             this.shippedh.Size = new System.Drawing.Size(157, 16);
             this.shippedh.TabIndex = 32;
@@ -836,7 +763,7 @@
             // plbl
             // 
             this.plbl.AutoSize = true;
-            this.plbl.Location = new System.Drawing.Point(5, 242);
+            this.plbl.Location = new System.Drawing.Point(5, 281);
             this.plbl.Name = "plbl";
             this.plbl.Size = new System.Drawing.Size(98, 13);
             this.plbl.TabIndex = 48;
@@ -847,7 +774,7 @@
             // 
             this.ppnl.AutoScroll = true;
             this.ppnl.BackColor = System.Drawing.Color.Ivory;
-            this.ppnl.Location = new System.Drawing.Point(3, 255);
+            this.ppnl.Location = new System.Drawing.Point(3, 294);
             this.ppnl.Name = "ppnl";
             this.ppnl.Size = new System.Drawing.Size(1086, 121);
             this.ppnl.TabIndex = 47;
@@ -881,7 +808,7 @@
             this.placeddataview.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.placeddataview.RowHeadersVisible = false;
             this.placeddataview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.placeddataview.Size = new System.Drawing.Size(1145, 209);
+            this.placeddataview.Size = new System.Drawing.Size(1145, 244);
             this.placeddataview.TabIndex = 31;
             this.placeddataview.Visible = false;
             this.placeddataview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.placeddataview_CellContentClick);
@@ -891,7 +818,7 @@
             this.cancelbtn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cancelbtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.cancelbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cancelbtn.Location = new System.Drawing.Point(1095, 334);
+            this.cancelbtn.Location = new System.Drawing.Point(1095, 373);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(57, 42);
             this.cancelbtn.TabIndex = 50;
@@ -905,7 +832,7 @@
             this.shipbtn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.shipbtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.shipbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.shipbtn.Location = new System.Drawing.Point(1095, 254);
+            this.shipbtn.Location = new System.Drawing.Point(1095, 293);
             this.shipbtn.Name = "shipbtn";
             this.shipbtn.Size = new System.Drawing.Size(57, 28);
             this.shipbtn.TabIndex = 49;
@@ -919,7 +846,7 @@
             this.sendsmsbtn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.sendsmsbtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.sendsmsbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.sendsmsbtn.Location = new System.Drawing.Point(1095, 296);
+            this.sendsmsbtn.Location = new System.Drawing.Point(1095, 335);
             this.sendsmsbtn.Name = "sendsmsbtn";
             this.sendsmsbtn.Size = new System.Drawing.Size(57, 28);
             this.sendsmsbtn.TabIndex = 0;
@@ -1017,7 +944,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.cntpnl.ResumeLayout(false);
             this.cntpnl.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.attention)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.shippeddataview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.loadingpic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.placeddataview)).EndInit();
@@ -1045,16 +971,10 @@
         private System.Windows.Forms.Label shippedh;
         private System.Windows.Forms.Label ordersdlbl;
         private System.Windows.Forms.Label deliveredh;
-        private System.Windows.Forms.Label orderslbl;
-        private System.Windows.Forms.Label attentionlbl;
-        private System.Windows.Forms.Label costlbl;
-        private System.Windows.Forms.PictureBox attention;
-        private System.Windows.Forms.Label placedlbl;
         private MaterialSkin.Controls.MaterialFlatButton msgbtn;
         private MaterialSkin.Controls.MaterialFlatButton homepagebtn;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label navtxt;
-        private System.Windows.Forms.Label shippedlbl;
         public System.Windows.Forms.DataGridView placeddataview;
         private MaterialSkin.Controls.MaterialFlatButton sendmailbtn;
         private System.ComponentModel.BackgroundWorker bgworker;
@@ -1090,5 +1010,6 @@
         private MaterialSkin.Controls.MaterialFlatButton usedbookbtn;
         private System.Windows.Forms.Label sellreqlbl;
         private MaterialSkin.Controls.MaterialFlatButton blogbtn;
+        private System.Windows.Forms.Label billmismatchlbl;
     }
 }

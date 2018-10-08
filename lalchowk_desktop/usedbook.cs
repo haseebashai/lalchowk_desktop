@@ -837,7 +837,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     sid = int.Parse(row.Cells["sellerid"].Value.ToString());
 
                     Cursor = Cursors.WaitCursor;
-                    adap1 = new MySqlDataAdapter("select bookid,name,price,mrp,status from usedbooks where sellerid="+sid+" order by bookid", con);
+                    adap1 = new MySqlDataAdapter("select bookid,name,price,mrp,status,additional from usedbooks where sellerid="+sid+" order by bookid", con);
                     dt3 = new DataTable();
                     adap1.Fill(dt3);
                     bsource3 = new BindingSource();

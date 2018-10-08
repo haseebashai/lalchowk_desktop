@@ -271,7 +271,7 @@ namespace Veiled_Kashmir_Admin_Panel
         private void idtxt_TextChanged(object sender, EventArgs e)
         {
             DataView dv = new DataView(dt);
-            dv.RowFilter = string.Format("convert([productid],System.String) LIKE '%{0}%'", idtxt.Text);
+            dv.RowFilter = string.Format("convert([categoryid],System.String) LIKE '%{0}%'", idtxt.Text);
             productsdataview.DataSource = dv;
         }
 
@@ -417,7 +417,7 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             try { 
             Cursor = Cursors.WaitCursor;
-            dr = obj.Query("SELECT productname,productid FROM lalchowk.products WHERE productid> (select max(productid)-700 from products) and stock>0 and price>0 and picture !='defaultbook.jpg' ORDER BY RAND() desc LIMIT 18 ");
+            dr = obj.Query("SELECT productname,productid FROM lalchowk.products WHERE productid> (select max(productid)-1000 from products) and stock>0 and price>0 and picture !='defaultbook.jpg' ORDER BY RAND() desc LIMIT 18 ");
            
             List<string> productid = new List<string>();
                 List<string> productname = new List<string>();
@@ -475,7 +475,7 @@ namespace Veiled_Kashmir_Admin_Panel
             try
             {
                 Cursor = Cursors.WaitCursor;
-                dr = obj.Query("SELECT productname,picture,productid FROM lalchowk.products WHERE stock>0 and picture !='defaultbook.jpg' ORDER BY RAND() LIMIT 4 ");
+                dr = obj.Query("SELECT productname,picture,productid FROM lalchowk.products WHERE productid> (select max(productid)-1000 from products) and stock>0 and price>0 and picture !='defaultbook.jpg' ORDER BY RAND() LIMIT 4 ");
                 List<string> productname = new List<string>();
                 List<string> picture = new List<string>();
                 List<string> productid = new List<string>();
@@ -526,7 +526,7 @@ namespace Veiled_Kashmir_Admin_Panel
             try
             {
                 con.Open();
-                adap = new MySqlDataAdapter("SELECT productid, productname, picture, stock, price FROM products where stock>0 and picture!='defaultbook.jpg' order by productid desc", con);
+                adap = new MySqlDataAdapter("SELECT productid, productname, picture, stock, price,categoryid FROM products where stock>0 and picture!='defaultbook.jpg' order by productid desc", con);
                 dt = new DataTable();
                 adap.Fill(dt);
                 con.Close();

@@ -379,7 +379,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     StringBuilder productname = new StringBuilder(name);
                     productname.Replace(@"'", "\\'").Replace(@"\", "\\");
                     string mrp = searchtxt.Text.Split('@')[1];
-                    if (inventorydatagridview.RowCount == 0)
+                    if (inventorydatagridview.RowCount == 0 && inventorydatagridview.ColumnCount == 0)
                     {
                         inventorydatagridview.Columns.Add("productid", "productid");
                         inventorydatagridview.Columns.Add("productname", "productname");
@@ -411,6 +411,7 @@ namespace Veiled_Kashmir_Admin_Panel
             Cursor = Cursors.Arrow;
         }
 
+      
 
         private void refresh_Click(object sender, EventArgs e)
         {
@@ -430,7 +431,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     search.ReportProgress(10);
                     AutoCompleteStringCollection col1 = new AutoCompleteStringCollection();
 
-                    cmd = new MySqlCommand("Select concat(productname,' @',mrp) as tags from products", con);
+                    cmd = new MySqlCommand("Select concat(productname,' @',mrp) as tags from products where productid>9999", con);
 
                     con.Open();
                     search.ReportProgress(30);
