@@ -375,10 +375,11 @@ namespace Veiled_Kashmir_Admin_Panel
                 else
                 {
                     Cursor = Cursors.WaitCursor;
-                    string name = searchtxt.Text.Split('@')[0];
-                    StringBuilder productname = new StringBuilder(name);
-                    productname.Replace(@"'", "\\'").Replace(@"\", "\\");
-                    string mrp = searchtxt.Text.Split('@')[1];
+                    //string name = searchtxt.Text.Split('(')[0];
+                    //StringBuilder productname = new StringBuilder(name);
+                    //productname.Replace(@"'", "\\'").Replace(@"\", "\\");
+                    //string mrp = searchtxt.Text.Split('@')[1];
+                    string id= searchtxt.Text.Split('#')[1];
                     if (inventorydatagridview.RowCount == 0 && inventorydatagridview.ColumnCount == 0)
                     {
                         inventorydatagridview.Columns.Add("productid", "productid");
@@ -392,7 +393,7 @@ namespace Veiled_Kashmir_Admin_Panel
                         inventorydatagridview.Columns.Add("dealerprice", "dealerprice");
                         inventorydatagridview.Columns.Add("picture", "picture");
 
-                        dr = obj.Query("select productid,productname,detail1,detail2,price,mrp,dealerprice,picture from products where productname='" + productname + "' and mrp='" + mrp + "'");
+                        dr = obj.Query("select productid,productname,detail1,detail2,price,mrp,dealerprice,picture from products where productid='" + id + "'");
                         dr.Read();
                         inventorydatagridview.Rows.Add(dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), "1", "10", dr[5].ToString(), dr[6].ToString(), dr[7].ToString());
                         obj.closeConnection();
@@ -401,7 +402,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     }
                     else
                     {
-                        dr = obj.Query("select productid,productname,detail1,detail2,price,mrp,dealerprice,picture from products where productname='" + productname + "' and mrp='" + mrp + "'");
+                        dr = obj.Query("select productid,productname,detail1,detail2,price,mrp,dealerprice,picture from products where productid='" + id + "'");
                         dr.Read();
                         inventorydatagridview.Rows.Add(dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), "1", "10", dr[5].ToString(), dr[6].ToString(), dr[7].ToString());
                         obj.closeConnection();
@@ -449,19 +450,21 @@ namespace Veiled_Kashmir_Admin_Panel
                     search.ReportProgress(10);
                     AutoCompleteStringCollection col1 = new AutoCompleteStringCollection();
 
-                    cmd = new MySqlCommand("Select concat(productname,' @',mrp) as tagss from products where productid>9999", con);
-
-                    con.Open();
-                    search.ReportProgress(30);
-                    MySqlDataReader data = cmd.ExecuteReader();
-                    while (data.Read())
+                    cmd = new MySqlCommand("Select concat_ws(' ',productname,'(',detail1,detail2,')','@',mrp,'#',productid) as tag from products where productid>9999", con);
+                    try
                     {
-                        string sname = data.GetString("tagss");
-                        col1.Add(sname);
-                    }
-                    search.ReportProgress(90);
-                    con.Close();
-                    a.Result = col1;
+                        con.Open();
+                        search.ReportProgress(30);
+                        MySqlDataReader data = cmd.ExecuteReader();
+                        while (data.Read())
+                        {
+                            string sname = data.GetString("tag");
+                            col1.Add(sname);
+                        }
+                        search.ReportProgress(90);
+                        con.Close();
+                        a.Result = col1;
+                    }catch(Exception ex) { MessageBox.Show(ex.Message); }
                     
                 };
                 search.ProgressChanged += (o, c) =>
@@ -484,6 +487,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     userinfo.col = b.Result as AutoCompleteStringCollection;
                     loadinglbl.Visible = false;
                     searchtxt.Enabled = true;
+                    searchtxt.Text = "";
                     refresh.Enabled = true;
                     searchtxt.AutoCompleteCustomSource = userinfo.col;
                 };

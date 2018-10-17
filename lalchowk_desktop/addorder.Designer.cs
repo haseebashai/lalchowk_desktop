@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.searchlbl = new System.Windows.Forms.Label();
             this.pintxt = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -312,7 +312,7 @@
             this.searchtxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.searchtxt.Location = new System.Drawing.Point(12, 31);
             this.searchtxt.Name = "searchtxt";
-            this.searchtxt.Size = new System.Drawing.Size(456, 20);
+            this.searchtxt.Size = new System.Drawing.Size(520, 20);
             this.searchtxt.TabIndex = 13;
             // 
             // inventorydatagridview
@@ -320,14 +320,14 @@
             this.inventorydatagridview.AllowUserToAddRows = false;
             this.inventorydatagridview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.inventorydatagridview.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.inventorydatagridview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.inventorydatagridview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.inventorydatagridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.inventorydatagridview.Location = new System.Drawing.Point(12, 62);
             this.inventorydatagridview.Name = "inventorydatagridview";
@@ -339,7 +339,7 @@
             // 
             this.loadinglbl.AutoSize = true;
             this.loadinglbl.ForeColor = System.Drawing.Color.Red;
-            this.loadinglbl.Location = new System.Drawing.Point(471, 8);
+            this.loadinglbl.Location = new System.Drawing.Point(543, 9);
             this.loadinglbl.Name = "loadinglbl";
             this.loadinglbl.Size = new System.Drawing.Size(54, 13);
             this.loadinglbl.TabIndex = 83;
@@ -440,7 +440,7 @@
             this.addpbtn.BackColor = System.Drawing.Color.Transparent;
             this.addpbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.addpbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addpbtn.Location = new System.Drawing.Point(474, 26);
+            this.addpbtn.Location = new System.Drawing.Point(546, 26);
             this.addpbtn.Name = "addpbtn";
             this.addpbtn.Size = new System.Drawing.Size(82, 29);
             this.addpbtn.TabIndex = 95;
@@ -453,7 +453,7 @@
             this.refresh.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.refresh;
             this.refresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.refresh.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.refresh.Location = new System.Drawing.Point(443, 4);
+            this.refresh.Location = new System.Drawing.Point(515, 5);
             this.refresh.Name = "refresh";
             this.refresh.Size = new System.Drawing.Size(21, 21);
             this.refresh.TabIndex = 98;
@@ -465,7 +465,7 @@
             this.label15.AutoSize = true;
             this.label15.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(377, 9);
+            this.label15.Location = new System.Drawing.Point(449, 10);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(60, 13);
             this.label15.TabIndex = 99;
