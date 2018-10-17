@@ -46,7 +46,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 try
                 {
 
-                    dr = obj.Query("select distinct concat(pincode,':  ',area) as pincode from pincodes order by pincode asc");
+                    dr = obj.Query("select distinct concat(pincode,':  ',area) as pincode from pincodes order by id asc");
                     DataTable dt = new DataTable();
                     dt.Columns.Add("pincode", typeof(String));
                     dt.Load(dr);
@@ -277,8 +277,8 @@ namespace Veiled_Kashmir_Admin_Panel
                     DataGridViewRow row = this.inventorydatagridview.Rows[e.RowIndex];
                     dp.SizeMode = PictureBoxSizeMode.StretchImage;
                     dp.ImageLocation = "http://lalchowk.in/lalchowk/pictures/" + row.Cells["picture"].Value.ToString();
-                    
-                   
+
+
                 }
             } catch { }
         }
@@ -396,6 +396,8 @@ namespace Veiled_Kashmir_Admin_Panel
                         dr.Read();
                         inventorydatagridview.Rows.Add(dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), "1", "10", dr[5].ToString(), dr[6].ToString(), dr[7].ToString());
                         obj.closeConnection();
+                        amounttxt.Text = inventorydatagridview.Rows[0].Cells[4].Value.ToString();
+                        counttxt.Text = inventorydatagridview.Rows[0].Cells[5].Value.ToString();
                     }
                     else
                     {
@@ -403,15 +405,31 @@ namespace Veiled_Kashmir_Admin_Panel
                         dr.Read();
                         inventorydatagridview.Rows.Add(dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), "1", "10", dr[5].ToString(), dr[6].ToString(), dr[7].ToString());
                         obj.closeConnection();
+                        int amount=0,count=0;
+                        for (int i = 0; i < inventorydatagridview.RowCount; i++)
+                        {
+
+                            amount = int.Parse(amounttxt.Text);
+                            amount = amount + int.Parse(inventorydatagridview.Rows[i].Cells[4].Value.ToString());
+                            count = int.Parse(counttxt.Text);
+                            count = count + int.Parse(inventorydatagridview.Rows[i].Cells[5].Value.ToString());
+
+                        }
+                        amounttxt.Text = amount.ToString();
+                        counttxt.Text = count.ToString();
                     }
                     searchtxt.Text = "";
                     addorderbtn.Enabled = true;
+                      
                 }
             }catch(Exception ex) { MessageBox.Show(ex.Message); obj.closeConnection(); }
             Cursor = Cursors.Arrow;
         }
 
-      
+        private void label15_Click(object sender, EventArgs e)
+        {
+            refresh_Click(null, null);
+        }
 
         private void refresh_Click(object sender, EventArgs e)
         {
@@ -431,14 +449,14 @@ namespace Veiled_Kashmir_Admin_Panel
                     search.ReportProgress(10);
                     AutoCompleteStringCollection col1 = new AutoCompleteStringCollection();
 
-                    cmd = new MySqlCommand("Select concat(productname,' @',mrp) as tags from products where productid>9999", con);
+                    cmd = new MySqlCommand("Select concat(productname,' @',mrp) as tagss from products where productid>9999", con);
 
                     con.Open();
                     search.ReportProgress(30);
                     MySqlDataReader data = cmd.ExecuteReader();
                     while (data.Read())
                     {
-                        string sname = data.GetString("tags");
+                        string sname = data.GetString("tagss");
                         col1.Add(sname);
                     }
                     search.ReportProgress(90);

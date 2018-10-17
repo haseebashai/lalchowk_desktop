@@ -42,20 +42,23 @@ namespace Veiled_Kashmir_Admin_Panel
                     AutoCompleteStringCollection col1 = new AutoCompleteStringCollection();
 
                     cmd = new MySqlCommand("Select concat(productname,' @',mrp) as tags from products where productid>9999", con);
-
-                    con.Open();
-                    MySqlDataReader data = cmd.ExecuteReader();
                     try
                     {
-                        while (data.Read())
+                        con.Open();
+                        cmd.CommandTimeout = 60;
+                        MySqlDataReader data = cmd.ExecuteReader();
+                        try
                         {
-                            string sname = data.GetString("tags");
-                            col1.Add(sname);
+                            while (data.Read())
+                            {
+                                string sname = data.GetString("tags");
+                                col1.Add(sname);
+                            }
                         }
-                    }
-                    catch (Exception ex) { MessageBox.Show(ex.Message); }
-                    con.Close();
-                    a.Result = col1;
+                        catch (Exception ex) { MessageBox.Show(ex.Message); }
+                        con.Close();
+                        a.Result = col1;
+                    }catch(Exception ex) { MessageBox.Show(ex.Message); }
 
                 };
                 search.RunWorkerCompleted += (o, b) =>

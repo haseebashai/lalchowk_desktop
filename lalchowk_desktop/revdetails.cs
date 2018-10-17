@@ -215,8 +215,10 @@ namespace Veiled_Kashmir_Admin_Panel
                     try
                     {
                         string shipp = shiptxt.Text.Split(' ')[1];
-                        pstxt.Text = "Rs. "+((int.Parse(sale) - int.Parse(purchase)) + int.Parse(shipp)).ToString();
-                        ppctxt.Text = "Rs. "+((int.Parse(sale) - int.Parse(purchase)) - int.Parse(shipp)).ToString();
+                        int proship = ((int.Parse(sale) - int.Parse(purchase)) + int.Parse(shipp));
+                        pstxt.Text = "Rs. " + proship;
+                        //pstxt.Text = "Rs. "+((int.Parse(sale) - int.Parse(purchase)) + int.Parse(shipp)).ToString();
+                        ppctxt.Text = "Rs. "+((proship) - int.Parse(petrol));
                         pctxt.Text = "Rs. "+petrol;
                     }catch { }
                 }
@@ -224,6 +226,11 @@ namespace Veiled_Kashmir_Admin_Panel
                 {
                     loadinglbl.Text = "Loading 90%";
                     object[] arg6 = (object[])c.UserState;
+                    string expenses= exptxt.Text.Split(' ')[1];
+                    string pt= ppctxt.Text.Split(' ')[1];
+                    petxt.Text = "Rs. " + ((int.Parse(pt) - (int.Parse(expenses))));
+
+
                     workdaystxt.Text = arg6[0].ToString()+ " Days";
                     
                 }

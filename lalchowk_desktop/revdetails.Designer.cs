@@ -56,6 +56,8 @@
             this.loadinglbl = new System.Windows.Forms.Label();
             this.workdaystxt = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.petxt = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.monthlydataview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.expensesview)).BeginInit();
             this.SuspendLayout();
@@ -107,9 +109,9 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(641, 303);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(84, 20);
+            this.label2.Size = new System.Drawing.Size(133, 20);
             this.label2.TabIndex = 25;
-            this.label2.Text = "Petrol cost";
+            this.label2.Text = "Actual Petrol cost";
             // 
             // label3
             // 
@@ -145,7 +147,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(641, 371);
+            this.label6.Location = new System.Drawing.Point(641, 373);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(118, 20);
             this.label6.TabIndex = 29;
@@ -187,9 +189,9 @@
             this.exptxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.exptxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exptxt.ForeColor = System.Drawing.Color.Blue;
-            this.exptxt.Location = new System.Drawing.Point(833, 371);
+            this.exptxt.Location = new System.Drawing.Point(833, 373);
             this.exptxt.Name = "exptxt";
-            this.exptxt.Size = new System.Drawing.Size(75, 19);
+            this.exptxt.Size = new System.Drawing.Size(105, 19);
             this.exptxt.TabIndex = 36;
             // 
             // pctxt
@@ -199,7 +201,7 @@
             this.pctxt.ForeColor = System.Drawing.Color.Blue;
             this.pctxt.Location = new System.Drawing.Point(833, 303);
             this.pctxt.Name = "pctxt";
-            this.pctxt.Size = new System.Drawing.Size(75, 19);
+            this.pctxt.Size = new System.Drawing.Size(105, 19);
             this.pctxt.TabIndex = 37;
             // 
             // shiptxt
@@ -209,7 +211,7 @@
             this.shiptxt.ForeColor = System.Drawing.Color.Blue;
             this.shiptxt.Location = new System.Drawing.Point(833, 228);
             this.shiptxt.Name = "shiptxt";
-            this.shiptxt.Size = new System.Drawing.Size(75, 19);
+            this.shiptxt.Size = new System.Drawing.Size(105, 19);
             this.shiptxt.TabIndex = 38;
             // 
             // profittxt
@@ -219,7 +221,7 @@
             this.profittxt.ForeColor = System.Drawing.Color.Blue;
             this.profittxt.Location = new System.Drawing.Point(833, 186);
             this.profittxt.Name = "profittxt";
-            this.profittxt.Size = new System.Drawing.Size(75, 19);
+            this.profittxt.Size = new System.Drawing.Size(105, 19);
             this.profittxt.TabIndex = 39;
             // 
             // purchasetxt
@@ -229,7 +231,7 @@
             this.purchasetxt.ForeColor = System.Drawing.Color.Blue;
             this.purchasetxt.Location = new System.Drawing.Point(833, 144);
             this.purchasetxt.Name = "purchasetxt";
-            this.purchasetxt.Size = new System.Drawing.Size(75, 19);
+            this.purchasetxt.Size = new System.Drawing.Size(105, 19);
             this.purchasetxt.TabIndex = 40;
             // 
             // saletxt
@@ -239,7 +241,7 @@
             this.saletxt.ForeColor = System.Drawing.Color.Blue;
             this.saletxt.Location = new System.Drawing.Point(833, 102);
             this.saletxt.Name = "saletxt";
-            this.saletxt.Size = new System.Drawing.Size(86, 19);
+            this.saletxt.Size = new System.Drawing.Size(105, 19);
             this.saletxt.TabIndex = 41;
             // 
             // booksoldtxt
@@ -247,7 +249,7 @@
             this.booksoldtxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.booksoldtxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.booksoldtxt.ForeColor = System.Drawing.Color.Blue;
-            this.booksoldtxt.Location = new System.Drawing.Point(833, 409);
+            this.booksoldtxt.Location = new System.Drawing.Point(833, 445);
             this.booksoldtxt.Name = "booksoldtxt";
             this.booksoldtxt.Size = new System.Drawing.Size(75, 19);
             this.booksoldtxt.TabIndex = 43;
@@ -256,7 +258,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(641, 409);
+            this.label10.Location = new System.Drawing.Point(641, 445);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(165, 20);
             this.label10.TabIndex = 42;
@@ -269,7 +271,7 @@
             this.pstxt.ForeColor = System.Drawing.Color.Blue;
             this.pstxt.Location = new System.Drawing.Point(833, 267);
             this.pstxt.Name = "pstxt";
-            this.pstxt.Size = new System.Drawing.Size(75, 19);
+            this.pstxt.Size = new System.Drawing.Size(105, 19);
             this.pstxt.TabIndex = 45;
             // 
             // label8
@@ -287,16 +289,16 @@
             this.ppctxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ppctxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ppctxt.ForeColor = System.Drawing.Color.Blue;
-            this.ppctxt.Location = new System.Drawing.Point(833, 338);
+            this.ppctxt.Location = new System.Drawing.Point(833, 339);
             this.ppctxt.Name = "ppctxt";
-            this.ppctxt.Size = new System.Drawing.Size(75, 19);
+            this.ppctxt.Size = new System.Drawing.Size(105, 19);
             this.ppctxt.TabIndex = 47;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(678, 338);
+            this.label11.Location = new System.Drawing.Point(678, 339);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(123, 17);
             this.label11.TabIndex = 46;
@@ -318,7 +320,7 @@
             this.workdaystxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.workdaystxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.workdaystxt.ForeColor = System.Drawing.Color.Blue;
-            this.workdaystxt.Location = new System.Drawing.Point(833, 448);
+            this.workdaystxt.Location = new System.Drawing.Point(833, 484);
             this.workdaystxt.Name = "workdaystxt";
             this.workdaystxt.Size = new System.Drawing.Size(75, 19);
             this.workdaystxt.TabIndex = 50;
@@ -327,11 +329,32 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(641, 448);
+            this.label12.Location = new System.Drawing.Point(641, 484);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(182, 20);
             this.label12.TabIndex = 49;
             this.label12.Text = "Number of Delivery Days";
+            // 
+            // petxt
+            // 
+            this.petxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.petxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.petxt.ForeColor = System.Drawing.Color.Red;
+            this.petxt.Location = new System.Drawing.Point(833, 408);
+            this.petxt.Name = "petxt";
+            this.petxt.Size = new System.Drawing.Size(105, 19);
+            this.petxt.TabIndex = 52;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.Red;
+            this.label13.Location = new System.Drawing.Point(678, 408);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(115, 17);
+            this.label13.TabIndex = 51;
+            this.label13.Text = "Profit - Expenses";
             // 
             // revdetails
             // 
@@ -339,6 +362,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(975, 636);
+            this.Controls.Add(this.petxt);
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.workdaystxt);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.loadinglbl);
@@ -407,5 +432,7 @@
         private System.Windows.Forms.Label loadinglbl;
         private System.Windows.Forms.TextBox workdaystxt;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox petxt;
+        private System.Windows.Forms.Label label13;
     }
 }

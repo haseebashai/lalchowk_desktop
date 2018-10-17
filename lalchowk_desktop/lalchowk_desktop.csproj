@@ -207,6 +207,12 @@
     <Compile Include="messages.Designer.cs">
       <DependentUpon>messages.cs</DependentUpon>
     </Compile>
+    <Compile Include="printaddresses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="printaddresses.Designer.cs">
+      <DependentUpon>printaddresses.cs</DependentUpon>
+    </Compile>
     <Compile Include="products.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -400,6 +406,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="messages.resx">
       <DependentUpon>messages.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="printaddresses.resx">
+      <DependentUpon>printaddresses.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="products.resx">
       <DependentUpon>products.cs</DependentUpon>

@@ -49,6 +49,7 @@
             this.emailtxt = new System.Windows.Forms.TextBox();
             this.orderpnl = new System.Windows.Forms.Panel();
             this.dpnl = new System.Windows.Forms.Panel();
+            this.addresstxt = new System.Windows.Forms.TextBox();
             this.cancelbtn = new System.Windows.Forms.Button();
             this.smsbtn = new System.Windows.Forms.Button();
             this.deupdbtn = new System.Windows.Forms.Button();
@@ -57,16 +58,13 @@
             this.cnfbtn = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.orderlbl = new System.Windows.Forms.Label();
-            this.contactlbl = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.namelbl = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.amountlbl = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.address1lbl = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.billlbl = new System.Windows.Forms.Label();
             this.orderdetailview = new System.Windows.Forms.DataGridView();
@@ -294,6 +292,7 @@
             // 
             // dpnl
             // 
+            this.dpnl.Controls.Add(this.addresstxt);
             this.dpnl.Controls.Add(this.cancelbtn);
             this.dpnl.Controls.Add(this.smsbtn);
             this.dpnl.Controls.Add(this.deupdbtn);
@@ -302,16 +301,13 @@
             this.dpnl.Controls.Add(this.cnfbtn);
             this.dpnl.Controls.Add(this.label5);
             this.dpnl.Controls.Add(this.orderlbl);
-            this.dpnl.Controls.Add(this.contactlbl);
             this.dpnl.Controls.Add(this.panel2);
-            this.dpnl.Controls.Add(this.namelbl);
             this.dpnl.Controls.Add(this.label8);
             this.dpnl.Controls.Add(this.amountlbl);
             this.dpnl.Controls.Add(this.label10);
             this.dpnl.Controls.Add(this.panel3);
             this.dpnl.Controls.Add(this.label11);
             this.dpnl.Controls.Add(this.label9);
-            this.dpnl.Controls.Add(this.address1lbl);
             this.dpnl.Controls.Add(this.panel4);
             this.dpnl.Controls.Add(this.billlbl);
             this.dpnl.Location = new System.Drawing.Point(3, 374);
@@ -319,6 +315,16 @@
             this.dpnl.Size = new System.Drawing.Size(1156, 238);
             this.dpnl.TabIndex = 26;
             this.dpnl.Visible = false;
+            // 
+            // addresstxt
+            // 
+            this.addresstxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.addresstxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addresstxt.Location = new System.Drawing.Point(355, 50);
+            this.addresstxt.Multiline = true;
+            this.addresstxt.Name = "addresstxt";
+            this.addresstxt.Size = new System.Drawing.Size(219, 178);
+            this.addresstxt.TabIndex = 32;
             // 
             // cancelbtn
             // 
@@ -410,16 +416,6 @@
             this.orderlbl.TabIndex = 3;
             this.orderlbl.Text = "OrID";
             // 
-            // contactlbl
-            // 
-            this.contactlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.contactlbl.ForeColor = System.Drawing.Color.Red;
-            this.contactlbl.Location = new System.Drawing.Point(360, 101);
-            this.contactlbl.Name = "contactlbl";
-            this.contactlbl.Size = new System.Drawing.Size(150, 19);
-            this.contactlbl.TabIndex = 23;
-            this.contactlbl.Text = "contact";
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.LightGray;
@@ -427,16 +423,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1, 178);
             this.panel2.TabIndex = 5;
-            // 
-            // namelbl
-            // 
-            this.namelbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.namelbl.ForeColor = System.Drawing.Color.Blue;
-            this.namelbl.Location = new System.Drawing.Point(360, 77);
-            this.namelbl.Name = "namelbl";
-            this.namelbl.Size = new System.Drawing.Size(210, 20);
-            this.namelbl.TabIndex = 20;
-            this.namelbl.Text = "name";
             // 
             // label8
             // 
@@ -496,16 +482,6 @@
             this.label9.Size = new System.Drawing.Size(66, 12);
             this.label9.TabIndex = 12;
             this.label9.Text = "Address Detail";
-            // 
-            // address1lbl
-            // 
-            this.address1lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.address1lbl.ForeColor = System.Drawing.Color.Red;
-            this.address1lbl.Location = new System.Drawing.Point(360, 124);
-            this.address1lbl.Name = "address1lbl";
-            this.address1lbl.Size = new System.Drawing.Size(210, 89);
-            this.address1lbl.TabIndex = 13;
-            this.address1lbl.Text = "address1";
             // 
             // panel4
             // 
@@ -623,14 +599,11 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button cnfbtn;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label address1lbl;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label amountlbl;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label namelbl;
-        private System.Windows.Forms.Label contactlbl;
         private System.Windows.Forms.TextBox paymenttxt;
         private System.Windows.Forms.TextBox statustxt;
         private System.Windows.Forms.Label label3;
@@ -656,5 +629,6 @@
         private System.Windows.Forms.TextBox addfiltxt;
         private System.Windows.Forms.Button smsbtn;
         private System.Windows.Forms.Button cancelbtn;
+        private System.Windows.Forms.TextBox addresstxt;
     }
 }

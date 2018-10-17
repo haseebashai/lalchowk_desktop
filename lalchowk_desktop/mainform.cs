@@ -747,8 +747,7 @@ namespace Veiled_Kashmir_Admin_Panel
         string id,contact,name,email,encmail;
         private void placeddataview_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
-            if (e.RowIndex >-1)
+            if (e.RowIndex >-1 && e.ColumnIndex >0 )
             {
                 plbl.Visible = true;
                 shipbtn.Visible = false;
@@ -773,6 +772,32 @@ namespace Veiled_Kashmir_Admin_Panel
                     products.CancelAsync();
                 else if ( !products.CancellationPending)
                 products.RunWorkerAsync(id);
+            }else if (e.ColumnIndex==0)
+            {
+                DataGridViewRow row = this.placeddataview.Rows[e.RowIndex];
+                string oid= row.Cells["orderid"].Value.ToString();
+                editorderdetails edit = new editorderdetails(oid);
+                edit.ShowDialog();
+                try
+                {
+                    Cursor = Cursors.WaitCursor;
+                    con.Open();
+
+                    adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='placed';", con);
+                    dt = new DataTable();
+                    adap.Fill(dt);
+                    con.Close();
+                    bsource = new BindingSource();
+                    bsource.DataSource = dt;
+                    placeddataview.DataSource = bsource;
+                    placeddataview.Columns["shipdate"].Visible = false;
+                    placeddataview.Columns["deliverdate"].Visible = false;
+                    placeddataview.Columns["paymentconfirmed"].Visible = false;
+                    placeddataview.Columns["email"].Visible = false;
+                    placeddataview.Columns["transanctionid"].Visible = false;
+                    placeddataview.Columns["paymenttype"].Visible = false;
+                }catch { }
+                Cursor = Cursors.Arrow;
             }
         }
 
@@ -1007,7 +1032,7 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             
 
-            if (e.RowIndex >=0)
+            if (e.RowIndex >=0 && e.ColumnIndex >0)
             {
                 plbl.Visible = true;
                 shipbtn.Visible = false;
@@ -1061,6 +1086,62 @@ namespace Veiled_Kashmir_Admin_Panel
             retolbl.Visible = false;
             clearlbl.Visible = false;
 
+        }
+
+        bool add = false;
+        private void printaddbtn_Click(object sender, EventArgs e)
+        {
+
+
+            try
+            {
+                List<string> addresses = new List<string>();
+                int amount = 0;
+                foreach (DataGridViewRow row in shippeddataview.Rows)
+                {
+                    if (row.Cells[0].Value != null && row.Cells[0].Value.Equals(true)) //0 is the column number of checkbox
+                    {
+                        amount = int.Parse(row.Cells["amount"].Value.ToString()) + int.Parse(row.Cells["shipping"].Value.ToString());
+                        addresses.Add("ORD"+row.Cells["orderid"].Value.ToString() +"\r\n"+ row.Cells["name"].Value.ToString() + "\r\n" + row.Cells["address1"].Value.ToString() + " " + row.Cells["address2"].Value.ToString() +
+                           "\r\n" + row.Cells["pincode"].Value.ToString() + "\r\n" + row.Cells["contact"].Value.ToString()+ "\r\nPlease pay ₹"+amount) ;
+
+
+                        //    row.DefaultCellStyle.SelectionBackColor = Color.LightSlateGray;
+                        //MessageBox.Show(row.Cells["name"].Value.ToString() + "\r\n" + row.Cells["address1"].Value.ToString() + " " + row.Cells["address2"].Value.ToString() +
+                        //    "\r\n" + row.Cells["pincode"].Value.ToString() + "\r\n" + row.Cells["contact"].Value.ToString());
+
+                        //for (int i = 0; i < shippeddataview.SelectedRows.Count; i++)
+                        //{
+                        //}
+                        add = true;
+                    }
+                }
+                if (add)
+                {
+                    printaddresses pad = new printaddresses(addresses);
+                    pad.Show();
+                    
+                }
+                else
+                {
+                    MessageBox.Show("Please select the order first.", "Error!");
+                }
+            }catch(Exception ex) { MessageBox.Show(ex.Message); }
+
+        }
+
+        private void shippeddataview_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            //foreach (DataGridViewRow row in shippeddataview.Rows)
+            //{
+            //    if (row.Cells[0].Value != null && row.Cells[0].Value.Equals(true)) //3 is the column number of checkbox
+            //    {
+            //        row.Selected = true;
+            //        row.DefaultCellStyle.SelectionBackColor = Color.LightSlateGray;
+            //    }
+            //    else
+            //        row.Selected = false;
+            //}
         }
 
         private void cartbtn_Click(object sender, EventArgs e)
@@ -1275,6 +1356,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 loadinglbl.Visible = false;
                
                 placedh.Visible = true;
+                
 
                 placeddataview.DataSource = bsource;
                 try
@@ -1297,7 +1379,14 @@ namespace Veiled_Kashmir_Admin_Panel
                     placeddataview.Columns["paymenttype"].Visible = false;
                 }
                 catch { }
+                DataGridViewButtonColumn edit = new DataGridViewButtonColumn();
+                edit.UseColumnTextForButtonValue = true;
+                edit.Name = "Edit";
+                edit.DataPropertyName = "Edit";
+                edit.Text = "Edit";
+                placeddataview.Columns.Add(edit);
                 placeddataview.Visible = true;
+                
             }
 
             Object[] arg = (object[])e.UserState;
@@ -1381,11 +1470,25 @@ namespace Veiled_Kashmir_Admin_Panel
                     loadinglbl.Visible = false;
                     pageload.Visible = false;
                     placedh.Visible = true;
-                  /*  attention.Visible = true; placedlbl.Visible = true; */deliveredh.Visible = true; billsh.Visible = true; //orderslbl.Visible = true; 
+                    placedh.Text = "Orders currently placed: " + placeddataview.RowCount;
+                    /*  attention.Visible = true; placedlbl.Visible = true; */
+                    deliveredh.Visible = true; billsh.Visible = true; //orderslbl.Visible = true; 
 
                     placeddataview.DataSource = bsource;
                     try
                     {
+                        DataGridViewCheckBoxColumn checkColumn = new DataGridViewCheckBoxColumn();
+                        checkColumn.Name = "select_address";
+                        checkColumn.HeaderText = "Print_Address";
+                        // checkColumn.Width = 100;
+                        checkColumn.ReadOnly = false;
+                     //   checkColumn.FillWeight = 10; //if the datagridview is resized (on form resize) the checkbox won't take up too much; value is relative to the other columns' fill values
+                        shippeddataview.Columns.Add(checkColumn);
+                        printaddbtn.Visible = true;
+
+                        
+
+
                         placeddataview.Columns["shipdate"].Visible = false;
                         placeddataview.Columns["deliverdate"].Visible = false;
                         placeddataview.Columns["paymentconfirmed"].Visible = false;
@@ -1412,7 +1515,8 @@ namespace Veiled_Kashmir_Admin_Panel
                     {
                         shippeddataview.Visible = true;
                         shippedh.Visible = true;
-                     //   shippedlbl.Visible = true;
+                        shippedh.Text = "Orders currently shipped: " + shippeddataview.RowCount;
+                        //   shippedlbl.Visible = true;
                     }
 
                     //attentionlbl.Text = "> " + atten + " Order(s) need your Attention ASAP!";
@@ -1426,6 +1530,8 @@ namespace Veiled_Kashmir_Admin_Panel
                     }
                     ordersdlbl.Text = order;
                     billslbl.Text = billno;
+
+                   
                 }
 
             }          
@@ -1438,9 +1544,12 @@ namespace Veiled_Kashmir_Admin_Panel
             loadinglbl.Visible = false;
             pageload.Visible = false;
             placedh.Visible = true;
+            placedh.Text = "Orders currently placed: " + placeddataview.RowCount;
             shippedh.Visible = true;
-          //  shippedlbl.Visible = true;
-           /* attention.Visible = true; placedlbl.Visible = true;*/ deliveredh.Visible = true; billsh.Visible = true; //orderslbl.Visible = true; 
+            shippedh.Text = "Orders currently shipped: " + shippeddataview.RowCount;
+            //  shippedlbl.Visible = true;
+            /* attention.Visible = true; placedlbl.Visible = true;*/
+            deliveredh.Visible = true; billsh.Visible = true; //orderslbl.Visible = true; 
 
             placeddataview.DataSource = bsource;
             try { 
@@ -1454,8 +1563,25 @@ namespace Veiled_Kashmir_Admin_Panel
             catch { }
 
             shippeddataview.DataSource = bsource2;
-            try { 
-            shippeddataview.Columns["shipdate"].Visible = false;
+            try {
+                DataGridViewCheckBoxColumn checkColumn = new DataGridViewCheckBoxColumn();
+                checkColumn.Name = "select_address";
+                checkColumn.HeaderText = "Print_Address";
+                // checkColumn.Width = 100;
+                checkColumn.ReadOnly = false;
+                //   checkColumn.FillWeight = 10; //if the datagridview is resized (on form resize) the checkbox won't take up too much; value is relative to the other columns' fill values
+                shippeddataview.Columns.Add(checkColumn);
+                printaddbtn.Visible = true;
+
+                DataGridViewButtonColumn edit = new DataGridViewButtonColumn();
+                edit.UseColumnTextForButtonValue = true;
+                edit.Name = "Edit";
+                edit.DataPropertyName = "Edit";
+                edit.Text = "Edit";
+                placeddataview.Columns.Add(edit);
+
+
+                shippeddataview.Columns["shipdate"].Visible = false;
             shippeddataview.Columns["deliverdate"].Visible = false;
             shippeddataview.Columns["paymentconfirmed"].Visible = false;
             shippeddataview.Columns["email"].Visible = false;

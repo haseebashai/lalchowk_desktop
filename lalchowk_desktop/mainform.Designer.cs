@@ -64,6 +64,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.navtxt = new System.Windows.Forms.Label();
             this.cntpnl = new System.Windows.Forms.Panel();
+            this.printaddbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.billmismatchlbl = new System.Windows.Forms.Label();
             this.clearlbl = new System.Windows.Forms.Label();
             this.retolbl = new System.Windows.Forms.Label();
@@ -551,6 +552,7 @@
             // cntpnl
             // 
             this.cntpnl.BackColor = System.Drawing.Color.White;
+            this.cntpnl.Controls.Add(this.printaddbtn);
             this.cntpnl.Controls.Add(this.billmismatchlbl);
             this.cntpnl.Controls.Add(this.clearlbl);
             this.cntpnl.Controls.Add(this.retolbl);
@@ -575,6 +577,23 @@
             this.cntpnl.Name = "cntpnl";
             this.cntpnl.Size = new System.Drawing.Size(1162, 722);
             this.cntpnl.TabIndex = 12;
+            // 
+            // printaddbtn
+            // 
+            this.printaddbtn.AutoSize = true;
+            this.printaddbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.printaddbtn.Depth = 0;
+            this.printaddbtn.Location = new System.Drawing.Point(468, 637);
+            this.printaddbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.printaddbtn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.printaddbtn.Name = "printaddbtn";
+            this.printaddbtn.Primary = false;
+            this.printaddbtn.Size = new System.Drawing.Size(131, 36);
+            this.printaddbtn.TabIndex = 57;
+            this.printaddbtn.Text = "Print Addresses";
+            this.printaddbtn.UseVisualStyleBackColor = true;
+            this.printaddbtn.Visible = false;
+            this.printaddbtn.Click += new System.EventHandler(this.printaddbtn_Click);
             // 
             // billmismatchlbl
             // 
@@ -681,6 +700,7 @@
             this.shippeddataview.Visible = false;
             this.shippeddataview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.shippeddataview_CellClick);
             this.shippeddataview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.shippeddataview_CellContentClick);
+            this.shippeddataview.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.shippeddataview_CellValueChanged);
             // 
             // ordersdlbl
             // 
@@ -1011,5 +1031,6 @@
         private System.Windows.Forms.Label sellreqlbl;
         private MaterialSkin.Controls.MaterialFlatButton blogbtn;
         private System.Windows.Forms.Label billmismatchlbl;
+        private MaterialSkin.Controls.MaterialFlatButton printaddbtn;
     }
 }

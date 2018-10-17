@@ -69,14 +69,14 @@ namespace Veiled_Kashmir_Admin_Panel
         private void smsbtn_Click(object sender, EventArgs e)
         {
             dialogcontainer dg = new dialogcontainer();
-            sendsms sms = new sendsms(contactlbl.Text,"",namelbl.Text);
+            sendsms sms = new sendsms(contactlbl,"",addresstxt.Text);
             sms.TopLevel = false;
             dg.dialogpnl.Controls.Add(sms);
             dg.lbl.Text = "Send SMS";
             dg.Text = "Send SMS";
             dg.Size = new Size(600, 600);
             sms.numbertxt.Font = new Font("MS Sans Serif", 9, FontStyle.Regular);
-            sms.smstxt.Text = "Dear "+namelbl.Text+", We would love to hear from you regarding your recent purchase and our services. Please click on the following link and leave your feedback. https://bit.ly/lalchowkonline";
+            sms.smstxt.Text = "Dear "+addresstxt.Text+", We would love to hear from you regarding your recent purchase and our services. Please click on the following link and leave your feedback. https://bit.ly/lalchowkonline";
             sms.smsnpnl.Visible = false;
             sms.txtpnl.Location = new Point(35, 10);
             dg.Show();
@@ -166,16 +166,16 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void updbtn_Click(object sender, EventArgs e)
         {
-            dialogcontainer dg = new dialogcontainer();
+           // dialogcontainer dg = new dialogcontainer();
             editorderdetails edit = new editorderdetails(orderlbl.Text);
-            edit.TopLevel = false;
-            dg.Size = new Size(628, 511);
-            dg.dialogpnl.Controls.Add(edit);
+            edit.TopLevel = true;
+            //dg.Size = new Size(628, 511);
+           // dg.dialogpnl.Controls.Add(edit);
            
-            dg.Text = "Edit Order details";
+            //dg.Text = "Edit Order details";
 
-            edit.Show();
-            dg.ShowDialog();
+            edit.ShowDialog();
+            //dg.ShowDialog();
             Cursor = Cursors.WaitCursor;
             readorders();
             ordergridview.DataSource = bsource;
@@ -234,16 +234,20 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             formlbl.Visible = false;
             panel1.Visible = true;
-            ordergridview.Visible = true;
-            ordergridview.DataSource = bsource;
-            ordergridview.Columns["shipdate"].Visible = false;
-            ordergridview.Columns["deliverdate"].Visible = false;
-            ordergridview.Columns["paymentconfirmed"].Visible = false;
-            ordergridview.Columns["email"].Visible = false;
-            ordergridview.Columns["paymenttype"].Visible = false;
-            orlbl.Text = ordervar;
-            refresh.Enabled = true;
-            ordergridview.Enabled = true;
+            try
+            {
+                ordergridview.Visible = true;
+                ordergridview.DataSource = bsource;
+                ordergridview.Columns["shipdate"].Visible = false;
+                ordergridview.Columns["deliverdate"].Visible = false;
+                ordergridview.Columns["paymentconfirmed"].Visible = false;
+                ordergridview.Columns["email"].Visible = false;
+                ordergridview.Columns["paymenttype"].Visible = false;
+                orlbl.Text = ordervar;
+                refresh.Enabled = true;
+                ordergridview.Enabled = true;
+            }
+            catch { }
             Cursor = Cursors.Arrow;
         }
 
@@ -297,7 +301,7 @@ namespace Veiled_Kashmir_Admin_Panel
         private void billbtn_Click(object sender, EventArgs e)
         {
            
-                addbill ab = new addbill(orderlbl.Text, email, amountlbl.Text,contactlbl.Text,shipping,namelbl.Text);
+                addbill ab = new addbill(orderlbl.Text, email, amountlbl.Text,contactlbl,shipping,addresstxt.Text);
                 ab.Show();
                 productid = null;
             
@@ -389,7 +393,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
        
 
-        string orderidcount;
+        string orderidcount, contactlbl;
         private void ordergridview_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -407,11 +411,10 @@ namespace Veiled_Kashmir_Admin_Panel
                     orderid = row.Cells["orderid"].Value.ToString();
                     email = row.Cells["mail"].Value.ToString();
                     shipping = row.Cells["shipping"].Value.ToString();
-                    namelbl.Text = row.Cells["name"].Value.ToString();
-                    address1lbl.Text = row.Cells["address1"].Value.ToString() +", "+ row.Cells["address2"].Value.ToString()+
-                     ", "+ row.Cells["city"].Value.ToString()+", "+ row.Cells["pincode"].Value.ToString();
-                    string status= row.Cells["status"].Value.ToString();
-                    contactlbl.Text = row.Cells["contact"].Value.ToString();
+                    addresstxt.Text = row.Cells["name"].Value.ToString()+"\r\n"+ row.Cells["address1"].Value.ToString() +" "+ row.Cells["address2"].Value.ToString()+
+                     "\r\n"+ row.Cells["city"].Value.ToString()+", "+ row.Cells["pincode"].Value.ToString()+"\r\n"+ row.Cells["contact"].Value.ToString();
+                    contactlbl = row.Cells["contact"].Value.ToString();
+                    string status= row.Cells["status"].Value.ToString();                    
                     string amount = row.Cells["amount"].Value.ToString();
                     int result = int.Parse(amount) + int.Parse(shipping);
                     amountlbl.Text = result.ToString();
