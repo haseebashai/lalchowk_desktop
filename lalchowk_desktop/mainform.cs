@@ -907,6 +907,9 @@ namespace Veiled_Kashmir_Admin_Panel
                     shippeddataview.Columns["email"].Visible = false;
                     shippeddataview.Columns["transanctionid"].Visible = false;
                     shippeddataview.Columns["paymenttype"].Visible = false;
+                        placedh.Text = "Orders currently placed: " + placeddataview.RowCount;
+                       
+                        shippedh.Text = "Orders currently shipped: " + shippeddataview.RowCount;
                     }
                     catch { }
                     shippeddataview.Visible = true;
@@ -1013,6 +1016,9 @@ namespace Veiled_Kashmir_Admin_Panel
                         placeddataview.Columns["transanctionid"].Visible = false;
                         placeddataview.Columns["paymenttype"].Visible = false;
 
+                        placedh.Text = "Orders currently placed: " + placeddataview.RowCount;
+
+                        shippedh.Text = "Orders currently shipped: " + shippeddataview.RowCount;
                     }
                     catch { }
 
@@ -1103,7 +1109,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     {
                         amount = int.Parse(row.Cells["amount"].Value.ToString()) + int.Parse(row.Cells["shipping"].Value.ToString());
                         addresses.Add("ORD"+row.Cells["orderid"].Value.ToString() +"\r\n"+ row.Cells["name"].Value.ToString() + "\r\n" + row.Cells["address1"].Value.ToString() + " " + row.Cells["address2"].Value.ToString() +
-                           "\r\n" + row.Cells["pincode"].Value.ToString() + "\r\n" + row.Cells["contact"].Value.ToString()+ "\r\nPlease pay ₹"+amount) ;
+                           "\r\n" + row.Cells["pincode"].Value.ToString() + "\r\n" + row.Cells["contact"].Value.ToString()+ "\r\n>> Please pay ₹"+amount) ;
 
 
                         //    row.DefaultCellStyle.SelectionBackColor = Color.LightSlateGray;

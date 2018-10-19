@@ -56,9 +56,9 @@
             // 
             // printbtn
             // 
-            this.printbtn.Location = new System.Drawing.Point(669, 587);
+            this.printbtn.Location = new System.Drawing.Point(669, 608);
             this.printbtn.Name = "printbtn";
-            this.printbtn.Size = new System.Drawing.Size(120, 57);
+            this.printbtn.Size = new System.Drawing.Size(137, 50);
             this.printbtn.TabIndex = 1;
             this.printbtn.Text = "&Print";
             this.printbtn.UseVisualStyleBackColor = true;

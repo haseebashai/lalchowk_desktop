@@ -44,7 +44,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         void printdoc_PrintPage(object sender, PrintPageEventArgs e)
         {
-            e.Graphics.DrawImage(bmp, 0, 0);
+            e.Graphics.DrawImage(bmp, 9, 3);
         }
 
         //public void Print(Panel pnl)
@@ -64,15 +64,16 @@ namespace Veiled_Kashmir_Admin_Panel
                 {
                     Text = addresses1[i],
                     Multiline = true,
-                    Size = new Size(350, 250),
-                    Font = new Font(Font.FontFamily, 18, FontStyle.Regular),
-                    BorderStyle = BorderStyle.None,
+                    Size = new Size(380, 230),
+                    Font = new Font(Font.FontFamily, 17, FontStyle.Regular),
+                    BorderStyle = BorderStyle.FixedSingle,
                     BackColor = Color.White,
                     ReadOnly = false,
-
+                    
                 };
                
                 tpnl.Controls.Add(t1);
+                
 
             //    MessageBox.Show(addresses1[i] + "1"+ " " +addresses1.Count);
 
