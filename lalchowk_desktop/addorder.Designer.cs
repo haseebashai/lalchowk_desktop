@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(addorder));
             this.searchlbl = new System.Windows.Forms.Label();
             this.pintxt = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -70,6 +71,7 @@
             this.addpbtn = new System.Windows.Forms.Button();
             this.refresh = new System.Windows.Forms.PictureBox();
             this.label15 = new System.Windows.Forms.Label();
+            this.oldlbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.inventorydatagridview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.refresh)).BeginInit();
@@ -472,12 +474,25 @@
             this.label15.Text = "Update List";
             this.label15.Click += new System.EventHandler(this.label15_Click);
             // 
+            // oldlbl
+            // 
+            this.oldlbl.AutoSize = true;
+            this.oldlbl.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.oldlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.oldlbl.Location = new System.Drawing.Point(792, 11);
+            this.oldlbl.Name = "oldlbl";
+            this.oldlbl.Size = new System.Drawing.Size(111, 13);
+            this.oldlbl.TabIndex = 100;
+            this.oldlbl.Text = ">> Switch to old mode";
+            this.oldlbl.Click += new System.EventHandler(this.oldlbl_Click);
+            // 
             // addorder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(915, 594);
+            this.ClientSize = new System.Drawing.Size(921, 612);
+            this.Controls.Add(this.oldlbl);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.refresh);
             this.Controls.Add(this.addpbtn);
@@ -519,9 +534,11 @@
             this.Controls.Add(this.emailtxt);
             this.Controls.Add(this.searchlbl);
             this.Controls.Add(this.pintxt);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "addorder";
-            this.Text = "addorder";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Add Order";
             ((System.ComponentModel.ISupportInitialize)(this.inventorydatagridview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.refresh)).EndInit();
@@ -572,5 +589,6 @@
         private System.Windows.Forms.Button addpbtn;
         private System.Windows.Forms.PictureBox refresh;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label oldlbl;
     }
 }

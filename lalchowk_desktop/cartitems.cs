@@ -159,10 +159,10 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             dialogcontainer dg = new dialogcontainer();
             dg.Size = new Size(950, 700);
-            addorder ao = new addorder(dg,email);
+            addorder ao = new addorder(email);
             ao.TopLevel = false;
             dg.dialogpnl.Controls.Add(ao);
-            ao.loadingdg();
+          //  ao.loadingdg();
             dg.Text = "Add new order";
 
 

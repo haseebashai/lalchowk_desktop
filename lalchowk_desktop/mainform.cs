@@ -714,16 +714,16 @@ namespace Veiled_Kashmir_Admin_Panel
         private void addorderbtn_Click(object sender, EventArgs e)
         {
           
-            dialogcontainer dg = new dialogcontainer();
-            dg.Size = new Size(950, 700);
-            addorder ao= new addorder(dg,"");
-            ao.TopLevel = false;
-            dg.dialogpnl.Controls.Add(ao);
-            ao.loadingdg();
-            dg.Text = "Add new order";
+            //dialogcontainer dg = new dialogcontainer();
+            //dg.Size = new Size(950, 700);
+            addorder ao= new addorder("");
+         //   ao.TopLevel = false;
+           // dg.dialogpnl.Controls.Add(ao);
+            //ao.loadingdg();
+           // dg.Text = "Add new order";
 
 
-            dg.Show();
+           // dg.Show();
             ao.Show();
         }
 
@@ -1148,6 +1148,12 @@ namespace Veiled_Kashmir_Admin_Panel
             //    else
             //        row.Selected = false;
             //}
+        }
+
+        private void testbtn_Click(object sender, EventArgs e)
+        {
+            old_addorder ts = new old_addorder("");
+            ts.Show();
         }
 
         private void cartbtn_Click(object sender, EventArgs e)

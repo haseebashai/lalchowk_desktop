@@ -347,6 +347,12 @@
     <Compile Include="customers.Designer.cs">
       <DependentUpon>customers.cs</DependentUpon>
     </Compile>
+    <Compile Include="old_addorder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="old_addorder.Designer.cs">
+      <DependentUpon>old_addorder.cs</DependentUpon>
+    </Compile>
     <Compile Include="usedbook.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -486,6 +492,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="customers.resx">
       <DependentUpon>customers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="old_addorder.resx">
+      <DependentUpon>old_addorder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="usedbook.resx">
       <DependentUpon>usedbook.cs</DependentUpon>

@@ -19,11 +19,11 @@ namespace Veiled_Kashmir_Admin_Panel
         MySqlDataReader dr;
         MySqlConnection con = new MySqlConnection("SERVER=182.50.133.78;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah");
         MySqlCommand cmd;
-        private dialogcontainer dg = null;
+    //    private dialogcontainer dg = null;
 
-        public addorder(Form dgcopy, string email)
+        public addorder(string email)
         {
-            dg = dgcopy as dialogcontainer;
+          //  dg = dgcopy as dialogcontainer;
 
             InitializeComponent();
             //searchtxt.AutoCompleteMode = AutoCompleteMode.Suggest;
@@ -196,12 +196,12 @@ namespace Veiled_Kashmir_Admin_Panel
             Cursor = Cursors.Arrow;
         }
 
-        public void loadingdg()
-        {
-            dg.lbl.ForeColor = SystemColors.Highlight;
-            dg.lbl.Text = "Add new order";
+        //public void loadingdg()
+        //{
+        //    dg.lbl.ForeColor = SystemColors.Highlight;
+        //    dg.lbl.Text = "Add new order";
 
-        }
+        //}
 
         //private void searchbtn_Click(object sender, EventArgs e)
         //{
@@ -430,6 +430,16 @@ namespace Veiled_Kashmir_Admin_Panel
         private void label15_Click(object sender, EventArgs e)
         {
             refresh_Click(null, null);
+        }
+
+        private void oldlbl_Click(object sender, EventArgs e)
+        {
+
+            Close();
+            old_addorder old = new old_addorder(emailtxt.Text);
+
+            old.Show();
+
         }
 
         private void refresh_Click(object sender, EventArgs e)
