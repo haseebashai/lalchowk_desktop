@@ -56,7 +56,7 @@ namespace Veiled_Kashmir_Admin_Panel
                                 col1.Add(sname);
                             }
                         }
-                        catch (Exception ex) { MessageBox.Show(ex.Message); }
+                        catch (Exception ex) { MessageBox.Show("Network too slow. Product data download interrupted. Use old mode in Add Order page","Error!"); }
                         con.Close();
                         a.Result = col1;
                     }catch(Exception ex) { MessageBox.Show(ex.Message); }
