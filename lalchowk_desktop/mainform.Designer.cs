@@ -44,6 +44,7 @@
             this.sellreqlbl = new System.Windows.Forms.Label();
             this.usedbookbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.cartbtn = new System.Windows.Forms.Button();
+            this.addorderbtn = new System.Windows.Forms.Button();
             this.msglbl = new System.Windows.Forms.Label();
             this.rcountlbl = new System.Windows.Forms.Label();
             this.bookbtn = new MaterialSkin.Controls.MaterialFlatButton();
@@ -60,6 +61,7 @@
             this.expbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.ordersbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.navtitle = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.navtxt = new System.Windows.Forms.Label();
             this.cntpnl = new System.Windows.Forms.Panel();
             this.printaddbtn = new MaterialSkin.Controls.MaterialFlatButton();
@@ -74,6 +76,7 @@
             this.deliveredh = new System.Windows.Forms.Label();
             this.shippedh = new System.Windows.Forms.Label();
             this.placedh = new System.Windows.Forms.Label();
+            this.loadingpic = new System.Windows.Forms.PictureBox();
             this.loadinglbl = new System.Windows.Forms.Label();
             this.pageload = new System.Windows.Forms.ProgressBar();
             this.plbl = new System.Windows.Forms.Label();
@@ -88,18 +91,14 @@
             this.totalordersdel = new System.Windows.Forms.Label();
             this.homelbl = new System.Windows.Forms.Label();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
-            this.testbtn = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.loadingpic = new System.Windows.Forms.PictureBox();
-            this.addorderbtn = new System.Windows.Forms.Button();
             this.navpnl.SuspendLayout();
             this.navtitle.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.cntpnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.shippeddataview)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.loadingpic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.placeddataview)).BeginInit();
             this.zeropnl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.loadingpic)).BeginInit();
             this.SuspendLayout();
             // 
             // signoutlbl
@@ -179,7 +178,6 @@
             // 
             this.navpnl.BackColor = System.Drawing.Color.White;
             this.navpnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.navpnl.Controls.Add(this.testbtn);
             this.navpnl.Controls.Add(this.blogbtn);
             this.navpnl.Controls.Add(this.sellreqlbl);
             this.navpnl.Controls.Add(this.usedbookbtn);
@@ -270,6 +268,23 @@
             this.cartbtn.Text = "Cart-\nWishlist";
             this.cartbtn.UseVisualStyleBackColor = true;
             this.cartbtn.Click += new System.EventHandler(this.cartbtn_Click);
+            // 
+            // addorderbtn
+            // 
+            this.addorderbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.addorderbtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.addorderbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addorderbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addorderbtn.Image = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.upload__1_;
+            this.addorderbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.addorderbtn.Location = new System.Drawing.Point(120, 53);
+            this.addorderbtn.Name = "addorderbtn";
+            this.addorderbtn.Size = new System.Drawing.Size(75, 36);
+            this.addorderbtn.TabIndex = 40;
+            this.addorderbtn.Text = "        ADD\r\n      ORDER";
+            this.addorderbtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.addorderbtn.UseVisualStyleBackColor = true;
+            this.addorderbtn.Click += new System.EventHandler(this.addorderbtn_Click);
             // 
             // msglbl
             // 
@@ -508,6 +523,17 @@
             this.navtitle.Size = new System.Drawing.Size(200, 27);
             this.navtitle.TabIndex = 11;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Black;
+            this.pictureBox1.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources._9895;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Location = new System.Drawing.Point(1, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(24, 20);
+            this.pictureBox1.TabIndex = 41;
+            this.pictureBox1.TabStop = false;
+            // 
             // navtxt
             // 
             this.navtxt.AutoSize = true;
@@ -722,6 +748,17 @@
             this.placedh.Text = "Orders currently placed:";
             this.placedh.Visible = false;
             // 
+            // loadingpic
+            // 
+            this.loadingpic.Image = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.loader;
+            this.loadingpic.Location = new System.Drawing.Point(495, 212);
+            this.loadingpic.Name = "loadingpic";
+            this.loadingpic.Size = new System.Drawing.Size(87, 88);
+            this.loadingpic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.loadingpic.TabIndex = 43;
+            this.loadingpic.TabStop = false;
+            this.loadingpic.Visible = false;
+            // 
             // loadinglbl
             // 
             this.loadinglbl.AutoSize = true;
@@ -906,55 +943,6 @@
             this.bgworker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgworker_ProgressChanged);
             this.bgworker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker_RunWorkerCompleted);
             // 
-            // testbtn
-            // 
-            this.testbtn.Location = new System.Drawing.Point(104, 592);
-            this.testbtn.Name = "testbtn";
-            this.testbtn.Size = new System.Drawing.Size(75, 23);
-            this.testbtn.TabIndex = 45;
-            this.testbtn.Text = "test";
-            this.testbtn.UseVisualStyleBackColor = true;
-            this.testbtn.Click += new System.EventHandler(this.testbtn_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Black;
-            this.pictureBox1.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources._9895;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(1, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(24, 20);
-            this.pictureBox1.TabIndex = 41;
-            this.pictureBox1.TabStop = false;
-            // 
-            // loadingpic
-            // 
-            this.loadingpic.Image = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.loader;
-            this.loadingpic.Location = new System.Drawing.Point(495, 212);
-            this.loadingpic.Name = "loadingpic";
-            this.loadingpic.Size = new System.Drawing.Size(87, 88);
-            this.loadingpic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.loadingpic.TabIndex = 43;
-            this.loadingpic.TabStop = false;
-            this.loadingpic.Visible = false;
-            // 
-            // addorderbtn
-            // 
-            this.addorderbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.addorderbtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.addorderbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addorderbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addorderbtn.Image = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.upload__1_;
-            this.addorderbtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.addorderbtn.Location = new System.Drawing.Point(120, 53);
-            this.addorderbtn.Name = "addorderbtn";
-            this.addorderbtn.Size = new System.Drawing.Size(75, 36);
-            this.addorderbtn.TabIndex = 40;
-            this.addorderbtn.Text = "        ADD\r\n      ORDER";
-            this.addorderbtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.addorderbtn.UseVisualStyleBackColor = true;
-            this.addorderbtn.Click += new System.EventHandler(this.addorderbtn_Click);
-            // 
             // mainform
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -973,14 +961,14 @@
             this.navpnl.PerformLayout();
             this.navtitle.ResumeLayout(false);
             this.navtitle.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.cntpnl.ResumeLayout(false);
             this.cntpnl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.shippeddataview)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.loadingpic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.placeddataview)).EndInit();
             this.zeropnl.ResumeLayout(false);
             this.zeropnl.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.loadingpic)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1044,6 +1032,5 @@
         private MaterialSkin.Controls.MaterialFlatButton blogbtn;
         private System.Windows.Forms.Label billmismatchlbl;
         private MaterialSkin.Controls.MaterialFlatButton printaddbtn;
-        private System.Windows.Forms.Button testbtn;
     }
 }
