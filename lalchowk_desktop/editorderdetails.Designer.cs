@@ -51,6 +51,12 @@
             this.statustxt = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.counttxt = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.dguytxt = new System.Windows.Forms.TextBox();
+            this.pconflbl = new System.Windows.Forms.Label();
+            this.pconftxt = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.ptypetxt = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // nametxt
@@ -185,10 +191,10 @@
             // 
             this.updbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.updbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.updbtn.Location = new System.Drawing.Point(457, 368);
+            this.updbtn.Location = new System.Drawing.Point(452, 378);
             this.updbtn.Name = "updbtn";
             this.updbtn.Size = new System.Drawing.Size(130, 50);
-            this.updbtn.TabIndex = 16;
+            this.updbtn.TabIndex = 13;
             this.updbtn.Text = "Update";
             this.updbtn.UseVisualStyleBackColor = true;
             this.updbtn.Click += new System.EventHandler(this.updbtn_Click);
@@ -207,7 +213,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(234, 320);
+            this.label9.Location = new System.Drawing.Point(59, 315);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(37, 13);
             this.label9.TabIndex = 18;
@@ -215,10 +221,10 @@
             // 
             // statustxt
             // 
-            this.statustxt.Location = new System.Drawing.Point(234, 339);
+            this.statustxt.Location = new System.Drawing.Point(59, 334);
             this.statustxt.Name = "statustxt";
             this.statustxt.Size = new System.Drawing.Size(120, 20);
-            this.statustxt.TabIndex = 19;
+            this.statustxt.TabIndex = 9;
             // 
             // label10
             // 
@@ -234,7 +240,55 @@
             this.counttxt.Location = new System.Drawing.Point(396, 262);
             this.counttxt.Name = "counttxt";
             this.counttxt.Size = new System.Drawing.Size(130, 20);
-            this.counttxt.TabIndex = 21;
+            this.counttxt.TabIndex = 8;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(234, 315);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(67, 13);
+            this.label11.TabIndex = 22;
+            this.label11.Text = "Delivery Guy";
+            // 
+            // dguytxt
+            // 
+            this.dguytxt.Location = new System.Drawing.Point(234, 334);
+            this.dguytxt.Name = "dguytxt";
+            this.dguytxt.Size = new System.Drawing.Size(120, 20);
+            this.dguytxt.TabIndex = 10;
+            // 
+            // pconflbl
+            // 
+            this.pconflbl.AutoSize = true;
+            this.pconflbl.Location = new System.Drawing.Point(234, 389);
+            this.pconflbl.Name = "pconflbl";
+            this.pconflbl.Size = new System.Drawing.Size(107, 13);
+            this.pconflbl.TabIndex = 24;
+            this.pconflbl.Text = "Payment Confirmed ?";
+            // 
+            // pconftxt
+            // 
+            this.pconftxt.Location = new System.Drawing.Point(234, 408);
+            this.pconftxt.Name = "pconftxt";
+            this.pconftxt.Size = new System.Drawing.Size(48, 20);
+            this.pconftxt.TabIndex = 12;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(59, 389);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(75, 13);
+            this.label13.TabIndex = 26;
+            this.label13.Text = "Payment Type";
+            // 
+            // ptypetxt
+            // 
+            this.ptypetxt.Location = new System.Drawing.Point(59, 408);
+            this.ptypetxt.Name = "ptypetxt";
+            this.ptypetxt.Size = new System.Drawing.Size(120, 20);
+            this.ptypetxt.TabIndex = 11;
             // 
             // editorderdetails
             // 
@@ -242,7 +296,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(628, 462);
+            this.ClientSize = new System.Drawing.Size(628, 477);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.ptypetxt);
+            this.Controls.Add(this.pconflbl);
+            this.Controls.Add(this.pconftxt);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.dguytxt);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.counttxt);
             this.Controls.Add(this.label9);
@@ -298,6 +358,12 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox statustxt;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox dguytxt;
+        private System.Windows.Forms.Label pconflbl;
+        private System.Windows.Forms.TextBox pconftxt;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox ptypetxt;
         private System.Windows.Forms.TextBox counttxt;
     }
 }

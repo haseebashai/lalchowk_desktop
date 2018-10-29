@@ -53,7 +53,9 @@ namespace Veiled_Kashmir_Admin_Panel
                 citytxt.Text = arg[7] as String;
                 statustxt.Text = arg[8] as string;
                 counttxt.Text = arg[9] as string;
-
+                dguytxt.Text= arg[10] as string;
+                ptypetxt.Text = arg[11] as string;
+                pconftxt.Text = arg[12] as string;
             }
             catch (Exception ex) 
             {
@@ -67,7 +69,7 @@ namespace Veiled_Kashmir_Admin_Panel
             {
                 string orderid = e.Argument as string;
                
-                dr = obj.Query("select amount,shipping,name,address1,address2,pincode,contact,city,status,itemcount from orders where orderid='" + orderid + "'");
+                dr = obj.Query("select amount,shipping,name,address1,address2,pincode,contact,city,status,itemcount,deliveryguy,paymenttype,paymentconfirmed from orders where orderid='" + orderid + "'");
                 dr.Read();
                 string amount = dr[0].ToString();
                 string shipping = dr[1].ToString();
@@ -79,8 +81,11 @@ namespace Veiled_Kashmir_Admin_Panel
                 string city = dr[7].ToString();
                 string status = dr[8].ToString();
                 string count = dr[9].ToString();
+                string dguy= dr[10].ToString();
+                string ptype = dr[11].ToString();
+                string pconf = dr[12].ToString();
                 obj.closeConnection();
-                object[] arg = {amount,shipping,name,add1,add2,pin,con,city,status,count};
+                object[] arg = {amount,shipping,name,add1,add2,pin,con,city,status,count,dguy,ptype,pconf};
               
                 e.Result = arg;
 
@@ -90,6 +95,7 @@ namespace Veiled_Kashmir_Admin_Panel
             }
         }
 
+        public bool update = false;
         private void updbtn_Click(object sender, EventArgs e)
         {
             try
@@ -100,9 +106,11 @@ namespace Veiled_Kashmir_Admin_Panel
                     Cursor = Cursors.WaitCursor;
 
                     string cmd = "update orders set amount='" + amtxt.Text + "',shipping='" + shiptxt.Text + "',name='" + nametxt.Text + "',address1='" + add1txt.Text + "'" +
-                        ",address2='" + add2txt.Text + "',pincode='" + pintxt.Text + "',contact='" + contxt.Text + "',city='" + citytxt.Text + "',status='"+statustxt.Text+"',itemcount='"+counttxt.Text+"' where orderid='" + id + "'";
+                        ",address2='" + add2txt.Text + "',pincode='" + pintxt.Text + "',contact='" + contxt.Text + "',city='" + citytxt.Text + "',status='"+statustxt.Text+"'"+
+                        ",itemcount='"+counttxt.Text+"',deliveryguy='"+dguytxt.Text+"',paymenttype='"+ptypetxt.Text+"',paymentconfirmed='"+pconftxt.Text+"' where orderid='" + id + "'";
                     obj.nonQuery(cmd);
                     Cursor = Cursors.Arrow;
+                    update = true;
                     MessageBox.Show("Updated.");
                 }
               
@@ -114,5 +122,6 @@ namespace Veiled_Kashmir_Admin_Panel
                 obj.closeConnection();
             }
         }
+
     }
 }

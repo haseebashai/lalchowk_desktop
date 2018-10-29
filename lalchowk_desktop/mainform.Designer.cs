@@ -64,6 +64,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.navtxt = new System.Windows.Forms.Label();
             this.cntpnl = new System.Windows.Forms.Panel();
+            this.printadd2btn = new System.Windows.Forms.Button();
             this.printaddbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.billmismatchlbl = new System.Windows.Forms.Label();
             this.clearlbl = new System.Windows.Forms.Label();
@@ -552,6 +553,7 @@
             // cntpnl
             // 
             this.cntpnl.BackColor = System.Drawing.Color.White;
+            this.cntpnl.Controls.Add(this.printadd2btn);
             this.cntpnl.Controls.Add(this.printaddbtn);
             this.cntpnl.Controls.Add(this.billmismatchlbl);
             this.cntpnl.Controls.Add(this.clearlbl);
@@ -578,12 +580,27 @@
             this.cntpnl.Size = new System.Drawing.Size(1162, 722);
             this.cntpnl.TabIndex = 12;
             // 
+            // printadd2btn
+            // 
+            this.printadd2btn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.printadd2btn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.printadd2btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.printadd2btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.printadd2btn.Location = new System.Drawing.Point(219, 6);
+            this.printadd2btn.Name = "printadd2btn";
+            this.printadd2btn.Size = new System.Drawing.Size(119, 21);
+            this.printadd2btn.TabIndex = 58;
+            this.printadd2btn.Text = "PRINT ADDRESSES";
+            this.printadd2btn.UseVisualStyleBackColor = true;
+            this.printadd2btn.Visible = false;
+            this.printadd2btn.Click += new System.EventHandler(this.printadd2btn_Click);
+            // 
             // printaddbtn
             // 
             this.printaddbtn.AutoSize = true;
             this.printaddbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.printaddbtn.Depth = 0;
-            this.printaddbtn.Location = new System.Drawing.Point(468, 637);
+            this.printaddbtn.Location = new System.Drawing.Point(8, 638);
             this.printaddbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.printaddbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.printaddbtn.Name = "printaddbtn";
@@ -613,7 +630,7 @@
             this.clearlbl.Cursor = System.Windows.Forms.Cursors.Hand;
             this.clearlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clearlbl.ForeColor = System.Drawing.Color.Red;
-            this.clearlbl.Location = new System.Drawing.Point(68, 647);
+            this.clearlbl.Location = new System.Drawing.Point(394, 647);
             this.clearlbl.Name = "clearlbl";
             this.clearlbl.Size = new System.Drawing.Size(19, 19);
             this.clearlbl.TabIndex = 55;
@@ -626,7 +643,7 @@
             this.retolbl.AutoSize = true;
             this.retolbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.retolbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.retolbl.Location = new System.Drawing.Point(99, 657);
+            this.retolbl.Location = new System.Drawing.Point(425, 657);
             this.retolbl.Name = "retolbl";
             this.retolbl.Size = new System.Drawing.Size(20, 24);
             this.retolbl.TabIndex = 54;
@@ -638,7 +655,7 @@
             this.totallbl.AutoSize = true;
             this.totallbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.totallbl.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.totallbl.Location = new System.Drawing.Point(100, 638);
+            this.totallbl.Location = new System.Drawing.Point(426, 638);
             this.totallbl.Name = "totallbl";
             this.totallbl.Size = new System.Drawing.Size(42, 16);
             this.totallbl.TabIndex = 53;
@@ -1032,5 +1049,6 @@
         private MaterialSkin.Controls.MaterialFlatButton blogbtn;
         private System.Windows.Forms.Label billmismatchlbl;
         private MaterialSkin.Controls.MaterialFlatButton printaddbtn;
+        private System.Windows.Forms.Button printadd2btn;
     }
 }

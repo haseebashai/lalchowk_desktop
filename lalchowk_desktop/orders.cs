@@ -29,9 +29,12 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void ordidtxt_TextChanged(object sender, EventArgs e)
         {
-            DataView dv = new DataView(dt);
-            dv.RowFilter = string.Format("convert([orderid],System.String) LIKE '%{0}%'", ordidtxt.Text);
-            ordergridview.DataSource = dv;
+            try
+            {
+                DataView dv = new DataView(dt);
+                dv.RowFilter = string.Format("convert([orderid],System.String) LIKE '%{0}%'", ordidtxt.Text);
+                ordergridview.DataSource = dv;
+            }catch { }
         }
 
         private void ordttxt_TextChanged(object sender, EventArgs e)
@@ -61,22 +64,25 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void confiltxt_TextChanged(object sender, EventArgs e)
         {
-            DataView dv = new DataView(dt);
-            dv.RowFilter = string.Format("convert([contact],System.String) LIKE '%{0}%'", confiltxt.Text);
-            ordergridview.DataSource = dv;
+            try
+            {
+                DataView dv = new DataView(dt);
+                dv.RowFilter = string.Format("convert([contact],System.String) LIKE '%{0}%'", confiltxt.Text);
+                ordergridview.DataSource = dv;
+            }catch { }
         }
 
         private void smsbtn_Click(object sender, EventArgs e)
         {
             dialogcontainer dg = new dialogcontainer();
-            sendsms sms = new sendsms(contactlbl,"",addresstxt.Text);
+            sendsms sms = new sendsms(contactlbl,"",name);
             sms.TopLevel = false;
             dg.dialogpnl.Controls.Add(sms);
             dg.lbl.Text = "Send SMS";
             dg.Text = "Send SMS";
             dg.Size = new Size(600, 600);
             sms.numbertxt.Font = new Font("MS Sans Serif", 9, FontStyle.Regular);
-            sms.smstxt.Text = "Dear "+addresstxt.Text+", We would love to hear from you regarding your recent purchase and our services. Please click on the following link and leave your feedback. https://bit.ly/lalchowkonline";
+            sms.smstxt.Text = "Dear "+name+", We would love to hear from you regarding your recent purchase and our services. Please click on the following link and leave your feedback. https://bit.ly/lalchowkonline";
             sms.smsnpnl.Visible = false;
             sms.txtpnl.Location = new Point(35, 10);
             dg.Show();
@@ -166,21 +172,18 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void updbtn_Click(object sender, EventArgs e)
         {
-           // dialogcontainer dg = new dialogcontainer();
+          
             editorderdetails edit = new editorderdetails(orderlbl.Text);
             edit.TopLevel = true;
-            //dg.Size = new Size(628, 511);
-           // dg.dialogpnl.Controls.Add(edit);
            
-            //dg.Text = "Edit Order details";
 
             edit.ShowDialog();
-            //dg.ShowDialog();
-            Cursor = Cursors.WaitCursor;
-            readorders();
-            ordergridview.DataSource = bsource;
-            Cursor = Cursors.Arrow;
-            ordergridview.CurrentCell = ordergridview.Rows[int.Parse(orderidcount)].Cells[0] ;
+            
+            //Cursor = Cursors.WaitCursor;
+            //readorders();
+            //ordergridview.DataSource = bsource;
+            //Cursor = Cursors.Arrow;
+            //ordergridview.CurrentCell = ordergridview.Rows[int.Parse(orderidcount)].Cells[0] ;
             orderdetailview.Visible = false;
             dpnl.Visible = false;
             loadinglbl.Visible = false;
@@ -242,7 +245,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 ordergridview.Columns["deliverdate"].Visible = false;
                 ordergridview.Columns["paymentconfirmed"].Visible = false;
                 ordergridview.Columns["email"].Visible = false;
-                ordergridview.Columns["paymenttype"].Visible = false;
+                
                 orlbl.Text = ordervar;
                 refresh.Enabled = true;
                 ordergridview.Enabled = true;
@@ -293,9 +296,12 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void statustxt_TextChanged(object sender, EventArgs e)
         {
-            DataView dv = new DataView(dt);
-            dv.RowFilter = string.Format("status LIKE '%{0}%'", statustxt.Text);
-            ordergridview.DataSource = dv;
+            try
+            {
+                DataView dv = new DataView(dt);
+                dv.RowFilter = string.Format("status LIKE '%{0}%'", statustxt.Text);
+                ordergridview.DataSource = dv;
+            }catch { }
         }
 
         private void billbtn_Click(object sender, EventArgs e)
@@ -393,7 +399,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
        
 
-        string orderidcount, contactlbl;
+        string orderidcount, contactlbl,name;
         private void ordergridview_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -411,6 +417,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     orderid = row.Cells["orderid"].Value.ToString();
                     email = row.Cells["mail"].Value.ToString();
                     shipping = row.Cells["shipping"].Value.ToString();
+                    name = row.Cells["name"].Value.ToString();
                     addresstxt.Text = row.Cells["name"].Value.ToString()+"\r\n"+ row.Cells["address1"].Value.ToString() +" "+ row.Cells["address2"].Value.ToString()+
                      "\r\n"+ row.Cells["city"].Value.ToString()+", "+ row.Cells["pincode"].Value.ToString()+"\r\n"+ row.Cells["contact"].Value.ToString();
                     contactlbl = row.Cells["contact"].Value.ToString();
