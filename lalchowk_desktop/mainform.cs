@@ -782,7 +782,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 edit.ShowDialog();
                 try
                 {
-                    if()
+                   
                     Cursor = Cursors.WaitCursor;
                     con.Open();
 

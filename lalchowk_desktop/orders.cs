@@ -155,6 +155,13 @@ namespace Veiled_Kashmir_Admin_Panel
             Cursor = Cursors.Arrow;
         }
 
+        private void Deliverytxt_TextChanged(object sender, EventArgs e)
+        {
+            DataView dv = new DataView(dt);
+            dv.RowFilter = string.Format("deliveryguy LIKE '%{0}%'", Deliverytxt.Text);
+            ordergridview.DataSource = dv;
+        }
+
         private dialogcontainer dg = null;
         private container hp = null;
 
