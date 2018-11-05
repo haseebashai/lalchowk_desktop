@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.Deliverytxt = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.confiltxt = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -49,6 +51,8 @@
             this.emailtxt = new System.Windows.Forms.TextBox();
             this.orderpnl = new System.Windows.Forms.Panel();
             this.dpnl = new System.Windows.Forms.Panel();
+            this.datelbl = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.addresstxt = new System.Windows.Forms.TextBox();
             this.cancelbtn = new System.Windows.Forms.Button();
             this.smsbtn = new System.Windows.Forms.Button();
@@ -72,8 +76,6 @@
             this.loadinglbl = new System.Windows.Forms.Label();
             this.formlbl = new System.Windows.Forms.Label();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
-            this.Deliverytxt = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.refresh)).BeginInit();
             this.orderpnl.SuspendLayout();
@@ -110,13 +112,31 @@
             this.panel1.TabIndex = 0;
             this.panel1.Visible = false;
             // 
+            // Deliverytxt
+            // 
+            this.Deliverytxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.Deliverytxt.Location = new System.Drawing.Point(941, 23);
+            this.Deliverytxt.Name = "Deliverytxt";
+            this.Deliverytxt.Size = new System.Drawing.Size(92, 20);
+            this.Deliverytxt.TabIndex = 8;
+            this.Deliverytxt.TextChanged += new System.EventHandler(this.Deliverytxt_TextChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(938, 6);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(67, 13);
+            this.label7.TabIndex = 102;
+            this.label7.Text = "Delivery Guy";
+            // 
             // confiltxt
             // 
             this.confiltxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.confiltxt.Location = new System.Drawing.Point(721, 23);
             this.confiltxt.Name = "confiltxt";
             this.confiltxt.Size = new System.Drawing.Size(93, 20);
-            this.confiltxt.TabIndex = 101;
+            this.confiltxt.TabIndex = 6;
             this.confiltxt.TextChanged += new System.EventHandler(this.confiltxt_TextChanged);
             // 
             // label13
@@ -144,7 +164,7 @@
             this.addfiltxt.Location = new System.Drawing.Point(568, 23);
             this.addfiltxt.Name = "addfiltxt";
             this.addfiltxt.Size = new System.Drawing.Size(136, 20);
-            this.addfiltxt.TabIndex = 98;
+            this.addfiltxt.TabIndex = 5;
             this.addfiltxt.TextChanged += new System.EventHandler(this.addfiltxt_TextChanged);
             // 
             // refresh
@@ -165,7 +185,7 @@
             this.ordidtxt.Location = new System.Drawing.Point(225, 23);
             this.ordidtxt.Name = "ordidtxt";
             this.ordidtxt.Size = new System.Drawing.Size(71, 20);
-            this.ordidtxt.TabIndex = 17;
+            this.ordidtxt.TabIndex = 2;
             this.ordidtxt.TextChanged += new System.EventHandler(this.ordidtxt_TextChanged);
             // 
             // label6
@@ -183,7 +203,7 @@
             this.ordttxt.Location = new System.Drawing.Point(832, 23);
             this.ordttxt.Name = "ordttxt";
             this.ordttxt.Size = new System.Drawing.Size(92, 20);
-            this.ordttxt.TabIndex = 15;
+            this.ordttxt.TabIndex = 7;
             this.ordttxt.TextChanged += new System.EventHandler(this.ordttxt_TextChanged);
             // 
             // label1
@@ -234,7 +254,7 @@
             this.statustxt.Location = new System.Drawing.Point(131, 23);
             this.statustxt.Name = "statustxt";
             this.statustxt.Size = new System.Drawing.Size(79, 20);
-            this.statustxt.TabIndex = 9;
+            this.statustxt.TabIndex = 1;
             this.statustxt.TextChanged += new System.EventHandler(this.statustxt_TextChanged);
             // 
             // label3
@@ -242,9 +262,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(128, 6);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(40, 13);
+            this.label3.Size = new System.Drawing.Size(79, 13);
             this.label3.TabIndex = 8;
-            this.label3.Text = "Status:";
+            this.label3.Text = "Filter by Status:";
             // 
             // paymenttxt
             // 
@@ -252,7 +272,7 @@
             this.paymenttxt.Location = new System.Drawing.Point(446, 23);
             this.paymenttxt.Name = "paymenttxt";
             this.paymenttxt.Size = new System.Drawing.Size(103, 20);
-            this.paymenttxt.TabIndex = 7;
+            this.paymenttxt.TabIndex = 4;
             this.paymenttxt.TextChanged += new System.EventHandler(this.paymenttxt_TextChanged);
             // 
             // label4
@@ -270,9 +290,9 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Location = new System.Drawing.Point(314, 7);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(74, 13);
+            this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Filter by Email:";
+            this.label2.Text = "Email:";
             // 
             // emailtxt
             // 
@@ -280,7 +300,7 @@
             this.emailtxt.Location = new System.Drawing.Point(315, 23);
             this.emailtxt.Name = "emailtxt";
             this.emailtxt.Size = new System.Drawing.Size(111, 20);
-            this.emailtxt.TabIndex = 1;
+            this.emailtxt.TabIndex = 3;
             this.emailtxt.TextChanged += new System.EventHandler(this.emailtxt_TextChanged);
             // 
             // orderpnl
@@ -296,6 +316,8 @@
             // 
             // dpnl
             // 
+            this.dpnl.Controls.Add(this.datelbl);
+            this.dpnl.Controls.Add(this.label15);
             this.dpnl.Controls.Add(this.addresstxt);
             this.dpnl.Controls.Add(this.cancelbtn);
             this.dpnl.Controls.Add(this.smsbtn);
@@ -319,6 +341,26 @@
             this.dpnl.Size = new System.Drawing.Size(1156, 238);
             this.dpnl.TabIndex = 26;
             this.dpnl.Visible = false;
+            // 
+            // datelbl
+            // 
+            this.datelbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.datelbl.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.datelbl.Location = new System.Drawing.Point(8, 148);
+            this.datelbl.Name = "datelbl";
+            this.datelbl.Size = new System.Drawing.Size(130, 46);
+            this.datelbl.TabIndex = 34;
+            this.datelbl.Text = "Date";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(52, 107);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(25, 12);
+            this.label15.TabIndex = 33;
+            this.label15.Text = "Date";
             // 
             // addresstxt
             // 
@@ -403,7 +445,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(17, 10);
+            this.label5.Location = new System.Drawing.Point(52, 10);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(38, 12);
             this.label5.TabIndex = 2;
@@ -414,7 +456,7 @@
             this.orderlbl.AutoSize = true;
             this.orderlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.orderlbl.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.orderlbl.Location = new System.Drawing.Point(15, 33);
+            this.orderlbl.Location = new System.Drawing.Point(47, 37);
             this.orderlbl.Name = "orderlbl";
             this.orderlbl.Size = new System.Drawing.Size(43, 20);
             this.orderlbl.TabIndex = 3;
@@ -423,7 +465,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.LightGray;
-            this.panel2.Location = new System.Drawing.Point(94, 50);
+            this.panel2.Location = new System.Drawing.Point(145, 50);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1, 178);
             this.panel2.TabIndex = 5;
@@ -432,7 +474,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(176, 10);
+            this.label8.Location = new System.Drawing.Point(199, 8);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(52, 12);
             this.label8.TabIndex = 8;
@@ -443,7 +485,7 @@
             this.amountlbl.AutoSize = true;
             this.amountlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.amountlbl.ForeColor = System.Drawing.Color.Red;
-            this.amountlbl.Location = new System.Drawing.Point(176, 120);
+            this.amountlbl.Location = new System.Drawing.Point(198, 118);
             this.amountlbl.Name = "amountlbl";
             this.amountlbl.Size = new System.Drawing.Size(85, 25);
             this.amountlbl.TabIndex = 9;
@@ -453,7 +495,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(149, 127);
+            this.label10.Location = new System.Drawing.Point(171, 125);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(28, 16);
             this.label10.TabIndex = 10;
@@ -562,24 +604,6 @@
             this.bgworker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker_DoWork);
             this.bgworker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker_RunWorkerCompleted);
             // 
-            // Deliverytxt
-            // 
-            this.Deliverytxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.Deliverytxt.Location = new System.Drawing.Point(941, 23);
-            this.Deliverytxt.Name = "Deliverytxt";
-            this.Deliverytxt.Size = new System.Drawing.Size(92, 20);
-            this.Deliverytxt.TabIndex = 103;
-            this.Deliverytxt.TextChanged += new System.EventHandler(this.Deliverytxt_TextChanged);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(938, 6);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(67, 13);
-            this.label7.TabIndex = 102;
-            this.label7.Text = "Delivery Guy";
-            // 
             // orders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -654,5 +678,7 @@
         private System.Windows.Forms.TextBox addresstxt;
         private System.Windows.Forms.TextBox Deliverytxt;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label datelbl;
+        private System.Windows.Forms.Label label15;
     }
 }

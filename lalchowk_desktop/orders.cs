@@ -163,6 +163,31 @@ namespace Veiled_Kashmir_Admin_Panel
         }
 
         private dialogcontainer dg = null;
+
+        //private void ordergridview_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        //{
+
+        //    try
+        //    {
+        //        foreach (DataGridViewRow row in this.ordergridview.Rows)
+        //        {
+
+                  
+        //            if (Convert.ToString(row.Cells["paymentconfirmed"].Value) == "True")
+        //            {
+        //                row.DefaultCellStyle.BackColor = Color.LightGreen;
+        //            }
+        //            if (Convert.ToString(row.Cells["status"].Value) == "Confirmed")
+        //            {
+        //                row.DefaultCellStyle.BackColor = Color.LightBlue;
+        //            }
+                  
+
+        //        }
+        //    }
+        //    catch { };
+        //}
+
         private container hp = null;
 
         public orders(Form hpcopy,Form dgcopy)
@@ -206,10 +231,10 @@ namespace Veiled_Kashmir_Admin_Panel
             bsource.DataSource = dt;
             
 
-            dr = obj.Query("select count(orderid) from orders");
-            dr.Read();
-            ordervar = dr[0].ToString();
-            obj.closeConnection();
+            //dr = obj.Query("select count(orderid) from orders");
+            //dr.Read();
+            //ordervar = dr[0].ToString();
+            //obj.closeConnection();
         }
             catch (Exception ex)
             {
@@ -252,12 +277,13 @@ namespace Veiled_Kashmir_Admin_Panel
                 ordergridview.Columns["deliverdate"].Visible = false;
                 ordergridview.Columns["paymentconfirmed"].Visible = false;
                 ordergridview.Columns["email"].Visible = false;
-                
-                orlbl.Text = ordervar;
+
+                orlbl.Text = ordergridview.RowCount.ToString();
                 refresh.Enabled = true;
                 ordergridview.Enabled = true;
+                delbtn.Visible = true;
             }
-            catch { }
+            catch { delbtn.Visible = false; }
             Cursor = Cursors.Arrow;
         }
 
@@ -404,8 +430,8 @@ namespace Veiled_Kashmir_Admin_Panel
 
         }
 
-       
 
+        int sumtotal;
         string orderidcount, contactlbl,name;
         private void ordergridview_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -428,12 +454,13 @@ namespace Veiled_Kashmir_Admin_Panel
                     addresstxt.Text = row.Cells["name"].Value.ToString()+"\r\n"+ row.Cells["address1"].Value.ToString() +" "+ row.Cells["address2"].Value.ToString()+
                      "\r\n"+ row.Cells["city"].Value.ToString()+", "+ row.Cells["pincode"].Value.ToString()+"\r\n"+ row.Cells["contact"].Value.ToString();
                     contactlbl = row.Cells["contact"].Value.ToString();
-                    string status= row.Cells["status"].Value.ToString();                    
-                    string amount = row.Cells["amount"].Value.ToString();
-                    int result = int.Parse(amount) + int.Parse(shipping);
-                    amountlbl.Text = result.ToString();
+                    string status= row.Cells["status"].Value.ToString();
+                     /*= row.Cells["amount"].Value.ToString();*/
+                    //int result = int.Parse(amount) + int.Parse(shipping);
+                    //amountlbl.Text = result.ToString();
                     orderlbl.Text = orderid;
-                    orderidcount= e.RowIndex.ToString();
+                    datelbl.Text= row.Cells["timestamp"].Value.ToString();
+                    orderidcount = e.RowIndex.ToString();
                     
 
 
@@ -444,7 +471,10 @@ namespace Veiled_Kashmir_Admin_Panel
                         try
                         {
 
-                            //dr = obj.Query("SELECT * FROM orderdetails where orderid='" + orderid + "'");
+                            dr = obj.Query("SELECT amount,shipping FROM orders where orderid='" + orderid + "'");
+                            dr.Read();
+                            sumtotal= int.Parse(dr[0].ToString()) + int.Parse(dr[1].ToString());
+                            obj.closeConnection();
                             //dt1 = new DataTable();
                             //dt1.Load(dr);
                             adap1 = new MySqlDataAdapter("SELECT * FROM orderdetails where orderid='" + orderid + "'", conn);
@@ -471,6 +501,7 @@ namespace Veiled_Kashmir_Admin_Panel
                             orderdetailview.Visible = true;
                             dpnl.Visible = true;
                             loadinglbl.Visible = false;
+                            amountlbl.Text = sumtotal.ToString();
 
                             BindingSource bsource1 = d.Result as BindingSource;
                             orderdetailview.DataSource = bsource1;

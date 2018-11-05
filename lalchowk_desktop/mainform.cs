@@ -747,8 +747,8 @@ namespace Veiled_Kashmir_Admin_Panel
         string id,contact,name,email,encmail;
         private void placeddataview_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-           
-            if (e.RowIndex > -1 && e.ColumnIndex > 2)
+            
+            if (e.RowIndex > -1 && e.ColumnIndex > 3)
             {
                 plbl.Visible = true;
                 shipbtn.Visible = false;
@@ -786,7 +786,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     Cursor = Cursors.WaitCursor;
                     con.Open();
 
-                    adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='placed';", con);
+                    adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='placed' or status='confirmed';", con);
                     dt = new DataTable();
                     adap.Fill(dt);
                     con.Close();
@@ -798,14 +798,14 @@ namespace Veiled_Kashmir_Admin_Panel
                     placeddataview.Columns["paymentconfirmed"].Visible = false;
                     placeddataview.Columns["email"].Visible = false;
                     placeddataview.Columns["transanctionid"].Visible = false;
-                    placeddataview.Columns["paymenttype"].Visible = false;
+                    placeddataview.Columns["status"].Visible = false;
                 }
                 catch { }
                 Cursor = Cursors.Arrow;
             }
             else if (e.ColumnIndex == 1)
             {
-
+                refreshbtn.Enabled = false;
                 Cursor = Cursors.WaitCursor;
                 try
                 {
@@ -828,7 +828,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
                         con.Open();
 
-                        adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='placed';", con);
+                        adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='placed' or status='confirmed';", con);
                         dt = new DataTable();
                         adap.Fill(dt);
                         con.Close();
@@ -840,6 +840,8 @@ namespace Veiled_Kashmir_Admin_Panel
                         placeddataview.Columns["paymentconfirmed"].Visible = false;
                         placeddataview.Columns["email"].Visible = false;
                         placeddataview.Columns["transanctionid"].Visible = false;
+                        placeddataview.Columns["status"].Visible = false;
+                        placeddataview.Columns["loyaltybonus"].Visible = false;
 
 
                         con.Open();
@@ -858,6 +860,8 @@ namespace Veiled_Kashmir_Admin_Panel
                             shippeddataview.Columns["paymentconfirmed"].Visible = false;
                             shippeddataview.Columns["email"].Visible = false;
                             shippeddataview.Columns["transanctionid"].Visible = false;
+                            shippeddataview.Columns["status"].Visible = false;
+                            shippeddataview.Columns["loyaltybonus"].Visible = false;
 
                             placedh.Text = "Orders currently placed: " + placeddataview.RowCount;
 
@@ -870,6 +874,63 @@ namespace Veiled_Kashmir_Admin_Panel
                         sendsmsbtn.Visible = false;
                         cancelbtn.Visible = false;
                         shippedh.Visible = true;
+                        
+                    }
+                }
+                catch
+                {
+                    obj.closeConnection();
+                }
+                Cursor = Cursors.Arrow;
+                refreshbtn.Enabled = true;
+
+            }
+            else if (e.ColumnIndex == 2)
+            {
+                printaddbtn.Visible = false;
+                printadd2btn.Visible = true;
+
+            }
+            else if (e.ColumnIndex == 3)
+            {
+                refreshbtn.Enabled = false;
+                Cursor = Cursors.WaitCursor;
+                try
+                {
+                    DataGridViewRow row = this.placeddataview.Rows[e.RowIndex];
+                    string id = row.Cells["orderid"].Value.ToString();
+                    DialogResult dgr = MessageBox.Show("Change status to Confirmed for orderid '" + id + "'", "Confirm!", MessageBoxButtons.YesNo);
+                    if (dgr == DialogResult.Yes)
+                    {
+                        string cmd = "Update orders set status='Confirmed' where orderid='" + id + "'";
+                        obj.nonQuery(cmd);
+
+                        con.Open();
+
+                        adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='placed' or status='confirmed';", con);
+                        dt = new DataTable();
+                        adap.Fill(dt);
+                        con.Close();
+                        bsource = new BindingSource();
+                        bsource.DataSource = dt;
+                        placeddataview.DataSource = bsource;
+                        placeddataview.Columns["shipdate"].Visible = false;
+                        placeddataview.Columns["deliverdate"].Visible = false;
+                        placeddataview.Columns["paymentconfirmed"].Visible = false;
+                        placeddataview.Columns["email"].Visible = false;
+                        placeddataview.Columns["transanctionid"].Visible = false;
+                        placeddataview.Columns["status"].Visible = false;
+                        placeddataview.Columns["loyaltybonus"].Visible = false;
+
+
+
+                            placedh.Text = "Orders currently placed: " + placeddataview.RowCount;
+             
+                        ppnl.Visible = false;
+                        shipbtn.Visible = false;
+                        sendsmsbtn.Visible = false;
+                        cancelbtn.Visible = false;
+                     
 
                     }
                 }
@@ -878,12 +939,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     obj.closeConnection();
                 }
                 Cursor = Cursors.Arrow;
-
-            }
-            else if (e.ColumnIndex == 2)
-            {
-                printaddbtn.Visible = false;
-                printadd2btn.Visible = true;
+                refreshbtn.Enabled = true;
 
             }
         }
@@ -940,6 +996,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void shipbtn_Click(object sender, EventArgs e)
         {
+            refreshbtn.Enabled=false;
             Cursor = Cursors.WaitCursor;
             try
             {
@@ -964,7 +1021,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
                     con.Open();
 
-                    adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='placed';", con);
+                    adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='placed' or status='confirmed';", con);
                     dt = new DataTable();
                     adap.Fill(dt);
                     con.Close();
@@ -977,7 +1034,8 @@ namespace Veiled_Kashmir_Admin_Panel
                     placeddataview.Columns["email"].Visible = false;
                     placeddataview.Columns["transanctionid"].Visible = false;
                     placeddataview.Columns["loyaltybonus"].Visible = false;
-
+                    placeddataview.Columns["status"].Visible = false;
+                    placeddataview.Columns["deliveryguy"].Visible = false;
 
                     con.Open();
                     adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='shipped';", con);
@@ -995,6 +1053,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     shippeddataview.Columns["email"].Visible = false;
                     shippeddataview.Columns["transanctionid"].Visible = false;
                         shippeddataview.Columns["loyaltybonus"].Visible = false;
+                        shippeddataview.Columns["status"].Visible = false;
 
                         placedh.Text = "Orders currently placed: " + placeddataview.RowCount;
                        
@@ -1019,6 +1078,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 obj.closeConnection();
             }
             Cursor = Cursors.Arrow;
+            refreshbtn.Enabled = true;
         }
 
         private void sendsmsbtn_Click(object sender, EventArgs e)
@@ -1039,6 +1099,7 @@ namespace Veiled_Kashmir_Admin_Panel
         }
         private void cancelbtn_Click(object sender, EventArgs e)
         {
+            refreshbtn.Enabled = false;
             Cursor = Cursors.WaitCursor;
             try
             {
@@ -1057,7 +1118,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     MessageBox.Show("Order cancelled.");
                     ppnl.Visible = false;
                 
-                adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='placed';", con);
+                adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='placed' or status='confirmed';", con);
                 dt = new DataTable();
                 adap.Fill(dt);
                 con.Close();
@@ -1074,9 +1135,32 @@ namespace Veiled_Kashmir_Admin_Panel
                 placeddataview.Columns["email"].Visible = false;
                 placeddataview.Columns["transanctionid"].Visible = false;
                 placeddataview.Columns["loyaltybonus"].Visible = false;
+                        placeddataview.Columns["status"].Visible = false;
+                        placeddataview.Columns["deliveryguy"].Visible = false;
+
+
+                        
+                        con.Open();
+
+                        adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='shipped';", con);
+                        dt = new DataTable();
+                        adap.Fill(dt);
+                        con.Close();
+                        bsource = new BindingSource();
+                        bsource.DataSource = dt;
+                        shippeddataview.DataSource = bsource;
+                        shippeddataview.Columns["shipdate"].Visible = false;
+                        shippeddataview.Columns["deliverdate"].Visible = false;
+                        shippeddataview.Columns["paymentconfirmed"].Visible = false;
+                        shippeddataview.Columns["email"].Visible = false;
+                        shippeddataview.Columns["transanctionid"].Visible = false;
+                        shippeddataview.Columns["loyaltybonus"].Visible = false;
+                        shippeddataview.Columns["status"].Visible = false;
+
+
 
                     }
-                catch { }
+                catch { con.Close(); }
                 }
                 else if (dgr == DialogResult.No)
                 {
@@ -1086,7 +1170,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     MessageBox.Show("Order cancelled.");
                     ppnl.Visible = false;
 
-                    adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='placed';", con);
+                    adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='placed' or status='confirmed';", con);
                     dt = new DataTable();
                     adap.Fill(dt);
                     con.Close();
@@ -1104,30 +1188,53 @@ namespace Veiled_Kashmir_Admin_Panel
                         placeddataview.Columns["email"].Visible = false;
                         placeddataview.Columns["transanctionid"].Visible = false;
                         placeddataview.Columns["loyaltybonus"].Visible = false;
-
+                        placeddataview.Columns["status"].Visible = false;
+                        placeddataview.Columns["deliveryguy"].Visible = false;
                         placedh.Text = "Orders currently placed: " + placeddataview.RowCount;
 
                         shippedh.Text = "Orders currently shipped: " + shippeddataview.RowCount;
+
+                        
+                        con.Open();
+
+                        adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='shipped';", con);
+                        dt = new DataTable();
+                        adap.Fill(dt);
+                        con.Close();
+                        bsource = new BindingSource();
+                        bsource.DataSource = dt;
+                        shippeddataview.DataSource = bsource;
+                        shippeddataview.Columns["shipdate"].Visible = false;
+                        shippeddataview.Columns["deliverdate"].Visible = false;
+                        shippeddataview.Columns["paymentconfirmed"].Visible = false;
+                        shippeddataview.Columns["email"].Visible = false;
+                        shippeddataview.Columns["transanctionid"].Visible = false;
+                        shippeddataview.Columns["loyaltybonus"].Visible = false;
+                        shippeddataview.Columns["status"].Visible = false;
+
+
                     }
-                    catch { }
+                    catch { con.Close(); }
 
                 }
             }
             catch (Exception ex)
             {
                 obj.closeConnection();
+                con.Close();
                 MessageBox.Show( ex.Message, "Error!");
             }
             Cursor = Cursors.Arrow;
+            refreshbtn.Enabled = true;
         }
 
         List<string> prds = new List<string>();
         string status;
         private void shippeddataview_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
 
-            if (e.RowIndex >=0 && e.ColumnIndex >0)
+            
+            if (e.RowIndex >=0 && e.ColumnIndex >1)
             {
                 plbl.Visible = true;
                 shipbtn.Visible = false;
@@ -1155,13 +1262,43 @@ namespace Veiled_Kashmir_Admin_Panel
                
                 printadd2btn.Visible = false;
             }
+            else if (e.ColumnIndex == 1)
+            {
+                DataGridViewRow row = this.shippeddataview.Rows[e.RowIndex];
+                string oid = row.Cells["orderid"].Value.ToString();
+                editorderdetails edit = new editorderdetails(oid);
+                edit.ShowDialog();
+                try
+                {
+
+                    Cursor = Cursors.WaitCursor;
+                    con.Open();
+
+                    adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='shipped';", con);
+                    dt = new DataTable();
+                    adap.Fill(dt);
+                    con.Close();
+                    bsource = new BindingSource();
+                    bsource.DataSource = dt;
+                    shippeddataview.DataSource = bsource;
+                    shippeddataview.Columns["shipdate"].Visible = false;
+                    shippeddataview.Columns["deliverdate"].Visible = false;
+                    shippeddataview.Columns["paymentconfirmed"].Visible = false;
+                    shippeddataview.Columns["email"].Visible = false;
+                    shippeddataview.Columns["transanctionid"].Visible = false;
+                    shippeddataview.Columns["loyaltybonus"].Visible = false;
+                    shippeddataview.Columns["status"].Visible = false;
+                }
+                catch { }
+                Cursor = Cursors.Arrow;
+            }
         }
 
         private void shippeddataview_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
-                if (e.RowIndex >= 0)
+                if (e.RowIndex >= 0 && e.ColumnIndex==0)
                 {
                     DataGridViewRow row = this.shippeddataview.Rows[e.RowIndex];
                     id = row.Cells["orderid"].Value.ToString();
@@ -1305,6 +1442,103 @@ namespace Veiled_Kashmir_Admin_Panel
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
+        private void refreshbtn_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            refreshbtn.Enabled = false;
+            try
+            {
+                
+                adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='placed' or status='confirmed';", con);
+                dt = new DataTable();
+                adap.Fill(dt);
+                con.Close();
+                bsource = new BindingSource();
+                bsource.DataSource = dt;
+                placeddataview.DataSource = bsource;
+
+                shipbtn.Visible = false;
+                sendsmsbtn.Visible = false;
+                cancelbtn.Visible = false;
+                ppnl.Visible = false;
+                placeddataview.Columns["shipdate"].Visible = false;
+                placeddataview.Columns["deliverdate"].Visible = false;
+                placeddataview.Columns["paymentconfirmed"].Visible = false;
+                placeddataview.Columns["email"].Visible = false;
+                placeddataview.Columns["transanctionid"].Visible = false;
+                placeddataview.Columns["loyaltybonus"].Visible = false;
+                placeddataview.Columns["status"].Visible = false;
+                placeddataview.Columns["deliveryguy"].Visible = false;
+
+                placedh.Text = "Orders currently placed: " + placeddataview.RowCount;
+
+                adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='shipped';", con);
+                dt = new DataTable();
+                adap.Fill(dt);
+                con.Close();
+                bsource = new BindingSource();
+                bsource.DataSource = dt;
+                shippeddataview.DataSource = bsource;
+                shippeddataview.Columns["shipdate"].Visible = false;
+                shippeddataview.Columns["deliverdate"].Visible = false;
+                shippeddataview.Columns["paymentconfirmed"].Visible = false;
+                shippeddataview.Columns["email"].Visible = false;
+                shippeddataview.Columns["transanctionid"].Visible = false;
+                shippeddataview.Columns["loyaltybonus"].Visible = false;
+                shippeddataview.Columns["status"].Visible = false;
+
+                shippedh.Text = "Orders currently shipped: " + shippeddataview.RowCount;
+
+            }
+            catch { con.Close(); }
+            Cursor = Cursors.Arrow;
+            refreshbtn.Enabled = true;
+        }
+
+        private void placeddataview_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            try
+            {
+                foreach (DataGridViewRow row in this.placeddataview.Rows)
+                {
+
+                    if (Convert.ToInt32(row.Cells["itemcount"].Value) > 1)
+                    {
+
+                        row.Cells["itemcount"].Style.BackColor = Color.LightPink;
+
+                        // placeddataview.Columns["itemcount"].DefaultCellStyle.Font = new Font(placeddataview.DefaultCellStyle.Font, FontStyle.Bold);
+
+                    }
+                    if (Convert.ToString(row.Cells["paymentconfirmed"].Value) == "True")
+                    {
+                        row.DefaultCellStyle.BackColor = Color.LightGreen;
+                    }
+                    if (Convert.ToString(row.Cells["status"].Value) == "Confirmed")
+                    {
+                        row.DefaultCellStyle.BackColor = Color.LightBlue;
+                    }
+
+                }
+            }
+            catch { };
+        }
+
+        private void shippeddataview_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            try
+            {
+                foreach (DataGridViewRow row in this.shippeddataview.Rows)
+                {
+                    if (Convert.ToString(row.Cells["paymentconfirmed"].Value) == "True" )
+                    {
+                        row.DefaultCellStyle.BackColor = Color.LightGreen;
+                    }
+                }
+            }
+            catch { }
+        }
+
         private void cartbtn_Click(object sender, EventArgs e)
         {
             dialogcontainer dg = new dialogcontainer();
@@ -1445,7 +1679,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
              
                     con.Open();
-                    adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='placed';", con);
+                    adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='placed' or status='confirmed';", con);
                     dt = new DataTable();
                     adap.Fill(dt);
                     con.Close();
@@ -1464,19 +1698,19 @@ namespace Veiled_Kashmir_Admin_Panel
                     shippedcount = dt.Rows.Count;
                     bgworker.ReportProgress(60);
 
-                    dr = obj.Query("Select count(status) from orders where status='placed'");
-                    dr.Read();
-                    atten = dr[0].ToString();
-                    obj.closeConnection();
-                    bgworker.ReportProgress(80);
+                    //dr = obj.Query("Select count(status) from orders where status='placed'");
+                    //dr.Read();
+                    //atten = dr[0].ToString();
+                    //obj.closeConnection();
+                  
 
                     dr = obj.Query("select sum(dealerprice*quantity) from orderdetails where orderid in(SELECT orderid FROM orders where status = 'placed');");
                     dr.Read();
                     cost = dr[0].ToString();
                     obj.closeConnection();
-                    
+                bgworker.ReportProgress(80);
 
-                    dr = obj.Query("SELECT count(status) FROM orders where status='delivered'");
+                dr = obj.Query("SELECT count(status) FROM orders where status='delivered'");
                     dr.Read();
                     order = dr[0].ToString();
                     obj.closeConnection();
@@ -1522,22 +1756,15 @@ namespace Veiled_Kashmir_Admin_Panel
                 placeddataview.DataSource = bsource;
                 try
                 {
-                    foreach (DataGridViewRow row in this.placeddataview.Rows)
-                    {
-                        int count = Convert.ToInt32(row.Cells["itemcount"].Value);
-                       
-                            if (count > 1)
-                            {
-                                placeddataview.Columns["itemcount"].DefaultCellStyle.Font = new Font(placeddataview.DefaultCellStyle.Font, FontStyle.Bold);
-                            }
-                        
-                    }
+                    
                     placeddataview.Columns["shipdate"].Visible = false;
                     placeddataview.Columns["deliverdate"].Visible = false;
                     placeddataview.Columns["paymentconfirmed"].Visible = false;
                     placeddataview.Columns["email"].Visible = false;
                     placeddataview.Columns["transanctionid"].Visible = false;
                     placeddataview.Columns["loyaltybonus"].Visible = false;
+                    placeddataview.Columns["status"].Visible = false;
+                    placeddataview.Columns["deliveryguy"].Visible = false;
 
                 }
                 catch { }
@@ -1547,11 +1774,12 @@ namespace Veiled_Kashmir_Admin_Panel
                 edit.DataPropertyName = "Edit";
                 edit.Text = "Edit";
                 placeddataview.Columns.Add(edit);
+               
                 DataGridViewButtonColumn Shipped = new DataGridViewButtonColumn();
                 Shipped.UseColumnTextForButtonValue = true;
                 Shipped.Name = "Ship";
-                Shipped.DataPropertyName = "Shipped";
-                Shipped.Text = "Shipped";
+                Shipped.DataPropertyName = "Ship";
+                Shipped.Text = "Ship";
                 placeddataview.Columns.Add(Shipped);
                 DataGridViewCheckBoxColumn checkColumn2 = new DataGridViewCheckBoxColumn();
                 checkColumn2.Name = "Address";
@@ -1559,6 +1787,13 @@ namespace Veiled_Kashmir_Admin_Panel
                 checkColumn2.ReadOnly = false;
                 placeddataview.Columns.Add(checkColumn2);
                 placeddataview.Columns["Address"].DisplayIndex = 0;
+
+                DataGridViewButtonColumn confirmed = new DataGridViewButtonColumn();
+                confirmed.UseColumnTextForButtonValue = true;
+                confirmed.Name = "Confirm";
+                confirmed.DataPropertyName = "Confirm";
+                confirmed.Text = "Confirm";
+                placeddataview.Columns.Add(confirmed);
 
                 placeddataview.Visible = true;
                 
@@ -1640,7 +1875,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 else
                 {
 
-
+                    refreshbtn.Visible = true;
                     loadingpic.Visible = false;
                     loadinglbl.Visible = false;
                     pageload.Visible = false;
@@ -1654,22 +1889,31 @@ namespace Veiled_Kashmir_Admin_Panel
                     {
                         DataGridViewCheckBoxColumn checkColumn = new DataGridViewCheckBoxColumn();
                         checkColumn.Name = "select_address";
-                        checkColumn.HeaderText = "Print_Address";
+                        checkColumn.HeaderText = "Print";
                         // checkColumn.Width = 100;
                         checkColumn.ReadOnly = false;
                      //   checkColumn.FillWeight = 10; //if the datagridview is resized (on form resize) the checkbox won't take up too much; value is relative to the other columns' fill values
-                        shippeddataview.Columns.Add(checkColumn);                 
-                   //     printaddbtn.Visible = true;
+                        shippeddataview.Columns.Add(checkColumn);
+                        //     printaddbtn.Visible = true;
 
-
-
+                       
                         
+
+
+
+
                         placeddataview.Columns["shipdate"].Visible = false;
                         placeddataview.Columns["deliverdate"].Visible = false;
                         placeddataview.Columns["paymentconfirmed"].Visible = false;
                         placeddataview.Columns["email"].Visible = false;
                         placeddataview.Columns["transanctionid"].Visible = false;
                         placeddataview.Columns["loyaltybonus"].Visible = false;
+                        placeddataview.Columns["status"].Visible = false;
+                        placeddataview.Columns["deliveryguy"].Visible = false;
+
+
+                       
+
 
                         shippeddataview.DataSource = bsource2;
                         shippeddataview.Columns["shipdate"].Visible = false;
@@ -1678,6 +1922,14 @@ namespace Veiled_Kashmir_Admin_Panel
                         shippeddataview.Columns["email"].Visible = false;
                         shippeddataview.Columns["transanctionid"].Visible = false;
                         shippeddataview.Columns["loyaltybonus"].Visible = false;
+                        shippeddataview.Columns["status"].Visible = false;
+
+                        DataGridViewButtonColumn Edit = new DataGridViewButtonColumn();
+                        Edit.UseColumnTextForButtonValue = true;
+                        Edit.Name = "Edit";
+                        Edit.DataPropertyName = "Edit";
+                        Edit.Text = "Edit";
+                        shippeddataview.Columns.Add(Edit);
 
                     }
                     catch { }
@@ -1737,34 +1989,14 @@ namespace Veiled_Kashmir_Admin_Panel
             placeddataview.Columns["email"].Visible = false;
             placeddataview.Columns["transanctionid"].Visible = false;
             placeddataview.Columns["loyaltybonus"].Visible = false;
-
+                placeddataview.Columns["status"].Visible = false;
+                placeddataview.Columns["deliveryguy"].Visible = false;
             }
             catch { }
 
             shippeddataview.DataSource = bsource2;
             try {
-                DataGridViewCheckBoxColumn checkColumn = new DataGridViewCheckBoxColumn();
-                checkColumn.Name = "select_address";
-                checkColumn.HeaderText = "Print_Address";
-                // checkColumn.Width = 100;
-                checkColumn.ReadOnly = false;
-                //   checkColumn.FillWeight = 10; //if the datagridview is resized (on form resize) the checkbox won't take up too much; value is relative to the other columns' fill values
-                shippeddataview.Columns.Add(checkColumn);
-           //     printaddbtn.Visible = true;
-
-                DataGridViewButtonColumn edit = new DataGridViewButtonColumn();
-                edit.UseColumnTextForButtonValue = true;
-                edit.Name = "Edit";
-                edit.DataPropertyName = "Edit";
-                edit.Text = "Edit";
-                placeddataview.Columns.Add(edit);
-                DataGridViewButtonColumn Shipped = new DataGridViewButtonColumn();
-                Shipped.UseColumnTextForButtonValue = true;
-                Shipped.Name = "Ship Order";
-                Shipped.DataPropertyName = "Shipped";
-                Shipped.Text = "Shipped";
-                placeddataview.Columns.Add(Shipped);
-
+               
 
                 shippeddataview.Columns["shipdate"].Visible = false;
             shippeddataview.Columns["deliverdate"].Visible = false;
@@ -1772,6 +2004,50 @@ namespace Veiled_Kashmir_Admin_Panel
             shippeddataview.Columns["email"].Visible = false;
             shippeddataview.Columns["transanctionid"].Visible = false;
                 shippeddataview.Columns["loyaltybonus"].Visible = false;
+                shippeddataview.Columns["status"].Visible = false;
+                DataGridViewCheckBoxColumn checkColumn = new DataGridViewCheckBoxColumn();
+                checkColumn.Name = "select_address";
+                checkColumn.HeaderText = "Print";
+                // checkColumn.Width = 100;
+                checkColumn.ReadOnly = false;
+                //   checkColumn.FillWeight = 10; //if the datagridview is resized (on form resize) the checkbox won't take up too much; value is relative to the other columns' fill values
+                shippeddataview.Columns.Add(checkColumn);
+                //     printaddbtn.Visible = true;
+
+                DataGridViewButtonColumn Edit = new DataGridViewButtonColumn();
+                Edit.UseColumnTextForButtonValue = true;
+                Edit.Name = "Edit";
+                Edit.DataPropertyName = "Edit";
+                Edit.Text = "Edit";
+                shippeddataview.Columns.Add(Edit);
+
+                DataGridViewButtonColumn edit = new DataGridViewButtonColumn();
+                edit.UseColumnTextForButtonValue = true;
+                edit.Name = "Edit";
+                edit.DataPropertyName = "Edit";
+                edit.Text = "Edit";
+                placeddataview.Columns.Add(edit);
+              
+                DataGridViewButtonColumn Shipped = new DataGridViewButtonColumn();
+                Shipped.UseColumnTextForButtonValue = true;
+                Shipped.Name = "Ship";
+                Shipped.DataPropertyName = "Ship";
+                Shipped.Text = "Ship";
+                placeddataview.Columns.Add(Shipped);
+                DataGridViewCheckBoxColumn checkColumn2 = new DataGridViewCheckBoxColumn();
+                checkColumn2.Name = "Address";
+                checkColumn2.HeaderText = "Print";
+                checkColumn2.ReadOnly = false;
+                placeddataview.Columns.Add(checkColumn2);
+                placeddataview.Columns["Address"].DisplayIndex = 0;
+
+                DataGridViewButtonColumn confirmed = new DataGridViewButtonColumn();
+                confirmed.UseColumnTextForButtonValue = true;
+                confirmed.Name = "Confirm";
+                confirmed.DataPropertyName = "Confirm";
+                confirmed.Text = "Confirm";
+                placeddataview.Columns.Add(confirmed);
+
 
             }
             catch { }
@@ -1793,6 +2069,7 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             ordersdlbl.Text = order;
             billslbl.Text = billno;
+            refreshbtn.Visible = true;
         }
     }
 

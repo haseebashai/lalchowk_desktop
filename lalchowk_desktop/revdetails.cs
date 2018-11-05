@@ -173,69 +173,72 @@ namespace Veiled_Kashmir_Admin_Panel
             load.WorkerReportsProgress = true;
             load.ProgressChanged += (a, c) => 
             {
-
-                if(c.ProgressPercentage ==10 ) {
-                    loadinglbl.Text = "Loading 10%";
-                    object[] arg = (object[])c.UserState;
-                    string mon = (string)arg[0];
-                    BindingSource bsource = arg[1] as BindingSource;
-                    headlbl.Text = mon;
-                    monthlydataview.DataSource = bsource;
-                    monthlydataview.Columns["did"].Visible = false;
-                }
-                else if(c.ProgressPercentage == 20)
+                try
                 {
-                    loadinglbl.Text = "Loading 20%";
-                    object[] arg2 = (object[])c.UserState;
-                    BindingSource bsource2 = arg2[0] as BindingSource;
-                    expensesview.DataSource = bsource2;
-                }
-                else if (c.ProgressPercentage == 40)
-                {
-                    loadinglbl.Text = "Loading 40%";
-                    object[] arg3 = (object[])c.UserState;
-                    orderstxt.Text = arg3[0].ToString();
-                    saletxt.Text = "Rs. "+sale;
-                   
-                }
-                else if (c.ProgressPercentage == 60)
-                {
-                    loadinglbl.Text = "Loading 60%";
-                    object[] arg4 = (object[])c.UserState;
-                    purchasetxt.Text = "Rs. "+purchase;
-                    profittxt.Text = "Rs. " + (int.Parse(sale) - int.Parse(purchase)).ToString();
-                }
-                else if (c.ProgressPercentage == 80)
-                {
-                    loadinglbl.Text = "Loading 80%";
-                    object[] arg5 = (object[])c.UserState;
-                    shiptxt.Text = "Rs. "+arg5[0].ToString();
-                    exptxt.Text = "Rs. " + arg5[1].ToString();
-                    booksoldtxt.Text = arg5[2].ToString()+ " units";
-                    try
+                    if (c.ProgressPercentage == 10)
                     {
-                        string shipp = shiptxt.Text.Split(' ')[1];
-                        int proship = ((int.Parse(sale) - int.Parse(purchase)) + int.Parse(shipp));
-                        pstxt.Text = "Rs. " + proship;
-                        //pstxt.Text = "Rs. "+((int.Parse(sale) - int.Parse(purchase)) + int.Parse(shipp)).ToString();
-                        ppctxt.Text = "Rs. "+((proship) - int.Parse(petrol));
-                        pctxt.Text = "Rs. "+petrol;
-                    }catch { }
-                }
-                else if (c.ProgressPercentage == 90)
-                {
-                    loadinglbl.Text = "Loading 90%";
-                    object[] arg6 = (object[])c.UserState;
-                    string expenses= exptxt.Text.Split(' ')[1];
-                    string pt= ppctxt.Text.Split(' ')[1];
-                    petxt.Text = "Rs. " + ((int.Parse(pt) - (int.Parse(expenses))));
+                        loadinglbl.Text = "Loading 10%";
+                        object[] arg = (object[])c.UserState;
+                        string mon = (string)arg[0];
+                        BindingSource bsource = arg[1] as BindingSource;
+                        headlbl.Text = mon;
+                        monthlydataview.DataSource = bsource;
+                        monthlydataview.Columns["did"].Visible = false;
+                    }
+                    else if (c.ProgressPercentage == 20)
+                    {
+                        loadinglbl.Text = "Loading 20%";
+                        object[] arg2 = (object[])c.UserState;
+                        BindingSource bsource2 = arg2[0] as BindingSource;
+                        expensesview.DataSource = bsource2;
+                    }
+                    else if (c.ProgressPercentage == 40)
+                    {
+                        loadinglbl.Text = "Loading 40%";
+                        object[] arg3 = (object[])c.UserState;
+                        orderstxt.Text = arg3[0].ToString();
+                        saletxt.Text = "Rs. " + sale;
+
+                    }
+                    else if (c.ProgressPercentage == 60)
+                    {
+                        loadinglbl.Text = "Loading 60%";
+                        object[] arg4 = (object[])c.UserState;
+                        purchasetxt.Text = "Rs. " + purchase;
+                        profittxt.Text = "Rs. " + (int.Parse(sale) - int.Parse(purchase)).ToString();
+                    }
+                    else if (c.ProgressPercentage == 80)
+                    {
+                        loadinglbl.Text = "Loading 80%";
+                        object[] arg5 = (object[])c.UserState;
+                        shiptxt.Text = "Rs. " + arg5[0].ToString();
+                        exptxt.Text = "Rs. " + arg5[1].ToString();
+                        booksoldtxt.Text = arg5[2].ToString() + " units";
+                        try
+                        {
+                            string shipp = shiptxt.Text.Split(' ')[1];
+                            int proship = ((int.Parse(sale) - int.Parse(purchase)) + int.Parse(shipp));
+                            pstxt.Text = "Rs. " + proship;
+                            //pstxt.Text = "Rs. "+((int.Parse(sale) - int.Parse(purchase)) + int.Parse(shipp)).ToString();
+                            ppctxt.Text = "Rs. " + ((proship) - int.Parse(petrol));
+                            pctxt.Text = "Rs. " + petrol;
+                        }
+                        catch { }
+                    }
+                    else if (c.ProgressPercentage == 90)
+                    {
+                        loadinglbl.Text = "Loading 90%";
+                        object[] arg6 = (object[])c.UserState;
+                        string expenses = exptxt.Text.Split(' ')[1];
+                        string pt = ppctxt.Text.Split(' ')[1];
+                        petxt.Text = "Rs. " + ((int.Parse(pt) - (int.Parse(expenses))));
 
 
-                    workdaystxt.Text = arg6[0].ToString()+ " Days";
-                    
-                }
+                        workdaystxt.Text = arg6[0].ToString() + " Days";
 
+                    }
 
+                }catch { }
 
             };
             load.RunWorkerCompleted += (a, d) => 

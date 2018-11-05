@@ -130,6 +130,8 @@
             this.totallbl = new System.Windows.Forms.Label();
             this.revbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.rpnl = new System.Windows.Forms.Panel();
+            this.petroltxt = new System.Windows.Forms.TextBox();
+            this.label52 = new System.Windows.Forms.Label();
             this.label51 = new System.Windows.Forms.Label();
             this.shiptxt = new System.Windows.Forms.TextBox();
             this.ordtxt = new System.Windows.Forms.TextBox();
@@ -180,8 +182,11 @@
             this.bgworker6 = new System.ComponentModel.BackgroundWorker();
             this.bgworker7 = new System.ComponentModel.BackgroundWorker();
             this.bgworker8 = new System.ComponentModel.BackgroundWorker();
-            this.petroltxt = new System.Windows.Forms.TextBox();
-            this.label52 = new System.Windows.Forms.Label();
+            this.ybox = new System.Windows.Forms.ComboBox();
+            this.mbox = new System.Windows.Forms.ComboBox();
+            this.revdetpnl = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.revgobtn = new MaterialSkin.Controls.MaterialFlatButton();
             ((System.ComponentModel.ISupportInitialize)(this.accountdataview)).BeginInit();
             this.exppnl.SuspendLayout();
             this.moneypnl.SuspendLayout();
@@ -196,6 +201,7 @@
             this.epnl.SuspendLayout();
             this.bpnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.loadingaccpic)).BeginInit();
+            this.revdetpnl.SuspendLayout();
             this.SuspendLayout();
             // 
             // expbtn
@@ -1262,24 +1268,15 @@
             // 
             // rpnl
             // 
+            this.rpnl.Controls.Add(this.revgobtn);
+            this.rpnl.Controls.Add(this.label13);
+            this.rpnl.Controls.Add(this.revdetpnl);
+            this.rpnl.Controls.Add(this.mbox);
+            this.rpnl.Controls.Add(this.ybox);
             this.rpnl.Controls.Add(this.petroltxt);
             this.rpnl.Controls.Add(this.label52);
-            this.rpnl.Controls.Add(this.label51);
-            this.rpnl.Controls.Add(this.shiptxt);
             this.rpnl.Controls.Add(this.ordtxt);
             this.rpnl.Controls.Add(this.label50);
-            this.rpnl.Controls.Add(this.orlbl);
-            this.rpnl.Controls.Add(this.label49);
-            this.rpnl.Controls.Add(this.label48);
-            this.rpnl.Controls.Add(this.investbox);
-            this.rpnl.Controls.Add(this.label47);
-            this.rpnl.Controls.Add(this.label46);
-            this.rpnl.Controls.Add(this.purchasebox);
-            this.rpnl.Controls.Add(this.profitbox);
-            this.rpnl.Controls.Add(this.salebox);
-            this.rpnl.Controls.Add(this.monlbl);
-            this.rpnl.Controls.Add(this.revlbl);
-            this.rpnl.Controls.Add(this.label37);
             this.rpnl.Controls.Add(this.pcosttxt);
             this.rpnl.Controls.Add(this.label45);
             this.rpnl.Controls.Add(this.gprofittxt);
@@ -1303,10 +1300,27 @@
             this.rpnl.TabIndex = 41;
             this.rpnl.Visible = false;
             // 
+            // petroltxt
+            // 
+            this.petroltxt.Location = new System.Drawing.Point(474, 129);
+            this.petroltxt.Multiline = true;
+            this.petroltxt.Name = "petroltxt";
+            this.petroltxt.Size = new System.Drawing.Size(73, 19);
+            this.petroltxt.TabIndex = 46;
+            // 
+            // label52
+            // 
+            this.label52.AutoSize = true;
+            this.label52.Location = new System.Drawing.Point(471, 111);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(34, 13);
+            this.label52.TabIndex = 45;
+            this.label52.Text = "Petrol";
+            // 
             // label51
             // 
             this.label51.AutoSize = true;
-            this.label51.Location = new System.Drawing.Point(805, 142);
+            this.label51.Location = new System.Drawing.Point(13, 132);
             this.label51.Name = "label51";
             this.label51.Size = new System.Drawing.Size(48, 13);
             this.label51.TabIndex = 44;
@@ -1314,7 +1328,7 @@
             // 
             // shiptxt
             // 
-            this.shiptxt.Location = new System.Drawing.Point(867, 139);
+            this.shiptxt.Location = new System.Drawing.Point(75, 129);
             this.shiptxt.Multiline = true;
             this.shiptxt.Name = "shiptxt";
             this.shiptxt.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -1343,7 +1357,7 @@
             this.orlbl.AutoSize = true;
             this.orlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.orlbl.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.orlbl.Location = new System.Drawing.Point(996, 84);
+            this.orlbl.Location = new System.Drawing.Point(204, 74);
             this.orlbl.Name = "orlbl";
             this.orlbl.Size = new System.Drawing.Size(24, 20);
             this.orlbl.TabIndex = 40;
@@ -1352,7 +1366,7 @@
             // label49
             // 
             this.label49.AutoSize = true;
-            this.label49.Location = new System.Drawing.Point(983, 64);
+            this.label49.Location = new System.Drawing.Point(191, 54);
             this.label49.Name = "label49";
             this.label49.Size = new System.Drawing.Size(41, 13);
             this.label49.TabIndex = 39;
@@ -1361,7 +1375,7 @@
             // label48
             // 
             this.label48.AutoSize = true;
-            this.label48.Location = new System.Drawing.Point(805, 116);
+            this.label48.Location = new System.Drawing.Point(13, 106);
             this.label48.Name = "label48";
             this.label48.Size = new System.Drawing.Size(51, 13);
             this.label48.TabIndex = 38;
@@ -1369,7 +1383,7 @@
             // 
             // investbox
             // 
-            this.investbox.Location = new System.Drawing.Point(867, 113);
+            this.investbox.Location = new System.Drawing.Point(75, 103);
             this.investbox.Multiline = true;
             this.investbox.Name = "investbox";
             this.investbox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -1379,7 +1393,7 @@
             // label47
             // 
             this.label47.AutoSize = true;
-            this.label47.Location = new System.Drawing.Point(822, 91);
+            this.label47.Location = new System.Drawing.Point(30, 81);
             this.label47.Name = "label47";
             this.label47.Size = new System.Drawing.Size(34, 13);
             this.label47.TabIndex = 36;
@@ -1388,7 +1402,7 @@
             // label46
             // 
             this.label46.AutoSize = true;
-            this.label46.Location = new System.Drawing.Point(822, 66);
+            this.label46.Location = new System.Drawing.Point(30, 56);
             this.label46.Name = "label46";
             this.label46.Size = new System.Drawing.Size(31, 13);
             this.label46.TabIndex = 35;
@@ -1396,7 +1410,7 @@
             // 
             // purchasebox
             // 
-            this.purchasebox.Location = new System.Drawing.Point(867, 63);
+            this.purchasebox.Location = new System.Drawing.Point(75, 53);
             this.purchasebox.Multiline = true;
             this.purchasebox.Name = "purchasebox";
             this.purchasebox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -1405,7 +1419,7 @@
             // 
             // profitbox
             // 
-            this.profitbox.Location = new System.Drawing.Point(867, 88);
+            this.profitbox.Location = new System.Drawing.Point(75, 78);
             this.profitbox.Multiline = true;
             this.profitbox.Name = "profitbox";
             this.profitbox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -1414,7 +1428,7 @@
             // 
             // salebox
             // 
-            this.salebox.Location = new System.Drawing.Point(867, 38);
+            this.salebox.Location = new System.Drawing.Point(75, 28);
             this.salebox.Multiline = true;
             this.salebox.Name = "salebox";
             this.salebox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -1424,7 +1438,7 @@
             // monlbl
             // 
             this.monlbl.AutoSize = true;
-            this.monlbl.Location = new System.Drawing.Point(918, 13);
+            this.monlbl.Location = new System.Drawing.Point(126, 3);
             this.monlbl.Name = "monlbl";
             this.monlbl.Size = new System.Drawing.Size(37, 13);
             this.monlbl.TabIndex = 31;
@@ -1433,7 +1447,7 @@
             // revlbl
             // 
             this.revlbl.AutoSize = true;
-            this.revlbl.Location = new System.Drawing.Point(822, 41);
+            this.revlbl.Location = new System.Drawing.Point(30, 31);
             this.revlbl.Name = "revlbl";
             this.revlbl.Size = new System.Drawing.Size(31, 13);
             this.revlbl.TabIndex = 30;
@@ -1442,7 +1456,7 @@
             // label37
             // 
             this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(795, 13);
+            this.label37.Location = new System.Drawing.Point(3, 3);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(126, 13);
             this.label37.TabIndex = 29;
@@ -1538,7 +1552,7 @@
             this.addrbtn.AutoSize = true;
             this.addrbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.addrbtn.Depth = 0;
-            this.addrbtn.Location = new System.Drawing.Point(640, 120);
+            this.addrbtn.Location = new System.Drawing.Point(568, 120);
             this.addrbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.addrbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.addrbtn.Name = "addrbtn";
@@ -1645,7 +1659,6 @@
             // 
             // epnl
             // 
-            this.epnl.Controls.Add(this.exppnl);
             this.epnl.Controls.Add(this.rpnl);
             this.epnl.Controls.Add(this.moneypnl);
             this.epnl.Controls.Add(this.billpnl);
@@ -1653,6 +1666,7 @@
             this.epnl.Controls.Add(this.dealpnl);
             this.epnl.Controls.Add(this.bankpnl);
             this.epnl.Controls.Add(this.miscpnl);
+            this.epnl.Controls.Add(this.exppnl);
             this.epnl.Location = new System.Drawing.Point(7, 41);
             this.epnl.Name = "epnl";
             this.epnl.Size = new System.Drawing.Size(1139, 179);
@@ -1749,22 +1763,72 @@
             this.bgworker8.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker8_DoWork);
             this.bgworker8.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker8_RunWorkerCompleted);
             // 
-            // petroltxt
+            // ybox
             // 
-            this.petroltxt.Location = new System.Drawing.Point(474, 129);
-            this.petroltxt.Multiline = true;
-            this.petroltxt.Name = "petroltxt";
-            this.petroltxt.Size = new System.Drawing.Size(73, 19);
-            this.petroltxt.TabIndex = 46;
+            this.ybox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ybox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ybox.FormattingEnabled = true;
+            this.ybox.Location = new System.Drawing.Point(669, 65);
+            this.ybox.Name = "ybox";
+            this.ybox.Size = new System.Drawing.Size(80, 20);
+            this.ybox.TabIndex = 47;
             // 
-            // label52
+            // mbox
             // 
-            this.label52.AutoSize = true;
-            this.label52.Location = new System.Drawing.Point(471, 111);
-            this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(34, 13);
-            this.label52.TabIndex = 45;
-            this.label52.Text = "Petrol";
+            this.mbox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.mbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mbox.FormattingEnabled = true;
+            this.mbox.Location = new System.Drawing.Point(755, 65);
+            this.mbox.Name = "mbox";
+            this.mbox.Size = new System.Drawing.Size(102, 20);
+            this.mbox.TabIndex = 48;
+            // 
+            // revdetpnl
+            // 
+            this.revdetpnl.Controls.Add(this.label37);
+            this.revdetpnl.Controls.Add(this.revlbl);
+            this.revdetpnl.Controls.Add(this.monlbl);
+            this.revdetpnl.Controls.Add(this.salebox);
+            this.revdetpnl.Controls.Add(this.profitbox);
+            this.revdetpnl.Controls.Add(this.label51);
+            this.revdetpnl.Controls.Add(this.purchasebox);
+            this.revdetpnl.Controls.Add(this.shiptxt);
+            this.revdetpnl.Controls.Add(this.label46);
+            this.revdetpnl.Controls.Add(this.label47);
+            this.revdetpnl.Controls.Add(this.investbox);
+            this.revdetpnl.Controls.Add(this.orlbl);
+            this.revdetpnl.Controls.Add(this.label48);
+            this.revdetpnl.Controls.Add(this.label49);
+            this.revdetpnl.Location = new System.Drawing.Point(863, 5);
+            this.revdetpnl.Name = "revdetpnl";
+            this.revdetpnl.Size = new System.Drawing.Size(265, 153);
+            this.revdetpnl.TabIndex = 49;
+            this.revdetpnl.Visible = false;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(689, 26);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(145, 13);
+            this.label13.TabIndex = 50;
+            this.label13.Text = "Select Month/Year for details";
+            // 
+            // revgobtn
+            // 
+            this.revgobtn.AutoSize = true;
+            this.revgobtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.revgobtn.Depth = 0;
+            this.revgobtn.Location = new System.Drawing.Point(825, 99);
+            this.revgobtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.revgobtn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.revgobtn.Name = "revgobtn";
+            this.revgobtn.Primary = false;
+            this.revgobtn.Size = new System.Drawing.Size(31, 36);
+            this.revgobtn.TabIndex = 51;
+            this.revgobtn.Text = "go";
+            this.revgobtn.UseVisualStyleBackColor = true;
+            this.revgobtn.Click += new System.EventHandler(this.revgobtn_Click);
             // 
             // accounts
             // 
@@ -1808,6 +1872,8 @@
             this.bpnl.ResumeLayout(false);
             this.bpnl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.loadingaccpic)).EndInit();
+            this.revdetpnl.ResumeLayout(false);
+            this.revdetpnl.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1969,5 +2035,10 @@
         private System.Windows.Forms.Button ticketbtn;
         private System.Windows.Forms.TextBox petroltxt;
         private System.Windows.Forms.Label label52;
+        private System.Windows.Forms.ComboBox mbox;
+        private System.Windows.Forms.ComboBox ybox;
+        private MaterialSkin.Controls.MaterialFlatButton revgobtn;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Panel revdetpnl;
     }
 }

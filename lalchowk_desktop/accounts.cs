@@ -297,14 +297,14 @@ namespace Veiled_Kashmir_Admin_Panel
             bsource.DataSource = dt;
             
 
-            aconn.Open();
-            cmd = new MySqlCommand("SELECT date FROM lalchowk_ac.deliveries ORDER BY orderid DESC LIMIT 1;", aconn);
-            dr = cmd.ExecuteReader();
-            dr.Read();
+            //aconn.Open();
+            //cmd = new MySqlCommand("SELECT date FROM lalchowk_ac.deliveries ORDER BY orderid DESC LIMIT 1;", aconn);
+            //dr = cmd.ExecuteReader();
+            //dr.Read();
             
-            date = dr[0].ToString();           
-            month = date.Substring(3, 2);
-            aconn.Close();
+            //date = dr[0].ToString();           
+            //month = date.Substring(3, 2);
+            //aconn.Close();
         }
             catch (Exception ex)
             {
@@ -811,6 +811,7 @@ namespace Veiled_Kashmir_Admin_Panel
             commentstxt.Text = "";
             readdealings();
             accountdataview.DataSource = bsource;
+                accountdataview.Columns["Details"].Visible = false;
         }
             catch (Exception ex)
             {
@@ -852,36 +853,7 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             try { 
             readrevenue();
-            aconn.Open();
-            cmd = new MySqlCommand(" SELECT sum(amount),sum(shipping) from deliveries where status='delivered' and date like '%-" + month + "-2018'", aconn); 
-            dr = cmd.ExecuteReader();
-            dr.Read();
-            sale = dr[0].ToString();
-            shipping = dr[1].ToString();
-            aconn.Close();
-
-            aconn.Open();
-            cmd = new MySqlCommand(" SELECT sum(dealerprice*count) from dealing where pickupdate like '%-" + month + "-2018'", aconn); 
-            dr = cmd.ExecuteReader();
-            dr.Read();
-            purchase = dr[0].ToString();
-            aconn.Close();
-
-
-            aconn.Open();
-            cmd = new MySqlCommand(" SELECT sum(amount) from expenses where purchasedate like '%-" + month + "-2018'", aconn);
-            dr = cmd.ExecuteReader();
-            dr.Read();
-            invest = dr[0].ToString();
-            aconn.Close();
-
-                aconn.Open();
-                cmd = new MySqlCommand(" SELECT count(did) from deliveries where date like '%-" + month + "-2018'", aconn); //" + month + "
-                dr = cmd.ExecuteReader();
-                dr.Read();
-                order = dr[0].ToString();
-
-                aconn.Close();
+            
 
             }
             catch (Exception ex)
@@ -901,68 +873,10 @@ namespace Veiled_Kashmir_Admin_Panel
             DataGridViewButtonColumn accdetails = new DataGridViewButtonColumn();
             accdetails.UseColumnTextForButtonValue = true;
             accdetails.Name = "Details";
-            accdetails.DataPropertyName = "View Details";
-            accdetails.Text = "View Details";
+            accdetails.DataPropertyName = "View";
+            accdetails.Text = "View";
             accountdataview.Columns.Add(accdetails);
-           
-            salebox.Text = sale;
-            purchasebox.Text = purchase;
-            investbox.Text = invest;
-            orlbl.Text = order;
-            shiptxt.Text = shipping;
-            try
-            {
-                profitbox.Text = (int.Parse(salebox.Text) - int.Parse(purchasebox.Text)).ToString();
-            }
-            catch
-            {
-                MessageBox.Show("Please check for the correct date in deliveries and dealings.");
-            }
-           
-            switch (month)
-            {
-                case "01":
-                    monlbl.Text = "January";
-                    break;
-                case "02":
-                    monlbl.Text = "February";
-                    break;
-                case "03":
-                    monlbl.Text = "March";
-                    break;
-                case "04":
-                    monlbl.Text = "April";
-                    break;
-                case "05":
-                    monlbl.Text = "May";
-                    break;
-                case "06":
-                    monlbl.Text = "June";
-                    break;
-                case "07":
-                    monlbl.Text = "July";
-                    break;
-                case "08":
-                    monlbl.Text = "August";
-                    break;
-                case "09":
-                    monlbl.Text = "September";
-                    break;
-                case "10":
-                    monlbl.Text = "October";
-                    break;
-                case "11":
-                    monlbl.Text = "November";
-                    break;
-                case "12":
-                    monlbl.Text = "December";
-                    break;
-                default:
-                    monlbl.Visible = false;
-                    break;
-            }
-            
-                   
+
         }
 
         private void ticketbtn_Click(object sender, EventArgs e)
@@ -1008,7 +922,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 
                 if (rev)
                 {
-                    
+                    MessageBox.Show(e.ColumnIndex.ToString());
                     if(e.ColumnIndex >=12)
                     {
                         string month = accountdataview.Rows[e.RowIndex].Cells["month"].Value.ToString();
@@ -1079,9 +993,165 @@ namespace Veiled_Kashmir_Admin_Panel
 
 
         string sale, purchase, invest, order;
+
+        private void revgobtn_Click(object sender, EventArgs e)
+        {
+            revdetpnl.Visible = false;
+            Cursor = Cursors.WaitCursor;
+           
+                string mon = "";
+                switch (mbox.Text)
+                {
+                    case "January":
+                        mon = "01";
+                        break;
+                    case "February":
+                        mon = "02";
+
+                        break;
+                    case "March":
+                        mon = "03";
+                        break;
+                    case "April":
+                        mon = "04";
+                        break;
+                    case "May":
+                        mon = "05";
+                        break;
+                    case "June":
+                        mon = "06";
+                        break;
+                    case "July":
+                        mon = "07";
+                        break;
+                    case "August":
+                        mon = "08";
+                        break;
+                    case "September":
+                        mon = "09";
+                        break;
+                    case "October":
+                        mon = "10";
+                        break;
+                    case "November":
+                        mon = "11";
+                        break;
+                    case "December":
+                        mon = "12";
+                        break;
+                    default:
+                        mon = "02";
+                        break;
+                }
+
+                string date =mon + "-" + ybox.Text;
+                
+
+
+                BackgroundWorker revd = new BackgroundWorker();
+                revd.DoWork += (a, b) =>
+                {
+                    try
+                    {
+                        aconn.Open();
+                        cmd = new MySqlCommand(" SELECT sum(amount),sum(shipping) from deliveries where status='delivered' and date like '%-" + date + "'", aconn); //" + mbox.Text + "-" + ybox.Text + "'     
+                        dr = cmd.ExecuteReader();
+                        dr.Read();
+                        sale = dr[0].ToString();
+                        shipping = dr[1].ToString();
+                        aconn.Close();
+
+                        aconn.Open();
+                        cmd = new MySqlCommand(" SELECT sum(dealerprice*count) from dealing where pickupdate like '%-" + date + "'", aconn); //' %-" + month + "-2018'
+                        dr = cmd.ExecuteReader();
+                        dr.Read();
+                        purchase = dr[0].ToString();
+                        aconn.Close();
+
+
+                        aconn.Open();
+                        cmd = new MySqlCommand(" SELECT sum(amount) from expenses where purchasedate like '%-" + date + "'", aconn);
+                        dr = cmd.ExecuteReader();
+                        dr.Read();
+                        invest = dr[0].ToString();
+                        aconn.Close();
+
+                        aconn.Open();
+                        cmd = new MySqlCommand(" SELECT count(did) from deliveries where date like '%-" + date + "'", aconn); //" + month + "
+                        dr = cmd.ExecuteReader();
+                        dr.Read();
+                        order = dr[0].ToString();
+
+                        aconn.Close();
+                    }
+                    catch { }
+                   
+                };
+                revd.RunWorkerCompleted += (a, c) => 
+                {
+
+                    try
+                    {
+                        salebox.Text = sale;
+                        purchasebox.Text = purchase;
+                        investbox.Text = invest;
+                        orlbl.Text = order;
+                        shiptxt.Text = shipping;
+                        
+                            profitbox.Text = (int.Parse(salebox.Text) - int.Parse(purchasebox.Text)).ToString();
+
+                        //  MessageBox.Show("Please check for the correct date in deliveries and dealings.");
+
+                        monlbl.Text = mbox.Text + ybox.Text;
+                        
+                        
+                        revdetpnl.Visible = true;
+                    }
+                    catch { revdetpnl.Visible = false; MessageBox.Show("Please select the correct date.","Error!"); }
+                    
+                    Cursor = Cursors.Arrow;
+                };
+                revd.RunWorkerAsync();
+               
+
+
+           
+        }
+
         bool rev = false;
         private void revbtn_Click(object sender, EventArgs e)
         {
+
+            ybox.DisplayMember = "Text";
+            var years = new[]
+            {
+                new {Text="2017"},
+                new {Text="2018"},
+                new {Text ="2019"},
+                 new {Text ="2020"},
+                };
+            ybox.DataSource = years;
+
+            mbox.DisplayMember = "Text";
+            var months = new[]
+            {
+                new {Text="January"},
+                new {Text ="February"},
+                new {Text="March"},
+                new {Text ="April"},
+                new {Text="May"},
+                new {Text ="June"},
+                new {Text="July"},
+                new {Text ="August"},
+                new {Text="September"},
+                new {Text ="October"},
+                new {Text="November"},
+                new {Text ="December"},
+                };
+            mbox.DataSource = months;
+
+
+
             rev = true;
             panelhide();
             loadingshow();

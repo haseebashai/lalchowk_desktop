@@ -235,13 +235,13 @@ namespace Veiled_Kashmir_Admin_Panel
             {
                 if (pyes.Checked)
                 {
-                    cmd = ("insert into pincodes(`pincode`, `deliverytime`,`cod`,`area`) values ('" + pintxt.Text + "','" + deltxt.Text + "','1','" + areatxt.Text + "')");
+                    cmd = ("insert into pincodes(`pincode`, `deliverytime`,`cod`,`area`,`extracharges`) values ('" + pintxt.Text + "','" + deltxt.Text + "','1','" + areatxt.Text + "','"+delchtxt.Text+"')");
                     obj.nonQuery(cmd);
                     obj.closeConnection();
                 }
                 else
                 {
-                    cmd = ("insert into pincodes(`pincode`, `deliverytime`,`cod`,`area`) values ('" + pintxt.Text + "','" + deltxt.Text + "','0','" + areatxt.Text + "')");
+                    cmd = ("insert into pincodes(`pincode`, `deliverytime`,`cod`,`area`,`extracharges`) values ('" + pintxt.Text + "','" + deltxt.Text + "','0','" + areatxt.Text + "','" + delchtxt.Text + "')");
                     obj.nonQuery(cmd);
                     obj.closeConnection();
                 }
@@ -250,6 +250,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 pintxt.Text = "";
                 deltxt.Text = "";
                 areatxt.Text = "";
+                delchtxt.Text = "";
                 pyes.Checked = false;
                 pno.Checked = false;
 

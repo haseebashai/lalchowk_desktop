@@ -525,7 +525,21 @@ namespace Veiled_Kashmir_Admin_Panel
 
         }
 
-      
+        private void pshipbtn_Click(object sender, EventArgs e)
+        {
+            smstxt.Text = "";
+            if (cname == "")
+            {
+
+                smstxt.Text = "Dear customer, your order has been dispatched via SpeedPost. You can track your order on indiapost.gov.in using tracking number:  \r\nPlease keep your phone in reach.\r\nTeam Lalchowk.";
+
+            }
+            else
+            {
+                smstxt.Text = "Dear " + cname + ", your order has been dispatched via SpeedPost. You can track your order on indiapost.gov.in using tracking number:  \r\nPlease keep your phone in reach.\r\nTeam Lalchowk.";
+
+            }
+        }
 
         private void feedbtn_Click(object sender, EventArgs e)
         {

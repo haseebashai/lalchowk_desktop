@@ -46,6 +46,7 @@
             this.loadinglbl = new System.Windows.Forms.Label();
             this.settingsdataview = new System.Windows.Forms.DataGridView();
             this.bpnl = new System.Windows.Forms.Panel();
+            this.caboutbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.appverbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.delbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.verbtn = new MaterialSkin.Controls.MaterialFlatButton();
@@ -55,7 +56,8 @@
             this.bgpincodes = new System.ComponentModel.BackgroundWorker();
             this.bgverification = new System.ComponentModel.BackgroundWorker();
             this.formlbl = new System.Windows.Forms.Label();
-            this.caboutbtn = new MaterialSkin.Controls.MaterialFlatButton();
+            this.delchtxt = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.spnl.SuspendLayout();
             this.epnl.SuspendLayout();
             this.ppnl.SuspendLayout();
@@ -99,6 +101,8 @@
             // 
             // ppnl
             // 
+            this.ppnl.Controls.Add(this.delchtxt);
+            this.ppnl.Controls.Add(this.label4);
             this.ppnl.Controls.Add(this.pintxt);
             this.ppnl.Controls.Add(this.label8);
             this.ppnl.Controls.Add(this.pno);
@@ -260,6 +264,22 @@
             this.bpnl.TabIndex = 1;
             this.bpnl.Visible = false;
             // 
+            // caboutbtn
+            // 
+            this.caboutbtn.AutoSize = true;
+            this.caboutbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.caboutbtn.Depth = 0;
+            this.caboutbtn.Location = new System.Drawing.Point(705, 8);
+            this.caboutbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.caboutbtn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.caboutbtn.Name = "caboutbtn";
+            this.caboutbtn.Primary = false;
+            this.caboutbtn.Size = new System.Drawing.Size(70, 36);
+            this.caboutbtn.TabIndex = 25;
+            this.caboutbtn.Text = "Policies";
+            this.caboutbtn.UseVisualStyleBackColor = true;
+            this.caboutbtn.Click += new System.EventHandler(this.caboutbtn_Click);
+            // 
             // appverbtn
             // 
             this.appverbtn.AutoSize = true;
@@ -366,21 +386,21 @@
             this.formlbl.TabIndex = 102;
             this.formlbl.Text = "OTP/Pincodes";
             // 
-            // caboutbtn
+            // delchtxt
             // 
-            this.caboutbtn.AutoSize = true;
-            this.caboutbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.caboutbtn.Depth = 0;
-            this.caboutbtn.Location = new System.Drawing.Point(705, 8);
-            this.caboutbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.caboutbtn.MouseState = MaterialSkin.MouseState.HOVER;
-            this.caboutbtn.Name = "caboutbtn";
-            this.caboutbtn.Primary = false;
-            this.caboutbtn.Size = new System.Drawing.Size(70, 36);
-            this.caboutbtn.TabIndex = 25;
-            this.caboutbtn.Text = "Policies";
-            this.caboutbtn.UseVisualStyleBackColor = true;
-            this.caboutbtn.Click += new System.EventHandler(this.caboutbtn_Click);
+            this.delchtxt.Location = new System.Drawing.Point(421, 56);
+            this.delchtxt.Name = "delchtxt";
+            this.delchtxt.Size = new System.Drawing.Size(100, 20);
+            this.delchtxt.TabIndex = 108;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(418, 40);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(87, 13);
+            this.label4.TabIndex = 107;
+            this.label4.Text = "Delivery Charges";
             // 
             // Settings
             // 
@@ -437,5 +457,7 @@
         private MaterialSkin.Controls.MaterialFlatButton delbtn;
         private MaterialSkin.Controls.MaterialFlatButton appverbtn;
         private MaterialSkin.Controls.MaterialFlatButton caboutbtn;
+        private System.Windows.Forms.TextBox delchtxt;
+        private System.Windows.Forms.Label label4;
     }
 }

@@ -54,6 +54,7 @@
             this.feedbtn = new System.Windows.Forms.Button();
             this.smsnpnl = new System.Windows.Forms.Panel();
             this.txtpnl = new System.Windows.Forms.Panel();
+            this.pshipbtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.arrow)).BeginInit();
             this.smsnpnl.SuspendLayout();
             this.txtpnl.SuspendLayout();
@@ -79,11 +80,11 @@
             // 
             this.smstxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.smstxt.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.smstxt.Location = new System.Drawing.Point(89, 280);
+            this.smstxt.Location = new System.Drawing.Point(89, 259);
             this.smstxt.MaxLength = 620;
             this.smstxt.Multiline = true;
             this.smstxt.Name = "smstxt";
-            this.smstxt.Size = new System.Drawing.Size(362, 134);
+            this.smstxt.Size = new System.Drawing.Size(362, 155);
             this.smstxt.TabIndex = 3;
             this.smstxt.TextChanged += new System.EventHandler(this.smstxt_TextChanged);
             // 
@@ -95,7 +96,7 @@
             this.numbertxt.Multiline = true;
             this.numbertxt.Name = "numbertxt";
             this.numbertxt.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.numbertxt.Size = new System.Drawing.Size(362, 165);
+            this.numbertxt.Size = new System.Drawing.Size(362, 143);
             this.numbertxt.TabIndex = 2;
             this.numbertxt.Text = "Enter numbers seperated with comma";
             this.numbertxt.Enter += new System.EventHandler(this.numbertxt_Enter);
@@ -113,7 +114,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(86, 262);
+            this.label2.Location = new System.Drawing.Point(86, 241);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(66, 13);
             this.label2.TabIndex = 39;
@@ -277,18 +278,18 @@
             this.stbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.stbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.stbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stbtn.Location = new System.Drawing.Point(14, 329);
+            this.stbtn.Location = new System.Drawing.Point(14, 285);
             this.stbtn.Name = "stbtn";
-            this.stbtn.Size = new System.Drawing.Size(69, 33);
+            this.stbtn.Size = new System.Drawing.Size(69, 46);
             this.stbtn.TabIndex = 54;
-            this.stbtn.Text = "Shipped Template";
+            this.stbtn.Text = "Local Shipped";
             this.stbtn.UseVisualStyleBackColor = true;
             this.stbtn.Click += new System.EventHandler(this.stbtn_Click);
             // 
             // charlbl
             // 
             this.charlbl.AutoSize = true;
-            this.charlbl.Location = new System.Drawing.Point(399, 264);
+            this.charlbl.Location = new System.Drawing.Point(399, 243);
             this.charlbl.Name = "charlbl";
             this.charlbl.Size = new System.Drawing.Size(30, 13);
             this.charlbl.TabIndex = 55;
@@ -332,7 +333,7 @@
             this.btbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.btbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btbtn.Location = new System.Drawing.Point(14, 370);
+            this.btbtn.Location = new System.Drawing.Point(14, 386);
             this.btbtn.Name = "btbtn";
             this.btbtn.Size = new System.Drawing.Size(69, 44);
             this.btbtn.TabIndex = 58;
@@ -344,7 +345,7 @@
             // 
             this.feedbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.feedbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.feedbtn.Location = new System.Drawing.Point(14, 288);
+            this.feedbtn.Location = new System.Drawing.Point(14, 244);
             this.feedbtn.Name = "feedbtn";
             this.feedbtn.Size = new System.Drawing.Size(69, 35);
             this.feedbtn.TabIndex = 59;
@@ -368,6 +369,7 @@
             // 
             // txtpnl
             // 
+            this.txtpnl.Controls.Add(this.pshipbtn);
             this.txtpnl.Controls.Add(this.label4);
             this.txtpnl.Controls.Add(this.feedbtn);
             this.txtpnl.Controls.Add(this.sendsmsbtn);
@@ -388,6 +390,19 @@
             this.txtpnl.Name = "txtpnl";
             this.txtpnl.Size = new System.Drawing.Size(475, 499);
             this.txtpnl.TabIndex = 61;
+            // 
+            // pshipbtn
+            // 
+            this.pshipbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.pshipbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.pshipbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pshipbtn.Location = new System.Drawing.Point(14, 335);
+            this.pshipbtn.Name = "pshipbtn";
+            this.pshipbtn.Size = new System.Drawing.Size(69, 46);
+            this.pshipbtn.TabIndex = 60;
+            this.pshipbtn.Text = "Postal Shipped";
+            this.pshipbtn.UseVisualStyleBackColor = true;
+            this.pshipbtn.Click += new System.EventHandler(this.pshipbtn_Click);
             // 
             // sendsms
             // 
@@ -438,5 +453,6 @@
         public System.Windows.Forms.Panel smsnpnl;
         public System.Windows.Forms.PictureBox arrow;
         public System.Windows.Forms.Panel txtpnl;
+        public System.Windows.Forms.Button pshipbtn;
     }
 }

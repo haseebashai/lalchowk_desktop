@@ -63,6 +63,18 @@ namespace Veiled_Kashmir_Admin_Panel
                 {
                     pinbox.DisplayMember = "pincode";
                     pinbox.SelectedIndex = -1;
+
+                    ptypebox.DisplayMember = "Text";
+                    var items = new[]
+                    {
+                         new {Text="Pre-Pay"},
+                         new {Text ="Cash on Delivery"},
+                    };
+                    ptypebox.DataSource = items;
+                    ptypebox.SelectedIndex = 1;
+
+                    pcnbox.Checked = true;
+
                 }
                 catch (Exception ex) { MessageBox.Show(ex.ToString()); };
             };
@@ -141,10 +153,16 @@ namespace Veiled_Kashmir_Admin_Panel
                     DialogResult dgr = MessageBox.Show("Please ensure all the details are correct, it will reflect on the user account.\r\nDo you want to proceed ?", "Confirm!", MessageBoxButtons.YesNo);
                     if (dgr == DialogResult.Yes)
                     {
+                        string pconf = "";
+                        if (pcybox.Checked)
+                            pconf = "1";
+                        else
+                            pconf = "0";
 
                         string email = md5hash(emailtxt.Text);
-                        string cmd = "INSERT INTO orders(`email`, `amount`,`timestamp`,`shipping`,`paymenttype`, `transanctionid`,`itemcount`,`status`,`name`,`address1`,`address2`,`contact`,`pincode`,`city`,`loyaltybonus`) values ('" + email + "','" + amounttxt.Text
-                            + "',DATE_ADD(CURRENT_TIMESTAMP, INTERVAL 750 MINUTE),'" + shiptxt.Text + "','Cash on Delivery','SW','" + counttxt.Text + "','" + statustxt.Text + "','" + nametxt.Text + "','" + add1txt.Text + "','" + add2txt.Text + "','" + contacttxt.Text + "','" + pintxt.Text + "','" + citytxt.Text + "','" + loyaltxt.Text + "')";
+                        string cmd = "INSERT INTO orders(`email`, `amount`,`timestamp`,`shipping`,`paymenttype`,`paymentconfirmed`, `transanctionid`,`itemcount`,`status`,`name`,`address1`,`address2`,`contact`,`pincode`,`city`,`loyaltybonus`,`deliveryguy`) values ('" + email + "','" + amounttxt.Text
+                            + "',DATE_ADD(CURRENT_TIMESTAMP, INTERVAL 750 MINUTE),'" + shiptxt.Text + "','"+ptypebox.Text+"','"+pconf+"','SW','" + counttxt.Text + "','" + statustxt.Text + "','" + nametxt.Text + "','" + add1txt.Text + "','" + add2txt.Text + "','" + contacttxt.Text + "','" + pintxt.Text + "','" + citytxt.Text 
+                            + "','" + loyaltxt.Text + "','"+devtxt.Text+"')";
                         obj.nonQuery(cmd);
                         long orderid = userinfo.orid;
                         //    int orderid = obj.Count("SELECT LAST_INSERT_ID()");
@@ -440,6 +458,18 @@ namespace Veiled_Kashmir_Admin_Panel
 
             old.Show();
 
+        }
+
+        private void pcybox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (pcybox.Checked)
+                pcnbox.Checked = false;
+        }
+
+        private void pcnbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (pcnbox.Checked)
+                pcybox.Checked = false;
         }
 
         private void refresh_Click(object sender, EventArgs e)

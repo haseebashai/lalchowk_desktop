@@ -64,6 +64,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.navtxt = new System.Windows.Forms.Label();
             this.cntpnl = new System.Windows.Forms.Panel();
+            this.refreshbtn = new System.Windows.Forms.PictureBox();
             this.printadd2btn = new System.Windows.Forms.Button();
             this.printaddbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.billmismatchlbl = new System.Windows.Forms.Label();
@@ -96,6 +97,7 @@
             this.navtitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.cntpnl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.refreshbtn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.shippeddataview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.loadingpic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.placeddataview)).BeginInit();
@@ -553,6 +555,7 @@
             // cntpnl
             // 
             this.cntpnl.BackColor = System.Drawing.Color.White;
+            this.cntpnl.Controls.Add(this.refreshbtn);
             this.cntpnl.Controls.Add(this.printadd2btn);
             this.cntpnl.Controls.Add(this.printaddbtn);
             this.cntpnl.Controls.Add(this.billmismatchlbl);
@@ -580,6 +583,20 @@
             this.cntpnl.Size = new System.Drawing.Size(1162, 722);
             this.cntpnl.TabIndex = 12;
             // 
+            // refreshbtn
+            // 
+            this.refreshbtn.BackColor = System.Drawing.Color.Transparent;
+            this.refreshbtn.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.refresh;
+            this.refreshbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.refreshbtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.refreshbtn.Location = new System.Drawing.Point(1125, 7);
+            this.refreshbtn.Name = "refreshbtn";
+            this.refreshbtn.Size = new System.Drawing.Size(24, 20);
+            this.refreshbtn.TabIndex = 59;
+            this.refreshbtn.TabStop = false;
+            this.refreshbtn.Visible = false;
+            this.refreshbtn.Click += new System.EventHandler(this.refreshbtn_Click);
+            // 
             // printadd2btn
             // 
             this.printadd2btn.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -600,7 +617,7 @@
             this.printaddbtn.AutoSize = true;
             this.printaddbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.printaddbtn.Depth = 0;
-            this.printaddbtn.Location = new System.Drawing.Point(8, 638);
+            this.printaddbtn.Location = new System.Drawing.Point(8, 642);
             this.printaddbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.printaddbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.printaddbtn.Name = "printaddbtn";
@@ -617,7 +634,7 @@
             this.billmismatchlbl.AutoSize = true;
             this.billmismatchlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.billmismatchlbl.ForeColor = System.Drawing.Color.Red;
-            this.billmismatchlbl.Location = new System.Drawing.Point(875, 684);
+            this.billmismatchlbl.Location = new System.Drawing.Point(875, 688);
             this.billmismatchlbl.Name = "billmismatchlbl";
             this.billmismatchlbl.Size = new System.Drawing.Size(0, 13);
             this.billmismatchlbl.TabIndex = 56;
@@ -630,7 +647,7 @@
             this.clearlbl.Cursor = System.Windows.Forms.Cursors.Hand;
             this.clearlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clearlbl.ForeColor = System.Drawing.Color.Red;
-            this.clearlbl.Location = new System.Drawing.Point(394, 647);
+            this.clearlbl.Location = new System.Drawing.Point(394, 651);
             this.clearlbl.Name = "clearlbl";
             this.clearlbl.Size = new System.Drawing.Size(19, 19);
             this.clearlbl.TabIndex = 55;
@@ -643,7 +660,7 @@
             this.retolbl.AutoSize = true;
             this.retolbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.retolbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.retolbl.Location = new System.Drawing.Point(425, 657);
+            this.retolbl.Location = new System.Drawing.Point(425, 661);
             this.retolbl.Name = "retolbl";
             this.retolbl.Size = new System.Drawing.Size(20, 24);
             this.retolbl.TabIndex = 54;
@@ -655,7 +672,7 @@
             this.totallbl.AutoSize = true;
             this.totallbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.totallbl.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.totallbl.Location = new System.Drawing.Point(426, 638);
+            this.totallbl.Location = new System.Drawing.Point(426, 642);
             this.totallbl.Name = "totallbl";
             this.totallbl.Size = new System.Drawing.Size(42, 16);
             this.totallbl.TabIndex = 53;
@@ -667,7 +684,7 @@
             this.billslbl.AutoSize = true;
             this.billslbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.billslbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.billslbl.Location = new System.Drawing.Point(1037, 656);
+            this.billslbl.Location = new System.Drawing.Point(1037, 660);
             this.billslbl.Name = "billslbl";
             this.billslbl.Size = new System.Drawing.Size(0, 24);
             this.billslbl.TabIndex = 52;
@@ -677,7 +694,7 @@
             this.billsh.AutoSize = true;
             this.billsh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.billsh.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.billsh.Location = new System.Drawing.Point(1038, 637);
+            this.billsh.Location = new System.Drawing.Point(1038, 641);
             this.billsh.Name = "billsh";
             this.billsh.Size = new System.Drawing.Size(79, 16);
             this.billsh.TabIndex = 51;
@@ -700,7 +717,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.shippeddataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.shippeddataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.shippeddataview.Location = new System.Drawing.Point(5, 447);
+            this.shippeddataview.Location = new System.Drawing.Point(5, 446);
             this.shippeddataview.Name = "shippeddataview";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
@@ -712,11 +729,12 @@
             this.shippeddataview.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.shippeddataview.RowHeadersVisible = false;
             this.shippeddataview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.shippeddataview.Size = new System.Drawing.Size(1145, 181);
+            this.shippeddataview.Size = new System.Drawing.Size(1145, 189);
             this.shippeddataview.TabIndex = 33;
             this.shippeddataview.Visible = false;
             this.shippeddataview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.shippeddataview_CellClick);
             this.shippeddataview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.shippeddataview_CellContentClick);
+            this.shippeddataview.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.shippeddataview_CellFormatting);
             this.shippeddataview.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.shippeddataview_CellValueChanged);
             // 
             // ordersdlbl
@@ -724,7 +742,7 @@
             this.ordersdlbl.AutoSize = true;
             this.ordersdlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ordersdlbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.ordersdlbl.Location = new System.Drawing.Point(864, 656);
+            this.ordersdlbl.Location = new System.Drawing.Point(864, 660);
             this.ordersdlbl.Name = "ordersdlbl";
             this.ordersdlbl.Size = new System.Drawing.Size(0, 24);
             this.ordersdlbl.TabIndex = 35;
@@ -734,7 +752,7 @@
             this.deliveredh.AutoSize = true;
             this.deliveredh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.deliveredh.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.deliveredh.Location = new System.Drawing.Point(864, 637);
+            this.deliveredh.Location = new System.Drawing.Point(864, 641);
             this.deliveredh.Name = "deliveredh";
             this.deliveredh.Size = new System.Drawing.Size(148, 16);
             this.deliveredh.TabIndex = 34;
@@ -746,7 +764,7 @@
             this.shippedh.AutoSize = true;
             this.shippedh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.shippedh.ForeColor = System.Drawing.Color.Navy;
-            this.shippedh.Location = new System.Drawing.Point(4, 425);
+            this.shippedh.Location = new System.Drawing.Point(4, 424);
             this.shippedh.Name = "shippedh";
             this.shippedh.Size = new System.Drawing.Size(157, 16);
             this.shippedh.TabIndex = 32;
@@ -849,6 +867,7 @@
             this.placeddataview.TabIndex = 31;
             this.placeddataview.Visible = false;
             this.placeddataview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.placeddataview_CellContentClick);
+            this.placeddataview.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.placeddataview_CellFormatting);
             // 
             // cancelbtn
             // 
@@ -981,6 +1000,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.cntpnl.ResumeLayout(false);
             this.cntpnl.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.refreshbtn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.shippeddataview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.loadingpic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.placeddataview)).EndInit();
@@ -1050,5 +1070,6 @@
         private System.Windows.Forms.Label billmismatchlbl;
         private MaterialSkin.Controls.MaterialFlatButton printaddbtn;
         private System.Windows.Forms.Button printadd2btn;
+        private System.Windows.Forms.PictureBox refreshbtn;
     }
 }
