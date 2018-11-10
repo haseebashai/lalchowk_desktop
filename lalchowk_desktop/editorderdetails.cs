@@ -93,14 +93,24 @@ namespace Veiled_Kashmir_Admin_Panel
                     ptypebox.SelectedIndex = 1;
                 }
 
+                refreshbtn.Visible = true;
 
-                
-              
+
 
             }
             catch (Exception ex) 
             {
+                obj.closeConnection();
+                conn.Close();
                 MessageBox.Show(ex.Message);
+                updbtn.Text = "Please Reload.";
+                updbtn.Enabled =false;
+                orderdetailview.Visible = false;
+                deupdbtn.Visible =false;
+                refreshbtn.Visible = true;
+
+             
+
             }
         }
 
@@ -130,7 +140,7 @@ namespace Veiled_Kashmir_Admin_Panel
                adap = new MySqlDataAdapter("SELECT * FROM orderdetails where orderid='" + orderid + "'", conn);
                dt = new DataTable();
                 adap.Fill(dt);
-                obj.closeConnection();
+                conn.Close();
                 BindingSource bsource = new BindingSource();
                 bsource.DataSource = dt;
 
@@ -142,6 +152,7 @@ namespace Veiled_Kashmir_Admin_Panel
             }catch
             {
                 obj.closeConnection();
+                conn.Close();
             }
         }
 
@@ -210,5 +221,134 @@ namespace Veiled_Kashmir_Admin_Panel
             Cursor = Cursors.Arrow;
         }
 
+        private void refresh_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            refreshbtn.Enabled = false;
+            updbtn.Text = "Loading...";
+            updbtn.Enabled = false;
+            orderdetailview.Visible = false;
+            deupdbtn.Visible =false;
+
+            BackgroundWorker refresh = new BackgroundWorker();
+            refresh.DoWork += (o, a) => {
+                try
+                {
+                    string orderid = a.Argument as string;
+
+                    dr = obj.Query("select amount,shipping,name,address1,address2,pincode,contact,city,status,itemcount,deliveryguy,paymenttype,paymentconfirmed from orders where orderid='" + orderid + "'");
+                    dr.Read();
+                    string amount = dr[0].ToString();
+                    string shipping = dr[1].ToString();
+                    string name = dr[2].ToString();
+                    string add1 = dr[3].ToString();
+                    string add2 = dr[4].ToString();
+                    string pin = dr[5].ToString();
+                    string con = dr[6].ToString();
+                    string city = dr[7].ToString();
+                    string status = dr[8].ToString();
+                    string count = dr[9].ToString();
+                    string dguy = dr[10].ToString();
+                    string ptype = dr[11].ToString();
+                    string pconf = dr[12].ToString();
+                    obj.closeConnection();
+
+                    adap = new MySqlDataAdapter("SELECT * FROM orderdetails where orderid='" + orderid + "'", conn);
+                    dt = new DataTable();
+                    adap.Fill(dt);
+                    obj.closeConnection();
+                    BindingSource bsource = new BindingSource();
+                    bsource.DataSource = dt;
+
+
+                    object[] arg = { amount, shipping, name, add1, add2, pin, con, city, status, count, dguy, ptype, pconf, bsource };
+
+                    a.Result = arg;
+
+                }
+                catch
+                {
+                    obj.closeConnection();
+                }
+            };
+            refresh.RunWorkerCompleted += (o, b) => {
+                try
+                {
+
+                    ptypebox.DisplayMember = "Text";
+                    var items = new[]
+                    {
+                new {Text="Pre-Pay"},
+                new {Text ="Cash on Delivery"},
+                };
+                    ptypebox.DataSource = items;
+
+                    updbtn.Text = "Update";
+                    updbtn.Enabled = true;
+
+                    object[] arg = (object[])b.Result;
+
+                    amtxt.Text = (string)arg[0];
+                    shiptxt.Text = arg[1] as String;
+                    nametxt.Text = arg[2] as String;
+                    add1txt.Text = arg[3] as String;
+                    add2txt.Text = arg[4] as String;
+                    pintxt.Text = arg[5] as String;
+                    contxt.Text = arg[6] as String;
+                    citytxt.Text = arg[7] as String;
+                    statustxt.Text = arg[8] as string;
+                    counttxt.Text = arg[9] as string;
+                    dguytxt.Text = arg[10] as string;
+                    string ptype = arg[11] as string;
+                    string pconf = arg[12] as string;
+                    BindingSource bsource = arg[13] as BindingSource;
+                    orderdetailview.DataSource = bsource;
+
+                    orderdetailview.Visible = true;
+                    deupdbtn.Visible = true;
+
+                    if (pconf == "False")
+                    {
+                        pcnbox.Checked = true;
+                        pcybox.Checked = false;
+                    }
+                    else if (pconf == "True")
+                    {
+                        pcybox.Checked = true;
+                        pcnbox.Checked = false;
+                    }
+
+                    if (ptype == "Pre-Pay")
+                    {
+                        ptypebox.SelectedIndex = 0;
+                    }
+                    else if (ptype == "Cash on Delivery")
+                    {
+                        ptypebox.SelectedIndex = 1;
+                    }
+
+
+                    Cursor = Cursors.Arrow;
+                    refreshbtn.Enabled = true;
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    updbtn.Text = "Please Reload.";
+                    updbtn.Enabled = false;
+                    orderdetailview.Visible = true;
+                    deupdbtn.Visible = false;
+                    refreshbtn.Enabled = true;
+                    Cursor = Cursors.Arrow;
+                    obj.closeConnection();
+                    conn.Close();
+
+                }
+            };
+            refresh.RunWorkerAsync(id);
+            
+          
+        }
     }
 }

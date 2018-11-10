@@ -492,11 +492,12 @@ namespace Veiled_Kashmir_Admin_Panel
                     upbtn.Visible = false;
                     listbtn.Enabled = true;
                     loadinglbl.Visible = false;
-                    MessageBox.Show("Zero rows returned.\n\n- Please make sure that category selected is final.\n- Supplier or Product ID is correct.", "Error!");
+                    MessageBox.Show("No results found.\n\n- Please check for correct spelling.\n\n- Please make sure that category selected is final.\n- Supplier or Product ID is correct.", "Error!");
 
                 }
                 else
                 {
+                    inventorydatagridview.DoubleBuffered(true);
                     inventorydatagridview.DataSource = bsource;
                     ipnl.Visible = true;
                     upbtn.Visible = true;

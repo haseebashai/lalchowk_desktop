@@ -44,6 +44,7 @@ namespace Veiled_Kashmir_Admin_Panel
             dg.loadingimage.Visible = false;
             dg.lbl.ForeColor = SystemColors.Highlight;
             dg.lbl.Text = "Book Requests";
+            booksdataview.DoubleBuffered(true);
             booksdataview.DataSource = bsource;
             bpnl.Visible = true;
         }

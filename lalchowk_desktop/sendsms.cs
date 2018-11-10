@@ -167,9 +167,15 @@ namespace Veiled_Kashmir_Admin_Panel
                 }
                 else
                 {
-
-                    singlesms();
-                    sendsmsbtn.Enabled = true;
+                    if (numbertxt.TextLength > 21)
+                    {
+                        MessageBox.Show("For more than 2 numbers, please check Loop option.", "Warning");
+                    }
+                    else
+                    {
+                        singlesms();
+                        sendsmsbtn.Enabled = true;
+                    }
                 }
             }
 

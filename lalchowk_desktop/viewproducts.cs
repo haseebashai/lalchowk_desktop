@@ -113,6 +113,7 @@ namespace Veiled_Kashmir_Admin_Panel
         private void bgworker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             refresh.Enabled = true;
+            productsdataview.DoubleBuffered(true);
             productsdataview.DataSource = bsource;
             ppnl.Visible = true;
             Cursor = Cursors.Arrow;

@@ -76,6 +76,7 @@
             this.loadinglbl = new System.Windows.Forms.Label();
             this.formlbl = new System.Windows.Forms.Label();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
+            this.shipbtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.refresh)).BeginInit();
             this.orderpnl.SuspendLayout();
@@ -120,6 +121,7 @@
             this.Deliverytxt.Size = new System.Drawing.Size(92, 20);
             this.Deliverytxt.TabIndex = 8;
             this.Deliverytxt.TextChanged += new System.EventHandler(this.Deliverytxt_TextChanged);
+            this.Deliverytxt.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Deliverytxt_KeyUp);
             // 
             // label7
             // 
@@ -138,6 +140,7 @@
             this.confiltxt.Size = new System.Drawing.Size(93, 20);
             this.confiltxt.TabIndex = 6;
             this.confiltxt.TextChanged += new System.EventHandler(this.confiltxt_TextChanged);
+            this.confiltxt.KeyUp += new System.Windows.Forms.KeyEventHandler(this.confiltxt_KeyUp);
             // 
             // label13
             // 
@@ -166,6 +169,7 @@
             this.addfiltxt.Size = new System.Drawing.Size(136, 20);
             this.addfiltxt.TabIndex = 5;
             this.addfiltxt.TextChanged += new System.EventHandler(this.addfiltxt_TextChanged);
+            this.addfiltxt.KeyUp += new System.Windows.Forms.KeyEventHandler(this.addfiltxt_KeyUp);
             // 
             // refresh
             // 
@@ -187,6 +191,7 @@
             this.ordidtxt.Size = new System.Drawing.Size(71, 20);
             this.ordidtxt.TabIndex = 2;
             this.ordidtxt.TextChanged += new System.EventHandler(this.ordidtxt_TextChanged);
+            this.ordidtxt.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ordidtxt_KeyUp);
             // 
             // label6
             // 
@@ -205,6 +210,7 @@
             this.ordttxt.Size = new System.Drawing.Size(92, 20);
             this.ordttxt.TabIndex = 7;
             this.ordttxt.TextChanged += new System.EventHandler(this.ordttxt_TextChanged);
+            this.ordttxt.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ordttxt_KeyUp);
             // 
             // label1
             // 
@@ -219,11 +225,11 @@
             // 
             this.delbtn.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.delbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.delbtn.Location = new System.Drawing.Point(1085, 22);
+            this.delbtn.Location = new System.Drawing.Point(1077, 22);
             this.delbtn.Name = "delbtn";
-            this.delbtn.Size = new System.Drawing.Size(69, 23);
+            this.delbtn.Size = new System.Drawing.Size(77, 23);
             this.delbtn.TabIndex = 13;
-            this.delbtn.Text = "Delete";
+            this.delbtn.Text = "Delete Order";
             this.delbtn.UseVisualStyleBackColor = true;
             this.delbtn.Click += new System.EventHandler(this.delbtn_Click);
             // 
@@ -256,6 +262,7 @@
             this.statustxt.Size = new System.Drawing.Size(79, 20);
             this.statustxt.TabIndex = 1;
             this.statustxt.TextChanged += new System.EventHandler(this.statustxt_TextChanged);
+            this.statustxt.KeyUp += new System.Windows.Forms.KeyEventHandler(this.statustxt_KeyUp);
             // 
             // label3
             // 
@@ -274,6 +281,7 @@
             this.paymenttxt.Size = new System.Drawing.Size(103, 20);
             this.paymenttxt.TabIndex = 4;
             this.paymenttxt.TextChanged += new System.EventHandler(this.paymenttxt_TextChanged);
+            this.paymenttxt.KeyUp += new System.Windows.Forms.KeyEventHandler(this.paymenttxt_KeyUp);
             // 
             // label4
             // 
@@ -302,6 +310,7 @@
             this.emailtxt.Size = new System.Drawing.Size(111, 20);
             this.emailtxt.TabIndex = 3;
             this.emailtxt.TextChanged += new System.EventHandler(this.emailtxt_TextChanged);
+            this.emailtxt.KeyUp += new System.Windows.Forms.KeyEventHandler(this.emailtxt_KeyUp);
             // 
             // orderpnl
             // 
@@ -316,6 +325,7 @@
             // 
             // dpnl
             // 
+            this.dpnl.Controls.Add(this.shipbtn);
             this.dpnl.Controls.Add(this.datelbl);
             this.dpnl.Controls.Add(this.label15);
             this.dpnl.Controls.Add(this.addresstxt);
@@ -376,9 +386,9 @@
             // 
             this.cancelbtn.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.cancelbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cancelbtn.Location = new System.Drawing.Point(1001, 3);
+            this.cancelbtn.Location = new System.Drawing.Point(935, 3);
             this.cancelbtn.Name = "cancelbtn";
-            this.cancelbtn.Size = new System.Drawing.Size(94, 22);
+            this.cancelbtn.Size = new System.Drawing.Size(80, 22);
             this.cancelbtn.TabIndex = 31;
             this.cancelbtn.Text = "Cancel Order";
             this.cancelbtn.UseVisualStyleBackColor = true;
@@ -604,6 +614,18 @@
             this.bgworker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker_DoWork);
             this.bgworker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker_RunWorkerCompleted);
             // 
+            // shipbtn
+            // 
+            this.shipbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.shipbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.shipbtn.Location = new System.Drawing.Point(1021, 3);
+            this.shipbtn.Name = "shipbtn";
+            this.shipbtn.Size = new System.Drawing.Size(56, 22);
+            this.shipbtn.TabIndex = 35;
+            this.shipbtn.Text = "Ship";
+            this.shipbtn.UseVisualStyleBackColor = true;
+            this.shipbtn.Click += new System.EventHandler(this.shipbtn_Click);
+            // 
             // orders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -680,5 +702,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label datelbl;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button shipbtn;
     }
 }

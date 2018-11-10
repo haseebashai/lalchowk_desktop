@@ -64,6 +64,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.navtxt = new System.Windows.Forms.Label();
             this.cntpnl = new System.Windows.Forms.Panel();
+            this.cselbtn = new System.Windows.Forms.Button();
+            this.cshipbtn = new System.Windows.Forms.Button();
             this.refreshbtn = new System.Windows.Forms.PictureBox();
             this.printadd2btn = new System.Windows.Forms.Button();
             this.printaddbtn = new MaterialSkin.Controls.MaterialFlatButton();
@@ -555,6 +557,8 @@
             // cntpnl
             // 
             this.cntpnl.BackColor = System.Drawing.Color.White;
+            this.cntpnl.Controls.Add(this.cselbtn);
+            this.cntpnl.Controls.Add(this.cshipbtn);
             this.cntpnl.Controls.Add(this.refreshbtn);
             this.cntpnl.Controls.Add(this.printadd2btn);
             this.cntpnl.Controls.Add(this.printaddbtn);
@@ -583,6 +587,36 @@
             this.cntpnl.Size = new System.Drawing.Size(1162, 722);
             this.cntpnl.TabIndex = 12;
             // 
+            // cselbtn
+            // 
+            this.cselbtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cselbtn.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.cselbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cselbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cselbtn.Location = new System.Drawing.Point(7, 3);
+            this.cselbtn.Name = "cselbtn";
+            this.cselbtn.Size = new System.Drawing.Size(56, 25);
+            this.cselbtn.TabIndex = 61;
+            this.cselbtn.Text = "Clear";
+            this.cselbtn.UseVisualStyleBackColor = true;
+            this.cselbtn.Visible = false;
+            this.cselbtn.Click += new System.EventHandler(this.cselbtn_Click);
+            // 
+            // cshipbtn
+            // 
+            this.cshipbtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cshipbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.cshipbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cshipbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cshipbtn.Location = new System.Drawing.Point(132, 3);
+            this.cshipbtn.Name = "cshipbtn";
+            this.cshipbtn.Size = new System.Drawing.Size(82, 25);
+            this.cshipbtn.TabIndex = 60;
+            this.cshipbtn.Text = "Ship Selected";
+            this.cshipbtn.UseVisualStyleBackColor = true;
+            this.cshipbtn.Visible = false;
+            this.cshipbtn.Click += new System.EventHandler(this.cshipbtn_Click);
+            // 
             // refreshbtn
             // 
             this.refreshbtn.BackColor = System.Drawing.Color.Transparent;
@@ -603,11 +637,11 @@
             this.printadd2btn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.printadd2btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.printadd2btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.printadd2btn.Location = new System.Drawing.Point(219, 6);
+            this.printadd2btn.Location = new System.Drawing.Point(69, 3);
             this.printadd2btn.Name = "printadd2btn";
-            this.printadd2btn.Size = new System.Drawing.Size(119, 21);
+            this.printadd2btn.Size = new System.Drawing.Size(56, 25);
             this.printadd2btn.TabIndex = 58;
-            this.printadd2btn.Text = "PRINT ADDRESSES";
+            this.printadd2btn.Text = "Print";
             this.printadd2btn.UseVisualStyleBackColor = true;
             this.printadd2btn.Visible = false;
             this.printadd2btn.Click += new System.EventHandler(this.printadd2btn_Click);
@@ -736,6 +770,7 @@
             this.shippeddataview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.shippeddataview_CellContentClick);
             this.shippeddataview.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.shippeddataview_CellFormatting);
             this.shippeddataview.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.shippeddataview_CellValueChanged);
+            this.shippeddataview.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.shippeddataview_RowsAdded);
             // 
             // ordersdlbl
             // 
@@ -776,7 +811,7 @@
             this.placedh.AutoSize = true;
             this.placedh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.placedh.ForeColor = System.Drawing.Color.Red;
-            this.placedh.Location = new System.Drawing.Point(4, 11);
+            this.placedh.Location = new System.Drawing.Point(948, 11);
             this.placedh.Name = "placedh";
             this.placedh.Size = new System.Drawing.Size(150, 16);
             this.placedh.TabIndex = 10;
@@ -868,6 +903,7 @@
             this.placeddataview.Visible = false;
             this.placeddataview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.placeddataview_CellContentClick);
             this.placeddataview.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.placeddataview_CellFormatting);
+            this.placeddataview.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.placeddataview_RowsAdded);
             // 
             // cancelbtn
             // 
@@ -892,7 +928,7 @@
             this.shipbtn.Name = "shipbtn";
             this.shipbtn.Size = new System.Drawing.Size(57, 28);
             this.shipbtn.TabIndex = 49;
-            this.shipbtn.Text = "Shipped";
+            this.shipbtn.Text = "Ship";
             this.shipbtn.UseVisualStyleBackColor = true;
             this.shipbtn.Visible = false;
             this.shipbtn.Click += new System.EventHandler(this.shipbtn_Click);
@@ -1071,5 +1107,7 @@
         private MaterialSkin.Controls.MaterialFlatButton printaddbtn;
         private System.Windows.Forms.Button printadd2btn;
         private System.Windows.Forms.PictureBox refreshbtn;
+        private System.Windows.Forms.Button cshipbtn;
+        private System.Windows.Forms.Button cselbtn;
     }
 }

@@ -132,6 +132,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 formlbl.BringToFront();
             }
             offersdataview.DataSource = bsource;
+            productsdataview.DoubleBuffered(true);
             productsdataview.DataSource = bsource2;
             itemsdataview.DataSource = bsource3;
             hpnl.Visible = true;
@@ -270,9 +271,12 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void idtxt_TextChanged(object sender, EventArgs e)
         {
-            DataView dv = new DataView(dt);
-            dv.RowFilter = string.Format("convert([categoryid],System.String) LIKE '%{0}%'", idtxt.Text);
-            productsdataview.DataSource = dv;
+            try
+            {
+                DataView dv = new DataView(dt);
+                dv.RowFilter = string.Format("convert([categoryid],System.String) LIKE '%{0}%'", idtxt.Text);
+                productsdataview.DataSource = dv;
+            }catch { }
         }
 
         bool rightpicture = false, leftpicture = false;

@@ -32,6 +32,7 @@
             this.tpnl = new System.Windows.Forms.TableLayoutPanel();
             this.printbtn = new System.Windows.Forms.Button();
             this.printdoc = new System.Drawing.Printing.PrintDocument();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // tpnl
@@ -44,7 +45,7 @@
             this.tpnl.ColumnCount = 2;
             this.tpnl.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tpnl.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tpnl.Location = new System.Drawing.Point(13, 13);
+            this.tpnl.Location = new System.Drawing.Point(13, 35);
             this.tpnl.Name = "tpnl";
             this.tpnl.RowCount = 4;
             this.tpnl.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -68,6 +69,16 @@
             // 
             this.printdoc.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printdoc_PrintPage);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.Blue;
+            this.label1.Location = new System.Drawing.Point(266, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(261, 15);
+            this.label1.TabIndex = 2;
+            this.label1.Text = ">> Please edit the addresses accordingly here.";
+            // 
             // printaddresses
             // 
             this.AcceptButton = this.printbtn;
@@ -76,6 +87,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(818, 667);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.printbtn);
             this.Controls.Add(this.tpnl);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -96,5 +108,6 @@
         private System.Windows.Forms.TableLayoutPanel tpnl;
         private System.Windows.Forms.Button printbtn;
         private System.Drawing.Printing.PrintDocument printdoc;
+        private System.Windows.Forms.Label label1;
     }
 }

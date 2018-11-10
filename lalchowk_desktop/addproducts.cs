@@ -999,8 +999,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 else
                 {
                     Cursor = Cursors.WaitCursor;
-                    try
-                    {
+                   
                         StringBuilder s = new StringBuilder(nametxt.Text);
                         s.Replace(@"\", @"\\");
                         s.Replace("'", "\\'");
@@ -1064,38 +1063,40 @@ namespace Veiled_Kashmir_Admin_Panel
                             desc = "'" + descr + "'";
                         }
 
-                        //if ( || dname5txt.Text == "" || dname5.Text == "")
+                    //if ( || dname5txt.Text == "" || dname5.Text == "")
+                    //{
+                    if (s == null || catbox.Text == "")
+                    {
+                        MessageBox.Show("Add details first.", "Error!");
+
+                        //}
+                        //else if(dname5txt.Text == "" || dname5.Text == "")
                         //{
-                        if (s == null || catbox.Text == "")
-                        {
-                            MessageBox.Show("Add details first.", "Error!");
+                        //    MessageBox.Show("null");
+                        //    cmd = "insert into products (`productid`, `supplierid`, `productname`,`tags`, `groupid`,`categoryid`,`color`, `mrp`, `price`, `dealerprice`, `stock`, `description`, `detailname1`, `detailname2`, `detailname3`, `detailname4`,`detailname5`, `detail1`, `detail2`, `detail3`, `detail4`,`detail5`,`brand`,`size`,`requeststatus`) " +
+                        //       "values ('" + pidtxt.Text + "','" + supplierid + "', '" + s + "','" + s + " " + tagstxt.Text + "','" + gidtxt.Text + "', '" + catbox.Text + "','" + colourtxt.Text + "','" + mrptxt.Text + "','" + pricetxt.Text + "','" + dealertxt.Text + "','" + stocktxt.Text + "','" + s2 + "','" + dname1txt.Text + "','" + dname2txt.Text + "','" + dname3txt.Text + "','" + dname4txt.Text + "',null,'" + dname1.Text + "','" + dname2.Text + "','" + dname3.Text + "','" + dname4.Text + "',null,'" + s1 + "','" + sizetxt.Text + "','Approved')";
+                        //    obj.nonQuery(cmd);
+                        //}
+                        //else
+                        //{
+                        //    cmd = "insert into products (`productid`, `supplierid`, `productname`,`tags`, `groupid`,`categoryid`,`color`, `mrp`, `price`, `dealerprice`, `stock`, `description`, `detailname1`, `detailname2`, `detailname3`, `detailname4`, `detailname5`, `detail1`, `detail2`, `detail3`, `detail4`, `detail5`,`brand`,`size`,`requeststatus`) " +
+                        //          "values ('" + pidtxt.Text + "','" + supplierid + "', '" + s + "','" + s + " " + tagstxt.Text + "','" + gidtxt.Text + "', '" + catbox.Text + "','" + colourtxt.Text + "','" + mrptxt.Text + "','" + pricetxt.Text + "','" + dealertxt.Text + "','" + stocktxt.Text + "','" + s2 + "','" + dname1txt.Text + "','" + dname2txt.Text + "','" + dname3txt.Text + "','" + dname4txt.Text + "','" + dname5txt.Text + "','" + dname1.Text + "','" + dname2.Text + "','" + dname3.Text + "','" + dname4.Text + "','" + dname5.Text + "','" + s1 + "','" + sizetxt.Text + "','Approved')";
+                        //    obj.nonQuery(cmd);
+                        //}
 
-                            //}
-                            //else if(dname5txt.Text == "" || dname5.Text == "")
-                            //{
-                            //    MessageBox.Show("null");
-                            //    cmd = "insert into products (`productid`, `supplierid`, `productname`,`tags`, `groupid`,`categoryid`,`color`, `mrp`, `price`, `dealerprice`, `stock`, `description`, `detailname1`, `detailname2`, `detailname3`, `detailname4`,`detailname5`, `detail1`, `detail2`, `detail3`, `detail4`,`detail5`,`brand`,`size`,`requeststatus`) " +
-                            //       "values ('" + pidtxt.Text + "','" + supplierid + "', '" + s + "','" + s + " " + tagstxt.Text + "','" + gidtxt.Text + "', '" + catbox.Text + "','" + colourtxt.Text + "','" + mrptxt.Text + "','" + pricetxt.Text + "','" + dealertxt.Text + "','" + stocktxt.Text + "','" + s2 + "','" + dname1txt.Text + "','" + dname2txt.Text + "','" + dname3txt.Text + "','" + dname4txt.Text + "',null,'" + dname1.Text + "','" + dname2.Text + "','" + dname3.Text + "','" + dname4.Text + "',null,'" + s1 + "','" + sizetxt.Text + "','Approved')";
-                            //    obj.nonQuery(cmd);
-                            //}
-                            //else
-                            //{
-                            //    cmd = "insert into products (`productid`, `supplierid`, `productname`,`tags`, `groupid`,`categoryid`,`color`, `mrp`, `price`, `dealerprice`, `stock`, `description`, `detailname1`, `detailname2`, `detailname3`, `detailname4`, `detailname5`, `detail1`, `detail2`, `detail3`, `detail4`, `detail5`,`brand`,`size`,`requeststatus`) " +
-                            //          "values ('" + pidtxt.Text + "','" + supplierid + "', '" + s + "','" + s + " " + tagstxt.Text + "','" + gidtxt.Text + "', '" + catbox.Text + "','" + colourtxt.Text + "','" + mrptxt.Text + "','" + pricetxt.Text + "','" + dealertxt.Text + "','" + stocktxt.Text + "','" + s2 + "','" + dname1txt.Text + "','" + dname2txt.Text + "','" + dname3txt.Text + "','" + dname4txt.Text + "','" + dname5txt.Text + "','" + dname1.Text + "','" + dname2.Text + "','" + dname3.Text + "','" + dname4.Text + "','" + dname5.Text + "','" + s1 + "','" + sizetxt.Text + "','Approved')";
-                            //    obj.nonQuery(cmd);
-                            //}
-
-                            //   int productid = obj.Count("SELECT LAST_INSERT_ID()");
+                        //   int productid = obj.Count("SELECT LAST_INSERT_ID()");
 
 
 
 
 
-                        }
-                        else
+                    }
+                    else
+                    {
+                        try
                         {
                             cmd = "insert into products (`productid`, `supplierid`, `productname`,`tags`, `groupid`,`categoryid`,`color`, `mrp`, `price`, `dealerprice`, `stock`, `description`, `detailname1`, `detailname2`, `detailname3`, `detailname4`,`detailname5`, `detail1`, `detail2`, `detail3`, `detail4`,`detail5`,`brand`,`size`,`requeststatus`,`timestampp`) " +
-                                "values ('" + pidtxt.Text + "','" + supplierid + "', '" + s + "','" + s + " " + dname1.Text + " " + brandtxt.Text+ " " + tagstxt.Text + "','" + gidtxt.Text + "', '" + catbox.Text + "'," + color + ",'" + mrptxt.Text + "','" + pricetxt.Text + "','" + dealertxt.Text + "','" + stocktxt.Text + "'," + desc + ",'" + dname1txt.Text + "','" + dname2txt.Text + "','" + dname3txt.Text + "','" + dname4txt.Text + "'," + dn5 + ",'" + dname1.Text + "','" + dname2.Text + "','" + dname3.Text + "','" + dname4.Text + "'," + d5 + "," + bran + "," 
+                                "values ('" + pidtxt.Text + "','" + supplierid + "', '" + s + "','" + s + " " + dname1.Text + " " + brandtxt.Text + " " + tagstxt.Text + "','" + gidtxt.Text + "', '" + catbox.Text + "'," + color + ",'" + mrptxt.Text + "','" + pricetxt.Text + "','" + dealertxt.Text + "','" + stocktxt.Text + "'," + desc + ",'" + dname1txt.Text + "','" + dname2txt.Text + "','" + dname3txt.Text + "','" + dname4txt.Text + "'," + dn5 + ",'" + dname1.Text + "','" + dname2.Text + "','" + dname3.Text + "','" + dname4.Text + "'," + d5 + "," + bran + ","
                                 + size + ",'Approved',DATE_ADD(CURRENT_TIMESTAMP, INTERVAL 750 MINUTE))";
                             obj.nonQuery(cmd);
                             obj.closeConnection();
@@ -1103,17 +1104,18 @@ namespace Veiled_Kashmir_Admin_Panel
                             MessageBox.Show("Product successfully added.");
                         }
 
-
-
-                        //clearall();
-
+                        catch (Exception ex)
+                        {
+                            obj.closeConnection();
+                          //  MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
+                        }
 
                     }
-                    catch (Exception ex)
-                    {
-                        obj.closeConnection();
-                        MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
-                    }
+
+                    //clearall();
+
+
+
                 }
                 Cursor = Cursors.Arrow;
             }

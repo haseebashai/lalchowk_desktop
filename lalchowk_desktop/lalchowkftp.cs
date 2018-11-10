@@ -42,6 +42,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
             fpnl.Enabled = true;
             fetchpnl.Visible = false;
+            ftpdataview.DoubleBuffered(true);
             ftpdataview.DataSource = bsource;
             
 

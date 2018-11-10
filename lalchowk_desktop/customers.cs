@@ -114,9 +114,10 @@ namespace Veiled_Kashmir_Admin_Panel
                 loading.Visible = false;
                 
             }
+            customerdataview.DoubleBuffered(true);
             customerdataview.DataSource = bsource;
             formlbl.Visible = false;
-            countlbl.Text="Total Registered Customers: " + count;
+            countlbl.Text="Total Registered Customers: " + customerdataview.RowCount;
             pnl.Visible = true;
 
            
@@ -165,10 +166,10 @@ namespace Veiled_Kashmir_Admin_Panel
                 bsource = new BindingSource();
                 bsource.DataSource = dt1;
 
-                dr = obj.Query("select count(*) from customer");
-                dr.Read();
-                count = dr[0].ToString();
-                obj.closeConnection();
+                //dr = obj.Query("select count(*) from customer");
+                //dr.Read();
+               // count = dr[0].ToString();
+                //obj.closeConnection();
             }
             catch (Exception ex)
             {
@@ -286,8 +287,8 @@ namespace Veiled_Kashmir_Admin_Panel
 
                     try
                     {
-                        con.Open();
-                        adap2 = new MySqlDataAdapter("select * from cartitems where email='" + email + "'", con);
+                        con.Open(); //
+                        adap2 = new MySqlDataAdapter("SELECT cartitems.productid,cartitems.quantity,products.productname from cartitems left join products on (cartitems.productid=products.productid) where email='" + email + "'",con);//("select * from cartitems where email='" + email + "'", con);
                         dt3 = new DataTable();
                         adap2.Fill(dt3);
                         con.Close();
@@ -298,7 +299,7 @@ namespace Veiled_Kashmir_Admin_Panel
                         
 
                         con.Open();
-                        adap3 = new MySqlDataAdapter("select * from wishlist where email='" + email + "'", con);
+                        adap3 = new MySqlDataAdapter("SELECT wishlist.productid,products.productname from wishlist left join products on (wishlist.productid=products.productid) where email='" + email + "'", con);
                         dt4 = new DataTable();
                         adap3.Fill(dt4);
                         con.Close();
@@ -308,7 +309,7 @@ namespace Veiled_Kashmir_Admin_Panel
                         details.ReportProgress(50);
 
                         con.Open();
-                        adap1 = new MySqlDataAdapter("select * from orders where email='" + email + "'", con);
+                        adap1 = new MySqlDataAdapter("select orderid,amount,shipping,status from orders where email='" + email + "'", con);
                         dt2 = new DataTable();
                         adap1.Fill(dt2);
                         con.Close();

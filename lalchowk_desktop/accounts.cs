@@ -34,6 +34,7 @@ namespace Veiled_Kashmir_Admin_Panel
             dg = dgcopy as dialogcontainer;
             hp = hpcopy as container;
             InitializeComponent();
+            accountdataview.DoubleBuffered(true);
             bgworker.RunWorkerAsync();
             
             
@@ -217,11 +218,11 @@ namespace Veiled_Kashmir_Admin_Panel
             bsource.DataSource = dt;
             
 
-            aconn.Open();
-            cmd = new MySqlCommand("select count(bid) from billing", aconn);
-            dr = cmd.ExecuteReader();
-            dr.Read();
-            total =  dr[0].ToString();
+            //aconn.Open();
+            //cmd = new MySqlCommand("select count(bid) from billing", aconn);
+            //dr = cmd.ExecuteReader();
+            //dr.Read();
+            //total =  dr[0].ToString();
             
             aconn.Close();
         }
@@ -244,11 +245,11 @@ namespace Veiled_Kashmir_Admin_Panel
             bsource.DataSource = dt;
            
 
-            aconn.Open();
-            cmd = new MySqlCommand("select count(did) from deliveries where status='delivered'", aconn);
-            dr = cmd.ExecuteReader();
-            dr.Read();
-            total= dr[0].ToString();
+            //aconn.Open();
+            //cmd = new MySqlCommand("select count(did) from deliveries where status='delivered'", aconn);
+            //dr = cmd.ExecuteReader();
+            //dr.Read();
+            //total= dr[0].ToString();
             
             aconn.Close();
         }
@@ -262,7 +263,7 @@ namespace Veiled_Kashmir_Admin_Panel
         public void readdealings()
         {try { 
             aconn.Open();
-            adap = new MySqlDataAdapter("select * from dealing order by orderid desc", aconn);
+            adap = new MySqlDataAdapter("select did,orderid,suppliername,productid,productname,amount,count,dealerprice,pickupdate from dealing order by orderid desc", aconn);
             dt = new DataTable();
             adap.Fill(dt);
             aconn.Close();
@@ -270,11 +271,11 @@ namespace Veiled_Kashmir_Admin_Panel
             bsource.DataSource = dt;
            
 
-            aconn.Open();
-            cmd = new MySqlCommand("select count(did) from dealing", aconn);
-            dr = cmd.ExecuteReader();
-            dr.Read();
-            total= dr[0].ToString();
+            //aconn.Open();
+            //cmd = new MySqlCommand("select count(did) from dealing", aconn);
+            //dr = cmd.ExecuteReader();
+            //dr.Read();
+            //total= dr[0].ToString();
             
             aconn.Close();
         }
@@ -617,14 +618,14 @@ namespace Veiled_Kashmir_Admin_Panel
             panelshow();
             accountdataview.DataSource = bsource;
            
-            try
-            {
-                if (rev==false) {
-                    accountdataview.Columns["Details"].Visible = false;
-            }
-            }
-            catch(Exception ex) { MessageBox.Show(ex.Message); }
-            totallbl.Text = "Total bills: " + total;
+            //try
+            //{
+            //    if (rev==false) {
+            //        accountdataview.Columns["Details"].Visible = false;
+            //}
+            //}
+            //catch(Exception ex) { MessageBox.Show(ex.Message+"here2"); }
+            totallbl.Text = "Total bills: " + accountdataview.RowCount ;
             totallbl.Visible = true;
         }
 
@@ -690,7 +691,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 }
             }
             catch { };
-            totallbl.Text = "Total deliveries: " + total;
+            totallbl.Text = "Total deliveries: " + accountdataview.RowCount;
             totallbl.Visible = true;
         }
 
@@ -755,7 +756,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 }
             }
             catch { };
-            totallbl.Text = "Total dealings: " + total;
+            totallbl.Text = "Total dealings: " + accountdataview.RowCount;
             totallbl.Visible = true;
         }
 
@@ -1131,6 +1132,7 @@ namespace Veiled_Kashmir_Admin_Panel
                  new {Text ="2020"},
                 };
             ybox.DataSource = years;
+
 
             mbox.DisplayMember = "Text";
             var months = new[]

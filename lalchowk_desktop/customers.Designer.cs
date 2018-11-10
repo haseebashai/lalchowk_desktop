@@ -119,6 +119,8 @@
             // 
             // substxt
             // 
+            this.substxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.substxt.ForeColor = System.Drawing.SystemColors.WindowText;
             this.substxt.Location = new System.Drawing.Point(298, 13);
             this.substxt.Name = "substxt";
             this.substxt.Size = new System.Drawing.Size(103, 20);
@@ -137,6 +139,8 @@
             // 
             // emailtxt
             // 
+            this.emailtxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.emailtxt.ForeColor = System.Drawing.SystemColors.WindowText;
             this.emailtxt.Location = new System.Drawing.Point(9, 13);
             this.emailtxt.Name = "emailtxt";
             this.emailtxt.Size = new System.Drawing.Size(136, 20);
@@ -478,6 +482,8 @@
             // 
             // usertxt
             // 
+            this.usertxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.usertxt.ForeColor = System.Drawing.SystemColors.WindowText;
             this.usertxt.Location = new System.Drawing.Point(159, 13);
             this.usertxt.Name = "usertxt";
             this.usertxt.Size = new System.Drawing.Size(123, 20);

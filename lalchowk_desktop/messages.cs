@@ -79,6 +79,7 @@ namespace Veiled_Kashmir_Admin_Panel
             {
                 try
                 {
+                    messagesdataview.DoubleBuffered(true);
                     messagesdataview.DataSource = bsource;
                 }catch { }
             };
@@ -106,6 +107,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 formlbl.Text="User Messages";
                 formlbl.BringToFront();
             }
+            messagesdataview.DoubleBuffered(true);
             messagesdataview.DataSource = bsource;
             msgpnl.Visible = true;
         }
@@ -170,6 +172,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     MessageBox.Show("Updated.");
                     Cursor = Cursors.WaitCursor;
                     readmsgs();
+                    messagesdataview.DoubleBuffered(true);
                     messagesdataview.DataSource = bsource;
                     Cursor = Cursors.Arrow;
                 }

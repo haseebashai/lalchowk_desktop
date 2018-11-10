@@ -75,12 +75,12 @@ namespace Veiled_Kashmir_Admin_Panel
                     BindingSource bsource1 = new BindingSource();
                     bsource1.DataSource = dt1;
 
-                    dr = obj.Query("select distinct concat(supplierid,':  ',name) as name from suppliers");
-                    DataTable dt = new DataTable();
-                    dt.Columns.Add("name", typeof(String));
-                    dt.Load(dr);
-                    obj.closeConnection();
-                    supbox.DataSource = dt;
+                    //dr = obj.Query("select distinct concat(supplierid,':  ',name) as name from suppliers");
+                    //DataTable dt = new DataTable();
+                    //dt.Columns.Add("name", typeof(String));
+                    //dt.Load(dr);
+                    //obj.closeConnection();
+                    //supbox.DataSource = dt;
                    
 
 
@@ -107,8 +107,8 @@ namespace Veiled_Kashmir_Admin_Panel
                     orderdetailview.Columns["orderdetailid"].Visible = false;
                     orderdetailview.Columns["picture"].Visible = false;
                     orderdetailview.Columns["size"].Visible = false;
-                    supbox.DisplayMember = "name";
-                    supbox.Enabled = true;
+                    //supbox.DisplayMember = "name";
+                    //supbox.Enabled = true;
                     orderdetailview.Visible = true;
                     addprobtn.Enabled = true;
                 }catch { }
@@ -145,9 +145,11 @@ namespace Veiled_Kashmir_Admin_Panel
             Close();
         }
 
+
         private void billaddbtn_Click(object sender, EventArgs e)
         {
-            if (!Regex.IsMatch(dtxt.Text, @"^([0-9-]+)$") && dtxt.Text != "")
+           
+            if (!Regex.IsMatch(dtxt.Text, @"^([0-9-]+)$") && dtxt.Text != "" || dtxt.Text == string.Empty)
             {
 
                 MessageBox.Show("Please enter date in the following format DD-MM-YYYY");
@@ -160,7 +162,8 @@ namespace Veiled_Kashmir_Admin_Panel
 
 
                     Cursor = Cursors.WaitCursor;
-                    cmd = "update orders set status='Delivered' where orderid='" + otxt.Text + "'";
+                    string date = Convert.ToDateTime(dtxt.Text).ToString("yyyy-MM-dd");
+                    cmd = "update orders set status='Delivered', deliverdate='" + date + "' where orderid='" + otxt.Text + "'";
                     obj.nonQuery(cmd);
                     obj.closeConnection();
 
@@ -233,7 +236,7 @@ namespace Veiled_Kashmir_Admin_Panel
             string payment="";
             try
             {
-                if (!Regex.IsMatch(pickuptxt.Text, @"^([0-9-]+)$") && pickuptxt.Text != "")
+                if (!Regex.IsMatch(pickuptxt.Text, @"^([0-9-]+)$") && pickuptxt.Text != "" || pickuptxt.Text==string.Empty)
                 {
 
                     MessageBox.Show("Please enter date in the following format DD-MM-YYYY");
@@ -290,7 +293,7 @@ namespace Veiled_Kashmir_Admin_Panel
                             catch (Exception ex) { MessageBox.Show(ex.Message.ToString()); obj.closeConnection(); aconn.Close(); }
                         }
                     }
-                    MessageBox.Show("Product bill Added.");
+                    MessageBox.Show("Product bill added.");
                     addprobtn.Enabled = false;
                 }
                 //Cursor = Cursors.WaitCursor;
@@ -343,6 +346,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 yes.Checked = false;
         }
 
+       
         private void pickuptxt_TextChanged(object sender, EventArgs e)
         {
             paymenttxt.Text = pickuptxt.Text;

@@ -76,6 +76,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     MessageBox.Show("Picture Deleted.");
                 
                 readpictures();
+                    picturesdataview.DoubleBuffered(true);
                 picturesdataview.DataSource = bsource;
             }
             }
@@ -131,6 +132,7 @@ namespace Veiled_Kashmir_Admin_Panel
         private void bgworker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             refresh.Enabled = true;
+            picturesdataview.DoubleBuffered(true);
             picturesdataview.DataSource = bsource;
             ppnl.Visible = true;
             Cursor = Cursors.Arrow;
@@ -237,6 +239,7 @@ namespace Veiled_Kashmir_Admin_Panel
             gidtxt.Text = "";
             pic.BackgroundImage = null;            
             readpictures();
+            picturesdataview.DoubleBuffered(true);
             picturesdataview.DataSource = bsource;
             addbtn.Enabled = true;
             Cursor = Cursors.Arrow;
@@ -261,6 +264,7 @@ namespace Veiled_Kashmir_Admin_Panel
                             obj.nonQuery(cmd);
                             MessageBox.Show("Image address added in database, please upload the picture seperately now.");
                             readpictures();
+                            picturesdataview.DoubleBuffered(true);
                             picturesdataview.DataSource = bsource;
                         }
                     }

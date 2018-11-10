@@ -26,11 +26,28 @@ namespace Veiled_Kashmir_Admin_Panel
         BindingSource bsource;
         MySqlCommandBuilder cmdbl;
         PictureBox loading = new PictureBox();
+        private container hp = null;
+
+        private dialogcontainer dg = null;
+        public orders(Form hpcopy, Form dgcopy) //
+        {
+            dg = dgcopy as dialogcontainer;
+            hp = hpcopy as container;
+            InitializeComponent();
+
+
+
+            bgworker.RunWorkerAsync();
+
+        }
 
         private void ordidtxt_TextChanged(object sender, EventArgs e)
         {
             try
             {
+                orderdetailview.Visible = false;
+                dpnl.Visible = false;
+                billlbl.Visible = false;
                 DataView dv = new DataView(dt);
                 dv.RowFilter = string.Format("convert([orderid],System.String) LIKE '%{0}%'", ordidtxt.Text);
                 ordergridview.DataSource = dv;
@@ -89,6 +106,50 @@ namespace Veiled_Kashmir_Admin_Panel
             sms.Show();
         }
 
+        private void shipbtn_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            try
+            {
+                DialogResult dgr = MessageBox.Show("Change status to Shipped for orderid '" + orderlbl.Text + "'", "Confirm!", MessageBoxButtons.YesNo);
+                if (dgr == DialogResult.Yes)
+                {
+                    DateTime time = DateTime.Now;             // Use current time.
+                    string shipdate = time.ToString("yyyy-MM-dd HH:mm:ss");
+
+                    string cmd = "Update orders set status='Shipped', shipdate='" + shipdate + "' where orderid='" + orderlbl.Text + "'";
+                    obj.nonQuery(cmd);
+                    obj.closeConnection();
+
+
+                    DialogResult ntf = MessageBox.Show("Do you want to send the in-app notification ?", "Confirm!", MessageBoxButtons.YesNo);
+                    if (ntf == DialogResult.Yes)
+                    {
+                        notification nf = new notification(encmail, email, orderlbl.Text);
+                        nf.loadingnormal();
+                        nf.Show();
+
+
+                    }
+                    MessageBox.Show("Order shipped.","Shipped");
+
+                    readorders();
+                    ordergridview.DataSource = bsource;
+                    ordergridview.DoubleBuffered(true);
+                    Cursor = Cursors.Arrow;
+                    //   ordergridview.CurrentCell = ordergridview.Rows[int.Parse(orderidcount)].Cells[0];
+                    orderdetailview.Visible = false;
+                    dpnl.Visible = false;
+                    loadinglbl.Visible = false;
+                }
+                obj.closeConnection();
+
+            }
+            catch { obj.closeConnection(); }
+            Cursor = Cursors.Arrow;
+        }
+
+
         private void cancelbtn_Click(object sender, EventArgs e)
         {
             try
@@ -119,8 +180,9 @@ namespace Veiled_Kashmir_Admin_Panel
 
                     readorders();
                     ordergridview.DataSource = bsource;
+                    ordergridview.DoubleBuffered(true);
                     Cursor = Cursors.Arrow;
-                    ordergridview.CurrentCell = ordergridview.Rows[int.Parse(orderidcount)].Cells[0];
+                 //   ordergridview.CurrentCell = ordergridview.Rows[int.Parse(orderidcount)].Cells[0];
                     orderdetailview.Visible = false;
                     dpnl.Visible = false;
                     loadinglbl.Visible = false;
@@ -136,8 +198,9 @@ namespace Veiled_Kashmir_Admin_Panel
 
                     readorders();
                     ordergridview.DataSource = bsource;
+                    ordergridview.DoubleBuffered(true);
                     Cursor = Cursors.Arrow;
-                    ordergridview.CurrentCell = ordergridview.Rows[int.Parse(orderidcount)].Cells[0];
+               //     ordergridview.CurrentCell = ordergridview.Rows[int.Parse(orderidcount)].Cells[0];
                     orderdetailview.Visible = false;
                     dpnl.Visible = false;
                     loadinglbl.Visible = false;
@@ -162,17 +225,75 @@ namespace Veiled_Kashmir_Admin_Panel
             ordergridview.DataSource = dv;
         }
 
-        private dialogcontainer dg = null;
 
-        //private void ordergridview_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        private void statustxt_KeyUp(object sender, KeyEventArgs e)
+        {
+            orderdetailview.Visible = false;
+            dpnl.Visible = false;
+            billlbl.Visible = false;
+        }
+
+        private void ordidtxt_KeyUp(object sender, KeyEventArgs e)
+        {
+            orderdetailview.Visible = false;
+            dpnl.Visible = false;
+            billlbl.Visible = false;
+        }
+
+        private void emailtxt_KeyUp(object sender, KeyEventArgs e)
+        {
+            orderdetailview.Visible = false;
+            dpnl.Visible = false;
+            billlbl.Visible = false;
+        }
+
+        private void paymenttxt_KeyUp(object sender, KeyEventArgs e)
+        {
+            orderdetailview.Visible = false;
+            dpnl.Visible = false;
+            billlbl.Visible = false;
+        }
+
+        private void addfiltxt_KeyUp(object sender, KeyEventArgs e)
+        {
+            orderdetailview.Visible = false;
+            dpnl.Visible = false;
+            billlbl.Visible = false;
+        }
+
+        private void confiltxt_KeyUp(object sender, KeyEventArgs e)
+        {
+            orderdetailview.Visible = false;
+            dpnl.Visible = false;
+            billlbl.Visible = false;
+        }
+
+        private void ordttxt_KeyUp(object sender, KeyEventArgs e)
+        {
+            orderdetailview.Visible = false;
+            dpnl.Visible = false;
+            billlbl.Visible = false;
+        }
+
+        private void Deliverytxt_KeyUp(object sender, KeyEventArgs e)
+        {
+            orderdetailview.Visible = false;
+            dpnl.Visible = false;
+            billlbl.Visible = false;
+        }
+
+       
+
+
+
+        //private void ordergridview_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         //{
-
         //    try
         //    {
         //        foreach (DataGridViewRow row in this.ordergridview.Rows)
         //        {
 
-                  
+
         //            if (Convert.ToString(row.Cells["paymentconfirmed"].Value) == "True")
         //            {
         //                row.DefaultCellStyle.BackColor = Color.LightGreen;
@@ -181,26 +302,14 @@ namespace Veiled_Kashmir_Admin_Panel
         //            {
         //                row.DefaultCellStyle.BackColor = Color.LightBlue;
         //            }
-                  
+
 
         //        }
         //    }
         //    catch { };
         //}
 
-        private container hp = null;
-
-        public orders(Form hpcopy,Form dgcopy)
-        {
-            dg = dgcopy as dialogcontainer;
-            hp = hpcopy as container;
-            InitializeComponent();
-
-           
-            
-            bgworker.RunWorkerAsync();
-            
-        }
+      
 
         private void updbtn_Click(object sender, EventArgs e)
         {
@@ -260,7 +369,10 @@ namespace Veiled_Kashmir_Admin_Panel
                 dg.loadingimage.Visible = false;
                 dg.lbl.ForeColor = SystemColors.Highlight;
                 dg.lbl.Text = "Orders";
+                dg.lbl.Visible = false;
                 formlbl.Visible = false;
+                dg.dialogpnl.Location = new Point(1, 1);
+              
             }
             else
             {
@@ -268,22 +380,23 @@ namespace Veiled_Kashmir_Admin_Panel
                 
             }
             formlbl.Visible = false;
-            panel1.Visible = true;
+           
             try
             {
                 ordergridview.Visible = true;
                 ordergridview.DataSource = bsource;
-                ordergridview.Columns["shipdate"].Visible = false;
-                ordergridview.Columns["deliverdate"].Visible = false;
+                ordergridview.DoubleBuffered(true);
+              
                 ordergridview.Columns["paymentconfirmed"].Visible = false;
                 ordergridview.Columns["email"].Visible = false;
-
+                panel1.Visible = true;
                 orlbl.Text = ordergridview.RowCount.ToString();
                 refresh.Enabled = true;
                 ordergridview.Enabled = true;
                 delbtn.Visible = true;
+               
             }
-            catch { delbtn.Visible = false; }
+            catch { delbtn.Visible = false; refresh.Enabled = true; }
             Cursor = Cursors.Arrow;
         }
 
@@ -331,6 +444,7 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             try
             {
+               
                 DataView dv = new DataView(dt);
                 dv.RowFilter = string.Format("status LIKE '%{0}%'", statustxt.Text);
                 ordergridview.DataSource = dv;
@@ -340,7 +454,7 @@ namespace Veiled_Kashmir_Admin_Panel
         private void billbtn_Click(object sender, EventArgs e)
         {
            
-                addbill ab = new addbill(orderlbl.Text, email, amountlbl.Text,contactlbl,shipping,addresstxt.Text);
+                addbill ab = new addbill(orderlbl.Text, email, amountlbl.Text,contactlbl,shipping,name);
                 ab.Show();
                 productid = null;
             
@@ -356,15 +470,16 @@ namespace Veiled_Kashmir_Admin_Panel
                 obj.nonQuery(cmd);
                 cmd = "Delete from orderdetails where orderid='" + orderid + "'";
                 obj.nonQuery(cmd);
-                    Cursor = Cursors.Arrow;
+                   
                 MessageBox.Show("Order deleted.");
                 dpnl.Visible = false;
                 orderdetailview.Visible = false;
-                    Cursor = Cursors.WaitCursor;
+                   
                 readorders();
                 orlbl.Text = ordervar;
                 ordergridview.DataSource = bsource;
-                    ordergridview.CurrentCell = ordergridview.Rows[int.Parse(orderidcount)].Cells[0];
+                    ordergridview.DoubleBuffered(true);
+                    //    ordergridview.CurrentCell = ordergridview.Rows[int.Parse(orderidcount)].Cells[0];
                     orderdetailview.Visible = false;
                     dpnl.Visible = false;
                     loadinglbl.Visible = false;
@@ -432,7 +547,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
 
         int sumtotal;
-        string orderidcount, contactlbl,name;
+        string orderidcount, contactlbl,name,encmail;
         private void ordergridview_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -449,6 +564,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     DataGridViewRow row = this.ordergridview.Rows[e.RowIndex];
                     orderid = row.Cells["orderid"].Value.ToString();
                     email = row.Cells["mail"].Value.ToString();
+                    encmail = row.Cells["email"].Value.ToString();
                     shipping = row.Cells["shipping"].Value.ToString();
                     name = row.Cells["name"].Value.ToString();
                     addresstxt.Text = row.Cells["name"].Value.ToString()+"\r\n"+ row.Cells["address1"].Value.ToString() +" "+ row.Cells["address2"].Value.ToString()+

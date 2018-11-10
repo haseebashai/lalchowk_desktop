@@ -60,7 +60,6 @@
             this.label23 = new System.Windows.Forms.Label();
             this.paymenttxt = new System.Windows.Forms.TextBox();
             this.loadinglbl = new System.Windows.Forms.Label();
-            this.supbox = new System.Windows.Forms.ComboBox();
             this.contacttxt = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.billlbl = new System.Windows.Forms.Label();
@@ -182,6 +181,7 @@
             // 
             // otxt
             // 
+            this.otxt.Enabled = false;
             this.otxt.Location = new System.Drawing.Point(85, 466);
             this.otxt.Name = "otxt";
             this.otxt.Size = new System.Drawing.Size(204, 20);
@@ -323,9 +323,9 @@
             this.label16.ForeColor = System.Drawing.Color.Black;
             this.label16.Location = new System.Drawing.Point(79, 207);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(66, 13);
+            this.label16.Size = new System.Drawing.Size(143, 13);
             this.label16.TabIndex = 102;
-            this.label16.Text = "Pickup Date";
+            this.label16.Text = "Pickup Date (DD-MM-YYYY)";
             // 
             // pickuptxt
             // 
@@ -382,15 +382,6 @@
             this.loadinglbl.Size = new System.Drawing.Size(116, 17);
             this.loadinglbl.TabIndex = 110;
             this.loadinglbl.Text = "Loading details...";
-            // 
-            // supbox
-            // 
-            this.supbox.Enabled = false;
-            this.supbox.FormattingEnabled = true;
-            this.supbox.Location = new System.Drawing.Point(232, 23);
-            this.supbox.Name = "supbox";
-            this.supbox.Size = new System.Drawing.Size(216, 21);
-            this.supbox.TabIndex = 111;
             // 
             // contacttxt
             // 
@@ -450,7 +441,6 @@
             this.Controls.Add(this.billlbl);
             this.Controls.Add(this.contacttxt);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.supbox);
             this.Controls.Add(this.orderdetailview);
             this.Controls.Add(this.no);
             this.Controls.Add(this.yes);
@@ -527,7 +517,6 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.TextBox paymenttxt;
         private System.Windows.Forms.Label loadinglbl;
-        private System.Windows.Forms.ComboBox supbox;
         private System.Windows.Forms.TextBox contacttxt;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label billlbl;

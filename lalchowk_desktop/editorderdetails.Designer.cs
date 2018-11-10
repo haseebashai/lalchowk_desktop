@@ -62,7 +62,9 @@
             this.deupdbtn = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.loadlbl = new System.Windows.Forms.Label();
+            this.refreshbtn = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.orderdetailview)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.refreshbtn)).BeginInit();
             this.SuspendLayout();
             // 
             // nametxt
@@ -367,6 +369,19 @@
             this.loadlbl.TabIndex = 33;
             this.loadlbl.Text = "Loading...";
             // 
+            // refreshbtn
+            // 
+            this.refreshbtn.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.refresh;
+            this.refreshbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.refreshbtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.refreshbtn.Location = new System.Drawing.Point(595, 6);
+            this.refreshbtn.Name = "refreshbtn";
+            this.refreshbtn.Size = new System.Drawing.Size(21, 21);
+            this.refreshbtn.TabIndex = 98;
+            this.refreshbtn.TabStop = false;
+            this.refreshbtn.Visible = false;
+            this.refreshbtn.Click += new System.EventHandler(this.refresh_Click);
+            // 
             // editorderdetails
             // 
             this.AcceptButton = this.updbtn;
@@ -374,6 +389,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(628, 583);
+            this.Controls.Add(this.refreshbtn);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.deupdbtn);
             this.Controls.Add(this.orderdetailview);
@@ -413,6 +429,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Edit Order Details";
             ((System.ComponentModel.ISupportInitialize)(this.orderdetailview)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.refreshbtn)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -453,5 +470,6 @@
         private System.Windows.Forms.Button deupdbtn;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label loadlbl;
+        private System.Windows.Forms.PictureBox refreshbtn;
     }
 }
