@@ -69,6 +69,8 @@ namespace Veiled_Kashmir_Admin_Panel
                 string ptype = arg[11] as string;
                 string pconf = arg[12] as string;
                 BindingSource bsource = arg[13] as BindingSource;
+                shipdttxt.Text = arg[14] as string;
+                deldttxt.Text = arg[15] as string;
                 orderdetailview.DataSource = bsource;
 
                 orderdetailview.Visible = true;
@@ -120,7 +122,7 @@ namespace Veiled_Kashmir_Admin_Panel
             {
                 string orderid = e.Argument as string;
                
-                dr = obj.Query("select amount,shipping,name,address1,address2,pincode,contact,city,status,itemcount,deliveryguy,paymenttype,paymentconfirmed from orders where orderid='" + orderid + "'");
+                dr = obj.Query("select amount,shipping,name,address1,address2,pincode,contact,city,status,itemcount,deliveryguy,paymenttype,paymentconfirmed,shipdate,deliverdate from orders where orderid='" + orderid + "'");
                 dr.Read();
                 string amount = dr[0].ToString();
                 string shipping = dr[1].ToString();
@@ -135,6 +137,8 @@ namespace Veiled_Kashmir_Admin_Panel
                 string dguy= dr[10].ToString();
                 string ptype = dr[11].ToString();
                 string pconf = dr[12].ToString();
+                string sdate= dr[13].ToString();
+                string ddate = dr[14].ToString();
                 obj.closeConnection();
 
                adap = new MySqlDataAdapter("SELECT * FROM orderdetails where orderid='" + orderid + "'", conn);
@@ -145,7 +149,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 bsource.DataSource = dt;
 
 
-                object[] arg = {amount,shipping,name,add1,add2,pin,con,city,status,count,dguy,ptype,pconf,bsource};
+                object[] arg = {amount,shipping,name,add1,add2,pin,con,city,status,count,dguy,ptype,pconf,bsource,sdate,ddate};
               
                 e.Result = arg;
 
@@ -170,10 +174,11 @@ namespace Veiled_Kashmir_Admin_Panel
                         pconf = "1";
                     else
                         pconf = "0";
-
+                    string date = Convert.ToDateTime(deldttxt.Text).ToString("yyyy-dd-MM");
                     string cmd = "update orders set amount='" + amtxt.Text + "',shipping='" + shiptxt.Text + "',name='" + nametxt.Text + "',address1='" + add1txt.Text + "'" +
                         ",address2='" + add2txt.Text + "',pincode='" + pintxt.Text + "',contact='" + contxt.Text + "',city='" + citytxt.Text + "',status='"+statustxt.Text+"'"+
-                        ",itemcount='"+counttxt.Text+"',deliveryguy='"+dguytxt.Text+"',paymenttype='"+ptypebox.Text+"',paymentconfirmed='"+pconf+"' where orderid='" + id + "'";
+                        ",itemcount='"+counttxt.Text+"',deliveryguy='"+dguytxt.Text+"',paymenttype='"+ptypebox.Text+"',paymentconfirmed='"+pconf
+                        +"',deliverdate='"+date+"' where orderid='" + id + "'";
                     obj.nonQuery(cmd);
                     Cursor = Cursors.Arrow;
                     update = true;

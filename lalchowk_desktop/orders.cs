@@ -64,6 +64,7 @@ namespace Veiled_Kashmir_Admin_Panel
         private void refresh_Click(object sender, EventArgs e)
         {
             Cursor = Cursors.WaitCursor;
+            delbtn.Enabled = false;
             ordergridview.Enabled = false;
             orderdetailview.Visible = false;
             dpnl.Visible = false;
@@ -394,7 +395,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 refresh.Enabled = true;
                 ordergridview.Enabled = true;
                 delbtn.Visible = true;
-               
+                delbtn.Enabled = true;
             }
             catch { delbtn.Visible = false; refresh.Enabled = true; }
             Cursor = Cursors.Arrow;

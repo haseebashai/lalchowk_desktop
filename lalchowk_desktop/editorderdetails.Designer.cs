@@ -63,6 +63,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.loadlbl = new System.Windows.Forms.Label();
             this.refreshbtn = new System.Windows.Forms.PictureBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.shipdttxt = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.deldttxt = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.orderdetailview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.refreshbtn)).BeginInit();
             this.SuspendLayout();
@@ -87,7 +91,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(234, 367);
+            this.label2.Location = new System.Drawing.Point(394, 309);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(48, 13);
             this.label2.TabIndex = 3;
@@ -96,15 +100,15 @@
             // shiptxt
             // 
             this.shiptxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.shiptxt.Location = new System.Drawing.Point(234, 386);
+            this.shiptxt.Location = new System.Drawing.Point(394, 328);
             this.shiptxt.Name = "shiptxt";
-            this.shiptxt.Size = new System.Drawing.Size(120, 20);
+            this.shiptxt.Size = new System.Drawing.Size(132, 20);
             this.shiptxt.TabIndex = 7;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(59, 367);
+            this.label3.Location = new System.Drawing.Point(270, 309);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(43, 13);
             this.label3.TabIndex = 5;
@@ -113,15 +117,15 @@
             // amtxt
             // 
             this.amtxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.amtxt.Location = new System.Drawing.Point(59, 386);
+            this.amtxt.Location = new System.Drawing.Point(270, 328);
             this.amtxt.Name = "amtxt";
-            this.amtxt.Size = new System.Drawing.Size(120, 20);
+            this.amtxt.Size = new System.Drawing.Size(118, 20);
             this.amtxt.TabIndex = 6;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(321, 309);
+            this.label4.Location = new System.Drawing.Point(270, 252);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(24, 13);
             this.label4.TabIndex = 7;
@@ -130,15 +134,15 @@
             // citytxt
             // 
             this.citytxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.citytxt.Location = new System.Drawing.Point(321, 328);
+            this.citytxt.Location = new System.Drawing.Point(270, 271);
             this.citytxt.Name = "citytxt";
-            this.citytxt.Size = new System.Drawing.Size(205, 20);
+            this.citytxt.Size = new System.Drawing.Size(118, 20);
             this.citytxt.TabIndex = 5;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(59, 309);
+            this.label5.Location = new System.Drawing.Point(394, 252);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(46, 13);
             this.label5.TabIndex = 9;
@@ -147,15 +151,15 @@
             // pintxt
             // 
             this.pintxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.pintxt.Location = new System.Drawing.Point(59, 328);
+            this.pintxt.Location = new System.Drawing.Point(394, 271);
             this.pintxt.Name = "pintxt";
-            this.pintxt.Size = new System.Drawing.Size(205, 20);
+            this.pintxt.Size = new System.Drawing.Size(132, 20);
             this.pintxt.TabIndex = 4;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(321, 252);
+            this.label6.Location = new System.Drawing.Point(58, 309);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(44, 13);
             this.label6.TabIndex = 11;
@@ -164,7 +168,7 @@
             // contxt
             // 
             this.contxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.contxt.Location = new System.Drawing.Point(321, 271);
+            this.contxt.Location = new System.Drawing.Point(58, 328);
             this.contxt.Name = "contxt";
             this.contxt.Size = new System.Drawing.Size(205, 20);
             this.contxt.TabIndex = 3;
@@ -189,7 +193,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(321, 198);
+            this.label8.Location = new System.Drawing.Point(274, 198);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(54, 13);
             this.label8.TabIndex = 15;
@@ -198,16 +202,16 @@
             // add1txt
             // 
             this.add1txt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.add1txt.Location = new System.Drawing.Point(321, 217);
+            this.add1txt.Location = new System.Drawing.Point(270, 217);
             this.add1txt.Name = "add1txt";
-            this.add1txt.Size = new System.Drawing.Size(205, 20);
+            this.add1txt.Size = new System.Drawing.Size(256, 20);
             this.add1txt.TabIndex = 1;
             // 
             // updbtn
             // 
             this.updbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.updbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.updbtn.Location = new System.Drawing.Point(453, 487);
+            this.updbtn.Location = new System.Drawing.Point(453, 499);
             this.updbtn.Name = "updbtn";
             this.updbtn.Size = new System.Drawing.Size(130, 50);
             this.updbtn.TabIndex = 13;
@@ -229,7 +233,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(59, 423);
+            this.label9.Location = new System.Drawing.Point(147, 369);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(37, 13);
             this.label9.TabIndex = 18;
@@ -238,7 +242,7 @@
             // statustxt
             // 
             this.statustxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.statustxt.Location = new System.Drawing.Point(59, 442);
+            this.statustxt.Location = new System.Drawing.Point(147, 388);
             this.statustxt.Name = "statustxt";
             this.statustxt.Size = new System.Drawing.Size(120, 20);
             this.statustxt.TabIndex = 9;
@@ -246,7 +250,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(396, 367);
+            this.label10.Location = new System.Drawing.Point(58, 369);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(58, 13);
             this.label10.TabIndex = 20;
@@ -255,15 +259,15 @@
             // counttxt
             // 
             this.counttxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.counttxt.Location = new System.Drawing.Point(396, 386);
+            this.counttxt.Location = new System.Drawing.Point(58, 388);
             this.counttxt.Name = "counttxt";
-            this.counttxt.Size = new System.Drawing.Size(130, 20);
+            this.counttxt.Size = new System.Drawing.Size(83, 20);
             this.counttxt.TabIndex = 8;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(234, 423);
+            this.label11.Location = new System.Drawing.Point(58, 434);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(67, 13);
             this.label11.TabIndex = 22;
@@ -272,7 +276,7 @@
             // dguytxt
             // 
             this.dguytxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.dguytxt.Location = new System.Drawing.Point(234, 442);
+            this.dguytxt.Location = new System.Drawing.Point(58, 453);
             this.dguytxt.Name = "dguytxt";
             this.dguytxt.Size = new System.Drawing.Size(120, 20);
             this.dguytxt.TabIndex = 10;
@@ -280,7 +284,7 @@
             // pconflbl
             // 
             this.pconflbl.AutoSize = true;
-            this.pconflbl.Location = new System.Drawing.Point(234, 483);
+            this.pconflbl.Location = new System.Drawing.Point(413, 368);
             this.pconflbl.Name = "pconflbl";
             this.pconflbl.Size = new System.Drawing.Size(107, 13);
             this.pconflbl.TabIndex = 24;
@@ -289,7 +293,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(59, 483);
+            this.label13.Location = new System.Drawing.Point(278, 365);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(75, 13);
             this.label13.TabIndex = 26;
@@ -298,7 +302,7 @@
             // pcybox
             // 
             this.pcybox.AutoSize = true;
-            this.pcybox.Location = new System.Drawing.Point(238, 505);
+            this.pcybox.Location = new System.Drawing.Point(417, 390);
             this.pcybox.Name = "pcybox";
             this.pcybox.Size = new System.Drawing.Size(44, 17);
             this.pcybox.TabIndex = 27;
@@ -309,7 +313,7 @@
             // pcnbox
             // 
             this.pcnbox.AutoSize = true;
-            this.pcnbox.Location = new System.Drawing.Point(288, 505);
+            this.pcnbox.Location = new System.Drawing.Point(467, 390);
             this.pcnbox.Name = "pcnbox";
             this.pcnbox.Size = new System.Drawing.Size(40, 17);
             this.pcnbox.TabIndex = 28;
@@ -321,7 +325,7 @@
             // 
             this.ptypebox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ptypebox.FormattingEnabled = true;
-            this.ptypebox.Location = new System.Drawing.Point(58, 505);
+            this.ptypebox.Location = new System.Drawing.Point(277, 387);
             this.ptypebox.Name = "ptypebox";
             this.ptypebox.Size = new System.Drawing.Size(121, 21);
             this.ptypebox.TabIndex = 29;
@@ -382,6 +386,41 @@
             this.refreshbtn.Visible = false;
             this.refreshbtn.Click += new System.EventHandler(this.refresh_Click);
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(193, 434);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(52, 13);
+            this.label12.TabIndex = 100;
+            this.label12.Text = "Ship date";
+            // 
+            // shipdttxt
+            // 
+            this.shipdttxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.shipdttxt.Enabled = false;
+            this.shipdttxt.Location = new System.Drawing.Point(193, 453);
+            this.shipdttxt.Name = "shipdttxt";
+            this.shipdttxt.Size = new System.Drawing.Size(149, 20);
+            this.shipdttxt.TabIndex = 99;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(358, 434);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(64, 13);
+            this.label14.TabIndex = 102;
+            this.label14.Text = "Deliver date";
+            // 
+            // deldttxt
+            // 
+            this.deldttxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.deldttxt.Location = new System.Drawing.Point(358, 453);
+            this.deldttxt.Name = "deldttxt";
+            this.deldttxt.Size = new System.Drawing.Size(168, 20);
+            this.deldttxt.TabIndex = 101;
+            // 
             // editorderdetails
             // 
             this.AcceptButton = this.updbtn;
@@ -389,6 +428,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(628, 583);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.deldttxt);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.shipdttxt);
             this.Controls.Add(this.refreshbtn);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.deupdbtn);
@@ -471,5 +514,9 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label loadlbl;
         private System.Windows.Forms.PictureBox refreshbtn;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox shipdttxt;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox deldttxt;
     }
 }

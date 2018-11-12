@@ -768,7 +768,6 @@
             this.shippeddataview.Visible = false;
             this.shippeddataview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.shippeddataview_CellClick);
             this.shippeddataview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.shippeddataview_CellContentClick);
-            this.shippeddataview.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.shippeddataview_CellFormatting);
             this.shippeddataview.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.shippeddataview_CellValueChanged);
             this.shippeddataview.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.shippeddataview_RowsAdded);
             // 
