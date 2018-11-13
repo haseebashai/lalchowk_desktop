@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.Globalization;
 
 namespace Veiled_Kashmir_Admin_Panel
 {
@@ -174,12 +175,31 @@ namespace Veiled_Kashmir_Admin_Panel
                         pconf = "1";
                     else
                         pconf = "0";
-                    string date = Convert.ToDateTime(deldttxt.Text).ToString("yyyy-dd-MM");
-                    string cmd = "update orders set amount='" + amtxt.Text + "',shipping='" + shiptxt.Text + "',name='" + nametxt.Text + "',address1='" + add1txt.Text + "'" +
-                        ",address2='" + add2txt.Text + "',pincode='" + pintxt.Text + "',contact='" + contxt.Text + "',city='" + citytxt.Text + "',status='"+statustxt.Text+"'"+
-                        ",itemcount='"+counttxt.Text+"',deliveryguy='"+dguytxt.Text+"',paymenttype='"+ptypebox.Text+"',paymentconfirmed='"+pconf
-                        +"',deliverdate='"+date+"' where orderid='" + id + "'";
-                    obj.nonQuery(cmd);
+                   
+                    if (deldttxt.Text == String.Empty)
+                    {
+                        string date = "NULL";
+                        string cmd = "update orders set amount='" + amtxt.Text + "',shipping='" + shiptxt.Text + "',name='" + nametxt.Text + "',address1='" + add1txt.Text + "'" +
+                        ",address2='" + add2txt.Text + "',pincode='" + pintxt.Text + "',contact='" + contxt.Text + "',city='" + citytxt.Text + "',status='" + statustxt.Text + "'" +
+                        ",itemcount='" + counttxt.Text + "',deliveryguy='" + dguytxt.Text + "',paymenttype='" + ptypebox.Text + "',paymentconfirmed='" + pconf
+                        + "',deliverdate="+date+" where orderid='" + id + "'";
+                        obj.nonQuery(cmd);
+                    }
+                    else
+                    {
+
+                      
+                        string date = Convert.ToDateTime(deldttxt.Text).ToString("yyyy-MM-dd HH:mm:ss tt");
+                        string cmd = "update orders set amount='" + amtxt.Text + "',shipping='" + shiptxt.Text + "',name='" + nametxt.Text + "',address1='" + add1txt.Text + "'" +
+                            ",address2='" + add2txt.Text + "',pincode='" + pintxt.Text + "',contact='" + contxt.Text + "',city='" + citytxt.Text + "',status='" + statustxt.Text + "'" +
+                            ",itemcount='" + counttxt.Text + "',deliveryguy='" + dguytxt.Text + "',paymenttype='" + ptypebox.Text + "',paymentconfirmed='" + pconf
+                            + "',deliverdate='" + date + "' where orderid='" + id + "'";
+                            obj.nonQuery(cmd);
+                      
+                        
+                           
+                    }
+                    
                     Cursor = Cursors.Arrow;
                     update = true;
                     MessageBox.Show("Updated.");
@@ -187,10 +207,11 @@ namespace Veiled_Kashmir_Admin_Panel
               
 
             }
-            catch
+            catch(Exception ex)
             {
                 Cursor = Cursors.Arrow;
                 obj.closeConnection();
+                MessageBox.Show(ex.ToString());
             }
         }
 
@@ -354,6 +375,11 @@ namespace Veiled_Kashmir_Admin_Panel
             refresh.RunWorkerAsync(id);
             
           
+        }
+
+        private void deldttxt_TextChanged(object sender, EventArgs e)
+        {
+            deldttxt.MaxLength = 10;
         }
     }
 }

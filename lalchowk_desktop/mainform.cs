@@ -19,8 +19,8 @@ namespace Veiled_Kashmir_Admin_Panel
     {
 
         DBConnect obj = new DBConnect();
-        MySqlConnection con = new MySqlConnection("SERVER=182.50.133.78;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah");
-        MySqlConnection aconn = new MySqlConnection("SERVER=182.50.133.78;DATABASE=lalchowk_ac;USER=lalchowkac;PASSWORD=Lalchowk@123uzmah");
+        MySqlConnection con = new MySqlConnection("SERVER=182.50.133.78;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah;Convert Zero Datetime=True");
+        MySqlConnection aconn = new MySqlConnection("SERVER=182.50.133.78;DATABASE=lalchowk_ac;USER=lalchowkac;PASSWORD=Lalchowk@123uzmah;Convert Zero Datetime=True");
         MySqlDataAdapter adap;
         DataTable dt;
         MySqlDataReader dr;
@@ -1296,14 +1296,17 @@ namespace Veiled_Kashmir_Admin_Panel
                 contact = row.Cells["contact"].Value.ToString();
                 status = row.Cells["status"].Value.ToString();
                 name = row.Cells["name"].Value.ToString();
-                products = new BackgroundWorker();
-                products.DoWork += Products_DoWork;
-                products.RunWorkerCompleted += Products_RunWorkerCompleted;
-                products.WorkerSupportsCancellation = true;
-                if (products.IsBusy)
-                    products.CancelAsync();
-                else if (!products.CancellationPending)
-                    products.RunWorkerAsync(id);
+                try
+                {
+                    products = new BackgroundWorker();
+                    products.DoWork += Products_DoWork;
+                    products.RunWorkerCompleted += Products_RunWorkerCompleted;
+                    products.WorkerSupportsCancellation = true;
+                    if (products.IsBusy)
+                        products.CancelAsync();
+                    else if (!products.CancellationPending)
+                        products.RunWorkerAsync(id);
+                }catch { }
             }
             else if (e.ColumnIndex == 0)
             {
@@ -1698,11 +1701,16 @@ namespace Veiled_Kashmir_Admin_Panel
                 foreach (DataGridViewRow row in this.shippeddataview.Rows)
                 {
                     if (Convert.ToString(row.Cells["paymentconfirmed"].Value) == "True" && Convert.ToString(row.Cells["paymenttype"].Value) == "Pre-Pay")
-                    {
+                    
                         row.DefaultCellStyle.BackColor = Color.LightGreen;
-                    }else if(Convert.ToString(row.Cells["paymenttype"].Value) == "Cash on Delivery")
+                    
+                    else if (Convert.ToString(row.Cells["paymentconfirmed"].Value) == "False" && Convert.ToString(row.Cells["paymenttype"].Value) == "Pre-Pay")
+                        row.DefaultCellStyle.BackColor = Color.LightPink;
+
+                    else if(Convert.ToString(row.Cells["paymenttype"].Value) == "Cash on Delivery")
 
                         row.DefaultCellStyle.BackColor = Color.LightBlue;
+                   
                 }
             }
             catch { }
@@ -1730,7 +1738,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 placeddataview.Columns["loyaltybonus"].Visible = false;
             //    placedh.Text = "Orders currently placed: " + placeddataview.RowCount;
             }
-            catch { con.Close(); }
+            catch(Exception ex) { MessageBox.Show(ex.Message); con.Close(); }
         }
 
         private void shippedorders()
@@ -1759,7 +1767,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
              //   shippedh.Text = "Orders currently shipped: " + shippeddataview.RowCount;
             }
-            catch { con.Close(); }
+            catch (Exception ex) { MessageBox.Show(ex.Message); con.Close(); }
 
         }
 

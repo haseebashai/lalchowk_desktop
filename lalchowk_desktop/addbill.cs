@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -37,7 +38,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 try
                 {
                     aconn.Open();
-                    drcmd = new MySqlCommand("select count(orderid) from deliveries where orderid='" + orderlbl + "'", aconn);
+                    drcmd = new MySqlCommand("select count(orderid) from dealings where orderid='" + orderlbl + "'", aconn);
                     dr = drcmd.ExecuteReader();
                     dr.Read();
                     int count = int.Parse(dr[0].ToString());
@@ -51,7 +52,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 {
                     int count = (int)b.Result;
 
-                    if (count ==1)
+                    if (count >0)
                     {
                         billlbl.Visible = true;
                     }
@@ -162,7 +163,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
 
                     Cursor = Cursors.WaitCursor;
-                    string date = Convert.ToDateTime(dtxt.Text).ToString("yyyy-dd-MM");
+                    string date = Convert.ToDateTime(dtxt.Text).ToString("yyyy-MM-dd HH:mm:ss tt");
                     cmd = "update orders set status='Delivered', deliverdate='" + date + "' where orderid='" + otxt.Text + "'";
                     obj.nonQuery(cmd);
                     obj.closeConnection();

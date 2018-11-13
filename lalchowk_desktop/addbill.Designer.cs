@@ -123,7 +123,9 @@
             // 
             // dtxt
             // 
+            this.dtxt.BackColor = System.Drawing.SystemColors.Info;
             this.dtxt.Location = new System.Drawing.Point(341, 466);
+            this.dtxt.MaxLength = 10;
             this.dtxt.Multiline = true;
             this.dtxt.Name = "dtxt";
             this.dtxt.Size = new System.Drawing.Size(204, 20);
@@ -329,7 +331,9 @@
             // 
             // pickuptxt
             // 
+            this.pickuptxt.BackColor = System.Drawing.SystemColors.Info;
             this.pickuptxt.Location = new System.Drawing.Point(82, 224);
+            this.pickuptxt.MaxLength = 10;
             this.pickuptxt.Multiline = true;
             this.pickuptxt.Name = "pickuptxt";
             this.pickuptxt.Size = new System.Drawing.Size(204, 20);
@@ -367,6 +371,7 @@
             // paymenttxt
             // 
             this.paymenttxt.Location = new System.Drawing.Point(82, 331);
+            this.paymenttxt.MaxLength = 10;
             this.paymenttxt.Multiline = true;
             this.paymenttxt.Name = "paymenttxt";
             this.paymenttxt.Size = new System.Drawing.Size(204, 20);

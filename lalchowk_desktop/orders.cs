@@ -20,8 +20,8 @@ namespace Veiled_Kashmir_Admin_Panel
         DataTable dt,dt1,dt2,dt3;
         MySqlCommand mysqlcmd,mysqlcmd1;
         MySqlDataAdapter adap,adap1;
-        MySqlConnection conn =new MySqlConnection("SERVER = 182.50.133.78; DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah");
-        MySqlConnection aconn = new MySqlConnection("SERVER=182.50.133.78;DATABASE=lalchowk_ac;USER=lalchowkac;PASSWORD=Lalchowk@123uzmah");
+        MySqlConnection conn =new MySqlConnection("SERVER = 182.50.133.78; DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah;Convert Zero Datetime=True");
+        MySqlConnection aconn = new MySqlConnection("SERVER=182.50.133.78;DATABASE=lalchowk_ac;USER=lalchowkac;PASSWORD=Lalchowk@123uzmah;Convert Zero Datetime=True");
 
         BindingSource bsource;
         MySqlCommandBuilder cmdbl;
