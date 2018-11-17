@@ -161,7 +161,7 @@ namespace Veiled_Kashmir_Admin_Panel
             else
             {
                 dialogcontainer dg = new dialogcontainer();
-                promomail pm = new promomail(email, dg);
+                promomail pm = new promomail(email, dg,"","");
                 pm.TopLevel = false;
                 dg.Size = new Size(700, 715);
                 pm.epnl.Location = new Point(-300, 1);

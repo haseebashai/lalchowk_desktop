@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bpnl = new System.Windows.Forms.Panel();
+            this.updbtn = new System.Windows.Forms.Button();
             this.delbtn = new System.Windows.Forms.Button();
             this.dpnl = new System.Windows.Forms.Panel();
             this.smsbtn = new System.Windows.Forms.Button();
@@ -45,7 +46,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.emailtxt = new System.Windows.Forms.TextBox();
             this.booksdataview = new System.Windows.Forms.DataGridView();
-            this.updbtn = new System.Windows.Forms.Button();
+            this.mailbtn = new System.Windows.Forms.Button();
             this.bpnl.SuspendLayout();
             this.dpnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.booksdataview)).BeginInit();
@@ -64,6 +65,20 @@
             this.bpnl.TabIndex = 23;
             this.bpnl.Visible = false;
             // 
+            // updbtn
+            // 
+            this.updbtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.updbtn.Enabled = false;
+            this.updbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.updbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.updbtn.Location = new System.Drawing.Point(703, 333);
+            this.updbtn.Name = "updbtn";
+            this.updbtn.Size = new System.Drawing.Size(128, 39);
+            this.updbtn.TabIndex = 38;
+            this.updbtn.Text = "Update/Processed";
+            this.updbtn.UseVisualStyleBackColor = true;
+            this.updbtn.Click += new System.EventHandler(this.updbtn_Click);
+            // 
             // delbtn
             // 
             this.delbtn.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -79,6 +94,7 @@
             // 
             // dpnl
             // 
+            this.dpnl.Controls.Add(this.mailbtn);
             this.dpnl.Controls.Add(this.smsbtn);
             this.dpnl.Controls.Add(this.temailbtn);
             this.dpnl.Controls.Add(this.label4);
@@ -101,9 +117,9 @@
             // 
             this.smsbtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.smsbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.smsbtn.Location = new System.Drawing.Point(651, 69);
+            this.smsbtn.Location = new System.Drawing.Point(648, 112);
             this.smsbtn.Name = "smsbtn";
-            this.smsbtn.Size = new System.Drawing.Size(89, 61);
+            this.smsbtn.Size = new System.Drawing.Size(89, 37);
             this.smsbtn.TabIndex = 37;
             this.smsbtn.Text = "Send SMS";
             this.smsbtn.UseVisualStyleBackColor = true;
@@ -207,14 +223,14 @@
             this.booksdataview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.booksdataview.BackgroundColor = System.Drawing.Color.White;
             this.booksdataview.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.booksdataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.booksdataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.booksdataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.booksdataview.GridColor = System.Drawing.SystemColors.Control;
             this.booksdataview.Location = new System.Drawing.Point(3, 3);
@@ -224,19 +240,17 @@
             this.booksdataview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.booksdataview_CellClick);
             this.booksdataview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.booksdataview_CellClick);
             // 
-            // updbtn
+            // mailbtn
             // 
-            this.updbtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.updbtn.Enabled = false;
-            this.updbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
-            this.updbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.updbtn.Location = new System.Drawing.Point(703, 333);
-            this.updbtn.Name = "updbtn";
-            this.updbtn.Size = new System.Drawing.Size(128, 39);
-            this.updbtn.TabIndex = 38;
-            this.updbtn.Text = "Update/Processed";
-            this.updbtn.UseVisualStyleBackColor = true;
-            this.updbtn.Click += new System.EventHandler(this.updbtn_Click);
+            this.mailbtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.mailbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.mailbtn.Location = new System.Drawing.Point(648, 65);
+            this.mailbtn.Name = "mailbtn";
+            this.mailbtn.Size = new System.Drawing.Size(89, 37);
+            this.mailbtn.TabIndex = 38;
+            this.mailbtn.Text = "Send Email";
+            this.mailbtn.UseVisualStyleBackColor = true;
+            this.mailbtn.Click += new System.EventHandler(this.mailbtn_Click);
             // 
             // books
             // 
@@ -275,5 +289,6 @@
         private System.Windows.Forms.Button delbtn;
         private System.Windows.Forms.Button smsbtn;
         private System.Windows.Forms.Button updbtn;
+        private System.Windows.Forms.Button mailbtn;
     }
 }

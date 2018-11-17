@@ -584,7 +584,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
             Cursor = Cursors.WaitCursor;
             dialogcontainer dg = new dialogcontainer();
-            promomail pm = new promomail("", dg);
+            promomail pm = new promomail("", dg,"","");
             pm.TopLevel = false;
 
             pm.emaillistpnl.Visible = true;
@@ -752,7 +752,7 @@ namespace Veiled_Kashmir_Admin_Panel
             if (e.RowIndex > -1 && e.ColumnIndex > 3)
             {
                 plbl.Visible = true;
-                shipbtn.Visible = false;
+                emailbtn.Visible = false;
                 sendsmsbtn.Visible = false;
                 cancelbtn.Visible = false;
                 ppnl.Controls.Clear();
@@ -883,7 +883,7 @@ namespace Veiled_Kashmir_Admin_Panel
                         shippedh.Text = "Orders currently shipped: " + shippeddataview.RowCount;
                         shippeddataview.Visible = true;
                         ppnl.Visible = false;
-                        shipbtn.Visible = false;
+                        emailbtn.Visible = false;
                         sendsmsbtn.Visible = false;
                         cancelbtn.Visible = false;
                         shippedh.Visible = true;
@@ -944,7 +944,7 @@ namespace Veiled_Kashmir_Admin_Panel
                             placedh.Text = "Orders currently placed: " + placeddataview.RowCount;
              
                         ppnl.Visible = false;
-                        shipbtn.Visible = false;
+                        emailbtn.Visible = false;
                         sendsmsbtn.Visible = false;
                         cancelbtn.Visible = false;
                      
@@ -996,16 +996,16 @@ namespace Veiled_Kashmir_Admin_Panel
                     ppnl.Controls.Add(t1);
                 }
               
-                if (status == "Placed")
-                {
-                    shipbtn.Visible = true;
-                }else if (status == "Shipped")
-                {
-                    shipbtn.Visible = false;
-                }
+                //if (status == "Placed")
+                //{
+                //    emailbtn.Visible = true;
+                //}else if (status == "Shipped")
+                //{
+                //    emailbtn.Visible = false;
+                //}
                 ppnl.Visible = true;
                 plbl.Visible = false;
-               
+                emailbtn.Visible = true;
                 sendsmsbtn.Visible = true;
                 cancelbtn.Visible = true;
             }
@@ -1017,89 +1017,22 @@ namespace Veiled_Kashmir_Admin_Panel
             Cursor = Cursors.WaitCursor;
             try
             {
-                DialogResult dgr = MessageBox.Show("Change status to Shipped for orderid '" + id + "'", "Confirm!", MessageBoxButtons.YesNo);
-                if (dgr == DialogResult.Yes)
-                {
+                dialogcontainer dg = new dialogcontainer();
+                promomail pm = new promomail(email, dg,name,"");
+                pm.TopLevel = false;
+                dg.Size = new Size(700, 715);
+                pm.epnl.Location = new Point(-300, 1);
+                pm.elistlbl.Text = "";
 
-                    DateTime time = DateTime.Now;             // Use current time.
-                    string shipdate = time.ToString("yyyy-MM-dd HH:mm:ss");
+                dg.dialogpnl.Controls.Add(pm);
+                pm.loadingdg();
+                pm.opnl.Visible = true;
+                dg.Text = "Send Email";
 
-                    string cmd = "Update orders set status='Shipped', shipdate='" + shipdate + "' where orderid='" + id + "'";
-                    obj.nonQuery(cmd);
-                    obj.closeConnection();                  
+                dg.Show();
 
+                pm.Show();
 
-                    DialogResult ntf = MessageBox.Show("Do you want to send the in-app notification ?", "Confirm!", MessageBoxButtons.YesNo);
-                    if (ntf == DialogResult.Yes)
-                        {
-                        notification nf = new notification(encmail, email,id);
-                        nf.loadingnormal();
-                        nf.Show();
-
-
-                    }
-
-
-
-
-                    //con.Open();
-
-                    //adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='placed' or status='confirmed';", con);
-                    //dt = new DataTable();
-                    //adap.Fill(dt);
-                    //con.Close();
-                    //bsource = new BindingSource();
-                    //bsource.DataSource = dt;
-                    //placeddataview.DataSource = bsource;
-                    //placeddataview.DoubleBuffered(true);
-                    //placeddataview.Columns["shipdate"].Visible = false;
-                    //placeddataview.Columns["deliverdate"].Visible = false;
-                    //placeddataview.Columns["paymentconfirmed"].Visible = false;
-                    //placeddataview.Columns["email"].Visible = false;
-                    //placeddataview.Columns["transanctionid"].Visible = false;
-                    //placeddataview.Columns["loyaltybonus"].Visible = false;
-                    //placeddataview.Columns["status"].Visible = false;
-                    //placeddataview.Columns["deliveryguy"].Visible = false;
-                    placedorders();
-
-                    //  con.Open();
-                    //  adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='shipped';", con);
-                    //  dt = new DataTable();
-                    //  adap.Fill(dt);
-                    //  con.Close();
-                    //  bsource2 = new BindingSource();
-                    //  bsource2.DataSource = dt;
-                    //  shippeddataview.DataSource = bsource2;
-                    //  shippeddataview.DoubleBuffered(true);
-                    //  try { 
-                    ////  shippeddataview.Columns["shipdate"].Visible = false;
-                    //  shippeddataview.Columns["deliverdate"].Visible = false;
-                    //  shippeddataview.Columns["paymentconfirmed"].Visible = false;
-                    //  shippeddataview.Columns["email"].Visible = false;
-                    //  shippeddataview.Columns["transanctionid"].Visible = false;
-                    //      shippeddataview.Columns["loyaltybonus"].Visible = false;
-                    //      shippeddataview.Columns["status"].Visible = false;
-                    //      shippeddataview.Columns["itemcount"].Visible = false;
-                    //      placedh.Text = "Orders currently placed: " + placeddataview.RowCount;
-
-                    //      shippedh.Text = "Orders currently shipped: " + shippeddataview.RowCount;
-                    //  }
-                    //  catch { }
-                    shippedorders();
-                    placedh.Text = "Orders currently placed: " + placeddataview.RowCount;
-                    shippedh.Text = "Orders currently shipped: " + shippeddataview.RowCount;
-                    shippeddataview.Visible = true;
-                    ppnl.Visible = false;
-                    shipbtn.Visible = false;
-                    sendsmsbtn.Visible = false;
-                    cancelbtn.Visible = false;
-                    shippedh.Visible = true;
-                  //  shippedlbl.Visible = true;
-
-
-
-
-                }
             }
             catch
             {
@@ -1192,12 +1125,16 @@ namespace Veiled_Kashmir_Admin_Panel
                     //    }
                     //catch { con.Close(); }
                     placedorders();
-                    shipbtn.Visible = false;
+                    emailbtn.Visible = false;
                     sendsmsbtn.Visible = false;
                     cancelbtn.Visible = false;
                     
                     
                     shippedorders();
+                    placedh.Text = "Orders currently placed: " + placeddataview.RowCount;
+
+                    shippedh.Text = "Orders currently shipped: " + shippeddataview.RowCount;
+
 
                 }
                 else if (dgr == DialogResult.No)
@@ -1257,7 +1194,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     //catch { con.Close(); }
                    
                     placedorders();
-                    shipbtn.Visible = false;
+                    emailbtn.Visible = false;
                     sendsmsbtn.Visible = false;
                     cancelbtn.Visible = false;
                     placedh.Text = "Orders currently placed: " + placeddataview.RowCount;
@@ -1285,7 +1222,7 @@ namespace Veiled_Kashmir_Admin_Panel
             if (e.RowIndex >= 0 && e.ColumnIndex > 2)
             {
                 plbl.Visible = true;
-                shipbtn.Visible = false;
+                emailbtn.Visible = false;
                 sendsmsbtn.Visible = false;
                 cancelbtn.Visible = false;
                 ppnl.Controls.Clear();
@@ -1368,7 +1305,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     //placeddataview.Columns["status"].Visible = false;
                     //placeddataview.Columns["deliveryguy"].Visible = false;
                     placedorders();
-                    shipbtn.Visible = false;
+                    emailbtn.Visible = false;
                     sendsmsbtn.Visible = false;
                     cancelbtn.Visible = false;
                 }
@@ -1598,7 +1535,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 //placeddataview.Columns["status"].Visible = false;
                 //placeddataview.Columns["deliveryguy"].Visible = false;
                 placedorders();
-                shipbtn.Visible = false;
+                emailbtn.Visible = false;
                 sendsmsbtn.Visible = false;
                 cancelbtn.Visible = false;
                 ppnl.Visible = false;
@@ -1849,7 +1786,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
                     shippeddataview.Visible = true;
                     ppnl.Visible = false;
-                    shipbtn.Visible = false;
+                    emailbtn.Visible = false;
                     sendsmsbtn.Visible = false;
                     cancelbtn.Visible = false;
                     shippedh.Visible = true;

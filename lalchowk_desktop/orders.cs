@@ -269,6 +269,37 @@ namespace Veiled_Kashmir_Admin_Panel
             billlbl.Visible = false;
         }
 
+        private void emailbtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                dialogcontainer dg = new dialogcontainer();
+                promomail pm = new promomail(email, dg, name, "");
+                pm.TopLevel = false;
+                dg.Size = new Size(700, 715);
+                pm.epnl.Location = new Point(-300, 1);
+                pm.elistlbl.Text = "";
+
+                dg.dialogpnl.Controls.Add(pm);
+                pm.loadingdg();
+                pm.opnl.Visible = true;
+                pm.subtxt.Text = "How was your shopping experience with us?";
+                pm.bodytxt.Text = "Dear " + name + ",\r\n\r\nHope you had a nice shopping experience with www.lalchowk.in\r\nWe would love to read your reviews on our Google play store link here: bit.ly/lalchowkonline or our social media handles @lalchowkonline.\r\nYou can also contact us on our Office/WhatsApp number: 9906523492\r\n\r\nThanks and warm regards,\r\nTeam Lalchowk";
+
+
+                dg.Text = "Send Email";
+
+                dg.Show();
+
+                pm.Show();
+
+            }
+            catch
+            {
+                obj.closeConnection();
+            }
+        }
+
         private void ordttxt_KeyUp(object sender, KeyEventArgs e)
         {
             orderdetailview.Visible = false;
@@ -397,7 +428,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 delbtn.Visible = true;
                 delbtn.Enabled = true;
             }
-            catch { delbtn.Visible = false; refresh.Enabled = true; }
+            catch { delbtn.Visible = false; refresh.Enabled = true; ordergridview.Visible = false;  refresh.Visible = true; }
             Cursor = Cursors.Arrow;
         }
 

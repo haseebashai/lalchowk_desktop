@@ -77,7 +77,7 @@
             this.nametxt.Location = new System.Drawing.Point(59, 217);
             this.nametxt.Name = "nametxt";
             this.nametxt.Size = new System.Drawing.Size(205, 20);
-            this.nametxt.TabIndex = 0;
+            this.nametxt.TabIndex = 1;
             // 
             // label1
             // 
@@ -103,7 +103,7 @@
             this.shiptxt.Location = new System.Drawing.Point(394, 328);
             this.shiptxt.Name = "shiptxt";
             this.shiptxt.Size = new System.Drawing.Size(132, 20);
-            this.shiptxt.TabIndex = 7;
+            this.shiptxt.TabIndex = 8;
             // 
             // label3
             // 
@@ -120,7 +120,7 @@
             this.amtxt.Location = new System.Drawing.Point(270, 328);
             this.amtxt.Name = "amtxt";
             this.amtxt.Size = new System.Drawing.Size(118, 20);
-            this.amtxt.TabIndex = 6;
+            this.amtxt.TabIndex = 7;
             // 
             // label4
             // 
@@ -137,7 +137,7 @@
             this.citytxt.Location = new System.Drawing.Point(270, 271);
             this.citytxt.Name = "citytxt";
             this.citytxt.Size = new System.Drawing.Size(118, 20);
-            this.citytxt.TabIndex = 5;
+            this.citytxt.TabIndex = 4;
             // 
             // label5
             // 
@@ -154,7 +154,7 @@
             this.pintxt.Location = new System.Drawing.Point(394, 271);
             this.pintxt.Name = "pintxt";
             this.pintxt.Size = new System.Drawing.Size(132, 20);
-            this.pintxt.TabIndex = 4;
+            this.pintxt.TabIndex = 5;
             // 
             // label6
             // 
@@ -171,7 +171,7 @@
             this.contxt.Location = new System.Drawing.Point(58, 328);
             this.contxt.Name = "contxt";
             this.contxt.Size = new System.Drawing.Size(205, 20);
-            this.contxt.TabIndex = 3;
+            this.contxt.TabIndex = 6;
             // 
             // label7
             // 
@@ -188,7 +188,7 @@
             this.add2txt.Location = new System.Drawing.Point(59, 271);
             this.add2txt.Name = "add2txt";
             this.add2txt.Size = new System.Drawing.Size(205, 20);
-            this.add2txt.TabIndex = 2;
+            this.add2txt.TabIndex = 3;
             // 
             // label8
             // 
@@ -205,7 +205,7 @@
             this.add1txt.Location = new System.Drawing.Point(270, 217);
             this.add1txt.Name = "add1txt";
             this.add1txt.Size = new System.Drawing.Size(256, 20);
-            this.add1txt.TabIndex = 1;
+            this.add1txt.TabIndex = 2;
             // 
             // updbtn
             // 
@@ -214,7 +214,7 @@
             this.updbtn.Location = new System.Drawing.Point(453, 499);
             this.updbtn.Name = "updbtn";
             this.updbtn.Size = new System.Drawing.Size(130, 50);
-            this.updbtn.TabIndex = 13;
+            this.updbtn.TabIndex = 16;
             this.updbtn.Text = "Update";
             this.updbtn.UseVisualStyleBackColor = true;
             this.updbtn.Click += new System.EventHandler(this.updbtn_Click);
@@ -245,7 +245,7 @@
             this.statustxt.Location = new System.Drawing.Point(147, 388);
             this.statustxt.Name = "statustxt";
             this.statustxt.Size = new System.Drawing.Size(120, 20);
-            this.statustxt.TabIndex = 9;
+            this.statustxt.TabIndex = 10;
             // 
             // label10
             // 
@@ -262,7 +262,7 @@
             this.counttxt.Location = new System.Drawing.Point(58, 388);
             this.counttxt.Name = "counttxt";
             this.counttxt.Size = new System.Drawing.Size(83, 20);
-            this.counttxt.TabIndex = 8;
+            this.counttxt.TabIndex = 9;
             // 
             // label11
             // 
@@ -279,7 +279,7 @@
             this.dguytxt.Location = new System.Drawing.Point(58, 453);
             this.dguytxt.Name = "dguytxt";
             this.dguytxt.Size = new System.Drawing.Size(120, 20);
-            this.dguytxt.TabIndex = 10;
+            this.dguytxt.TabIndex = 14;
             // 
             // pconflbl
             // 
@@ -305,7 +305,7 @@
             this.pcybox.Location = new System.Drawing.Point(417, 390);
             this.pcybox.Name = "pcybox";
             this.pcybox.Size = new System.Drawing.Size(44, 17);
-            this.pcybox.TabIndex = 27;
+            this.pcybox.TabIndex = 12;
             this.pcybox.Text = "Yes";
             this.pcybox.UseVisualStyleBackColor = true;
             this.pcybox.CheckedChanged += new System.EventHandler(this.pcybox_CheckedChanged);
@@ -316,7 +316,7 @@
             this.pcnbox.Location = new System.Drawing.Point(467, 390);
             this.pcnbox.Name = "pcnbox";
             this.pcnbox.Size = new System.Drawing.Size(40, 17);
-            this.pcnbox.TabIndex = 28;
+            this.pcnbox.TabIndex = 13;
             this.pcnbox.Text = "No";
             this.pcnbox.UseVisualStyleBackColor = true;
             this.pcnbox.CheckedChanged += new System.EventHandler(this.pcnbox_CheckedChanged);
@@ -328,7 +328,7 @@
             this.ptypebox.Location = new System.Drawing.Point(277, 387);
             this.ptypebox.Name = "ptypebox";
             this.ptypebox.Size = new System.Drawing.Size(121, 21);
-            this.ptypebox.TabIndex = 29;
+            this.ptypebox.TabIndex = 11;
             // 
             // orderdetailview
             // 
@@ -419,7 +419,7 @@
             this.deldttxt.Location = new System.Drawing.Point(358, 453);
             this.deldttxt.Name = "deldttxt";
             this.deldttxt.Size = new System.Drawing.Size(168, 20);
-            this.deldttxt.TabIndex = 101;
+            this.deldttxt.TabIndex = 15;
             this.deldttxt.TextChanged += new System.EventHandler(this.deldttxt_TextChanged);
             // 
             // editorderdetails

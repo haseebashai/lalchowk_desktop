@@ -86,14 +86,16 @@ namespace Veiled_Kashmir_Admin_Panel
         }
 
         string id, email;
-
+        bool check = false;
         private void temailbtn_Click(object sender, EventArgs e)
         {
+            check = false;
             temailbtn.Enabled = false;
             BackgroundWorker trueemail = new BackgroundWorker();
             trueemail.DoWork += Trueemail_DoWork;
             trueemail.RunWorkerCompleted += Trueemail_RunWorkerCompleted;
             trueemail.RunWorkerAsync();
+            check = true;
         }
         private void Trueemail_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -133,7 +135,7 @@ namespace Veiled_Kashmir_Admin_Panel
             sms.numbertxt.Font = new Font("MS Sans Serif", 9, FontStyle.Regular);
             sms.smsnpnl.Visible = false;
             sms.txtpnl.Location = new Point(35, 10);
-            sms.smstxt.Text = "Thank you for contacting Lalchowk. Here is the procedure to sell books with us:\r\n1.Drop your books at our office i.e ( Hotel Bombay Gujarat, Palladium Lane - Lalchowk).\r\n2.Quality and condition check would be done on the book(s) and new suitable price would be set for the book(s).\r\n3.After setting a suitable price, we will charge flat 25 % from the new fixed amount.\r\n4.Once we get the customer, you will get a notification regarding the purchase and the said amount would be transferred through a preferable mode.\r\n5.Delivery process will be covered by our team.\r\nFor further queries please contact on 9906523492";
+            sms.smstxt.Text = "Thank you for contacting Lalchowk. Here is the procedure to sell books with us:\r\n1.Drop your books at our office i.e ( Hotel Bombay Gujarat, Palladium Lane - Lalchowk).\r\n2.Quality and condition check would be done on the book(s) and new suitable price would be set for the book(s).\r\n3.After setting a suitable price, we will charge flat 30 % from the new fixed amount.\r\n4.Once the book(s) are sold, you will get a notification regarding the purchase and the said amount would be transferred through a preferable mode.\r\n5.Delivery process will be covered by our team.\r\nFor further queries please contact on 9906523492";
             dg.Show();
             sms.Show();
             try
@@ -603,6 +605,40 @@ namespace Veiled_Kashmir_Admin_Panel
             Cursor = Cursors.Arrow;
         }
 
+        private void mailbtn_Click(object sender, EventArgs e)
+        {
+
+            if (emailtxt.Text == string.Empty || emailtxt.Text == "New customer")
+            {
+                MessageBox.Show("User not registered or email not given.", "Error");
+            }
+            else if (check == false)
+            {
+                MessageBox.Show("Please click on 'Check Email' and obtain the email first.", "Error");
+
+            }
+            else
+            {
+
+                dialogcontainer dg = new dialogcontainer();
+                promomail pm = new promomail(emailtxt.Text, dg, "","");
+                pm.TopLevel = false;
+                dg.Size = new Size(700, 715);
+                pm.epnl.Location = new Point(-300, 1);
+                pm.elistlbl.Text = "";
+
+                dg.dialogpnl.Controls.Add(pm);
+                pm.loadingdg();
+                pm.opnl.Visible = true;
+                pm.bodytxt.Text= "Dear "+ nametxt.Text + ",\r\nThank you for contacting Lalchowk.\r\nHere is the procedure to sell books with us:\r\n\r\n1.Drop your books at our office i.e ( Hotel Bombay Gujarat, Palladium Lane - Lalchowk).\r\n2.Quality and condition check would be done on the book(s) and new suitable price would be set for the book(s).\r\n3.After setting a suitable price, we will charge flat 30 % from the new fixed amount.\r\n4.Once the book(s) are sold, you will get a notification regarding the purchase and the said amount would be transferred through a preferable mode.\r\n5.Delivery process will be covered by our team.\r\nFor further queries please contact on 9906523492\r\n\r\nTeam Lalchowk";
+                pm.subtxt.Text = "Here is how you can sell with Lalchowk";
+                dg.Text = "Send Email";
+
+                dg.Show();
+
+                pm.Show();
+            }
+        }
 
         private void upbtn_Click(object sender, EventArgs e)
         {

@@ -51,6 +51,7 @@
             this.emailtxt = new System.Windows.Forms.TextBox();
             this.orderpnl = new System.Windows.Forms.Panel();
             this.dpnl = new System.Windows.Forms.Panel();
+            this.shipbtn = new System.Windows.Forms.Button();
             this.datelbl = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.addresstxt = new System.Windows.Forms.TextBox();
@@ -76,7 +77,7 @@
             this.loadinglbl = new System.Windows.Forms.Label();
             this.formlbl = new System.Windows.Forms.Label();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
-            this.shipbtn = new System.Windows.Forms.Button();
+            this.emailbtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.refresh)).BeginInit();
             this.orderpnl.SuspendLayout();
@@ -325,6 +326,7 @@
             // 
             // dpnl
             // 
+            this.dpnl.Controls.Add(this.emailbtn);
             this.dpnl.Controls.Add(this.shipbtn);
             this.dpnl.Controls.Add(this.datelbl);
             this.dpnl.Controls.Add(this.label15);
@@ -351,6 +353,18 @@
             this.dpnl.Size = new System.Drawing.Size(1156, 238);
             this.dpnl.TabIndex = 26;
             this.dpnl.Visible = false;
+            // 
+            // shipbtn
+            // 
+            this.shipbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.shipbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.shipbtn.Location = new System.Drawing.Point(1021, 3);
+            this.shipbtn.Name = "shipbtn";
+            this.shipbtn.Size = new System.Drawing.Size(56, 22);
+            this.shipbtn.TabIndex = 35;
+            this.shipbtn.Text = "Ship";
+            this.shipbtn.UseVisualStyleBackColor = true;
+            this.shipbtn.Click += new System.EventHandler(this.shipbtn_Click);
             // 
             // datelbl
             // 
@@ -398,7 +412,7 @@
             // 
             this.smsbtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.smsbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.smsbtn.Location = new System.Drawing.Point(847, 112);
+            this.smsbtn.Location = new System.Drawing.Point(846, 138);
             this.smsbtn.Name = "smsbtn";
             this.smsbtn.Size = new System.Drawing.Size(113, 42);
             this.smsbtn.TabIndex = 30;
@@ -614,17 +628,17 @@
             this.bgworker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker_DoWork);
             this.bgworker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker_RunWorkerCompleted);
             // 
-            // shipbtn
+            // emailbtn
             // 
-            this.shipbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
-            this.shipbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.shipbtn.Location = new System.Drawing.Point(1021, 3);
-            this.shipbtn.Name = "shipbtn";
-            this.shipbtn.Size = new System.Drawing.Size(56, 22);
-            this.shipbtn.TabIndex = 35;
-            this.shipbtn.Text = "Ship";
-            this.shipbtn.UseVisualStyleBackColor = true;
-            this.shipbtn.Click += new System.EventHandler(this.shipbtn_Click);
+            this.emailbtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.emailbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.emailbtn.Location = new System.Drawing.Point(846, 90);
+            this.emailbtn.Name = "emailbtn";
+            this.emailbtn.Size = new System.Drawing.Size(113, 42);
+            this.emailbtn.TabIndex = 36;
+            this.emailbtn.Text = "Send Email";
+            this.emailbtn.UseVisualStyleBackColor = true;
+            this.emailbtn.Click += new System.EventHandler(this.emailbtn_Click);
             // 
             // orders
             // 
@@ -703,5 +717,6 @@
         private System.Windows.Forms.Label datelbl;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button shipbtn;
+        private System.Windows.Forms.Button emailbtn;
     }
 }

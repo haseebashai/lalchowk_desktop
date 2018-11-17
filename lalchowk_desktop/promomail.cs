@@ -31,25 +31,28 @@ namespace Veiled_Kashmir_Admin_Panel
         List<string> myData = new List<string>();
         PictureBox loading = new PictureBox();
         bool attachment = false;
-
+        string name,bname;
 
 
 
         private dialogcontainer dg = null;
-        public promomail(string from,Form dgcopy)
+        public promomail(string from,Form dgcopy,string paraname,string bookname)
         {
             dg = dgcopy as dialogcontainer;
             InitializeComponent();
-            bgworker1.RunWorkerAsync();
+           
             if (from == "")
             {
                 totxt.Text = "Enter single email here.";
                 totxt.Font = new Font("Microsoft Sans Serif", 10, FontStyle.Italic);
+                bgworker1.RunWorkerAsync();
             }
             else
             {
                 totxt.Text = from;
                 totxt.Font = new Font("Microsoft Sans Serif", 10, FontStyle.Regular);
+                name = paraname;
+                bname = bookname;
             }
         }
 
@@ -95,7 +98,10 @@ namespace Veiled_Kashmir_Admin_Panel
         private void promomail_Load(object sender, EventArgs e)
         {
 
-           
+            dg.loadingimage.Visible = false;
+            dg.lbl.ForeColor = SystemColors.Highlight;
+            dg.lbl.Text = "Send Email";
+            epnl.Visible = true;
             frombox.DisplayMember = "Text";
             var items = new[]
             {
@@ -154,6 +160,34 @@ namespace Veiled_Kashmir_Admin_Panel
             
                 attachtxt.Visible = false;
               
+        }
+
+        private void feedbtn_Click(object sender, EventArgs e)
+        {
+            subtxt.Text = "How was your shopping experience with us?";
+            bodytxt.Text= "Dear "+name+",\r\n\r\nHope you had a nice shopping experience with www.lalchowk.in\r\nWe would love to read your reviews on our Google play store link here: bit.ly/lalchowkonline or our social media handles @lalchowkonline.\r\nYou can also contact us on our Office/WhatsApp number: 9906523492\r\n\r\nThanks and warm regards,\r\nTeam Lalchowk";
+        
+    }
+
+        private void shiplbtn_Click(object sender, EventArgs e)
+        {
+            subtxt.Text = "Your order has been dispatched!";
+            bodytxt.Text= "Dear " + name + ",\r\n\r\nYour order has been dispatched and will be reaching you soon.\r\nPlease keep your phone in reach.\r\n\r\nTeam Lalchowk.";
+
+        }
+
+        private void shippbtn_Click(object sender, EventArgs e)
+        {
+            subtxt.Text = "Your order has been dispatched!";
+            bodytxt.Text = "Dear " + name + ",\r\n\r\nYour order has been dispatched via SpeedPost.\r\nYou can track your order on indiapost.gov.in using tracking number: \r\nPlease keep your phone in reach.\r\n\r\nTeam Lalchowk.";
+
+        }
+
+        private void breqbtn_Click(object sender, EventArgs e)
+        {
+            subtxt.Text = "Your request has been processed!";
+           bodytxt.Text= "Dear " + name + ",\r\nyour requested book ' " + bname + " ' is currently not available.\r\nWe hope to serve you better next time.\r\n\r\nTeam Lalchowk";
+
         }
 
         private string sendmail(string from)

@@ -135,9 +135,10 @@ namespace Veiled_Kashmir_Admin_Panel
             }catch { obj.closeConnection(); temailbtn.Enabled = true; }
         }
 
+        bool check = false;
         private void temailbtn_Click(object sender, EventArgs e)
         {
-
+            check = false;
 
 
             temailbtn.Enabled = false;
@@ -145,7 +146,7 @@ namespace Veiled_Kashmir_Admin_Panel
             trueemail.DoWork += Trueemail_DoWork;
             trueemail.RunWorkerCompleted += Trueemail_RunWorkerCompleted;
             trueemail.RunWorkerAsync();
-
+            check = true;
         }
 
         private void delbtn_Click(object sender, EventArgs e)
@@ -189,6 +190,39 @@ namespace Veiled_Kashmir_Admin_Panel
             sms.txtpnl.Location = new Point(35, 10);
             dg.Show();
             sms.Show();
+        }
+
+        private void mailbtn_Click(object sender, EventArgs e)
+        {
+           
+            if (emailtxt.Text == string.Empty || emailtxt.Text == "New customer")
+            {
+                MessageBox.Show("User not registered or email not given.", "Error");
+            }
+            else if (check==false)
+            {
+                MessageBox.Show("Please click on 'Check Email' and obtain the email first.", "Error");
+
+            }
+            else
+            { 
+            
+                dialogcontainer dg = new dialogcontainer();
+                promomail pm = new promomail(emailtxt.Text, dg, nametxt.Text, booknametxt.Text);
+                pm.TopLevel = false;
+                dg.Size = new Size(700, 715);
+                pm.epnl.Location = new Point(-300, 1);
+                pm.elistlbl.Text = "";
+
+                dg.dialogpnl.Controls.Add(pm);
+                pm.loadingdg();
+                pm.opnl.Visible = true;
+                dg.Text = "Send Email";
+
+                dg.Show();
+
+                pm.Show();
+            }
         }
 
         private void updbtn_Click(object sender, EventArgs e)

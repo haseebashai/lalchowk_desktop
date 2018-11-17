@@ -87,7 +87,7 @@
             this.ppnl = new System.Windows.Forms.FlowLayoutPanel();
             this.placeddataview = new System.Windows.Forms.DataGridView();
             this.cancelbtn = new System.Windows.Forms.Button();
-            this.shipbtn = new System.Windows.Forms.Button();
+            this.emailbtn = new System.Windows.Forms.Button();
             this.sendsmsbtn = new System.Windows.Forms.Button();
             this.zeropnl = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
@@ -580,7 +580,7 @@
             this.cntpnl.Controls.Add(this.ppnl);
             this.cntpnl.Controls.Add(this.placeddataview);
             this.cntpnl.Controls.Add(this.cancelbtn);
-            this.cntpnl.Controls.Add(this.shipbtn);
+            this.cntpnl.Controls.Add(this.emailbtn);
             this.cntpnl.Controls.Add(this.sendsmsbtn);
             this.cntpnl.Location = new System.Drawing.Point(201, 0);
             this.cntpnl.Name = "cntpnl";
@@ -907,7 +907,7 @@
             // cancelbtn
             // 
             this.cancelbtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cancelbtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.cancelbtn.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.cancelbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cancelbtn.Location = new System.Drawing.Point(1095, 373);
             this.cancelbtn.Name = "cancelbtn";
@@ -918,19 +918,19 @@
             this.cancelbtn.Visible = false;
             this.cancelbtn.Click += new System.EventHandler(this.cancelbtn_Click);
             // 
-            // shipbtn
+            // emailbtn
             // 
-            this.shipbtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.shipbtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.shipbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.shipbtn.Location = new System.Drawing.Point(1095, 293);
-            this.shipbtn.Name = "shipbtn";
-            this.shipbtn.Size = new System.Drawing.Size(57, 28);
-            this.shipbtn.TabIndex = 49;
-            this.shipbtn.Text = "Ship";
-            this.shipbtn.UseVisualStyleBackColor = true;
-            this.shipbtn.Visible = false;
-            this.shipbtn.Click += new System.EventHandler(this.shipbtn_Click);
+            this.emailbtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.emailbtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.emailbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.emailbtn.Location = new System.Drawing.Point(1095, 293);
+            this.emailbtn.Name = "emailbtn";
+            this.emailbtn.Size = new System.Drawing.Size(57, 28);
+            this.emailbtn.TabIndex = 49;
+            this.emailbtn.Text = "Email";
+            this.emailbtn.UseVisualStyleBackColor = true;
+            this.emailbtn.Visible = false;
+            this.emailbtn.Click += new System.EventHandler(this.shipbtn_Click);
             // 
             // sendsmsbtn
             // 
@@ -1089,7 +1089,7 @@
         private System.Windows.Forms.ProgressBar pageload;
         private System.Windows.Forms.FlowLayoutPanel ppnl;
         private System.Windows.Forms.Label plbl;
-        private System.Windows.Forms.Button shipbtn;
+        private System.Windows.Forms.Button emailbtn;
         private System.Windows.Forms.Button sendsmsbtn;
         private System.Windows.Forms.Button cancelbtn;
         private System.Windows.Forms.Button addorderbtn;
