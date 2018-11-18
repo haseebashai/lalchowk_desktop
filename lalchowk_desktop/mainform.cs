@@ -1566,38 +1566,6 @@ namespace Veiled_Kashmir_Admin_Panel
             refreshbtn.Enabled = true;
         }
 
-        private void placeddataview_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            //try
-            //{
-            //    foreach (DataGridViewRow row in this.placeddataview.Rows)
-            //    {
-
-            //        if (Convert.ToInt32(row.Cells["itemcount"].Value) > 1)
-            //        {
-
-            //            row.Cells["itemcount"].Style.BackColor = Color.LightPink;
-
-            //            // placeddataview.Columns["itemcount"].DefaultCellStyle.Font = new Font(placeddataview.DefaultCellStyle.Font, FontStyle.Bold);
-
-            //        }
-            //        if (Convert.ToString(row.Cells["paymentconfirmed"].Value) == "True")
-            //        {
-
-                       
-            //           row.DefaultCellStyle.BackColor = Color.LightGreen;
-            //        }
-            //        if (Convert.ToString(row.Cells["status"].Value) == "Confirmed")
-            //        {
-                        
-            //             row.DefaultCellStyle.BackColor = Color.LightBlue;
-            //        }
-
-            //    }
-            //}
-            //catch { };
-        }
-
 
         private void placeddataview_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
@@ -1606,25 +1574,41 @@ namespace Veiled_Kashmir_Admin_Panel
                 foreach (DataGridViewRow row in this.placeddataview.Rows)
                 {
 
-                    if (Convert.ToInt32(row.Cells["itemcount"].Value) > 1)
+
+
+                    if (Convert.ToString(row.Cells["paymentconfirmed"].Value) == "True" && Convert.ToString(row.Cells["paymenttype"].Value) == "Pre-Pay")
                     {
-
-                        row.Cells["itemcount"].Style.BackColor = Color.LightPink;
-
-                        // placeddataview.Columns["itemcount"].DefaultCellStyle.Font = new Font(placeddataview.DefaultCellStyle.Font, FontStyle.Bold);
-
-                    }
-                    if (Convert.ToString(row.Cells["paymentconfirmed"].Value) == "True")
-                    {
-
-
                         row.DefaultCellStyle.BackColor = Color.LightGreen;
                     }
-                    if (Convert.ToString(row.Cells["status"].Value) == "Confirmed")
+                    else if (Convert.ToInt32(row.Cells["itemcount"].Value) > 1)
                     {
-
+                        row.Cells["itemcount"].Style.BackColor = Color.LightPink;
+                    }
+                    else if (Convert.ToString(row.Cells["status"].Value) == "Confirmed")
+                    {
                         row.DefaultCellStyle.BackColor = Color.LightBlue;
                     }
+                    
+
+                    //if (Convert.ToInt32(row.Cells["itemcount"].Value) > 1)
+                    //{
+
+                    //    row.Cells["itemcount"].Style.BackColor = Color.LightPink;
+
+                    //    // placeddataview.Columns["itemcount"].DefaultCellStyle.Font = new Font(placeddataview.DefaultCellStyle.Font, FontStyle.Bold);
+
+                    //}
+                    //if (Convert.ToString(row.Cells["paymentconfirmed"].Value) == "True")
+                    //{
+
+
+                    //    row.DefaultCellStyle.BackColor = Color.LightGreen;
+                    //}
+                    //if (Convert.ToString(row.Cells["status"].Value) == "Confirmed")
+                    //{
+
+                    //    row.DefaultCellStyle.BackColor = Color.LightBlue;
+                    //}
 
                 }
             }

@@ -32,6 +32,7 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             dg = dgcopy as dialogcontainer;
             InitializeComponent();
+
             bgotp.RunWorkerAsync();
         }
 
@@ -153,7 +154,7 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             bpnl.Visible = true;
             settingsdataview.DataSource = bsource;
-            
+            settingsdataview.DoubleBuffered(true);
             settingsdataview.Location = new Point(3, 134);
             updbtn.Location = new Point(1018, 282);
             ppnl.Visible = false;

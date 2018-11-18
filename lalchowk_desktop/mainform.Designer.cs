@@ -901,7 +901,6 @@
             this.placeddataview.TabIndex = 31;
             this.placeddataview.Visible = false;
             this.placeddataview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.placeddataview_CellContentClick);
-            this.placeddataview.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.placeddataview_CellFormatting);
             this.placeddataview.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.placeddataview_RowsAdded);
             // 
             // cancelbtn
