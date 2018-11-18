@@ -31,6 +31,7 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             dg = dgcopy as dialogcontainer;
             InitializeComponent();
+            catdataview.DoubleBuffered(true);
             bgworker.RunWorkerAsync();
         }
 

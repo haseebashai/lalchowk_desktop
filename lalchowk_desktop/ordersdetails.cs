@@ -168,6 +168,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 orderslbl.Text = "Orders currently placed";
                 
             }
+            ordersdataview.DoubleBuffered(true);
             ordersdataview.DataSource = bsource;
             ordersdataview.Visible = true;
             upbtn.Visible = true;

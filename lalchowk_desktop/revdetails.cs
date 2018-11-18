@@ -25,6 +25,8 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             InitializeComponent();
             string originalmonth = month;
+            monthlydataview.DoubleBuffered(true);
+            expensesview.DoubleBuffered(true);
             BackgroundWorker load = new BackgroundWorker();
             load.DoWork += (a, b) =>
             {

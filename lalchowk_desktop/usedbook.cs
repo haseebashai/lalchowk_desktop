@@ -46,6 +46,7 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             loading.Visible = false;
             formlbl.Text = "Used Books Section";
+            selldataview.DoubleBuffered(true);
             selldataview.DataSource = bsource;
             selldataview.Visible = true;
             pnl1.Visible = true;

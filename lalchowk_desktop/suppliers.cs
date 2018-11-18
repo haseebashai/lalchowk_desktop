@@ -64,6 +64,7 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             
             suppnl.Visible = true;
+            supplierdatagridview.DoubleBuffered(true);
             supplierdatagridview.DataSource = bsource;
 
 

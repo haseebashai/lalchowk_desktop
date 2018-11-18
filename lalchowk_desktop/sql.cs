@@ -62,6 +62,7 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             execbtn.Enabled = true;
             execbtn.Text = "Execute Query";
+            sqldataview.DoubleBuffered(true);
             fetchlbl.Visible = false;          
             sqldataview.DataSource = bsource;
            

@@ -43,6 +43,7 @@ namespace Veiled_Kashmir_Admin_Panel
             dg.loadingimage.Visible = false;
             dg.lbl.ForeColor = SystemColors.Highlight;
             dg.lbl.Text = "Cart Items";
+            cartdataview.DoubleBuffered(true);
             cartdataview.DataSource = bsource;
             pnl.Visible = true;
         }
