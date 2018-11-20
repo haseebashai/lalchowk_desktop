@@ -963,51 +963,61 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void Products_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            placeddataview.Enabled = true;
-            shippeddataview.Enabled = true;
-            if (!e.Cancelled)
+            try
             {
-                List<details> dobj = (List<details>)e.Result;
-
-                foreach (var details in dobj)
+                placeddataview.Enabled = true;
+                shippeddataview.Enabled = true;
+                if (!e.Cancelled)
                 {
+                    List<details> dobj = (List<details>)e.Result;
 
-                    TextBox t1 = new TextBox()
+                    foreach (var details in dobj)
                     {
-                        Size = new Size(230, 115),
-                        Text = "ID: " + details.Pid + "\r\n" + "Name: " + details.Pname + "\r\n"
-                        + "Publisher: "+details.Publisher+ "\r\n"+ "Price: " + details.Price + "\r\n" + "Quantity: " + details.Quantity + "\r\n"
-                        + "Dealer Price: " + details.Dp,
-                        Multiline = true,
-                        BorderStyle = BorderStyle.None,
-                        ReadOnly = true,
-                        BackColor = Color.White,
-                        ForeColor = SystemColors.Highlight,
-                        Font = new Font("Microsoft Sans Serif", 10, FontStyle.Regular),
-                    };
-                    PictureBox p1 = new PictureBox()
-                    {
-                        SizeMode = PictureBoxSizeMode.StretchImage,
-                        ImageLocation = "https://lalchowk.in/lalchowk/pictures/" + details.Picture,
-                        Size = new Size(100, 115),
-                    };
 
-                    ppnl.Controls.Add(p1);
-                    ppnl.Controls.Add(t1);
+                        TextBox t1 = new TextBox()
+                        {
+                            Size = new Size(230, 115),
+                            Text = "ID: " + details.Pid + "\r\n" + "Name: " + details.Pname + "\r\n"
+                            + "Publisher: " + details.Publisher + "\r\n" + "Price: " + details.Price + "\r\n" + "Quantity: " + details.Quantity + "\r\n"
+                            + "Dealer Price: " + details.Dp,
+                            Multiline = true,
+                            BorderStyle = BorderStyle.None,
+                            ReadOnly = true,
+                            BackColor = Color.White,
+                            ForeColor = SystemColors.Highlight,
+                            Font = new Font("Microsoft Sans Serif", 10, FontStyle.Regular),
+                        };
+                        PictureBox p1 = new PictureBox()
+                        {
+                            SizeMode = PictureBoxSizeMode.StretchImage,
+                            ImageLocation = "https://lalchowk.in/lalchowk/pictures/" + details.Picture,
+                            Size = new Size(100, 115),
+                        };
+
+                        ppnl.Controls.Add(p1);
+                        ppnl.Controls.Add(t1);
+                    }
+
+                    //if (status == "Placed")
+                    //{
+                    //    emailbtn.Visible = true;
+                    //}else if (status == "Shipped")
+                    //{
+                    //    emailbtn.Visible = false;
+                    //}
+                    ppnl.Visible = true;
+                    plbl.Visible = false;
+                    emailbtn.Visible = true;
+                    sendsmsbtn.Visible = true;
+                    cancelbtn.Visible = true;
                 }
-              
-                //if (status == "Placed")
-                //{
-                //    emailbtn.Visible = true;
-                //}else if (status == "Shipped")
-                //{
-                //    emailbtn.Visible = false;
-                //}
-                ppnl.Visible = true;
+            }
+            catch {
+                ppnl.Visible = false;
                 plbl.Visible = false;
-                emailbtn.Visible = true;
-                sendsmsbtn.Visible = true;
-                cancelbtn.Visible = true;
+                emailbtn.Visible = false;
+                sendsmsbtn.Visible = false;
+                cancelbtn.Visible = false;
             }
         }
 
@@ -1233,6 +1243,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 contact = row.Cells["contact"].Value.ToString();
                 status = row.Cells["status"].Value.ToString();
                 name = row.Cells["name"].Value.ToString();
+                email = row.Cells["mail"].Value.ToString();
                 try
                 {
                     products = new BackgroundWorker();
@@ -1560,8 +1571,22 @@ namespace Veiled_Kashmir_Admin_Panel
                 shippedorders();
                 shippedh.Text = "Orders currently shipped: " + shippeddataview.RowCount;
 
+                dr = obj.Query("SELECT count(status) FROM orders where status='delivered'");
+                dr.Read();
+                ordersdlbl.Text= dr[0].ToString();
+                obj.closeConnection();
+                
+
+                aconn.Open();
+                cmd = new MySqlCommand("select count(did) from deliveries where status='delivered'", aconn);
+                dr = cmd.ExecuteReader();
+                dr.Read();
+                 billslbl.Text= dr[0].ToString();
+                aconn.Close();
+
+
             }
-            catch { con.Close(); }
+            catch { con.Close(); aconn.Close(); }
             Cursor = Cursors.Arrow;
             refreshbtn.Enabled = true;
         }
@@ -1575,14 +1600,14 @@ namespace Veiled_Kashmir_Admin_Panel
                 {
 
 
-
-                    if (Convert.ToString(row.Cells["paymentconfirmed"].Value) == "True" && Convert.ToString(row.Cells["paymenttype"].Value) == "Pre-Pay")
-                    {
-                        row.DefaultCellStyle.BackColor = Color.LightGreen;
-                    }
-                    else if (Convert.ToInt32(row.Cells["itemcount"].Value) > 1)
+                    if (Convert.ToInt32(row.Cells["itemcount"].Value) > 1)
                     {
                         row.Cells["itemcount"].Style.BackColor = Color.LightPink;
+                    }
+                    
+                     if (Convert.ToString(row.Cells["paymentconfirmed"].Value) == "True" && Convert.ToString(row.Cells["paymenttype"].Value) == "Pre-Pay")
+                    {
+                        row.DefaultCellStyle.BackColor = Color.LightGreen;
                     }
                     else if (Convert.ToString(row.Cells["status"].Value) == "Confirmed")
                     {
@@ -1657,7 +1682,9 @@ namespace Veiled_Kashmir_Admin_Panel
                 placeddataview.Columns["transanctionid"].Visible = false;
                 placeddataview.Columns["status"].Visible = false;
                 placeddataview.Columns["loyaltybonus"].Visible = false;
-            //    placedh.Text = "Orders currently placed: " + placeddataview.RowCount;
+                placeddataview.Columns["trans_id"].Visible = false;
+                placeddataview.Columns["trans_id_gateway"].Visible = false;
+                //    placedh.Text = "Orders currently placed: " + placeddataview.RowCount;
             }
             catch(Exception ex) { MessageBox.Show(ex.Message); con.Close(); }
         }
@@ -1683,10 +1710,11 @@ namespace Veiled_Kashmir_Admin_Panel
                 shippeddataview.Columns["status"].Visible = false;
                 shippeddataview.Columns["loyaltybonus"].Visible = false;
                 shippeddataview.Columns["itemcount"].Visible = false;
+                shippeddataview.Columns["trans_id"].Visible = false;
+                shippeddataview.Columns["trans_id_gateway"].Visible = false;
 
 
-
-             //   shippedh.Text = "Orders currently shipped: " + shippeddataview.RowCount;
+                //   shippedh.Text = "Orders currently shipped: " + shippeddataview.RowCount;
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); con.Close(); }
 
@@ -2028,6 +2056,8 @@ namespace Veiled_Kashmir_Admin_Panel
                     placeddataview.Columns["loyaltybonus"].Visible = false;
                     placeddataview.Columns["status"].Visible = false;
                     placeddataview.Columns["deliveryguy"].Visible = false;
+                    placeddataview.Columns["trans_id"].Visible = false;
+                    placeddataview.Columns["trans_id_gateway"].Visible = false;
 
                 }
                 catch { }
@@ -2176,6 +2206,8 @@ namespace Veiled_Kashmir_Admin_Panel
                         placeddataview.Columns["loyaltybonus"].Visible = false;
                         placeddataview.Columns["status"].Visible = false;
                         placeddataview.Columns["deliveryguy"].Visible = false;
+                        placeddataview.Columns["trans_id"].Visible = false;
+                        placeddataview.Columns["trans_id_gateway"].Visible = false;
 
 
 
@@ -2190,6 +2222,8 @@ namespace Veiled_Kashmir_Admin_Panel
                         shippeddataview.Columns["loyaltybonus"].Visible = false;
                         shippeddataview.Columns["status"].Visible = false;
                         shippeddataview.Columns["itemcount"].Visible = false;
+                        shippeddataview.Columns["trans_id"].Visible = false;
+                        shippeddataview.Columns["trans_id_gateway"].Visible = false;
 
                         DataGridViewButtonColumn Edit = new DataGridViewButtonColumn();
                         Edit.UseColumnTextForButtonValue = true;
@@ -2266,6 +2300,8 @@ namespace Veiled_Kashmir_Admin_Panel
             placeddataview.Columns["loyaltybonus"].Visible = false;
                 placeddataview.Columns["status"].Visible = false;
                 placeddataview.Columns["deliveryguy"].Visible = false;
+                placeddataview.Columns["trans_id"].Visible = false;
+                placeddataview.Columns["trans_id_gateway"].Visible = false;
             }
             catch { }
 
@@ -2282,6 +2318,8 @@ namespace Veiled_Kashmir_Admin_Panel
                 shippeddataview.Columns["loyaltybonus"].Visible = false;
                 shippeddataview.Columns["status"].Visible = false;
                 shippeddataview.Columns["itemcount"].Visible = false;
+                shippeddataview.Columns["trans_id"].Visible = false;
+                shippeddataview.Columns["trans_id_gateway"].Visible = false;
                 DataGridViewCheckBoxColumn checkColumn = new DataGridViewCheckBoxColumn();
                 checkColumn.Name = "Select";
                 checkColumn.HeaderText = "Select";

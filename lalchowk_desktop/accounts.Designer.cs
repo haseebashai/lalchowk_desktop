@@ -30,8 +30,6 @@
         {
             this.expbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.moneybtn = new MaterialSkin.Controls.MaterialFlatButton();
-            this.bankbtn = new MaterialSkin.Controls.MaterialFlatButton();
-            this.miscbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.accountdataview = new System.Windows.Forms.DataGridView();
             this.exppnl = new System.Windows.Forms.Panel();
             this.reasontxt1 = new System.Windows.Forms.TextBox();
@@ -235,38 +233,6 @@
             this.moneybtn.Text = "Moneypool";
             this.moneybtn.UseVisualStyleBackColor = true;
             this.moneybtn.Click += new System.EventHandler(this.moneybtn_Click);
-            // 
-            // bankbtn
-            // 
-            this.bankbtn.AutoSize = true;
-            this.bankbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.bankbtn.Depth = 0;
-            this.bankbtn.Location = new System.Drawing.Point(235, 3);
-            this.bankbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.bankbtn.MouseState = MaterialSkin.MouseState.HOVER;
-            this.bankbtn.Name = "bankbtn";
-            this.bankbtn.Primary = false;
-            this.bankbtn.Size = new System.Drawing.Size(105, 36);
-            this.bankbtn.TabIndex = 18;
-            this.bankbtn.Text = "Bank details";
-            this.bankbtn.UseVisualStyleBackColor = true;
-            this.bankbtn.Click += new System.EventHandler(this.bankbtn_Click);
-            // 
-            // miscbtn
-            // 
-            this.miscbtn.AutoSize = true;
-            this.miscbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.miscbtn.Depth = 0;
-            this.miscbtn.Location = new System.Drawing.Point(375, 3);
-            this.miscbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.miscbtn.MouseState = MaterialSkin.MouseState.HOVER;
-            this.miscbtn.Name = "miscbtn";
-            this.miscbtn.Primary = false;
-            this.miscbtn.Size = new System.Drawing.Size(45, 36);
-            this.miscbtn.TabIndex = 19;
-            this.miscbtn.Text = "misc";
-            this.miscbtn.UseVisualStyleBackColor = true;
-            this.miscbtn.Click += new System.EventHandler(this.miscbtn_Click);
             // 
             // accountdataview
             // 
@@ -690,7 +656,7 @@
             this.billbtn.AutoSize = true;
             this.billbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.billbtn.Depth = 0;
-            this.billbtn.Location = new System.Drawing.Point(455, 3);
+            this.billbtn.Location = new System.Drawing.Point(237, 3);
             this.billbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.billbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.billbtn.Name = "billbtn";
@@ -706,7 +672,7 @@
             this.delbtn.AutoSize = true;
             this.delbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.delbtn.Depth = 0;
-            this.delbtn.Location = new System.Drawing.Point(550, 3);
+            this.delbtn.Location = new System.Drawing.Point(332, 3);
             this.delbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.delbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.delbtn.Name = "delbtn";
@@ -1197,7 +1163,7 @@
             this.dealbtn.AutoSize = true;
             this.dealbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.dealbtn.Depth = 0;
-            this.dealbtn.Location = new System.Drawing.Point(666, 3);
+            this.dealbtn.Location = new System.Drawing.Point(448, 3);
             this.dealbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.dealbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.dealbtn.Name = "dealbtn";
@@ -1255,7 +1221,7 @@
             this.revbtn.AutoSize = true;
             this.revbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.revbtn.Depth = 0;
-            this.revbtn.Location = new System.Drawing.Point(778, 3);
+            this.revbtn.Location = new System.Drawing.Point(560, 3);
             this.revbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.revbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.revbtn.Name = "revbtn";
@@ -1745,9 +1711,7 @@
             this.bpnl.Controls.Add(this.dealbtn);
             this.bpnl.Controls.Add(this.expbtn);
             this.bpnl.Controls.Add(this.moneybtn);
-            this.bpnl.Controls.Add(this.bankbtn);
             this.bpnl.Controls.Add(this.revbtn);
-            this.bpnl.Controls.Add(this.miscbtn);
             this.bpnl.Controls.Add(this.billbtn);
             this.bpnl.Controls.Add(this.delbtn);
             this.bpnl.Location = new System.Drawing.Point(2, 0);
@@ -1883,8 +1847,6 @@
 
         private MaterialSkin.Controls.MaterialFlatButton expbtn;
         private MaterialSkin.Controls.MaterialFlatButton moneybtn;
-        private MaterialSkin.Controls.MaterialFlatButton bankbtn;
-        private MaterialSkin.Controls.MaterialFlatButton miscbtn;
         private System.Windows.Forms.DataGridView accountdataview;
         public System.Windows.Forms.Panel exppnl;
         private MaterialSkin.Controls.MaterialFlatButton updatebtn;

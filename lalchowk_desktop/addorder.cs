@@ -203,10 +203,12 @@ namespace Veiled_Kashmir_Admin_Panel
                         }
                         catch (Exception ex)
                         { MessageBox.Show(ex.ToString()); obj.closeConnection(); }
+                        MessageBox.Show("Order added successfully.", "Success.");
+                        inventorydatagridview.Columns.Clear();
+                        addorderbtn.Enabled = false;
                     }
-                    MessageBox.Show("Order added successfully.", "Success.");
-                    inventorydatagridview.Columns.Clear();
-                    addorderbtn.Enabled = false;
+                   
+                    
                 }
                 // }
             }

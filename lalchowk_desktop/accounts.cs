@@ -63,6 +63,10 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             Cursor = Cursors.Arrow;
             refresh.Enabled = true;
+            try
+            {
+                accountdataview.Columns.Remove("Details");
+            }catch { }
             accountdataview.DataSource = bsource;
            
             btnenable();
@@ -90,8 +94,8 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             expbtn.Enabled = false;
             moneybtn.Enabled = false;
-            bankbtn.Enabled = false;
-            miscbtn.Enabled = false;
+      //      bankbtn.Enabled = false;
+        //    miscbtn.Enabled = false;
             billbtn.Enabled = false;
             dealbtn.Enabled = false;
             delbtn.Enabled = false;
@@ -102,8 +106,8 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             expbtn.Enabled = true;
             moneybtn.Enabled = true;
-            bankbtn.Enabled = true;
-            miscbtn.Enabled = true;
+         //   bankbtn.Enabled = true;
+           // miscbtn.Enabled = true;
             billbtn.Enabled = true;
             dealbtn.Enabled = true;
             delbtn.Enabled = true;
@@ -271,11 +275,11 @@ namespace Veiled_Kashmir_Admin_Panel
             bsource.DataSource = dt;
            
 
-            //aconn.Open();
-            //cmd = new MySqlCommand("select count(did) from dealing", aconn);
-            //dr = cmd.ExecuteReader();
-            //dr.Read();
-            //total= dr[0].ToString();
+            aconn.Open();
+            cmd = new MySqlCommand("select sum(count) from dealing", aconn);
+            dr = cmd.ExecuteReader();
+            dr.Read();
+            total= dr[0].ToString();
             
             aconn.Close();
         }
@@ -388,10 +392,9 @@ namespace Veiled_Kashmir_Admin_Panel
             accountdataview.DataSource = bsource;
             try
             {
-                if (rev==false)
-                {
-                    accountdataview.Columns["Details"].Visible = false;
-                }
+               
+                    accountdataview.Columns.Remove("Details");
+                
             }
             catch { };
 
@@ -436,12 +439,9 @@ namespace Veiled_Kashmir_Admin_Panel
             accountdataview.DataSource = bsource;
             try
             {
-                if (rev==false)
-                {
-                    accountdataview.Columns["Details"].Visible = false;
-                }
+                accountdataview.Columns.Remove("Details");
             }
-            catch { };
+            catch { }
         }
 
         private void bankbtn_Click(object sender, EventArgs e)
@@ -479,12 +479,9 @@ namespace Veiled_Kashmir_Admin_Panel
             accountdataview.DataSource = bsource;
             try
             {
-                if (rev==false)
-                {
-                    accountdataview.Columns["Details"].Visible = false;
-                }
+                accountdataview.Columns.Remove("Details");
             }
-            catch { };
+            catch { }
         }
         private void miscbtn_Click(object sender, EventArgs e)
         {
@@ -617,7 +614,11 @@ namespace Veiled_Kashmir_Admin_Panel
             btnenable();
             panelshow();
             accountdataview.DataSource = bsource;
-           
+            try
+            {
+                accountdataview.Columns.Remove("Details");
+            }
+            catch { }
             //try
             //{
             //    if (rev==false) {
@@ -685,12 +686,9 @@ namespace Veiled_Kashmir_Admin_Panel
             accountdataview.DataSource = bsource;
             try
             {
-                if (rev == false)
-                {
-                    accountdataview.Columns["Details"].Visible = false;
-                }
+                accountdataview.Columns.Remove("Details");
             }
-            catch { };
+            catch { }
             totallbl.Text = "Total deliveries: " + accountdataview.RowCount;
             totallbl.Visible = true;
         }
@@ -750,13 +748,10 @@ namespace Veiled_Kashmir_Admin_Panel
             accountdataview.DataSource = bsource;
             try
             {
-                if (rev==false)
-                {
-                    accountdataview.Columns["Details"].Visible = false;
-                }
+                accountdataview.Columns.Remove("Details");
             }
-            catch { };
-            totallbl.Text = "Total dealings: " + accountdataview.RowCount;
+            catch { }
+            totallbl.Text = "Total dealings: " + total; //+ accountdataview.RowCount;
             totallbl.Visible = true;
         }
 
@@ -870,7 +865,13 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             btnenable();
             panelshow();
+           
             accountdataview.DataSource = bsource;
+            try
+            {
+                accountdataview.Columns.Remove("Details");
+            }
+            catch { }
             DataGridViewButtonColumn accdetails = new DataGridViewButtonColumn();
             accdetails.UseColumnTextForButtonValue = true;
             accdetails.Name = "Details";
@@ -923,8 +924,8 @@ namespace Veiled_Kashmir_Admin_Panel
                 
                 if (rev)
                 {
-                    MessageBox.Show(e.ColumnIndex.ToString());
-                    if(e.ColumnIndex >=12)
+                    
+                    if(e.ColumnIndex ==12)
                     {
                         string month = accountdataview.Rows[e.RowIndex].Cells["month"].Value.ToString();
                       
