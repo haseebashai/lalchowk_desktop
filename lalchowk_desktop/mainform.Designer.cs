@@ -769,7 +769,7 @@
             this.shippeddataview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.shippeddataview_CellClick);
             this.shippeddataview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.shippeddataview_CellContentClick);
             this.shippeddataview.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.shippeddataview_CellValueChanged);
-            this.shippeddataview.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.shippeddataview_RowsAdded);
+            this.shippeddataview.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.shippeddataview_RowPrePaint);
             // 
             // ordersdlbl
             // 
@@ -901,7 +901,8 @@
             this.placeddataview.TabIndex = 31;
             this.placeddataview.Visible = false;
             this.placeddataview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.placeddataview_CellContentClick);
-            this.placeddataview.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.placeddataview_RowsAdded);
+            this.placeddataview.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.placeddataview_CellPainting);
+            this.placeddataview.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.placeddataview_RowPrePaint);
             // 
             // cancelbtn
             // 

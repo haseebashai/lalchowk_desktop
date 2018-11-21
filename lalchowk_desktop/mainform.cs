@@ -1591,76 +1591,6 @@ namespace Veiled_Kashmir_Admin_Panel
             refreshbtn.Enabled = true;
         }
 
-
-        private void placeddataview_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
-        {
-            try
-            {
-                foreach (DataGridViewRow row in this.placeddataview.Rows)
-                {
-
-
-                    if (Convert.ToInt32(row.Cells["itemcount"].Value) > 1)
-                    {
-                        row.Cells["itemcount"].Style.BackColor = Color.LightPink;
-                    }
-                    
-                     if (Convert.ToString(row.Cells["paymentconfirmed"].Value) == "True" && Convert.ToString(row.Cells["paymenttype"].Value) == "Pre-Pay")
-                    {
-                        row.DefaultCellStyle.BackColor = Color.LightGreen;
-                    }
-                    else if (Convert.ToString(row.Cells["status"].Value) == "Confirmed")
-                    {
-                        row.DefaultCellStyle.BackColor = Color.LightBlue;
-                    }
-                    
-
-                    //if (Convert.ToInt32(row.Cells["itemcount"].Value) > 1)
-                    //{
-
-                    //    row.Cells["itemcount"].Style.BackColor = Color.LightPink;
-
-                    //    // placeddataview.Columns["itemcount"].DefaultCellStyle.Font = new Font(placeddataview.DefaultCellStyle.Font, FontStyle.Bold);
-
-                    //}
-                    //if (Convert.ToString(row.Cells["paymentconfirmed"].Value) == "True")
-                    //{
-
-
-                    //    row.DefaultCellStyle.BackColor = Color.LightGreen;
-                    //}
-                    //if (Convert.ToString(row.Cells["status"].Value) == "Confirmed")
-                    //{
-
-                    //    row.DefaultCellStyle.BackColor = Color.LightBlue;
-                    //}
-
-                }
-            }
-            catch { };
-        }
-
-        private void shippeddataview_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
-        {
-            try
-            {
-                foreach (DataGridViewRow row in this.shippeddataview.Rows)
-                {
-                    if (Convert.ToString(row.Cells["paymentconfirmed"].Value) == "True" && Convert.ToString(row.Cells["paymenttype"].Value) == "Pre-Pay")
-                    
-                        row.DefaultCellStyle.BackColor = Color.LightGreen;
-                    
-                    else if (Convert.ToString(row.Cells["paymentconfirmed"].Value) == "False" && Convert.ToString(row.Cells["paymenttype"].Value) == "Pre-Pay")
-                        row.DefaultCellStyle.BackColor = Color.LightPink;
-
-                    else if(Convert.ToString(row.Cells["paymenttype"].Value) == "Cash on Delivery")
-
-                        row.DefaultCellStyle.BackColor = Color.LightBlue;
-                   
-                }
-            }
-            catch { }
-        }
         private void placedorders()
         {
             con.Open();
@@ -1827,6 +1757,89 @@ namespace Veiled_Kashmir_Admin_Panel
                 cselbtn.Visible = false;
             }
         }
+
+        private void placeddataview_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            try
+            {
+                foreach (DataGridViewRow row in this.placeddataview.Rows)
+                {
+
+                    if (Convert.ToString(row.Cells["paymentconfirmed"].Value) == "True" && Convert.ToString(row.Cells["paymenttype"].Value) == "Pre-Pay")
+                    {
+                        row.DefaultCellStyle.BackColor = Color.LightGreen;
+                    }
+                    else if (Convert.ToString(row.Cells["status"].Value) == "Confirmed")
+                    {
+                        row.DefaultCellStyle.BackColor = Color.LightBlue;
+                    }
+                  
+
+
+
+                    //if (Convert.ToInt32(row.Cells["itemcount"].Value) > 1)
+                    //{
+
+                    //    row.Cells["itemcount"].Style.BackColor = Color.LightPink;
+
+                    //    // placeddataview.Columns["itemcount"].DefaultCellStyle.Font = new Font(placeddataview.DefaultCellStyle.Font, FontStyle.Bold);
+
+                    //}
+                    //if (Convert.ToString(row.Cells["paymentconfirmed"].Value) == "True")
+                    //{
+
+
+                    //    row.DefaultCellStyle.BackColor = Color.LightGreen;
+                    //}
+                    //if (Convert.ToString(row.Cells["status"].Value) == "Confirmed")
+                    //{
+
+                    //    row.DefaultCellStyle.BackColor = Color.LightBlue;
+                    //}
+
+                }
+            }
+            catch { };
+        }
+
+        private void placeddataview_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            try
+            {
+                foreach (DataGridViewRow row in this.placeddataview.Rows)
+                {
+                      if (Convert.ToInt32(row.Cells["itemcount"].Value) > 1)
+                    {
+                        row.Cells["itemcount"].Style.BackColor = Color.LightPink;
+                    }
+
+                }
+            }
+            catch { }
+        }
+
+        private void shippeddataview_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            try
+            {
+                foreach (DataGridViewRow row in this.shippeddataview.Rows)
+                {
+                    if (Convert.ToString(row.Cells["paymentconfirmed"].Value) == "True" && Convert.ToString(row.Cells["paymenttype"].Value) == "Pre-Pay")
+
+                        row.DefaultCellStyle.BackColor = Color.LightGreen;
+
+                    else if (Convert.ToString(row.Cells["paymentconfirmed"].Value) == "False" && Convert.ToString(row.Cells["paymenttype"].Value) == "Pre-Pay")
+                        row.DefaultCellStyle.BackColor = Color.LightPink;
+
+                    else if (Convert.ToString(row.Cells["paymenttype"].Value) == "Cash on Delivery")
+
+                        row.DefaultCellStyle.BackColor = Color.LightBlue;
+
+                }
+            }
+            catch { }
+        }
+
 
         private void cartbtn_Click(object sender, EventArgs e)
         {
