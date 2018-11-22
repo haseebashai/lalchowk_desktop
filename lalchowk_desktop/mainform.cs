@@ -744,6 +744,7 @@ namespace Veiled_Kashmir_Admin_Panel
             loadinglbl.SendToBack();
         }
 
+        
         BackgroundWorker products;
         string id,contact,name,email,encmail;
         private void placeddataview_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -900,11 +901,13 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             else if (e.ColumnIndex == 2)
             {
+                
                 printaddbtn.Visible = false;
                 printadd2btn.Visible = true;
                 cshipbtn.Visible = true;
                 cselbtn.Visible = true;
-
+               
+               
             }
             else if (e.ColumnIndex == 3)
             {
@@ -1603,6 +1606,7 @@ namespace Veiled_Kashmir_Admin_Panel
             bsource.DataSource = dt;
             placeddataview.DataSource = bsource;
             placeddataview.DoubleBuffered(true);
+            placeddataview.ClearSelection();
             try
             {
                 placeddataview.Columns["shipdate"].Visible = false;
@@ -1630,6 +1634,7 @@ namespace Veiled_Kashmir_Admin_Panel
             bsource2.DataSource = dt;
             shippeddataview.DataSource = bsource2;
             shippeddataview.DoubleBuffered(true);
+            shippeddataview.ClearSelection();
             try
             {
                 //   shippeddataview.Columns["shipdate"].Visible = false;
@@ -1755,6 +1760,8 @@ namespace Veiled_Kashmir_Admin_Panel
                 printadd2btn.Visible = false;
                 cshipbtn.Visible = false;
                 cselbtn.Visible = false;
+                selectlbl.Visible = false;
+                num = 0;
             }
         }
 
@@ -1762,16 +1769,19 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             try
             {
+                int num = 0;
                 foreach (DataGridViewRow row in this.placeddataview.Rows)
                 {
 
                     if (Convert.ToString(row.Cells["paymentconfirmed"].Value) == "True" && Convert.ToString(row.Cells["paymenttype"].Value) == "Pre-Pay")
                     {
                         row.DefaultCellStyle.BackColor = Color.LightGreen;
+                        ++num;
                     }
                     else if (Convert.ToString(row.Cells["status"].Value) == "Confirmed")
                     {
                         row.DefaultCellStyle.BackColor = Color.LightBlue;
+                        ++num;
                     }
                   
 
@@ -1798,6 +1808,8 @@ namespace Veiled_Kashmir_Admin_Panel
                     //}
 
                 }
+                corderslbl.Text = "Confirmed orders: " + num;
+                corderslbl.Visible = true;
             }
             catch { };
         }
@@ -1840,6 +1852,43 @@ namespace Veiled_Kashmir_Admin_Panel
             catch { }
         }
 
+        private void placeddataview_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            if (placeddataview.IsCurrentCellDirty)
+            {
+               placeddataview.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            }
+        }
+        int num = 0;
+        private void placeddataview_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                bool isChecked = Convert.ToBoolean(placeddataview.Rows[placeddataview.CurrentCell.RowIndex].Cells[2].Value.ToString());
+
+                if (isChecked)
+                {
+                    num += 1;
+                }
+                else
+                {
+                    num -= 1;
+                }
+
+                if (num == 0)
+                    selectlbl.Visible = false;
+                else if (num == 1)
+                {
+                    selectlbl.Text = num + " order selected";
+                    selectlbl.Visible = true;
+                }
+                else
+                {
+                    selectlbl.Text = num + " orders selected";
+                    selectlbl.Visible = true;
+                }
+            }catch { }
+        }
 
         private void cartbtn_Click(object sender, EventArgs e)
         {
@@ -2045,6 +2094,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void bgworker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
+            
             placeddataview.Enabled = false;
             
             pageload.Value = e.ProgressPercentage;
@@ -2054,8 +2104,8 @@ namespace Veiled_Kashmir_Admin_Panel
                 loadinglbl.Visible = false;
                
                 placedh.Visible = true;
-               
 
+                
                 placeddataview.DataSource = bsource;
                 placeddataview.DoubleBuffered(true);
                 try
@@ -2256,6 +2306,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     catch { }
                     placeddataview.Visible = true;
                     placeddataview.Enabled = true;
+                    placeddataview.ClearSelection();
                     if (shippedcount == 0)
                     {
                         shippeddataview.Visible = false;
@@ -2265,6 +2316,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     else
                     {
                         shippeddataview.Visible = true;
+                        shippeddataview.ClearSelection();
                         shippedh.Visible = true;
                         shippedh.Text = "Orders currently shipped: " + shippeddataview.RowCount;
                         //   shippedlbl.Visible = true;

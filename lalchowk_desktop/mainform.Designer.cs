@@ -64,6 +64,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.navtxt = new System.Windows.Forms.Label();
             this.cntpnl = new System.Windows.Forms.Panel();
+            this.corderslbl = new System.Windows.Forms.Label();
+            this.selectlbl = new System.Windows.Forms.Label();
             this.cselbtn = new System.Windows.Forms.Button();
             this.cshipbtn = new System.Windows.Forms.Button();
             this.refreshbtn = new System.Windows.Forms.PictureBox();
@@ -557,6 +559,8 @@
             // cntpnl
             // 
             this.cntpnl.BackColor = System.Drawing.Color.White;
+            this.cntpnl.Controls.Add(this.corderslbl);
+            this.cntpnl.Controls.Add(this.selectlbl);
             this.cntpnl.Controls.Add(this.cselbtn);
             this.cntpnl.Controls.Add(this.cshipbtn);
             this.cntpnl.Controls.Add(this.refreshbtn);
@@ -586,6 +590,29 @@
             this.cntpnl.Name = "cntpnl";
             this.cntpnl.Size = new System.Drawing.Size(1162, 722);
             this.cntpnl.TabIndex = 12;
+            // 
+            // corderslbl
+            // 
+            this.corderslbl.AutoSize = true;
+            this.corderslbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.corderslbl.ForeColor = System.Drawing.Color.Green;
+            this.corderslbl.Location = new System.Drawing.Point(975, 12);
+            this.corderslbl.Name = "corderslbl";
+            this.corderslbl.Size = new System.Drawing.Size(114, 16);
+            this.corderslbl.TabIndex = 63;
+            this.corderslbl.Text = "Confirmed orders:";
+            this.corderslbl.Visible = false;
+            // 
+            // selectlbl
+            // 
+            this.selectlbl.AutoSize = true;
+            this.selectlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.selectlbl.ForeColor = System.Drawing.Color.Blue;
+            this.selectlbl.Location = new System.Drawing.Point(220, 11);
+            this.selectlbl.Name = "selectlbl";
+            this.selectlbl.Size = new System.Drawing.Size(0, 16);
+            this.selectlbl.TabIndex = 62;
+            this.selectlbl.Visible = false;
             // 
             // cselbtn
             // 
@@ -809,8 +836,8 @@
             // 
             this.placedh.AutoSize = true;
             this.placedh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.placedh.ForeColor = System.Drawing.Color.Red;
-            this.placedh.Location = new System.Drawing.Point(948, 11);
+            this.placedh.ForeColor = System.Drawing.Color.Black;
+            this.placedh.Location = new System.Drawing.Point(792, 12);
             this.placedh.Name = "placedh";
             this.placedh.Size = new System.Drawing.Size(150, 16);
             this.placedh.TabIndex = 10;
@@ -902,6 +929,8 @@
             this.placeddataview.Visible = false;
             this.placeddataview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.placeddataview_CellContentClick);
             this.placeddataview.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.placeddataview_CellPainting);
+            this.placeddataview.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.placeddataview_CellValueChanged);
+            this.placeddataview.CurrentCellDirtyStateChanged += new System.EventHandler(this.placeddataview_CurrentCellDirtyStateChanged);
             this.placeddataview.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.placeddataview_RowPrePaint);
             // 
             // cancelbtn
@@ -1108,5 +1137,7 @@
         private System.Windows.Forms.PictureBox refreshbtn;
         private System.Windows.Forms.Button cshipbtn;
         private System.Windows.Forms.Button cselbtn;
+        private System.Windows.Forms.Label selectlbl;
+        private System.Windows.Forms.Label corderslbl;
     }
 }

@@ -419,7 +419,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 ordergridview.DataSource = bsource;
                 ordergridview.DoubleBuffered(true);
               
-                ordergridview.Columns["paymentconfirmed"].Visible = false;
+                
                 ordergridview.Columns["email"].Visible = false;
                 panel1.Visible = true;
                 orlbl.Text = ordergridview.RowCount.ToString();
@@ -508,8 +508,9 @@ namespace Veiled_Kashmir_Admin_Panel
                 orderdetailview.Visible = false;
                    
                 readorders();
-                orlbl.Text = ordervar;
+                
                 ordergridview.DataSource = bsource;
+                    orlbl.Text = ordergridview.RowCount.ToString();
                     ordergridview.DoubleBuffered(true);
                     //    ordergridview.CurrentCell = ordergridview.Rows[int.Parse(orderidcount)].Cells[0];
                     orderdetailview.Visible = false;
