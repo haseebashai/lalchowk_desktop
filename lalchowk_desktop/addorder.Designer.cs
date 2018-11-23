@@ -559,7 +559,7 @@
             this.devtxt.Name = "devtxt";
             this.devtxt.Size = new System.Drawing.Size(130, 20);
             this.devtxt.TabIndex = 16;
-            this.devtxt.Text = "Ashique";
+            this.devtxt.Text = "Asif";
             // 
             // addorder
             // 

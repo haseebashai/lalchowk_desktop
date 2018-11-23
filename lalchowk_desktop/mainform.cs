@@ -786,22 +786,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 {
                    
                     Cursor = Cursors.WaitCursor;
-                    //con.Open();
-
-                    //adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='placed' or status='confirmed';", con);
-                    //dt = new DataTable();
-                    //adap.Fill(dt);
-                    //con.Close();
-                    //bsource = new BindingSource();
-                    //bsource.DataSource = dt;
-                    //placeddataview.DataSource = bsource;
-                    //placeddataview.DoubleBuffered(true);
-                    //placeddataview.Columns["shipdate"].Visible = false;
-                    //placeddataview.Columns["deliverdate"].Visible = false;
-                    //placeddataview.Columns["paymentconfirmed"].Visible = false;
-                    //placeddataview.Columns["email"].Visible = false;
-                    //placeddataview.Columns["transanctionid"].Visible = false;
-                    //placeddataview.Columns["status"].Visible = false;
+                   
                     placedorders();
 
                 }
@@ -835,52 +820,11 @@ namespace Veiled_Kashmir_Admin_Panel
 
                         }
 
-                        //con.Open();
-
-                        //adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='placed' or status='confirmed';", con);
-                        //dt = new DataTable();
-                        //adap.Fill(dt);
-                        //con.Close();
-                        //bsource = new BindingSource();
-                        //bsource.DataSource = dt;
-                        //placeddataview.DoubleBuffered(true);
-                        //placeddataview.DataSource = bsource;
-                        //placeddataview.Columns["shipdate"].Visible = false;
-                        //placeddataview.Columns["deliverdate"].Visible = false;
-                        //placeddataview.Columns["paymentconfirmed"].Visible = false;
-                        //placeddataview.Columns["email"].Visible = false;
-                        //placeddataview.Columns["transanctionid"].Visible = false;
-                        //placeddataview.Columns["status"].Visible = false;
-                        //placeddataview.Columns["loyaltybonus"].Visible = false;
                         placedorders();
 
 
-                        //con.Open();
-                        //adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='shipped';", con);
-                        //dt = new DataTable();
-                        //adap.Fill(dt);
-                        //con.Close();
-                        //bsource2 = new BindingSource();
-                        //bsource2.DataSource = dt;
-                        //shippeddataview.DataSource = bsource2;
-                        //shippeddataview.DoubleBuffered(true);
-                        //try
-                        //{
-                        //  //  shippeddataview.Columns["shipdate"].Visible = false;
-                        //    shippeddataview.Columns["deliverdate"].Visible = false;
-                        //    shippeddataview.Columns["paymentconfirmed"].Visible = false;
-                        //    shippeddataview.Columns["email"].Visible = false;
-                        //    shippeddataview.Columns["transanctionid"].Visible = false;
-                        //    shippeddataview.Columns["status"].Visible = false;
-                        //    shippeddataview.Columns["loyaltybonus"].Visible = false;
-                        //    shippeddataview.Columns["itemcount"].Visible = false;
-                        //    placedh.Text = "Orders currently placed: " + placeddataview.RowCount;
-
-                        //    shippedh.Text = "Orders currently shipped: " + shippeddataview.RowCount;
-                        //}
-                        //catch { }
                         shippedorders();
-                        placedh.Text = "Orders currently placed: " + placeddataview.RowCount;
+                        placedh.Text = "Orders placed: " + placeddataview.RowCount;
                         shippedh.Text = "Orders currently shipped: " + shippeddataview.RowCount;
                         shippeddataview.Visible = true;
                         ppnl.Visible = false;
@@ -923,28 +867,11 @@ namespace Veiled_Kashmir_Admin_Panel
                         string cmd = "Update orders set status='Confirmed' where orderid='" + id + "'";
                         obj.nonQuery(cmd);
 
-                        //con.Open();
-
-                        //adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='placed' or status='confirmed';", con);
-                        //dt = new DataTable();
-                        //adap.Fill(dt);
-                        //con.Close();
-                        //bsource = new BindingSource();
-                        //bsource.DataSource = dt;
-                        //placeddataview.DataSource = bsource;
-                        //placeddataview.DoubleBuffered(true);
-                        //placeddataview.Columns["shipdate"].Visible = false;
-                        //placeddataview.Columns["deliverdate"].Visible = false;
-                        //placeddataview.Columns["paymentconfirmed"].Visible = false;
-                        //placeddataview.Columns["email"].Visible = false;
-                        //placeddataview.Columns["transanctionid"].Visible = false;
-                        //placeddataview.Columns["status"].Visible = false;
-                        //placeddataview.Columns["loyaltybonus"].Visible = false;
                         placedorders();
 
 
 
-                            placedh.Text = "Orders currently placed: " + placeddataview.RowCount;
+                            placedh.Text = "Orders placed: " + placeddataview.RowCount;
              
                         ppnl.Visible = false;
                         emailbtn.Visible = false;
@@ -1091,52 +1018,8 @@ namespace Veiled_Kashmir_Admin_Panel
                     }
                     MessageBox.Show("Order cancelled.");
                     ppnl.Visible = false;
-                    //    con.Open();
-                    //adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='placed' or status='confirmed';", con);
-                    //dt = new DataTable();
-                    //adap.Fill(dt);
-                    //con.Close();
-                    //bsource = new BindingSource();
-                    //bsource.DataSource = dt;
-                    //placeddataview.DataSource = bsource;
-                    //    placeddataview.DoubleBuffered(true);
-                    //    try {
-
-                    //placeddataview.Columns["shipdate"].Visible = false;
-                    //placeddataview.Columns["deliverdate"].Visible = false;
-                    //placeddataview.Columns["paymentconfirmed"].Visible = false;
-                    //placeddataview.Columns["email"].Visible = false;
-                    //placeddataview.Columns["transanctionid"].Visible = false;
-                    //placeddataview.Columns["loyaltybonus"].Visible = false;
-                    //        placeddataview.Columns["status"].Visible = false;
-                    //        placeddataview.Columns["deliveryguy"].Visible = false;
-                    //        shipbtn.Visible = false;
-                    //        sendsmsbtn.Visible = false;
-                    //        cancelbtn.Visible = false;
-
-
-                    //        con.Open();
-
-                    //        adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='shipped';", con);
-                    //        dt = new DataTable();
-                    //        adap.Fill(dt);
-                    //        con.Close();
-                    //        bsource = new BindingSource();
-                    //        bsource.DataSource = dt;
-                    //        shippeddataview.DataSource = bsource;
-                    //        shippeddataview.DoubleBuffered(true);
-                    //      //  shippeddataview.Columns["shipdate"].Visible = false;
-                    //        shippeddataview.Columns["deliverdate"].Visible = false;
-                    //        shippeddataview.Columns["paymentconfirmed"].Visible = false;
-                    //        shippeddataview.Columns["email"].Visible = false;
-                    //        shippeddataview.Columns["transanctionid"].Visible = false;
-                    //        shippeddataview.Columns["loyaltybonus"].Visible = false;
-                    //        shippeddataview.Columns["status"].Visible = false;
-                    //        shippeddataview.Columns["itemcount"].Visible = false;
-
-
-                    //    }
-                    //catch { con.Close(); }
+                  
+                 
                     placedorders();
                     emailbtn.Visible = false;
                     sendsmsbtn.Visible = false;
@@ -1144,7 +1027,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     
                     
                     shippedorders();
-                    placedh.Text = "Orders currently placed: " + placeddataview.RowCount;
+                    placedh.Text = "Orders placed: " + placeddataview.RowCount;
 
                     shippedh.Text = "Orders currently shipped: " + shippeddataview.RowCount;
 
@@ -1157,63 +1040,15 @@ namespace Veiled_Kashmir_Admin_Panel
 
                     MessageBox.Show("Order cancelled.");
                     ppnl.Visible = false;
-                    //con.Open();
-                    //adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='placed' or status='confirmed';", con);
-                    //dt = new DataTable();
-                    //adap.Fill(dt);
-                    //con.Close();
-                    //bsource = new BindingSource();
-                    //bsource.DataSource = dt;
-                    //placeddataview.DataSource = bsource;
-                    //placeddataview.DoubleBuffered(true);
-                    //try
-                    //{
-                    //    shipbtn.Visible = false;
-                    //    sendsmsbtn.Visible = false;
-                    //    cancelbtn.Visible = false;
-                    //    placeddataview.Columns["shipdate"].Visible = false;
-                    //    placeddataview.Columns["deliverdate"].Visible = false;
-                    //    placeddataview.Columns["paymentconfirmed"].Visible = false;
-                    //    placeddataview.Columns["email"].Visible = false;
-                    //    placeddataview.Columns["transanctionid"].Visible = false;
-                    //    placeddataview.Columns["loyaltybonus"].Visible = false;
-                    //    placeddataview.Columns["status"].Visible = false;
-                    //    placeddataview.Columns["deliveryguy"].Visible = false;
-                    //    placedh.Text = "Orders currently placed: " + placeddataview.RowCount;
-
-                    //    shippedh.Text = "Orders currently shipped: " + shippeddataview.RowCount;
-
-
-                    //    con.Open();
-
-                    //    adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='shipped';", con);
-                    //    dt = new DataTable();
-                    //    adap.Fill(dt);
-                    //    con.Close();
-                    //    bsource = new BindingSource();
-                    //    bsource.DataSource = dt;
-                    //    shippeddataview.DataSource = bsource;
-                    //    shippeddataview.DoubleBuffered(true);
-                    ////    shippeddataview.Columns["shipdate"].Visible = false;
-                    //    shippeddataview.Columns["deliverdate"].Visible = false;
-                    //    shippeddataview.Columns["paymentconfirmed"].Visible = false;
-                    //    shippeddataview.Columns["email"].Visible = false;
-                    //    shippeddataview.Columns["transanctionid"].Visible = false;
-                    //    shippeddataview.Columns["loyaltybonus"].Visible = false;
-                    //    shippeddataview.Columns["status"].Visible = false;
-                    //    shippeddataview.Columns["itemcount"].Visible = false;
-
-                    //}
-                    //catch { con.Close(); }
                    
                     placedorders();
                     emailbtn.Visible = false;
                     sendsmsbtn.Visible = false;
                     cancelbtn.Visible = false;
-                    placedh.Text = "Orders currently placed: " + placeddataview.RowCount;
-
-                    shippedh.Text = "Orders currently shipped: " + shippeddataview.RowCount;
+                    placedh.Text = "Orders placed: " + placeddataview.RowCount;
                     shippedorders();
+                    shippedh.Text = "Orders currently shipped: " + shippeddataview.RowCount;
+                    
                 }
             }
             catch (Exception ex)
@@ -1278,46 +1113,9 @@ namespace Veiled_Kashmir_Admin_Panel
                 {
 
                     Cursor = Cursors.WaitCursor;
-                    //con.Open();
-
-                    //adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='shipped';", con);
-                    //dt = new DataTable();
-                    //adap.Fill(dt);
-                    //con.Close();
-                    //bsource = new BindingSource();
-                    //bsource.DataSource = dt;
-                    //shippeddataview.DataSource = bsource;
-                    //shippeddataview.DoubleBuffered(true);
-
-                    //shippeddataview.Columns["deliverdate"].Visible = false;
-                    //shippeddataview.Columns["paymentconfirmed"].Visible = false;
-                    //shippeddataview.Columns["email"].Visible = false;
-                    //shippeddataview.Columns["transanctionid"].Visible = false;
-                    //shippeddataview.Columns["loyaltybonus"].Visible = false;
-                    //shippeddataview.Columns["status"].Visible = false;
-                    //shippeddataview.Columns["itemcount"].Visible = false;
+                  
                     shippedorders();
 
-                    //adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='placed' or status='confirmed';", con);
-                    //dt = new DataTable();
-                    //adap.Fill(dt);
-                    //con.Close();
-                    //bsource = new BindingSource();
-                    //bsource.DataSource = dt;
-                    //placeddataview.DataSource = bsource;
-                    //placeddataview.DoubleBuffered(true);
-
-                    //shipbtn.Visible = false;
-                    //sendsmsbtn.Visible = false;
-                    //cancelbtn.Visible = false;
-                    //placeddataview.Columns["shipdate"].Visible = false;
-                    //placeddataview.Columns["deliverdate"].Visible = false;
-                    //placeddataview.Columns["paymentconfirmed"].Visible = false;
-                    //placeddataview.Columns["email"].Visible = false;
-                    //placeddataview.Columns["transanctionid"].Visible = false;
-                    //placeddataview.Columns["loyaltybonus"].Visible = false;
-                    //placeddataview.Columns["status"].Visible = false;
-                    //placeddataview.Columns["deliveryguy"].Visible = false;
                     placedorders();
                     emailbtn.Visible = false;
                     sendsmsbtn.Visible = false;
@@ -1333,7 +1131,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
                 DataGridViewRow row = this.shippeddataview.Rows[e.RowIndex];
                 string oid = row.Cells["orderid"].Value.ToString();
-                DialogResult dgr = MessageBox.Show("Confirm order delivery for OrderID:  '" + oid + "' ?", "Confirm!", MessageBoxButtons.YesNo);
+                DialogResult dgr = MessageBox.Show("Confirm order delivery for OrderID:  " + oid + " ?", "Confirm!", MessageBoxButtons.YesNo);
                 if (dgr == DialogResult.Yes)
                 {
 
@@ -1347,25 +1145,10 @@ namespace Veiled_Kashmir_Admin_Panel
                     {
 
                         Cursor = Cursors.WaitCursor;
-                        //con.Open();
-
-                        //adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='shipped';", con);
-                        //dt = new DataTable();
-                        //adap.Fill(dt);
-                        //con.Close();
-                        //bsource = new BindingSource();
-                        //bsource.DataSource = dt;
-                        //shippeddataview.DataSource = bsource;
-                        //shippeddataview.DoubleBuffered(true);
-                        ////   shippeddataview.Columns["shipdate"].Visible = false;
-                        //shippeddataview.Columns["deliverdate"].Visible = false;
-                        //shippeddataview.Columns["paymentconfirmed"].Visible = false;
-                        //shippeddataview.Columns["email"].Visible = false;
-                        //shippeddataview.Columns["transanctionid"].Visible = false;
-                        //shippeddataview.Columns["loyaltybonus"].Visible = false;
-                        //shippeddataview.Columns["status"].Visible = false;
-                        //shippeddataview.Columns["itemcount"].Visible = false;
+                      
                         shippedorders();
+                        shippedh.Text = "Orders currently shipped: " + shippeddataview.RowCount;
+
                     }
                     catch { con.Close(); obj.closeConnection(); }
                 }
@@ -1527,50 +1310,15 @@ namespace Veiled_Kashmir_Admin_Panel
             refreshbtn.Enabled = false;
             try
             {
-                //con.Open();
-                //adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='placed' or status='confirmed';", con);
-                //dt = new DataTable();
-                //adap.Fill(dt);
-                //con.Close();
-                //bsource = new BindingSource();
-                //bsource.DataSource = dt;
-                //placeddataview.DataSource = bsource;
-                //placeddataview.DoubleBuffered(true);
-                //shipbtn.Visible = false;
-                //sendsmsbtn.Visible = false;
-                //cancelbtn.Visible = false;
-                //ppnl.Visible = false;
-                //placeddataview.Columns["shipdate"].Visible = false;
-                //placeddataview.Columns["deliverdate"].Visible = false;
-                //placeddataview.Columns["paymentconfirmed"].Visible = false;
-                //placeddataview.Columns["email"].Visible = false;
-                //placeddataview.Columns["transanctionid"].Visible = false;
-                //placeddataview.Columns["loyaltybonus"].Visible = false;
-                //placeddataview.Columns["status"].Visible = false;
-                //placeddataview.Columns["deliveryguy"].Visible = false;
+                
                 placedorders();
                 emailbtn.Visible = false;
                 sendsmsbtn.Visible = false;
                 cancelbtn.Visible = false;
                 ppnl.Visible = false;
-                placedh.Text = "Orders currently placed: " + placeddataview.RowCount;
+                placedh.Text = "Orders placed: " + placeddataview.RowCount;
 
-                //  adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='shipped';", con);
-                //  dt = new DataTable();
-                //  adap.Fill(dt);
-                //  con.Close();
-                //  bsource = new BindingSource();
-                //  bsource.DataSource = dt;
-                //  shippeddataview.DataSource = bsource;
-                //  shippeddataview.DoubleBuffered(true);
-                ////  shippeddataview.Columns["shipdate"].Visible = false;
-                //  shippeddataview.Columns["deliverdate"].Visible = false;
-                //  shippeddataview.Columns["paymentconfirmed"].Visible = false;
-                //  shippeddataview.Columns["email"].Visible = false;
-                //  shippeddataview.Columns["transanctionid"].Visible = false;
-                //  shippeddataview.Columns["loyaltybonus"].Visible = false;
-                //  shippeddataview.Columns["status"].Visible = false;
-                //  shippeddataview.Columns["itemcount"].Visible = false;
+             
                 shippedorders();
                 shippedh.Text = "Orders currently shipped: " + shippeddataview.RowCount;
 
@@ -1677,57 +1425,11 @@ namespace Veiled_Kashmir_Admin_Panel
 
                         }
                     }
-                    //con.Open();
-
-                    //adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='placed' or status='confirmed';", con);
-                    //dt = new DataTable();
-                    //adap.Fill(dt);
-                    //con.Close();
-                    //bsource = new BindingSource();
-                    //bsource.DataSource = dt;
-                    //placeddataview.DataSource = bsource;
-                    //placeddataview.DoubleBuffered(true);
-                    //try
-                    //{
-                    //    placeddataview.Columns["shipdate"].Visible = false;
-                    //    placeddataview.Columns["deliverdate"].Visible = false;
-                    //    placeddataview.Columns["paymentconfirmed"].Visible = false;
-                    //    placeddataview.Columns["email"].Visible = false;
-                    //    placeddataview.Columns["transanctionid"].Visible = false;
-                    //    placeddataview.Columns["status"].Visible = false;
-                    //    placeddataview.Columns["loyaltybonus"].Visible = false;
-                    //    placedh.Text = "Orders currently placed: " + placeddataview.RowCount;
-                    //}
-                    //catch { }
+                   
                     placedorders();
-                    placedh.Text = "Orders currently placed: " + placeddataview.RowCount;
+                    placedh.Text = "Orders placed: " + placeddataview.RowCount;
 
-                    //con.Open();
-                    //adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='shipped';", con);
-                    //dt = new DataTable();
-                    //adap.Fill(dt);
-                    //con.Close();
-                    //bsource2 = new BindingSource();
-                    //bsource2.DataSource = dt;
-                    //shippeddataview.DataSource = bsource2;
-                    //shippeddataview.DoubleBuffered(true);
-                    //try
-                    //{
-                    // //   shippeddataview.Columns["shipdate"].Visible = false;
-                    //    shippeddataview.Columns["deliverdate"].Visible = false;
-                    //    shippeddataview.Columns["paymentconfirmed"].Visible = false;
-                    //    shippeddataview.Columns["email"].Visible = false;
-                    //    shippeddataview.Columns["transanctionid"].Visible = false;
-                    //    shippeddataview.Columns["status"].Visible = false;
-                    //    shippeddataview.Columns["loyaltybonus"].Visible = false;
-                    //    shippeddataview.Columns["itemcount"].Visible = false;
-
-
-
-                    //    shippedh.Text = "Orders currently shipped: " + shippeddataview.RowCount;
-                    //}
-                    //catch { }
-
+                 
                     shippedorders();
                     shippedh.Text = "Orders currently shipped: " + shippeddataview.RowCount;
 
@@ -1808,7 +1510,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     //}
 
                 }
-                corderslbl.Text = "Confirmed orders: " + num;
+                corderslbl.Text = "Orders confirmed: " + num;
                 corderslbl.Visible = true;
             }
             catch { };
@@ -2154,7 +1856,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 placeddataview.Columns.Add(confirmed);
 
                 placeddataview.Visible = true;
-                placedh.Text = "Orders currently placed: " + placeddataview.RowCount;
+                placedh.Text = "Orders placed: " + placeddataview.RowCount;
 
             }
 
@@ -2347,7 +2049,7 @@ namespace Veiled_Kashmir_Admin_Panel
             loadinglbl.Visible = false;
             pageload.Visible = false;
             placedh.Visible = true;
-            placedh.Text = "Orders currently placed: " + placeddataview.RowCount;
+            placedh.Text = "Orders placed: " + placeddataview.RowCount;
             shippedh.Visible = true;
             shippedh.Text = "Orders currently shipped: " + shippeddataview.RowCount;
             //  shippedlbl.Visible = true;

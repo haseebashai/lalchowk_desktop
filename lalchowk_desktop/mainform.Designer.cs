@@ -837,11 +837,11 @@
             this.placedh.AutoSize = true;
             this.placedh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.placedh.ForeColor = System.Drawing.Color.Black;
-            this.placedh.Location = new System.Drawing.Point(792, 12);
+            this.placedh.Location = new System.Drawing.Point(850, 12);
             this.placedh.Name = "placedh";
-            this.placedh.Size = new System.Drawing.Size(150, 16);
+            this.placedh.Size = new System.Drawing.Size(97, 16);
             this.placedh.TabIndex = 10;
-            this.placedh.Text = "Orders currently placed:";
+            this.placedh.Text = "Orders placed:";
             this.placedh.Visible = false;
             // 
             // loadingpic

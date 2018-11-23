@@ -83,6 +83,14 @@ namespace Veiled_Kashmir_Admin_Panel
             };
             this.Controls.Add(loading);
         }
+
+        private void refreshbtn_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            refreshbtn.Enabled = false;
+            bgworker.RunWorkerAsync();
+        }
+
         public void loadingdg()
         {
             formlbl.Visible = false;
@@ -101,26 +109,36 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void bgworker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-
-            if (dg!=null)
+            try
             {
-                dg.loadingimage.Visible = false;
-                dg.lbl.ForeColor = SystemColors.Highlight;
-                dg.lbl.Text = "Customers";
+                if (dg != null)
+                {
+                    dg.loadingimage.Visible = false;
+                    dg.lbl.ForeColor = SystemColors.Highlight;
+                    dg.lbl.Text = "Customers";
 
-            }
-            else
-            {
-                loading.Visible = false;
-                
-            }
-            customerdataview.DoubleBuffered(true);
-            customerdataview.DataSource = bsource;
-            formlbl.Visible = false;
-            countlbl.Text="Total Registered Customers: " + customerdataview.RowCount;
-            pnl.Visible = true;
+                }
+                else
+                {
+                    loading.Visible = false;
 
-           
+                }
+                customerdataview.DoubleBuffered(true);
+                customerdataview.DataSource = bsource;
+                formlbl.Visible = false;
+                countlbl.Text = "Total Registered Customers: " + customerdataview.RowCount;
+                pnl.Visible = true;
+                refreshbtn.Visible = true;
+                refreshbtn.Enabled = true;
+                inflbl.Visible = false;
+                dpnl.Visible = false;
+                apnl.Visible = false;
+                ppnl.Visible = false;
+                Cursor = Cursors.Arrow;
+            }
+            catch { refreshbtn.Visible = true; refreshbtn.Enabled = true; }
+
+
         }
 
         /*    int numberOfPoints = 0;
