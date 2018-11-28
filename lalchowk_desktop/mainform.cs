@@ -832,7 +832,12 @@ namespace Veiled_Kashmir_Admin_Panel
                         sendsmsbtn.Visible = false;
                         cancelbtn.Visible = false;
                         shippedh.Visible = true;
-                        
+                        printadd2btn.Visible = false;
+                        cshipbtn.Visible = false;
+                        cselbtn.Visible = false;
+                        selectlbl.Visible = false;
+                        num = 0;
+
                     }
                 }
                 catch
@@ -1263,45 +1268,51 @@ namespace Veiled_Kashmir_Admin_Panel
         bool add2 = false;
         private void printadd2btn_Click(object sender, EventArgs e)
         {
-
-            try
+            if (num > 0)
             {
-                List<string> addresses = new List<string>();
-                int amount = 0;
-                foreach (DataGridViewRow row in placeddataview.Rows)
+                try
                 {
-                    if (row.Cells[2].Value != null && row.Cells[2].Value.Equals(true)) //0 is the column number of checkbox
+                    List<string> addresses = new List<string>();
+                    int amount = 0;
+
+                    foreach (DataGridViewRow row in placeddataview.Rows)
                     {
-                        if (row.Cells["paymenttype"].Value.ToString() == "Pre-Pay")
+                        if (row.Cells[2].Value != null && row.Cells[2].Value.Equals(true)) //0 is the column number of checkbox
                         {
-                            addresses.Add(row.Cells["name"].Value.ToString() + "\r\n" + row.Cells["address1"].Value.ToString() + " " + row.Cells["address2"].Value.ToString() +
-                           "\r\n" + row.Cells["city"].Value.ToString() + "\r\nPin: " + row.Cells["pincode"].Value.ToString() + "\r\nContact: " + row.Cells["contact"].Value.ToString() + "\r\n>> Pre-Paid");
-                            add2 = true;
-                        }
-                        else
-                        {
+                            if (row.Cells["paymentconfirmed"].Value.ToString() == "True")
+                            {
+                                addresses.Add(row.Cells["name"].Value.ToString() + "\r\n" + row.Cells["address1"].Value.ToString() + " " + row.Cells["address2"].Value.ToString() +
+                               "\r\n" + row.Cells["city"].Value.ToString() + "\r\nPin: " + row.Cells["pincode"].Value.ToString() + "\r\nContact: " + row.Cells["contact"].Value.ToString() + "\r\n>> Pre-Paid");
+                                add2 = true;
+                            }
+                            else 
+                            {
 
-                            amount = int.Parse(row.Cells["amount"].Value.ToString()) + int.Parse(row.Cells["shipping"].Value.ToString());
-                            addresses.Add("ORD" + row.Cells["orderid"].Value.ToString() + "\r\n" + row.Cells["name"].Value.ToString() + "\r\n" + row.Cells["address1"].Value.ToString() + " " + row.Cells["address2"].Value.ToString() +
-                               "\r\n" + row.Cells["contact"].Value.ToString() + "\r\n>> Please pay ₹" + amount);
-                            add2 = true;
-                        }
+                                amount = int.Parse(row.Cells["amount"].Value.ToString()) + int.Parse(row.Cells["shipping"].Value.ToString());
+                                addresses.Add("ORD" + row.Cells["orderid"].Value.ToString() + "\r\n" + row.Cells["name"].Value.ToString() + "\r\n" + row.Cells["address1"].Value.ToString() + " " + row.Cells["address2"].Value.ToString() +
+                                   "\r\n" + row.Cells["contact"].Value.ToString() + "\r\n>> Please pay ₹" + amount);
+                                add2 = true;
+                            }
 
-                       
+
+                        }
                     }
+
+                    if (add2)
+                    {
+                        printaddresses pad = new printaddresses(addresses);
+                        pad.ShowDialog();
+
+                        cshipbtn_Click(null, null);
+                    }
+                   
                 }
-                if (add2)
-                {
-                    printaddresses pad = new printaddresses(addresses);
-                    pad.ShowDialog();
-                    cshipbtn_Click(null, null);
-                }
-                else
-                {
-                    MessageBox.Show("Please select the order first.", "Error!");
-                }
+                catch (Exception ex) { MessageBox.Show(ex.Message); }
             }
-            catch (Exception ex) { MessageBox.Show(ex.Message); }
+            else
+            {
+                MessageBox.Show("Please select the order first.", "Error!");
+            }
         }
 
         private void refreshbtn_Click(object sender, EventArgs e)
@@ -1316,6 +1327,11 @@ namespace Veiled_Kashmir_Admin_Panel
                 sendsmsbtn.Visible = false;
                 cancelbtn.Visible = false;
                 ppnl.Visible = false;
+                printadd2btn.Visible = false;
+                cshipbtn.Visible = false;
+                cselbtn.Visible = false;
+                selectlbl.Visible = false;
+                num = 0;
                 placedh.Text = "Orders placed: " + placeddataview.RowCount;
 
              
@@ -1405,49 +1421,57 @@ namespace Veiled_Kashmir_Admin_Panel
 
         public void cshipbtn_Click(object sender, EventArgs e)
         {
-            try
+            if (num > 0)
             {
-                DialogResult dgr = MessageBox.Show("Do you want to change the status of selected orders to shipped ?", "Confirm!", MessageBoxButtons.YesNo);
-                if (dgr == DialogResult.Yes)
+                try
                 {
-                    Cursor = Cursors.WaitCursor;
-                    foreach (DataGridViewRow row in placeddataview.Rows)
+                    DialogResult dgr = MessageBox.Show("Do you want to change the status of selected orders to shipped ?", "Confirm!", MessageBoxButtons.YesNo);
+                    if (dgr == DialogResult.Yes)
                     {
-                        if (row.Cells[2].Value != null && row.Cells[2].Value.Equals(true)) //0 is the column number of checkbox
+                        Cursor = Cursors.WaitCursor;
+                        foreach (DataGridViewRow row in placeddataview.Rows)
                         {
-                            string id = row.Cells["orderid"].Value.ToString();
-                            DateTime time = DateTime.Now;             // Use current time.
-                            string shipdate = time.ToString("yyyy-MM-dd HH:mm:ss");
+                            if (row.Cells[2].Value != null && row.Cells[2].Value.Equals(true)) //0 is the column number of checkbox
+                            {
+                                string id = row.Cells["orderid"].Value.ToString();
+                                DateTime time = DateTime.Now;             // Use current time.
+                                string shipdate = time.ToString("yyyy-MM-dd HH:mm:ss");
 
-                            string cmd = "Update orders set status='Shipped', shipdate='" + shipdate + "' where orderid='" + id + "'";
-                            obj.nonQuery(cmd);                        
-                            obj.closeConnection();
+                                string cmd = "Update orders set status='Shipped', shipdate='" + shipdate + "' where orderid='" + id + "'";
+                                obj.nonQuery(cmd);
+                                obj.closeConnection();
 
+                            }
                         }
+
+                        placedorders();
+                        placedh.Text = "Orders placed: " + placeddataview.RowCount;
+
+
+                        shippedorders();
+                        shippedh.Text = "Orders currently shipped: " + shippeddataview.RowCount;
+
+                        shippeddataview.Visible = true;
+                        ppnl.Visible = false;
+                        emailbtn.Visible = false;
+                        sendsmsbtn.Visible = false;
+                        cancelbtn.Visible = false;
+                        shippedh.Visible = true;
+                        printadd2btn.Visible = false;
+                        cshipbtn.Visible = false;
+                        cselbtn.Visible = false;
+                        selectlbl.Visible = false;
+                        num = 0;
+
                     }
-                   
-                    placedorders();
-                    placedh.Text = "Orders placed: " + placeddataview.RowCount;
-
-                 
-                    shippedorders();
-                    shippedh.Text = "Orders currently shipped: " + shippeddataview.RowCount;
-
-                    shippeddataview.Visible = true;
-                    ppnl.Visible = false;
-                    emailbtn.Visible = false;
-                    sendsmsbtn.Visible = false;
-                    cancelbtn.Visible = false;
-                    shippedh.Visible = true;
-                    printadd2btn.Visible = false;
-                    cshipbtn.Visible = false;
-                    cselbtn.Visible = false;
-
                 }
+                catch (Exception ex) { obj.closeConnection(); MessageBox.Show(ex.Message); }
+                Cursor = Cursors.Arrow;
+                refreshbtn.Enabled = true;
             }
-            catch(Exception ex) { obj.closeConnection(); MessageBox.Show(ex.Message); }
-            Cursor = Cursors.Arrow;
-            refreshbtn.Enabled = true;
+            else
+                MessageBox.Show("Please select the orders first.","Error");
+
         }
 
         private void cselbtn_Click(object sender, EventArgs e)
@@ -1475,7 +1499,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 foreach (DataGridViewRow row in this.placeddataview.Rows)
                 {
 
-                    if (Convert.ToString(row.Cells["paymentconfirmed"].Value) == "True" && Convert.ToString(row.Cells["paymenttype"].Value) == "Pre-Pay")
+                    if (Convert.ToString(row.Cells["paymentconfirmed"].Value) == "True")
                     {
                         row.DefaultCellStyle.BackColor = Color.LightGreen;
                         ++num;
@@ -1484,6 +1508,9 @@ namespace Veiled_Kashmir_Admin_Panel
                     {
                         row.DefaultCellStyle.BackColor = Color.LightBlue;
                         ++num;
+                    }else if (Convert.ToString(row.Cells["paymenttype"].Value) == "Payment Failed")
+                    {
+                        row.DefaultCellStyle.BackColor = Color.LightPink;
                     }
                   
 

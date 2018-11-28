@@ -379,6 +379,8 @@ namespace Veiled_Kashmir_Admin_Panel
         }
             catch (Exception ex)
             {
+                refresh.Visible = true;
+                refresh.Enabled = true;
                 obj.closeConnection();
                 MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
