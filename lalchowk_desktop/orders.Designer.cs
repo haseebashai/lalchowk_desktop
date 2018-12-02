@@ -51,6 +51,7 @@
             this.emailtxt = new System.Windows.Forms.TextBox();
             this.orderpnl = new System.Windows.Forms.Panel();
             this.dpnl = new System.Windows.Forms.Panel();
+            this.emailbtn = new System.Windows.Forms.Button();
             this.shipbtn = new System.Windows.Forms.Button();
             this.datelbl = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -77,7 +78,6 @@
             this.loadinglbl = new System.Windows.Forms.Label();
             this.formlbl = new System.Windows.Forms.Label();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
-            this.emailbtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.refresh)).BeginInit();
             this.orderpnl.SuspendLayout();
@@ -354,6 +354,18 @@
             this.dpnl.TabIndex = 26;
             this.dpnl.Visible = false;
             // 
+            // emailbtn
+            // 
+            this.emailbtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.emailbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.emailbtn.Location = new System.Drawing.Point(846, 90);
+            this.emailbtn.Name = "emailbtn";
+            this.emailbtn.Size = new System.Drawing.Size(113, 42);
+            this.emailbtn.TabIndex = 36;
+            this.emailbtn.Text = "Send Email";
+            this.emailbtn.UseVisualStyleBackColor = true;
+            this.emailbtn.Click += new System.EventHandler(this.emailbtn_Click);
+            // 
             // shipbtn
             // 
             this.shipbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
@@ -595,6 +607,7 @@
             this.ordergridview.Size = new System.Drawing.Size(1156, 231);
             this.ordergridview.TabIndex = 0;
             this.ordergridview.Visible = false;
+            this.ordergridview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ordergridview_CellClick_1);
             this.ordergridview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ordergridview_CellClick);
             // 
             // loadinglbl
@@ -627,18 +640,6 @@
             // 
             this.bgworker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker_DoWork);
             this.bgworker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker_RunWorkerCompleted);
-            // 
-            // emailbtn
-            // 
-            this.emailbtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.emailbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.emailbtn.Location = new System.Drawing.Point(846, 90);
-            this.emailbtn.Name = "emailbtn";
-            this.emailbtn.Size = new System.Drawing.Size(113, 42);
-            this.emailbtn.TabIndex = 36;
-            this.emailbtn.Text = "Send Email";
-            this.emailbtn.UseVisualStyleBackColor = true;
-            this.emailbtn.Click += new System.EventHandler(this.emailbtn_Click);
             // 
             // orders
             // 

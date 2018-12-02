@@ -15,7 +15,7 @@ namespace Veiled_Kashmir_Admin_Panel
     public partial class orders : Form
     {
         DBConnect obj = new DBConnect();
-        String orderid,email, addressid,cmd, productid, productname, price, quantity, size,dealerprice,shipping, filename,amount,ordervar;
+        String email, addressid,cmd, productid, productname, price, quantity, size,dealerprice,shipping, filename,amount,ordervar;
         MySqlDataReader dr,dr1;
         DataTable dt,dt1,dt2,dt3;
         MySqlCommand mysqlcmd,mysqlcmd1;
@@ -300,6 +300,7 @@ namespace Veiled_Kashmir_Admin_Panel
             }
         }
 
+
         private void ordttxt_KeyUp(object sender, KeyEventArgs e)
         {
             orderdetailview.Visible = false;
@@ -495,38 +496,47 @@ namespace Veiled_Kashmir_Admin_Panel
         }
 
         private void delbtn_Click(object sender, EventArgs e)
-        {try { 
-            DialogResult dr = MessageBox.Show("Delete order and all its details with OrderID: "+orderid+" ?", "Confirm", MessageBoxButtons.YesNo);
-            if (dr == DialogResult.Yes)
-            {
-                    Cursor = Cursors.WaitCursor;
-                cmd = "Delete from orders where orderid='" + orderid + "'";
-                obj.nonQuery(cmd);
-                cmd = "Delete from orderdetails where orderid='" + orderid + "'";
-                obj.nonQuery(cmd);
-                   
-                MessageBox.Show("Order deleted.");
-                dpnl.Visible = false;
-                orderdetailview.Visible = false;
-                   
-                readorders();
-                
-                ordergridview.DataSource = bsource;
-                    orlbl.Text = ordergridview.RowCount.ToString();
-                    ordergridview.DoubleBuffered(true);
-                    //    ordergridview.CurrentCell = ordergridview.Rows[int.Parse(orderidcount)].Cells[0];
-                    orderdetailview.Visible = false;
-                    dpnl.Visible = false;
-                    loadinglbl.Visible = false;
-                    Cursor = Cursors.Arrow;
-                }
-        }
-            catch (Exception ex)
-            {
-                Cursor = Cursors.Arrow;
-                obj.closeConnection();
-            }
+        {
 
+            if (orderid !=0)
+            {
+
+                try
+                {
+                    DialogResult dr = MessageBox.Show("Delete order and all its details with OrderID: " + orderid + " ?", "Confirm", MessageBoxButtons.YesNo);
+                    if (dr == DialogResult.Yes)
+                    {
+                        Cursor = Cursors.WaitCursor;
+                        cmd = "Delete from orders where orderid='" + orderid + "'";
+                        obj.nonQuery(cmd);
+                        cmd = "Delete from orderdetails where orderid='" + orderid + "'";
+                        obj.nonQuery(cmd);
+
+                        MessageBox.Show("Order deleted.");
+                        orderid = 0;
+                        dpnl.Visible = false;
+                        orderdetailview.Visible = false;
+
+                        readorders();
+
+                        ordergridview.DataSource = bsource;
+                        orlbl.Text = ordergridview.RowCount.ToString();
+                        ordergridview.DoubleBuffered(true);
+                        //    ordergridview.CurrentCell = ordergridview.Rows[int.Parse(orderidcount)].Cells[0];
+                        orderdetailview.Visible = false;
+                        dpnl.Visible = false;
+                        loadinglbl.Visible = false;
+                        Cursor = Cursors.Arrow;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Cursor = Cursors.Arrow;
+                    obj.closeConnection();
+                }
+            }
+            else
+                MessageBox.Show("Please select an order first.", "Error");
         }
 
         private void orderdetailview_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -581,14 +591,29 @@ namespace Veiled_Kashmir_Admin_Panel
         }
 
 
-        int sumtotal;
+
+
+        private void ordergridview_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex==1)
+            {
+                
+                DataGridViewRow row = this.ordergridview.Rows[e.RowIndex];
+                orderid = int.Parse(row.Cells["orderid"].Value.ToString());
+            }
+        }
+
+
+
+
+            int sumtotal, orderid=0;
         string orderidcount, contactlbl,name,encmail;
         private void ordergridview_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
-               
 
+               
                 if (e.RowIndex >= 0)
                 {
                     orderdetailview.Visible = false;
@@ -597,7 +622,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     billlbl.Visible = false;
 
                     DataGridViewRow row = this.ordergridview.Rows[e.RowIndex];
-                    orderid = row.Cells["orderid"].Value.ToString();
+                    orderid = int.Parse(row.Cells["orderid"].Value.ToString());
                     email = row.Cells["mail"].Value.ToString();
                     encmail = row.Cells["email"].Value.ToString();
                     shipping = row.Cells["shipping"].Value.ToString();
@@ -609,7 +634,7 @@ namespace Veiled_Kashmir_Admin_Panel
                      /*= row.Cells["amount"].Value.ToString();*/
                     //int result = int.Parse(amount) + int.Parse(shipping);
                     //amountlbl.Text = result.ToString();
-                    orderlbl.Text = orderid;
+                    orderlbl.Text = orderid.ToString();
                     datelbl.Text= row.Cells["timestamp"].Value.ToString();
                     orderidcount = e.RowIndex.ToString();
                     

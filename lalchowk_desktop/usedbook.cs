@@ -42,6 +42,7 @@ namespace Veiled_Kashmir_Admin_Panel
             readreqs();
         }
 
+        bool req = false;
         private void Load_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             loading.Visible = false;
@@ -50,6 +51,8 @@ namespace Veiled_Kashmir_Admin_Panel
             selldataview.DataSource = bsource;
             selldataview.Visible = true;
             pnl1.Visible = true;
+            updatebtn.Visible = true;
+            req = true;
         }
 
         public void loadingnormal()
@@ -154,23 +157,6 @@ namespace Veiled_Kashmir_Admin_Panel
 
         }
 
-        private void pbtn_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Cursor = Cursors.WaitCursor;
-                string cmd = "update sellbookrequests set processed='1' where id='" + id + "'";
-                obj.nonQuery(cmd);
-                con.Close();
-                Cursor = Cursors.Arrow;
-                MessageBox.Show("Updated.");
-                dpnl.Visible = false;
-                readreqs();
-                selldataview.DataSource = bsource;
-
-            }
-            catch { Cursor = Cursors.Arrow; }
-        }
 
         private void reqbtn_Click(object sender, EventArgs e)
         {
@@ -204,6 +190,8 @@ namespace Veiled_Kashmir_Admin_Panel
                 reqbtn.Enabled = true;
                 sellerbtn.Enabled = true;
                 upbookbtn.Enabled = true;
+                updatebtn.Visible = true;
+                req = true;
             };
 
             reqs.RunWorkerAsync();
@@ -283,6 +271,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 reqbtn.Enabled = true;
                 sellerbtn.Enabled = true;
                 upbookbtn.Enabled = true;
+                req = false;
             };
 
             sellers.RunWorkerAsync();
@@ -294,7 +283,9 @@ namespace Veiled_Kashmir_Admin_Panel
            
             dpnl.Visible = false;
             dpnl2.Visible = false;
-            uppnl.Visible = true;
+           
+            updatebtn.Visible = false;
+          
             loadingnormal();
             selldataview.Visible = false;
             changebtn.Visible = false;
@@ -302,6 +293,7 @@ namespace Veiled_Kashmir_Admin_Panel
             reqbtn.Enabled = false;
             sellerbtn.Enabled = false;
             upbookbtn.Enabled = false;
+            uppnl.Visible = true;
 
             statusbox.DisplayMember = "Text";
             var items = new[]
@@ -593,10 +585,19 @@ namespace Veiled_Kashmir_Admin_Panel
             try
             {
                 Cursor = Cursors.WaitCursor;
-                cmdbl = new MySqlCommandBuilder(adap);
-                adap.Update(dt2);
-                MessageBox.Show("Account Updated.");
+                if (req)
+                {
+                    cmdbl = new MySqlCommandBuilder(adap);
+                    adap.Update(dt);
+                    MessageBox.Show("List Updated.");
 
+                }
+                else
+                {
+                    cmdbl = new MySqlCommandBuilder(adap);
+                    adap.Update(dt2);
+                    MessageBox.Show("Account Updated.");
+                }
             }
             catch (Exception ex)
             {

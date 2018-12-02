@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnl1 = new System.Windows.Forms.Panel();
             this.updatebtn = new System.Windows.Forms.Button();
             this.countlbl = new System.Windows.Forms.Label();
@@ -40,9 +40,9 @@
             this.reqbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.sellerbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.dpnl = new System.Windows.Forms.Panel();
+            this.mailbtn = new System.Windows.Forms.Button();
             this.smsbtn = new System.Windows.Forms.Button();
             this.temailbtn = new System.Windows.Forms.Button();
-            this.pbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.label4 = new System.Windows.Forms.Label();
             this.detailstxt = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -135,7 +135,6 @@
             this.inclbl2 = new System.Windows.Forms.Label();
             this.picdialog = new System.Windows.Forms.OpenFileDialog();
             this.formlbl = new System.Windows.Forms.Label();
-            this.mailbtn = new System.Windows.Forms.Button();
             this.pnl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.booklistview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.selldataview)).BeginInit();
@@ -217,14 +216,14 @@
             this.booklistview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.booklistview.BackgroundColor = System.Drawing.Color.White;
             this.booklistview.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.booklistview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.booklistview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.booklistview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.booklistview.GridColor = System.Drawing.SystemColors.Control;
             this.booklistview.Location = new System.Drawing.Point(727, 51);
@@ -239,14 +238,14 @@
             this.selldataview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.selldataview.BackgroundColor = System.Drawing.Color.White;
             this.selldataview.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.selldataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.selldataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.selldataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.selldataview.GridColor = System.Drawing.SystemColors.Control;
             this.selldataview.Location = new System.Drawing.Point(11, 51);
@@ -293,7 +292,6 @@
             this.dpnl.Controls.Add(this.mailbtn);
             this.dpnl.Controls.Add(this.smsbtn);
             this.dpnl.Controls.Add(this.temailbtn);
-            this.dpnl.Controls.Add(this.pbtn);
             this.dpnl.Controls.Add(this.label4);
             this.dpnl.Controls.Add(this.detailstxt);
             this.dpnl.Controls.Add(this.label5);
@@ -309,6 +307,18 @@
             this.dpnl.Size = new System.Drawing.Size(721, 193);
             this.dpnl.TabIndex = 47;
             this.dpnl.Visible = false;
+            // 
+            // mailbtn
+            // 
+            this.mailbtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.mailbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.mailbtn.Location = new System.Drawing.Point(607, 65);
+            this.mailbtn.Name = "mailbtn";
+            this.mailbtn.Size = new System.Drawing.Size(89, 37);
+            this.mailbtn.TabIndex = 39;
+            this.mailbtn.Text = "Send Email";
+            this.mailbtn.UseVisualStyleBackColor = true;
+            this.mailbtn.Click += new System.EventHandler(this.mailbtn_Click);
             // 
             // smsbtn
             // 
@@ -332,22 +342,6 @@
             this.temailbtn.UseVisualStyleBackColor = true;
             this.temailbtn.Visible = false;
             this.temailbtn.Click += new System.EventHandler(this.temailbtn_Click);
-            // 
-            // pbtn
-            // 
-            this.pbtn.AutoSize = true;
-            this.pbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.pbtn.Depth = 0;
-            this.pbtn.Location = new System.Drawing.Point(608, 22);
-            this.pbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.pbtn.MouseState = MaterialSkin.MouseState.HOVER;
-            this.pbtn.Name = "pbtn";
-            this.pbtn.Primary = false;
-            this.pbtn.Size = new System.Drawing.Size(89, 36);
-            this.pbtn.TabIndex = 35;
-            this.pbtn.Text = "Processed";
-            this.pbtn.UseVisualStyleBackColor = true;
-            this.pbtn.Click += new System.EventHandler(this.pbtn_Click);
             // 
             // label4
             // 
@@ -738,7 +732,7 @@
             this.dctxt.Name = "dctxt";
             this.dctxt.Size = new System.Drawing.Size(66, 20);
             this.dctxt.TabIndex = 178;
-            this.dctxt.Text = "25";
+            this.dctxt.Text = "35";
             // 
             // label29
             // 
@@ -830,7 +824,7 @@
             this.catbox.Name = "catbox";
             this.catbox.Size = new System.Drawing.Size(76, 20);
             this.catbox.TabIndex = 154;
-            this.catbox.Text = "u100";
+            this.catbox.Text = "ua100";
             // 
             // label14
             // 
@@ -1250,27 +1244,15 @@
             this.formlbl.Text = "Loading";
             this.formlbl.Visible = false;
             // 
-            // mailbtn
-            // 
-            this.mailbtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.mailbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.mailbtn.Location = new System.Drawing.Point(607, 65);
-            this.mailbtn.Name = "mailbtn";
-            this.mailbtn.Size = new System.Drawing.Size(89, 37);
-            this.mailbtn.TabIndex = 39;
-            this.mailbtn.Text = "Send Email";
-            this.mailbtn.UseVisualStyleBackColor = true;
-            this.mailbtn.Click += new System.EventHandler(this.mailbtn_Click);
-            // 
             // usedbook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1162, 681);
+            this.Controls.Add(this.uppnl);
             this.Controls.Add(this.formlbl);
             this.Controls.Add(this.pnl1);
-            this.Controls.Add(this.uppnl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "usedbook";
             this.Text = "usedbook";
@@ -1299,7 +1281,6 @@
         private System.Windows.Forms.Panel dpnl;
         private System.Windows.Forms.Button smsbtn;
         private System.Windows.Forms.Button temailbtn;
-        private MaterialSkin.Controls.MaterialFlatButton pbtn;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox detailstxt;
         private System.Windows.Forms.Label label5;
