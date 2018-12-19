@@ -222,6 +222,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 }
                 else
                 {
+                    Cursor = Cursors.WaitCursor;
                     StringBuilder desc = new StringBuilder(desctxtbox.Text);
                     desc.Replace(@"\", @"\\").Replace("'", "\\'");
 
@@ -231,6 +232,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     MessageBox.Show("Description Updated.");
                     // readinventory();
                 }
+                Cursor = Cursors.Arrow;
 
             }
             catch (Exception ex)

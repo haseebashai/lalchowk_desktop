@@ -42,9 +42,10 @@ namespace Veiled_Kashmir_Admin_Panel
         //    }
         //}
 
+        int xpage=9, ypage = 40;
         void printdoc_PrintPage(object sender, PrintPageEventArgs e)
         {
-            e.Graphics.DrawImage(bmp, 9, 3);
+            e.Graphics.DrawImage(bmp, xpage, ypage);
         }
 
         //public void Print(Panel pnl)
@@ -64,8 +65,8 @@ namespace Veiled_Kashmir_Admin_Panel
                 {
                     Text = addresses1[i],
                     Multiline = true,
-                    Size = new Size(380, 230),
-                    Font = new Font(Font.FontFamily, 17, FontStyle.Regular),
+                    Size = new Size(380, 124),
+                    Font = new Font(Font.FontFamily, 11, FontStyle.Regular),
                     BorderStyle = BorderStyle.None,
                     BackColor = Color.White,
                     ReadOnly = false,
@@ -73,7 +74,10 @@ namespace Veiled_Kashmir_Admin_Panel
                 };
                
                 tpnl.Controls.Add(t1);
-                
+
+                xtxt.Text = t1.Width.ToString();
+                ytxt.Text = t1.Height.ToString();
+                ftxt.Text = t1.Font.SizeInPoints.ToString();
 
             //    MessageBox.Show(addresses1[i] + "1"+ " " +addresses1.Count);
 
@@ -83,14 +87,68 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void printbtn_Click(object sender, EventArgs e)
         {
-           // Print(this.tpnl);
+             
+            // Print(this.tpnl);
+            tpnl.BackColor = Color.Transparent;
             bmp = new Bitmap(tpnl.Width, tpnl.Height, tpnl.CreateGraphics());
             tpnl.DrawToBitmap(bmp, new Rectangle(0, 0, tpnl.Width, tpnl.Height));
             ((Form)ppdialog).WindowState = FormWindowState.Maximized;
             ppdialog.Document = printdoc;
             ppdialog.ShowDialog();
-           
+            tpnl.BackColor = Color.WhiteSmoke;
         }
 
+        private void psetbtn_Click(object sender, EventArgs e)
+        {
+            xpage = int.Parse(pxtxt.Text);
+            ypage = int.Parse(pytxt.Text);
+        }
+
+        private void bbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if(bbox.Checked)
+                tpnl.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
+            else
+                tpnl.CellBorderStyle = TableLayoutPanelCellBorderStyle.None;
+        }
+
+        private void addbtn_Click(object sender, EventArgs e)
+        {
+            TextBox t1 = new TextBox()
+            {
+                Text ="",
+                Multiline = true,
+                Size = new Size(int.Parse(xtxt.Text), int.Parse(ytxt.Text)),
+                Font = new Font(Font.FontFamily, int.Parse(ftxt.Text), FontStyle.Regular),
+                BorderStyle = BorderStyle.None,
+                BackColor = Color.White,
+                ReadOnly = false,
+
+            };
+
+            tpnl.Controls.Add(t1);
+        }
+
+        private void setbtn_Click(object sender, EventArgs e)
+        {
+            tpnl.Controls.Clear();
+            int count = addresses1.Count;
+            for (int i = 0; i < count; i++)
+            {
+                TextBox t1 = new TextBox()
+                {
+                    Text = addresses1[i],
+                    Multiline = true,
+                    Size = new Size(int.Parse(xtxt.Text),int.Parse(ytxt.Text)),
+                    Font = new Font(Font.FontFamily, int.Parse(ftxt.Text), FontStyle.Regular),
+                    BorderStyle = BorderStyle.None,
+                    BackColor = Color.White,
+                    ReadOnly = false,
+
+                };
+
+                tpnl.Controls.Add(t1);
+            }
+        }
     }
 }

@@ -836,6 +836,7 @@ namespace Veiled_Kashmir_Admin_Panel
                         cshipbtn.Visible = false;
                         cselbtn.Visible = false;
                         selectlbl.Visible = false;
+                        ordelbtn.Visible = false;
                         num = 0;
 
                     }
@@ -855,8 +856,9 @@ namespace Veiled_Kashmir_Admin_Panel
                 printadd2btn.Visible = true;
                 cshipbtn.Visible = true;
                 cselbtn.Visible = true;
-               
-               
+                ordelbtn.Visible = true;
+
+
             }
             else if (e.ColumnIndex == 3)
             {
@@ -1102,7 +1104,7 @@ namespace Veiled_Kashmir_Admin_Panel
             else if (e.ColumnIndex == 0)
             {
                 printaddbtn.Visible = true;
-
+                ordelbtn.Visible = false;
                 printadd2btn.Visible = false;
                 cselbtn.Visible = false;
                 cshipbtn.Visible = false;
@@ -1331,6 +1333,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 cshipbtn.Visible = false;
                 cselbtn.Visible = false;
                 selectlbl.Visible = false;
+                ordelbtn.Visible = false;
                 num = 0;
                 placedh.Text = "Orders placed: " + placeddataview.RowCount;
 
@@ -1461,6 +1464,7 @@ namespace Veiled_Kashmir_Admin_Panel
                         cshipbtn.Visible = false;
                         cselbtn.Visible = false;
                         selectlbl.Visible = false;
+                        ordelbtn.Visible = false;
                         num = 0;
 
                     }
@@ -1487,6 +1491,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 cshipbtn.Visible = false;
                 cselbtn.Visible = false;
                 selectlbl.Visible = false;
+                ordelbtn.Visible = false;
                 num = 0;
             }
         }
@@ -1565,7 +1570,7 @@ namespace Veiled_Kashmir_Admin_Panel
             {
                 foreach (DataGridViewRow row in this.shippeddataview.Rows)
                 {
-                    if (Convert.ToString(row.Cells["paymentconfirmed"].Value) == "True" && Convert.ToString(row.Cells["paymenttype"].Value) == "Pre-Pay")
+                    if (Convert.ToString(row.Cells["paymentconfirmed"].Value) == "True" )
 
                         row.DefaultCellStyle.BackColor = Color.LightGreen;
 
@@ -1617,6 +1622,54 @@ namespace Veiled_Kashmir_Admin_Panel
                     selectlbl.Visible = true;
                 }
             }catch { }
+        }
+
+        private void ordelbtn_Click(object sender, EventArgs e)
+        {
+            if (num > 0)
+            {
+                try
+                {
+                    DialogResult dgr = MessageBox.Show("Do you want to delete "+num+" selected order(s) and all their details ?", "Confirm!", MessageBoxButtons.YesNo);
+                    if (dgr == DialogResult.Yes)
+                    {
+                        Cursor = Cursors.WaitCursor;
+                        foreach (DataGridViewRow row in placeddataview.Rows)
+                        {
+                            if (row.Cells[2].Value != null && row.Cells[2].Value.Equals(true)) //0 is the column number of checkbox
+                            {
+
+                                string id = row.Cells["orderid"].Value.ToString();
+                                string cmd = "Delete from orders where orderid='" + id + "'";
+                                obj.nonQuery(cmd);
+                               string cmd1 = "Delete from orderdetails where orderid='" + id + "'";
+                                obj.nonQuery(cmd1);                             
+
+                            }
+                        }
+                        MessageBox.Show("Orders deleted.");
+                        placedorders();
+                        placedh.Text = "Orders placed: " + placeddataview.RowCount;
+
+
+                        
+                        shippeddataview.Visible = true;
+                        ppnl.Visible = false;
+                        emailbtn.Visible = false;
+                        sendsmsbtn.Visible = false;
+                        cancelbtn.Visible = false;
+                        shippedh.Visible = true;
+                        selectlbl.Visible = false;
+                        num = 0;
+                        Cursor = Cursors.Arrow;
+                    }
+                }
+                catch (Exception ex) { obj.closeConnection(); MessageBox.Show(ex.Message); }
+                Cursor = Cursors.Arrow;
+                refreshbtn.Enabled = true;
+            }
+            else
+                MessageBox.Show("Please select the orders first.", "Error");
         }
 
         private void cartbtn_Click(object sender, EventArgs e)
@@ -1946,6 +1999,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     placedh.Visible = false;
                     placeddataview.Visible = false;
                     shippedh.Visible = false;
+                    corderslbl.Visible = false;
                    // shippedlbl.Visible = false;
                    /* attention.Visible = false; placedlbl.Visible = false;*/ deliveredh.Visible = false; //orderslbl.Visible = false;
                     shippeddataview.Visible = false;

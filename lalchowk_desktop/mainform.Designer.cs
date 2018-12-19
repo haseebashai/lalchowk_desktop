@@ -64,6 +64,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.navtxt = new System.Windows.Forms.Label();
             this.cntpnl = new System.Windows.Forms.Panel();
+            this.ordelbtn = new System.Windows.Forms.Button();
             this.corderslbl = new System.Windows.Forms.Label();
             this.selectlbl = new System.Windows.Forms.Label();
             this.cselbtn = new System.Windows.Forms.Button();
@@ -559,6 +560,7 @@
             // cntpnl
             // 
             this.cntpnl.BackColor = System.Drawing.Color.White;
+            this.cntpnl.Controls.Add(this.ordelbtn);
             this.cntpnl.Controls.Add(this.corderslbl);
             this.cntpnl.Controls.Add(this.selectlbl);
             this.cntpnl.Controls.Add(this.cselbtn);
@@ -590,6 +592,21 @@
             this.cntpnl.Name = "cntpnl";
             this.cntpnl.Size = new System.Drawing.Size(1162, 722);
             this.cntpnl.TabIndex = 12;
+            // 
+            // ordelbtn
+            // 
+            this.ordelbtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ordelbtn.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.ordelbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ordelbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ordelbtn.Location = new System.Drawing.Point(341, 3);
+            this.ordelbtn.Name = "ordelbtn";
+            this.ordelbtn.Size = new System.Drawing.Size(56, 25);
+            this.ordelbtn.TabIndex = 64;
+            this.ordelbtn.Text = "Delete";
+            this.ordelbtn.UseVisualStyleBackColor = true;
+            this.ordelbtn.Visible = false;
+            this.ordelbtn.Click += new System.EventHandler(this.ordelbtn_Click);
             // 
             // corderslbl
             // 
@@ -1139,5 +1156,6 @@
         private System.Windows.Forms.Button cselbtn;
         private System.Windows.Forms.Label selectlbl;
         private System.Windows.Forms.Label corderslbl;
+        private System.Windows.Forms.Button ordelbtn;
     }
 }

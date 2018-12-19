@@ -637,9 +637,9 @@ namespace Veiled_Kashmir_Admin_Panel
                     orderlbl.Text = orderid.ToString();
                     datelbl.Text= row.Cells["timestamp"].Value.ToString();
                     orderidcount = e.RowIndex.ToString();
-                    
 
 
+                    ordergridview.Enabled = false;
                     BackgroundWorker details = new BackgroundWorker();
 
                     details.DoWork += (o, a) =>
@@ -674,6 +674,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     {
                         try
                         {
+                            ordergridview.Enabled = true;
                             orderdetailview.Visible = true;
                             dpnl.Visible = true;
                             loadinglbl.Visible = false;
@@ -704,7 +705,7 @@ namespace Veiled_Kashmir_Admin_Panel
                                 billbtn.Text = "Confirm Delivery and Add Bill";
 
                             }
-                        }catch { }
+                        }catch { ordergridview.Enabled = true; }
                     };
                     while (details.IsBusy)
                         details.CancelAsync();
@@ -750,6 +751,7 @@ namespace Veiled_Kashmir_Admin_Panel
             catch
             {
                 obj.closeConnection();
+                ordergridview.Enabled = true;
             }
            
         }
