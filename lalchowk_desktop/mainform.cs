@@ -1168,34 +1168,24 @@ namespace Veiled_Kashmir_Admin_Panel
             }
         }
 
-        private void shippeddataview_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                if (e.RowIndex >= 0 && e.ColumnIndex==0)
-                {
-                    DataGridViewRow row = this.shippeddataview.Rows[e.RowIndex];
-                    id = row.Cells["orderid"].Value.ToString();
-                    int amount= int.Parse(row.Cells["amount"].Value.ToString());
-                    int shipping = int.Parse(row.Cells["shipping"].Value.ToString());
-                    int result= int.Parse(retolbl.Text) + (amount + shipping);
-                    retolbl.Text = result.ToString();
-
-                    totallbl.Visible = true;
-                    retolbl.Visible = true;
-                    clearlbl.Visible = true;
-
-
-                }
-            }catch { }
-         }
-
         private void clearlbl_Click(object sender, EventArgs e)
         {
+            foreach (DataGridViewRow row in shippeddataview.Rows)
+            {
+                if (row.Cells[0].Value != null && row.Cells[0].Value.Equals(true)) //0 is the column number of checkbox
+                {
+
+                    row.Cells[0].Value = false;
+                }
+
+            }
+            shippeddataview.Refresh();
+
             retolbl.Text = "0";
             totallbl.Visible = false;
             retolbl.Visible = false;
             clearlbl.Visible = false;
+            printaddbtn.Visible = false;
 
         }
 
@@ -1252,19 +1242,6 @@ namespace Veiled_Kashmir_Admin_Panel
 
         }
 
-        private void shippeddataview_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            //foreach (DataGridViewRow row in shippeddataview.Rows)
-            //{
-            //    if (row.Cells[0].Value != null && row.Cells[0].Value.Equals(true)) //3 is the column number of checkbox
-            //    {
-            //        row.Selected = true;
-            //        row.DefaultCellStyle.SelectionBackColor = Color.LightSlateGray;
-            //    }
-            //    else
-            //        row.Selected = false;
-            //}
-        }
 
         private void testbtn_Click(object sender, EventArgs e)
         {
@@ -1501,13 +1478,14 @@ namespace Veiled_Kashmir_Admin_Panel
 
                     row.Cells[2].Value = false;
                 }
-                printadd2btn.Visible = false;
-                cshipbtn.Visible = false;
-                cselbtn.Visible = false;
-                selectlbl.Visible = false;
-                ordelbtn.Visible = false;
-                num = 0;
+               
             }
+            printadd2btn.Visible = false;
+            cshipbtn.Visible = false;
+            cselbtn.Visible = false;
+            selectlbl.Visible = false;
+            ordelbtn.Visible = false;
+            num = 0;
         }
 
         private void placeddataview_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
@@ -1685,6 +1663,50 @@ namespace Veiled_Kashmir_Admin_Panel
             else
                 MessageBox.Show("Please select the orders first.", "Error");
         }
+
+        private void shippeddataview_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            if (shippeddataview.IsCurrentCellDirty)
+            {
+                shippeddataview.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            }
+        }
+
+
+        private void shippeddataview_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                bool isChecked = Convert.ToBoolean(shippeddataview.Rows[shippeddataview.CurrentCell.RowIndex].Cells[0].Value.ToString());
+
+                if (isChecked)
+                {
+                    DataGridViewRow row = this.shippeddataview.Rows[e.RowIndex];
+                    int amount = int.Parse(row.Cells["amount"].Value.ToString());
+                    int shipping = int.Parse(row.Cells["shipping"].Value.ToString());
+                    int result = int.Parse(retolbl.Text) + (amount + shipping);
+                    retolbl.Text = result.ToString();
+
+                    totallbl.Visible = true;
+                    retolbl.Visible = true;
+                    clearlbl.Visible = true;
+                }
+                else
+                {
+                    DataGridViewRow row = this.shippeddataview.Rows[e.RowIndex];
+                    int amount = int.Parse(row.Cells["amount"].Value.ToString());
+                    int shipping = int.Parse(row.Cells["shipping"].Value.ToString());
+                    int result = int.Parse(retolbl.Text) - (amount + shipping);
+                    retolbl.Text = result.ToString();
+
+                    totallbl.Visible = true;
+                    retolbl.Visible = true;
+                    clearlbl.Visible = true;
+                }
+
+            }
+            catch { }
+         }
 
         private void cartbtn_Click(object sender, EventArgs e)
         {
