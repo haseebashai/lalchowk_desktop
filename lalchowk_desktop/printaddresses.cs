@@ -78,6 +78,8 @@ namespace Veiled_Kashmir_Admin_Panel
                 xtxt.Text = t1.Width.ToString();
                 ytxt.Text = t1.Height.ToString();
                 ftxt.Text = t1.Font.SizeInPoints.ToString();
+                pxtxt.Text = xpage.ToString();
+                pytxt.Text = ypage.ToString();
 
             //    MessageBox.Show(addresses1[i] + "1"+ " " +addresses1.Count);
 

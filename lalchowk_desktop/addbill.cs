@@ -112,6 +112,10 @@ namespace Veiled_Kashmir_Admin_Panel
                     //supbox.Enabled = true;
                     orderdetailview.Visible = true;
                     addprobtn.Enabled = true;
+                    
+
+
+
                 }catch { }
             };
 
@@ -139,6 +143,11 @@ namespace Veiled_Kashmir_Admin_Panel
             //    MessageBox.Show(ex.Message.ToString());
             //}
 
+        }
+
+        private int calculate(int price, int mrp, int dp)
+        {
+            return price;
         }
 
         private void closebtn_Click(object sender, EventArgs e)
@@ -347,7 +356,56 @@ namespace Veiled_Kashmir_Admin_Panel
                 yes.Checked = false;
         }
 
-       
+      
+
+        private void orderdetailview_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            try
+            {
+
+                //  DataGridViewRow row = this.orderdetailview.Rows[e.RowIndex];
+
+
+                int price = 0, mrp = 0, dp = 0;
+                for (int i = 0; i < orderdetailview.Rows.Count; i++)
+                {
+                    // MessageBox.Show(price.ToString() + " " + row.Cells["price"].Value.ToString() + " " + row.Cells["quantity"].Value.ToString());
+                    price = price + (Convert.ToInt32(orderdetailview.Rows[i].Cells["price"].Value) * Convert.ToInt32(orderdetailview.Rows[i].Cells["quantity"].Value));
+                    mrp = mrp + (Convert.ToInt32(orderdetailview.Rows[i].Cells["mrp"].Value) * Convert.ToInt32(orderdetailview.Rows[i].Cells["quantity"].Value));
+                    dp = dp + (Convert.ToInt32(orderdetailview.Rows[i].Cells["dealerprice"].Value) * Convert.ToInt32(orderdetailview.Rows[i].Cells["quantity"].Value));
+
+                }
+                pricelbl.Text = price.ToString();
+                mrplbl.Text = mrp.ToString();
+                dplbl.Text = dp.ToString();
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        private void orderdetailview_RowLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+
+                //  DataGridViewRow row = this.orderdetailview.Rows[e.RowIndex];
+
+
+                int price = 0, mrp = 0, dp = 0;
+                for (int i = 0; i < orderdetailview.Rows.Count; i++)
+                {
+                    // MessageBox.Show(price.ToString() + " " + row.Cells["price"].Value.ToString() + " " + row.Cells["quantity"].Value.ToString());
+                    price = price + (Convert.ToInt32(orderdetailview.Rows[i].Cells["price"].Value) * Convert.ToInt32(orderdetailview.Rows[i].Cells["quantity"].Value));
+                    mrp = mrp + (Convert.ToInt32(orderdetailview.Rows[i].Cells["mrp"].Value) * Convert.ToInt32(orderdetailview.Rows[i].Cells["quantity"].Value));
+                    dp = dp + (Convert.ToInt32(orderdetailview.Rows[i].Cells["dealerprice"].Value) * Convert.ToInt32(orderdetailview.Rows[i].Cells["quantity"].Value));
+
+                }
+                pricelbl.Text = price.ToString();
+                mrplbl.Text = mrp.ToString();
+                dplbl.Text = dp.ToString();
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
         private void pickuptxt_TextChanged(object sender, EventArgs e)
         {
             paymenttxt.Text = pickuptxt.Text;
