@@ -185,6 +185,9 @@
             this.bgworker6 = new System.ComponentModel.BackgroundWorker();
             this.bgworker7 = new System.ComponentModel.BackgroundWorker();
             this.bgworker8 = new System.ComponentModel.BackgroundWorker();
+            this.splbl = new System.Windows.Forms.Label();
+            this.pboxtxt = new System.Windows.Forms.TextBox();
+            this.countlbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.accountdataview)).BeginInit();
             this.exppnl.SuspendLayout();
             this.moneypnl.SuspendLayout();
@@ -1680,6 +1683,9 @@
             // 
             // uppnl
             // 
+            this.uppnl.Controls.Add(this.countlbl);
+            this.uppnl.Controls.Add(this.splbl);
+            this.uppnl.Controls.Add(this.pboxtxt);
             this.uppnl.Controls.Add(this.fsuplbl);
             this.uppnl.Controls.Add(this.updbtn);
             this.uppnl.Controls.Add(this.fsuptxt);
@@ -1793,6 +1799,36 @@
             // 
             this.bgworker8.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker8_DoWork);
             this.bgworker8.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker8_RunWorkerCompleted);
+            // 
+            // splbl
+            // 
+            this.splbl.AutoSize = true;
+            this.splbl.Location = new System.Drawing.Point(3, 195);
+            this.splbl.Name = "splbl";
+            this.splbl.Size = new System.Drawing.Size(81, 13);
+            this.splbl.TabIndex = 40;
+            this.splbl.Text = "Search Product";
+            this.splbl.Visible = false;
+            // 
+            // pboxtxt
+            // 
+            this.pboxtxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.pboxtxt.Location = new System.Drawing.Point(6, 212);
+            this.pboxtxt.Name = "pboxtxt";
+            this.pboxtxt.Size = new System.Drawing.Size(120, 20);
+            this.pboxtxt.TabIndex = 41;
+            this.pboxtxt.Visible = false;
+            this.pboxtxt.TextChanged += new System.EventHandler(this.pboxtxt_TextChanged);
+            // 
+            // countlbl
+            // 
+            this.countlbl.AutoSize = true;
+            this.countlbl.Location = new System.Drawing.Point(6, 246);
+            this.countlbl.Name = "countlbl";
+            this.countlbl.Size = new System.Drawing.Size(34, 13);
+            this.countlbl.TabIndex = 42;
+            this.countlbl.Text = "count";
+            this.countlbl.Visible = false;
             // 
             // accounts
             // 
@@ -2002,5 +2038,8 @@
         private MaterialSkin.Controls.MaterialFlatButton revgobtn;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Panel revdetpnl;
+        private System.Windows.Forms.Label splbl;
+        private System.Windows.Forms.TextBox pboxtxt;
+        private System.Windows.Forms.Label countlbl;
     }
 }

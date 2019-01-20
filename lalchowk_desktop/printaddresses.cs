@@ -42,7 +42,7 @@ namespace Veiled_Kashmir_Admin_Panel
         //    }
         //}
 
-        int xpage=9, ypage = 40;
+        int xpage=13, ypage = 30;
         void printdoc_PrintPage(object sender, PrintPageEventArgs e)
         {
             e.Graphics.DrawImage(bmp, xpage, ypage);
@@ -65,8 +65,8 @@ namespace Veiled_Kashmir_Admin_Panel
                 {
                     Text = addresses1[i],
                     Multiline = true,
-                    Size = new Size(380, 124),
-                    Font = new Font(Font.FontFamily, 11, FontStyle.Regular),
+                    Size = new Size(380, 175),
+                    Font = new Font(Font.FontFamily, 13, FontStyle.Regular),
                     BorderStyle = BorderStyle.None,
                     BackColor = Color.White,
                     ReadOnly = false,

@@ -99,7 +99,7 @@
             this.xtxt.Location = new System.Drawing.Point(511, 12);
             this.xtxt.Name = "xtxt";
             this.xtxt.Size = new System.Drawing.Size(39, 21);
-            this.xtxt.TabIndex = 3;
+            this.xtxt.TabIndex = 1;
             // 
             // label2
             // 
@@ -124,14 +124,14 @@
             this.ytxt.Location = new System.Drawing.Point(578, 12);
             this.ytxt.Name = "ytxt";
             this.ytxt.Size = new System.Drawing.Size(39, 21);
-            this.ytxt.TabIndex = 6;
+            this.ytxt.TabIndex = 2;
             // 
             // setbtn
             // 
             this.setbtn.Location = new System.Drawing.Point(728, 12);
             this.setbtn.Name = "setbtn";
             this.setbtn.Size = new System.Drawing.Size(75, 23);
-            this.setbtn.TabIndex = 7;
+            this.setbtn.TabIndex = 4;
             this.setbtn.Text = "Set";
             this.setbtn.UseVisualStyleBackColor = true;
             this.setbtn.Click += new System.EventHandler(this.setbtn_Click);
@@ -150,14 +150,14 @@
             this.ftxt.Location = new System.Drawing.Point(669, 12);
             this.ftxt.Name = "ftxt";
             this.ftxt.Size = new System.Drawing.Size(39, 21);
-            this.ftxt.TabIndex = 9;
+            this.ftxt.TabIndex = 3;
             // 
             // pytxt
             // 
             this.pytxt.Location = new System.Drawing.Point(578, 42);
             this.pytxt.Name = "pytxt";
             this.pytxt.Size = new System.Drawing.Size(39, 21);
-            this.pytxt.TabIndex = 13;
+            this.pytxt.TabIndex = 6;
             // 
             // label5
             // 
@@ -182,14 +182,14 @@
             this.pxtxt.Location = new System.Drawing.Point(511, 42);
             this.pxtxt.Name = "pxtxt";
             this.pxtxt.Size = new System.Drawing.Size(39, 21);
-            this.pxtxt.TabIndex = 10;
+            this.pxtxt.TabIndex = 5;
             // 
             // psetbtn
             // 
             this.psetbtn.Location = new System.Drawing.Point(728, 41);
             this.psetbtn.Name = "psetbtn";
             this.psetbtn.Size = new System.Drawing.Size(75, 23);
-            this.psetbtn.TabIndex = 14;
+            this.psetbtn.TabIndex = 8;
             this.psetbtn.Text = "Set";
             this.psetbtn.UseVisualStyleBackColor = true;
             this.psetbtn.Click += new System.EventHandler(this.psetbtn_Click);
@@ -200,7 +200,7 @@
             this.bbox.Location = new System.Drawing.Point(639, 44);
             this.bbox.Name = "bbox";
             this.bbox.Size = new System.Drawing.Size(69, 19);
-            this.bbox.TabIndex = 15;
+            this.bbox.TabIndex = 7;
             this.bbox.Text = "Borders";
             this.bbox.UseVisualStyleBackColor = true;
             this.bbox.CheckedChanged += new System.EventHandler(this.bbox_CheckedChanged);

@@ -347,11 +347,6 @@ namespace Veiled_Kashmir_Admin_Panel
 
                 UploadFileToFtp("ftp://lalchowk.in/httpdocs/lalchowk/pictures/", uploaddir);
 
-                cmd = "update homepage3 set picture='" + righttxt.Text + "' where homeid='2'";
-                obj.nonQuery(cmd);
-                //cmd = "update split set command='" + rightlink.Text + "' where pic='rightpic'";
-                //obj.nonQuery(cmd);
-                obj.closeConnection();
             }catch(Exception ex) { MessageBox.Show(ex.ToString()); obj.closeConnection(); }
         }
 
@@ -363,11 +358,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 uploaddir = directory + lefttxt.Text;
                 UploadFileToFtp("ftp://lalchowk.in/httpdocs/lalchowk/pictures/", uploaddir);
 
-                cmd = "update homepage3 set picture='" + lefttxt.Text + "'where homeid='1'";
-                obj.nonQuery(cmd);
-                //cmd = "update split set command='" + leftlink.Text + "' where pic='leftpic'";
-                //obj.nonQuery(cmd);
-                obj.closeConnection();
+                
             }catch (Exception ex)
             { MessageBox.Show(ex.ToString());
                 obj.closeConnection();
@@ -387,6 +378,17 @@ namespace Veiled_Kashmir_Admin_Panel
                        
                         uploadrightpic();
                         uploadleftpic();
+                        cmd = "update homepage3 set picture='" + lefttxt.Text + "' where homeid='1'";
+                        obj.nonQuery(cmd);
+                        cmd = "update split set command='" + leftlink.Text + "' where pic='leftpic'";
+                        obj.nonQuery(cmd);
+
+                        cmd = "update homepage3 set picture='" + righttxt.Text + "' where homeid='2'";
+                        obj.nonQuery(cmd);
+                        cmd = "update split set command='" + rightlink.Text + "' where pic='rightpic'";
+                        obj.nonQuery(cmd);
+                        obj.closeConnection();
+
                         Cursor = Cursors.Arrow;
                     }
                     catch (Exception ex)
@@ -397,18 +399,35 @@ namespace Veiled_Kashmir_Admin_Panel
                 }
                 else if(rightpicture==false || leftpicture==false)
                 {
-                    MessageBox.Show("Please select both pictures.");
+                    DialogResult dgr = MessageBox.Show("Do you want to update the links only ?\n", "Confirm!", MessageBoxButtons.YesNo);
+                    if (dgr == DialogResult.Yes)
+                    {
+                        try
+                        {
+                            StringBuilder l = new StringBuilder(leftlink.Text);
+                            l.Replace(@"\", @"\\");
+                            l.Replace("'", "\\'");
+                            StringBuilder r = new StringBuilder(rightlink.Text);
+                            r.Replace(@"\", @"\\");
+                            r.Replace("'", "\\'");
+                            Cursor = Cursors.WaitCursor;
+                            cmd = "update homepage3 set picture='" + lefttxt.Text + "' where homeid='1'";
+                            obj.nonQuery(cmd);
+                            cmd = "update split set command='" + l + "' where pic='leftpic'";
+                            //cmd = "UPDATE `lalchowk`.`split` SET `command`=' categoryid in(SELECT categoryid from secondcategory where categoryid=\'tlf101\')' WHERE `pic`='rightpic';";
+                            obj.nonQuery(cmd);
+
+                            cmd = "update homepage3 set picture='" + righttxt.Text + "' where homeid='2'";
+                            obj.nonQuery(cmd);
+                            cmd = "update split set command='" + r + "' where pic='rightpic'";
+                            obj.nonQuery(cmd);
+                            obj.closeConnection();
+                            Cursor = Cursors.Arrow;
+                            MessageBox.Show("Display links updated.");
+                        }catch(Exception ex) { MessageBox.Show(ex.Message); obj.closeConnection(); Cursor = Cursors.Arrow; }
+                    }
                 }
-                //else
-                //{
-                //    cmd = "update homepage3 set picture='" + lefttxt.Text + "',link='" + leftlink.Text + "' where homeid='1'";
-                //    obj.nonQuery(cmd);
 
-                //    cmd = "update homepage3 set picture='" + righttxt.Text + "',link='" + rightlink.Text + "' where homeid='2'";
-                //    obj.nonQuery(cmd);
-
-                //    MessageBox.Show("Display pictures updated.");
-                //}
             }
             catch (Exception ex)
             {

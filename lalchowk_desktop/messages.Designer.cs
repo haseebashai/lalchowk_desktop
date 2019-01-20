@@ -31,6 +31,8 @@
             this.messagesdataview = new System.Windows.Forms.DataGridView();
             this.formlbl = new System.Windows.Forms.Label();
             this.mpnl = new System.Windows.Forms.Panel();
+            this.replybox = new System.Windows.Forms.TextBox();
+            this.updatebtn = new System.Windows.Forms.Button();
             this.delbtn = new System.Windows.Forms.Button();
             this.msgtxt = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -42,7 +44,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.sendbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.msgpnl = new System.Windows.Forms.Panel();
-            this.updatebtn = new System.Windows.Forms.Button();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.messagesdataview)).BeginInit();
             this.mpnl.SuspendLayout();
@@ -74,6 +75,7 @@
             // 
             // mpnl
             // 
+            this.mpnl.Controls.Add(this.replybox);
             this.mpnl.Controls.Add(this.updatebtn);
             this.mpnl.Controls.Add(this.delbtn);
             this.mpnl.Controls.Add(this.msgtxt);
@@ -91,6 +93,26 @@
             this.mpnl.TabIndex = 30;
             this.mpnl.Visible = false;
             // 
+            // replybox
+            // 
+            this.replybox.Location = new System.Drawing.Point(468, 58);
+            this.replybox.Multiline = true;
+            this.replybox.Name = "replybox";
+            this.replybox.ReadOnly = true;
+            this.replybox.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.replybox.Size = new System.Drawing.Size(374, 139);
+            this.replybox.TabIndex = 32;
+            // 
+            // updatebtn
+            // 
+            this.updatebtn.Location = new System.Drawing.Point(739, 1);
+            this.updatebtn.Name = "updatebtn";
+            this.updatebtn.Size = new System.Drawing.Size(51, 19);
+            this.updatebtn.TabIndex = 31;
+            this.updatebtn.Text = "Replied";
+            this.updatebtn.UseVisualStyleBackColor = true;
+            this.updatebtn.Click += new System.EventHandler(this.updatebtn_Click);
+            // 
             // delbtn
             // 
             this.delbtn.Location = new System.Drawing.Point(796, 1);
@@ -103,19 +125,19 @@
             // 
             // msgtxt
             // 
-            this.msgtxt.Location = new System.Drawing.Point(253, 29);
+            this.msgtxt.Location = new System.Drawing.Point(153, 26);
             this.msgtxt.Multiline = true;
             this.msgtxt.Name = "msgtxt";
             this.msgtxt.ReadOnly = true;
             this.msgtxt.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.msgtxt.Size = new System.Drawing.Size(344, 171);
+            this.msgtxt.Size = new System.Drawing.Size(308, 171);
             this.msgtxt.TabIndex = 25;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.Blue;
-            this.label2.Location = new System.Drawing.Point(400, 9);
+            this.label2.Location = new System.Drawing.Point(264, 7);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(50, 13);
             this.label2.TabIndex = 24;
@@ -135,7 +157,7 @@
             // 
             this.emaillbl.AutoSize = true;
             this.emaillbl.ForeColor = System.Drawing.Color.Black;
-            this.emaillbl.Location = new System.Drawing.Point(48, 32);
+            this.emaillbl.Location = new System.Drawing.Point(5, 81);
             this.emaillbl.Name = "emaillbl";
             this.emaillbl.Size = new System.Drawing.Size(31, 13);
             this.emaillbl.TabIndex = 3;
@@ -144,9 +166,9 @@
             // sublbl
             // 
             this.sublbl.ForeColor = System.Drawing.Color.Black;
-            this.sublbl.Location = new System.Drawing.Point(5, 94);
+            this.sublbl.Location = new System.Drawing.Point(5, 125);
             this.sublbl.Name = "sublbl";
-            this.sublbl.Size = new System.Drawing.Size(188, 106);
+            this.sublbl.Size = new System.Drawing.Size(188, 72);
             this.sublbl.TabIndex = 4;
             this.sublbl.Text = "mrp";
             // 
@@ -154,7 +176,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.ForeColor = System.Drawing.Color.Blue;
-            this.label7.Location = new System.Drawing.Point(3, 71);
+            this.label7.Location = new System.Drawing.Point(5, 106);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(43, 13);
             this.label7.TabIndex = 23;
@@ -164,7 +186,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.ForeColor = System.Drawing.Color.Blue;
-            this.label8.Location = new System.Drawing.Point(48, 9);
+            this.label8.Location = new System.Drawing.Point(5, 58);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(32, 13);
             this.label8.TabIndex = 22;
@@ -185,7 +207,7 @@
             this.sendbtn.AutoSize = true;
             this.sendbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.sendbtn.Depth = 0;
-            this.sendbtn.Location = new System.Drawing.Point(617, 94);
+            this.sendbtn.Location = new System.Drawing.Point(468, 94);
             this.sendbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.sendbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.sendbtn.Name = "sendbtn";
@@ -205,16 +227,6 @@
             this.msgpnl.Size = new System.Drawing.Size(1042, 657);
             this.msgpnl.TabIndex = 31;
             this.msgpnl.Visible = false;
-            // 
-            // updatebtn
-            // 
-            this.updatebtn.Location = new System.Drawing.Point(739, 1);
-            this.updatebtn.Name = "updatebtn";
-            this.updatebtn.Size = new System.Drawing.Size(51, 19);
-            this.updatebtn.TabIndex = 31;
-            this.updatebtn.Text = "Replied";
-            this.updatebtn.UseVisualStyleBackColor = true;
-            this.updatebtn.Click += new System.EventHandler(this.updatebtn_Click);
             // 
             // bgworker
             // 
@@ -259,5 +271,6 @@
         private System.Windows.Forms.Button delbtn;
         public System.Windows.Forms.Panel msgpnl;
         private System.Windows.Forms.Button updatebtn;
+        private System.Windows.Forms.TextBox replybox;
     }
 }

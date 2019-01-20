@@ -316,7 +316,7 @@ namespace Veiled_Kashmir_Admin_Panel
             {
                 if (pidtxt.Text == "")
                 {
-                    MessageBox.Show("Product undefined!");
+                    MessageBox.Show("ProductID undefined!");
                     success = false;
                     return null;
                 }
@@ -329,7 +329,7 @@ namespace Veiled_Kashmir_Admin_Panel
                             cmd = "update products set picture='" + name.Text + "' where productid='" + pidtxt.Text + "'";
                             obj.nonQuery(cmd);
                             
-                            MessageBox.Show("Image address added in database, please upload the picture seperately now.");
+                         //   MessageBox.Show("Image address added in database, please upload the picture seperately now.");
                             success = true;
                             return name.Text;
                         }

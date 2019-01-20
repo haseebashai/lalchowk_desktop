@@ -343,6 +343,8 @@
             this.inventorydatagridview.Size = new System.Drawing.Size(750, 155);
             this.inventorydatagridview.TabIndex = 79;
             this.inventorydatagridview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.inventorydatagridview_CellClick);
+            this.inventorydatagridview.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.inventorydatagridview_RowLeave);
+            this.inventorydatagridview.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.inventorydatagridview_RowPostPaint);
             // 
             // loadinglbl
             // 
@@ -373,7 +375,8 @@
             // 
             // pinbox
             // 
-            this.pinbox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.pinbox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.pinbox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.pinbox.FormattingEnabled = true;
             this.pinbox.Location = new System.Drawing.Point(716, 239);
             this.pinbox.Name = "pinbox";

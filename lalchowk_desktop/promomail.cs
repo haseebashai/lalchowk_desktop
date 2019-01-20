@@ -165,28 +165,28 @@ namespace Veiled_Kashmir_Admin_Panel
         private void feedbtn_Click(object sender, EventArgs e)
         {
             subtxt.Text = "How was your shopping experience with us?";
-            bodytxt.Text= "Dear "+name+",\r\n\r\nHope you had a nice shopping experience with www.lalchowk.in\r\nWe would love to read your reviews on our Google play store link here: bit.ly/lalchowkonline or our social media handles @lalchowkonline.\r\nYou can also contact us on our Office/WhatsApp number: 9906523492\r\n\r\nThanks and warm regards,\r\nTeam Lalchowk";
+            bodytxt.Text= "Dear "+name+",\r\n\r\nHope you had a nice shopping experience with www.lalchowk.in\r\nWe would love to read your reviews on our store links here: bit.ly/GetLalchowk or our social media handles @lalchowkonline.\r\nYou can also contact us on our WhatsApp/Phone number: 9906523492\r\n\r\nThanks and warm regards,\r\nTeam Lalchowk";
         
     }
 
         private void shiplbtn_Click(object sender, EventArgs e)
         {
             subtxt.Text = "Your order has been dispatched!";
-            bodytxt.Text= "Dear " + name + ",\r\n\r\nYour order has been dispatched and will be reaching you soon.\r\nPlease keep your phone in reach.\r\n\r\nTeam Lalchowk.";
+            bodytxt.Text= "Dear " + name + ",\r\n\r\nYour order has been dispatched and will be reaching you soon.\r\nPlease keep your phone in reach.\r\n\r\nFor any other queries, you can also contact us on our WhatsApp/Phone number: 9906523492\r\n\r\nTeam Lalchowk.";
 
         }
 
         private void shippbtn_Click(object sender, EventArgs e)
         {
             subtxt.Text = "Your order has been dispatched!";
-            bodytxt.Text = "Dear " + name + ",\r\n\r\nYour order has been dispatched via SpeedPost.\r\nYou can track your order on indiapost.gov.in using tracking number: \r\nPlease keep your phone in reach.\r\n\r\nTeam Lalchowk.";
+            bodytxt.Text = "Dear " + name + ",\r\n\r\nYour order has been dispatched via SpeedPost and will reach you in few days.\r\nYou can track your order on indiapost.gov.in using tracking number: \r\nPlease keep your phone in reach.\r\n\r\nFor any other queries, you can also contact us on our WhatsApp/Phone number: 9906523492\r\n\r\b\nTeam Lalchowk.";
 
         }
 
         private void breqbtn_Click(object sender, EventArgs e)
         {
             subtxt.Text = "Your request has been processed!";
-           bodytxt.Text= "Dear " + name + ",\r\nyour requested book ' " + bname + " ' is currently not available.\r\nWe hope to serve you better next time.\r\n\r\nTeam Lalchowk";
+           bodytxt.Text= "Dear " + name + ",\r\n\r\nyour requested book ' " + bname + " ' is currently not available.\r\nWe hope to serve you better next time.\r\nFor any other queries, you can also contact us on our WhatsApp/Phone number: 9906523492\r\n\r\nTeam Lalchowk";
 
         }
 

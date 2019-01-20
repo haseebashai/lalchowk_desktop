@@ -206,6 +206,7 @@ namespace Veiled_Kashmir_Admin_Panel
                         MessageBox.Show("Order added successfully.", "Success.");
                         inventorydatagridview.Columns.Clear();
                         addorderbtn.Enabled = false;
+                        dp.Visible = false;
                     }
                    
                     
@@ -472,6 +473,44 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             if (pcnbox.Checked)
                 pcybox.Checked = false;
+        }
+
+        private void inventorydatagridview_RowLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+
+
+
+                int price = 0, quant = 0;
+                for (int i = 0; i < inventorydatagridview.Rows.Count; i++)
+                {
+                    price = price + (Convert.ToInt32(inventorydatagridview.Rows[i].Cells["price"].Value) * Convert.ToInt32(inventorydatagridview.Rows[i].Cells["quantity"].Value));
+                    quant = quant + Convert.ToInt32(inventorydatagridview.Rows[i].Cells["quantity"].Value);
+                }
+                amounttxt.Text = price.ToString();
+                counttxt.Text = quant.ToString();
+
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        private void inventorydatagridview_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            try
+            {
+
+
+                int price = 0,quant=0;
+                for (int i = 0; i < inventorydatagridview.Rows.Count; i++)
+                {
+                    price = price + (Convert.ToInt32(inventorydatagridview.Rows[i].Cells["price"].Value) * Convert.ToInt32(inventorydatagridview.Rows[i].Cells["quantity"].Value));
+                    quant = quant + Convert.ToInt32(inventorydatagridview.Rows[i].Cells["quantity"].Value);
+                }
+                amounttxt.Text = price.ToString();
+                counttxt.Text = quant.ToString();
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
         private void refresh_Click(object sender, EventArgs e)

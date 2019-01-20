@@ -56,6 +56,20 @@ namespace Veiled_Kashmir_Admin_Panel
                 emaillbl.Text = row.Cells["mail"].Value.ToString();
                 sublbl.Text = row.Cells["subject"].Value.ToString();
                 msgtxt.Text = row.Cells["message"].Value.ToString();
+                if (row.Cells["reply"].Value.ToString() == "")
+                {
+                    replybox.Visible = false;
+                    sendbtn.Location = new Point(468, 94);
+                    sendbtn.Text = "send reply mail";
+                }
+                else
+                {
+                    replybox.Visible = true;
+                    replybox.Text = row.Cells["reply"].Value.ToString();
+                    sendbtn.Text = "Already replied";
+                    sendbtn.Location = new Point(468, 24);
+                }
+                
                 mpnl.Visible = true;
 
 
@@ -183,5 +197,6 @@ namespace Veiled_Kashmir_Admin_Panel
                 }
             }
         }
+
     }
 }

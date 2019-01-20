@@ -381,5 +381,45 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             deldttxt.MaxLength = 10;
         }
+
+        private void orderdetailview_RowLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+
+
+
+                int price = 0, quant = 0;
+                for (int i = 0; i < orderdetailview.Rows.Count; i++)
+                {
+                    price = price + (Convert.ToInt32(orderdetailview.Rows[i].Cells["price"].Value) * Convert.ToInt32(orderdetailview.Rows[i].Cells["quantity"].Value));
+                    quant = quant + Convert.ToInt32(orderdetailview.Rows[i].Cells["quantity"].Value);
+                }
+                amtxt.Text = price.ToString();
+                counttxt.Text = quant.ToString();
+
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        //private void orderdetailview_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        //{
+        //    try
+        //    {
+
+
+
+        //        int price = 0, quant = 0;
+        //        for (int i = 0; i < orderdetailview.Rows.Count; i++)
+        //        {
+        //            price = price + (Convert.ToInt32(orderdetailview.Rows[i].Cells["price"].Value) * Convert.ToInt32(orderdetailview.Rows[i].Cells["quantity"].Value));
+        //            quant = quant + Convert.ToInt32(orderdetailview.Rows[i].Cells["quantity"].Value);
+        //        }
+        //        amtxt.Text = price.ToString();
+        //        counttxt.Text = quant.ToString();
+
+        //    }
+        //    catch (Exception ex) { MessageBox.Show(ex.Message); }
+        //}
     }
 }

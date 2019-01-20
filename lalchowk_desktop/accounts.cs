@@ -88,6 +88,7 @@ namespace Veiled_Kashmir_Admin_Panel
             accountdataview.Visible = false;
             uppnl.Visible = false;
             dpnl.Visible =false;
+            revdetpnl.Visible = false;
         }
 
         private void btndisable()
@@ -369,6 +370,9 @@ namespace Veiled_Kashmir_Admin_Panel
             
             fsuptxt.Visible = false;
             fsuplbl.Visible = false;
+            pboxtxt.Visible = false;
+            splbl.Visible = false;
+            countlbl.Visible = false;
             exppnl.Visible = true;
             moneypnl.Visible = false;
             bankpnl.Visible = false;
@@ -416,6 +420,9 @@ namespace Veiled_Kashmir_Admin_Panel
             
             fsuptxt.Visible = false;
             fsuplbl.Visible = false;
+            pboxtxt.Visible = false;
+            splbl.Visible = false;
+            countlbl.Visible = false;
             moneypnl.Visible = true;
             exppnl.Visible = false;
             bankpnl.Visible = false;
@@ -454,6 +461,9 @@ namespace Veiled_Kashmir_Admin_Panel
 
             fsuptxt.Visible = false;
             fsuplbl.Visible = false;
+            pboxtxt.Visible = false;
+            splbl.Visible = false;
+            countlbl.Visible = false;
             bankpnl.Visible = true;
             moneypnl.Visible = false;
             exppnl.Visible = false;
@@ -493,6 +503,9 @@ namespace Veiled_Kashmir_Admin_Panel
 
             fsuptxt.Visible = false;
             fsuplbl.Visible = false;
+            pboxtxt.Visible = false;
+            splbl.Visible = false;
+            countlbl.Visible = false;
             miscpnl.Visible = true;
             bankpnl.Visible = false;
             moneypnl.Visible = false;
@@ -642,6 +655,9 @@ namespace Veiled_Kashmir_Admin_Panel
 
             fsuptxt.Visible = false;
             fsuplbl.Visible = false;
+            pboxtxt.Visible = false;
+            splbl.Visible = false;
+            countlbl.Visible = false;
             billpnl.Visible = true;
             dealpnl.Visible = false;           
             miscpnl.Visible = false;
@@ -703,6 +719,9 @@ namespace Veiled_Kashmir_Admin_Panel
 
             fsuptxt.Visible = false;
             fsuplbl.Visible = false;
+            pboxtxt.Visible = false;
+            splbl.Visible = false;
+            countlbl.Visible = false;
             delpnl.Visible = true;
             dealpnl.Visible = false;
             exppnl.Visible = false;
@@ -765,6 +784,8 @@ namespace Veiled_Kashmir_Admin_Panel
 
             fsuptxt.Visible = true;
             fsuplbl.Visible = true;
+            pboxtxt.Visible = true;
+            splbl.Visible = true;
             dealpnl.Visible = true;
             delpnl.Visible = false;
             exppnl.Visible = false;
@@ -995,6 +1016,16 @@ namespace Veiled_Kashmir_Admin_Panel
 
 
         string sale, purchase, invest, order;
+
+        private void pboxtxt_TextChanged(object sender, EventArgs e)
+        {
+            DataView dv = new DataView(dt);
+            dv.RowFilter = string.Format("productname LIKE '%{0}%'", pboxtxt.Text);
+            accountdataview.DataSource = dv;
+
+            countlbl.Text = "Row Count: " + (accountdataview.RowCount - 1).ToString();
+            countlbl.Visible = true;
+        }
 
         private void revgobtn_Click(object sender, EventArgs e)
         {

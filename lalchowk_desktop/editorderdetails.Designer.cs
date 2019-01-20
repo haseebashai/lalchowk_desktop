@@ -340,6 +340,7 @@
             this.orderdetailview.Size = new System.Drawing.Size(604, 111);
             this.orderdetailview.TabIndex = 30;
             this.orderdetailview.Visible = false;
+            this.orderdetailview.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.orderdetailview_RowLeave);
             // 
             // deupdbtn
             // 

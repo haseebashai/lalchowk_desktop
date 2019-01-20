@@ -112,7 +112,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     //supbox.Enabled = true;
                     orderdetailview.Visible = true;
                     addprobtn.Enabled = true;
-                    
+                    tltlbl.Visible = true;
 
 
 
@@ -378,6 +378,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 pricelbl.Text = price.ToString();
                 mrplbl.Text = mrp.ToString();
                 dplbl.Text = dp.ToString();
+                profitlbl.Text = (int.Parse(pricelbl.Text)-int.Parse(dplbl.Text)).ToString();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
@@ -402,6 +403,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 pricelbl.Text = price.ToString();
                 mrplbl.Text = mrp.ToString();
                 dplbl.Text = dp.ToString();
+                profitlbl.Text = (int.Parse(pricelbl.Text) - int.Parse(dplbl.Text)).ToString();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }

@@ -109,6 +109,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 }
                 dpnl.Visible = true;
                 updbtn.Enabled = true;
+                check = false;
             }
         }
 
