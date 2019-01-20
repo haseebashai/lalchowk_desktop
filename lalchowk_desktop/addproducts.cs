@@ -509,7 +509,7 @@ namespace Veiled_Kashmir_Admin_Panel
                              "values ('" + gidtxt.Text + @"','" + name.Text + "')";
                             obj.nonQuery(cmd);
                             bguploadpic.ReportProgress(100);
-                            MessageBox.Show("Image address added in database, please upload the picture seperately now.");
+                            //MessageBox.Show("Image address added in database, please upload the picture seperately now.");
                             success = true;
                             return name.Text;
                         }

@@ -210,7 +210,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 pr.TopLevel = false;
 
                 dg.dialogpnl.Controls.Add(pr);
-                pr.loadingdg();
+             //   pr.loadingdg();
                 dg.Text = "Products";
 
                 dg.Show();

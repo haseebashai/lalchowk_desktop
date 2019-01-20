@@ -298,13 +298,14 @@ namespace Veiled_Kashmir_Admin_Panel
             dv.RowFilter = string.Format("categoryid LIKE '%{0}%'", cattxt.Text);
             inventorydatagridview.DataSource = dv;
         }
-
+        bool catsel = false;
         private void secbox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (secbox.SelectedIndex != -1)
             {
 
                 string id = secbox.Text.Split(':')[0];
+                catsel = true;
                 catidtxt.Text = id;
                 if (supbox.SelectedIndex > 0)
                 {
@@ -319,6 +320,7 @@ namespace Veiled_Kashmir_Admin_Panel
             {
 
                 string id = thirdbox.Text.Split(':')[0];
+                catsel = true;
                 catidtxt.Text = id;
                 if (supbox.SelectedIndex > 0)
                 {
@@ -326,7 +328,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 }
             }
         }
-
+        bool supplier = false;
         private void supbox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (supbox.SelectedIndex != -1)
@@ -334,6 +336,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
 
                 string id = supbox.Text.Split(':')[0];
+                supplier = true;
                 catidtxt.Text = id;
                 if (supbox.SelectedIndex > 0)
                 {
@@ -404,8 +407,8 @@ namespace Veiled_Kashmir_Admin_Panel
             cat = true;
             proid = false;
             search = false;
-
-            if (id.Trim().StartsWith("s") || id.Trim().StartsWith("t") || id.Trim().StartsWith("u") || id.Trim().StartsWith("i"))
+           
+            if (catsel)
             {
                 catsuplbl.Text = "Category ID";
                 catsuplbl.Font = new Font(catsuplbl.Font, FontStyle.Bold);
@@ -413,7 +416,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 searchlbl.Font = new Font(searchlbl.Font, FontStyle.Regular);
 
             }
-            else if (Regex.IsMatch(id, @"^\d"))
+            else if (supplier)
             {
                 catsuplbl.Text = "Supplier ID";
                 catsuplbl.Font = new Font(catsuplbl.Font, FontStyle.Bold);

@@ -31,7 +31,7 @@ namespace Veiled_Kashmir_Admin_Panel
            
             InitializeComponent();
             
-            bgworker.RunWorkerAsync();
+          //  bgworker.RunWorkerAsync();
         }
         private void bgworker_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -73,33 +73,33 @@ namespace Veiled_Kashmir_Admin_Panel
 
         public void loadingnormal()
         {
-            formlbl.Text = "Loading details";
-            formlbl.Visible = true;
+            //formlbl.Text = "Loading details";
+            //formlbl.Visible = true;
 
-            loading = new PictureBox()
-            {
-                Image = Properties.Resources.loading,
-                Size = new Size(40, 30),
-                SizeMode = PictureBoxSizeMode.StretchImage,
-                Location = new Point(145, 302)
-            };
-            this.Controls.Add(loading);
+            //loading = new PictureBox()
+            //{
+            //    Image = Properties.Resources.loading,
+            //    Size = new Size(40, 30),
+            //    SizeMode = PictureBoxSizeMode.StretchImage,
+            //    Location = new Point(145, 302)
+            //};
+            //this.Controls.Add(loading);
         }
         public void loadingdg()
         {
-            dg.lbl.ForeColor = SystemColors.Highlight;
-            dg.lbl.Text = "Products";
-            label1.Visible = false;
-            formlbl.Text = "Loading details";
-            formlbl.Visible = true;
-            loading = new PictureBox()
-            {
-                Image = Properties.Resources.loading,
-                Size = new Size(40, 30),
-                SizeMode = PictureBoxSizeMode.StretchImage,
-                Location = new Point(145, 302)
-            };
-            this.Controls.Add(loading);
+            //dg.lbl.ForeColor = SystemColors.Highlight;
+            //dg.lbl.Text = "Products";
+            //label1.Visible = false;
+            //formlbl.Text = "Loading details";
+            //formlbl.Visible = true;
+            //loading = new PictureBox()
+            //{
+            //    Image = Properties.Resources.loading,
+            //    Size = new Size(40, 30),
+            //    SizeMode = PictureBoxSizeMode.StretchImage,
+            //    Location = new Point(145, 302)
+            //};
+            //this.Controls.Add(loading);
 
         }
 
