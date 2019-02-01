@@ -67,6 +67,8 @@
             this.shipdttxt = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.deldttxt = new System.Windows.Forms.TextBox();
+            this.transitbox = new System.Windows.Forms.CheckBox();
+            this.label15 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.orderdetailview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.refreshbtn)).BeginInit();
             this.SuspendLayout();
@@ -423,6 +425,25 @@
             this.deldttxt.TabIndex = 15;
             this.deldttxt.TextChanged += new System.EventHandler(this.deldttxt_TextChanged);
             // 
+            // transitbox
+            // 
+            this.transitbox.AutoSize = true;
+            this.transitbox.Location = new System.Drawing.Point(62, 517);
+            this.transitbox.Name = "transitbox";
+            this.transitbox.Size = new System.Drawing.Size(44, 17);
+            this.transitbox.TabIndex = 103;
+            this.transitbox.Text = "Yes";
+            this.transitbox.UseVisualStyleBackColor = true;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(60, 495);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(60, 13);
+            this.label15.TabIndex = 104;
+            this.label15.Text = "In Transit ?";
+            // 
             // editorderdetails
             // 
             this.AcceptButton = this.updbtn;
@@ -430,6 +451,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(628, 583);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.transitbox);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.deldttxt);
             this.Controls.Add(this.label12);
@@ -520,5 +543,7 @@
         private System.Windows.Forms.TextBox shipdttxt;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox deldttxt;
+        private System.Windows.Forms.CheckBox transitbox;
+        private System.Windows.Forms.Label label15;
     }
 }

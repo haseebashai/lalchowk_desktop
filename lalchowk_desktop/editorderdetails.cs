@@ -48,6 +48,12 @@ namespace Veiled_Kashmir_Admin_Panel
                 {
                 new {Text="Pre-Pay"},
                 new {Text ="Cash on Delivery"},
+                 new {Text="DC"},
+                new {Text ="CC"},
+                 new {Text="UPI"},
+                new {Text ="Online"},
+                 new {Text="NB"},
+               
                 };
                 ptypebox.DataSource = items;
 
@@ -72,10 +78,21 @@ namespace Veiled_Kashmir_Admin_Panel
                 BindingSource bsource = arg[13] as BindingSource;
                 shipdttxt.Text = arg[14] as string;
                 deldttxt.Text = arg[15] as string;
+                string transit = arg[15] as string;
+                
                 orderdetailview.DataSource = bsource;
 
                 orderdetailview.Visible = true;
                 deupdbtn.Visible = true;
+
+                if (transit == "False")
+                {
+                    transitbox.Checked = false;
+                }
+                else if(transit=="True")
+                    transitbox.Checked = true;
+                
+
 
                 if (pconf == "False")
                 {
@@ -94,6 +111,26 @@ namespace Veiled_Kashmir_Admin_Panel
                 }else if(ptype=="Cash on Delivery")
                 {
                     ptypebox.SelectedIndex = 1;
+                }
+                else if (ptype == "DC")
+                {
+                    ptypebox.SelectedIndex = 2;
+                }
+                else if (ptype == "CC")
+                {
+                    ptypebox.SelectedIndex = 3;
+                }
+                else if (ptype == "UPI")
+                {
+                    ptypebox.SelectedIndex = 4;
+                }
+                else if (ptype == "Online")
+                {
+                    ptypebox.SelectedIndex = 5;
+                }
+                else if (ptype == "NB")
+                {
+                    ptypebox.SelectedIndex = 6;
                 }
 
                 refreshbtn.Visible = true;
@@ -123,7 +160,7 @@ namespace Veiled_Kashmir_Admin_Panel
             {
                 string orderid = e.Argument as string;
                
-                dr = obj.Query("select amount,shipping,name,address1,address2,pincode,contact,city,status,itemcount,deliveryguy,paymenttype,paymentconfirmed,shipdate,deliverdate from orders where orderid='" + orderid + "'");
+                dr = obj.Query("select amount,shipping,name,address1,address2,pincode,contact,city,status,itemcount,deliveryguy,paymenttype,paymentconfirmed,shipdate,deliverdate,in_transit from orders where orderid='" + orderid + "'");
                 dr.Read();
                 string amount = dr[0].ToString();
                 string shipping = dr[1].ToString();
@@ -139,7 +176,9 @@ namespace Veiled_Kashmir_Admin_Panel
                 string ptype = dr[11].ToString();
                 string pconf = dr[12].ToString();
                 string sdate= dr[13].ToString();
-                string ddate = dr[14].ToString();
+                string ddate = dr[14].ToString();               
+                string transit = dr[15].ToString();
+
                 obj.closeConnection();
 
                adap = new MySqlDataAdapter("SELECT * FROM orderdetails where orderid='" + orderid + "'", conn);
@@ -150,7 +189,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 bsource.DataSource = dt;
 
 
-                object[] arg = {amount,shipping,name,add1,add2,pin,con,city,status,count,dguy,ptype,pconf,bsource,sdate,ddate};
+                object[] arg = {amount,shipping,name,add1,add2,pin,con,city,status,count,dguy,ptype,pconf,bsource,sdate,ddate,transit};
               
                 e.Result = arg;
 
@@ -164,7 +203,7 @@ namespace Veiled_Kashmir_Admin_Panel
         public bool update = false;
         private void updbtn_Click(object sender, EventArgs e)
         {
-            string pconf= "";
+            string pconf= "",transit="";
             try
             {
                 DialogResult dgr = MessageBox.Show("Update details for this OrderID: " + id + " ?", "Confirm", MessageBoxButtons.YesNo);
@@ -175,14 +214,19 @@ namespace Veiled_Kashmir_Admin_Panel
                         pconf = "1";
                     else
                         pconf = "0";
-                   
+                    if (transitbox.Checked)
+                        transit = "1";
+                    else
+                        transit = "0";
+                    MessageBox.Show(transit.ToString());
+
                     if (deldttxt.Text == String.Empty)
                     {
                         string date = "NULL";
                         string cmd = "update orders set amount='" + amtxt.Text + "',shipping='" + shiptxt.Text + "',name='" + nametxt.Text + "',address1='" + add1txt.Text + "'" +
                         ",address2='" + add2txt.Text + "',pincode='" + pintxt.Text + "',contact='" + contxt.Text + "',city='" + citytxt.Text + "',status='" + statustxt.Text + "'" +
                         ",itemcount='" + counttxt.Text + "',deliveryguy='" + dguytxt.Text + "',paymenttype='" + ptypebox.Text + "',paymentconfirmed='" + pconf
-                        + "',deliverdate="+date+" where orderid='" + id + "'";
+                        + "',deliverdate="+date+",in_transit='"+transit+"' where orderid='" + id + "'";
                         obj.nonQuery(cmd);
                     }
                     else
@@ -193,7 +237,7 @@ namespace Veiled_Kashmir_Admin_Panel
                         string cmd = "update orders set amount='" + amtxt.Text + "',shipping='" + shiptxt.Text + "',name='" + nametxt.Text + "',address1='" + add1txt.Text + "'" +
                             ",address2='" + add2txt.Text + "',pincode='" + pintxt.Text + "',contact='" + contxt.Text + "',city='" + citytxt.Text + "',status='" + statustxt.Text + "'" +
                             ",itemcount='" + counttxt.Text + "',deliveryguy='" + dguytxt.Text + "',paymenttype='" + ptypebox.Text + "',paymentconfirmed='" + pconf
-                            + "',deliverdate='" + date + "' where orderid='" + id + "'";
+                            + "',deliverdate='" + date + "',in_transit='" + transit + "' where orderid='" + id + "'";
                             obj.nonQuery(cmd);
                       
                         

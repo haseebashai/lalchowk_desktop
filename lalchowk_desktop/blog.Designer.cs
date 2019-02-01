@@ -28,10 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.formlbl = new System.Windows.Forms.Label();
             this.pnl = new System.Windows.Forms.Panel();
+            this.editbtn = new MaterialSkin.Controls.MaterialFlatButton();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.newbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.newpnl = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.pviewtxt = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.authdptxt = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.dptxt = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -57,11 +64,12 @@
             this.authtxt = new System.Windows.Forms.TextBox();
             this.posttxt = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
-            this.editbtn = new MaterialSkin.Controls.MaterialFlatButton();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.newbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.editpnl = new System.Windows.Forms.Panel();
             this.tagpnl = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.editartbtn = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.editarttxt = new System.Windows.Forms.TextBox();
             this.addtagbtn = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.tagtxt = new System.Windows.Forms.TextBox();
@@ -73,14 +81,6 @@
             this.updpbtn = new System.Windows.Forms.Button();
             this.updbtn = new System.Windows.Forms.Button();
             this.blogdataview = new System.Windows.Forms.DataGridView();
-            this.label9 = new System.Windows.Forms.Label();
-            this.editarttxt = new System.Windows.Forms.TextBox();
-            this.editartbtn = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label13 = new System.Windows.Forms.Label();
-            this.authdptxt = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.pviewtxt = new System.Windows.Forms.TextBox();
             this.pnl.SuspendLayout();
             this.newpnl.SuspendLayout();
             this.artpnl.SuspendLayout();
@@ -116,6 +116,46 @@
             this.pnl.Size = new System.Drawing.Size(1162, 681);
             this.pnl.TabIndex = 54;
             // 
+            // editbtn
+            // 
+            this.editbtn.AutoSize = true;
+            this.editbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.editbtn.Depth = 0;
+            this.editbtn.Location = new System.Drawing.Point(262, 45);
+            this.editbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.editbtn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.editbtn.Name = "editbtn";
+            this.editbtn.Primary = false;
+            this.editbtn.Size = new System.Drawing.Size(87, 36);
+            this.editbtn.TabIndex = 190;
+            this.editbtn.Text = "Edit posts";
+            this.editbtn.UseVisualStyleBackColor = true;
+            this.editbtn.Click += new System.EventHandler(this.editbtn_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel1.Location = new System.Drawing.Point(17, 90);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1088, 1);
+            this.panel1.TabIndex = 189;
+            // 
+            // newbtn
+            // 
+            this.newbtn.AutoSize = true;
+            this.newbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.newbtn.Depth = 0;
+            this.newbtn.Location = new System.Drawing.Point(78, 45);
+            this.newbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.newbtn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.newbtn.Name = "newbtn";
+            this.newbtn.Primary = false;
+            this.newbtn.Size = new System.Drawing.Size(118, 36);
+            this.newbtn.TabIndex = 46;
+            this.newbtn.Text = "New Blog Post";
+            this.newbtn.UseVisualStyleBackColor = true;
+            this.newbtn.Click += new System.EventHandler(this.newbtn_Click);
+            // 
             // newpnl
             // 
             this.newpnl.Controls.Add(this.label14);
@@ -143,6 +183,38 @@
             this.newpnl.Name = "newpnl";
             this.newpnl.Size = new System.Drawing.Size(1133, 580);
             this.newpnl.TabIndex = 191;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(494, 535);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(59, 13);
+            this.label14.TabIndex = 179;
+            this.label14.Text = "Post Views";
+            // 
+            // pviewtxt
+            // 
+            this.pviewtxt.Location = new System.Drawing.Point(497, 551);
+            this.pviewtxt.Name = "pviewtxt";
+            this.pviewtxt.Size = new System.Drawing.Size(134, 20);
+            this.pviewtxt.TabIndex = 178;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(705, 502);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(150, 13);
+            this.label13.TabIndex = 177;
+            this.label13.Text = "Author DP (please upload first)";
+            // 
+            // authdptxt
+            // 
+            this.authdptxt.Location = new System.Drawing.Point(708, 518);
+            this.authdptxt.Name = "authdptxt";
+            this.authdptxt.Size = new System.Drawing.Size(204, 20);
+            this.authdptxt.TabIndex = 176;
             // 
             // label8
             // 
@@ -312,6 +384,7 @@
             // 
             this.artcontxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.artcontxt.Location = new System.Drawing.Point(10, 151);
+            this.artcontxt.MaxLength = 32767000;
             this.artcontxt.Multiline = true;
             this.artcontxt.Name = "artcontxt";
             this.artcontxt.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -380,6 +453,7 @@
             // 
             this.posttxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.posttxt.Location = new System.Drawing.Point(492, 43);
+            this.posttxt.MaxLength = 32767000;
             this.posttxt.Multiline = true;
             this.posttxt.Name = "posttxt";
             this.posttxt.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -395,46 +469,6 @@
             this.label18.Size = new System.Drawing.Size(131, 16);
             this.label18.TabIndex = 156;
             this.label18.Text = "Post Content (HTML)";
-            // 
-            // editbtn
-            // 
-            this.editbtn.AutoSize = true;
-            this.editbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.editbtn.Depth = 0;
-            this.editbtn.Location = new System.Drawing.Point(262, 45);
-            this.editbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.editbtn.MouseState = MaterialSkin.MouseState.HOVER;
-            this.editbtn.Name = "editbtn";
-            this.editbtn.Primary = false;
-            this.editbtn.Size = new System.Drawing.Size(87, 36);
-            this.editbtn.TabIndex = 190;
-            this.editbtn.Text = "Edit posts";
-            this.editbtn.UseVisualStyleBackColor = true;
-            this.editbtn.Click += new System.EventHandler(this.editbtn_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panel1.Location = new System.Drawing.Point(17, 90);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1088, 1);
-            this.panel1.TabIndex = 189;
-            // 
-            // newbtn
-            // 
-            this.newbtn.AutoSize = true;
-            this.newbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.newbtn.Depth = 0;
-            this.newbtn.Location = new System.Drawing.Point(78, 45);
-            this.newbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.newbtn.MouseState = MaterialSkin.MouseState.HOVER;
-            this.newbtn.Name = "newbtn";
-            this.newbtn.Primary = false;
-            this.newbtn.Size = new System.Drawing.Size(118, 36);
-            this.newbtn.TabIndex = 46;
-            this.newbtn.Text = "New Blog Post";
-            this.newbtn.UseVisualStyleBackColor = true;
-            this.newbtn.Click += new System.EventHandler(this.newbtn_Click);
             // 
             // editpnl
             // 
@@ -465,6 +499,47 @@
             this.tagpnl.Size = new System.Drawing.Size(469, 285);
             this.tagpnl.TabIndex = 160;
             this.tagpnl.Visible = false;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel2.Location = new System.Drawing.Point(17, 191);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(433, 1);
+            this.panel2.TabIndex = 190;
+            // 
+            // editartbtn
+            // 
+            this.editartbtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.editartbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.editartbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.editartbtn.Location = new System.Drawing.Point(338, 143);
+            this.editartbtn.Name = "editartbtn";
+            this.editartbtn.Size = new System.Drawing.Size(126, 32);
+            this.editartbtn.TabIndex = 164;
+            this.editartbtn.Text = "Update Article Content";
+            this.editartbtn.UseVisualStyleBackColor = true;
+            this.editartbtn.Click += new System.EventHandler(this.editartbtn_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(3, 6);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(119, 16);
+            this.label9.TabIndex = 163;
+            this.label9.Text = "Edit Article Content";
+            // 
+            // editarttxt
+            // 
+            this.editarttxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editarttxt.Location = new System.Drawing.Point(6, 25);
+            this.editarttxt.Multiline = true;
+            this.editarttxt.Name = "editarttxt";
+            this.editarttxt.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.editarttxt.Size = new System.Drawing.Size(458, 112);
+            this.editarttxt.TabIndex = 162;
             // 
             // addtagbtn
             // 
@@ -542,6 +617,7 @@
             // 
             this.desctxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.desctxt.Location = new System.Drawing.Point(6, 28);
+            this.desctxt.MaxLength = 32767000;
             this.desctxt.Multiline = true;
             this.desctxt.Name = "desctxt";
             this.desctxt.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -580,14 +656,14 @@
             this.blogdataview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.blogdataview.BackgroundColor = System.Drawing.Color.White;
             this.blogdataview.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.blogdataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.blogdataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.blogdataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.blogdataview.GridColor = System.Drawing.SystemColors.Control;
             this.blogdataview.Location = new System.Drawing.Point(17, 6);
@@ -595,79 +671,6 @@
             this.blogdataview.Size = new System.Drawing.Size(1110, 219);
             this.blogdataview.TabIndex = 157;
             this.blogdataview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.blogdataview_CellContentClick);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(3, 6);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(119, 16);
-            this.label9.TabIndex = 163;
-            this.label9.Text = "Edit Article Content";
-            // 
-            // editarttxt
-            // 
-            this.editarttxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editarttxt.Location = new System.Drawing.Point(6, 25);
-            this.editarttxt.Multiline = true;
-            this.editarttxt.Name = "editarttxt";
-            this.editarttxt.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.editarttxt.Size = new System.Drawing.Size(458, 112);
-            this.editarttxt.TabIndex = 162;
-            // 
-            // editartbtn
-            // 
-            this.editartbtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.editartbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
-            this.editartbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.editartbtn.Location = new System.Drawing.Point(338, 143);
-            this.editartbtn.Name = "editartbtn";
-            this.editartbtn.Size = new System.Drawing.Size(126, 32);
-            this.editartbtn.TabIndex = 164;
-            this.editartbtn.Text = "Update Article Content";
-            this.editartbtn.UseVisualStyleBackColor = true;
-            this.editartbtn.Click += new System.EventHandler(this.editartbtn_Click);
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panel2.Location = new System.Drawing.Point(17, 191);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(433, 1);
-            this.panel2.TabIndex = 190;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(705, 502);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(150, 13);
-            this.label13.TabIndex = 177;
-            this.label13.Text = "Author DP (please upload first)";
-            // 
-            // authdptxt
-            // 
-            this.authdptxt.Location = new System.Drawing.Point(708, 518);
-            this.authdptxt.Name = "authdptxt";
-            this.authdptxt.Size = new System.Drawing.Size(204, 20);
-            this.authdptxt.TabIndex = 176;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(494, 535);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(59, 13);
-            this.label14.TabIndex = 179;
-            this.label14.Text = "Post Views";
-            // 
-            // pviewtxt
-            // 
-            this.pviewtxt.Location = new System.Drawing.Point(497, 551);
-            this.pviewtxt.Name = "pviewtxt";
-            this.pviewtxt.Size = new System.Drawing.Size(134, 20);
-            this.pviewtxt.TabIndex = 178;
             // 
             // blog
             // 
