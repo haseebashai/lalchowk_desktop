@@ -128,7 +128,7 @@ namespace Veiled_Kashmir_Admin_Panel
             else
             {
                 loading.Visible = false;
-                formlbl.Text = "Change Offers";
+                formlbl.Text = "Homepage";
                 formlbl.BringToFront();
             }
             offersdataview.DataSource = bsource;
@@ -137,11 +137,7 @@ namespace Veiled_Kashmir_Admin_Panel
             itemsdataview.DataSource = bsource3;
             hpnl.Visible = true;
 
-            lefttxt.Text = lefttxtvar;
-            leftlink.Text = leftlinkvar;
-            righttxt.Text = righttxtvar;
-            rightlink.Text = rightlinkvar;
-
+           
             
 
             p1title.Text = p1titlevar;
@@ -169,27 +165,64 @@ namespace Veiled_Kashmir_Admin_Panel
                 BackgroundWorker links = new BackgroundWorker();
                 links.DoWork += (o, a) =>
                 {
-                    dr = obj.Query("select command from lalchowk.split where pic='Products2'");
+
+
+                    dr = obj.Query("select homepage3.picture,split.command from homepage3 inner JOIN split ON (homepage3.link=split.pic) where link='leftpic'");
                     dr.Read();
-                    string  cat1 = dr["command"].ToString();
+                    lefttxtvar = dr[0].ToString();
+                    leftlinkvar = dr[1].ToString();
                     obj.closeConnection();
 
-                    dr = obj.Query("select command from lalchowk.split where pic='Products3'");
+                    dr = obj.Query("select homepage3.picture,split.command from homepage3 inner JOIN split ON (homepage3.link=split.pic) where link='rightpic'");
                     dr.Read();
-                    
-                    string cat2 = dr["command"].ToString();
+                    righttxtvar = dr[0].ToString();
+                    rightlinkvar = dr[1].ToString();
                     obj.closeConnection();
-                    object[] arg = {cat1,cat2 };
+
+
+                  
+
+
+                    List<string> command = new List<string>();
+
+
+                    dr = obj.Query("select command from lalchowk.split");
+                    int i = 0;
+                    while (dr.Read())
+                    {
+                        command.Add(dr["command"].ToString());
+                        i++;
+                        
+                    }
+                    obj.closeConnection();
+                  
+
+
+                    object[] arg = {command};
                     a.Result = arg;
 
                 };
                 links.RunWorkerCompleted += (o, b) =>
                 {
 
-                    object[] arg = (object[])b.Result;
+                    lefttxt.Text = lefttxtvar;
+                    leftlink.Text = leftlinkvar;
+                    righttxt.Text = righttxtvar;
+                    rightlink.Text = rightlinkvar;
 
-                    cat1txt.Text = arg[0] as string;
-                    cat2txt.Text = arg[1] as string;
+                    leftpic.ImageLocation = (url + lefttxt.Text);
+                    leftpic.SizeMode = PictureBoxSizeMode.StretchImage;
+                    rightpic.ImageLocation = (url + righttxt.Text);
+                    rightpic.SizeMode = PictureBoxSizeMode.StretchImage;
+
+                    object[] arg = (object[])b.Result;
+                    List<string> command = arg[0] as List<string>;
+
+
+                    cat1txt.Text = command[2] as string;
+                    cat2txt.Text = command[3] as string;
+                    btxt1.Text = command[4] as string;
+                    btxt2.Text = command[5] as string;
 
                 };
                 links.RunWorkerAsync();
@@ -288,6 +321,25 @@ namespace Veiled_Kashmir_Admin_Panel
                 Cursor = Cursors.Arrow;
                 MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
             }
+        }
+
+        private void batbtn_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            try
+            {
+                StringBuilder c1 = new StringBuilder(btxt1.Text);
+                c1.Replace(@"'", "\\'").Replace(@"\", "\\");
+                StringBuilder c2 = new StringBuilder(btxt2.Text);
+                c2.Replace(@"'", "\\'").Replace(@"\", "\\");
+
+                cmd = "update split set command='" + c1 + "' where pic='Banner1'";
+                obj.nonQuery(cmd);
+                cmd = "update split set command='" + c2 + "' where pic='Banner2'";
+                obj.nonQuery(cmd);
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+            Cursor = Cursors.Arrow;
         }
 
         private void cat1btn_Click(object sender, EventArgs e)
@@ -618,7 +670,7 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             try { 
             Cursor = Cursors.WaitCursor;
-            dr = obj.Query("SELECT productname,productid FROM lalchowk.products WHERE productid> (select max(productid)-1000 from products) and stock>0 and price>0 and picture !='defaultbook.jpg' ORDER BY RAND() desc LIMIT 18 ");
+            dr = obj.Query("SELECT productname,productid FROM lalchowk.products WHERE productid> (select max(productid)-1000 from products) and stock>0 and price>0 and picture !='defaultbook.jpg' ORDER BY RAND() desc LIMIT 16 ");
            
             List<string> productid = new List<string>();
                 List<string> productname = new List<string>();
@@ -637,7 +689,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 obj.closeConnection();
                 try
                 {
-                    for (i = 0; i < 18; i++)
+                    for (i = 0; i < 16; i++)
                      {
 
                         //cmd = "update homepage2 set link='" + productid[i] + "',title='"+productname[i]+"' where homeid='" + homeid + "'";
@@ -735,23 +787,6 @@ namespace Veiled_Kashmir_Admin_Panel
                 bsource2.DataSource = dt;
 
 
-                dr = obj.Query("select homepage3.picture,split.command from homepage3 inner JOIN split ON (homepage3.link=split.pic) where link='leftpic'");
-                dr.Read();
-                lefttxtvar = dr[0].ToString();
-                leftlinkvar = dr[1].ToString();
-                obj.closeConnection();
-
-                dr = obj.Query("select homepage3.picture,split.command from homepage3 inner JOIN split ON (homepage3.link=split.pic) where link='rightpic'");
-                dr.Read();
-                righttxtvar = dr[0].ToString();
-                rightlinkvar = dr[1].ToString();
-                obj.closeConnection();
-
-
-                leftpic.ImageLocation = (url + lefttxt.Text);
-                leftpic.SizeMode = PictureBoxSizeMode.StretchImage;
-                rightpic.ImageLocation = (url + righttxt.Text);
-                rightpic.SizeMode = PictureBoxSizeMode.StretchImage;
 
                 dr = obj.Query("select title, subtitle, picture, link from homepage3 where homeid='3'");
                 dr.Read();
