@@ -142,6 +142,8 @@ namespace Veiled_Kashmir_Admin_Panel
             righttxt.Text = righttxtvar;
             rightlink.Text = rightlinkvar;
 
+            
+
             p1title.Text = p1titlevar;
             p1sub.Text = p1subvar;
             p1pic.Text = p1picvar;
@@ -162,7 +164,39 @@ namespace Veiled_Kashmir_Admin_Panel
             p4pic.Text = p4picvar;
             p4link.Text = p4linkvar;
 
-           
+            try
+            {
+                BackgroundWorker links = new BackgroundWorker();
+                links.DoWork += (o, a) =>
+                {
+                    dr = obj.Query("select command from lalchowk.split where pic='Products2'");
+                    dr.Read();
+                    string  cat1 = dr["command"].ToString();
+                    obj.closeConnection();
+
+                    dr = obj.Query("select command from lalchowk.split where pic='Products3'");
+                    dr.Read();
+                    
+                    string cat2 = dr["command"].ToString();
+                    obj.closeConnection();
+                    object[] arg = {cat1,cat2 };
+                    a.Result = arg;
+
+                };
+                links.RunWorkerCompleted += (o, b) =>
+                {
+
+                    object[] arg = (object[])b.Result;
+
+                    cat1txt.Text = arg[0] as string;
+                    cat2txt.Text = arg[1] as string;
+
+                };
+                links.RunWorkerAsync();
+            }
+            catch { };
+
+
         }
         public static void UploadFileToFtp(string url, string filePath)
         {
@@ -199,19 +233,163 @@ namespace Veiled_Kashmir_Admin_Panel
                 p3titlevar, p3subvar, p3picvar, p3linkvar, p4titlevar, p4subvar, p4picvar, p4linkvar,fileaddress,filename,fullpath,
                 directory,uploaddir;
 
-      
+        private void cat2btn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Cursor = Cursors.WaitCursor;
+                dr = obj.Query("SELECT productname,productid FROM lalchowk.products WHERE categoryid ='" + rcat2.Text + "' and stock>0 and price>0 and picture !='defaultbook.jpg' ORDER BY RAND() desc LIMIT 8 ");
+
+                List<string> productid = new List<string>();
+                List<string> productname = new List<string>();
+
+                int i = 0;
+                int homeid = 200;
+                while (dr.Read())
+                {
+
+                    productid.Add(dr["productid"].ToString());
+                    productname.Add(dr["productname"].ToString());
+                    i++;
+
+
+                }
+                obj.closeConnection();
+                try
+                {
+                    for (i = 0; i < 8; i++)
+                    {
+
+                        //cmd = "update homepage2 set link='" + productid[i] + "',title='"+productname[i]+"' where homeid='" + homeid + "'";
+                        //obj.nonQuery(cmd);
+                        StringBuilder name = new StringBuilder(productname[i]);
+                        name.Replace(@"'", "\\'").Replace(@"\", "\\");
+                        cmd = "update homepage3 set link='" + productid[i] + "',title='" + name + "' where homeid='" + homeid + "'";
+                        obj.nonQuery(cmd);
+                        obj.closeConnection();
+
+                        homeid++;
+                    }
+                    readitems();
+                    itemsdataview.DataSource = bsource3;
+                    MessageBox.Show("Updated.");
+                }
+                catch (Exception ex)
+                {
+                    obj.closeConnection();
+                    Cursor = Cursors.Arrow;
+                    MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
+                }
+                Cursor = Cursors.Arrow;
+            }
+            catch (Exception ex)
+            {
+                obj.closeConnection();
+                Cursor = Cursors.Arrow;
+                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
+            }
+        }
+
+        private void cat1btn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Cursor = Cursors.WaitCursor;
+                dr = obj.Query("SELECT productid,productname FROM lalchowk.products WHERE categoryid ='"+rcat1.Text+ "' and stock>0 and price>0 and picture !='defaultbook.jpg' ORDER BY rand()  desc LIMIT 8 ");
+
+                List<string> cproductid = new List<string>();
+                List<string> cproductname = new List<string>();
+
+                int i = 0;
+                int homeid = 100;
+                while (dr.Read())
+                {
+
+                    cproductid.Add(dr["productid"].ToString());
+                    cproductname.Add(dr["productname"].ToString());
+                    i++;
+
+
+                }
+                obj.closeConnection();
+                try
+                {
+                    for (i = 0; i < 8; i++)
+                    {
+                       
+                        StringBuilder name = new StringBuilder(cproductname[i]);
+                        name.Replace(@"'", "\\'").Replace(@"\", "\\");
+                        cmd = "update homepage3 set link='" + cproductid[i] + "',title='" + name + "' where homeid='" + homeid + "'";
+                        obj.nonQuery(cmd);
+                        obj.closeConnection();
+
+                        homeid++;
+                    }
+                    readitems();
+                    itemsdataview.DataSource = bsource3;
+                    MessageBox.Show("Updated.");
+                }
+                catch (Exception ex)
+                {
+                    obj.closeConnection();
+                    Cursor = Cursors.Arrow;
+                    MessageBox.Show("Something happened, please try again.\n\n" + ex.ToString(), "Error!");
+                }
+                Cursor = Cursors.Arrow;
+            }
+            catch (Exception ex)
+            {
+                obj.closeConnection();
+                Cursor = Cursors.Arrow;
+                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
+            }
+        }
+
+        private void catbtn_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            try
+            {
+                StringBuilder c1 = new StringBuilder(cat1txt.Text);
+                c1.Replace(@"'", "\\'").Replace(@"\", "\\");
+                StringBuilder c2 = new StringBuilder(cat2txt.Text);
+                c2.Replace(@"'", "\\'").Replace(@"\", "\\");
+
+                cmd = "update split set command='" + c1 + "' where pic='Products2'";
+                obj.nonQuery(cmd);
+                cmd = "update split set command='" + c2 + "' where pic='Products3'";
+                obj.nonQuery(cmd);
+            }catch(Exception ex) { MessageBox.Show(ex.Message); }
+            Cursor = Cursors.Arrow;
+        }
+
+        private void opictxt_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog fd = new OpenFileDialog();
+
+            if (fd.ShowDialog() == DialogResult.OK)
+            {
+                fileaddress = fd.FileName;
+                filename = fd.SafeFileName;
+                fullpath = Path.GetFullPath(fileaddress).TrimEnd(Path.DirectorySeparatorChar);
+                directory = Path.GetDirectoryName(fullpath) + "\\";
+                opictxt.Text = Path.GetFileName(fullpath);
+            }
+
+        }
+
         private void upofferbtn_Click(object sender, EventArgs e)
         {
             if (opictxt.Text == "")
             {
-                MessageBox.Show("Please Upload Picture first.");
+                MessageBox.Show("Please select Picture first.");
             }
             else
             {
                 Cursor = Cursors.WaitCursor;
                 upofferpic();
-                readoffers();
-                offersdataview.DataSource = bsource;
+             //   readoffers();
+               // offersdataview.DataSource = bsource;
                 
             }
             Cursor = Cursors.Arrow;
@@ -236,8 +414,8 @@ namespace Veiled_Kashmir_Admin_Panel
 
                 g.Dispose();
                 myimage.Dispose();
-                offerpic.BackgroundImage = clone;
-                offerpic.BackgroundImageLayout = ImageLayout.Stretch;
+                //offerpic.BackgroundImage = clone;
+                //offerpic.BackgroundImageLayout = ImageLayout.Stretch;
                 fullpath = Path.GetFullPath(fileaddress).TrimEnd(Path.DirectorySeparatorChar);
                 directory = Path.GetDirectoryName(fullpath) + "\\";
                 opictxt.Text = Path.GetFileName(fullpath);
@@ -253,13 +431,13 @@ namespace Veiled_Kashmir_Admin_Panel
                 uploaddir = directory + opictxt.Text;
                 UploadFileToFtp("ftp://lalchowk.in/httpdocs/lalchowk/pictures/", uploaddir);
                
-                cmd = "insert into offers (`picture`,`command`)values('"+opictxt.Text+"','"+commandtxt.Text+"')";
-                obj.nonQuery(cmd);
-                obj.closeConnection();
+                //cmd = "insert into offers (`picture`,`command`)values('"+opictxt.Text+"','"+commandtxt.Text+"')";
+                //obj.nonQuery(cmd);
+                //obj.closeConnection();
                 MessageBox.Show("Picture uploaded successfully.", "Success");
                 opictxt.Text = "";
-                commandtxt.Text = "";
-                offerpic.BackgroundImage = null;
+                //commandtxt.Text = "";
+                //offerpic.BackgroundImage = null;
             }
             catch(Exception ex)
             {
@@ -446,7 +624,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 List<string> productname = new List<string>();
 
             int i = 0;
-            int homeid = 35;
+                int homeid = 35;
             while (dr.Read())
             {
                 
@@ -549,7 +727,7 @@ namespace Veiled_Kashmir_Admin_Panel
             try
             {
                 con.Open();
-                adap = new MySqlDataAdapter("SELECT productid, productname, picture, stock, price,categoryid FROM products where stock>0 and picture!='defaultbook.jpg' order by productid desc", con);
+                adap = new MySqlDataAdapter("SELECT productid, productname, picture, stock, price,categoryid FROM products where stock>0 and picture!='defaultbook.jpg' order by productid desc limit 4000", con);
                 dt = new DataTable();
                 adap.Fill(dt);
                 con.Close();
@@ -568,6 +746,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 righttxtvar = dr[0].ToString();
                 rightlinkvar = dr[1].ToString();
                 obj.closeConnection();
+
 
                 leftpic.ImageLocation = (url + lefttxt.Text);
                 leftpic.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -616,7 +795,7 @@ namespace Veiled_Kashmir_Admin_Panel
             {
                 obj.closeConnection();
                 con.Close();
-                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
+                MessageBox.Show("Something happened, please try again.\n\n" + ex.ToString(), "Error!");
             }
         }
 

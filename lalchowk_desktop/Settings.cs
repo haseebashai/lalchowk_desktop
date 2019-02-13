@@ -103,7 +103,7 @@ namespace Veiled_Kashmir_Admin_Panel
         public void readpincodes()
         {
             try { 
-            adap = new MySqlDataAdapter("select * from pincodes", con);
+            adap = new MySqlDataAdapter("select * from pincodes where state='Jammu & Kashmir'", con);
             dt = new DataTable();
             adap.Fill(dt);
             bsource = new BindingSource();
@@ -176,6 +176,34 @@ namespace Veiled_Kashmir_Admin_Panel
             updbtn.Location = new Point(1018, 382);
             spnl.Visible = true;
             panelshow();
+            BackgroundWorker pin = new BackgroundWorker();
+            pin.DoWork += (o, a) =>
+            {
+                try
+                {
+
+                    dr = obj.Query("select distinct state as state from pincodes");
+                    DataTable dt = new DataTable();
+                    dt.Columns.Add("state", typeof(String));
+                    dt.Load(dr);
+                    obj.closeConnection();
+
+                    postbox.DataSource = dt;
+
+                }
+                catch { obj.closeConnection(); }
+            };
+            pin.RunWorkerCompleted += (o, b) =>
+            {
+                try
+                {
+                    postbox.DisplayMember = "state";
+                    postbox.SelectedIndex = -1;
+
+                }
+                catch (Exception ex) { MessageBox.Show(ex.ToString()); };
+            };
+            pin.RunWorkerAsync();
         }
 
         private void bgverification_DoWork(object sender, DoWorkEventArgs e)
@@ -212,7 +240,7 @@ namespace Veiled_Kashmir_Admin_Panel
             loadingshow();
 
             bgpincodes.RunWorkerAsync();
-
+            postbox.SelectedIndex = -1;
 
             ppnl.Visible = true;
         }
@@ -236,27 +264,29 @@ namespace Veiled_Kashmir_Admin_Panel
             {
                 if (pyes.Checked)
                 {
-                    cmd = ("insert into pincodes(`pincode`, `deliverytime`,`cod`,`area`,`extracharges`) values ('" + pintxt.Text + "','" + deltxt.Text + "','1','" + areatxt.Text + "','"+delchtxt.Text+"')");
+                    cmd = ("insert into pincodes(`pincode`, `deliverytime`,`cod`,`extracharges`,`postoffice`,`city`,`district`,`state`) values"
+                        +"('" + pintxt.Text + "','" + deltxt.Text + "','1','"+delchtxt.Text+"','"+posttxt.Text+"','"+citytxt.Text+"','"+distxt.Text+"','" + sttxt.Text + "')");
                     obj.nonQuery(cmd);
                     obj.closeConnection();
                 }
                 else
                 {
-                    cmd = ("insert into pincodes(`pincode`, `deliverytime`,`cod`,`area`,`extracharges`) values ('" + pintxt.Text + "','" + deltxt.Text + "','0','" + areatxt.Text + "','" + delchtxt.Text + "')");
+                    cmd = ("insert into pincodes(`pincode`, `deliverytime`,`cod`,`extracharges`,`postoffice`,`city`,`district`,`state`) values"
+                        +" ('" + pintxt.Text + "','" + deltxt.Text + "','0','" + delchtxt.Text + "','" + posttxt.Text + "','" + citytxt.Text + "','" + distxt.Text + "','" + sttxt.Text + "')");
                     obj.nonQuery(cmd);
                     obj.closeConnection();
                 }
                 MessageBox.Show("Pincode added.");
 
                 pintxt.Text = "";
-                deltxt.Text = "";
-                areatxt.Text = "";
-                delchtxt.Text = "";
-                pyes.Checked = false;
-                pno.Checked = false;
+             //   deltxt.Text = "";
+                sttxt.Text = "";
+           //     delchtxt.Text = "";
+            //    pyes.Checked = false;
+              //  pno.Checked = false;
 
-                readpincodes();
-                settingsdataview.DataSource = bsource;
+               // readpincodes();
+                //settingsdataview.DataSource = bsource;
             }
             catch (Exception ex)
             {
@@ -391,6 +421,30 @@ namespace Veiled_Kashmir_Admin_Panel
 
             dg.Show();
             tr.Show();
+        }
+
+   
+
+        private void postbox_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            try
+            {
+                adap = new MySqlDataAdapter("select * from pincodes where state='" + postbox.Text + "'", con);
+                dt = new DataTable();
+                adap.Fill(dt);
+                bsource = new BindingSource();
+                bsource.DataSource = dt;
+                settingsdataview.DataSource = bsource;
+                settingsdataview.Location = new Point(3, 234);
+            }
+            catch (Exception ex)
+            {
+                con.Close();
+                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
+            }
+            con.Close();
+            Cursor = Cursors.Arrow;
         }
     }
 }

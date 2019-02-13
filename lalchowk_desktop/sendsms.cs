@@ -553,11 +553,11 @@ namespace Veiled_Kashmir_Admin_Panel
             
             if (cname == "")
             {
-                smstxt.Text = "Dear Customer, hope you had a nice shopping experience with www.lalchowk.in. We would love to read your reviews on Google play store here: bit.ly/lalchowkonline or our social media handles.";
+                smstxt.Text = "Dear Customer, hope you had a nice shopping experience with www.lalchowk.in. We would love to read your reviews on our Appstores here: bit.ly/GetLalchowk or our social media handles.";
             }
             else if(cname!="")
             {
-                smstxt.Text = "Dear "+cname+", hope you had a nice shopping experience with www.lalchowk.in. We would love to read your reviews on Google play store here: bit.ly/lalchowkonline or our social media handles.";
+                smstxt.Text = "Dear "+cname+ ", hope you had a nice shopping experience with www.lalchowk.in. We would love to read your reviews on our Appstores here: bit.ly/GetLalchowk or our social media handles.";
 
             }
         }

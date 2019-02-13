@@ -447,6 +447,7 @@ namespace Veiled_Kashmir_Admin_Panel
         }
 
         string fileaddress, filename, fullpath, directory,uploaddir;
+
         private void uptxt_Click(object sender, EventArgs e)
         {
             

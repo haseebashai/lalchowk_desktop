@@ -69,7 +69,7 @@
             this.dplbl = new System.Windows.Forms.Label();
             this.mrplbl = new System.Windows.Forms.Label();
             this.pricelbl = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.plbl = new System.Windows.Forms.Label();
             this.profitlbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.orderdetailview)).BeginInit();
             this.SuspendLayout();
@@ -484,16 +484,16 @@
             this.pricelbl.Size = new System.Drawing.Size(0, 13);
             this.pricelbl.TabIndex = 120;
             // 
-            // label4
+            // plbl
             // 
-            this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(595, 12);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(34, 13);
-            this.label4.TabIndex = 121;
-            this.label4.Text = "Profit:";
-            this.label4.Visible = false;
+            this.plbl.AutoSize = true;
+            this.plbl.ForeColor = System.Drawing.Color.Black;
+            this.plbl.Location = new System.Drawing.Point(595, 12);
+            this.plbl.Name = "plbl";
+            this.plbl.Size = new System.Drawing.Size(34, 13);
+            this.plbl.TabIndex = 121;
+            this.plbl.Text = "Profit:";
+            this.plbl.Visible = false;
             // 
             // profitlbl
             // 
@@ -512,7 +512,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(671, 661);
             this.Controls.Add(this.profitlbl);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.plbl);
             this.Controls.Add(this.pricelbl);
             this.Controls.Add(this.mrplbl);
             this.Controls.Add(this.dplbl);
@@ -607,7 +607,7 @@
         private System.Windows.Forms.Label dplbl;
         private System.Windows.Forms.Label mrplbl;
         private System.Windows.Forms.Label pricelbl;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label plbl;
         private System.Windows.Forms.Label profitlbl;
     }
 }

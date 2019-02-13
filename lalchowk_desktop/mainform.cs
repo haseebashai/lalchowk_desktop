@@ -1434,7 +1434,7 @@ namespace Veiled_Kashmir_Admin_Panel
                                 string id = row.Cells["orderid"].Value.ToString();
                                 DateTime time = DateTime.Now;             // Use current time.
                                 string shipdate = time.ToString("yyyy-MM-dd HH:mm:ss");
-
+                                
                                 string cmd = "Update orders set status='Shipped', shipdate='" + shipdate + "', deliveryguy='"+input+"',in_transit='1' where orderid='" + id + "'";
                                 obj.nonQuery(cmd);
                                 obj.closeConnection();

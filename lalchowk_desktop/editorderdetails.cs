@@ -78,13 +78,13 @@ namespace Veiled_Kashmir_Admin_Panel
                 BindingSource bsource = arg[13] as BindingSource;
                 shipdttxt.Text = arg[14] as string;
                 deldttxt.Text = arg[15] as string;
-                string transit = arg[15] as string;
+                string transit = arg[16] as string;
                 
                 orderdetailview.DataSource = bsource;
 
                 orderdetailview.Visible = true;
                 deupdbtn.Visible = true;
-
+                
                 if (transit == "False")
                 {
                     transitbox.Checked = false;
@@ -178,6 +178,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 string sdate= dr[13].ToString();
                 string ddate = dr[14].ToString();               
                 string transit = dr[15].ToString();
+             
 
                 obj.closeConnection();
 
@@ -218,7 +219,7 @@ namespace Veiled_Kashmir_Admin_Panel
                         transit = "1";
                     else
                         transit = "0";
-                    MessageBox.Show(transit.ToString());
+                  
 
                     if (deldttxt.Text == String.Empty)
                     {
@@ -426,7 +427,8 @@ namespace Veiled_Kashmir_Admin_Panel
             deldttxt.MaxLength = 10;
         }
 
-        private void orderdetailview_RowLeave(object sender, DataGridViewCellEventArgs e)
+
+        private void orderdetailview_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             try
             {

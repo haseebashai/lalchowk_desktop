@@ -100,7 +100,7 @@ namespace Veiled_Kashmir_Admin_Panel
             dg.Text = "Send SMS";
             dg.Size = new Size(600, 600);
             sms.numbertxt.Font = new Font("MS Sans Serif", 9, FontStyle.Regular);
-            sms.smstxt.Text = "Dear "+name+", We would love to hear from you regarding your recent purchase and our services. Please click on the following link and leave your feedback. https://bit.ly/lalchowkonline";
+            sms.smstxt.Text = "Dear "+name+ ", We would love to hear from you regarding your recent purchase and our services. Please click on the following link and leave your feedback on our Appstores. https://bit.ly/GetLalchowk or our social media handles.";
             sms.smsnpnl.Visible = false;
             sms.txtpnl.Location = new Point(35, 10);
             dg.Show();

@@ -32,11 +32,13 @@
             this.updbtn = new System.Windows.Forms.Button();
             this.epnl = new System.Windows.Forms.Panel();
             this.ppnl = new System.Windows.Forms.Panel();
+            this.delchtxt = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.pintxt = new System.Windows.Forms.MaskedTextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.pno = new System.Windows.Forms.CheckBox();
             this.pyes = new System.Windows.Forms.CheckBox();
-            this.areatxt = new System.Windows.Forms.TextBox();
+            this.sttxt = new System.Windows.Forms.TextBox();
             this.addpbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -56,8 +58,14 @@
             this.bgpincodes = new System.ComponentModel.BackgroundWorker();
             this.bgverification = new System.ComponentModel.BackgroundWorker();
             this.formlbl = new System.Windows.Forms.Label();
-            this.delchtxt = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.citytxt = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.distxt = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.posttxt = new System.Windows.Forms.TextBox();
+            this.postbox = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.spnl.SuspendLayout();
             this.epnl.SuspendLayout();
             this.ppnl.SuspendLayout();
@@ -101,13 +109,21 @@
             // 
             // ppnl
             // 
+            this.ppnl.Controls.Add(this.label9);
+            this.ppnl.Controls.Add(this.postbox);
+            this.ppnl.Controls.Add(this.posttxt);
+            this.ppnl.Controls.Add(this.distxt);
+            this.ppnl.Controls.Add(this.label7);
+            this.ppnl.Controls.Add(this.label5);
+            this.ppnl.Controls.Add(this.citytxt);
+            this.ppnl.Controls.Add(this.label6);
             this.ppnl.Controls.Add(this.delchtxt);
             this.ppnl.Controls.Add(this.label4);
             this.ppnl.Controls.Add(this.pintxt);
             this.ppnl.Controls.Add(this.label8);
             this.ppnl.Controls.Add(this.pno);
             this.ppnl.Controls.Add(this.pyes);
-            this.ppnl.Controls.Add(this.areatxt);
+            this.ppnl.Controls.Add(this.sttxt);
             this.ppnl.Controls.Add(this.addpbtn);
             this.ppnl.Controls.Add(this.label3);
             this.ppnl.Controls.Add(this.label2);
@@ -118,6 +134,22 @@
             this.ppnl.Size = new System.Drawing.Size(1153, 170);
             this.ppnl.TabIndex = 0;
             // 
+            // delchtxt
+            // 
+            this.delchtxt.Location = new System.Drawing.Point(189, 113);
+            this.delchtxt.Name = "delchtxt";
+            this.delchtxt.Size = new System.Drawing.Size(100, 20);
+            this.delchtxt.TabIndex = 5;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(186, 97);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(87, 13);
+            this.label4.TabIndex = 107;
+            this.label4.Text = "Delivery Charges";
+            // 
             // pintxt
             // 
             this.pintxt.Culture = new System.Globalization.CultureInfo("en-IN");
@@ -126,7 +158,7 @@
             this.pintxt.Name = "pintxt";
             this.pintxt.PromptChar = ' ';
             this.pintxt.Size = new System.Drawing.Size(143, 20);
-            this.pintxt.TabIndex = 102;
+            this.pintxt.TabIndex = 1;
             this.pintxt.Click += new System.EventHandler(this.pintxt_Click);
             // 
             // label8
@@ -141,10 +173,10 @@
             // pno
             // 
             this.pno.AutoSize = true;
-            this.pno.Location = new System.Drawing.Point(264, 59);
+            this.pno.Location = new System.Drawing.Point(239, 59);
             this.pno.Name = "pno";
             this.pno.Size = new System.Drawing.Size(40, 17);
-            this.pno.TabIndex = 105;
+            this.pno.TabIndex = 4;
             this.pno.Text = "No";
             this.pno.UseVisualStyleBackColor = true;
             this.pno.CheckedChanged += new System.EventHandler(this.pno_CheckedChanged);
@@ -152,33 +184,33 @@
             // pyes
             // 
             this.pyes.AutoSize = true;
-            this.pyes.Location = new System.Drawing.Point(214, 59);
+            this.pyes.Location = new System.Drawing.Point(189, 59);
             this.pyes.Name = "pyes";
             this.pyes.Size = new System.Drawing.Size(44, 17);
-            this.pyes.TabIndex = 104;
+            this.pyes.TabIndex = 3;
             this.pyes.Text = "Yes";
             this.pyes.UseVisualStyleBackColor = true;
             this.pyes.CheckedChanged += new System.EventHandler(this.pyes_CheckedChanged);
             // 
-            // areatxt
+            // sttxt
             // 
-            this.areatxt.Location = new System.Drawing.Point(214, 113);
-            this.areatxt.Name = "areatxt";
-            this.areatxt.Size = new System.Drawing.Size(169, 20);
-            this.areatxt.TabIndex = 106;
+            this.sttxt.Location = new System.Drawing.Point(486, 113);
+            this.sttxt.Name = "sttxt";
+            this.sttxt.Size = new System.Drawing.Size(169, 20);
+            this.sttxt.TabIndex = 9;
             // 
             // addpbtn
             // 
             this.addpbtn.AutoSize = true;
             this.addpbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.addpbtn.Depth = 0;
-            this.addpbtn.Location = new System.Drawing.Point(421, 104);
+            this.addpbtn.Location = new System.Drawing.Point(672, 74);
             this.addpbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.addpbtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.addpbtn.Name = "addpbtn";
             this.addpbtn.Primary = false;
             this.addpbtn.Size = new System.Drawing.Size(100, 36);
-            this.addpbtn.TabIndex = 28;
+            this.addpbtn.TabIndex = 10;
             this.addpbtn.Text = "add pincode";
             this.addpbtn.UseVisualStyleBackColor = true;
             this.addpbtn.Click += new System.EventHandler(this.addpbtn_Click);
@@ -186,16 +218,16 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(211, 97);
+            this.label3.Location = new System.Drawing.Point(484, 96);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(29, 13);
+            this.label3.Size = new System.Drawing.Size(32, 13);
             this.label3.TabIndex = 26;
-            this.label3.Text = "Area";
+            this.label3.Text = "State";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(211, 43);
+            this.label2.Location = new System.Drawing.Point(186, 43);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(30, 13);
             this.label2.TabIndex = 24;
@@ -206,7 +238,7 @@
             this.deltxt.Location = new System.Drawing.Point(16, 113);
             this.deltxt.Name = "deltxt";
             this.deltxt.Size = new System.Drawing.Size(143, 20);
-            this.deltxt.TabIndex = 103;
+            this.deltxt.TabIndex = 2;
             // 
             // label1
             // 
@@ -386,21 +418,73 @@
             this.formlbl.TabIndex = 102;
             this.formlbl.Text = "OTP/Pincodes";
             // 
-            // delchtxt
+            // label5
             // 
-            this.delchtxt.Location = new System.Drawing.Point(421, 56);
-            this.delchtxt.Name = "delchtxt";
-            this.delchtxt.Size = new System.Drawing.Size(100, 20);
-            this.delchtxt.TabIndex = 108;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(312, 39);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(54, 13);
+            this.label5.TabIndex = 110;
+            this.label5.Text = "Postoffice";
             // 
-            // label4
+            // citytxt
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(418, 40);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(87, 13);
-            this.label4.TabIndex = 107;
-            this.label4.Text = "Delivery Charges";
+            this.citytxt.Location = new System.Drawing.Point(315, 113);
+            this.citytxt.Name = "citytxt";
+            this.citytxt.Size = new System.Drawing.Size(143, 20);
+            this.citytxt.TabIndex = 7;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(312, 96);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(24, 13);
+            this.label6.TabIndex = 109;
+            this.label6.Text = "City";
+            // 
+            // distxt
+            // 
+            this.distxt.Location = new System.Drawing.Point(486, 56);
+            this.distxt.Name = "distxt";
+            this.distxt.Size = new System.Drawing.Size(169, 20);
+            this.distxt.TabIndex = 8;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(484, 39);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(39, 13);
+            this.label7.TabIndex = 113;
+            this.label7.Text = "District";
+            // 
+            // posttxt
+            // 
+            this.posttxt.Location = new System.Drawing.Point(315, 55);
+            this.posttxt.Name = "posttxt";
+            this.posttxt.Size = new System.Drawing.Size(143, 20);
+            this.posttxt.TabIndex = 6;
+            // 
+            // postbox
+            // 
+            this.postbox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.postbox.FormattingEnabled = true;
+            this.postbox.Location = new System.Drawing.Point(867, 79);
+            this.postbox.Name = "postbox";
+            this.postbox.Size = new System.Drawing.Size(223, 21);
+            this.postbox.Sorted = true;
+            this.postbox.TabIndex = 11;
+            this.postbox.SelectionChangeCommitted += new System.EventHandler(this.postbox_SelectionChangeCommitted);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(864, 55);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(88, 13);
+            this.label9.TabIndex = 114;
+            this.label9.Text = "Search Pincodes";
             // 
             // Settings
             // 
@@ -436,7 +520,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.CheckBox pno;
         private System.Windows.Forms.CheckBox pyes;
-        private System.Windows.Forms.TextBox areatxt;
+        private System.Windows.Forms.TextBox sttxt;
         private MaterialSkin.Controls.MaterialFlatButton addpbtn;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
@@ -459,5 +543,13 @@
         private MaterialSkin.Controls.MaterialFlatButton caboutbtn;
         private System.Windows.Forms.TextBox delchtxt;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox posttxt;
+        private System.Windows.Forms.TextBox distxt;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox citytxt;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox postbox;
     }
 }

@@ -113,10 +113,11 @@ namespace Veiled_Kashmir_Admin_Panel
                     orderdetailview.Visible = true;
                     addprobtn.Enabled = true;
                     tltlbl.Visible = true;
+                    plbl.Visible = true;
 
 
-
-                }catch { }
+                }
+                catch { }
             };
 
             orderdetails.RunWorkerAsync();
