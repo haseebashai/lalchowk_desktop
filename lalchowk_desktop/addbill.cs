@@ -174,7 +174,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
                     Cursor = Cursors.WaitCursor;
                     string date = Convert.ToDateTime(dtxt.Text).ToString("yyyy-MM-dd HH:mm:ss tt");
-                    cmd = "update orders set status='Delivered', deliverdate='" + date + "' where orderid='" + otxt.Text + "'";
+                    cmd = "update orders set status='Delivered', deliverdate='" + date + "', in_transit='0' where orderid='" + otxt.Text + "'";
                     obj.nonQuery(cmd);
                     obj.closeConnection();
 

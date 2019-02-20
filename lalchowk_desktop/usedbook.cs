@@ -644,12 +644,11 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void upbtn_Click(object sender, EventArgs e)
         {
-
-            upsuclbl.Visible =false;
+           
+                upsuclbl.Visible =false;
             uploadpic(fileaddress);
-            pictxt.Clear();
-            pic1.BackgroundImage = null;
-            upsuclbl.Visible = true;
+            
+           
            
         }
 
@@ -736,11 +735,16 @@ namespace Veiled_Kashmir_Admin_Panel
 
                             MessageBox.Show("Image address added in database, please upload the picture seperately now.");
                             success = true;
+                            upsuclbl.Visible = true;
+                            pic1.BackgroundImage = null;
+                            pictxt.Clear();
                             return pictxt.Text;
+                            
                         }
                         else
                         {
-                            upsuclbl.Visible = false;
+                           
+                            
                             success = false;
                             return null;
                         }

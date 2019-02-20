@@ -1011,7 +1011,7 @@ namespace Veiled_Kashmir_Admin_Panel
                         s2.Replace(@"\", @"\\");
                         s2.Replace("'", "\\'");
                         string descr = s2.ToString();
-                    StringBuilder author = new StringBuilder(dname1txt.Text);
+                    StringBuilder author = new StringBuilder(dname1.Text);
                     author.Replace(@"\", @"\\");
                     author.Replace("'", "\\'");
 

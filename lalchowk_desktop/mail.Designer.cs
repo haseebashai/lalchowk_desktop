@@ -112,7 +112,6 @@
             // 
             this.totxt.Location = new System.Drawing.Point(12, 29);
             this.totxt.Name = "totxt";
-            this.totxt.ReadOnly = true;
             this.totxt.Size = new System.Drawing.Size(587, 20);
             this.totxt.TabIndex = 60;
             // 
@@ -142,7 +141,6 @@
             // 
             this.subtxt.Location = new System.Drawing.Point(12, 83);
             this.subtxt.Name = "subtxt";
-            this.subtxt.ReadOnly = true;
             this.subtxt.Size = new System.Drawing.Size(587, 20);
             this.subtxt.TabIndex = 62;
             // 
@@ -165,6 +163,9 @@
             this.bodytxt.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.bodytxt.Size = new System.Drawing.Size(587, 180);
             this.bodytxt.TabIndex = 64;
+            this.bodytxt.Text = "Assalamualaikum,\r\n\r\nThank you for contacting us.\r\n\r\nFor any queries, you can also" +
+    " contact us on Phone/WhatsApp number: 9906523492\r\n\r\nThanks and warm regards,\r\nTe" +
+    "am Lalchowk";
             // 
             // sendbtn
             // 
