@@ -160,9 +160,9 @@ namespace Veiled_Kashmir_Admin_Panel
                             pconf = "0";
 
                         string email = md5hash(emailtxt.Text);
-                        string cmd = "INSERT INTO orders(`email`, `amount`,`timestamp`,`shipping`,`paymenttype`,`paymentconfirmed`, `transanctionid`,`itemcount`,`status`,`name`,`address1`,`address2`,`contact`,`pincode`,`city`,`loyaltybonus`,`deliveryguy`) values ('" + email + "','" + amounttxt.Text
+                        string cmd = "INSERT INTO orders(`email`, `amount`,`timestamp`,`shipping`,`paymenttype`,`paymentconfirmed`, `transanctionid`,`itemcount`,`status`,`name`,`address1`,`address2`,`contact`,`pincode`,`city`,`loyaltybonus`,`deliveryguy`,`in_transit`) values ('" + email + "','" + amounttxt.Text
                             + "',DATE_ADD(CURRENT_TIMESTAMP, INTERVAL 750 MINUTE),'" + shiptxt.Text + "','"+ptypebox.Text+"','"+pconf+"','SW','" + counttxt.Text + "','" + statustxt.Text + "','" + nametxt.Text + "','" + add1txt.Text + "','" + add2txt.Text + "','" + contacttxt.Text + "','" + pintxt.Text + "','" + citytxt.Text 
-                            + "','" + loyaltxt.Text + "','"+devtxt.Text+"')";
+                            + "','" + loyaltxt.Text + "','"+devtxt.Text+"','0')";
                         obj.nonQuery(cmd);
                         long orderid = userinfo.orid;
                         //    int orderid = obj.Count("SELECT LAST_INSERT_ID()");

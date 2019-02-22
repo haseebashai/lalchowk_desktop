@@ -158,16 +158,16 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void addtocartbtn_Click(object sender, EventArgs e)
         {
-            dialogcontainer dg = new dialogcontainer();
-            dg.Size = new Size(950, 700);
+           // dialogcontainer dg = new dialogcontainer();
+            //dg.Size = new Size(950, 700);
             addorder ao = new addorder(email);
-            ao.TopLevel = false;
-            dg.dialogpnl.Controls.Add(ao);
+        //    ao.TopLevel = false;
+          //  dg.dialogpnl.Controls.Add(ao);
           //  ao.loadingdg();
-            dg.Text = "Add new order";
+           // dg.Text = "Add new order";
 
 
-            dg.Show();
+            //dg.Show();
             ao.Show();
         }
 

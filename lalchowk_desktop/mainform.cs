@@ -1091,6 +1091,9 @@ namespace Veiled_Kashmir_Admin_Panel
                 shippeddataview.Enabled = false;
 
                 DataGridViewRow row = this.shippeddataview.Rows[e.RowIndex];
+            //    MessageBox.Show(row.Cells["status"].Value.ToString() + row.Cells["in_transit"].Value + row.Cells["paymentconfirmed"].Value);
+               
+
                 id = row.Cells["orderid"].Value.ToString();
                 contact = row.Cells["contact"].Value.ToString();
                 status = row.Cells["status"].Value.ToString();
@@ -1387,7 +1390,7 @@ namespace Veiled_Kashmir_Admin_Panel
         private void shippedorders()
         {
             con.Open();
-            adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='shipped';", con);
+            adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where in_transit='1';", con);
             dt = new DataTable();
             adap.Fill(dt);
             con.Close();
@@ -1553,7 +1556,7 @@ namespace Veiled_Kashmir_Admin_Panel
                       if (Convert.ToInt32(row.Cells["itemcount"].Value) > 1)
                     {
                         row.Cells["itemcount"].Style.BackColor = Color.LightPink;
-                    }
+                    } 
 
                 }
             }
@@ -1566,20 +1569,23 @@ namespace Veiled_Kashmir_Admin_Panel
             {
                 foreach (DataGridViewRow row in this.shippeddataview.Rows)
                 {
-                    if (Convert.ToString(row.Cells["paymentconfirmed"].Value) == "True" )
-
+                    if (Convert.ToString(row.Cells["paymentconfirmed"].Value) == "True")// && Convert.ToString(row.Cells["status"].Value) == "shipped")// && Convert.ToString(row.Cells["in_transit"].Value) == "True")
+                    {
+                        
                         row.DefaultCellStyle.BackColor = Color.LightGreen;
-
-                    else if (Convert.ToString(row.Cells["paymentconfirmed"].Value) == "False" && Convert.ToString(row.Cells["paymenttype"].Value) == "Pre-Pay")
+                    }
+                    else if (Convert.ToString(row.Cells["paymentconfirmed"].Value) == "False" && Convert.ToString(row.Cells["paymenttype"].Value) == "Pre-Pay" && Convert.ToString(row.Cells["status"].Value) == "Shipped" && Convert.ToString(row.Cells["in_transit"].Value) == "True")
                         row.DefaultCellStyle.BackColor = Color.LightPink;
 
-                    else if (Convert.ToString(row.Cells["paymenttype"].Value) == "Cash on Delivery")
+                    else if (Convert.ToString(row.Cells["paymenttype"].Value) == "Cash on Delivery" && Convert.ToString(row.Cells["status"].Value.ToString()) == "Shipped" && Convert.ToString(row.Cells["in_transit"].Value) == "True")
 
                         row.DefaultCellStyle.BackColor = Color.LightBlue;
-
+                    else if (Convert.ToString(row.Cells["status"].Value) == "Delivered" && Convert.ToString(row.Cells["in_transit"].Value) == "True")
+                        row.DefaultCellStyle.BackColor = Color.Yellow;
                 }
+               
             }
-            catch { }
+            catch(Exception ex) { MessageBox.Show(ex.Message); }
         }
 
         private void placeddataview_CurrentCellDirtyStateChanged(object sender, EventArgs e)
@@ -1711,6 +1717,8 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch { }
          }
+
+      
 
         private void cartbtn_Click(object sender, EventArgs e)
         {
@@ -1862,7 +1870,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     bgworker.ReportProgress(50);
 
                     con.Open();
-                    adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='shipped';", con);
+                    adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where in_transit='1' ;", con);
                     dt = new DataTable();
                     adap.Fill(dt);
                     con.Close();
@@ -1883,7 +1891,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     //obj.closeConnection();
            //     bgworker.ReportProgress(80);
 
-                dr = obj.Query("SELECT count(status) FROM orders where status='delivered'");
+                dr = obj.Query("SELECT count(status) FROM orders where status='delivered' and in_transit='0'");
                     dr.Read();
                     order = dr[0].ToString();
                     obj.closeConnection();
