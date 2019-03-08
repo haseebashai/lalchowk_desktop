@@ -21,6 +21,7 @@ namespace Veiled_Kashmir_Admin_Panel
         MySqlConnection conn = new MySqlConnection("SERVER = 182.50.133.78; DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah");
         MySqlDataAdapter adap;
         DataTable dt;
+        MySqlCommand cmd;
 
 
         public editorderdetails(string orderid)
@@ -34,7 +35,8 @@ namespace Veiled_Kashmir_Admin_Panel
             orderload.RunWorkerCompleted += Orderload_RunWorkerCompleted;
             orderload.RunWorkerAsync(orderid);
             titlelbl.Text = "Edit order details for OrderID: " + orderid;
-            
+            searchtxt.AutoCompleteCustomSource = userinfo.col;
+
         }
 
         private void Orderload_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -53,7 +55,7 @@ namespace Veiled_Kashmir_Admin_Panel
                  new {Text="UPI"},
                 new {Text ="Online"},
                  new {Text="NB"},
-               
+               new {Text="Paytm"},
                 };
                 ptypebox.DataSource = items;
 
@@ -131,6 +133,10 @@ namespace Veiled_Kashmir_Admin_Panel
                 else if (ptype == "NB")
                 {
                     ptypebox.SelectedIndex = 6;
+                }
+                else if (ptype == "Paytm")
+                {
+                    ptypebox.SelectedIndex = 7;
                 }
 
                 refreshbtn.Visible = true;
@@ -445,8 +451,139 @@ namespace Veiled_Kashmir_Admin_Panel
                 counttxt.Text = quant.ToString();
 
             }
-            catch (Exception ex) { MessageBox.Show(ex.Message); }
+            catch (Exception ex) { }// MessageBox.Show(ex.Message); }
         }
+
+        private void refresh_Click_1(object sender, EventArgs e)
+        {
+            refresh.Enabled = false;
+
+            loadinglbl.Visible = true;
+            searchtxt.Enabled = false;
+            try
+            {
+                conn.Close();
+
+                BackgroundWorker search = new BackgroundWorker();
+                search.WorkerReportsProgress = true;
+                search.DoWork += (o, a) =>
+                {
+
+                    search.ReportProgress(10);
+                    AutoCompleteStringCollection col1 = new AutoCompleteStringCollection();
+
+                    cmd = new MySqlCommand("Select concat_ws(' ',productname,'(',detail1,detail2,')','@',mrp,'#',productid) as tag from products where productid>9999", conn);
+                    try
+                    {
+                        conn.Open();
+                        search.ReportProgress(30);
+                        MySqlDataReader data = cmd.ExecuteReader();
+                        while (data.Read())
+                        {
+                            string sname = data.GetString("tag");
+                            col1.Add(sname);
+                        }
+                        search.ReportProgress(90);
+                        conn.Close();
+                        a.Result = col1;
+                    }
+                    catch (Exception ex) { MessageBox.Show(ex.Message); }
+
+                };
+                search.ProgressChanged += (o, c) =>
+                {
+                    if (c.ProgressPercentage == 10)
+                    {
+                        loadinglbl.Text = "loading...10%";
+                    }
+                    else if (c.ProgressPercentage == 30)
+                    {
+                        loadinglbl.Text = "loading...30%";
+                    }
+                    else if (c.ProgressPercentage == 90)
+                    {
+                        loadinglbl.Text = "loading...90%";
+                    }
+
+                };
+
+                search.RunWorkerCompleted += (o, b) => {
+                    userinfo.col = b.Result as AutoCompleteStringCollection;
+                    loadinglbl.Visible = false;
+                    searchtxt.Enabled = true;
+                    searchtxt.Text = "";
+                    refresh.Enabled = true;
+                    searchtxt.AutoCompleteCustomSource = userinfo.col;
+                };
+                search.RunWorkerAsync();
+
+            }
+            catch (Exception ex) { MessageBox.Show(ex.ToString()); conn.Close(); }
+
+        }
+
+        //private void addpbtn_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        if (searchtxt.Text == "")
+        //        {
+        //            MessageBox.Show("Please search a product.", "Error!");
+        //        }
+        //        else
+        //        {
+        //            Cursor = Cursors.WaitCursor;
+        //            //string name = searchtxt.Text.Split('(')[0];
+        //            //StringBuilder productname = new StringBuilder(name);
+        //            //productname.Replace(@"'", "\\'").Replace(@"\", "\\");
+        //            //string mrp = searchtxt.Text.Split('@')[1];
+        //            string id = searchtxt.Text.Split('#')[1];
+        //            if (orderdetailview.RowCount == 0 && orderdetailview.ColumnCount == 0)
+        //            {
+        //                orderdetailview.Columns.Add("productid", "productid");
+        //                orderdetailview.Columns.Add("productname", "productname");
+        //                orderdetailview.Columns.Add("author", "author");
+        //                orderdetailview.Columns.Add("publisher", "publisher");
+        //                orderdetailview.Columns.Add("price", "price");
+        //                orderdetailview.Columns.Add("quantity", "quantity");
+        //                orderdetailview.Columns.Add("discount", "discount");
+        //                orderdetailview.Columns.Add("mrp", "mrp");
+        //                orderdetailview.Columns.Add("dealerprice", "dealerprice");
+        //                orderdetailview.Columns.Add("picture", "picture");
+
+        //                dr = obj.Query("select productid,productname,detail1,detail2,price,mrp,dealerprice,picture from products where productid='" + id + "'");
+        //                dr.Read();
+        //                orderdetailview.Rows.Add(dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), "1", "10", dr[5].ToString(), dr[6].ToString(), dr[7].ToString());
+        //                obj.closeConnection();
+        //               // amounttxt.Text = inventorydatagridview.Rows[0].Cells[4].Value.ToString();
+        //                //counttxt.Text = inventorydatagridview.Rows[0].Cells[5].Value.ToString();
+        //            }
+        //            else
+        //            {
+                      
+        //                int amount = 0, count = 0;
+        //                //for (int i = 0; i < orderdetailview.RowCount; i++)
+        //                //{
+
+        //                //    amount = int.Parse(amounttxt.Text);
+        //                //    amount = amount + int.Parse(inventorydatagridview.Rows[i].Cells[4].Value.ToString());
+        //                //    count = int.Parse(counttxt.Text);
+        //                //    count = count + int.Parse(inventorydatagridview.Rows[i].Cells[5].Value.ToString());
+
+        //                //}
+        //                //amounttxt.Text = amount.ToString();
+        //                //counttxt.Text = count.ToString();
+        //            }
+        //            searchtxt.Text = "";
+        //            addpbtn.Enabled = true;
+
+        //        }
+        //    }
+        //    catch (Exception ex) { MessageBox.Show(ex.Message); obj.closeConnection(); }
+        //    Cursor = Cursors.Arrow;
+        //}
+
+
 
         //private void orderdetailview_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         //{

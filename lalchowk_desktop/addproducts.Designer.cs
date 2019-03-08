@@ -117,6 +117,9 @@
             this.inclbl = new System.Windows.Forms.Label();
             this.inclbl2 = new System.Windows.Forms.Label();
             this.addppnl = new System.Windows.Forms.Panel();
+            this.odisbtn = new System.Windows.Forms.Button();
+            this.odistxt = new System.Windows.Forms.TextBox();
+            this.label31 = new System.Windows.Forms.Label();
             this.dcbtn = new System.Windows.Forms.Button();
             this.dctxt = new System.Windows.Forms.TextBox();
             this.label29 = new System.Windows.Forms.Label();
@@ -129,9 +132,6 @@
             this.bgworker = new System.ComponentModel.BackgroundWorker();
             this.pictimer = new System.Windows.Forms.Timer(this.components);
             this.bguploadpic = new System.ComponentModel.BackgroundWorker();
-            this.odisbtn = new System.Windows.Forms.Button();
-            this.odistxt = new System.Windows.Forms.TextBox();
-            this.label31 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pic1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic3)).BeginInit();
@@ -345,6 +345,7 @@
             this.pricetxt.Name = "pricetxt";
             this.pricetxt.Size = new System.Drawing.Size(134, 20);
             this.pricetxt.TabIndex = 23;
+            this.pricetxt.Leave += new System.EventHandler(this.pricetxt_Leave);
             // 
             // label11
             // 
@@ -1067,6 +1068,32 @@
             this.addppnl.Size = new System.Drawing.Size(1150, 668);
             this.addppnl.TabIndex = 88;
             // 
+            // odisbtn
+            // 
+            this.odisbtn.Location = new System.Drawing.Point(677, 458);
+            this.odisbtn.Name = "odisbtn";
+            this.odisbtn.Size = new System.Drawing.Size(63, 20);
+            this.odisbtn.TabIndex = 105;
+            this.odisbtn.Text = "Calculate";
+            this.odisbtn.UseVisualStyleBackColor = true;
+            this.odisbtn.Click += new System.EventHandler(this.odisbtn_Click);
+            // 
+            // odistxt
+            // 
+            this.odistxt.Location = new System.Drawing.Point(606, 458);
+            this.odistxt.Name = "odistxt";
+            this.odistxt.Size = new System.Drawing.Size(66, 20);
+            this.odistxt.TabIndex = 22;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(606, 442);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(107, 13);
+            this.label31.TabIndex = 103;
+            this.label31.Text = "OUR DISCOUNT (%)";
+            // 
             // dcbtn
             // 
             this.dcbtn.Location = new System.Drawing.Point(537, 556);
@@ -1170,32 +1197,6 @@
             this.bguploadpic.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bguploadpic_DoWork);
             this.bguploadpic.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bguploadpic_ProgressChanged);
             this.bguploadpic.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bguploadpic_RunWorkerCompleted);
-            // 
-            // odisbtn
-            // 
-            this.odisbtn.Location = new System.Drawing.Point(677, 458);
-            this.odisbtn.Name = "odisbtn";
-            this.odisbtn.Size = new System.Drawing.Size(63, 20);
-            this.odisbtn.TabIndex = 105;
-            this.odisbtn.Text = "Calculate";
-            this.odisbtn.UseVisualStyleBackColor = true;
-            this.odisbtn.Click += new System.EventHandler(this.odisbtn_Click);
-            // 
-            // odistxt
-            // 
-            this.odistxt.Location = new System.Drawing.Point(606, 458);
-            this.odistxt.Name = "odistxt";
-            this.odistxt.Size = new System.Drawing.Size(66, 20);
-            this.odistxt.TabIndex = 22;
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(606, 442);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(107, 13);
-            this.label31.TabIndex = 103;
-            this.label31.Text = "OUR DISCOUNT (%)";
             // 
             // addproducts
             // 

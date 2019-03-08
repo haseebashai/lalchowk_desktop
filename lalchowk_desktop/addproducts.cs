@@ -701,6 +701,17 @@ namespace Veiled_Kashmir_Admin_Panel
             catch { }
         }
 
+        private void pricetxt_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                if (int.Parse(pricetxt.Text) > int.Parse(mrptxt.Text))
+                {
+                    MessageBox.Show("PRICE is greater than MRP, please correct.", "Error");
+                }
+            }catch { }
+        }
+
         private void pidtxt_TextChanged(object sender, EventArgs e)
         {
             gidtxt.Text = pidtxt.Text;
@@ -1099,7 +1110,7 @@ namespace Veiled_Kashmir_Admin_Panel
                         try
                         {
                             cmd = "insert into products (`productid`, `supplierid`, `productname`,`tags`, `groupid`,`categoryid`,`color`, `mrp`, `price`, `dealerprice`, `stock`, `description`, `detailname1`, `detailname2`, `detailname3`, `detailname4`,`detailname5`, `detail1`, `detail2`, `detail3`, `detail4`,`detail5`,`brand`,`size`,`requeststatus`,`timestampp`) " +
-                                "values ('" + pidtxt.Text + "','" + supplierid + "', '" + s + "','" + s + " " + author + " " + brandtxt.Text + " " + tagstxt.Text + "','" + gidtxt.Text + "', '" + catbox.Text + "'," + color + ",'" + mrptxt.Text + "','" + pricetxt.Text + "','" + dealertxt.Text + "','" + stocktxt.Text + "'," + desc + ",'" + author + "','" + dname2txt.Text + "','" + dname3txt.Text + "','" + dname4txt.Text + "'," + dn5 + ",'" + dname1.Text + "','" + dname2.Text + "','" + dname3.Text + "','" + dname4.Text + "'," + d5 + "," + bran + ","
+                                "values ('" + pidtxt.Text + "','" + supplierid + "', '" + s + "','" + s + " " + author + " " + brandtxt.Text + " " + tagstxt.Text + "','" + gidtxt.Text + "', '" + catbox.Text + "'," + color + ",'" + mrptxt.Text + "','" + pricetxt.Text + "','" + dealertxt.Text + "','" + stocktxt.Text + "'," + desc + ",'" + dname1txt.Text + "','" + dname2txt.Text + "','" + dname3txt.Text + "','" + dname4txt.Text + "'," + dn5 + ",'" + author + "','" + dname2.Text + "','" + dname3.Text + "','" + dname4.Text + "'," + d5 + "," + bran + ","
                                 + size + ",'Approved',DATE_ADD(CURRENT_TIMESTAMP, INTERVAL 750 MINUTE))";
                             obj.nonQuery(cmd);
                             obj.closeConnection();

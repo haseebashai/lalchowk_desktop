@@ -870,10 +870,12 @@ namespace Veiled_Kashmir_Admin_Panel
             try {
                 StringBuilder p1 = new StringBuilder(p1title.Text);
                 p1.Replace(@"'", "\\'").Replace(@"\", "\\");
+                StringBuilder p2 = new StringBuilder(p1sub.Text);
+                p2.Replace(@"'", "\\'").Replace(@"\", "\\");
 
                 //cmd = "update homepage2 set title='" + p1 + "',subtitle='" + p1sub.Text + "',picture='" + p1pic.Text + "',link='" + p1link.Text + "' where homeid='3'";
                 //obj.nonQuery(cmd);
-                cmd = "update homepage3 set title='" + p1 + "',subtitle='" + p1sub.Text + "',picture='" + p1pic.Text + "',link='" + p1link.Text + "' where homeid='3'";
+                cmd = "update homepage3 set title='" + p1 + "',subtitle='" + p2 + "',picture='" + p1pic.Text + "',link='" + p1link.Text + "' where homeid='3'";
                 obj.nonQuery(cmd);
                 MessageBox.Show("Updated.");
             }
@@ -890,10 +892,12 @@ namespace Veiled_Kashmir_Admin_Panel
             try {
                 StringBuilder p2 = new StringBuilder(p2title.Text);
                 p2.Replace(@"'", "\\'").Replace(@"\", "\\");
+                StringBuilder p3 = new StringBuilder(p2sub.Text);
+                p3.Replace(@"'", "\\'").Replace(@"\", "\\");
 
                 //cmd = "update homepage2 set title='" + p2 + "',subtitle='" + p2sub.Text + "',picture='" + p2pic.Text + "',link='" + p2link.Text + "' where homeid='4'";
                 //obj.nonQuery(cmd);
-                cmd = "update homepage3 set title='" + p2 + "',subtitle='" + p2sub.Text + "',picture='" + p2pic.Text + "',link='" + p2link.Text + "' where homeid='4'";
+                cmd = "update homepage3 set title='" + p2 + "',subtitle='" + p3 + "',picture='" + p2pic.Text + "',link='" + p2link.Text + "' where homeid='4'";
                 obj.nonQuery(cmd);
                 MessageBox.Show("Updated.");
             }
@@ -962,11 +966,13 @@ namespace Veiled_Kashmir_Admin_Panel
             try {
                 StringBuilder p3 = new StringBuilder(p3title.Text);
                 p3.Replace(@"'", "\\'").Replace(@"\", "\\");
+                StringBuilder p4 = new StringBuilder(p3sub.Text);
+                p4.Replace(@"'", "\\'").Replace(@"\", "\\");
 
 
                 //cmd = "update homepage2 set title='" + p3 + "',subtitle='" + p3sub.Text + "',picture='" + p3pic.Text + "',link='" + p3link.Text + "' where homeid='5'";
                 //obj.nonQuery(cmd);
-                cmd = "update homepage3 set title='" + p3 + "',subtitle='" + p3sub.Text + "',picture='" + p3pic.Text + "',link='" + p3link.Text + "' where homeid='5'";
+                cmd = "update homepage3 set title='" + p3 + "',subtitle='" + p4 + "',picture='" + p3pic.Text + "',link='" + p3link.Text + "' where homeid='5'";
                 obj.nonQuery(cmd);
                 MessageBox.Show("Updated.");
             }
@@ -984,10 +990,12 @@ namespace Veiled_Kashmir_Admin_Panel
             {
                 StringBuilder p4 = new StringBuilder(p4title.Text);
                 p4.Replace(@"'", "\\'").Replace(@"\", "\\");
+                StringBuilder p5 = new StringBuilder(p4sub.Text);
+                p5.Replace(@"'", "\\'").Replace(@"\", "\\");
 
                 //cmd = "update homepage2 set title='" + p4 + "',subtitle='" + p4sub.Text + "',picture='" + p4pic.Text + "',link='" + p4link.Text + "' where homeid='6'";
                 //obj.nonQuery(cmd);
-                cmd = "update homepage3 set title='" + p4 + "',subtitle='" + p4sub.Text + "',picture='" + p4pic.Text + "',link='" + p4link.Text + "' where homeid='6'";
+                cmd = "update homepage3 set title='" + p4 + "',subtitle='" + p5 + "',picture='" + p4pic.Text + "',link='" + p4link.Text + "' where homeid='6'";
                 obj.nonQuery(cmd);
                 MessageBox.Show("Updated.");
             
@@ -1012,7 +1020,14 @@ namespace Veiled_Kashmir_Admin_Panel
                 p3.Replace(@"'", "\\'").Replace(@"\", "\\");
                 StringBuilder p4 = new StringBuilder(p4title.Text);
                 p4.Replace(@"'", "\\'").Replace(@"\", "\\");
-
+                StringBuilder p5 = new StringBuilder(p1sub.Text);
+                p5.Replace(@"'", "\\'").Replace(@"\", "\\");
+                StringBuilder p6 = new StringBuilder(p2sub.Text);
+                p6.Replace(@"'", "\\'").Replace(@"\", "\\");
+                StringBuilder p7 = new StringBuilder(p3sub.Text);
+                p7.Replace(@"'", "\\'").Replace(@"\", "\\");
+                StringBuilder p8 = new StringBuilder(p4sub.Text);
+                p8.Replace(@"'", "\\'").Replace(@"\", "\\");
 
                 //cmd = "update homepage2 set title='" + p1 + "',subtitle='" + p1sub.Text + "',picture='" + p1pic.Text + "',link='" + p1link.Text + "' where homeid='3'";
                 //obj.nonQuery(cmd);
@@ -1022,13 +1037,13 @@ namespace Veiled_Kashmir_Admin_Panel
                 //obj.nonQuery(cmd);
                 //cmd = "update homepage2 set title='" + p4 + "',subtitle='" + p4sub.Text + "',picture='" + p4pic.Text + "',link='" + p4link.Text + "' where homeid='6'";
                 //obj.nonQuery(cmd);
-                cmd = "update homepage3 set title='" + p1 + "',subtitle='" + p1sub.Text + "',picture='" + p1pic.Text + "',link='" + p1link.Text + "' where homeid='3'";
+                cmd = "update homepage3 set title='" + p1 + "',subtitle='" + p5 + "',picture='" + p1pic.Text + "',link='" + p1link.Text + "' where homeid='3'";
                 obj.nonQuery(cmd);
-                cmd = "update homepage3 set title='" + p2 + "',subtitle='" + p2sub.Text + "',picture='" + p2pic.Text + "',link='" + p2link.Text + "' where homeid='4'";
+                cmd = "update homepage3 set title='" + p2 + "',subtitle='" + p6 + "',picture='" + p2pic.Text + "',link='" + p2link.Text + "' where homeid='4'";
                 obj.nonQuery(cmd);
-                cmd = "update homepage3 set title='" + p3 + "',subtitle='" + p3sub.Text + "',picture='" + p3pic.Text + "',link='" + p3link.Text + "' where homeid='5'";
+                cmd = "update homepage3 set title='" + p3 + "',subtitle='" + p7 + "',picture='" + p3pic.Text + "',link='" + p3link.Text + "' where homeid='5'";
                 obj.nonQuery(cmd);
-                cmd = "update homepage3 set title='" + p4 + "',subtitle='" + p4sub.Text + "',picture='" + p4pic.Text + "',link='" + p4link.Text + "' where homeid='6'";
+                cmd = "update homepage3 set title='" + p4 + "',subtitle='" + p8 + "',picture='" + p4pic.Text + "',link='" + p4link.Text + "' where homeid='6'";
                 obj.nonQuery(cmd);
                 MessageBox.Show("Updated.");
             }

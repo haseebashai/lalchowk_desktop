@@ -810,7 +810,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     DialogResult dgr = MessageBox.Show("Change status to Shipped for orderid '" + id + "'", "Confirm!", MessageBoxButtons.YesNo);
                     if (dgr == DialogResult.Yes)
                     {
-                        string input = Interaction.InputBox("Please Enter Delivery Guy info:", "Delivery info", "Yaqoob", -1, -1);
+                        string input = Interaction.InputBox("Please Enter Delivery Guy info:", "Delivery info", "Suhaib", -1, -1);
                         DateTime time = DateTime.Now;             // Use current time.
                         string shipdate = time.ToString("yyyy-MM-dd HH:mm:ss");
 
@@ -1390,7 +1390,7 @@ namespace Veiled_Kashmir_Admin_Panel
         private void shippedorders()
         {
             con.Open();
-            adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where in_transit='1';", con);
+            adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='Shipped' or in_transit='1';", con);
             dt = new DataTable();
             adap.Fill(dt);
             con.Close();
@@ -1428,7 +1428,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     DialogResult dgr = MessageBox.Show("Do you want to change the status of selected orders to shipped ?", "Confirm!", MessageBoxButtons.YesNo);
                     if (dgr == DialogResult.Yes)
                     {
-                        string input = Interaction.InputBox("Please Enter Delivery Guy info:", "Delivery info", "Yaqoob", -1, -1);
+                        string input = Interaction.InputBox("Please Enter Delivery Guy info:", "Delivery info", "Suhaib", -1, -1);
                         Cursor = Cursors.WaitCursor;
                         foreach (DataGridViewRow row in placeddataview.Rows)
                         {
@@ -1555,7 +1555,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 {
                       if (Convert.ToInt32(row.Cells["itemcount"].Value) > 1)
                     {
-                        row.Cells["itemcount"].Style.BackColor = Color.LightPink;
+                        row.Cells["itemcount"].Style.BackColor = Color.BlanchedAlmond;
                     } 
 
                 }
@@ -1569,7 +1569,7 @@ namespace Veiled_Kashmir_Admin_Panel
             {
                 foreach (DataGridViewRow row in this.shippeddataview.Rows)
                 {
-                    if (Convert.ToString(row.Cells["paymentconfirmed"].Value) == "True")// && Convert.ToString(row.Cells["status"].Value) == "shipped")// && Convert.ToString(row.Cells["in_transit"].Value) == "True")
+                    if (Convert.ToString(row.Cells["paymentconfirmed"].Value) == "True" && Convert.ToString(row.Cells["status"].Value) == "Shipped" && Convert.ToString(row.Cells["in_transit"].Value) == "True")
                     {
                         
                         row.DefaultCellStyle.BackColor = Color.LightGreen;
@@ -1577,7 +1577,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     else if (Convert.ToString(row.Cells["paymentconfirmed"].Value) == "False" && Convert.ToString(row.Cells["paymenttype"].Value) == "Pre-Pay" && Convert.ToString(row.Cells["status"].Value) == "Shipped" && Convert.ToString(row.Cells["in_transit"].Value) == "True")
                         row.DefaultCellStyle.BackColor = Color.LightPink;
 
-                    else if (Convert.ToString(row.Cells["paymenttype"].Value) == "Cash on Delivery" && Convert.ToString(row.Cells["status"].Value.ToString()) == "Shipped" && Convert.ToString(row.Cells["in_transit"].Value) == "True")
+                    else if (Convert.ToString(row.Cells["paymenttype"].Value) == "Cash on Delivery" && Convert.ToString(row.Cells["status"].Value.ToString()) == "Shipped" && (Convert.ToString(row.Cells["in_transit"].Value) == "True" || Convert.ToString(row.Cells["in_transit"].Value) == "False"))
 
                         row.DefaultCellStyle.BackColor = Color.LightBlue;
                     else if (Convert.ToString(row.Cells["status"].Value) == "Delivered" && Convert.ToString(row.Cells["in_transit"].Value) == "True")
@@ -1870,7 +1870,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     bgworker.ReportProgress(50);
 
                     con.Open();
-                    adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where in_transit='1' ;", con);
+                    adap = new MySqlDataAdapter("select customer.mail,orders.* from lalchowk.orders inner join customer on customer.email=orders.email where status='Shipped' or in_transit='1' ;", con);
                     dt = new DataTable();
                     adap.Fill(dt);
                     con.Close();
