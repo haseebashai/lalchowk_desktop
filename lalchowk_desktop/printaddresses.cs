@@ -42,7 +42,7 @@ namespace Veiled_Kashmir_Admin_Panel
         //    }
         //}
 
-        int xpage=13, ypage = 30;
+        int xpage=14, ypage = 29;
         void printdoc_PrintPage(object sender, PrintPageEventArgs e)
         {
             e.Graphics.DrawImage(bmp, xpage, ypage);
