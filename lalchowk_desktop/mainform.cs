@@ -1863,7 +1863,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
                
                     con.Open();
-                    adap = new MySqlDataAdapter("select customer.mail,orders.orderid,orders.timestamp,orders.amount,orders.shipping,orders.paymenttype,orders.paymentconfirmed,orders.status,orders.name,orders.address1,orders.address2,orders.pincode,orders.contact,orders.city,orders.deliveryguy,orders.in_transit from lalchowk.orders inner join customer on customer.email=orders.email where status='Shipped' or in_transit='1' ;", con);
+                    adap = new MySqlDataAdapter("select customer.mail,orders.orderid,orders.timestamp,orders.shipdate,orders.amount,orders.shipping,orders.paymenttype,orders.paymentconfirmed,orders.status,orders.name,orders.address1,orders.address2,orders.pincode,orders.contact,orders.city,orders.deliveryguy,orders.in_transit from lalchowk.orders inner join customer on customer.email=orders.email where status='Shipped' or in_transit='1' ;", con);
                     dt = new DataTable();
                     adap.Fill(dt);
                     con.Close();
