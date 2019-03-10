@@ -315,7 +315,75 @@ namespace Veiled_Kashmir_Admin_Panel
             billlbl.Visible = false;
         }
 
-       
+        private void ordergridview_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            //try
+            //{
+            //    foreach (DataGridViewRow row in this.ordergridview.Rows)
+            //    {
+            //        if (Convert.ToString(row.Cells["paymenttype"].Value) == "Cash On Delivery")
+            //        {
+            //            row.Cells["paymenttype"].Style.BackColor = Color.LightBlue;
+            //        }
+            //        else if (Convert.ToString(row.Cells["paymentconfirmed"].Value) == "True")
+            //        {
+            //            row.Cells["paymenttype"].Style.BackColor = Color.LightGreen;
+            //        }
+            //        else if (Convert.ToString(row.Cells["paymentconfirmed"].Value) == "False")
+            //        {
+            //            row.Cells["paymenttype"].Style.BackColor = Color.LightPink;
+            //        }
+                   
+                    
+
+            //    }
+            //}
+            //catch { }
+        }
+
+        private void ordergridview_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            try
+            {
+
+                foreach (DataGridViewRow row in this.ordergridview.Rows)
+                {
+
+                    if (Convert.ToString(row.Cells["paymenttype"].Value) == "Cash on Delivery")
+                    {
+                        row.Cells["paymenttype"].Style.BackColor = Color.LightBlue;
+                    }
+                    else if (Convert.ToString(row.Cells["paymentconfirmed"].Value) == "True" && Convert.ToString(row.Cells["paymenttype"].Value) != "Cash on Delivery")
+                    {
+                        row.Cells["paymenttype"].Style.BackColor = Color.LightGreen;
+                    }
+                    else if (Convert.ToString(row.Cells["paymentconfirmed"].Value) == "False" && Convert.ToString(row.Cells["paymenttype"].Value) != "Cash on Delivery")
+                    {
+                        row.Cells["paymenttype"].Style.BackColor = Color.LightPink;
+                    }
+
+
+                    //if (Convert.ToString(row.Cells["paymenttype"].Value) == "Cash on Delivery")
+                    //{
+                    //    row.Cells["paymenttype"].Style.BackColor = Color.LightBlue;
+                    //}
+                    //else if (Convert.ToString(row.Cells["paymenttype"].Value) == "Payment Failed")
+                    //{
+                    //    row.Cells["paymenttype"].Style.BackColor = Color.LightPink;
+                    //}
+                    //else if (Convert.ToString(row.Cells["paymenttype"].Value) == "Online" || Convert.ToString(row.Cells["paymenttype"].Value) == "DC" || Convert.ToString(row.Cells["paymenttype"].Value) == "CC" || Convert.ToString(row.Cells["paymenttype"].Value) == "UPI" || Convert.ToString(row.Cells["paymenttype"].Value) == "NB" || Convert.ToString(row.Cells["paymenttype"].Value) == "Cash" || Convert.ToString(row.Cells["paymenttype"].Value) == "Paytm")
+                    //{
+                    //    row.Cells["paymenttype"].Style.BackColor = Color.LightGreen;
+                    //}
+
+
+
+                }
+            }
+            catch { }
+        }
+
+
 
 
 
@@ -342,7 +410,7 @@ namespace Veiled_Kashmir_Admin_Panel
         //    catch { };
         //}
 
-      
+
 
         private void updbtn_Click(object sender, EventArgs e)
         {
@@ -424,6 +492,7 @@ namespace Veiled_Kashmir_Admin_Panel
               
                 
                 ordergridview.Columns["email"].Visible = false;
+                ordergridview.Columns["in_transit"].Visible = false;
                 panel1.Visible = true;
                 orlbl.Text = ordergridview.RowCount.ToString();
                 refresh.Enabled = true;
@@ -613,7 +682,7 @@ namespace Veiled_Kashmir_Admin_Panel
             try
             {
 
-               
+             
                 if (e.RowIndex >= 0)
                 {
                     orderdetailview.Visible = false;
@@ -622,6 +691,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     billlbl.Visible = false;
 
                     DataGridViewRow row = this.ordergridview.Rows[e.RowIndex];
+                  //  MessageBox.Show(row.Cells["paymenttype"].Value.ToString() + row.Cells["paymentconfirmed"].Value.ToString() + row.Cells["status"].Value.ToString());
                     orderid = int.Parse(row.Cells["orderid"].Value.ToString());
                     email = row.Cells["mail"].Value.ToString();
                     encmail = row.Cells["email"].Value.ToString();
@@ -693,16 +763,17 @@ namespace Veiled_Kashmir_Admin_Panel
                             if (status == "Delivered")
                             {
                                 billbtn.Text = "Delivered";
-
+                                billbtn.BackColor = Color.LightGreen;
                             }
                             else if (status == "Cancelled")
                             {
                                 billbtn.Text = "Cancelled";
-
+                                billbtn.BackColor = Color.LightPink;
                             }
                             else
                             {
                                 billbtn.Text = "Confirm Delivery and Add Bill";
+                                billbtn.BackColor = Color.Gainsboro;
 
                             }
                         }catch { ordergridview.Enabled = true; }

@@ -73,6 +73,10 @@
             this.refresh = new System.Windows.Forms.Label();
             this.loadinglbl = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.altcontxt = new System.Windows.Forms.TextBox();
+            this.profitlbl = new System.Windows.Forms.Label();
+            this.dplbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.orderdetailview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.refreshbtn)).BeginInit();
             this.SuspendLayout();
@@ -97,7 +101,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(394, 344);
+            this.label2.Location = new System.Drawing.Point(447, 344);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(48, 13);
             this.label2.TabIndex = 3;
@@ -106,15 +110,15 @@
             // shiptxt
             // 
             this.shiptxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.shiptxt.Location = new System.Drawing.Point(394, 363);
+            this.shiptxt.Location = new System.Drawing.Point(450, 363);
             this.shiptxt.Name = "shiptxt";
-            this.shiptxt.Size = new System.Drawing.Size(132, 20);
+            this.shiptxt.Size = new System.Drawing.Size(76, 20);
             this.shiptxt.TabIndex = 8;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(270, 344);
+            this.label3.Location = new System.Drawing.Point(339, 344);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(43, 13);
             this.label3.TabIndex = 5;
@@ -123,9 +127,9 @@
             // amtxt
             // 
             this.amtxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.amtxt.Location = new System.Drawing.Point(270, 363);
+            this.amtxt.Location = new System.Drawing.Point(342, 363);
             this.amtxt.Name = "amtxt";
-            this.amtxt.Size = new System.Drawing.Size(118, 20);
+            this.amtxt.Size = new System.Drawing.Size(102, 20);
             this.amtxt.TabIndex = 7;
             // 
             // label4
@@ -176,7 +180,7 @@
             this.contxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.contxt.Location = new System.Drawing.Point(58, 363);
             this.contxt.Name = "contxt";
-            this.contxt.Size = new System.Drawing.Size(205, 20);
+            this.contxt.Size = new System.Drawing.Size(134, 20);
             this.contxt.TabIndex = 6;
             // 
             // label7
@@ -347,6 +351,7 @@
             this.orderdetailview.TabIndex = 30;
             this.orderdetailview.Visible = false;
             this.orderdetailview.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.orderdetailview_CellValueChanged);
+            this.orderdetailview.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.orderdetailview_RowPostPaint);
             // 
             // deupdbtn
             // 
@@ -493,6 +498,43 @@
             this.label16.TabIndex = 109;
             this.label16.Text = "Search Products";
             // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(198, 344);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(89, 13);
+            this.label17.TabIndex = 111;
+            this.label17.Text = "Alternate Contact";
+            // 
+            // altcontxt
+            // 
+            this.altcontxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.altcontxt.Location = new System.Drawing.Point(198, 363);
+            this.altcontxt.Name = "altcontxt";
+            this.altcontxt.Size = new System.Drawing.Size(134, 20);
+            this.altcontxt.TabIndex = 110;
+            // 
+            // profitlbl
+            // 
+            this.profitlbl.AutoSize = true;
+            this.profitlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.profitlbl.ForeColor = System.Drawing.Color.Black;
+            this.profitlbl.Location = new System.Drawing.Point(504, 16);
+            this.profitlbl.Name = "profitlbl";
+            this.profitlbl.Size = new System.Drawing.Size(0, 13);
+            this.profitlbl.TabIndex = 124;
+            // 
+            // dplbl
+            // 
+            this.dplbl.AutoSize = true;
+            this.dplbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dplbl.ForeColor = System.Drawing.Color.Black;
+            this.dplbl.Location = new System.Drawing.Point(457, 16);
+            this.dplbl.Name = "dplbl";
+            this.dplbl.Size = new System.Drawing.Size(0, 13);
+            this.dplbl.TabIndex = 123;
+            // 
             // editorderdetails
             // 
             this.AcceptButton = this.updbtn;
@@ -500,6 +542,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(628, 610);
+            this.Controls.Add(this.profitlbl);
+            this.Controls.Add(this.dplbl);
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.altcontxt);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.loadinglbl);
             this.Controls.Add(this.refresh);
@@ -602,5 +648,9 @@
         private System.Windows.Forms.Label refresh;
         private System.Windows.Forms.Label loadinglbl;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox altcontxt;
+        private System.Windows.Forms.Label profitlbl;
+        private System.Windows.Forms.Label dplbl;
     }
 }

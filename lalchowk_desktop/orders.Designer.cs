@@ -609,6 +609,8 @@
             this.ordergridview.Visible = false;
             this.ordergridview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ordergridview_CellClick_1);
             this.ordergridview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ordergridview_CellClick);
+            this.ordergridview.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.ordergridview_CellPainting);
+            this.ordergridview.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.ordergridview_RowPostPaint);
             // 
             // loadinglbl
             // 

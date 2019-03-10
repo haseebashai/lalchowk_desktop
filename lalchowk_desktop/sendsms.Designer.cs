@@ -84,6 +84,7 @@
             this.smstxt.MaxLength = 620;
             this.smstxt.Multiline = true;
             this.smstxt.Name = "smstxt";
+            this.smstxt.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
             this.smstxt.Size = new System.Drawing.Size(362, 155);
             this.smstxt.TabIndex = 3;
             this.smstxt.TextChanged += new System.EventHandler(this.smstxt_TextChanged);

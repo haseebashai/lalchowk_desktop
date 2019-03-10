@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
@@ -42,7 +43,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 try
                 {
 
-                    dr = obj.Query("select distinct concat(pincode,':  ',area) as pincode from pincodes order by id asc");
+                    dr = obj.Query("select distinct concat(pincode,':  ',postoffice) as pincode from pincodes where city='Srinagar' order by id asc");
                     DataTable dt = new DataTable();
                     dt.Columns.Add("pincode", typeof(String));
                     dt.Load(dr);
@@ -113,9 +114,9 @@ namespace Veiled_Kashmir_Admin_Panel
                             pconf = "0";
 
                         string email = md5hash(emailtxt.Text);
-                        string cmd = "INSERT INTO orders(`email`, `amount`,`timestamp`,`shipping`,`paymenttype`,`paymentconfirmed`, `transanctionid`,`itemcount`,`status`,`name`,`address1`,`address2`,`contact`,`pincode`,`city`,`loyaltybonus`,`deliveryguy`) values ('" + email + "','" + amounttxt.Text
+                        string cmd = "INSERT INTO orders(`email`, `amount`,`timestamp`,`shipping`,`paymenttype`,`paymentconfirmed`, `transanctionid`,`itemcount`,`status`,`name`,`address1`,`address2`,`contact`,`pincode`,`city`,`loyaltybonus`,`deliveryguy`,`in_transit`,`alternate_contact`) values ('" + email + "','" + amounttxt.Text
                             + "',DATE_ADD(CURRENT_TIMESTAMP, INTERVAL 750 MINUTE),'" + shiptxt.Text + "','"+ptypebox.Text+"','"+pconf+"','SW','" + counttxt.Text + "','" + statustxt.Text + "','" + nametxt.Text + "','" + add1txt.Text + "','" + add2txt.Text + "','" + contacttxt.Text 
-                            + "','" + pintxt.Text + "','" + citytxt.Text + "','" + loyaltxt.Text + "','"+devtxt.Text+"')";
+                            + "','" + pintxt.Text + "','" + citytxt.Text + "','" + loyaltxt.Text + "','"+devtxt.Text+"','0','"+altcontxt.Text+"')";
                         obj.nonQuery(cmd);
                         long orderid = userinfo.orid;
                         //    int orderid = obj.Count("SELECT LAST_INSERT_ID()");
@@ -361,6 +362,12 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             if (pcnbox.Checked)
                 pcybox.Checked = false;
+        }
+
+
+        private void statustxt_Leave(object sender, EventArgs e)
+        {
+            statustxt.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(statustxt.Text.ToLower());
         }
 
 

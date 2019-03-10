@@ -78,6 +78,8 @@
             this.pcybox = new System.Windows.Forms.CheckBox();
             this.label16 = new System.Windows.Forms.Label();
             this.pconflbl = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.altcontxt = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.inventorydatagridview)).BeginInit();
             this.SuspendLayout();
@@ -98,7 +100,7 @@
             // tempbox
             // 
             this.tempbox.AutoSize = true;
-            this.tempbox.Location = new System.Drawing.Point(43, 578);
+            this.tempbox.Location = new System.Drawing.Point(42, 606);
             this.tempbox.Name = "tempbox";
             this.tempbox.Size = new System.Drawing.Size(85, 17);
             this.tempbox.TabIndex = 137;
@@ -109,7 +111,7 @@
             // 
             this.addbonusbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.addbonusbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addbonusbtn.Location = new System.Drawing.Point(146, 546);
+            this.addbonusbtn.Location = new System.Drawing.Point(145, 574);
             this.addbonusbtn.Name = "addbonusbtn";
             this.addbonusbtn.Size = new System.Drawing.Size(75, 26);
             this.addbonusbtn.TabIndex = 136;
@@ -120,7 +122,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(40, 532);
+            this.label14.Location = new System.Drawing.Point(39, 560);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(96, 13);
             this.label14.TabIndex = 135;
@@ -130,7 +132,7 @@
             // 
             this.bonustxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.bonustxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bonustxt.Location = new System.Drawing.Point(43, 552);
+            this.bonustxt.Location = new System.Drawing.Point(42, 580);
             this.bonustxt.Name = "bonustxt";
             this.bonustxt.Size = new System.Drawing.Size(93, 20);
             this.bonustxt.TabIndex = 134;
@@ -150,7 +152,8 @@
             // 
             // pinbox
             // 
-            this.pinbox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.pinbox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.pinbox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.pinbox.FormattingEnabled = true;
             this.pinbox.Location = new System.Drawing.Point(649, 264);
             this.pinbox.Name = "pinbox";
@@ -351,12 +354,23 @@
             // 
             // statustxt
             // 
+            this.statustxt.AutoCompleteCustomSource.AddRange(new string[] {
+            "Placed",
+            "Confirmed",
+            "Cancelled",
+            "Delivered",
+            "Delayed",
+            "On Pause",
+            "Shipped"});
+            this.statustxt.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.statustxt.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.statustxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.statustxt.Location = new System.Drawing.Point(213, 459);
             this.statustxt.Name = "statustxt";
             this.statustxt.Size = new System.Drawing.Size(130, 20);
             this.statustxt.TabIndex = 111;
             this.statustxt.Text = "Placed";
+            this.statustxt.Leave += new System.EventHandler(this.statustxt_Leave);
             // 
             // label5
             // 
@@ -546,6 +560,23 @@
             this.pconflbl.TabIndex = 146;
             this.pconflbl.Text = "Payment Confirmed ?";
             // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(40, 500);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(89, 13);
+            this.label18.TabIndex = 150;
+            this.label18.Text = "Alternate Contact";
+            // 
+            // altcontxt
+            // 
+            this.altcontxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.altcontxt.Location = new System.Drawing.Point(43, 520);
+            this.altcontxt.Name = "altcontxt";
+            this.altcontxt.Size = new System.Drawing.Size(140, 20);
+            this.altcontxt.TabIndex = 149;
+            // 
             // old_addorder
             // 
             this.AcceptButton = this.searchbtn;
@@ -553,6 +584,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(918, 635);
+            this.Controls.Add(this.label18);
+            this.Controls.Add(this.altcontxt);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.devtxt);
             this.Controls.Add(this.ptypebox);
@@ -662,5 +695,7 @@
         private System.Windows.Forms.CheckBox pcybox;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label pconflbl;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox altcontxt;
     }
 }

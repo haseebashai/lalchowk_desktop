@@ -79,6 +79,8 @@
             this.pconflbl = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.devtxt = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.altcontxt = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.inventorydatagridview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.refresh)).BeginInit();
@@ -181,12 +183,23 @@
             // 
             // statustxt
             // 
+            this.statustxt.AutoCompleteCustomSource.AddRange(new string[] {
+            "Placed",
+            "Confirmed",
+            "Cancelled",
+            "Delivered",
+            "Delayed",
+            "On Pause",
+            "Shipped"});
+            this.statustxt.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.statustxt.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.statustxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.statustxt.Location = new System.Drawing.Point(204, 426);
             this.statustxt.Name = "statustxt";
             this.statustxt.Size = new System.Drawing.Size(130, 20);
             this.statustxt.TabIndex = 12;
             this.statustxt.Text = "Placed";
+            this.statustxt.Leave += new System.EventHandler(this.statustxt_Leave);
             // 
             // label7
             // 
@@ -410,7 +423,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(40, 518);
+            this.label14.Location = new System.Drawing.Point(40, 528);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(96, 13);
             this.label14.TabIndex = 90;
@@ -420,7 +433,7 @@
             // 
             this.bonustxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.bonustxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bonustxt.Location = new System.Drawing.Point(43, 538);
+            this.bonustxt.Location = new System.Drawing.Point(43, 548);
             this.bonustxt.Name = "bonustxt";
             this.bonustxt.Size = new System.Drawing.Size(93, 20);
             this.bonustxt.TabIndex = 89;
@@ -429,7 +442,7 @@
             // 
             this.addbonusbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.addbonusbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addbonusbtn.Location = new System.Drawing.Point(146, 532);
+            this.addbonusbtn.Location = new System.Drawing.Point(146, 542);
             this.addbonusbtn.Name = "addbonusbtn";
             this.addbonusbtn.Size = new System.Drawing.Size(75, 26);
             this.addbonusbtn.TabIndex = 91;
@@ -440,7 +453,7 @@
             // tempbox
             // 
             this.tempbox.AutoSize = true;
-            this.tempbox.Location = new System.Drawing.Point(43, 564);
+            this.tempbox.Location = new System.Drawing.Point(43, 574);
             this.tempbox.Name = "tempbox";
             this.tempbox.Size = new System.Drawing.Size(85, 17);
             this.tempbox.TabIndex = 92;
@@ -564,12 +577,41 @@
             this.devtxt.TabIndex = 16;
             this.devtxt.Text = "Suhaib";
             // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(40, 466);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(89, 13);
+            this.label18.TabIndex = 109;
+            this.label18.Text = "Alternate Contact";
+            // 
+            // altcontxt
+            // 
+            this.altcontxt.AutoCompleteCustomSource.AddRange(new string[] {
+            "Placed",
+            "Confirmed",
+            "Cancelled",
+            "Delivered",
+            "Delayed",
+            "On Pause",
+            "Shipped"});
+            this.altcontxt.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.altcontxt.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.altcontxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.altcontxt.Location = new System.Drawing.Point(43, 486);
+            this.altcontxt.Name = "altcontxt";
+            this.altcontxt.Size = new System.Drawing.Size(140, 20);
+            this.altcontxt.TabIndex = 108;
+            // 
             // addorder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(921, 612);
+            this.Controls.Add(this.label18);
+            this.Controls.Add(this.altcontxt);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.devtxt);
             this.Controls.Add(this.ptypebox);
@@ -682,5 +724,7 @@
         private System.Windows.Forms.Label pconflbl;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox devtxt;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox altcontxt;
     }
 }
