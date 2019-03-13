@@ -922,7 +922,7 @@ namespace Veiled_Kashmir_Admin_Panel
                             {
                                 n = n - (n * 0.25);
                                 result = price1 - n;
-                              //  MessageBox.Show("price is: " + price1.ToString() + n.ToString() + "we get: " + result.ToString());
+                                MessageBox.Show("price is: " + price1.ToString() + n.ToString() + "we get: " + result.ToString());
                             }
                             catch { }
 

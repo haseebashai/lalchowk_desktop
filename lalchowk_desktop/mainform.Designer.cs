@@ -40,6 +40,9 @@
             this.suppliersbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.signinlbl = new System.Windows.Forms.Label();
             this.navpnl = new System.Windows.Forms.Panel();
+            this.medlbl = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.medbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.blogbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.sellreqlbl = new System.Windows.Forms.Label();
             this.usedbookbtn = new MaterialSkin.Controls.MaterialFlatButton();
@@ -51,15 +54,14 @@
             this.smsbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.settingsbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.categorybtn = new MaterialSkin.Controls.MaterialFlatButton();
-            this.clientbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.sendmailbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.homepagebtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.msgbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.accbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.expbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.ordersbtn = new MaterialSkin.Controls.MaterialFlatButton();
+            this.clientbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.navtitle = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.navtxt = new System.Windows.Forms.Label();
@@ -186,6 +188,9 @@
             // 
             this.navpnl.BackColor = System.Drawing.Color.White;
             this.navpnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.navpnl.Controls.Add(this.medlbl);
+            this.navpnl.Controls.Add(this.panel1);
+            this.navpnl.Controls.Add(this.medbtn);
             this.navpnl.Controls.Add(this.blogbtn);
             this.navpnl.Controls.Add(this.sellreqlbl);
             this.navpnl.Controls.Add(this.usedbookbtn);
@@ -197,9 +202,7 @@
             this.navpnl.Controls.Add(this.smsbtn);
             this.navpnl.Controls.Add(this.settingsbtn);
             this.navpnl.Controls.Add(this.label1);
-            this.navpnl.Controls.Add(this.label2);
             this.navpnl.Controls.Add(this.categorybtn);
-            this.navpnl.Controls.Add(this.clientbtn);
             this.navpnl.Controls.Add(this.sendmailbtn);
             this.navpnl.Controls.Add(this.homepagebtn);
             this.navpnl.Controls.Add(this.msgbtn);
@@ -215,6 +218,44 @@
             this.navpnl.Name = "navpnl";
             this.navpnl.Size = new System.Drawing.Size(200, 689);
             this.navpnl.TabIndex = 10;
+            // 
+            // medlbl
+            // 
+            this.medlbl.AutoSize = true;
+            this.medlbl.BackColor = System.Drawing.Color.Red;
+            this.medlbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.medlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.medlbl.ForeColor = System.Drawing.Color.White;
+            this.medlbl.Location = new System.Drawing.Point(116, 608);
+            this.medlbl.Name = "medlbl";
+            this.medlbl.Size = new System.Drawing.Size(33, 18);
+            this.medlbl.TabIndex = 47;
+            this.medlbl.Text = "req";
+            this.medlbl.Visible = false;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.LightGray;
+            this.panel1.Location = new System.Drawing.Point(22, 598);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(150, 1);
+            this.panel1.TabIndex = 46;
+            // 
+            // medbtn
+            // 
+            this.medbtn.AutoSize = true;
+            this.medbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.medbtn.Depth = 0;
+            this.medbtn.Location = new System.Drawing.Point(21, 608);
+            this.medbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.medbtn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.medbtn.Name = "medbtn";
+            this.medbtn.Primary = false;
+            this.medbtn.Size = new System.Drawing.Size(95, 36);
+            this.medbtn.TabIndex = 45;
+            this.medbtn.Text = "LC Medicine";
+            this.medbtn.UseVisualStyleBackColor = true;
+            this.medbtn.Click += new System.EventHandler(this.medbtn_Click);
             // 
             // blogbtn
             // 
@@ -381,17 +422,6 @@
             this.label1.TabIndex = 33;
             this.label1.Text = "Lalchowk";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label2.Location = new System.Drawing.Point(4, 614);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 16);
-            this.label2.TabIndex = 34;
-            this.label2.Text = "Lifeclicks";
-            // 
             // categorybtn
             // 
             this.categorybtn.AutoSize = true;
@@ -407,22 +437,6 @@
             this.categorybtn.Text = "Categories";
             this.categorybtn.UseVisualStyleBackColor = true;
             this.categorybtn.Click += new System.EventHandler(this.categorybtn_Click);
-            // 
-            // clientbtn
-            // 
-            this.clientbtn.AutoSize = true;
-            this.clientbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.clientbtn.Depth = 0;
-            this.clientbtn.Location = new System.Drawing.Point(21, 634);
-            this.clientbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.clientbtn.MouseState = MaterialSkin.MouseState.HOVER;
-            this.clientbtn.Name = "clientbtn";
-            this.clientbtn.Primary = false;
-            this.clientbtn.Size = new System.Drawing.Size(133, 36);
-            this.clientbtn.TabIndex = 26;
-            this.clientbtn.Text = "Client accounts";
-            this.clientbtn.UseVisualStyleBackColor = true;
-            this.clientbtn.Click += new System.EventHandler(this.clientbtn_Click);
             // 
             // sendmailbtn
             // 
@@ -519,6 +533,23 @@
             this.ordersbtn.Text = "orders";
             this.ordersbtn.UseVisualStyleBackColor = true;
             this.ordersbtn.Click += new System.EventHandler(this.ordersbtn_Click);
+            // 
+            // clientbtn
+            // 
+            this.clientbtn.AutoSize = true;
+            this.clientbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.clientbtn.Depth = 0;
+            this.clientbtn.Location = new System.Drawing.Point(-9, 0);
+            this.clientbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.clientbtn.MouseState = MaterialSkin.MouseState.HOVER;
+            this.clientbtn.Name = "clientbtn";
+            this.clientbtn.Primary = false;
+            this.clientbtn.Size = new System.Drawing.Size(133, 36);
+            this.clientbtn.TabIndex = 26;
+            this.clientbtn.Text = "Client accounts";
+            this.clientbtn.UseVisualStyleBackColor = true;
+            this.clientbtn.Visible = false;
+            this.clientbtn.Click += new System.EventHandler(this.clientbtn_Click);
             // 
             // navtitle
             // 
@@ -998,6 +1029,7 @@
             this.zeropnl.Controls.Add(this.zero);
             this.zeropnl.Controls.Add(this.totalordersdel);
             this.zeropnl.Controls.Add(this.homelbl);
+            this.zeropnl.Controls.Add(this.clientbtn);
             this.zeropnl.Location = new System.Drawing.Point(14, 706);
             this.zeropnl.Name = "zeropnl";
             this.zeropnl.Size = new System.Drawing.Size(1162, 722);
@@ -1120,7 +1152,6 @@
         private System.Windows.Forms.PictureBox loadingpic;
         private MaterialSkin.Controls.MaterialFlatButton clientbtn;
         private MaterialSkin.Controls.MaterialFlatButton categorybtn;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private MaterialSkin.Controls.MaterialFlatButton settingsbtn;
         private MaterialSkin.Controls.MaterialFlatButton smsbtn;
@@ -1157,5 +1188,8 @@
         private System.Windows.Forms.Label selectlbl;
         private System.Windows.Forms.Label corderslbl;
         private System.Windows.Forms.Button ordelbtn;
+        private System.Windows.Forms.Panel panel1;
+        private MaterialSkin.Controls.MaterialFlatButton medbtn;
+        private System.Windows.Forms.Label medlbl;
     }
 }

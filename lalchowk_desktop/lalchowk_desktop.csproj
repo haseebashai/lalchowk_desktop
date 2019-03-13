@@ -202,6 +202,12 @@
     <Compile Include="mail.Designer.cs">
       <DependentUpon>mail.cs</DependentUpon>
     </Compile>
+    <Compile Include="medorders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="medorders.Designer.cs">
+      <DependentUpon>medorders.cs</DependentUpon>
+    </Compile>
     <Compile Include="messages.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -410,6 +416,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="mail.resx">
       <DependentUpon>mail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="medorders.resx">
+      <DependentUpon>medorders.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="messages.resx">
       <DependentUpon>messages.cs</DependentUpon>

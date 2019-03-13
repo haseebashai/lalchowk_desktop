@@ -750,7 +750,7 @@ namespace Veiled_Kashmir_Admin_Panel
         string id,contact,name,email,encmail;
         private void placeddataview_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-          //  MessageBox.Show(e.ColumnIndex.ToString());
+          //  MessageBox.Show(e.ColumnIndex.ToString()+ e.RowIndex.ToString());
             if (e.RowIndex > -1 && e.ColumnIndex > 2)
             {
                 plbl.Visible = true;
@@ -1267,7 +1267,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
                     foreach (DataGridViewRow row in placeddataview.Rows)
                     {
-                        if (row.Cells[2].Value != null && row.Cells[2].Value.Equals(true)) //0 is the column number of checkbox
+                        if (row.Cells[1].Value != null && row.Cells[1].Value.Equals(true)) //0 is the column number of checkbox
                         {
                             if (row.Cells["paymentconfirmed"].Value.ToString() == "True"  && row.Cells["city"].Value.ToString()!="Srinagar")
                             {
@@ -1386,7 +1386,7 @@ namespace Veiled_Kashmir_Admin_Panel
         private void shippedorders()
         {
             con.Open();
-            adap = new MySqlDataAdapter("select customer.mail,orders.orderid,orders.timestamp,orders.amount,orders.shipping,orders.paymenttype,orders.paymentconfirmed,orders.status,orders.name,orders.address1,orders.address2,orders.pincode,orders.contact,orders.city,orders.deliveryguy,orders.in_transit from lalchowk.orders inner join customer on customer.email=orders.email where status='Shipped' or in_transit='1' ;", con);
+            adap = new MySqlDataAdapter("select customer.mail,orders.orderid,orders.timestamp,orders.shipdate,orders.amount,orders.shipping,orders.paymenttype,orders.paymentconfirmed,orders.status,orders.name,orders.address1,orders.address2,orders.pincode,orders.contact,orders.city,orders.deliveryguy,orders.in_transit from lalchowk.orders inner join customer on customer.email=orders.email where status='Shipped' or in_transit='1' ;", con);
             dt = new DataTable();
             adap.Fill(dt);
             con.Close();
@@ -1424,7 +1424,7 @@ namespace Veiled_Kashmir_Admin_Panel
                         Cursor = Cursors.WaitCursor;
                         foreach (DataGridViewRow row in placeddataview.Rows)
                         {
-                            if (row.Cells[2].Value != null && row.Cells[2].Value.Equals(true)) //0 is the column number of checkbox
+                            if (row.Cells[1].Value != null && row.Cells[1].Value.Equals(true)) //0 is the column number of checkbox
                             {
                                 string id = row.Cells["orderid"].Value.ToString();
                                 DateTime time = DateTime.Now;             // Use current time.
@@ -1472,10 +1472,10 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             foreach (DataGridViewRow row in placeddataview.Rows)
             {
-                if (row.Cells[2].Value != null && row.Cells[2].Value.Equals(true)) //0 is the column number of checkbox
+                if (row.Cells[1].Value != null && row.Cells[1].Value.Equals(true)) //0 is the column number of checkbox
                 {
 
-                    row.Cells[2].Value = false;
+                    row.Cells[1].Value = false;
                 }
                
             }
@@ -1592,7 +1592,7 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             try
             {
-                bool isChecked = Convert.ToBoolean(placeddataview.Rows[placeddataview.CurrentCell.RowIndex].Cells[2].Value.ToString());
+                bool isChecked = Convert.ToBoolean(placeddataview.Rows[placeddataview.CurrentCell.RowIndex].Cells[1].Value.ToString());
 
                 if (isChecked)
                 {
@@ -1630,7 +1630,7 @@ namespace Veiled_Kashmir_Admin_Panel
                         Cursor = Cursors.WaitCursor;
                         foreach (DataGridViewRow row in placeddataview.Rows)
                         {
-                            if (row.Cells[2].Value != null && row.Cells[2].Value.Equals(true)) //0 is the column number of checkbox
+                            if (row.Cells[1].Value != null && row.Cells[1].Value.Equals(true)) //0 is the column number of checkbox
                             {
 
                                 string id = row.Cells["orderid"].Value.ToString();
@@ -1710,7 +1710,11 @@ namespace Veiled_Kashmir_Admin_Panel
             catch { }
          }
 
-      
+        private void medbtn_Click(object sender, EventArgs e)
+        {
+            medorders med = new medorders();
+            med.Show();
+        }
 
         private void cartbtn_Click(object sender, EventArgs e)
         {
@@ -1831,6 +1835,12 @@ namespace Veiled_Kashmir_Admin_Panel
                 string count = dr[0].ToString();
                 obj.closeConnection();
 
+                dr = obj.Query("select count(orderid) from medorders where status ='Placed'");
+                dr.Read();
+                string medcount = dr[0].ToString();
+                obj.closeConnection();
+
+
                 bgworker.ReportProgress(20);
 
                 dr = obj.Query("select count(messageid) from messages where messageid>60 and reply is null");
@@ -1845,7 +1855,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
 
 
-                object[] arg = { count, msg,scount };
+                object[] arg = { count, msg,scount, medcount };
                 bgworker.ReportProgress(40,arg);
 
               
@@ -1984,6 +1994,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 string count = (string)arg[0];
                 string msg = (string)arg[1];
                 string scount = (string)arg[2];
+                string medcount = (string)arg[3];
                 if (count == "0")
                 {
                     rcountlbl.Visible = false;
@@ -2011,6 +2022,15 @@ namespace Veiled_Kashmir_Admin_Panel
                 {
                     sellreqlbl.Text = scount;
                     sellreqlbl.Visible = true;
+                }
+                if (medcount == "0")
+                {
+                    medlbl.Visible = false;
+                }
+                else
+                {
+                    medlbl.Text = medcount;
+                    medlbl.Visible = true;
                 }
 
             }
