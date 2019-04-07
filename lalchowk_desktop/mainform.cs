@@ -1021,7 +1021,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 DialogResult dgr = MessageBox.Show("Press YES to cancel order '" + id + "' and update stock\nPress NO to cancel order without updating stock", "Confirm!", MessageBoxButtons.YesNoCancel);
                 if (dgr == DialogResult.Yes)
                 {
-                    string cmd = "Update orders set status='Cancelled' where orderid='" + id + "'";
+                    string cmd = "Update orders set status='Cancelled', in_transit='0' where orderid='" + id + "'";
                     obj.nonQuery(cmd);
                    
                     foreach (string products in pid)
@@ -1192,6 +1192,9 @@ namespace Veiled_Kashmir_Admin_Panel
             retolbl.Visible = false;
             clearlbl.Visible = false;
             printaddbtn.Visible = false;
+            selodtxt.Text = "";
+            selodtxt.Visible = false;
+            num1 = 0;
 
         }
 
@@ -1272,14 +1275,14 @@ namespace Veiled_Kashmir_Admin_Panel
                             if (row.Cells["paymentconfirmed"].Value.ToString() == "True"  && row.Cells["city"].Value.ToString()!="Srinagar")
                             {
                                 addresses.Add(row.Cells["name"].Value.ToString() + "\r\n" + row.Cells["address1"].Value.ToString() + " " + row.Cells["address2"].Value.ToString() +
-                               "\r\n" + row.Cells["city"].Value.ToString() + "\r\nPin: " + row.Cells["pincode"].Value.ToString() + "\r\nContact: " + row.Cells["contact"].Value.ToString());
+                               "\r\n" + row.Cells["city"].Value.ToString() + "\r\nPin: " + row.Cells["pincode"].Value.ToString() + "\r\nContact: " + row.Cells["contact"].Value.ToString()+", " + row.Cells["alternate_contact"].Value.ToString());
                                 add2 = true;
                             }
                             else if(row.Cells["paymentconfirmed"].Value.ToString() == "True")
                             {
 
                                 addresses.Add("ORD" + row.Cells["orderid"].Value.ToString() + "\r\n" + row.Cells["name"].Value.ToString() + "\r\n" + row.Cells["address1"].Value.ToString() + " " + row.Cells["address2"].Value.ToString() +
-                                   "\r\n" + row.Cells["contact"].Value.ToString() + "\r\n>> PRE-PAID");
+                                   "\r\n" + row.Cells["contact"].Value.ToString() + ", " + row.Cells["alternate_contact"].Value.ToString() + "\r\n>> PRE-PAID");
                                     add2 = true;
                                 
 
@@ -1289,7 +1292,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
                                 amount = int.Parse(row.Cells["amount"].Value.ToString()) + int.Parse(row.Cells["shipping"].Value.ToString());
                                 addresses.Add("ORD" + row.Cells["orderid"].Value.ToString() + "\r\n" + row.Cells["name"].Value.ToString() + "\r\n" + row.Cells["address1"].Value.ToString() + " " + row.Cells["address2"].Value.ToString() + " " + row.Cells["city"].Value.ToString() +
-                                   "\r\n" + row.Cells["contact"].Value.ToString() + "\r\n>> Please pay ₹ " + amount +"\r\nor mPay/Paytm the amount to 9796777058");
+                                   "\r\n" + row.Cells["contact"].Value.ToString() + ", " + row.Cells["alternate_contact"].Value.ToString() + "\r\n>> Please pay ₹ " + amount +"\r\nor mPay/Paytm the amount to 9796777058");
                                 add2 = true;
                             }
 
@@ -1352,6 +1355,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 aconn.Close();
 
 
+
             }
             catch { con.Close(); aconn.Close(); }
             Cursor = Cursors.Arrow;
@@ -1362,7 +1366,7 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             con.Open();
 
-            adap = new MySqlDataAdapter("select customer.mail,orders.email,orders.orderid,orders.timestamp,orders.amount,orders.shipping,orders.itemcount,orders.paymenttype,orders.paymentconfirmed,orders.status,orders.name,orders.address1,orders.address2,orders.pincode,orders.contact,orders.city from lalchowk.orders inner join customer on customer.email=orders.email where status='placed' or status='confirmed';", con);
+            adap = new MySqlDataAdapter("select customer.mail,orders.email,orders.orderid,orders.timestamp,orders.amount,orders.shipping,orders.itemcount,orders.paymenttype,orders.paymentconfirmed,orders.status,orders.name,orders.address1,orders.address2,orders.pincode,orders.contact,orders.city,orders.alternate_contact,orders.landmark from lalchowk.orders inner join customer on customer.email=orders.email where status='placed' or status='confirmed';", con);
             dt = new DataTable();
             adap.Fill(dt);
             con.Close();
@@ -1377,7 +1381,9 @@ namespace Veiled_Kashmir_Admin_Panel
                 placeddataview.Columns["paymentconfirmed"].Visible = false;
                 placeddataview.Columns["email"].Visible = false;
                 placeddataview.Columns["status"].Visible = false;
-              
+                placeddataview.Columns["alternate_contact"].Visible = false;
+                placeddataview.Columns["landmark"].Visible = false;
+
                 //    placedh.Text = "Orders currently placed: " + placeddataview.RowCount;
             }
             catch(Exception ex) { MessageBox.Show(ex.Message); con.Close(); }
@@ -1674,7 +1680,7 @@ namespace Veiled_Kashmir_Admin_Panel
             }
         }
 
-
+        int num1 = 0;
         private void shippeddataview_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -1692,6 +1698,8 @@ namespace Veiled_Kashmir_Admin_Panel
                     totallbl.Visible = true;
                     retolbl.Visible = true;
                     clearlbl.Visible = true;
+
+                    num1 += 1;
                 }
                 else
                 {
@@ -1704,11 +1712,29 @@ namespace Veiled_Kashmir_Admin_Panel
                     totallbl.Visible = true;
                     retolbl.Visible = true;
                     clearlbl.Visible = true;
+
+                    num1 -= 1;
                 }
+
+                if (num1 == 0)
+                    selodtxt.Visible = false;
+                else if (num1 == 1)
+                {
+                    selodtxt.Text = num1 + " order selected";
+                    selodtxt.Visible = true;
+                }
+                else
+                {
+                    selodtxt.Text = num1 + " orders selected";
+                    selodtxt.Visible = true;
+                }
+
 
             }
             catch { }
-         }
+           
+
+        }
 
         private void medbtn_Click(object sender, EventArgs e)
         {
@@ -1862,7 +1888,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
              
                     con.Open();
-                    adap = new MySqlDataAdapter("select customer.mail,orders.email,orders.orderid,orders.timestamp,orders.amount,orders.shipping,orders.itemcount,orders.paymenttype,orders.paymentconfirmed,orders.status,orders.name,orders.address1,orders.address2,orders.pincode,orders.contact,orders.city from lalchowk.orders inner join customer on customer.email=orders.email where status='placed' or status='confirmed';", con);
+                    adap = new MySqlDataAdapter("select customer.mail,orders.email,orders.orderid,orders.timestamp,orders.amount,orders.shipping,orders.itemcount,orders.paymenttype,orders.paymentconfirmed,orders.status,orders.name,orders.address1,orders.address2,orders.pincode,orders.contact,orders.city,orders.alternate_contact,orders.landmark from lalchowk.orders inner join customer on customer.email=orders.email where status='placed' or status='confirmed';", con);
                     dt = new DataTable();
                     adap.Fill(dt);
                     con.Close();
@@ -1948,7 +1974,9 @@ namespace Veiled_Kashmir_Admin_Panel
                     placeddataview.Columns["paymentconfirmed"].Visible = false;
                     placeddataview.Columns["email"].Visible = false;
                     placeddataview.Columns["status"].Visible = false;
-                   
+                    placeddataview.Columns["alternate_contact"].Visible = false;
+                    placeddataview.Columns["landmark"].Visible = false;
+
 
                 }
                 catch { }
@@ -2104,7 +2132,8 @@ namespace Veiled_Kashmir_Admin_Panel
                         placeddataview.Columns["paymentconfirmed"].Visible = false;
                         placeddataview.Columns["email"].Visible = false;
                         placeddataview.Columns["status"].Visible = false;
-                      
+                        placeddataview.Columns["alternate_contact"].Visible = false;
+                        placeddataview.Columns["landmark"].Visible = false;
 
 
 
@@ -2191,7 +2220,9 @@ namespace Veiled_Kashmir_Admin_Panel
             placeddataview.Columns["paymentconfirmed"].Visible = false;
                 placeddataview.Columns["email"].Visible = false;
                 placeddataview.Columns["status"].Visible = false;
-               
+                placeddataview.Columns["alternate_contact"].Visible = false;
+                placeddataview.Columns["landmark"].Visible = false;
+
             }
             catch { }
 

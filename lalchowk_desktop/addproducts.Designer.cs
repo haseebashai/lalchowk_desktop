@@ -132,6 +132,7 @@
             this.bgworker = new System.ComponentModel.BackgroundWorker();
             this.pictimer = new System.Windows.Forms.Timer(this.components);
             this.bguploadpic = new System.ComponentModel.BackgroundWorker();
+            this.catname = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pic1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic3)).BeginInit();
@@ -579,6 +580,7 @@
             this.brandtxt.Name = "brandtxt";
             this.brandtxt.Size = new System.Drawing.Size(134, 20);
             this.brandtxt.TabIndex = 3;
+            this.brandtxt.TextChanged += new System.EventHandler(this.brandtxt_TextChanged);
             // 
             // picdialog
             // 
@@ -965,6 +967,7 @@
             // 
             // addppnl
             // 
+            this.addppnl.Controls.Add(this.catname);
             this.addppnl.Controls.Add(this.odisbtn);
             this.addppnl.Controls.Add(this.odistxt);
             this.addppnl.Controls.Add(this.label31);
@@ -1198,6 +1201,16 @@
             this.bguploadpic.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bguploadpic_ProgressChanged);
             this.bguploadpic.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bguploadpic_RunWorkerCompleted);
             // 
+            // catname
+            // 
+            this.catname.AutoSize = true;
+            this.catname.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.catname.Location = new System.Drawing.Point(161, 327);
+            this.catname.Name = "catname";
+            this.catname.Size = new System.Drawing.Size(0, 13);
+            this.catname.TabIndex = 106;
+            this.catname.Visible = false;
+            // 
             // addproducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1324,5 +1337,6 @@
         private System.Windows.Forms.Button odisbtn;
         private System.Windows.Forms.TextBox odistxt;
         private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label catname;
     }
 }

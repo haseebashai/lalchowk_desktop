@@ -712,6 +712,35 @@ namespace Veiled_Kashmir_Admin_Panel
             }catch { }
         }
 
+        private void brandtxt_TextChanged(object sender, EventArgs e)
+        {
+            dname2.Text = brandtxt.Text;
+        }
+
+        //private void catbox_Leave(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        BackgroundWorker category = new BackgroundWorker();
+        //        category.DoWork += (o, a) =>
+        //        {
+        //            dr = obj.Query("select categoryname from secondcategory or thirdcategory where categoryid='"+catbox.Text+"'");
+        //            dr.Read();
+        //            a.Result = dr[0].ToString();
+        //        };
+        //        category.RunWorkerCompleted += (o, b) => 
+        //        {
+        //            string name = (string)b.Result;
+        //            catname.Text = name;
+        //            catname.Visible = true;
+        //        };
+
+
+        //        category.RunWorkerAsync();
+        //    }
+        //    catch { };
+        //}
+
         private void pidtxt_TextChanged(object sender, EventArgs e)
         {
             gidtxt.Text = pidtxt.Text;

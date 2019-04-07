@@ -37,7 +37,77 @@ namespace Veiled_Kashmir_Admin_Panel
 
 
 
-            bgworker.RunWorkerAsync();
+            BackgroundWorker ordersload = new BackgroundWorker();
+            ordersload.DoWork += (o, a) => 
+            {
+                try
+                {
+                    adap = new MySqlDataAdapter("SELECT customer.mail,orders.*  FROM lalchowk.orders inner join customer on customer.email=orders.email order by orderid desc ;", conn);
+                    dt = new DataTable();
+                    adap.Fill(dt);
+                    obj.closeConnection();
+                    bsource = new BindingSource();
+                    bsource.DataSource = dt;
+
+                    dr = obj.Query("select count(orderid) from orders");
+                    dr.Read();
+                    ordervar = dr[0].ToString();
+                    obj.closeConnection();
+
+                }
+                catch (Exception ex)
+                {
+                    refresh.Visible = true;
+                    refresh.Enabled = true;
+                    obj.closeConnection();
+                    MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
+                }
+            };
+            ordersload.RunWorkerCompleted += (o, b) => 
+            {
+
+                if (dg != null)
+                {
+                    dg.loadingimage.Visible = false;
+                    dg.lbl.ForeColor = SystemColors.Highlight;
+                    dg.lbl.Text = "Orders";
+                    dg.lbl.Visible = false;
+                    formlbl.Visible = false;
+                    dg.dialogpnl.Location = new Point(1, 1);
+
+                }
+                else
+                {
+                    loading.Visible = false;
+
+                }
+                formlbl.Visible = false;
+
+                try
+                {
+                    ordergridview.Visible = true;
+                    ordergridview.DataSource = bsource;
+                    ordergridview.DoubleBuffered(true);
+
+
+                    ordergridview.Columns["email"].Visible = false;
+                    ordergridview.Columns["in_transit"].Visible = false;
+                    ordergridview.Columns["landmark"].Visible = false;
+                    ordergridview.Columns["alternate_contact"].Visible = false;
+                    ordergridview.Columns["paymentconfirmed"].Visible = false;
+                    panel1.Visible = true;
+                    orlbl.Text = ordervar;
+                    odplbl.Text= ordergridview.RowCount.ToString();
+                    refresh.Enabled = true;
+                    ordergridview.Enabled = true;
+                    delbtn.Visible = true;
+                    delbtn.Enabled = true;
+                }
+                catch { delbtn.Visible = false; refresh.Enabled = true; ordergridview.Visible = false; refresh.Visible = true; }
+                Cursor = Cursors.Arrow;
+
+            };
+            ordersload.RunWorkerAsync();
 
         }
 
@@ -45,6 +115,10 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             try
             {
+                labels();
+                oidlbl.Font = new Font(oidlbl.Font, FontStyle.Bold);
+
+
                 orderdetailview.Visible = false;
                 dpnl.Visible = false;
                 billlbl.Visible = false;
@@ -56,9 +130,15 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void ordttxt_TextChanged(object sender, EventArgs e)
         {
-            DataView dv = new DataView(dt);
-            dv.RowFilter = string.Format("convert([timestamp],System.String) LIKE '%{0}%'", ordttxt.Text);
-            ordergridview.DataSource = dv;
+            try
+            {
+                labels();
+                odlbl.Font = new Font(odlbl.Font, FontStyle.Bold);
+                DataView dv = new DataView(dt);
+                dv.RowFilter = string.Format("convert([timestamp],System.String) LIKE '%{0}%'", ordttxt.Text);
+                ordergridview.DataSource = dv;
+            }
+            catch { }
         }
 
         private void refresh_Click(object sender, EventArgs e)
@@ -75,15 +155,26 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void addfiltxt_TextChanged(object sender, EventArgs e)
         {
-            DataView dv = new DataView(dt);
-            dv.RowFilter = string.Format("address1 LIKE '%{0}%'", addfiltxt.Text);
-            ordergridview.DataSource = dv;
+            try
+            {
+                labels();
+                addlbl.Font = new Font(addlbl.Font, FontStyle.Bold);
+                DataView dv = new DataView(dt); 
+                dv.RowFilter = string.Format("address1 LIKE '%{0}%' OR address2 LIKE '%{0}%' OR city LIKE '%{0}%'", addfiltxt.Text);
+
+                //  dv.RowFilter = string.Format("address1 AND address2 LIKE '%{0}%'", addfiltxt.Text);
+                ordergridview.DataSource = dv;
+            }
+            catch { }
         }
 
         private void confiltxt_TextChanged(object sender, EventArgs e)
         {
             try
             {
+                labels();
+                conlbl.Font = new Font(conlbl.Font, FontStyle.Bold);
+
                 DataView dv = new DataView(dt);
                 dv.RowFilter = string.Format("convert([contact],System.String) LIKE '%{0}%'", confiltxt.Text);
                 ordergridview.DataSource = dv;
@@ -221,10 +312,17 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void Deliverytxt_TextChanged(object sender, EventArgs e)
         {
-            DataView dv = new DataView(dt);
-            dv.RowFilter = string.Format("deliveryguy LIKE '%{0}%'", Deliverytxt.Text);
-            ordergridview.DataSource = dv;
-        }
+            try {
+
+                labels();
+                dellbl.Font = new Font(dellbl.Font, FontStyle.Bold);
+
+                DataView dv = new DataView(dt);
+                dv.RowFilter = string.Format("deliveryguy LIKE '%{0}%'", Deliverytxt.Text);
+                ordergridview.DataSource = dv;
+            }
+            catch { }
+         }
 
 
         private void statustxt_KeyUp(object sender, KeyEventArgs e)
@@ -310,6 +408,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void Deliverytxt_KeyUp(object sender, KeyEventArgs e)
         {
+
             orderdetailview.Visible = false;
             dpnl.Visible = false;
             billlbl.Visible = false;
@@ -384,9 +483,6 @@ namespace Veiled_Kashmir_Admin_Panel
         }
 
 
-
-
-
         //private void ordergridview_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         //{
         //    try
@@ -431,6 +527,51 @@ namespace Veiled_Kashmir_Admin_Panel
             loadinglbl.Visible = false;
         }
 
+        private void searchbtn_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            try
+            {
+                if (stlbl.Font.Bold == false && oidlbl.Font.Bold == false && emlbl.Font.Bold == false && namelbl.Font.Bold == false && addlbl.Font.Bold == false && conlbl.Font.Bold == false && dellbl.Font.Bold == false && odlbl.Font.Bold == false)
+                    MessageBox.Show("Please enter a query first.", "Error");
+                else
+                {
+                    string cmd = "";
+                    if (stlbl.Font.Bold)
+                        cmd = "SELECT customer.mail,orders.* FROM lalchowk.orders inner join customer on customer.email = orders.email where status like '%" + statustxt.Text + "%' order by orderid desc;";
+                    else if (oidlbl.Font.Bold)
+                        cmd = "SELECT customer.mail,orders.* FROM lalchowk.orders inner join customer on customer.email = orders.email where orderid = '" + ordidtxt.Text + "' order by orderid desc;";
+                    else if (emlbl.Font.Bold)
+                        cmd = "SELECT customer.mail,orders.* FROM lalchowk.orders inner join customer on customer.email = orders.email where mail = '" + emailtxt.Text + "' order by orderid desc;";
+                    else if (namelbl.Font.Bold)
+                        cmd = "SELECT customer.mail,orders.* FROM lalchowk.orders inner join customer on customer.email = orders.email where orders.name like '%" + nametxt.Text + "%' order by orderid desc;";
+                    else if (addlbl.Font.Bold)
+                        cmd = "SELECT customer.mail,orders.* FROM lalchowk.orders inner join customer on customer.email = orders.email where address1 like '%" + addfiltxt.Text + "%' or address2 like '%" + addfiltxt.Text + "%' or city like '%" + addfiltxt.Text + "%' order by orderid desc;";
+                    else if (conlbl.Font.Bold)
+                        cmd = "SELECT customer.mail,orders.* FROM lalchowk.orders inner join customer on customer.email = orders.email where contact like '%" + confiltxt.Text + "%' order by orderid desc;";
+                    else if (dellbl.Font.Bold)
+                        cmd = "SELECT customer.mail,orders.* FROM lalchowk.orders inner join customer on customer.email = orders.email where deliveryguy like '%" + Deliverytxt.Text + "%' order by orderid desc;";
+
+                    adap = new MySqlDataAdapter(cmd, conn);
+                    dt = new DataTable();
+                    adap.Fill(dt);
+                    obj.closeConnection();
+                    bsource = new BindingSource();
+                    bsource.DataSource = dt;
+                    ordergridview.DataSource = bsource;
+                    odplbl.Text = orderdetailview.RowCount.ToString();
+
+                    ordergridview.Columns["email"].Visible = false;
+                    ordergridview.Columns["in_transit"].Visible = false;
+                    ordergridview.Columns["alternate_contact"].Visible = false;
+                    ordergridview.Columns["landmark"].Visible = false;
+                    ordergridview.Columns["paymentconfirmed"].Visible = false;
+                }
+            }
+            catch(Exception ex) { MessageBox.Show(ex.Message); };
+            Cursor = Cursors.Arrow;
+        }
+
         private void readorders()
         {try { 
             adap = new MySqlDataAdapter("SELECT customer.mail,orders.*  FROM lalchowk.orders inner join customer on customer.email=orders.email order by orderid desc;",conn);
@@ -439,13 +580,20 @@ namespace Veiled_Kashmir_Admin_Panel
             obj.closeConnection();
             bsource = new BindingSource();
             bsource.DataSource = dt;
-            
 
-            //dr = obj.Query("select count(orderid) from orders");
-            //dr.Read();
-            //ordervar = dr[0].ToString();
-            //obj.closeConnection();
-        }
+
+                //dr = obj.Query("select count(orderid) from orders");
+                //dr.Read();
+                //ordervar = dr[0].ToString();
+                //obj.closeConnection();
+
+                ordergridview.Columns["email"].Visible = false;
+                ordergridview.Columns["in_transit"].Visible = false;
+                ordergridview.Columns["landmark"].Visible = false;
+                ordergridview.Columns["alternate_contact"].Visible = false;
+                ordergridview.Columns["paymentconfirmed"].Visible = false;
+
+            }
             catch (Exception ex)
             {
                 refresh.Visible = true;
@@ -493,8 +641,12 @@ namespace Veiled_Kashmir_Admin_Panel
                 
                 ordergridview.Columns["email"].Visible = false;
                 ordergridview.Columns["in_transit"].Visible = false;
+                ordergridview.Columns["landmark"].Visible = false;
+                ordergridview.Columns["alternate_contact"].Visible = false;
+                ordergridview.Columns["paymentconfirmed"].Visible = false;
                 panel1.Visible = true;
                 orlbl.Text = ordergridview.RowCount.ToString();
+                odplbl.Text = ordergridview.RowCount.ToString();
                 refresh.Enabled = true;
                 ordergridview.Enabled = true;
                 delbtn.Visible = true;
@@ -531,24 +683,40 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void emailtxt_TextChanged(object sender, EventArgs e)
         {
-            DataView dv = new DataView(dt);
-            dv.RowFilter = string.Format("mail LIKE '%{0}%'", emailtxt.Text);
-            ordergridview.DataSource = dv;
+            try {
+                labels();
+                emlbl.Font = new Font(emlbl.Font, FontStyle.Bold);
+
+
+                DataView dv = new DataView(dt);
+                dv.RowFilter = string.Format("mail LIKE '%{0}%'", emailtxt.Text);
+                ordergridview.DataSource = dv;
+            }
+            catch { }
         }
 
 
         private void paymenttxt_TextChanged(object sender, EventArgs e)
         {
-            DataView dv = new DataView(dt);
-            dv.RowFilter = string.Format("name LIKE '%{0}%'", paymenttxt.Text);
-            ordergridview.DataSource = dv;
+            try
+            {
+                labels();
+                namelbl.Font = new Font(namelbl.Font, FontStyle.Bold);
+
+
+                DataView dv = new DataView(dt);
+                dv.RowFilter = string.Format("name LIKE '%{0}%'", nametxt.Text);
+                ordergridview.DataSource = dv;
+            }catch { }
         }
 
         private void statustxt_TextChanged(object sender, EventArgs e)
         {
             try
             {
-               
+                labels();
+                stlbl.Font= new Font(stlbl.Font, FontStyle.Bold);
+
                 DataView dv = new DataView(dt);
                 dv.RowFilter = string.Format("status LIKE '%{0}%'", statustxt.Text);
                 ordergridview.DataSource = dv;
@@ -563,6 +731,22 @@ namespace Veiled_Kashmir_Admin_Panel
                 productid = null;
             
         }
+
+        private void labels()
+        {
+            stlbl.Font = new Font(stlbl.Font, FontStyle.Regular);
+            oidlbl.Font = new Font(oidlbl.Font, FontStyle.Regular);
+            emlbl.Font = new Font(emlbl.Font, FontStyle.Regular);
+            namelbl.Font = new Font(namelbl.Font, FontStyle.Regular);
+            odlbl.Font = new Font(odlbl.Font, FontStyle.Regular);
+            dellbl.Font = new Font(dellbl.Font, FontStyle.Regular);
+           
+            conlbl.Font = new Font(conlbl.Font, FontStyle.Regular);
+            
+            addlbl.Font = new Font(addlbl.Font, FontStyle.Regular);
+
+        }
+
 
         private void delbtn_Click(object sender, EventArgs e)
         {
@@ -697,8 +881,8 @@ namespace Veiled_Kashmir_Admin_Panel
                     encmail = row.Cells["email"].Value.ToString();
                     shipping = row.Cells["shipping"].Value.ToString();
                     name = row.Cells["name"].Value.ToString();
-                    addresstxt.Text = row.Cells["name"].Value.ToString()+"\r\n"+ row.Cells["address1"].Value.ToString() +" "+ row.Cells["address2"].Value.ToString()+
-                     "\r\n"+ row.Cells["city"].Value.ToString()+", "+ row.Cells["pincode"].Value.ToString()+"\r\n"+ row.Cells["contact"].Value.ToString();
+                    addresstxt.Text = row.Cells["name"].Value.ToString()+"\r\n"+ row.Cells["address1"].Value.ToString() +" "+ row.Cells["address2"].Value.ToString()+ " " + row.Cells["landmark"].Value.ToString() +
+                     "\r\n" + row.Cells["city"].Value.ToString()+", "+ row.Cells["pincode"].Value.ToString()+"\r\n"+ row.Cells["contact"].Value.ToString()+", "+ row.Cells["alternate_contact"].Value.ToString();
                     contactlbl = row.Cells["contact"].Value.ToString();
                     string status= row.Cells["status"].Value.ToString();
                      /*= row.Cells["amount"].Value.ToString();*/

@@ -23,13 +23,7 @@ namespace Veiled_Kashmir_Admin_Panel
         MySqlConnection con= new MySqlConnection( "SERVER=182.50.133.78;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah");
         PictureBox loading = new PictureBox();
 
-        private void substxt_TextChanged(object sender, EventArgs e)
-        {
-            DataView dv = new DataView(dt1);
-            dv.RowFilter = string.Format("Convert([contact],System.String) LIKE '%{0}%'", substxt.Text);
-            customerdataview.DataSource = dv;
-        }
-
+      
         private container hp = null;
         private dialogcontainer dg = null;
         DataTable dt,dt1,dt2,dt3,dt4;
@@ -88,7 +82,88 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             Cursor = Cursors.WaitCursor;
             refreshbtn.Enabled = false;
-            bgworker.RunWorkerAsync();
+            try
+            {
+
+                con.Open();
+                adap = new MySqlDataAdapter("select * from customer order by id desc ", con);
+                dt1 = new DataTable();
+                adap.Fill(dt1);
+                con.Close();
+                bsource = new BindingSource();
+                bsource.DataSource = dt1;
+                customerdataview.DataSource = bsource;
+
+                inflbl.Visible = false;
+                dpnl.Visible = false;
+                apnl.Visible = false;
+                ppnl.Visible = false;
+                Cursor = Cursors.Arrow;
+                refreshbtn.Enabled = true;
+            }
+            catch (Exception ex)
+            {
+                con.Close();
+                obj.closeConnection();
+                refreshbtn.Enabled = true;
+                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
+            }
+            BackgroundWorker regcount = new BackgroundWorker();
+            regcount.DoWork += (o, a) =>
+            {
+                dr = obj.Query("select count(*) from customer");
+                dr.Read();
+                a.Result = dr[0].ToString();
+                obj.closeConnection();
+
+            };
+            regcount.RunWorkerCompleted += (o, b) =>
+            {
+                string coun = (string)b.Result;
+                countlbl.Text = "Total Registered Customers: " + coun;
+
+            };
+            regcount.RunWorkerAsync();
+
+        }
+
+        private void searchbtn_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            refreshbtn.Enabled = false;
+            try
+            {
+                string cmd = "";
+                if (cemail)
+                    cmd = "select* from customer where mail LIKE '%"+emailtxt.Text+ "%' order by id desc ";
+                if (name)
+                    cmd = "select* from customer where name LIKE '%" + usertxt.Text + "%' order by id desc ";
+                if(contact)
+                    cmd= "select* from customer where contact LIKE '%" + substxt.Text + "%' order by id desc ";
+
+                con.Open();
+                adap = new MySqlDataAdapter(cmd, con);
+                dt1 = new DataTable();
+                adap.Fill(dt1);
+                con.Close();
+                bsource = new BindingSource();
+                bsource.DataSource = dt1;
+                customerdataview.DataSource = bsource;
+
+                inflbl.Visible = false;
+                dpnl.Visible = false;
+                apnl.Visible = false;
+                ppnl.Visible = false;
+                Cursor = Cursors.Arrow;
+                refreshbtn.Enabled = true;
+            }
+            catch (Exception ex)
+            {
+                con.Close();
+                obj.closeConnection();
+                refreshbtn.Enabled = true;
+                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
+            }
         }
 
         public void loadingdg()
@@ -98,6 +173,30 @@ namespace Veiled_Kashmir_Admin_Panel
             dg.lbl.Text = "Loading";
             dg.loadingimage.SizeMode = PictureBoxSizeMode.StretchImage;
             dg.loadingimage.Visible = true;
+        }
+
+        private void readcustomers()
+        {
+            try
+            {
+
+                con.Open();
+                adap = new MySqlDataAdapter("select * from customer order by id desc limit 4000", con);
+                dt1 = new DataTable();
+                adap.Fill(dt1);
+                con.Close();
+                bsource = new BindingSource();
+                bsource.DataSource = dt1;
+              
+
+            }
+            catch (Exception ex)
+            {
+                con.Close();
+                obj.closeConnection();
+                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
+            }
+
         }
 
         private void bgworker_DoWork(object sender, DoWorkEventArgs e)
@@ -126,7 +225,9 @@ namespace Veiled_Kashmir_Admin_Panel
                 customerdataview.DoubleBuffered(true);
                 customerdataview.DataSource = bsource;
                 formlbl.Visible = false;
-                countlbl.Text = "Total Registered Customers: " + customerdataview.RowCount;
+                
+               
+                //  countlbl.Text = "Total Registered Customers: " + customerdataview.RowCount;
                 pnl.Visible = true;
                 refreshbtn.Visible = true;
                 refreshbtn.Enabled = true;
@@ -135,6 +236,23 @@ namespace Veiled_Kashmir_Admin_Panel
                 apnl.Visible = false;
                 ppnl.Visible = false;
                 Cursor = Cursors.Arrow;
+                BackgroundWorker regcount = new BackgroundWorker();
+                regcount.DoWork += (o, a) =>
+                {
+                    dr = obj.Query("select count(*) from customer");
+                    dr.Read();
+                    a.Result = dr[0].ToString();
+                    obj.closeConnection();
+
+                };
+                regcount.RunWorkerCompleted += (o, b) =>
+                {
+                    string coun = (string)b.Result;
+                    countlbl.Text = "Total Registered Customers: " + coun;
+
+                };
+                regcount.RunWorkerAsync();
+
             }
             catch { refreshbtn.Visible = true; refreshbtn.Enabled = true; }
 
@@ -171,32 +289,7 @@ namespace Veiled_Kashmir_Admin_Panel
             Cursor = Cursors.Arrow;
         }
 
-        private void readcustomers()
-        {
-            try
-            {
-
-                con.Open();
-                adap = new MySqlDataAdapter("select * from customer order by id desc", con);
-                dt1 = new DataTable();
-                adap.Fill(dt1);
-                con.Close();
-                bsource = new BindingSource();
-                bsource.DataSource = dt1;
-
-                //dr = obj.Query("select count(*) from customer");
-                //dr.Read();
-               // count = dr[0].ToString();
-                //obj.closeConnection();
-            }
-            catch (Exception ex)
-            {
-                con.Close();
-                obj.closeConnection();
-                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
-            }
-
-        }
+       
 
         private void mailbtn_Click(object sender, EventArgs e)
         {
@@ -432,19 +525,40 @@ namespace Veiled_Kashmir_Admin_Panel
                
             }
         }
-
+        bool cemail = false, name = false, contact=false;
         private void emailtxt_TextChanged(object sender, EventArgs e)
         {
+
+            cemail = true;
+            name = false; contact = false;
+            elbl.Font = new Font(elbl.Font, FontStyle.Bold);
+            nlbl.Font = new Font(nlbl.Font, FontStyle.Regular);
+            clbl.Font = new Font(clbl.Font, FontStyle.Regular);
             DataView dv = new DataView(dt1);
             dv.RowFilter = string.Format("mail LIKE '%{0}%'", emailtxt.Text);
             customerdataview.DataSource = dv;
         }
 
-
+        private void substxt_TextChanged(object sender, EventArgs e)
+        {
+            cemail = false;
+            name = false; contact = true;
+            elbl.Font = new Font(elbl.Font, FontStyle.Regular);
+            nlbl.Font = new Font(nlbl.Font, FontStyle.Regular);
+            clbl.Font = new Font(clbl.Font, FontStyle.Bold);
+            DataView dv = new DataView(dt1);
+            dv.RowFilter = string.Format("Convert([contact],System.String) LIKE '%{0}%'", substxt.Text);
+            customerdataview.DataSource = dv;
+        }
 
 
         private void usertxt_TextChanged(object sender, EventArgs e)
         {
+            cemail = false;
+            name = true; contact = false;
+            elbl.Font = new Font(elbl.Font, FontStyle.Regular);
+            nlbl.Font = new Font(nlbl.Font, FontStyle.Bold);
+            clbl.Font = new Font(clbl.Font, FontStyle.Regular);
             DataView dv = new DataView(dt1);
             dv.RowFilter = string.Format("name LIKE '%{0}%'", usertxt.Text);
             customerdataview.DataSource = dv;

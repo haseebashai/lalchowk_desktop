@@ -66,6 +66,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.navtxt = new System.Windows.Forms.Label();
             this.cntpnl = new System.Windows.Forms.Panel();
+            this.selodtxt = new System.Windows.Forms.Label();
             this.ordelbtn = new System.Windows.Forms.Button();
             this.corderslbl = new System.Windows.Forms.Label();
             this.selectlbl = new System.Windows.Forms.Label();
@@ -591,6 +592,7 @@
             // cntpnl
             // 
             this.cntpnl.BackColor = System.Drawing.Color.White;
+            this.cntpnl.Controls.Add(this.selodtxt);
             this.cntpnl.Controls.Add(this.ordelbtn);
             this.cntpnl.Controls.Add(this.corderslbl);
             this.cntpnl.Controls.Add(this.selectlbl);
@@ -623,6 +625,16 @@
             this.cntpnl.Name = "cntpnl";
             this.cntpnl.Size = new System.Drawing.Size(1162, 722);
             this.cntpnl.TabIndex = 12;
+            // 
+            // selodtxt
+            // 
+            this.selodtxt.AutoSize = true;
+            this.selodtxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.selodtxt.Location = new System.Drawing.Point(517, 652);
+            this.selodtxt.Name = "selodtxt";
+            this.selodtxt.Size = new System.Drawing.Size(0, 18);
+            this.selodtxt.TabIndex = 65;
+            this.selodtxt.Visible = false;
             // 
             // ordelbtn
             // 
@@ -1191,5 +1203,6 @@
         private System.Windows.Forms.Panel panel1;
         private MaterialSkin.Controls.MaterialFlatButton medbtn;
         private System.Windows.Forms.Label medlbl;
+        private System.Windows.Forms.Label selodtxt;
     }
 }

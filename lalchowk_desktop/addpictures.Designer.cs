@@ -76,7 +76,7 @@
             this.addbtn.Location = new System.Drawing.Point(485, 551);
             this.addbtn.Name = "addbtn";
             this.addbtn.Size = new System.Drawing.Size(91, 41);
-            this.addbtn.TabIndex = 59;
+            this.addbtn.TabIndex = 3;
             this.addbtn.Text = "Add Picture";
             this.addbtn.UseVisualStyleBackColor = true;
             this.addbtn.Click += new System.EventHandler(this.addbtn_Click);
@@ -117,7 +117,7 @@
             this.ptxt.Location = new System.Drawing.Point(234, 600);
             this.ptxt.Name = "ptxt";
             this.ptxt.Size = new System.Drawing.Size(115, 20);
-            this.ptxt.TabIndex = 86;
+            this.ptxt.TabIndex = 2;
             // 
             // pic
             // 
@@ -139,7 +139,7 @@
             this.gidtxt.Location = new System.Drawing.Point(234, 565);
             this.gidtxt.Name = "gidtxt";
             this.gidtxt.Size = new System.Drawing.Size(113, 20);
-            this.gidtxt.TabIndex = 89;
+            this.gidtxt.TabIndex = 1;
             this.gidtxt.Text = "Enter Group ID";
             this.gidtxt.Enter += new System.EventHandler(this.gidtxt_Enter);
             this.gidtxt.Leave += new System.EventHandler(this.gidtxt_Leave);

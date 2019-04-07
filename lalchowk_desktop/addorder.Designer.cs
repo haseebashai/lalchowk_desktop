@@ -81,6 +81,7 @@
             this.devtxt = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.altcontxt = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.inventorydatagridview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.refresh)).BeginInit();
@@ -604,12 +605,23 @@
             this.altcontxt.Size = new System.Drawing.Size(140, 20);
             this.altcontxt.TabIndex = 108;
             // 
+            // textBox1
+            // 
+            this.textBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.textBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.textBox1.Location = new System.Drawing.Point(43, 231);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(520, 20);
+            this.textBox1.TabIndex = 110;
+            // 
             // addorder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(921, 612);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.altcontxt);
             this.Controls.Add(this.label17);
@@ -726,5 +738,6 @@
         private System.Windows.Forms.TextBox devtxt;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox altcontxt;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
