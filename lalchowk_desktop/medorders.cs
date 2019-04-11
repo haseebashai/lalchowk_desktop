@@ -40,7 +40,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 medload.DoWork += (o, a) => 
                {
                 
-                    dr = obj.Query("select customer.mail,medorders.email,medorders.orderid,medorders.timestamp,medorders.amount,medorders.dp,medorders.shipping,medorders.itemcount,medorders.paymenttype,medorders.paymentconfirmed,medorders.status,medorders.name,medorders.address1,medorders.address2,medorders.pincode,medorders.contact,medorders.city,medorders.msg from lalchowk.medorders inner join customer on customer.email=medorders.email where status='placed' or status='confirmed';");
+                    dr = obj.Query("select customer.mail,medorders.email,medorders.orderid,medorders.timestamp,medorders.amount,medorders.dp,medorders.shipping,medorders.itemcount,medorders.paymenttype,medorders.paymentconfirmed,medorders.status,medorders.name,medorders.address1,medorders.address2,medorders.pincode,medorders.contact,medorders.city,medorders.msg from lalchowk.medorders inner join customer on customer.email=medorders.email where status='placed' or status='confirmed' order by orderid desc;" );
 
                     DataTable dt = new DataTable();
                     dt.Load(dr);
@@ -52,7 +52,7 @@ namespace Veiled_Kashmir_Admin_Panel
                    medload.ReportProgress(25,arg);
 
 
-                   dr = obj.Query("select customer.mail,medorders.email,medorders.orderid,medorders.timestamp,medorders.amount,medorders.dp,medorders.shipping,medorders.itemcount,medorders.paymenttype,medorders.paymentconfirmed,medorders.status,medorders.name,medorders.address1,medorders.address2,medorders.pincode,medorders.contact,medorders.city,medorders.msg from lalchowk.medorders inner join customer on customer.email=medorders.email where status='shipped';");
+                   dr = obj.Query("select customer.mail,medorders.email,medorders.orderid,medorders.timestamp,medorders.amount,medorders.dp,medorders.shipping,medorders.itemcount,medorders.paymenttype,medorders.paymentconfirmed,medorders.status,medorders.name,medorders.address1,medorders.address2,medorders.pincode,medorders.contact,medorders.city,medorders.msg from lalchowk.medorders inner join customer on customer.email=medorders.email where status='shipped' order by orderid desc;");
 
                    DataTable dt3 = new DataTable();
                    dt3.Load(dr);
@@ -65,7 +65,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
 
 
-                   dr1 = obj.Query("select customer.mail,medorders.email,medorders.orderid,medorders.timestamp,medorders.amount,medorders.dp,medorders.shipping,medorders.itemcount,medorders.status,medorders.name,medorders.address1,medorders.address2,medorders.pincode,medorders.contact,medorders.city,medorders.msg from lalchowk.medorders inner join customer on customer.email=medorders.email where status='delivered';");
+                   dr1 = obj.Query("select customer.mail,medorders.email,medorders.orderid,medorders.timestamp,medorders.amount,medorders.dp,medorders.shipping,medorders.itemcount,medorders.status,medorders.name,medorders.address1,medorders.address2,medorders.pincode,medorders.contact,medorders.city,medorders.msg from lalchowk.medorders inner join customer on customer.email=medorders.email where status='delivered' order by orderid desc;");
 
                    DataTable dt1 = new DataTable();
                    dt1.Load(dr1);
@@ -75,7 +75,7 @@ namespace Veiled_Kashmir_Admin_Panel
                    object[] arg1 = { bsource1 };
                    medload.ReportProgress(75,arg1);
 
-                   dr2 = obj.Query("select customer.mail,medorders.email,medorders.orderid,medorders.timestamp,medorders.amount,medorders.dp,medorders.shipping,medorders.itemcount,medorders.status,medorders.name,medorders.address1,medorders.address2,medorders.pincode,medorders.contact,medorders.city,medorders.msg from lalchowk.medorders inner join customer on customer.email=medorders.email ;");
+                   dr2 = obj.Query("select customer.mail,medorders.email,medorders.orderid,medorders.timestamp,medorders.amount,medorders.dp,medorders.shipping,medorders.itemcount,medorders.status,medorders.name,medorders.address1,medorders.address2,medorders.pincode,medorders.contact,medorders.city,medorders.msg from lalchowk.medorders inner join customer on customer.email=medorders.email order by orderid desc ;");
 
                    DataTable dt2 = new DataTable();
                    dt2.Load(dr2);
@@ -261,7 +261,8 @@ namespace Veiled_Kashmir_Admin_Panel
                 btpnl.Visible = true;
                 if (e.RowIndex >= 0 && e.ColumnIndex < 16)
                 {
-                  //  MessageBox.Show(e.ColumnIndex.ToString());
+                    detailpnl.Visible =false;
+                    //  MessageBox.Show(e.ColumnIndex.ToString());
                     DataGridViewRow row = this.placeddataview.Rows[e.RowIndex];
                     oid = int.Parse(row.Cells["orderid"].Value.ToString());
                     dr = obj.Query("select url from lalchowk.image_uploads where oid ='"+oid+"';");
@@ -273,10 +274,17 @@ namespace Veiled_Kashmir_Admin_Panel
                     MessageBox.Show(url + imagename);
                     presdp.SizeMode = PictureBoxSizeMode.StretchImage;
                     presdp.ImageLocation = (url + imagename);
-                    
-                    presdp.Visible = true;
 
-                }else if(e.RowIndex>=0 && e.ColumnIndex == 16)
+
+
+
+                    presdp.Visible = true;
+                    nametxt.Text = row.Cells["name"].Value.ToString();
+                    contxt.Text = row.Cells["contact"].Value.ToString();
+                    msgtxt.Text = row.Cells["msg"].Value.ToString();
+                    detailpnl.Visible = true;
+                }
+                else if(e.RowIndex>=0 && e.ColumnIndex == 16)
                 {
 
                     
@@ -340,6 +348,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 btpnl.Visible = true;
                 if (e.RowIndex >= 0 && e.ColumnIndex>0)
                 {
+                    detailpnl.Visible = false;
                     //  MessageBox.Show(e.ColumnIndex.ToString());
                     DataGridViewRow row = this.shippeddataview.Rows[e.RowIndex];
                     oid = int.Parse(row.Cells["orderid"].Value.ToString());
@@ -354,6 +363,10 @@ namespace Veiled_Kashmir_Admin_Panel
                     presdp.ImageLocation = (url + imagename);
 
                     presdp.Visible = true;
+                    nametxt.Text = row.Cells["name"].Value.ToString();
+                    contxt.Text = row.Cells["contact"].Value.ToString();
+                    msgtxt.Text = row.Cells["msg"].Value.ToString();
+                    detailpnl.Visible = true;
 
                 }
                 else if (e.RowIndex >= 0 && e.ColumnIndex == 0)
@@ -369,7 +382,7 @@ namespace Veiled_Kashmir_Admin_Panel
                         if (dgr == DialogResult.Yes)
                         {
                             DateTime time = DateTime.Now;             // Use current time.
-                            string deldate = time.ToString("yyyy-MM-dd HH:mm:ss");
+                            string deldate = time.ToString("yyyy-MM-dd HH:mm:ss tt");
                             string cmd = "update medorders set status='Delivered', deliverdate='" + deldate + "', in_transit='0' where orderid='" + id + "'";
                             obj.nonQuery(cmd);
                             obj.closeConnection();
@@ -498,6 +511,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 btpnl.Visible = true;
                 if (e.RowIndex >= 0)
                 {
+                    detailpnl.Visible = false;
                     DataGridViewRow row = this.deldataview.Rows[e.RowIndex];
                     oid = int.Parse(row.Cells["orderid"].Value.ToString());
                     dr = obj.Query("select url from lalchowk.image_uploads where oid ='" + oid + "';");
@@ -511,7 +525,11 @@ namespace Veiled_Kashmir_Admin_Panel
                     presdp.ImageLocation = (url + imagename);
 
                     presdp.Visible = true;
-
+                    presdp.Visible = true;
+                    nametxt.Text = row.Cells["name"].Value.ToString();
+                    contxt.Text = row.Cells["contact"].Value.ToString();
+                    msgtxt.Text = row.Cells["msg"].Value.ToString();
+                    detailpnl.Visible = true;
                 }
 
 
@@ -528,6 +546,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 btpnl.Visible = true;
                 if (e.RowIndex >= 0)
                 {
+                    detailpnl.Visible = false;
                     DataGridViewRow row = this.alldataview.Rows[e.RowIndex];
                     oid = int.Parse(row.Cells["orderid"].Value.ToString());
                     dr = obj.Query("select url from lalchowk.image_uploads where oid ='" + oid + "';");
@@ -541,7 +560,11 @@ namespace Veiled_Kashmir_Admin_Panel
                     presdp.ImageLocation = (url + imagename);
 
                     presdp.Visible = true;
-
+                    presdp.Visible = true;
+                    nametxt.Text = row.Cells["name"].Value.ToString();
+                    contxt.Text = row.Cells["contact"].Value.ToString();
+                    msgtxt.Text = row.Cells["msg"].Value.ToString();
+                    detailpnl.Visible = true;
                 }
 
 

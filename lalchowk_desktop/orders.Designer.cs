@@ -81,6 +81,7 @@
             this.loadinglbl = new System.Windows.Forms.Label();
             this.formlbl = new System.Windows.Forms.Label();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
+            this.gmsgbtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.refresh)).BeginInit();
             this.orderpnl.SuspendLayout();
@@ -116,7 +117,7 @@
             this.panel1.Controls.Add(this.emailtxt);
             this.panel1.Location = new System.Drawing.Point(2, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1162, 70);
+            this.panel1.Size = new System.Drawing.Size(1176, 70);
             this.panel1.TabIndex = 0;
             this.panel1.Visible = false;
             // 
@@ -266,7 +267,7 @@
             // 
             this.delbtn.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.delbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.delbtn.Location = new System.Drawing.Point(1102, 15);
+            this.delbtn.Location = new System.Drawing.Point(1111, 15);
             this.delbtn.Name = "delbtn";
             this.delbtn.Size = new System.Drawing.Size(57, 40);
             this.delbtn.TabIndex = 13;
@@ -361,11 +362,12 @@
             this.orderpnl.Controls.Add(this.loadinglbl);
             this.orderpnl.Location = new System.Drawing.Point(0, 73);
             this.orderpnl.Name = "orderpnl";
-            this.orderpnl.Size = new System.Drawing.Size(1162, 591);
+            this.orderpnl.Size = new System.Drawing.Size(1178, 591);
             this.orderpnl.TabIndex = 1;
             // 
             // dpnl
             // 
+            this.dpnl.Controls.Add(this.gmsgbtn);
             this.dpnl.Controls.Add(this.emailbtn);
             this.dpnl.Controls.Add(this.shipbtn);
             this.dpnl.Controls.Add(this.datelbl);
@@ -390,7 +392,7 @@
             this.dpnl.Controls.Add(this.billlbl);
             this.dpnl.Location = new System.Drawing.Point(3, 385);
             this.dpnl.Name = "dpnl";
-            this.dpnl.Size = new System.Drawing.Size(1156, 203);
+            this.dpnl.Size = new System.Drawing.Size(1167, 203);
             this.dpnl.TabIndex = 26;
             this.dpnl.Visible = false;
             // 
@@ -398,7 +400,7 @@
             // 
             this.emailbtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.emailbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.emailbtn.Location = new System.Drawing.Point(846, 67);
+            this.emailbtn.Location = new System.Drawing.Point(829, 66);
             this.emailbtn.Name = "emailbtn";
             this.emailbtn.Size = new System.Drawing.Size(113, 42);
             this.emailbtn.TabIndex = 36;
@@ -410,7 +412,7 @@
             // 
             this.shipbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.shipbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.shipbtn.Location = new System.Drawing.Point(1021, 3);
+            this.shipbtn.Location = new System.Drawing.Point(1030, 3);
             this.shipbtn.Name = "shipbtn";
             this.shipbtn.Size = new System.Drawing.Size(56, 22);
             this.shipbtn.TabIndex = 35;
@@ -442,7 +444,7 @@
             // 
             this.addresstxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.addresstxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addresstxt.Location = new System.Drawing.Point(355, 30);
+            this.addresstxt.Location = new System.Drawing.Point(351, 30);
             this.addresstxt.Multiline = true;
             this.addresstxt.Name = "addresstxt";
             this.addresstxt.Size = new System.Drawing.Size(219, 167);
@@ -452,7 +454,7 @@
             // 
             this.cancelbtn.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.cancelbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cancelbtn.Location = new System.Drawing.Point(935, 3);
+            this.cancelbtn.Location = new System.Drawing.Point(944, 3);
             this.cancelbtn.Name = "cancelbtn";
             this.cancelbtn.Size = new System.Drawing.Size(80, 22);
             this.cancelbtn.TabIndex = 31;
@@ -464,7 +466,7 @@
             // 
             this.smsbtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.smsbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.smsbtn.Location = new System.Drawing.Point(846, 115);
+            this.smsbtn.Location = new System.Drawing.Point(829, 114);
             this.smsbtn.Name = "smsbtn";
             this.smsbtn.Size = new System.Drawing.Size(113, 42);
             this.smsbtn.TabIndex = 30;
@@ -476,7 +478,7 @@
             // 
             this.deupdbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.deupdbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.deupdbtn.Location = new System.Drawing.Point(1101, 2);
+            this.deupdbtn.Location = new System.Drawing.Point(1110, 2);
             this.deupdbtn.Name = "deupdbtn";
             this.deupdbtn.Size = new System.Drawing.Size(54, 23);
             this.deupdbtn.TabIndex = 28;
@@ -489,7 +491,7 @@
             // 
             this.updbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.updbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.updbtn.Location = new System.Drawing.Point(661, 34);
+            this.updbtn.Location = new System.Drawing.Point(644, 33);
             this.updbtn.Name = "updbtn";
             this.updbtn.Size = new System.Drawing.Size(152, 42);
             this.updbtn.TabIndex = 14;
@@ -499,7 +501,7 @@
             // 
             // billbtn
             // 
-            this.billbtn.Location = new System.Drawing.Point(661, 120);
+            this.billbtn.Location = new System.Drawing.Point(644, 119);
             this.billbtn.Name = "billbtn";
             this.billbtn.Size = new System.Drawing.Size(152, 52);
             this.billbtn.TabIndex = 26;
@@ -509,7 +511,7 @@
             // 
             // cnfbtn
             // 
-            this.cnfbtn.Location = new System.Drawing.Point(661, 81);
+            this.cnfbtn.Location = new System.Drawing.Point(644, 80);
             this.cnfbtn.Name = "cnfbtn";
             this.cnfbtn.Size = new System.Drawing.Size(152, 35);
             this.cnfbtn.TabIndex = 15;
@@ -589,7 +591,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(714, 10);
+            this.label11.Location = new System.Drawing.Point(697, 9);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(38, 12);
             this.label11.TabIndex = 16;
@@ -599,7 +601,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(425, 10);
+            this.label9.Location = new System.Drawing.Point(425, 9);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(66, 12);
             this.label9.TabIndex = 12;
@@ -608,7 +610,7 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.LightGray;
-            this.panel4.Location = new System.Drawing.Point(612, 18);
+            this.panel4.Location = new System.Drawing.Point(604, 18);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1, 178);
             this.panel4.TabIndex = 14;
@@ -618,7 +620,7 @@
             this.billlbl.AutoSize = true;
             this.billlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.billlbl.ForeColor = System.Drawing.Color.Blue;
-            this.billlbl.Location = new System.Drawing.Point(705, 175);
+            this.billlbl.Location = new System.Drawing.Point(688, 174);
             this.billlbl.Name = "billlbl";
             this.billlbl.Size = new System.Drawing.Size(68, 15);
             this.billlbl.TabIndex = 29;
@@ -631,7 +633,7 @@
             this.orderdetailview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.orderdetailview.Location = new System.Drawing.Point(3, 241);
             this.orderdetailview.Name = "orderdetailview";
-            this.orderdetailview.Size = new System.Drawing.Size(1156, 141);
+            this.orderdetailview.Size = new System.Drawing.Size(1167, 141);
             this.orderdetailview.TabIndex = 1;
             this.orderdetailview.Visible = false;
             this.orderdetailview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.orderdetailview_CellClick);
@@ -644,7 +646,7 @@
             this.ordergridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ordergridview.Location = new System.Drawing.Point(3, 4);
             this.ordergridview.Name = "ordergridview";
-            this.ordergridview.Size = new System.Drawing.Size(1156, 231);
+            this.ordergridview.Size = new System.Drawing.Size(1167, 231);
             this.ordergridview.TabIndex = 0;
             this.ordergridview.Visible = false;
             this.ordergridview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ordergridview_CellClick_1);
@@ -683,12 +685,25 @@
             this.bgworker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker_DoWork);
             this.bgworker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker_RunWorkerCompleted);
             // 
+            // gmsgbtn
+            // 
+            this.gmsgbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.gmsgbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.gmsgbtn.Location = new System.Drawing.Point(987, 89);
+            this.gmsgbtn.Name = "gmsgbtn";
+            this.gmsgbtn.Size = new System.Drawing.Size(109, 42);
+            this.gmsgbtn.TabIndex = 37;
+            this.gmsgbtn.Text = "Check Gift Message";
+            this.gmsgbtn.UseVisualStyleBackColor = true;
+            this.gmsgbtn.Visible = false;
+            this.gmsgbtn.Click += new System.EventHandler(this.gmsgbtn_Click);
+            // 
             // orders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1162, 666);
+            this.ClientSize = new System.Drawing.Size(1182, 666);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.orderpnl);
             this.Controls.Add(this.formlbl);
@@ -764,5 +779,6 @@
         private System.Windows.Forms.Button searchbtn;
         private System.Windows.Forms.Label odplbl;
         public System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button gmsgbtn;
     }
 }

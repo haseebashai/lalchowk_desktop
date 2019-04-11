@@ -81,6 +81,9 @@
             this.devtxt = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.altcontxt = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.giftchtxt = new System.Windows.Forms.TextBox();
+            this.giftbox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.inventorydatagridview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.refresh)).BeginInit();
@@ -176,7 +179,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(201, 406);
+            this.label6.Location = new System.Drawing.Point(347, 406);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(37, 13);
             this.label6.TabIndex = 63;
@@ -195,10 +198,10 @@
             this.statustxt.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.statustxt.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.statustxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.statustxt.Location = new System.Drawing.Point(204, 426);
+            this.statustxt.Location = new System.Drawing.Point(350, 426);
             this.statustxt.Name = "statustxt";
-            this.statustxt.Size = new System.Drawing.Size(130, 20);
-            this.statustxt.TabIndex = 12;
+            this.statustxt.Size = new System.Drawing.Size(112, 20);
+            this.statustxt.TabIndex = 13;
             this.statustxt.Text = "Placed";
             this.statustxt.Leave += new System.EventHandler(this.statustxt_Leave);
             // 
@@ -228,7 +231,7 @@
             this.addorderbtn.Location = new System.Drawing.Point(680, 494);
             this.addorderbtn.Name = "addorderbtn";
             this.addorderbtn.Size = new System.Drawing.Size(176, 88);
-            this.addorderbtn.TabIndex = 17;
+            this.addorderbtn.TabIndex = 20;
             this.addorderbtn.Text = "ADD ORDER";
             this.addorderbtn.UseVisualStyleBackColor = true;
             this.addorderbtn.Click += new System.EventHandler(this.addorderbtn_Click);
@@ -416,7 +419,7 @@
             this.addtocartbtn.Location = new System.Drawing.Point(497, 494);
             this.addtocartbtn.Name = "addtocartbtn";
             this.addtocartbtn.Size = new System.Drawing.Size(154, 88);
-            this.addtocartbtn.TabIndex = 88;
+            this.addtocartbtn.TabIndex = 21;
             this.addtocartbtn.Text = "Add Item(s) to Cart Instead";
             this.addtocartbtn.UseVisualStyleBackColor = true;
             this.addtocartbtn.Click += new System.EventHandler(this.addtocartbtn_Click);
@@ -515,18 +518,18 @@
             this.ptypebox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.ptypebox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ptypebox.FormattingEnabled = true;
-            this.ptypebox.Location = new System.Drawing.Point(353, 426);
+            this.ptypebox.Location = new System.Drawing.Point(481, 426);
             this.ptypebox.Name = "ptypebox";
             this.ptypebox.Size = new System.Drawing.Size(121, 21);
-            this.ptypebox.TabIndex = 13;
+            this.ptypebox.TabIndex = 14;
             // 
             // pcnbox
             // 
             this.pcnbox.AutoSize = true;
-            this.pcnbox.Location = new System.Drawing.Point(560, 427);
+            this.pcnbox.Location = new System.Drawing.Point(688, 427);
             this.pcnbox.Name = "pcnbox";
             this.pcnbox.Size = new System.Drawing.Size(40, 17);
-            this.pcnbox.TabIndex = 15;
+            this.pcnbox.TabIndex = 16;
             this.pcnbox.Text = "No";
             this.pcnbox.UseVisualStyleBackColor = true;
             this.pcnbox.CheckedChanged += new System.EventHandler(this.pcnbox_CheckedChanged);
@@ -534,10 +537,10 @@
             // pcybox
             // 
             this.pcybox.AutoSize = true;
-            this.pcybox.Location = new System.Drawing.Point(510, 427);
+            this.pcybox.Location = new System.Drawing.Point(638, 427);
             this.pcybox.Name = "pcybox";
             this.pcybox.Size = new System.Drawing.Size(44, 17);
-            this.pcybox.TabIndex = 14;
+            this.pcybox.TabIndex = 15;
             this.pcybox.Text = "Yes";
             this.pcybox.UseVisualStyleBackColor = true;
             this.pcybox.CheckedChanged += new System.EventHandler(this.pcybox_CheckedChanged);
@@ -545,7 +548,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(354, 404);
+            this.label16.Location = new System.Drawing.Point(482, 404);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(75, 13);
             this.label16.TabIndex = 102;
@@ -554,7 +557,7 @@
             // pconflbl
             // 
             this.pconflbl.AutoSize = true;
-            this.pconflbl.Location = new System.Drawing.Point(506, 405);
+            this.pconflbl.Location = new System.Drawing.Point(634, 405);
             this.pconflbl.Name = "pconflbl";
             this.pconflbl.Size = new System.Drawing.Size(107, 13);
             this.pconflbl.TabIndex = 101;
@@ -563,7 +566,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(643, 406);
+            this.label17.Location = new System.Drawing.Point(758, 406);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(67, 13);
             this.label17.TabIndex = 107;
@@ -572,16 +575,16 @@
             // devtxt
             // 
             this.devtxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.devtxt.Location = new System.Drawing.Point(646, 426);
+            this.devtxt.Location = new System.Drawing.Point(761, 426);
             this.devtxt.Name = "devtxt";
-            this.devtxt.Size = new System.Drawing.Size(130, 20);
-            this.devtxt.TabIndex = 16;
+            this.devtxt.Size = new System.Drawing.Size(95, 20);
+            this.devtxt.TabIndex = 17;
             this.devtxt.Text = "Suhaib";
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(40, 466);
+            this.label18.Location = new System.Drawing.Point(193, 406);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(89, 13);
             this.label18.TabIndex = 109;
@@ -600,10 +603,37 @@
             this.altcontxt.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.altcontxt.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.altcontxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.altcontxt.Location = new System.Drawing.Point(43, 486);
+            this.altcontxt.Location = new System.Drawing.Point(196, 426);
             this.altcontxt.Name = "altcontxt";
             this.altcontxt.Size = new System.Drawing.Size(140, 20);
-            this.altcontxt.TabIndex = 108;
+            this.altcontxt.TabIndex = 12;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(40, 465);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(64, 13);
+            this.label19.TabIndex = 111;
+            this.label19.Text = "Gift charges";
+            // 
+            // giftchtxt
+            // 
+            this.giftchtxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.giftchtxt.Location = new System.Drawing.Point(43, 485);
+            this.giftchtxt.Name = "giftchtxt";
+            this.giftchtxt.Size = new System.Drawing.Size(89, 20);
+            this.giftchtxt.TabIndex = 18;
+            // 
+            // giftbox
+            // 
+            this.giftbox.AutoSize = true;
+            this.giftbox.Location = new System.Drawing.Point(156, 487);
+            this.giftbox.Name = "giftbox";
+            this.giftbox.Size = new System.Drawing.Size(68, 17);
+            this.giftbox.TabIndex = 19;
+            this.giftbox.Text = "Gift wrap";
+            this.giftbox.UseVisualStyleBackColor = true;
             // 
             // addorder
             // 
@@ -611,6 +641,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(921, 612);
+            this.Controls.Add(this.giftbox);
+            this.Controls.Add(this.label19);
+            this.Controls.Add(this.giftchtxt);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.altcontxt);
             this.Controls.Add(this.label17);
@@ -727,5 +760,8 @@
         private System.Windows.Forms.TextBox devtxt;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox altcontxt;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TextBox giftchtxt;
+        private System.Windows.Forms.CheckBox giftbox;
     }
 }

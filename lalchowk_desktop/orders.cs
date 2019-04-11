@@ -49,10 +49,10 @@ namespace Veiled_Kashmir_Admin_Panel
                     bsource = new BindingSource();
                     bsource.DataSource = dt;
 
-                    dr = obj.Query("select count(orderid) from orders");
-                    dr.Read();
-                    ordervar = dr[0].ToString();
-                    obj.closeConnection();
+                    //dr = obj.Query("select count(orderid) from orders");
+                    //dr.Read();
+                    //ordervar = dr[0].ToString();
+                    //obj.closeConnection();
 
                 }
                 catch (Exception ex)
@@ -95,8 +95,13 @@ namespace Veiled_Kashmir_Admin_Panel
                     ordergridview.Columns["landmark"].Visible = false;
                     ordergridview.Columns["alternate_contact"].Visible = false;
                     ordergridview.Columns["paymentconfirmed"].Visible = false;
+                    ordergridview.Columns["giftfrom"].Visible = false;
+                    ordergridview.Columns["giftto"].Visible = false;
+                    ordergridview.Columns["giftmsg"].Visible = false;
+                    ordergridview.Columns["giftcharges"].Visible = false;
                     panel1.Visible = true;
-                    orlbl.Text = ordervar;
+                 //   orlbl.Text = ordervar;
+                 orlbl.Text= ordergridview.RowCount.ToString();
                     odplbl.Text= ordergridview.RowCount.ToString();
                     refresh.Enabled = true;
                     ordergridview.Enabled = true;
@@ -460,7 +465,8 @@ namespace Veiled_Kashmir_Admin_Panel
                     {
                         row.Cells["paymenttype"].Style.BackColor = Color.LightPink;
                     }
-
+                    if(Convert.ToString(row.Cells["giftwrap"].Value) == "True")
+                        row.Cells["giftwrap"].Style.BackColor = Color.Green;
 
                     //if (Convert.ToString(row.Cells["paymenttype"].Value) == "Cash on Delivery")
                     //{
@@ -566,10 +572,20 @@ namespace Veiled_Kashmir_Admin_Panel
                     ordergridview.Columns["alternate_contact"].Visible = false;
                     ordergridview.Columns["landmark"].Visible = false;
                     ordergridview.Columns["paymentconfirmed"].Visible = false;
+                    ordergridview.Columns["giftfrom"].Visible = false;
+                    ordergridview.Columns["giftto"].Visible = false;
+                    ordergridview.Columns["giftmsg"].Visible = false;
+                    ordergridview.Columns["giftcharges"].Visible = false;
                 }
             }
             catch(Exception ex) { MessageBox.Show(ex.Message); };
             Cursor = Cursors.Arrow;
+        }
+
+        private void gmsgbtn_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("The user has requested gift wrap for the order.\r\n\r\nThe gift is from:  " + giftfrom + " \r\nTo:\r\n"+giftto + "With message: \r\n"+giftmsg);
+
         }
 
         private void readorders()
@@ -592,6 +608,10 @@ namespace Veiled_Kashmir_Admin_Panel
                 ordergridview.Columns["landmark"].Visible = false;
                 ordergridview.Columns["alternate_contact"].Visible = false;
                 ordergridview.Columns["paymentconfirmed"].Visible = false;
+                ordergridview.Columns["giftfrom"].Visible = false;
+                ordergridview.Columns["giftto"].Visible = false;
+                ordergridview.Columns["giftmsg"].Visible = false;
+                ordergridview.Columns["giftcharges"].Visible = false;
 
             }
             catch (Exception ex)
@@ -644,6 +664,10 @@ namespace Veiled_Kashmir_Admin_Panel
                 ordergridview.Columns["landmark"].Visible = false;
                 ordergridview.Columns["alternate_contact"].Visible = false;
                 ordergridview.Columns["paymentconfirmed"].Visible = false;
+                ordergridview.Columns["giftfrom"].Visible = false;
+                ordergridview.Columns["giftto"].Visible = false;
+                ordergridview.Columns["giftmsg"].Visible = false;
+                ordergridview.Columns["giftcharges"].Visible = false;
                 panel1.Visible = true;
                 orlbl.Text = ordergridview.RowCount.ToString();
                 odplbl.Text = ordergridview.RowCount.ToString();
@@ -860,7 +884,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
 
             int sumtotal, orderid=0;
-        string orderidcount, contactlbl,name,encmail;
+        string orderidcount, contactlbl,name,encmail,giftfrom,giftto,giftmsg;
         private void ordergridview_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -873,6 +897,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     dpnl.Visible = false;
                     loadinglbl.Visible = true;
                     billlbl.Visible = false;
+                    gmsgbtn.Visible = false;
 
                     DataGridViewRow row = this.ordergridview.Rows[e.RowIndex];
                   //  MessageBox.Show(row.Cells["paymenttype"].Value.ToString() + row.Cells["paymentconfirmed"].Value.ToString() + row.Cells["status"].Value.ToString());
@@ -891,6 +916,10 @@ namespace Veiled_Kashmir_Admin_Panel
                     orderlbl.Text = orderid.ToString();
                     datelbl.Text= row.Cells["timestamp"].Value.ToString();
                     orderidcount = e.RowIndex.ToString();
+                    giftfrom = row.Cells["giftfrom"].Value.ToString();
+                    giftto = row.Cells["giftto"].Value.ToString();
+                    giftmsg = row.Cells["giftmsg"].Value.ToString();
+                    sumtotal = int.Parse(row.Cells["amount"].Value.ToString()) + int.Parse(row.Cells["shipping"].Value.ToString()) + int.Parse(row.Cells["giftcharges"].Value.ToString());
 
 
                     ordergridview.Enabled = false;
@@ -901,10 +930,10 @@ namespace Veiled_Kashmir_Admin_Panel
                         try
                         {
 
-                            dr = obj.Query("SELECT amount,shipping FROM orders where orderid='" + orderid + "'");
-                            dr.Read();
-                            sumtotal= int.Parse(dr[0].ToString()) + int.Parse(dr[1].ToString());
-                            obj.closeConnection();
+                            //dr = obj.Query("SELECT amount,shipping FROM orders where orderid='" + orderid + "'");
+                            //dr.Read();
+                            //obj.closeConnection();
+
                             //dt1 = new DataTable();
                             //dt1.Load(dr);
                             adap1 = new MySqlDataAdapter("SELECT * FROM orderdetails where orderid='" + orderid + "'", conn);
@@ -918,8 +947,9 @@ namespace Veiled_Kashmir_Admin_Panel
                             a.Result = bsource1;
 
                         }
-                        catch
+                        catch(Exception ex)
                         {
+                            MessageBox.Show(ex.Message);
                             obj.closeConnection();
                         }
                     };
@@ -960,10 +990,14 @@ namespace Veiled_Kashmir_Admin_Panel
                                 billbtn.BackColor = Color.Gainsboro;
 
                             }
-                        }catch { ordergridview.Enabled = true; }
+
+                            if (row.Cells["giftwrap"].Value.ToString() == "True")
+                                gmsgbtn.Visible = true;
+
+                        }catch(Exception ex) { MessageBox.Show(ex.Message); ordergridview.Enabled = true; }
                     };
-                    while (details.IsBusy)
-                        details.CancelAsync();
+                    //while (details.IsBusy)
+                    //    details.CancelAsync();
                     obj.closeConnection();
                     details.RunWorkerAsync();
 
@@ -981,7 +1015,7 @@ namespace Veiled_Kashmir_Admin_Panel
                             aconn.Close();
 
                             a.Result = count;
-                        }catch { aconn.Close(); }
+                        }catch(Exception ex) { MessageBox.Show(ex.Message); aconn.Close(); }
 
                     };
                     bill.RunWorkerCompleted += (o, b) => 

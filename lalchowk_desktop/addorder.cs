@@ -159,16 +159,20 @@ namespace Veiled_Kashmir_Admin_Panel
                     DialogResult dgr = MessageBox.Show("Please ensure all the details are correct, it will reflect on the user account.\r\nDo you want to proceed ?", "Confirm!", MessageBoxButtons.YesNo);
                     if (dgr == DialogResult.Yes)
                     {
-                        string pconf = "";
+                        string pconf = "",gift="";
                         if (pcybox.Checked)
                             pconf = "1";
                         else
                             pconf = "0";
+                        if (giftbox.Checked)
+                            gift = "1";
+                        else
+                            gift = "0";
 
                         string email = md5hash(emailtxt.Text);
-                        string cmd = "INSERT INTO orders(`email`, `amount`,`timestamp`,`shipping`,`paymenttype`,`paymentconfirmed`, `transanctionid`,`itemcount`,`status`,`name`,`address1`,`address2`,`contact`,`pincode`,`city`,`loyaltybonus`,`deliveryguy`,`in_transit`,`alternate_contact`) values ('" + email + "','" + amounttxt.Text
+                        string cmd = "INSERT INTO orders(`email`, `amount`,`timestamp`,`shipping`,`paymenttype`,`paymentconfirmed`, `transanctionid`,`itemcount`,`status`,`name`,`address1`,`address2`,`contact`,`pincode`,`city`,`loyaltybonus`,`deliveryguy`,`in_transit`,`alternate_contact`,`giftwrap`,`giftcharges`) values ('" + email + "','" + amounttxt.Text
                             + "',DATE_ADD(CURRENT_TIMESTAMP, INTERVAL 750 MINUTE),'" + shiptxt.Text + "','"+ptypebox.Text+"','"+pconf+"','SW','" + counttxt.Text + "','" + statustxt.Text + "','" + nametxt.Text + "','" + add1txt.Text + "','" + add2txt.Text + "','" + contacttxt.Text + "','" + pintxt.Text + "','" + citytxt.Text 
-                            + "','" + loyaltxt.Text + "','"+devtxt.Text+"','0','"+altcontxt.Text+"')";
+                            + "','" + loyaltxt.Text + "','"+devtxt.Text+"','0','"+altcontxt.Text+"','"+gift+"','"+giftchtxt.Text+"')";
                         obj.nonQuery(cmd);
                         long orderid = userinfo.orid;
                         //    int orderid = obj.Count("SELECT LAST_INSERT_ID()");
@@ -209,7 +213,7 @@ namespace Veiled_Kashmir_Admin_Panel
                         }
                         catch (Exception ex)
                         { MessageBox.Show(ex.ToString()); obj.closeConnection(); }
-                        MessageBox.Show("Order added successfully.", "Success.");
+                        MessageBox.Show("Order added successfully.", "Success");
                         inventorydatagridview.Columns.Clear();
                         addorderbtn.Enabled = false;
                         dp.Visible = false;

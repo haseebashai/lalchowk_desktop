@@ -172,6 +172,9 @@
             this.ticketlbl = new System.Windows.Forms.Label();
             this.ticketbtn = new System.Windows.Forms.Button();
             this.uppnl = new System.Windows.Forms.Panel();
+            this.countlbl = new System.Windows.Forms.Label();
+            this.splbl = new System.Windows.Forms.Label();
+            this.pboxtxt = new System.Windows.Forms.TextBox();
             this.epnl = new System.Windows.Forms.Panel();
             this.bpnl = new System.Windows.Forms.Panel();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
@@ -185,9 +188,6 @@
             this.bgworker6 = new System.ComponentModel.BackgroundWorker();
             this.bgworker7 = new System.ComponentModel.BackgroundWorker();
             this.bgworker8 = new System.ComponentModel.BackgroundWorker();
-            this.splbl = new System.Windows.Forms.Label();
-            this.pboxtxt = new System.Windows.Forms.TextBox();
-            this.countlbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.accountdataview)).BeginInit();
             this.exppnl.SuspendLayout();
             this.moneypnl.SuspendLayout();
@@ -1274,7 +1274,7 @@
             this.revgobtn.AutoSize = true;
             this.revgobtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.revgobtn.Depth = 0;
-            this.revgobtn.Location = new System.Drawing.Point(825, 99);
+            this.revgobtn.Location = new System.Drawing.Point(822, 82);
             this.revgobtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.revgobtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.revgobtn.Name = "revgobtn";
@@ -1288,7 +1288,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(689, 26);
+            this.label13.Location = new System.Drawing.Point(686, 9);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(145, 13);
             this.label13.TabIndex = 50;
@@ -1310,9 +1310,9 @@
             this.revdetpnl.Controls.Add(this.orlbl);
             this.revdetpnl.Controls.Add(this.label48);
             this.revdetpnl.Controls.Add(this.label49);
-            this.revdetpnl.Location = new System.Drawing.Point(863, 5);
+            this.revdetpnl.Location = new System.Drawing.Point(859, 5);
             this.revdetpnl.Name = "revdetpnl";
-            this.revdetpnl.Size = new System.Drawing.Size(265, 153);
+            this.revdetpnl.Size = new System.Drawing.Size(269, 153);
             this.revdetpnl.TabIndex = 49;
             this.revdetpnl.Visible = false;
             // 
@@ -1420,7 +1420,7 @@
             this.orlbl.AutoSize = true;
             this.orlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.orlbl.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.orlbl.Location = new System.Drawing.Point(204, 74);
+            this.orlbl.Location = new System.Drawing.Point(211, 75);
             this.orlbl.Name = "orlbl";
             this.orlbl.Size = new System.Drawing.Size(24, 20);
             this.orlbl.TabIndex = 40;
@@ -1438,7 +1438,7 @@
             // label49
             // 
             this.label49.AutoSize = true;
-            this.label49.Location = new System.Drawing.Point(191, 54);
+            this.label49.Location = new System.Drawing.Point(198, 55);
             this.label49.Name = "label49";
             this.label49.Size = new System.Drawing.Size(41, 13);
             this.label49.TabIndex = 39;
@@ -1449,7 +1449,7 @@
             this.mbox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.mbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mbox.FormattingEnabled = true;
-            this.mbox.Location = new System.Drawing.Point(755, 65);
+            this.mbox.Location = new System.Drawing.Point(752, 48);
             this.mbox.Name = "mbox";
             this.mbox.Size = new System.Drawing.Size(102, 20);
             this.mbox.TabIndex = 48;
@@ -1459,7 +1459,7 @@
             this.ybox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ybox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ybox.FormattingEnabled = true;
-            this.ybox.Location = new System.Drawing.Point(669, 65);
+            this.ybox.Location = new System.Drawing.Point(666, 48);
             this.ybox.Name = "ybox";
             this.ybox.Size = new System.Drawing.Size(80, 20);
             this.ybox.TabIndex = 47;
@@ -1696,6 +1696,36 @@
             this.uppnl.TabIndex = 43;
             this.uppnl.Visible = false;
             // 
+            // countlbl
+            // 
+            this.countlbl.AutoSize = true;
+            this.countlbl.Location = new System.Drawing.Point(6, 246);
+            this.countlbl.Name = "countlbl";
+            this.countlbl.Size = new System.Drawing.Size(34, 13);
+            this.countlbl.TabIndex = 42;
+            this.countlbl.Text = "count";
+            this.countlbl.Visible = false;
+            // 
+            // splbl
+            // 
+            this.splbl.AutoSize = true;
+            this.splbl.Location = new System.Drawing.Point(3, 195);
+            this.splbl.Name = "splbl";
+            this.splbl.Size = new System.Drawing.Size(81, 13);
+            this.splbl.TabIndex = 40;
+            this.splbl.Text = "Search Product";
+            this.splbl.Visible = false;
+            // 
+            // pboxtxt
+            // 
+            this.pboxtxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.pboxtxt.Location = new System.Drawing.Point(6, 212);
+            this.pboxtxt.Name = "pboxtxt";
+            this.pboxtxt.Size = new System.Drawing.Size(120, 20);
+            this.pboxtxt.TabIndex = 41;
+            this.pboxtxt.Visible = false;
+            this.pboxtxt.TextChanged += new System.EventHandler(this.pboxtxt_TextChanged);
+            // 
             // epnl
             // 
             this.epnl.Controls.Add(this.rpnl);
@@ -1799,36 +1829,6 @@
             // 
             this.bgworker8.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker8_DoWork);
             this.bgworker8.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker8_RunWorkerCompleted);
-            // 
-            // splbl
-            // 
-            this.splbl.AutoSize = true;
-            this.splbl.Location = new System.Drawing.Point(3, 195);
-            this.splbl.Name = "splbl";
-            this.splbl.Size = new System.Drawing.Size(81, 13);
-            this.splbl.TabIndex = 40;
-            this.splbl.Text = "Search Product";
-            this.splbl.Visible = false;
-            // 
-            // pboxtxt
-            // 
-            this.pboxtxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.pboxtxt.Location = new System.Drawing.Point(6, 212);
-            this.pboxtxt.Name = "pboxtxt";
-            this.pboxtxt.Size = new System.Drawing.Size(120, 20);
-            this.pboxtxt.TabIndex = 41;
-            this.pboxtxt.Visible = false;
-            this.pboxtxt.TextChanged += new System.EventHandler(this.pboxtxt_TextChanged);
-            // 
-            // countlbl
-            // 
-            this.countlbl.AutoSize = true;
-            this.countlbl.Location = new System.Drawing.Point(6, 246);
-            this.countlbl.Name = "countlbl";
-            this.countlbl.Size = new System.Drawing.Size(34, 13);
-            this.countlbl.TabIndex = 42;
-            this.countlbl.Text = "count";
-            this.countlbl.Visible = false;
             // 
             // accounts
             // 

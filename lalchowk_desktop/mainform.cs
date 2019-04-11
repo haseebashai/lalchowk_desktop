@@ -750,7 +750,7 @@ namespace Veiled_Kashmir_Admin_Panel
         string id,contact,name,email,encmail;
         private void placeddataview_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-          //  MessageBox.Show(e.ColumnIndex.ToString()+ e.RowIndex.ToString());
+       //    MessageBox.Show(e.ColumnIndex.ToString()+ e.RowIndex.ToString());
             if (e.RowIndex > -1 && e.ColumnIndex > 2)
             {
                 plbl.Visible = true;
@@ -904,6 +904,21 @@ namespace Veiled_Kashmir_Admin_Panel
 
             }
         }
+
+
+        private void placeddataview_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex==9)
+            {
+                DataGridViewRow row = this.placeddataview.Rows[e.RowIndex];
+                if (row.Cells["giftwrap"].Value.ToString()=="True")
+                {
+                    MessageBox.Show("The user has requested gift wrap for the order.\r\n\r\nThe gift is from:  " + row.Cells["giftfrom"].Value.ToString() + " \r\nTo:\r\n" + row.Cells["giftto"].Value.ToString() + "With message: \r\n" + row.Cells["giftmsg"].Value.ToString());
+                }
+
+            }
+        }
+
 
         private void Products_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
@@ -1362,60 +1377,7 @@ namespace Veiled_Kashmir_Admin_Panel
             refreshbtn.Enabled = true;
         }
 
-        private void placedorders()
-        {
-            con.Open();
-
-            adap = new MySqlDataAdapter("select customer.mail,orders.email,orders.orderid,orders.timestamp,orders.amount,orders.shipping,orders.itemcount,orders.paymenttype,orders.paymentconfirmed,orders.status,orders.name,orders.address1,orders.address2,orders.pincode,orders.contact,orders.city,orders.alternate_contact,orders.landmark from lalchowk.orders inner join customer on customer.email=orders.email where status='placed' or status='confirmed';", con);
-            dt = new DataTable();
-            adap.Fill(dt);
-            con.Close();
-            bsource = new BindingSource();
-            bsource.DataSource = dt;
-            placeddataview.DataSource = bsource;
-            placeddataview.DoubleBuffered(true);
-            placeddataview.ClearSelection();
-            try
-            {
-                
-                placeddataview.Columns["paymentconfirmed"].Visible = false;
-                placeddataview.Columns["email"].Visible = false;
-                placeddataview.Columns["status"].Visible = false;
-                placeddataview.Columns["alternate_contact"].Visible = false;
-                placeddataview.Columns["landmark"].Visible = false;
-
-                //    placedh.Text = "Orders currently placed: " + placeddataview.RowCount;
-            }
-            catch(Exception ex) { MessageBox.Show(ex.Message); con.Close(); }
-        }
-
-        private void shippedorders()
-        {
-            con.Open();
-            adap = new MySqlDataAdapter("select customer.mail,orders.orderid,orders.timestamp,orders.shipdate,orders.amount,orders.shipping,orders.paymenttype,orders.paymentconfirmed,orders.status,orders.name,orders.address1,orders.address2,orders.pincode,orders.contact,orders.city,orders.deliveryguy,orders.in_transit from lalchowk.orders inner join customer on customer.email=orders.email where status='Shipped' or in_transit='1' ;", con);
-            dt = new DataTable();
-            adap.Fill(dt);
-            con.Close();
-            bsource2 = new BindingSource();
-            bsource2.DataSource = dt;
-            shippeddataview.DataSource = bsource2;
-            shippeddataview.DoubleBuffered(true);
-            shippeddataview.ClearSelection();
-            try
-            {
-                //   shippeddataview.Columns["shipdate"].Visible = false;
-               
-                shippeddataview.Columns["paymentconfirmed"].Visible = false;
-                
-                shippeddataview.Columns["status"].Visible = false;
-               
-                shippeddataview.Columns["in_transit"].Visible = false;
-
-                //   shippedh.Text = "Orders currently shipped: " + shippeddataview.RowCount;
-            }
-            catch (Exception ex) { MessageBox.Show(ex.Message); con.Close(); }
-
-        }
+      
 
         public void cshipbtn_Click(object sender, EventArgs e)
         {
@@ -1514,7 +1476,8 @@ namespace Veiled_Kashmir_Admin_Panel
                     {
                         row.DefaultCellStyle.BackColor = Color.LightPink;
                     }
-                  
+                    if (Convert.ToString(row.Cells["giftwrap"].Value) == "True")
+                        row.Cells["email"].Style.BackColor = Color.AliceBlue;
 
 
 
@@ -1551,10 +1514,16 @@ namespace Veiled_Kashmir_Admin_Panel
             {
                 foreach (DataGridViewRow row in this.placeddataview.Rows)
                 {
-                      if (Convert.ToInt32(row.Cells["itemcount"].Value) > 1)
+
+
+                    if (row.Cells["giftwrap"].Value.ToString()=="True")
                     {
-                        row.Cells["itemcount"].Style.BackColor = Color.BlanchedAlmond;
-                    } 
+                        row.Cells["itemcount"].Style.BackColor = Color.AliceBlue;
+                    }
+                    //  if (Convert.ToInt32(row.Cells["itemcount"].Value) > 1)
+                    //{
+                    //    row.Cells["itemcount"].Style.BackColor = Color.BlanchedAlmond;
+                    //} 
 
                 }
             }
@@ -1693,7 +1662,8 @@ namespace Veiled_Kashmir_Admin_Panel
                     DataGridViewRow row = this.shippeddataview.Rows[e.RowIndex];
                     int amount = int.Parse(row.Cells["amount"].Value.ToString());
                     int shipping = int.Parse(row.Cells["shipping"].Value.ToString());
-                    int result = int.Parse(retolbl.Text) + (amount + shipping);
+                    int giftcharges = int.Parse(row.Cells["giftcharges"].Value.ToString());
+                    int result = int.Parse(retolbl.Text) + (amount + shipping +giftcharges);
                     retolbl.Text = result.ToString();
 
                     totallbl.Visible = true;
@@ -1707,7 +1677,8 @@ namespace Veiled_Kashmir_Admin_Panel
                     DataGridViewRow row = this.shippeddataview.Rows[e.RowIndex];
                     int amount = int.Parse(row.Cells["amount"].Value.ToString());
                     int shipping = int.Parse(row.Cells["shipping"].Value.ToString());
-                    int result = int.Parse(retolbl.Text) - (amount + shipping);
+                    int giftcharges = int.Parse(row.Cells["giftcharges"].Value.ToString());
+                    int result = int.Parse(retolbl.Text) - (amount + shipping+giftcharges);
                     retolbl.Text = result.ToString();
 
                     totallbl.Visible = true;
@@ -1849,7 +1820,65 @@ namespace Veiled_Kashmir_Admin_Panel
             }
         }
 
+        private void placedorders()
+        {
+            con.Open();
 
+            adap = new MySqlDataAdapter("select customer.mail,orders.email,orders.orderid,orders.timestamp,orders.amount,orders.shipping,orders.itemcount,orders.paymenttype,orders.paymentconfirmed,orders.status,orders.name,orders.address1,orders.address2,orders.pincode,orders.contact,orders.city,orders.alternate_contact,orders.landmark,orders.giftwrap,orders.giftfrom,orders.giftto,orders.giftmsg from lalchowk.orders inner join customer on customer.email=orders.email where status='placed' or status='confirmed';", con);
+            dt = new DataTable();
+            adap.Fill(dt);
+            con.Close();
+            bsource = new BindingSource();
+            bsource.DataSource = dt;
+            placeddataview.DataSource = bsource;
+            placeddataview.DoubleBuffered(true);
+            placeddataview.ClearSelection();
+            try
+            {
+
+                placeddataview.Columns["paymentconfirmed"].Visible = false;
+                placeddataview.Columns["email"].Visible = false;
+                placeddataview.Columns["status"].Visible = false;
+                placeddataview.Columns["alternate_contact"].Visible = false;
+                placeddataview.Columns["landmark"].Visible = false;
+                placeddataview.Columns["giftwrap"].Visible = false;
+                placeddataview.Columns["giftfrom"].Visible = false;
+                placeddataview.Columns["giftto"].Visible = false;
+                placeddataview.Columns["giftmsg"].Visible = false;
+
+                //    placedh.Text = "Orders currently placed: " + placeddataview.RowCount;
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); con.Close(); }
+        }
+
+        private void shippedorders()
+        {
+            con.Open();
+            adap = new MySqlDataAdapter("select customer.mail,orders.orderid,orders.timestamp,orders.shipdate,orders.amount,orders.shipping,orders.paymenttype,orders.paymentconfirmed,orders.status,orders.name,orders.address1,orders.address2,orders.pincode,orders.contact,orders.city,orders.deliveryguy,orders.in_transit,orders.giftcharges from lalchowk.orders inner join customer on customer.email=orders.email where status='Shipped' or in_transit='1' ;", con);
+            dt = new DataTable();
+            adap.Fill(dt);
+            con.Close();
+            bsource2 = new BindingSource();
+            bsource2.DataSource = dt;
+            shippeddataview.DataSource = bsource2;
+            shippeddataview.DoubleBuffered(true);
+            shippeddataview.ClearSelection();
+            try
+            {
+                //   shippeddataview.Columns["shipdate"].Visible = false;
+
+                shippeddataview.Columns["paymentconfirmed"].Visible = false;
+
+                shippeddataview.Columns["status"].Visible = false;
+
+                shippeddataview.Columns["in_transit"].Visible = false;
+                shippeddataview.Columns["giftcharges"].Visible = false;
+
+                //   shippedh.Text = "Orders currently shipped: " + shippeddataview.RowCount;
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); con.Close(); }
+
+        }
 
 
         private void bgworker_DoWork(object sender, DoWorkEventArgs e)
@@ -1889,7 +1918,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
              
                     con.Open();
-                    adap = new MySqlDataAdapter("select customer.mail,orders.email,orders.orderid,orders.timestamp,orders.amount,orders.shipping,orders.itemcount,orders.paymenttype,orders.paymentconfirmed,orders.status,orders.name,orders.address1,orders.address2,orders.pincode,orders.contact,orders.city,orders.alternate_contact,orders.landmark from lalchowk.orders inner join customer on customer.email=orders.email where status='placed' or status='confirmed';", con);
+                    adap = new MySqlDataAdapter("select customer.mail,orders.email,orders.orderid,orders.timestamp,orders.amount,orders.shipping,orders.itemcount,orders.paymenttype,orders.paymentconfirmed,orders.status,orders.name,orders.address1,orders.address2,orders.pincode,orders.contact,orders.city,orders.alternate_contact,orders.landmark,orders.giftwrap,orders.giftfrom,orders.giftto,orders.giftmsg from lalchowk.orders inner join customer on customer.email=orders.email where status='placed' or status='confirmed';", con);
                     dt = new DataTable();
                     adap.Fill(dt);
                     con.Close();
@@ -1900,7 +1929,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
                
                     con.Open();
-                    adap = new MySqlDataAdapter("select customer.mail,orders.orderid,orders.timestamp,orders.shipdate,orders.amount,orders.shipping,orders.paymenttype,orders.paymentconfirmed,orders.status,orders.name,orders.address1,orders.address2,orders.pincode,orders.contact,orders.city,orders.deliveryguy,orders.in_transit from lalchowk.orders inner join customer on customer.email=orders.email where status='Shipped' or in_transit='1' ;", con);
+                    adap = new MySqlDataAdapter("select customer.mail,orders.orderid,orders.timestamp,orders.shipdate,orders.amount,orders.shipping,orders.paymenttype,orders.paymentconfirmed,orders.status,orders.name,orders.address1,orders.address2,orders.pincode,orders.contact,orders.city,orders.deliveryguy,orders.in_transit,orders.giftcharges from lalchowk.orders inner join customer on customer.email=orders.email where status='Shipped' or in_transit='1' ;", con);
                     dt = new DataTable();
                     adap.Fill(dt);
                     con.Close();
@@ -1977,7 +2006,10 @@ namespace Veiled_Kashmir_Admin_Panel
                     placeddataview.Columns["status"].Visible = false;
                     placeddataview.Columns["alternate_contact"].Visible = false;
                     placeddataview.Columns["landmark"].Visible = false;
-
+                    placeddataview.Columns["giftwrap"].Visible = false;
+                    placeddataview.Columns["giftfrom"].Visible = false;
+                    placeddataview.Columns["giftto"].Visible = false;
+                    placeddataview.Columns["giftmsg"].Visible = false;
 
                 }
                 catch { }
@@ -2135,8 +2167,10 @@ namespace Veiled_Kashmir_Admin_Panel
                         placeddataview.Columns["status"].Visible = false;
                         placeddataview.Columns["alternate_contact"].Visible = false;
                         placeddataview.Columns["landmark"].Visible = false;
-
-
+                        placeddataview.Columns["giftwrap"].Visible = false;
+                        placeddataview.Columns["giftfrom"].Visible = false;
+                        placeddataview.Columns["giftto"].Visible = false;
+                        placeddataview.Columns["giftmsg"].Visible = false;
 
 
                         shippeddataview.DoubleBuffered(true);
@@ -2147,6 +2181,7 @@ namespace Veiled_Kashmir_Admin_Panel
                        
                         shippeddataview.Columns["status"].Visible = false;
                         shippeddataview.Columns["in_transit"].Visible = false;
+                        shippeddataview.Columns["giftcharges"].Visible = false;
 
                         DataGridViewButtonColumn Edit = new DataGridViewButtonColumn();
                         Edit.UseColumnTextForButtonValue = true;
@@ -2223,7 +2258,10 @@ namespace Veiled_Kashmir_Admin_Panel
                 placeddataview.Columns["status"].Visible = false;
                 placeddataview.Columns["alternate_contact"].Visible = false;
                 placeddataview.Columns["landmark"].Visible = false;
-
+                placeddataview.Columns["giftwrap"].Visible = false;
+                placeddataview.Columns["giftfrom"].Visible = false;
+                placeddataview.Columns["giftto"].Visible = false;
+                placeddataview.Columns["giftmsg"].Visible = false;
             }
             catch { }
 
@@ -2239,6 +2277,8 @@ namespace Veiled_Kashmir_Admin_Panel
                 shippeddataview.Columns["status"].Visible = false;
                
                 shippeddataview.Columns["in_transit"].Visible = false;
+                shippeddataview.Columns["giftcharges"].Visible = false;
+
                 DataGridViewCheckBoxColumn checkColumn = new DataGridViewCheckBoxColumn();
                 checkColumn.Name = "Select";
                 checkColumn.HeaderText = "Select";

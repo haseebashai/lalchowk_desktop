@@ -159,13 +159,30 @@ namespace Veiled_Kashmir_Admin_Panel
                     int days = int.Parse(dr[0].ToString());
                     aconn.Close();
 
-                    object[] arg6 = { days };
+                    
+                    dr = obj.Query("SELECT sum(giftcharges) from orders where status='Delivered' and deliverdate like '" + year +"-"+mon+ "-%'");
+                    dr.Read();
+                   
+                    int    giftch = int.Parse(dr[0].ToString());
+                    
+                    
+                    obj.closeConnection();
+                  //  MessageBox.Show(giftch.ToString() );
+
+                    dr = obj.Query("SELECT sum(amount-dp) from medorders where status='Delivered' and deliverdate like '" + year+"-"+mon + "-%'");
+                    dr.Read();
+                    int medp = int.Parse(dr[0].ToString());                 
+                    obj.closeConnection();
+               //     MessageBox.Show(giftch.ToString() + "    " + medp.ToString());
+
+
+                    object[] arg6 = { days,giftch,medp };
                     load.ReportProgress(90, arg6);
 
                 }
                 catch(Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                  //  MessageBox.Show(ex.Message);
                 }
 
 
@@ -237,6 +254,9 @@ namespace Veiled_Kashmir_Admin_Panel
 
 
                         workdaystxt.Text = arg6[0].ToString() + " Days";
+                        giftxt.Text = "Rs. " + arg6[1].ToString();
+                        medtxt.Text = "Rs. "+arg6[2].ToString();
+                       
 
                     }
 

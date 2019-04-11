@@ -58,6 +58,10 @@
             this.label12 = new System.Windows.Forms.Label();
             this.petxt = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
+            this.giftxt = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.medtxt = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.monthlydataview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.expensesview)).BeginInit();
             this.SuspendLayout();
@@ -356,12 +360,56 @@
             this.label13.TabIndex = 51;
             this.label13.Text = "Profit - Expenses";
             // 
+            // giftxt
+            // 
+            this.giftxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.giftxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.giftxt.ForeColor = System.Drawing.Color.Blue;
+            this.giftxt.Location = new System.Drawing.Point(833, 562);
+            this.giftxt.Name = "giftxt";
+            this.giftxt.Size = new System.Drawing.Size(75, 19);
+            this.giftxt.TabIndex = 56;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(641, 562);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(134, 20);
+            this.label14.TabIndex = 55;
+            this.label14.Text = "Gift wrap charges";
+            // 
+            // medtxt
+            // 
+            this.medtxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.medtxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.medtxt.ForeColor = System.Drawing.Color.Blue;
+            this.medtxt.Location = new System.Drawing.Point(833, 524);
+            this.medtxt.Name = "medtxt";
+            this.medtxt.Size = new System.Drawing.Size(75, 19);
+            this.medtxt.TabIndex = 54;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(641, 524);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(149, 20);
+            this.label15.TabIndex = 53;
+            this.label15.Text = "Profit from Medicine";
+            // 
             // revdetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(975, 636);
+            this.Controls.Add(this.giftxt);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.medtxt);
+            this.Controls.Add(this.label15);
             this.Controls.Add(this.petxt);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.workdaystxt);
@@ -434,5 +482,9 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox petxt;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox giftxt;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox medtxt;
+        private System.Windows.Forms.Label label15;
     }
 }

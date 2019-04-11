@@ -987,6 +987,7 @@
             this.placeddataview.Size = new System.Drawing.Size(1145, 244);
             this.placeddataview.TabIndex = 31;
             this.placeddataview.Visible = false;
+            this.placeddataview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.placeddataview_CellClick);
             this.placeddataview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.placeddataview_CellContentClick);
             this.placeddataview.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.placeddataview_CellPainting);
             this.placeddataview.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.placeddataview_CellValueChanged);

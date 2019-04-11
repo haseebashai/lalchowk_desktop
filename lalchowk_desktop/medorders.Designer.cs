@@ -53,10 +53,13 @@
             this.delorderbtn = new System.Windows.Forms.Button();
             this.editbtn = new System.Windows.Forms.Button();
             this.btpnl = new System.Windows.Forms.Panel();
+            this.cancelbtn = new System.Windows.Forms.Button();
             this.detailpnl = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.presdp = new System.Windows.Forms.PictureBox();
-            this.cancelbtn = new System.Windows.Forms.Button();
+            this.nametxt = new System.Windows.Forms.TextBox();
+            this.msgtxt = new System.Windows.Forms.TextBox();
+            this.contxt = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.placeddataview)).BeginInit();
             this.medcontrol.SuspendLayout();
             this.placedpg.SuspendLayout();
@@ -316,13 +319,32 @@
             this.btpnl.TabIndex = 39;
             this.btpnl.Visible = false;
             // 
+            // cancelbtn
+            // 
+            this.cancelbtn.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.cancelbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.cancelbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.cancelbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cancelbtn.Location = new System.Drawing.Point(921, 4);
+            this.cancelbtn.Name = "cancelbtn";
+            this.cancelbtn.Size = new System.Drawing.Size(79, 24);
+            this.cancelbtn.TabIndex = 39;
+            this.cancelbtn.Text = "Cancel Order";
+            this.cancelbtn.UseVisualStyleBackColor = true;
+            this.cancelbtn.Click += new System.EventHandler(this.cancelbtn_Click);
+            // 
             // detailpnl
             // 
+            this.detailpnl.BackColor = System.Drawing.Color.Transparent;
+            this.detailpnl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.detailpnl.Controls.Add(this.contxt);
+            this.detailpnl.Controls.Add(this.msgtxt);
+            this.detailpnl.Controls.Add(this.nametxt);
             this.detailpnl.Controls.Add(this.label1);
             this.detailpnl.Controls.Add(this.presdp);
-            this.detailpnl.Location = new System.Drawing.Point(262, 341);
+            this.detailpnl.Location = new System.Drawing.Point(499, 341);
             this.detailpnl.Name = "detailpnl";
-            this.detailpnl.Size = new System.Drawing.Size(888, 334);
+            this.detailpnl.Size = new System.Drawing.Size(627, 334);
             this.detailpnl.TabIndex = 40;
             this.detailpnl.Visible = false;
             // 
@@ -338,26 +360,40 @@
             // 
             // presdp
             // 
-            this.presdp.Location = new System.Drawing.Point(653, 15);
+            this.presdp.Location = new System.Drawing.Point(380, 42);
             this.presdp.Name = "presdp";
             this.presdp.Size = new System.Drawing.Size(232, 242);
             this.presdp.TabIndex = 34;
             this.presdp.TabStop = false;
             this.presdp.Visible = false;
             // 
-            // cancelbtn
+            // nametxt
             // 
-            this.cancelbtn.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.cancelbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.cancelbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.cancelbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cancelbtn.Location = new System.Drawing.Point(921, 4);
-            this.cancelbtn.Name = "cancelbtn";
-            this.cancelbtn.Size = new System.Drawing.Size(79, 24);
-            this.cancelbtn.TabIndex = 39;
-            this.cancelbtn.Text = "Cancel Order";
-            this.cancelbtn.UseVisualStyleBackColor = true;
-            this.cancelbtn.Click += new System.EventHandler(this.cancelbtn_Click);
+            this.nametxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.nametxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nametxt.Location = new System.Drawing.Point(45, 60);
+            this.nametxt.Name = "nametxt";
+            this.nametxt.Size = new System.Drawing.Size(253, 16);
+            this.nametxt.TabIndex = 36;
+            // 
+            // msgtxt
+            // 
+            this.msgtxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.msgtxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.msgtxt.Location = new System.Drawing.Point(45, 175);
+            this.msgtxt.Multiline = true;
+            this.msgtxt.Name = "msgtxt";
+            this.msgtxt.Size = new System.Drawing.Size(253, 105);
+            this.msgtxt.TabIndex = 37;
+            // 
+            // contxt
+            // 
+            this.contxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.contxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contxt.Location = new System.Drawing.Point(45, 102);
+            this.contxt.Name = "contxt";
+            this.contxt.Size = new System.Drawing.Size(253, 16);
+            this.contxt.TabIndex = 38;
             // 
             // medorders
             // 
@@ -416,5 +452,8 @@
         private System.Windows.Forms.Panel detailpnl;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button cancelbtn;
+        private System.Windows.Forms.TextBox contxt;
+        private System.Windows.Forms.TextBox msgtxt;
+        private System.Windows.Forms.TextBox nametxt;
     }
 }

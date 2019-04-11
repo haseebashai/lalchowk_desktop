@@ -82,6 +82,8 @@ namespace Veiled_Kashmir_Admin_Panel
                 deldttxt.Text = arg[15] as string;
                 string transit = arg[16] as string;
                 altcontxt.Text = arg[17] as string;
+                gifttxt.Text = arg[18] as string;
+                string gift = arg[19] as string;
 
                 orderdetailview.DataSource = bsource;
 
@@ -94,7 +96,13 @@ namespace Veiled_Kashmir_Admin_Panel
                 }
                 else if(transit=="True")
                     transitbox.Checked = true;
-                
+
+                if (gift == "False")
+                {
+                    giftbox.Checked = false;
+                }
+                else if (gift == "True")
+                    giftbox.Checked = true;
 
 
                 if (pconf == "False")
@@ -167,7 +175,7 @@ namespace Veiled_Kashmir_Admin_Panel
             {
                 string orderid = e.Argument as string;
                
-                dr = obj.Query("select amount,shipping,name,address1,address2,pincode,contact,city,status,itemcount,deliveryguy,paymenttype,paymentconfirmed,shipdate,deliverdate,in_transit,alternate_contact from orders where orderid='" + orderid + "'");
+                dr = obj.Query("select amount,shipping,name,address1,address2,pincode,contact,city,status,itemcount,deliveryguy,paymenttype,paymentconfirmed,shipdate,deliverdate,in_transit,alternate_contact,giftcharges,giftwrap from orders where orderid='" + orderid + "'");
                 dr.Read();
                 string amount = dr[0].ToString();
                 string shipping = dr[1].ToString();
@@ -186,7 +194,8 @@ namespace Veiled_Kashmir_Admin_Panel
                 string ddate = dr[14].ToString();               
                 string transit = dr[15].ToString();
                 string altcon = dr[16].ToString();
-
+                string gift = dr[17].ToString();
+                string giftwrap = dr[18].ToString();
 
                 obj.closeConnection();
 
@@ -198,7 +207,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 bsource.DataSource = dt;
 
 
-                object[] arg = {amount,shipping,name,add1,add2,pin,con,city,status,count,dguy,ptype,pconf,bsource,sdate,ddate,transit,altcon};
+                object[] arg = {amount,shipping,name,add1,add2,pin,con,city,status,count,dguy,ptype,pconf,bsource,sdate,ddate,transit,altcon,gift,giftwrap};
               
                 e.Result = arg;
 
@@ -212,7 +221,7 @@ namespace Veiled_Kashmir_Admin_Panel
         public bool update = false;
         private void updbtn_Click(object sender, EventArgs e)
         {
-            string pconf= "",transit="";
+            string pconf= "",transit="",gift="";
             try
             {
                 DialogResult dgr = MessageBox.Show("Update details for this OrderID: " + id + " ?", "Confirm", MessageBoxButtons.YesNo);
@@ -227,7 +236,11 @@ namespace Veiled_Kashmir_Admin_Panel
                         transit = "1";
                     else
                         transit = "0";
-                  
+                    if (giftbox.Checked)
+                        gift = "1";
+                    else
+                        gift = "0";
+
 
                     if (deldttxt.Text == String.Empty)
                     {
@@ -235,7 +248,7 @@ namespace Veiled_Kashmir_Admin_Panel
                         string cmd = "update orders set amount='" + amtxt.Text + "',shipping='" + shiptxt.Text + "',name='" + nametxt.Text + "',address1='" + add1txt.Text + "'" +
                         ",address2='" + add2txt.Text + "',pincode='" + pintxt.Text + "',contact='" + contxt.Text + "',city='" + citytxt.Text + "',status='" + statustxt.Text + "'" +
                         ",itemcount='" + counttxt.Text + "',deliveryguy='" + dguytxt.Text + "',paymenttype='" + ptypebox.Text + "',paymentconfirmed='" + pconf
-                        + "',deliverdate="+date+",in_transit='"+transit+"',alternate_contact='"+altcontxt.Text+"' where orderid='" + id + "'";
+                        + "',deliverdate="+date+",in_transit='"+transit+"',alternate_contact='"+altcontxt.Text+"',giftcharges='"+gifttxt.Text+"',giftwrap='"+gift+"' where orderid='" + id + "'";
                         obj.nonQuery(cmd);
                     }
                     else
@@ -246,7 +259,7 @@ namespace Veiled_Kashmir_Admin_Panel
                         string cmd = "update orders set amount='" + amtxt.Text + "',shipping='" + shiptxt.Text + "',name='" + nametxt.Text + "',address1='" + add1txt.Text + "'" +
                             ",address2='" + add2txt.Text + "',pincode='" + pintxt.Text + "',contact='" + contxt.Text + "',city='" + citytxt.Text + "',status='" + statustxt.Text + "'" +
                             ",itemcount='" + counttxt.Text + "',deliveryguy='" + dguytxt.Text + "',paymenttype='" + ptypebox.Text + "',paymentconfirmed='" + pconf
-                            + "',deliverdate='" + date + "',in_transit='" + transit + "',alternate_contact='" + altcontxt.Text + "' where orderid='" + id + "'";
+                            + "',deliverdate='" + date + "',in_transit='" + transit + "',alternate_contact='" + altcontxt.Text + "',giftcharges='" + gifttxt.Text + "',giftwrap='" + gift + "' where orderid='" + id + "'";
                             obj.nonQuery(cmd);
                       
                         
@@ -600,21 +613,6 @@ namespace Veiled_Kashmir_Admin_Panel
 
             }
             catch (Exception ex) { }// MessageBox.Show(ex.Message); }
-        }
-
-        private void loadinglbl_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label16_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void searchtxt_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
 

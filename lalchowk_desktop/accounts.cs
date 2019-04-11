@@ -15,7 +15,7 @@ namespace Veiled_Kashmir_Admin_Panel
     public partial class accounts : Form
     {
         DBConnect obj = new DBConnect();
-        MySqlConnection con;
+        MySqlConnection con= new MySqlConnection("SERVER = 182.50.133.78; DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah;Convert Zero Datetime=True");
         MySqlCommand mysqlcmd, cmd;
         DataTable dt;
         MySqlDataReader dr,dr1;
@@ -865,7 +865,7 @@ namespace Veiled_Kashmir_Admin_Panel
             accountdataview.DataSource = dv;
         }
 
-        string shipping;
+        
         private void bgworker8_DoWork(object sender, DoWorkEventArgs e)
         {
             try { 
@@ -1015,7 +1015,7 @@ namespace Veiled_Kashmir_Admin_Panel
         }
 
 
-        string sale, purchase, invest, order;
+        int sale, purchase, invest, order,medp,giftch,meds,medo,shipping,medsh;
 
         private void pboxtxt_TextChanged(object sender, EventArgs e)
         {
@@ -1078,7 +1078,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 }
 
                 string date =mon + "-" + ybox.Text;
-                
+            string datemed = ybox.Text + "-" + mon;
 
 
                 BackgroundWorker revd = new BackgroundWorker();
@@ -1090,15 +1090,17 @@ namespace Veiled_Kashmir_Admin_Panel
                         cmd = new MySqlCommand(" SELECT sum(amount),sum(shipping) from deliveries where status='delivered' and date like '%-" + date + "'", aconn); //" + mbox.Text + "-" + ybox.Text + "'     
                         dr = cmd.ExecuteReader();
                         dr.Read();
-                        sale = dr[0].ToString();
-                        shipping = dr[1].ToString();
+                        sale = int.Parse(dr[0].ToString());
+                        shipping = int.Parse(dr[1].ToString());
                         aconn.Close();
+                        MessageBox.Show(sale.ToString());
+
 
                         aconn.Open();
                         cmd = new MySqlCommand(" SELECT sum(dealerprice*count) from dealing where pickupdate like '%-" + date + "'", aconn); //' %-" + month + "-2018'
                         dr = cmd.ExecuteReader();
                         dr.Read();
-                        purchase = dr[0].ToString();
+                        purchase = int.Parse(dr[0].ToString());
                         aconn.Close();
 
 
@@ -1106,18 +1108,35 @@ namespace Veiled_Kashmir_Admin_Panel
                         cmd = new MySqlCommand(" SELECT sum(amount) from expenses where purchasedate like '%-" + date + "'", aconn);
                         dr = cmd.ExecuteReader();
                         dr.Read();
-                        invest = dr[0].ToString();
+                        invest = int.Parse(dr[0].ToString());
                         aconn.Close();
 
                         aconn.Open();
                         cmd = new MySqlCommand(" SELECT count(did) from deliveries where date like '%-" + date + "'", aconn); //" + month + "
                         dr = cmd.ExecuteReader();
                         dr.Read();
-                        order = dr[0].ToString();
-
+                        order = int.Parse(dr[0].ToString());
                         aconn.Close();
+
+                        dr = obj.Query("SELECT sum(giftcharges) from orders where status='Delivered' and deliverdate like '" + datemed + "-%'");
+                        dr.Read();
+                        giftch = int.Parse(dr[0].ToString());
+                        obj.closeConnection();
+
+
+                        dr = obj.Query("SELECT sum(dp),sum(amount),count(orderid),sum(shipping) from medorders where status='Delivered' and deliverdate like '" + datemed + "-%'");
+                        dr.Read();
+                        medp = int.Parse(dr[0].ToString());
+                        meds = int.Parse(dr[1].ToString());
+                        medo = int.Parse(dr[2].ToString());
+                        medsh = int.Parse(dr[3].ToString());
+                        obj.closeConnection();
+                        //  MessageBox.Show(medp.ToString());
+
+
+
                     }
-                    catch { }
+                    catch (Exception ex) { MessageBox.Show(ex.ToString()); }
                    
                 };
                 revd.RunWorkerCompleted += (a, c) => 
@@ -1125,22 +1144,23 @@ namespace Veiled_Kashmir_Admin_Panel
 
                     try
                     {
-                        salebox.Text = sale;
-                        purchasebox.Text = purchase;
-                        investbox.Text = invest;
-                        orlbl.Text = order;
-                        shiptxt.Text = shipping;
+                       
+                        salebox.Text = (sale+meds+giftch).ToString();
+                        purchasebox.Text = (purchase+medp).ToString();
+                        investbox.Text = invest.ToString();                    
+                        orlbl.Text = (order+medo).ToString();
+                        shiptxt.Text = (shipping+medsh).ToString();
                         
                             profitbox.Text = (int.Parse(salebox.Text) - int.Parse(purchasebox.Text)).ToString();
 
                         //  MessageBox.Show("Please check for the correct date in deliveries and dealings.");
 
-                        monlbl.Text = mbox.Text + ybox.Text;
+                        monlbl.Text = mbox.Text +" "+ ybox.Text;
                         
                         
                         revdetpnl.Visible = true;
                     }
-                    catch { revdetpnl.Visible = false; MessageBox.Show("Please select the correct date.","Error!"); }
+                    catch(Exception ex) { MessageBox.Show(ex.ToString()); revdetpnl.Visible = false; MessageBox.Show("Please select the correct date.","Error!"); }
                     
                     Cursor = Cursors.Arrow;
                 };
@@ -1162,6 +1182,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 new {Text="2018"},
                 new {Text ="2019"},
                  new {Text ="2020"},
+                 new {Text ="2021"},
                 };
             ybox.DataSource = years;
 
