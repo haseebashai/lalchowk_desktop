@@ -91,6 +91,12 @@
             this.opictxt = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.hpnl = new System.Windows.Forms.Panel();
+            this.batbtn = new System.Windows.Forms.Button();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.btxt1 = new System.Windows.Forms.TextBox();
+            this.btxt2 = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
             this.rcat2 = new System.Windows.Forms.TextBox();
             this.rcat1 = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
@@ -102,12 +108,10 @@
             this.cat1txt = new System.Windows.Forms.TextBox();
             this.cat2txt = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.btxt1 = new System.Windows.Forms.TextBox();
-            this.btxt2 = new System.Windows.Forms.TextBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.batbtn = new System.Windows.Forms.Button();
+            this.label22 = new System.Windows.Forms.Label();
+            this.loadinglbl = new System.Windows.Forms.Label();
+            this.refresh = new System.Windows.Forms.Label();
+            this.searchtxt = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.p3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.p4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.p2)).BeginInit();
@@ -372,7 +376,7 @@
             // 
             // fcattxt
             // 
-            this.fcattxt.Location = new System.Drawing.Point(821, 218);
+            this.fcattxt.Location = new System.Drawing.Point(821, 282);
             this.fcattxt.Name = "fcattxt";
             this.fcattxt.Size = new System.Drawing.Size(135, 20);
             this.fcattxt.TabIndex = 55;
@@ -394,7 +398,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label6.Location = new System.Drawing.Point(722, 219);
+            this.label6.Location = new System.Drawing.Point(722, 283);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(99, 17);
             this.label6.TabIndex = 54;
@@ -426,9 +430,9 @@
             this.productsdataview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.productsdataview.BackgroundColor = System.Drawing.Color.White;
             this.productsdataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.productsdataview.Location = new System.Drawing.Point(725, 244);
+            this.productsdataview.Location = new System.Drawing.Point(725, 305);
             this.productsdataview.Name = "productsdataview";
-            this.productsdataview.Size = new System.Drawing.Size(424, 441);
+            this.productsdataview.Size = new System.Drawing.Size(424, 380);
             this.productsdataview.TabIndex = 52;
             this.productsdataview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.productsdataview_CellClick);
             // 
@@ -658,7 +662,7 @@
             // 
             // idtxt
             // 
-            this.idtxt.Location = new System.Drawing.Point(1087, 218);
+            this.idtxt.Location = new System.Drawing.Point(1087, 282);
             this.idtxt.Name = "idtxt";
             this.idtxt.Size = new System.Drawing.Size(62, 20);
             this.idtxt.TabIndex = 107;
@@ -669,7 +673,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(962, 218);
+            this.label1.Location = new System.Drawing.Point(962, 282);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(119, 17);
             this.label1.TabIndex = 106;
@@ -707,6 +711,10 @@
             // 
             // hpnl
             // 
+            this.hpnl.Controls.Add(this.label22);
+            this.hpnl.Controls.Add(this.loadinglbl);
+            this.hpnl.Controls.Add(this.refresh);
+            this.hpnl.Controls.Add(this.searchtxt);
             this.hpnl.Controls.Add(this.batbtn);
             this.hpnl.Controls.Add(this.label21);
             this.hpnl.Controls.Add(this.label19);
@@ -789,6 +797,63 @@
             this.hpnl.Size = new System.Drawing.Size(1158, 687);
             this.hpnl.TabIndex = 104;
             this.hpnl.Visible = false;
+            // 
+            // batbtn
+            // 
+            this.batbtn.Location = new System.Drawing.Point(327, 603);
+            this.batbtn.Name = "batbtn";
+            this.batbtn.Size = new System.Drawing.Size(81, 25);
+            this.batbtn.TabIndex = 131;
+            this.batbtn.Text = "Update Links";
+            this.batbtn.UseVisualStyleBackColor = true;
+            this.batbtn.Click += new System.EventHandler(this.batbtn_Click);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label21.Location = new System.Drawing.Point(436, 5);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(104, 18);
+            this.label21.TabIndex = 130;
+            this.label21.Text = "Change Offers";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label19.Location = new System.Drawing.Point(17, 660);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(66, 17);
+            this.label19.TabIndex = 129;
+            this.label19.Text = "Banner 2";
+            // 
+            // btxt1
+            // 
+            this.btxt1.Location = new System.Drawing.Point(100, 633);
+            this.btxt1.Name = "btxt1";
+            this.btxt1.Size = new System.Drawing.Size(308, 20);
+            this.btxt1.TabIndex = 126;
+            // 
+            // btxt2
+            // 
+            this.btxt2.Location = new System.Drawing.Point(100, 657);
+            this.btxt2.Name = "btxt2";
+            this.btxt2.Size = new System.Drawing.Size(308, 20);
+            this.btxt2.TabIndex = 127;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label20.Location = new System.Drawing.Point(17, 634);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(66, 17);
+            this.label20.TabIndex = 128;
+            this.label20.Text = "Banner 1";
             // 
             // rcat2
             // 
@@ -892,62 +957,50 @@
             this.label15.TabIndex = 117;
             this.label15.Text = "Category 1";
             // 
-            // label19
+            // label22
             // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label19.Location = new System.Drawing.Point(17, 660);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(66, 17);
-            this.label19.TabIndex = 129;
-            this.label19.Text = "Banner 2";
+            this.label22.AutoSize = true;
+            this.label22.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(722, 249);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(84, 13);
+            this.label22.TabIndex = 135;
+            this.label22.Text = "Search Products";
             // 
-            // btxt1
+            // loadinglbl
             // 
-            this.btxt1.Location = new System.Drawing.Point(100, 633);
-            this.btxt1.Name = "btxt1";
-            this.btxt1.Size = new System.Drawing.Size(308, 20);
-            this.btxt1.TabIndex = 126;
+            this.loadinglbl.AutoSize = true;
+            this.loadinglbl.ForeColor = System.Drawing.Color.Red;
+            this.loadinglbl.Location = new System.Drawing.Point(897, 249);
+            this.loadinglbl.Name = "loadinglbl";
+            this.loadinglbl.Size = new System.Drawing.Size(54, 13);
+            this.loadinglbl.TabIndex = 134;
+            this.loadinglbl.Text = "Loading...";
+            this.loadinglbl.Visible = false;
             // 
-            // btxt2
+            // refresh
             // 
-            this.btxt2.Location = new System.Drawing.Point(100, 657);
-            this.btxt2.Name = "btxt2";
-            this.btxt2.Size = new System.Drawing.Size(308, 20);
-            this.btxt2.TabIndex = 127;
+            this.refresh.AutoSize = true;
+            this.refresh.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.refresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.refresh.ForeColor = System.Drawing.Color.Blue;
+            this.refresh.Location = new System.Drawing.Point(1089, 248);
+            this.refresh.Name = "refresh";
+            this.refresh.Size = new System.Drawing.Size(60, 13);
+            this.refresh.TabIndex = 133;
+            this.refresh.Text = "Update List";
+            this.refresh.Click += new System.EventHandler(this.refresh_Click);
             // 
-            // label20
+            // searchtxt
             // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label20.Location = new System.Drawing.Point(17, 634);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(66, 17);
-            this.label20.TabIndex = 128;
-            this.label20.Text = "Banner 1";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label21.Location = new System.Drawing.Point(436, 5);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(104, 18);
-            this.label21.TabIndex = 130;
-            this.label21.Text = "Change Offers";
-            // 
-            // batbtn
-            // 
-            this.batbtn.Location = new System.Drawing.Point(327, 603);
-            this.batbtn.Name = "batbtn";
-            this.batbtn.Size = new System.Drawing.Size(81, 25);
-            this.batbtn.TabIndex = 131;
-            this.batbtn.Text = "Update Links";
-            this.batbtn.UseVisualStyleBackColor = true;
-            this.batbtn.Click += new System.EventHandler(this.batbtn_Click);
+            this.searchtxt.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.searchtxt.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.searchtxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.searchtxt.Location = new System.Drawing.Point(725, 225);
+            this.searchtxt.Name = "searchtxt";
+            this.searchtxt.Size = new System.Drawing.Size(424, 20);
+            this.searchtxt.TabIndex = 132;
             // 
             // apphomepage
             // 
@@ -1059,5 +1112,9 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Button batbtn;
         private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label loadinglbl;
+        private System.Windows.Forms.Label refresh;
+        private System.Windows.Forms.TextBox searchtxt;
     }
 }

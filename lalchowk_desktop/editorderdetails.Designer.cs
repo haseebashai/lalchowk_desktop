@@ -462,6 +462,7 @@
             this.searchtxt.Name = "searchtxt";
             this.searchtxt.Size = new System.Drawing.Size(495, 20);
             this.searchtxt.TabIndex = 105;
+            this.searchtxt.TextChanged += new System.EventHandler(this.searchtxt_TextChanged);
             // 
             // refresh
             // 
@@ -486,6 +487,7 @@
             this.loadinglbl.TabIndex = 108;
             this.loadinglbl.Text = "Loading...";
             this.loadinglbl.Visible = false;
+            this.loadinglbl.Click += new System.EventHandler(this.loadinglbl_Click);
             // 
             // label16
             // 
@@ -497,6 +499,7 @@
             this.label16.Size = new System.Drawing.Size(84, 13);
             this.label16.TabIndex = 109;
             this.label16.Text = "Search Products";
+            this.label16.Click += new System.EventHandler(this.label16_Click);
             // 
             // label17
             // 

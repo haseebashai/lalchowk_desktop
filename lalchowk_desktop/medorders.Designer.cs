@@ -29,37 +29,46 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(medorders));
             this.placeddataview = new System.Windows.Forms.DataGridView();
             this.loadlbl = new System.Windows.Forms.Label();
-            this.presdp = new System.Windows.Forms.PictureBox();
             this.medcontrol = new System.Windows.Forms.TabControl();
             this.placedpg = new System.Windows.Forms.TabPage();
+            this.shippedpg = new System.Windows.Forms.TabPage();
+            this.shippeddataview = new System.Windows.Forms.DataGridView();
             this.deliveredpg = new System.Windows.Forms.TabPage();
             this.deldataview = new System.Windows.Forms.DataGridView();
             this.dellbl = new System.Windows.Forms.Label();
             this.allorderspg = new System.Windows.Forms.TabPage();
             this.alldataview = new System.Windows.Forms.DataGridView();
             this.alllbl = new System.Windows.Forms.Label();
-            this.shippedpg = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.addorderbtn = new System.Windows.Forms.Button();
+            this.delorderbtn = new System.Windows.Forms.Button();
+            this.editbtn = new System.Windows.Forms.Button();
+            this.btpnl = new System.Windows.Forms.Panel();
+            this.detailpnl = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.presdp = new System.Windows.Forms.PictureBox();
+            this.cancelbtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.placeddataview)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.presdp)).BeginInit();
             this.medcontrol.SuspendLayout();
             this.placedpg.SuspendLayout();
+            this.shippedpg.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.shippeddataview)).BeginInit();
             this.deliveredpg.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.deldataview)).BeginInit();
             this.allorderspg.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.alldataview)).BeginInit();
-            this.shippedpg.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.btpnl.SuspendLayout();
+            this.detailpnl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.presdp)).BeginInit();
             this.SuspendLayout();
             // 
             // placeddataview
@@ -89,15 +98,6 @@
             this.loadlbl.TabIndex = 33;
             this.loadlbl.Text = "Loading...";
             // 
-            // presdp
-            // 
-            this.presdp.Location = new System.Drawing.Point(314, 340);
-            this.presdp.Name = "presdp";
-            this.presdp.Size = new System.Drawing.Size(503, 344);
-            this.presdp.TabIndex = 34;
-            this.presdp.TabStop = false;
-            this.presdp.Visible = false;
-            // 
             // medcontrol
             // 
             this.medcontrol.Controls.Add(this.placedpg);
@@ -108,7 +108,7 @@
             this.medcontrol.Name = "medcontrol";
             this.medcontrol.Padding = new System.Drawing.Point(80, 10);
             this.medcontrol.SelectedIndex = 0;
-            this.medcontrol.Size = new System.Drawing.Size(1117, 269);
+            this.medcontrol.Size = new System.Drawing.Size(1114, 269);
             this.medcontrol.TabIndex = 35;
             this.medcontrol.Visible = false;
             // 
@@ -119,10 +119,37 @@
             this.placedpg.Location = new System.Drawing.Point(4, 36);
             this.placedpg.Name = "placedpg";
             this.placedpg.Padding = new System.Windows.Forms.Padding(3);
-            this.placedpg.Size = new System.Drawing.Size(1109, 229);
+            this.placedpg.Size = new System.Drawing.Size(1106, 229);
             this.placedpg.TabIndex = 0;
             this.placedpg.Text = "Placed Orders";
             this.placedpg.UseVisualStyleBackColor = true;
+            // 
+            // shippedpg
+            // 
+            this.shippedpg.Controls.Add(this.shippeddataview);
+            this.shippedpg.Location = new System.Drawing.Point(4, 36);
+            this.shippedpg.Name = "shippedpg";
+            this.shippedpg.Size = new System.Drawing.Size(1106, 229);
+            this.shippedpg.TabIndex = 3;
+            this.shippedpg.Text = "Shipped Orders";
+            this.shippedpg.UseVisualStyleBackColor = true;
+            // 
+            // shippeddataview
+            // 
+            this.shippeddataview.AllowUserToAddRows = false;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            this.shippeddataview.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.shippeddataview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.shippeddataview.BackgroundColor = System.Drawing.Color.White;
+            this.shippeddataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.shippeddataview.Location = new System.Drawing.Point(6, 6);
+            this.shippeddataview.Name = "shippeddataview";
+            this.shippeddataview.RowHeadersVisible = false;
+            this.shippeddataview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.shippeddataview.Size = new System.Drawing.Size(1089, 217);
+            this.shippeddataview.TabIndex = 33;
+            this.shippeddataview.Visible = false;
+            this.shippeddataview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.shippeddataview_CellContentClick);
             // 
             // deliveredpg
             // 
@@ -131,7 +158,7 @@
             this.deliveredpg.Location = new System.Drawing.Point(4, 36);
             this.deliveredpg.Name = "deliveredpg";
             this.deliveredpg.Padding = new System.Windows.Forms.Padding(3);
-            this.deliveredpg.Size = new System.Drawing.Size(1109, 229);
+            this.deliveredpg.Size = new System.Drawing.Size(1106, 229);
             this.deliveredpg.TabIndex = 1;
             this.deliveredpg.Text = "Delivered Orders";
             this.deliveredpg.UseVisualStyleBackColor = true;
@@ -167,6 +194,7 @@
             this.deldataview.Size = new System.Drawing.Size(1089, 217);
             this.deldataview.TabIndex = 33;
             this.deldataview.Visible = false;
+            this.deldataview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.deldataview_CellContentClick);
             // 
             // dellbl
             // 
@@ -185,7 +213,7 @@
             this.allorderspg.Controls.Add(this.alllbl);
             this.allorderspg.Location = new System.Drawing.Point(4, 36);
             this.allorderspg.Name = "allorderspg";
-            this.allorderspg.Size = new System.Drawing.Size(1109, 229);
+            this.allorderspg.Size = new System.Drawing.Size(1106, 229);
             this.allorderspg.TabIndex = 2;
             this.allorderspg.Text = "All Orders";
             this.allorderspg.UseVisualStyleBackColor = true;
@@ -221,6 +249,7 @@
             this.alldataview.Size = new System.Drawing.Size(1089, 217);
             this.alldataview.TabIndex = 34;
             this.alldataview.Visible = false;
+            this.alldataview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.alldataview_CellContentClick);
             // 
             // alllbl
             // 
@@ -233,31 +262,102 @@
             this.alllbl.Text = "Loading...";
             this.alllbl.Visible = false;
             // 
-            // shippedpg
+            // addorderbtn
             // 
-            this.shippedpg.Controls.Add(this.dataGridView1);
-            this.shippedpg.Location = new System.Drawing.Point(4, 36);
-            this.shippedpg.Name = "shippedpg";
-            this.shippedpg.Size = new System.Drawing.Size(1109, 229);
-            this.shippedpg.TabIndex = 3;
-            this.shippedpg.Text = "Shipped Orders";
-            this.shippedpg.UseVisualStyleBackColor = true;
+            this.addorderbtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.addorderbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.addorderbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.addorderbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.addorderbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addorderbtn.Location = new System.Drawing.Point(16, 465);
+            this.addorderbtn.Name = "addorderbtn";
+            this.addorderbtn.Size = new System.Drawing.Size(185, 119);
+            this.addorderbtn.TabIndex = 36;
+            this.addorderbtn.Text = "Add New Order";
+            this.addorderbtn.UseVisualStyleBackColor = true;
+            this.addorderbtn.Click += new System.EventHandler(this.addorderbtn_Click);
             // 
-            // dataGridView1
+            // delorderbtn
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 6);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1089, 217);
-            this.dataGridView1.TabIndex = 33;
-            this.dataGridView1.Visible = false;
+            this.delorderbtn.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.delorderbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.delorderbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.delorderbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.delorderbtn.Location = new System.Drawing.Point(1020, 4);
+            this.delorderbtn.Name = "delorderbtn";
+            this.delorderbtn.Size = new System.Drawing.Size(79, 24);
+            this.delorderbtn.TabIndex = 37;
+            this.delorderbtn.Text = "Delete Order";
+            this.delorderbtn.UseVisualStyleBackColor = true;
+            this.delorderbtn.Click += new System.EventHandler(this.delorderbtn_Click);
+            // 
+            // editbtn
+            // 
+            this.editbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.editbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.editbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.editbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.editbtn.Location = new System.Drawing.Point(10, 4);
+            this.editbtn.Name = "editbtn";
+            this.editbtn.Size = new System.Drawing.Size(149, 24);
+            this.editbtn.TabIndex = 38;
+            this.editbtn.Text = "Edit Order";
+            this.editbtn.UseVisualStyleBackColor = true;
+            this.editbtn.Click += new System.EventHandler(this.editbtn_Click);
+            // 
+            // btpnl
+            // 
+            this.btpnl.Controls.Add(this.cancelbtn);
+            this.btpnl.Controls.Add(this.editbtn);
+            this.btpnl.Controls.Add(this.delorderbtn);
+            this.btpnl.Location = new System.Drawing.Point(12, 307);
+            this.btpnl.Name = "btpnl";
+            this.btpnl.Size = new System.Drawing.Size(1110, 30);
+            this.btpnl.TabIndex = 39;
+            this.btpnl.Visible = false;
+            // 
+            // detailpnl
+            // 
+            this.detailpnl.Controls.Add(this.label1);
+            this.detailpnl.Controls.Add(this.presdp);
+            this.detailpnl.Location = new System.Drawing.Point(262, 341);
+            this.detailpnl.Name = "detailpnl";
+            this.detailpnl.Size = new System.Drawing.Size(888, 334);
+            this.detailpnl.TabIndex = 40;
+            this.detailpnl.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(3, 2);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(92, 17);
+            this.label1.TabIndex = 35;
+            this.label1.Text = "Order Details";
+            // 
+            // presdp
+            // 
+            this.presdp.Location = new System.Drawing.Point(653, 15);
+            this.presdp.Name = "presdp";
+            this.presdp.Size = new System.Drawing.Size(232, 242);
+            this.presdp.TabIndex = 34;
+            this.presdp.TabStop = false;
+            this.presdp.Visible = false;
+            // 
+            // cancelbtn
+            // 
+            this.cancelbtn.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.cancelbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.cancelbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.cancelbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cancelbtn.Location = new System.Drawing.Point(921, 4);
+            this.cancelbtn.Name = "cancelbtn";
+            this.cancelbtn.Size = new System.Drawing.Size(79, 24);
+            this.cancelbtn.TabIndex = 39;
+            this.cancelbtn.Text = "Cancel Order";
+            this.cancelbtn.UseVisualStyleBackColor = true;
+            this.cancelbtn.Click += new System.EventHandler(this.cancelbtn_Click);
             // 
             // medorders
             // 
@@ -265,25 +365,30 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1162, 687);
+            this.Controls.Add(this.detailpnl);
+            this.Controls.Add(this.btpnl);
+            this.Controls.Add(this.addorderbtn);
             this.Controls.Add(this.medcontrol);
-            this.Controls.Add(this.presdp);
             this.Controls.Add(this.loadlbl);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "medorders";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Lalchowk Health";
             ((System.ComponentModel.ISupportInitialize)(this.placeddataview)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.presdp)).EndInit();
             this.medcontrol.ResumeLayout(false);
             this.placedpg.ResumeLayout(false);
+            this.shippedpg.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.shippeddataview)).EndInit();
             this.deliveredpg.ResumeLayout(false);
             this.deliveredpg.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.deldataview)).EndInit();
             this.allorderspg.ResumeLayout(false);
             this.allorderspg.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.alldataview)).EndInit();
-            this.shippedpg.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.btpnl.ResumeLayout(false);
+            this.detailpnl.ResumeLayout(false);
+            this.detailpnl.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.presdp)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -303,6 +408,13 @@
         private System.Windows.Forms.Label dellbl;
         private System.Windows.Forms.Label alllbl;
         private System.Windows.Forms.TabPage shippedpg;
-        public System.Windows.Forms.DataGridView dataGridView1;
+        public System.Windows.Forms.DataGridView shippeddataview;
+        private System.Windows.Forms.Button addorderbtn;
+        private System.Windows.Forms.Button delorderbtn;
+        private System.Windows.Forms.Button editbtn;
+        private System.Windows.Forms.Panel btpnl;
+        private System.Windows.Forms.Panel detailpnl;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button cancelbtn;
     }
 }

@@ -31,7 +31,10 @@ namespace Veiled_Kashmir_Admin_Panel
             //searchtxt.AutoCompleteMode = AutoCompleteMode.Suggest;
             //searchtxt.AutoCompleteSource = AutoCompleteSource.CustomSource;
             searchtxt.AutoCompleteCustomSource = userinfo.col;
-           
+         
+            //String[] _values = { "one", "two", "three", "tree", "four", "fivee ghj","haseeb ashai" };
+
+         //   autotxt.Values = _values;
 
             string emailt = email;
             if (emailt != string.Empty)
@@ -521,7 +524,48 @@ namespace Veiled_Kashmir_Admin_Panel
             statustxt.Text= CultureInfo.CurrentCulture.TextInfo.ToTitleCase(statustxt.Text.ToLower());
         }
 
-      
+        private void emailtxt_KeyUp(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyData == Keys.Enter)
+                {
+                    string email = md5hash(emailtxt.Text);
+
+                    BackgroundWorker details = new BackgroundWorker();
+                    details.DoWork += (o, a) =>
+                    {
+                        dr = obj.Query("Select name,address1,address2,contact,alternate_contact,city,pincode from addresses where email='" + email + "'");
+                        dr.Read();
+                        string name, address1, address2, contact, alternate_contact, city, pincode;
+                        name = dr[0].ToString();
+                        address1 = dr[1].ToString();
+                        address2 = dr[2].ToString();
+                        contact = dr[3].ToString();
+                        alternate_contact = dr[4].ToString();
+                        city = dr[5].ToString();
+                        pincode = dr[6].ToString();
+                        obj.closeConnection();
+                        object[] arg = { name, address1, address2, contact, alternate_contact, city, pincode };
+                        a.Result = arg;
+                    };
+                    details.RunWorkerCompleted += (o, b) => 
+                    {
+                        object[] arg = (object[])b.Result;
+                        nametxt.Text = arg[0].ToString();
+                        add1txt.Text = arg[1].ToString();
+                        add2txt.Text = arg[2].ToString();
+                        contacttxt.Text = arg[3].ToString();
+                        altcontxt.Text = arg[4].ToString();
+                        citytxt.Text = arg[5].ToString();
+                        pintxt.Text = arg[6].ToString();
+
+                    };
+                    details.RunWorkerAsync();
+                }
+            }catch { obj.closeConnection(); }
+        }
+
         private void refresh_Click(object sender, EventArgs e)
         {
             refresh.Enabled = false;
@@ -538,13 +582,33 @@ namespace Veiled_Kashmir_Admin_Panel
                 {
 
                     search.ReportProgress(10);
-                    AutoCompleteStringCollection col1 = new AutoCompleteStringCollection();
+                     AutoCompleteStringCollection col1 = new AutoCompleteStringCollection();
+
+                    
+                 //   var items = new List<string>();
 
                     cmd = new MySqlCommand("Select concat_ws(' ',productname,'(',detail1,detail2,')','@',mrp,'#',productid) as tag from products where productid>9999", con);
                     try
                     {
                         con.Open();
                         search.ReportProgress(30);
+                        //int i = 0;
+                        //using (var dr = cmd.ExecuteReader())
+                        //{
+                        //    while (dr.Read())
+                        //    {
+                        //        string item;
+                        //        {
+                        //            item = dr[0].ToString();
+                        //        };
+
+                        //        items.Add(item);
+                        //    };
+
+                        //};
+
+
+                       
                         MySqlDataReader data = cmd.ExecuteReader();
                         while (data.Read())
                         {
@@ -554,7 +618,8 @@ namespace Veiled_Kashmir_Admin_Panel
                         search.ReportProgress(90);
                         con.Close();
                         a.Result = col1;
-                    }catch(Exception ex) { MessageBox.Show(ex.Message); }
+                    }
+                    catch(Exception ex) { MessageBox.Show(ex.ToString()); }
                     
                 };
                 search.ProgressChanged += (o, c) =>
@@ -574,12 +639,16 @@ namespace Veiled_Kashmir_Admin_Panel
                 };
 
                 search.RunWorkerCompleted += (o, b) => {
+
+                    // List<string> col = (List<string>)b.Result;
                     userinfo.col = b.Result as AutoCompleteStringCollection;
                     loadinglbl.Visible = false;
                     searchtxt.Enabled = true;
                     searchtxt.Text = "";
                     refresh.Enabled = true;
                     searchtxt.AutoCompleteCustomSource = userinfo.col;
+                    //string[] names = col.Select(i => i.ToString()).ToArray();
+                    //autotxt.Values =names;
                 };
                 search.RunWorkerAsync();
 
@@ -683,7 +752,7 @@ namespace Veiled_Kashmir_Admin_Panel
             if (_values != null && word.Length > 0)
             {
                 String[] matches = Array.FindAll(_values,
-                                                 x => (x.StartsWith(word, StringComparison.OrdinalIgnoreCase) && !SelectedValues.Contains(x)));
+                                                 x => (x.StartsWith(word) && !SelectedValues.Contains(x)));
                 if (matches.Length > 0)
                 {
                     ShowListBox();

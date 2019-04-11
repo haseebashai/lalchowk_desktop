@@ -100,7 +100,7 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             try {
                 DataView dv = new DataView(dt);
-                dv.RowFilter = string.Format("detail1 LIKE '%{0}%'", supidtxt.Text);
+                dv.RowFilter = string.Format("detail1 LIKE '%{0}%'", authortxt.Text);
                 inventorydatagridview.DataSource = dv;
             }
             catch (Exception ex)
@@ -114,7 +114,7 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             try {
                 DataView dv = new DataView(dt);
-                dv.RowFilter = string.Format("tags LIKE '%{0}%'", pronametxt.Text);
+                dv.RowFilter = string.Format("productname LIKE '%{0}%'", pronametxt.Text);
                 inventorydatagridview.DataSource = dv;
             }
             catch (Exception ex)
@@ -129,7 +129,7 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             try {
                 DataView dv = new DataView(dt);
-                dv.RowFilter = string.Format("Convert([productid],System.String) LIKE '%{0}%'", proidtxt.Text);
+                dv.RowFilter = string.Format("tags LIKE '%{0}%'", tagstxt.Text);
                 inventorydatagridview.DataSource = dv;
             }
             catch (Exception ex)
@@ -144,7 +144,7 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             try {
                 DataView dv = new DataView(dt);
-                dv.RowFilter = string.Format("brand LIKE '%{0}%'", brandtxt.Text);
+                dv.RowFilter = string.Format("detail2 LIKE '%{0}%'", brandtxt.Text);
                 inventorydatagridview.DataSource = dv;
             }
             catch (Exception ex)
@@ -292,12 +292,12 @@ namespace Veiled_Kashmir_Admin_Panel
             }
         }
 
-        private void cattxt_TextChanged(object sender, EventArgs e)
-        {
-            DataView dv = new DataView(dt);
-            dv.RowFilter = string.Format("categoryid LIKE '%{0}%'", cattxt.Text);
-            inventorydatagridview.DataSource = dv;
-        }
+        //private void cattxt_TextChanged(object sender, EventArgs e)
+        //{
+        //    DataView dv = new DataView(dt);
+        //    dv.RowFilter = string.Format("categoryid LIKE '%{0}%'", cattxt.Text);
+        //    inventorydatagridview.DataSource = dv;
+        //}
         bool catsel = false;
         private void secbox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -442,6 +442,8 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             descpnl.Visible = false;
             listbtn.Enabled = false;
+            perpnl.Visible = false;
+            invcountlbl.Visible = false;
             if (catidtxt.Text == "" && pidtxt.Text == "" && searchtxt.Text == "")
             {
                 MessageBox.Show("Please select an option first.", "Error!");
@@ -484,6 +486,8 @@ namespace Veiled_Kashmir_Admin_Panel
         private void bgworker_DoWork(object sender, DoWorkEventArgs e)
         {
             readinventory();
+           
+
         }
 
         private void bgworker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -508,8 +512,32 @@ namespace Veiled_Kashmir_Admin_Panel
                     upbtn.Visible = true;
                     listbtn.Enabled = true;
                     loadinglbl.Visible = false;
+                    invcountlbl.Text = "Products being displayed: " + (inventorydatagridview.RowCount - 1).ToString();
+                    invcountlbl.Visible = true;
+                    perpnl.Visible = true;
                 }
             } catch { listbtn.Enabled = true; }
+        }
+
+        private void calbtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (int.Parse(odistxt.Text) < 10)
+                {
+                    odistxt.Text = 0 + odistxt.Text;
+                }
+
+                string sub = "0." + odistxt.Text;
+
+                double sub2 = double.Parse(sub);
+
+                double n = double.Parse(mrptxt.Text);
+
+                n = n - (n * sub2);
+                pricetxt.Text = n.ToString();
+            }
+            catch { }
         }
 
         private void dldpic_Click(object sender, EventArgs e)

@@ -136,6 +136,12 @@
     <Compile Include="addcategories.Designer.cs">
       <DependentUpon>addcategories.cs</DependentUpon>
     </Compile>
+    <Compile Include="addmedorder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addmedorder.Designer.cs">
+      <DependentUpon>addmedorder.cs</DependentUpon>
+    </Compile>
     <Compile Include="addorder.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -177,6 +183,12 @@
     </Compile>
     <Compile Include="dialogcontainer.Designer.cs">
       <DependentUpon>dialogcontainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="editmedorders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="editmedorders.Designer.cs">
+      <DependentUpon>editmedorders.cs</DependentUpon>
     </Compile>
     <Compile Include="editorderdetails.cs">
       <SubType>Form</SubType>
@@ -384,6 +396,9 @@
     <EmbeddedResource Include="addcategories.resx">
       <DependentUpon>addcategories.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="addmedorder.resx">
+      <DependentUpon>addmedorder.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="addorder.resx">
       <DependentUpon>addorder.cs</DependentUpon>
     </EmbeddedResource>
@@ -404,6 +419,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="dialogcontainer.resx">
       <DependentUpon>dialogcontainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="editmedorders.resx">
+      <DependentUpon>editmedorders.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="editorderdetails.resx">
       <DependentUpon>editorderdetails.cs</DependentUpon>

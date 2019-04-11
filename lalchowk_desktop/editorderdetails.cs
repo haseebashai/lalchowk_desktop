@@ -35,7 +35,7 @@ namespace Veiled_Kashmir_Admin_Panel
             orderload.RunWorkerCompleted += Orderload_RunWorkerCompleted;
             orderload.RunWorkerAsync(orderid);
             titlelbl.Text = "Edit order details for OrderID: " + orderid;
-            searchtxt.AutoCompleteCustomSource = userinfo.col;
+      //      searchtxt.AutoCompleteCustomSource = userinfo.col;
 
         }
 
@@ -600,6 +600,21 @@ namespace Veiled_Kashmir_Admin_Panel
 
             }
             catch (Exception ex) { }// MessageBox.Show(ex.Message); }
+        }
+
+        private void loadinglbl_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label16_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void searchtxt_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
 

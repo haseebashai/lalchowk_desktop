@@ -717,6 +717,17 @@ namespace Veiled_Kashmir_Admin_Panel
             dname2.Text = brandtxt.Text;
         }
 
+        private void nametxt_Leave(object sender, EventArgs e)
+        {
+            if (!Regex.IsMatch(nametxt.Text, @"^([a-zA-Z0-9@#$%&*+\-_(),+':;?.,![\]\s\\/{}""|]+)$") && nametxt.Text != "")
+            {
+
+                MessageBox.Show("Abnormal Special Character found, Please remove it and proceed.");
+
+            }
+
+        }
+
         //private void catbox_Leave(object sender, EventArgs e)
         //{
         //    try
@@ -898,9 +909,33 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void fillbtn_Click(object sender, EventArgs e)
         {
-            
+            catname.Visible = false;
+           
                 readdetails();
-            
+
+            string id = catbox.Text;
+            try
+            {
+                BackgroundWorker catname1 = new BackgroundWorker();
+                catname1.DoWork += (o, a) =>
+                {
+                    dr = obj.Query("Select categoryname from secondcategory where categoryid='" + id + "' union Select categoryname from thirdcategory where categoryid='" + id + "' ");
+                    dr.Read();
+                    a.Result = dr[0].ToString();
+                    obj.closeConnection();
+
+                };
+                catname1.RunWorkerCompleted += (o, b) =>
+                {
+                    string name = (string)b.Result;
+                    catname.Text = name;
+                    catname.Visible = true;
+
+                };
+                catname1.RunWorkerAsync();
+            }
+            catch { obj.closeConnection(); }
+
         }
 
         private void desctxt_Leave(object sender, EventArgs e)

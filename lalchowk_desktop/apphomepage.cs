@@ -34,6 +34,7 @@ namespace Veiled_Kashmir_Admin_Panel
             dg = dgcopy as dialogcontainer;
             InitializeComponent();
             bgworker.RunWorkerAsync();
+            searchtxt.AutoCompleteCustomSource = userinfo.col;
         }
 
         private void updoffers_Click(object sender, EventArgs e)
@@ -340,6 +341,75 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
             Cursor = Cursors.Arrow;
+        }
+
+        private void refresh_Click(object sender, EventArgs e)
+        {
+          
+
+            loadinglbl.Visible = true;
+            searchtxt.Enabled = false;
+            try
+            {
+                con.Close();
+
+                MySqlCommand cmd;
+                BackgroundWorker search = new BackgroundWorker();
+                search.WorkerReportsProgress = true;
+                search.DoWork += (o, a) =>
+                {
+
+                    search.ReportProgress(10);
+                    AutoCompleteStringCollection col1 = new AutoCompleteStringCollection();
+
+                    cmd = new MySqlCommand("Select concat_ws(' ',productname,'(',detail1,detail2,')','@',mrp,'#',productid) as tag from products where productid>9999", con);
+                    try
+                    {
+                        con.Open();
+                        search.ReportProgress(30);
+                        MySqlDataReader data = cmd.ExecuteReader();
+                        while (data.Read())
+                        {
+                            string sname = data.GetString("tag");
+                            col1.Add(sname);
+                        }
+                        search.ReportProgress(90);
+                        con.Close();
+                        a.Result = col1;
+                    }
+                    catch (Exception ex) { MessageBox.Show(ex.Message); }
+
+                };
+                search.ProgressChanged += (o, c) =>
+                {
+                    if (c.ProgressPercentage == 10)
+                    {
+                        loadinglbl.Text = "loading...10%";
+                    }
+                    else if (c.ProgressPercentage == 30)
+                    {
+                        loadinglbl.Text = "loading...30%";
+                    }
+                    else if (c.ProgressPercentage == 90)
+                    {
+                        loadinglbl.Text = "loading...90%";
+                    }
+
+                };
+
+                search.RunWorkerCompleted += (o, b) => {
+                    userinfo.col = b.Result as AutoCompleteStringCollection;
+                    loadinglbl.Visible = false;
+                    searchtxt.Enabled = true;
+                    searchtxt.Text = "";
+                    
+                    searchtxt.AutoCompleteCustomSource = userinfo.col;
+                };
+                search.RunWorkerAsync();
+
+            }
+            catch (Exception ex) { MessageBox.Show(ex.ToString()); con.Close(); }
+
         }
 
         private void cat1btn_Click(object sender, EventArgs e)
@@ -779,7 +849,7 @@ namespace Veiled_Kashmir_Admin_Panel
             try
             {
                 con.Open();
-                adap = new MySqlDataAdapter("SELECT productid, productname, picture, stock, price,categoryid FROM products where stock>0 and picture!='defaultbook.jpg' order by productid desc limit 4000", con);
+                adap = new MySqlDataAdapter("SELECT productid, productname, picture, stock, price,categoryid FROM products where stock>0 and picture!='defaultbook.jpg' order by productid desc limit 1500", con);
                 dt = new DataTable();
                 adap.Fill(dt);
                 con.Close();

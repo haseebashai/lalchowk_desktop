@@ -32,10 +32,10 @@
             this.inventorydatagridview = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.supidtxt = new System.Windows.Forms.TextBox();
+            this.authortxt = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.pronametxt = new System.Windows.Forms.TextBox();
-            this.proidtxt = new System.Windows.Forms.TextBox();
+            this.tagstxt = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.brandtxt = new System.Windows.Forms.TextBox();
             this.productlbl = new System.Windows.Forms.Label();
@@ -44,8 +44,6 @@
             this.updatebtn = new System.Windows.Forms.Button();
             this.upbtn = new System.Windows.Forms.Button();
             this.ipnl = new System.Windows.Forms.Panel();
-            this.cattxt = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.descpnl = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.progresspc = new System.Windows.Forms.Label();
@@ -72,12 +70,23 @@
             this.supbox = new System.Windows.Forms.ComboBox();
             this.thirdbox = new System.Windows.Forms.ComboBox();
             this.secbox = new System.Windows.Forms.ComboBox();
+            this.invcountlbl = new System.Windows.Forms.Label();
+            this.calbtn = new System.Windows.Forms.Button();
+            this.odistxt = new System.Windows.Forms.TextBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.mrptxt = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.pricetxt = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.perpnl = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.inventorydatagridview)).BeginInit();
             this.ipnl.SuspendLayout();
             this.descpnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dp)).BeginInit();
             this.invpnl.SuspendLayout();
             this.spnl.SuspendLayout();
+            this.perpnl.SuspendLayout();
             this.SuspendLayout();
             // 
             // inventorydatagridview
@@ -95,7 +104,7 @@
             this.inventorydatagridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.inventorydatagridview.Location = new System.Drawing.Point(4, 28);
             this.inventorydatagridview.Name = "inventorydatagridview";
-            this.inventorydatagridview.Size = new System.Drawing.Size(1148, 364);
+            this.inventorydatagridview.Size = new System.Drawing.Size(1164, 364);
             this.inventorydatagridview.TabIndex = 0;
             this.inventorydatagridview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.inventorydatagridview_CellClick);
             this.inventorydatagridview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.inventorydatagridview_CellClick);
@@ -103,7 +112,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(251, 11);
+            this.label3.Location = new System.Drawing.Point(15, 12);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(75, 13);
             this.label3.TabIndex = 24;
@@ -112,60 +121,60 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(552, 11);
+            this.label2.Location = new System.Drawing.Point(488, 12);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(38, 13);
             this.label2.TabIndex = 22;
             this.label2.Text = "Author";
             // 
-            // supidtxt
+            // authortxt
             // 
-            this.supidtxt.Location = new System.Drawing.Point(596, 4);
-            this.supidtxt.Name = "supidtxt";
-            this.supidtxt.Size = new System.Drawing.Size(97, 20);
-            this.supidtxt.TabIndex = 21;
-            this.supidtxt.TextChanged += new System.EventHandler(this.supidtxt_TextChanged);
+            this.authortxt.Location = new System.Drawing.Point(532, 5);
+            this.authortxt.Name = "authortxt";
+            this.authortxt.Size = new System.Drawing.Size(123, 20);
+            this.authortxt.TabIndex = 11;
+            this.authortxt.TextChanged += new System.EventHandler(this.supidtxt_TextChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(18, 11);
+            this.label4.Location = new System.Drawing.Point(267, 12);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(94, 13);
+            this.label4.Size = new System.Drawing.Size(31, 13);
             this.label4.TabIndex = 26;
-            this.label4.Text = "Filter by ProductID";
+            this.label4.Text = "Tags";
             // 
             // pronametxt
             // 
-            this.pronametxt.Location = new System.Drawing.Point(332, 4);
+            this.pronametxt.Location = new System.Drawing.Point(96, 5);
             this.pronametxt.Name = "pronametxt";
-            this.pronametxt.Size = new System.Drawing.Size(187, 20);
-            this.pronametxt.TabIndex = 23;
+            this.pronametxt.Size = new System.Drawing.Size(152, 20);
+            this.pronametxt.TabIndex = 9;
             this.pronametxt.TextChanged += new System.EventHandler(this.pronametxt_TextChanged);
             // 
-            // proidtxt
+            // tagstxt
             // 
-            this.proidtxt.Location = new System.Drawing.Point(126, 4);
-            this.proidtxt.Name = "proidtxt";
-            this.proidtxt.Size = new System.Drawing.Size(107, 20);
-            this.proidtxt.TabIndex = 25;
-            this.proidtxt.TextChanged += new System.EventHandler(this.catidtxt_TextChanged);
+            this.tagstxt.Location = new System.Drawing.Point(304, 5);
+            this.tagstxt.Name = "tagstxt";
+            this.tagstxt.Size = new System.Drawing.Size(163, 20);
+            this.tagstxt.TabIndex = 10;
+            this.tagstxt.TextChanged += new System.EventHandler(this.catidtxt_TextChanged);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(716, 11);
+            this.label5.Location = new System.Drawing.Point(675, 12);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 13);
+            this.label5.Size = new System.Drawing.Size(50, 13);
             this.label5.TabIndex = 28;
-            this.label5.Text = "Brand";
+            this.label5.Text = "Publisher";
             // 
             // brandtxt
             // 
-            this.brandtxt.Location = new System.Drawing.Point(757, 4);
+            this.brandtxt.Location = new System.Drawing.Point(731, 5);
             this.brandtxt.Name = "brandtxt";
-            this.brandtxt.Size = new System.Drawing.Size(109, 20);
-            this.brandtxt.TabIndex = 27;
+            this.brandtxt.Size = new System.Drawing.Size(152, 20);
+            this.brandtxt.TabIndex = 12;
             this.brandtxt.TextChanged += new System.EventHandler(this.brandtxt_TextChanged);
             // 
             // productlbl
@@ -183,7 +192,7 @@
             this.desctxtbox.Multiline = true;
             this.desctxtbox.Name = "desctxtbox";
             this.desctxtbox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.desctxtbox.Size = new System.Drawing.Size(371, 199);
+            this.desctxtbox.Size = new System.Drawing.Size(444, 199);
             this.desctxtbox.TabIndex = 36;
             // 
             // label7
@@ -198,59 +207,41 @@
             // 
             // updatebtn
             // 
-            this.updatebtn.Location = new System.Drawing.Point(602, 70);
+            this.updatebtn.Location = new System.Drawing.Point(678, 70);
             this.updatebtn.Name = "updatebtn";
             this.updatebtn.Size = new System.Drawing.Size(61, 62);
-            this.updatebtn.TabIndex = 38;
+            this.updatebtn.TabIndex = 14;
             this.updatebtn.Text = "Update";
             this.updatebtn.UseVisualStyleBackColor = true;
             this.updatebtn.Click += new System.EventHandler(this.updatebtn_Click);
             // 
             // upbtn
             // 
-            this.upbtn.Location = new System.Drawing.Point(1033, 461);
+            this.upbtn.Location = new System.Drawing.Point(1024, 461);
             this.upbtn.Name = "upbtn";
-            this.upbtn.Size = new System.Drawing.Size(122, 36);
-            this.upbtn.TabIndex = 40;
+            this.upbtn.Size = new System.Drawing.Size(148, 36);
+            this.upbtn.TabIndex = 13;
             this.upbtn.Text = "Update";
             this.upbtn.UseVisualStyleBackColor = true;
             this.upbtn.Click += new System.EventHandler(this.upbtn_Click);
             // 
             // ipnl
             // 
-            this.ipnl.Controls.Add(this.cattxt);
-            this.ipnl.Controls.Add(this.label1);
+            this.ipnl.Controls.Add(this.invcountlbl);
             this.ipnl.Controls.Add(this.inventorydatagridview);
-            this.ipnl.Controls.Add(this.supidtxt);
+            this.ipnl.Controls.Add(this.authortxt);
             this.ipnl.Controls.Add(this.label2);
             this.ipnl.Controls.Add(this.pronametxt);
             this.ipnl.Controls.Add(this.label3);
-            this.ipnl.Controls.Add(this.proidtxt);
+            this.ipnl.Controls.Add(this.tagstxt);
             this.ipnl.Controls.Add(this.label4);
             this.ipnl.Controls.Add(this.brandtxt);
             this.ipnl.Controls.Add(this.label5);
             this.ipnl.Location = new System.Drawing.Point(3, 66);
             this.ipnl.Name = "ipnl";
-            this.ipnl.Size = new System.Drawing.Size(1156, 394);
+            this.ipnl.Size = new System.Drawing.Size(1176, 394);
             this.ipnl.TabIndex = 41;
             this.ipnl.Visible = false;
-            // 
-            // cattxt
-            // 
-            this.cattxt.Location = new System.Drawing.Point(952, 4);
-            this.cattxt.Name = "cattxt";
-            this.cattxt.Size = new System.Drawing.Size(109, 20);
-            this.cattxt.TabIndex = 29;
-            this.cattxt.TextChanged += new System.EventHandler(this.cattxt_TextChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(886, 11);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 13);
-            this.label1.TabIndex = 30;
-            this.label1.Text = "CategoryID";
             // 
             // descpnl
             // 
@@ -264,7 +255,7 @@
             this.descpnl.Controls.Add(this.label7);
             this.descpnl.Location = new System.Drawing.Point(3, 459);
             this.descpnl.Name = "descpnl";
-            this.descpnl.Size = new System.Drawing.Size(883, 203);
+            this.descpnl.Size = new System.Drawing.Size(782, 203);
             this.descpnl.TabIndex = 42;
             this.descpnl.Visible = false;
             // 
@@ -272,7 +263,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Trebuchet MS", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(599, 6);
+            this.label6.Location = new System.Drawing.Point(675, 6);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(89, 32);
             this.label6.TabIndex = 42;
@@ -318,7 +309,7 @@
             // 
             // pbar
             // 
-            this.pbar.Location = new System.Drawing.Point(892, 487);
+            this.pbar.Location = new System.Drawing.Point(866, 487);
             this.pbar.Name = "pbar";
             this.pbar.Size = new System.Drawing.Size(135, 10);
             this.pbar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
@@ -329,7 +320,7 @@
             // 
             this.refreshlbl.AutoSize = true;
             this.refreshlbl.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.refreshlbl.Location = new System.Drawing.Point(920, 464);
+            this.refreshlbl.Location = new System.Drawing.Point(894, 464);
             this.refreshlbl.Name = "refreshlbl";
             this.refreshlbl.Size = new System.Drawing.Size(79, 20);
             this.refreshlbl.TabIndex = 44;
@@ -338,6 +329,7 @@
             // 
             // invpnl
             // 
+            this.invpnl.Controls.Add(this.perpnl);
             this.invpnl.Controls.Add(this.spnl);
             this.invpnl.Controls.Add(this.ipnl);
             this.invpnl.Controls.Add(this.refreshlbl);
@@ -346,7 +338,7 @@
             this.invpnl.Controls.Add(this.descpnl);
             this.invpnl.Location = new System.Drawing.Point(1, -1);
             this.invpnl.Name = "invpnl";
-            this.invpnl.Size = new System.Drawing.Size(1159, 662);
+            this.invpnl.Size = new System.Drawing.Size(1181, 662);
             this.invpnl.TabIndex = 45;
             this.invpnl.Visible = false;
             // 
@@ -371,7 +363,7 @@
             this.spnl.Controls.Add(this.secbox);
             this.spnl.Location = new System.Drawing.Point(3, 7);
             this.spnl.Name = "spnl";
-            this.spnl.Size = new System.Drawing.Size(1152, 57);
+            this.spnl.Size = new System.Drawing.Size(1175, 57);
             this.spnl.TabIndex = 45;
             this.spnl.Visible = false;
             // 
@@ -390,7 +382,7 @@
             this.searchtxt.Location = new System.Drawing.Point(719, 21);
             this.searchtxt.Name = "searchtxt";
             this.searchtxt.Size = new System.Drawing.Size(140, 20);
-            this.searchtxt.TabIndex = 50;
+            this.searchtxt.TabIndex = 6;
             this.searchtxt.TextChanged += new System.EventHandler(this.searchtxt_TextChanged);
             // 
             // plbl
@@ -408,7 +400,7 @@
             this.pidtxt.Location = new System.Drawing.Point(644, 21);
             this.pidtxt.Name = "pidtxt";
             this.pidtxt.Size = new System.Drawing.Size(69, 20);
-            this.pidtxt.TabIndex = 48;
+            this.pidtxt.TabIndex = 5;
             this.pidtxt.TextChanged += new System.EventHandler(this.pidtxt_TextChanged);
             // 
             // loadinglbl
@@ -438,16 +430,16 @@
             this.catidtxt.Location = new System.Drawing.Point(571, 21);
             this.catidtxt.Name = "catidtxt";
             this.catidtxt.Size = new System.Drawing.Size(69, 20);
-            this.catidtxt.TabIndex = 45;
+            this.catidtxt.TabIndex = 4;
             this.catidtxt.TextChanged += new System.EventHandler(this.catidtxt_TextChanged_1);
             // 
             // allinvbtn
             // 
-            this.allinvbtn.Location = new System.Drawing.Point(1077, 7);
+            this.allinvbtn.Location = new System.Drawing.Point(1092, 7);
             this.allinvbtn.Name = "allinvbtn";
-            this.allinvbtn.Size = new System.Drawing.Size(72, 36);
+            this.allinvbtn.Size = new System.Drawing.Size(76, 36);
             this.allinvbtn.TabIndex = 44;
-            this.allinvbtn.Text = "Download all inventory";
+            this.allinvbtn.Text = "Download full inventory";
             this.allinvbtn.UseVisualStyleBackColor = true;
             this.allinvbtn.Click += new System.EventHandler(this.allinvbtn_Click);
             // 
@@ -459,7 +451,7 @@
             this.clearbtn.Location = new System.Drawing.Point(960, 10);
             this.clearbtn.Name = "clearbtn";
             this.clearbtn.Size = new System.Drawing.Size(89, 31);
-            this.clearbtn.TabIndex = 42;
+            this.clearbtn.TabIndex = 8;
             this.clearbtn.Text = "Clear";
             this.clearbtn.UseVisualStyleBackColor = true;
             this.clearbtn.Click += new System.EventHandler(this.clearbtn_Click);
@@ -472,7 +464,7 @@
             this.listbtn.Location = new System.Drawing.Point(867, 10);
             this.listbtn.Name = "listbtn";
             this.listbtn.Size = new System.Drawing.Size(87, 31);
-            this.listbtn.TabIndex = 41;
+            this.listbtn.TabIndex = 7;
             this.listbtn.Text = "List Products";
             this.listbtn.UseVisualStyleBackColor = true;
             this.listbtn.Click += new System.EventHandler(this.listbtn_Click);
@@ -511,7 +503,7 @@
             this.supbox.Location = new System.Drawing.Point(394, 20);
             this.supbox.Name = "supbox";
             this.supbox.Size = new System.Drawing.Size(162, 21);
-            this.supbox.TabIndex = 2;
+            this.supbox.TabIndex = 3;
             this.supbox.SelectedIndexChanged += new System.EventHandler(this.supbox_SelectedIndexChanged);
             // 
             // thirdbox
@@ -521,7 +513,7 @@
             this.thirdbox.Location = new System.Drawing.Point(209, 20);
             this.thirdbox.Name = "thirdbox";
             this.thirdbox.Size = new System.Drawing.Size(181, 21);
-            this.thirdbox.TabIndex = 1;
+            this.thirdbox.TabIndex = 2;
             this.thirdbox.SelectedIndexChanged += new System.EventHandler(this.thirdbox_SelectedIndexChanged);
             // 
             // secbox
@@ -531,8 +523,103 @@
             this.secbox.Location = new System.Drawing.Point(5, 20);
             this.secbox.Name = "secbox";
             this.secbox.Size = new System.Drawing.Size(200, 21);
-            this.secbox.TabIndex = 0;
+            this.secbox.TabIndex = 1;
             this.secbox.SelectedIndexChanged += new System.EventHandler(this.secbox_SelectedIndexChanged);
+            // 
+            // invcountlbl
+            // 
+            this.invcountlbl.AutoSize = true;
+            this.invcountlbl.Location = new System.Drawing.Point(968, 12);
+            this.invcountlbl.Name = "invcountlbl";
+            this.invcountlbl.Size = new System.Drawing.Size(128, 13);
+            this.invcountlbl.TabIndex = 29;
+            this.invcountlbl.Text = "Products being displayed:";
+            this.invcountlbl.Visible = false;
+            // 
+            // calbtn
+            // 
+            this.calbtn.Location = new System.Drawing.Point(214, 44);
+            this.calbtn.Name = "calbtn";
+            this.calbtn.Size = new System.Drawing.Size(95, 84);
+            this.calbtn.TabIndex = 107;
+            this.calbtn.Text = "Calculate";
+            this.calbtn.UseVisualStyleBackColor = true;
+            this.calbtn.Click += new System.EventHandler(this.calbtn_Click);
+            // 
+            // odistxt
+            // 
+            this.odistxt.Location = new System.Drawing.Point(103, 76);
+            this.odistxt.Name = "odistxt";
+            this.odistxt.Size = new System.Drawing.Size(54, 20);
+            this.odistxt.TabIndex = 106;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(54, 79);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(44, 13);
+            this.label31.TabIndex = 110;
+            this.label31.Text = "Percent";
+            // 
+            // mrptxt
+            // 
+            this.mrptxt.Location = new System.Drawing.Point(103, 44);
+            this.mrptxt.Name = "mrptxt";
+            this.mrptxt.Size = new System.Drawing.Size(98, 20);
+            this.mrptxt.TabIndex = 104;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(54, 47);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(43, 13);
+            this.label9.TabIndex = 105;
+            this.label9.Text = "Amount";
+            // 
+            // pricetxt
+            // 
+            this.pricetxt.Location = new System.Drawing.Point(103, 107);
+            this.pricetxt.Name = "pricetxt";
+            this.pricetxt.Size = new System.Drawing.Size(98, 20);
+            this.pricetxt.TabIndex = 109;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(54, 110);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(37, 13);
+            this.label10.TabIndex = 108;
+            this.label10.Text = "Result";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(108, 5);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(148, 20);
+            this.label1.TabIndex = 111;
+            this.label1.Text = "Calculate Percentage";
+            // 
+            // perpnl
+            // 
+            this.perpnl.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.perpnl.Controls.Add(this.label31);
+            this.perpnl.Controls.Add(this.label1);
+            this.perpnl.Controls.Add(this.label10);
+            this.perpnl.Controls.Add(this.calbtn);
+            this.perpnl.Controls.Add(this.pricetxt);
+            this.perpnl.Controls.Add(this.odistxt);
+            this.perpnl.Controls.Add(this.label9);
+            this.perpnl.Controls.Add(this.mrptxt);
+            this.perpnl.Location = new System.Drawing.Point(857, 521);
+            this.perpnl.Name = "perpnl";
+            this.perpnl.Size = new System.Drawing.Size(335, 158);
+            this.perpnl.TabIndex = 112;
+            this.perpnl.Visible = false;
             // 
             // inventory
             // 
@@ -540,7 +627,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1162, 660);
+            this.ClientSize = new System.Drawing.Size(1184, 660);
             this.Controls.Add(this.invpnl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "inventory";
@@ -555,6 +642,8 @@
             this.invpnl.PerformLayout();
             this.spnl.ResumeLayout(false);
             this.spnl.PerformLayout();
+            this.perpnl.ResumeLayout(false);
+            this.perpnl.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -564,10 +653,10 @@
         private System.Windows.Forms.DataGridView inventorydatagridview;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox supidtxt;
+        private System.Windows.Forms.TextBox authortxt;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox pronametxt;
-        private System.Windows.Forms.TextBox proidtxt;
+        private System.Windows.Forms.TextBox tagstxt;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox brandtxt;
         private System.Windows.Forms.Label productlbl;
@@ -578,8 +667,6 @@
         private System.Windows.Forms.Panel ipnl;
         private System.Windows.Forms.Panel descpnl;
         private System.ComponentModel.BackgroundWorker bgworker;
-        private System.Windows.Forms.TextBox cattxt;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ProgressBar pbar;
         private System.Windows.Forms.Label refreshlbl;
         private System.Windows.Forms.Panel invpnl;
@@ -604,5 +691,15 @@
         private System.Windows.Forms.Label dldpic;
         private System.Windows.Forms.Label progresspc;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label invcountlbl;
+        private System.Windows.Forms.Panel perpnl;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button calbtn;
+        private System.Windows.Forms.TextBox odistxt;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.TextBox mrptxt;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox pricetxt;
+        private System.Windows.Forms.Label label10;
     }
 }

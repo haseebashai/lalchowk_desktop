@@ -1662,6 +1662,7 @@ namespace Veiled_Kashmir_Admin_Panel
                         selectlbl.Visible = false;
                         num = 0;
                         Cursor = Cursors.Arrow;
+                        ordelbtn.Visible = false;
                     }
                 }
                 catch (Exception ex) { obj.closeConnection(); MessageBox.Show(ex.Message); }

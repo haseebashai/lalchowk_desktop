@@ -117,6 +117,7 @@
             this.inclbl = new System.Windows.Forms.Label();
             this.inclbl2 = new System.Windows.Forms.Label();
             this.addppnl = new System.Windows.Forms.Panel();
+            this.catname = new System.Windows.Forms.Label();
             this.odisbtn = new System.Windows.Forms.Button();
             this.odistxt = new System.Windows.Forms.TextBox();
             this.label31 = new System.Windows.Forms.Label();
@@ -132,7 +133,6 @@
             this.bgworker = new System.ComponentModel.BackgroundWorker();
             this.pictimer = new System.Windows.Forms.Timer(this.components);
             this.bguploadpic = new System.ComponentModel.BackgroundWorker();
-            this.catname = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pic1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic3)).BeginInit();
@@ -261,6 +261,7 @@
             this.nametxt.Name = "nametxt";
             this.nametxt.Size = new System.Drawing.Size(205, 20);
             this.nametxt.TabIndex = 1;
+            this.nametxt.Leave += new System.EventHandler(this.nametxt_Leave);
             // 
             // label5
             // 
@@ -345,7 +346,7 @@
             this.pricetxt.Location = new System.Drawing.Point(466, 507);
             this.pricetxt.Name = "pricetxt";
             this.pricetxt.Size = new System.Drawing.Size(134, 20);
-            this.pricetxt.TabIndex = 23;
+            this.pricetxt.TabIndex = 24;
             this.pricetxt.Leave += new System.EventHandler(this.pricetxt_Leave);
             // 
             // label11
@@ -362,7 +363,7 @@
             this.dealertxt.Location = new System.Drawing.Point(606, 556);
             this.dealertxt.Name = "dealertxt";
             this.dealertxt.Size = new System.Drawing.Size(134, 20);
-            this.dealertxt.TabIndex = 25;
+            this.dealertxt.TabIndex = 27;
             // 
             // label12
             // 
@@ -608,7 +609,7 @@
             this.addbtn.Name = "addbtn";
             this.addbtn.Primary = false;
             this.addbtn.Size = new System.Drawing.Size(104, 36);
-            this.addbtn.TabIndex = 26;
+            this.addbtn.TabIndex = 28;
             this.addbtn.Text = "Add Product";
             this.addbtn.UseVisualStyleBackColor = true;
             this.addbtn.Click += new System.EventHandler(this.addbtn_Click);
@@ -1071,12 +1072,22 @@
             this.addppnl.Size = new System.Drawing.Size(1150, 668);
             this.addppnl.TabIndex = 88;
             // 
+            // catname
+            // 
+            this.catname.AutoSize = true;
+            this.catname.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.catname.Location = new System.Drawing.Point(257, 350);
+            this.catname.Name = "catname";
+            this.catname.Size = new System.Drawing.Size(0, 13);
+            this.catname.TabIndex = 106;
+            this.catname.Visible = false;
+            // 
             // odisbtn
             // 
             this.odisbtn.Location = new System.Drawing.Point(677, 458);
             this.odisbtn.Name = "odisbtn";
             this.odisbtn.Size = new System.Drawing.Size(63, 20);
-            this.odisbtn.TabIndex = 105;
+            this.odisbtn.TabIndex = 23;
             this.odisbtn.Text = "Calculate";
             this.odisbtn.UseVisualStyleBackColor = true;
             this.odisbtn.Click += new System.EventHandler(this.odisbtn_Click);
@@ -1102,7 +1113,7 @@
             this.dcbtn.Location = new System.Drawing.Point(537, 556);
             this.dcbtn.Name = "dcbtn";
             this.dcbtn.Size = new System.Drawing.Size(63, 20);
-            this.dcbtn.TabIndex = 102;
+            this.dcbtn.TabIndex = 26;
             this.dcbtn.Text = "Calculate";
             this.dcbtn.UseVisualStyleBackColor = true;
             this.dcbtn.Click += new System.EventHandler(this.dcbtn_Click);
@@ -1112,7 +1123,7 @@
             this.dctxt.Location = new System.Drawing.Point(466, 556);
             this.dctxt.Name = "dctxt";
             this.dctxt.Size = new System.Drawing.Size(66, 20);
-            this.dctxt.TabIndex = 24;
+            this.dctxt.TabIndex = 25;
             // 
             // label29
             // 
@@ -1200,16 +1211,6 @@
             this.bguploadpic.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bguploadpic_DoWork);
             this.bguploadpic.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bguploadpic_ProgressChanged);
             this.bguploadpic.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bguploadpic_RunWorkerCompleted);
-            // 
-            // catname
-            // 
-            this.catname.AutoSize = true;
-            this.catname.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.catname.Location = new System.Drawing.Point(161, 327);
-            this.catname.Name = "catname";
-            this.catname.Size = new System.Drawing.Size(0, 13);
-            this.catname.TabIndex = 106;
-            this.catname.Visible = false;
             // 
             // addproducts
             // 

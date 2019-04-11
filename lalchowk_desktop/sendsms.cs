@@ -519,13 +519,13 @@ namespace Veiled_Kashmir_Admin_Panel
             smstxt.Text = "";
             if (cname == "")
             {
-                smstxt.Text = "Dear customer, your requested book ' " + bname + " ' is currently not available. We hope to serve you better next time. Lalchowk Support";
+                smstxt.Text = "Dear customer, your requested book ' " + bname + " ' is currently not available. We hope to serve you better next time.\r\nTeam Lalchowk";
 
 
             }
             else
             {
-                smstxt.Text = "Dear " + cname + ", your requested book ' " + bname + " ' is currently not available. We hope to serve you better next time. Lalchowk Support";
+                smstxt.Text = "Dear " + cname + ", your requested book ' " + bname + " ' is currently not available. We hope to serve you better next time.\r\nTeam Lalchowk";
 
             }
 

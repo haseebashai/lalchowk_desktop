@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using Microsoft.VisualBasic;
 
 namespace Veiled_Kashmir_Admin_Panel
 {
@@ -17,9 +18,6 @@ namespace Veiled_Kashmir_Admin_Panel
         DBConnect obj = new DBConnect();
         MySqlDataReader dr,dr1,dr2;
         string url = "http://lalchowk.in/uploads/";
-
-
-
         public medorders()
         {
             InitializeComponent();
@@ -42,7 +40,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 medload.DoWork += (o, a) => 
                {
                 
-                    dr = obj.Query("select customer.mail,medorders.email,medorders.orderid,medorders.timestamp,medorders.amount,medorders.shipping,medorders.itemcount,medorders.paymenttype,medorders.paymentconfirmed,medorders.status,medorders.name,medorders.address1,medorders.address2,medorders.pincode,medorders.contact,medorders.city from lalchowk.medorders inner join customer on customer.email=medorders.email where status='placed' or status='confirmed';");
+                    dr = obj.Query("select customer.mail,medorders.email,medorders.orderid,medorders.timestamp,medorders.amount,medorders.dp,medorders.shipping,medorders.itemcount,medorders.paymenttype,medorders.paymentconfirmed,medorders.status,medorders.name,medorders.address1,medorders.address2,medorders.pincode,medorders.contact,medorders.city,medorders.msg from lalchowk.medorders inner join customer on customer.email=medorders.email where status='placed' or status='confirmed';");
 
                     DataTable dt = new DataTable();
                     dt.Load(dr);
@@ -54,7 +52,7 @@ namespace Veiled_Kashmir_Admin_Panel
                    medload.ReportProgress(25,arg);
 
 
-                   dr = obj.Query("select customer.mail,medorders.email,medorders.orderid,medorders.timestamp,medorders.amount,medorders.shipping,medorders.itemcount,medorders.paymenttype,medorders.paymentconfirmed,medorders.status,medorders.name,medorders.address1,medorders.address2,medorders.pincode,medorders.contact,medorders.city from lalchowk.medorders inner join customer on customer.email=medorders.email where status='shipped';");
+                   dr = obj.Query("select customer.mail,medorders.email,medorders.orderid,medorders.timestamp,medorders.amount,medorders.dp,medorders.shipping,medorders.itemcount,medorders.paymenttype,medorders.paymentconfirmed,medorders.status,medorders.name,medorders.address1,medorders.address2,medorders.pincode,medorders.contact,medorders.city,medorders.msg from lalchowk.medorders inner join customer on customer.email=medorders.email where status='shipped';");
 
                    DataTable dt3 = new DataTable();
                    dt3.Load(dr);
@@ -67,7 +65,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
 
 
-                   dr1 = obj.Query("select customer.mail,medorders.email,medorders.orderid,medorders.timestamp,medorders.amount,medorders.shipping,medorders.itemcount,medorders.status,medorders.name,medorders.address1,medorders.address2,medorders.pincode,medorders.contact,medorders.city from lalchowk.medorders inner join customer on customer.email=medorders.email where status='delivered';");
+                   dr1 = obj.Query("select customer.mail,medorders.email,medorders.orderid,medorders.timestamp,medorders.amount,medorders.dp,medorders.shipping,medorders.itemcount,medorders.status,medorders.name,medorders.address1,medorders.address2,medorders.pincode,medorders.contact,medorders.city,medorders.msg from lalchowk.medorders inner join customer on customer.email=medorders.email where status='delivered';");
 
                    DataTable dt1 = new DataTable();
                    dt1.Load(dr1);
@@ -77,7 +75,7 @@ namespace Veiled_Kashmir_Admin_Panel
                    object[] arg1 = { bsource1 };
                    medload.ReportProgress(75,arg1);
 
-                   dr2 = obj.Query("select customer.mail,medorders.email,medorders.orderid,medorders.timestamp,medorders.amount,medorders.shipping,medorders.itemcount,medorders.status,medorders.name,medorders.address1,medorders.address2,medorders.pincode,medorders.contact,medorders.city from lalchowk.medorders inner join customer on customer.email=medorders.email ;");
+                   dr2 = obj.Query("select customer.mail,medorders.email,medorders.orderid,medorders.timestamp,medorders.amount,medorders.dp,medorders.shipping,medorders.itemcount,medorders.status,medorders.name,medorders.address1,medorders.address2,medorders.pincode,medorders.contact,medorders.city,medorders.msg from lalchowk.medorders inner join customer on customer.email=medorders.email ;");
 
                    DataTable dt2 = new DataTable();
                    dt2.Load(dr2);
@@ -95,11 +93,17 @@ namespace Veiled_Kashmir_Admin_Panel
                         Object[] arg = (object[])a.UserState;
                         BindingSource bsource = arg[0] as BindingSource;
                         placeddataview.DataSource = bsource;
-                        loadlbl.Text="Health Orders";
+                     //   loadlbl.Text="Health Orders";
                         placeddataview.Columns["email"].Visible = false;
                         placeddataview.Visible = true;
                         medcontrol.Visible = true;
-                       
+
+                        DataGridViewButtonColumn ship = new DataGridViewButtonColumn();
+                        ship.UseColumnTextForButtonValue = true;
+                        ship.Name = "Ship";
+                        ship.DataPropertyName = "Ship";
+                        ship.Text = "Ship";
+                        placeddataview.Columns.Add(ship);
 
                     }
                     else
@@ -107,11 +111,17 @@ namespace Veiled_Kashmir_Admin_Panel
                     {
                         Object[] arg = (object[])a.UserState;
                         BindingSource bsource = arg[0] as BindingSource;
-                        deldataview.DataSource = bsource;
+                        shippeddataview.DataSource = bsource;
                         dellbl.Visible = false;
-                        deldataview.Columns["email"].Visible = false;
-                        deldataview.Visible = true;
+                        shippeddataview.Columns["email"].Visible = false;
+                        shippeddataview.Visible = true;
 
+                        DataGridViewButtonColumn del = new DataGridViewButtonColumn();
+                        del.UseColumnTextForButtonValue = true;
+                        del.Name = "Delivered";
+                        del.DataPropertyName = "Delivered";
+                        del.Text = "Delivered";
+                        shippeddataview.Columns.Add(del);
 
                     }                   
                     else
@@ -133,6 +143,7 @@ namespace Veiled_Kashmir_Admin_Panel
                         BindingSource bsource = arg[0] as BindingSource;
                         alldataview.DataSource = bsource;
                         alllbl.Visible = false;
+                        loadlbl.Text = "Health Orders";
                         alldataview.Columns["email"].Visible = false;
                         alldataview.Visible = true;
                        
@@ -165,8 +176,6 @@ namespace Veiled_Kashmir_Admin_Panel
            
 
         }
-
-
         //private void tabPage2_Paint(object sender, PaintEventArgs e)
         //{
         //    dellbl.Visible = true;
@@ -243,16 +252,18 @@ namespace Veiled_Kashmir_Admin_Panel
         //    medcontrol.Enabled = true;
         //}
 
+        int oid=0;
         private void placeddataview_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
             try
             {
-
-                if (e.RowIndex >= 0)
+                btpnl.Visible = true;
+                if (e.RowIndex >= 0 && e.ColumnIndex < 16)
                 {
+                  //  MessageBox.Show(e.ColumnIndex.ToString());
                     DataGridViewRow row = this.placeddataview.Rows[e.RowIndex];
-                    string oid = row.Cells["orderid"].Value.ToString();
+                    oid = int.Parse(row.Cells["orderid"].Value.ToString());
                     dr = obj.Query("select url from lalchowk.image_uploads where oid ='"+oid+"';");
                     dr.Read();
                     string file = dr[0].ToString();
@@ -265,14 +276,281 @@ namespace Veiled_Kashmir_Admin_Panel
                     
                     presdp.Visible = true;
 
+                }else if(e.RowIndex>=0 && e.ColumnIndex == 16)
+                {
+
+                    
+                    Cursor = Cursors.WaitCursor;
+                    try
+                    {
+                        DataGridViewRow row = this.placeddataview.Rows[e.RowIndex];
+                        string id = row.Cells["orderid"].Value.ToString();
+                        DialogResult dgr = MessageBox.Show("Change status to Shipped for orderid '" + id + "'", "Confirm!", MessageBoxButtons.YesNo);
+                        if (dgr == DialogResult.Yes)
+                        {
+                            string input = Interaction.InputBox("Please Enter Delivery Guy info:", "Delivery info", "Suhaib", -1, -1);
+                            DateTime time = DateTime.Now;             // Use current time.
+                            string shipdate = time.ToString("yyyy-MM-dd HH:mm:ss");
+
+                            string cmd = "Update medorders set status='Shipped', shipdate='" + shipdate + "', deliveryguy='" + input + "',in_transit='1' where orderid='" + id + "'";
+                            obj.nonQuery(cmd);
+                            obj.closeConnection();
+                            MessageBox.Show("Order status changed.", "Success");
+                            //placedorders();
+
+
+                            //shippedorders();
+                            //placedh.Text = "Orders placed: " + placeddataview.RowCount;
+                            //shippedh.Text = "Orders currently shipped: " + shippeddataview.RowCount;
+                            //shippeddataview.Visible = true;
+                            //ppnl.Visible = false;
+                            //emailbtn.Visible = false;
+                            //sendsmsbtn.Visible = false;
+                            //cancelbtn.Visible = false;
+                            //shippedh.Visible = true;
+                            //printadd2btn.Visible = false;
+                            //cshipbtn.Visible = false;
+                            //cselbtn.Visible = false;
+                            //selectlbl.Visible = false;
+                            //ordelbtn.Visible = false;
+                            //num = 0;
+
+                        }
+                    }
+                    catch
+                    {
+                        obj.closeConnection();
+                    }
+                    Cursor = Cursors.Arrow;
+                   
+
+                }
+
+
+
+                }
+            catch(Exception ex) { MessageBox.Show(ex.Message); obj.closeConnection(); };
+
+
+        }
+        private void shippeddataview_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                btpnl.Visible = true;
+                if (e.RowIndex >= 0 && e.ColumnIndex>0)
+                {
+                    //  MessageBox.Show(e.ColumnIndex.ToString());
+                    DataGridViewRow row = this.shippeddataview.Rows[e.RowIndex];
+                    oid = int.Parse(row.Cells["orderid"].Value.ToString());
+                    dr = obj.Query("select url from lalchowk.image_uploads where oid ='" + oid + "';");
+                    dr.Read();
+                    string file = dr[0].ToString();
+                    obj.closeConnection();
+
+                    string imagename = file.Split('/')[3];
+                    MessageBox.Show(url + imagename);
+                    presdp.SizeMode = PictureBoxSizeMode.StretchImage;
+                    presdp.ImageLocation = (url + imagename);
+
+                    presdp.Visible = true;
+
+                }
+                else if (e.RowIndex >= 0 && e.ColumnIndex == 0)
+                {
+
+
+                    Cursor = Cursors.WaitCursor;
+                    try
+                    {
+                        DataGridViewRow row = this.shippeddataview.Rows[e.RowIndex];
+                        string id = row.Cells["orderid"].Value.ToString();
+                        DialogResult dgr = MessageBox.Show("Change status to Delivered for orderid '" + id + "'", "Confirm!", MessageBoxButtons.YesNo);
+                        if (dgr == DialogResult.Yes)
+                        {
+                            DateTime time = DateTime.Now;             // Use current time.
+                            string deldate = time.ToString("yyyy-MM-dd HH:mm:ss");
+                            string cmd = "update medorders set status='Delivered', deliverdate='" + deldate + "', in_transit='0' where orderid='" + id + "'";
+                            obj.nonQuery(cmd);
+                            obj.closeConnection();
+                            MessageBox.Show("Order status changed.", "Success");
+                            //placedorders();
+
+
+                            //shippedorders();
+                            //placedh.Text = "Orders placed: " + placeddataview.RowCount;
+                            //shippedh.Text = "Orders currently shipped: " + shippeddataview.RowCount;
+                            //shippeddataview.Visible = true;
+                            //ppnl.Visible = false;
+                            //emailbtn.Visible = false;
+                            //sendsmsbtn.Visible = false;
+                            //cancelbtn.Visible = false;
+                            //shippedh.Visible = true;
+                            //printadd2btn.Visible = false;
+                            //cshipbtn.Visible = false;
+                            //cselbtn.Visible = false;
+                            //selectlbl.Visible = false;
+                            //ordelbtn.Visible = false;
+                            //num = 0;
+
+                        }
+                    }
+                    catch
+                    {
+                        obj.closeConnection();
+                    }
+                    Cursor = Cursors.Arrow;
+
+
+                }
+                }
+            catch (Exception ex) { MessageBox.Show(ex.Message); obj.closeConnection(); };
+
+        }
+
+        private void addorderbtn_Click(object sender, EventArgs e)
+        {
+            addmedorder add = new addmedorder();
+            add.Show();
+        }
+
+
+        private void cancelbtn_Click(object sender, EventArgs e)
+        {
+            if (oid != 0)
+            {
+
+                try
+                {
+                    DialogResult dr = MessageBox.Show("Cancel order with OrderID: " + oid + " ?", "Confirm", MessageBoxButtons.YesNo);
+                    if (dr == DialogResult.Yes)
+                    {
+                        Cursor = Cursors.WaitCursor;
+                        string cmd = "Update medorders set status='Cancelled' where orderid='" + oid + "'";
+                        obj.nonQuery(cmd);
+
+
+                        MessageBox.Show("Order Cancelled.");
+                        oid = 0;
+                        btpnl.Visible = false;
+
+
+
+                        Cursor = Cursors.Arrow;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Cursor = Cursors.Arrow;
+                    obj.closeConnection();
+                }
+            }
+            else
+                MessageBox.Show("Please select an order first.", "Error");
+        }
+
+
+        private void delorderbtn_Click(object sender, EventArgs e)
+        {
+            if (oid != 0)
+            {
+
+                try
+                {
+                    DialogResult dr = MessageBox.Show("Delete order and all its details with OrderID: " + oid + " ?", "Confirm", MessageBoxButtons.YesNo);
+                    if (dr == DialogResult.Yes)
+                    {
+                        Cursor = Cursors.WaitCursor;
+                        string cmd = "Delete from medorders where orderid='" + oid + "'";
+                        obj.nonQuery(cmd);
+                       
+
+                        MessageBox.Show("Order deleted.");
+                        oid = 0;
+                        btpnl.Visible = false;
+                       
+
+                       
+                        Cursor = Cursors.Arrow;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Cursor = Cursors.Arrow;
+                    obj.closeConnection();
+                }
+            }
+            else
+                MessageBox.Show("Please select an order first.", "Error");
+        }
+
+        private void editbtn_Click(object sender, EventArgs e)
+        {
+            editmedorders edit = new editmedorders(oid.ToString());
+            edit.Show();
+        }
+
+      
+        private void deldataview_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                btpnl.Visible = true;
+                if (e.RowIndex >= 0)
+                {
+                    DataGridViewRow row = this.deldataview.Rows[e.RowIndex];
+                    oid = int.Parse(row.Cells["orderid"].Value.ToString());
+                    dr = obj.Query("select url from lalchowk.image_uploads where oid ='" + oid + "';");
+                    dr.Read();
+                    string file = dr[0].ToString();
+                    obj.closeConnection();
+
+                    string imagename = file.Split('/')[3];
+                    MessageBox.Show(url + imagename);
+                    presdp.SizeMode = PictureBoxSizeMode.StretchImage;
+                    presdp.ImageLocation = (url + imagename);
+
+                    presdp.Visible = true;
+
                 }
 
 
 
             }
-            catch(Exception ex) { MessageBox.Show(ex.Message); obj.closeConnection(); };
-
+            catch (Exception ex) { MessageBox.Show(ex.Message); obj.closeConnection(); };
 
         }
+
+        private void alldataview_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                btpnl.Visible = true;
+                if (e.RowIndex >= 0)
+                {
+                    DataGridViewRow row = this.alldataview.Rows[e.RowIndex];
+                    oid = int.Parse(row.Cells["orderid"].Value.ToString());
+                    dr = obj.Query("select url from lalchowk.image_uploads where oid ='" + oid + "';");
+                    dr.Read();
+                    string file = dr[0].ToString();
+                    obj.closeConnection();
+
+                    string imagename = file.Split('/')[3];
+                    MessageBox.Show(url + imagename);
+                    presdp.SizeMode = PictureBoxSizeMode.StretchImage;
+                    presdp.ImageLocation = (url + imagename);
+
+                    presdp.Visible = true;
+
+                }
+
+
+
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); obj.closeConnection(); };
+
+        }
+
+
     }
 }
