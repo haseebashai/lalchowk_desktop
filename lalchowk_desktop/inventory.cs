@@ -377,7 +377,11 @@ namespace Veiled_Kashmir_Admin_Panel
                 bsource = new BindingSource();
                 bsource.DataSource = dt;
                 inventorydatagridview.DataSource = bsource;
-
+                inventorydatagridview.Columns["color"].Visible = false;
+                inventorydatagridview.Columns["groupid"].Visible = false;
+                inventorydatagridview.Columns["requestedprice"].Visible = false;
+                inventorydatagridview.Columns["requeststatus"].Visible = false;
+                inventorydatagridview.Columns["size"].Visible = false;
             }
             catch (Exception ex)
             {
@@ -501,7 +505,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     upbtn.Visible = false;
                     listbtn.Enabled = true;
                     loadinglbl.Visible = false;
-                    MessageBox.Show("No results found.\n\n- Please check for correct spelling.\n\n- Please make sure that category selected is final.\n- Supplier or Product ID is correct.", "Error!");
+                    MessageBox.Show("No results found.\n\n- Please check for correct spelling.\n\n- Please make sure that category selected is final.\n\n- Supplier or Product ID is correct.", "Error!");
 
                 }
                 else
@@ -514,6 +518,11 @@ namespace Veiled_Kashmir_Admin_Panel
                     loadinglbl.Visible = false;
                     invcountlbl.Text = "Products being displayed: " + (inventorydatagridview.RowCount - 1).ToString();
                     invcountlbl.Visible = true;
+                    inventorydatagridview.Columns["color"].Visible = false;
+                    inventorydatagridview.Columns["groupid"].Visible = false;
+                    inventorydatagridview.Columns["requestedprice"].Visible = false;
+                    inventorydatagridview.Columns["requeststatus"].Visible = false;
+                    inventorydatagridview.Columns["size"].Visible = false;
                     perpnl.Visible = true;
                 }
             } catch { listbtn.Enabled = true; }
@@ -523,19 +532,51 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             try
             {
-                if (int.Parse(odistxt.Text) < 10)
+                readpercent();
+            }
+            catch { }
+        }
+
+        private void readpercent()
+        {
+
+            if (int.Parse(odistxt.Text) < 10)
+            {
+                odistxt.Text = 0 + odistxt.Text;
+            }
+
+            string sub = "0." + odistxt.Text;
+
+            double sub2 = double.Parse(sub);
+
+            double n = double.Parse(mrptxt.Text);
+
+            n = n - (n * sub2);
+            pricetxt.Text = n.ToString();
+
+        }
+
+
+        private void odistxt_KeyUp(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyData == Keys.Enter)
                 {
-                    odistxt.Text = 0 + odistxt.Text;
+                    readpercent();
                 }
+            }
+            catch { }
+        }
 
-                string sub = "0." + odistxt.Text;
-
-                double sub2 = double.Parse(sub);
-
-                double n = double.Parse(mrptxt.Text);
-
-                n = n - (n * sub2);
-                pricetxt.Text = n.ToString();
+        private void mrptxt_KeyUp(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyData == Keys.Enter)
+                {
+                    readpercent();
+                }
             }
             catch { }
         }

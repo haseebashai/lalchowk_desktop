@@ -966,6 +966,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
                             BindingSource bsource1 = d.Result as BindingSource;
                             orderdetailview.DataSource = bsource1;
+                            orderdetailview.Columns["size"].Visible = false;
                             orderdetailview.Visible = true;
                             deupdbtn.Visible = true;
                             int count = int.Parse(orderdetailview.RowCount.ToString());

@@ -56,6 +56,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 new {Text ="Online"},
                  new {Text="NB"},
                new {Text="Paytm"},
+               new {Text="Payment Failed"}
                 };
                 ptypebox.DataSource = items;
 
@@ -86,7 +87,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 string gift = arg[19] as string;
 
                 orderdetailview.DataSource = bsource;
-
+                orderdetailview.Columns["size"].Visible = false;
                 orderdetailview.Visible = true;
                 deupdbtn.Visible = true;
                 
@@ -147,6 +148,11 @@ namespace Veiled_Kashmir_Admin_Panel
                 {
                     ptypebox.SelectedIndex = 7;
                 }
+                else if (ptype == "Payment Failed")
+                {
+                    ptypebox.SelectedIndex = 8;
+                }
+
 
                 refreshbtn.Visible = true;
 
@@ -328,7 +334,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 {
                     string orderid = a.Argument as string;
 
-                    dr = obj.Query("select amount,shipping,name,address1,address2,pincode,contact,city,status,itemcount,deliveryguy,paymenttype,paymentconfirmed,shipdate,deliverdate,in_transit,alternate_contact from orders where orderid='" + orderid + "'");
+                    dr = obj.Query("select amount,shipping,name,address1,address2,pincode,contact,city,status,itemcount,deliveryguy,paymenttype,paymentconfirmed,shipdate,deliverdate,in_transit,alternate_contact,giftcharges,giftwrap from orders where orderid='" + orderid + "'");
                     dr.Read();
                     string amount = dr[0].ToString();
                     string shipping = dr[1].ToString();
@@ -347,6 +353,8 @@ namespace Veiled_Kashmir_Admin_Panel
                     string ddate = dr[14].ToString();
                     string transit = dr[15].ToString();
                     string altcon = dr[16].ToString();
+                    string gift = dr[17].ToString();
+                    string giftwrap = dr[18].ToString();
                     obj.closeConnection();
 
                     adap = new MySqlDataAdapter("SELECT * FROM orderdetails where orderid='" + orderid + "'", conn);
@@ -357,7 +365,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     bsource.DataSource = dt;
 
 
-                    object[] arg = { amount, shipping, name, add1, add2, pin, con, city, status, count, dguy, ptype, pconf, bsource, sdate, ddate, transit, altcon };
+                    object[] arg = { amount, shipping, name, add1, add2, pin, con, city, status, count, dguy, ptype, pconf, bsource, sdate, ddate, transit, altcon,gift,giftwrap };
 
                     a.Result = arg;
 
@@ -382,6 +390,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 new {Text ="Online"},
                  new {Text="NB"},
                new {Text="Paytm"},
+               new {Text="Payment Failed"}
                 };
                     ptypebox.DataSource = items;
 
@@ -408,9 +417,11 @@ namespace Veiled_Kashmir_Admin_Panel
                     deldttxt.Text = arg[15] as string;
                     string transit = arg[16] as string;
                     altcontxt.Text = arg[17] as string;
+                    gifttxt.Text = arg[18] as string;
+                    string gift = arg[19] as string;
 
                     orderdetailview.DataSource = bsource;
-
+                    orderdetailview.Columns["size"].Visible = false;
                     orderdetailview.Visible = true;
                     deupdbtn.Visible = true;
 
@@ -421,6 +432,12 @@ namespace Veiled_Kashmir_Admin_Panel
                     else if (transit == "True")
                         transitbox.Checked = true;
 
+                    if (gift == "False")
+                    {
+                        giftbox.Checked = false;
+                    }
+                    else if (gift == "True")
+                        giftbox.Checked = true;
 
 
                     if (pconf == "False")
@@ -466,8 +483,13 @@ namespace Veiled_Kashmir_Admin_Panel
                     {
                         ptypebox.SelectedIndex = 7;
                     }
+                    else if (ptype == "Payment Failed")
+                    {
+                        ptypebox.SelectedIndex = 8;
+                    }
 
                     refreshbtn.Visible = true;
+                    refreshbtn.Enabled = true;
                     Cursor = Cursors.Arrow;
                 }
                 catch (Exception ex)
@@ -604,8 +626,9 @@ namespace Veiled_Kashmir_Admin_Panel
 
                 }
                 amtxt.Text = price.ToString();
+                amlbl.Text = price.ToString();
                 counttxt.Text = quant.ToString();
-
+                mrplbl.Text = mrp.ToString();
                 dplbl.Text = dp.ToString();
                 profitlbl.Text = "(" + (int.Parse(amtxt.Text) - int.Parse(dplbl.Text)).ToString() + ")";
 

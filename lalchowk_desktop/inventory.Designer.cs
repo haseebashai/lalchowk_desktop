@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.inventorydatagridview = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -44,6 +44,7 @@
             this.updatebtn = new System.Windows.Forms.Button();
             this.upbtn = new System.Windows.Forms.Button();
             this.ipnl = new System.Windows.Forms.Panel();
+            this.invcountlbl = new System.Windows.Forms.Label();
             this.descpnl = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.progresspc = new System.Windows.Forms.Label();
@@ -53,6 +54,15 @@
             this.pbar = new System.Windows.Forms.ProgressBar();
             this.refreshlbl = new System.Windows.Forms.Label();
             this.invpnl = new System.Windows.Forms.Panel();
+            this.perpnl = new System.Windows.Forms.Panel();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.calbtn = new System.Windows.Forms.Button();
+            this.pricetxt = new System.Windows.Forms.TextBox();
+            this.odistxt = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.mrptxt = new System.Windows.Forms.TextBox();
             this.spnl = new System.Windows.Forms.Panel();
             this.searchlbl = new System.Windows.Forms.Label();
             this.searchtxt = new System.Windows.Forms.TextBox();
@@ -70,37 +80,27 @@
             this.supbox = new System.Windows.Forms.ComboBox();
             this.thirdbox = new System.Windows.Forms.ComboBox();
             this.secbox = new System.Windows.Forms.ComboBox();
-            this.invcountlbl = new System.Windows.Forms.Label();
-            this.calbtn = new System.Windows.Forms.Button();
-            this.odistxt = new System.Windows.Forms.TextBox();
-            this.label31 = new System.Windows.Forms.Label();
-            this.mrptxt = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.pricetxt = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.perpnl = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.inventorydatagridview)).BeginInit();
             this.ipnl.SuspendLayout();
             this.descpnl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dp)).BeginInit();
             this.invpnl.SuspendLayout();
-            this.spnl.SuspendLayout();
             this.perpnl.SuspendLayout();
+            this.spnl.SuspendLayout();
             this.SuspendLayout();
             // 
             // inventorydatagridview
             // 
             this.inventorydatagridview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.inventorydatagridview.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.inventorydatagridview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.inventorydatagridview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.inventorydatagridview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.inventorydatagridview.Location = new System.Drawing.Point(4, 28);
             this.inventorydatagridview.Name = "inventorydatagridview";
@@ -243,6 +243,16 @@
             this.ipnl.TabIndex = 41;
             this.ipnl.Visible = false;
             // 
+            // invcountlbl
+            // 
+            this.invcountlbl.AutoSize = true;
+            this.invcountlbl.Location = new System.Drawing.Point(968, 12);
+            this.invcountlbl.Name = "invcountlbl";
+            this.invcountlbl.Size = new System.Drawing.Size(128, 13);
+            this.invcountlbl.TabIndex = 29;
+            this.invcountlbl.Text = "Products being displayed:";
+            this.invcountlbl.Visible = false;
+            // 
             // descpnl
             // 
             this.descpnl.Controls.Add(this.label6);
@@ -341,6 +351,93 @@
             this.invpnl.Size = new System.Drawing.Size(1181, 662);
             this.invpnl.TabIndex = 45;
             this.invpnl.Visible = false;
+            // 
+            // perpnl
+            // 
+            this.perpnl.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.perpnl.Controls.Add(this.label31);
+            this.perpnl.Controls.Add(this.label1);
+            this.perpnl.Controls.Add(this.label10);
+            this.perpnl.Controls.Add(this.calbtn);
+            this.perpnl.Controls.Add(this.pricetxt);
+            this.perpnl.Controls.Add(this.odistxt);
+            this.perpnl.Controls.Add(this.label9);
+            this.perpnl.Controls.Add(this.mrptxt);
+            this.perpnl.Location = new System.Drawing.Point(857, 512);
+            this.perpnl.Name = "perpnl";
+            this.perpnl.Size = new System.Drawing.Size(335, 158);
+            this.perpnl.TabIndex = 112;
+            this.perpnl.Visible = false;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(54, 79);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(44, 13);
+            this.label31.TabIndex = 110;
+            this.label31.Text = "Percent";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(108, 5);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(148, 20);
+            this.label1.TabIndex = 111;
+            this.label1.Text = "Calculate Percentage";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(54, 110);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(37, 13);
+            this.label10.TabIndex = 108;
+            this.label10.Text = "Result";
+            // 
+            // calbtn
+            // 
+            this.calbtn.Location = new System.Drawing.Point(214, 44);
+            this.calbtn.Name = "calbtn";
+            this.calbtn.Size = new System.Drawing.Size(95, 84);
+            this.calbtn.TabIndex = 107;
+            this.calbtn.Text = "Calculate";
+            this.calbtn.UseVisualStyleBackColor = true;
+            this.calbtn.Click += new System.EventHandler(this.calbtn_Click);
+            // 
+            // pricetxt
+            // 
+            this.pricetxt.Location = new System.Drawing.Point(103, 107);
+            this.pricetxt.Name = "pricetxt";
+            this.pricetxt.Size = new System.Drawing.Size(98, 20);
+            this.pricetxt.TabIndex = 109;
+            // 
+            // odistxt
+            // 
+            this.odistxt.Location = new System.Drawing.Point(103, 76);
+            this.odistxt.Name = "odistxt";
+            this.odistxt.Size = new System.Drawing.Size(54, 20);
+            this.odistxt.TabIndex = 106;
+            this.odistxt.KeyUp += new System.Windows.Forms.KeyEventHandler(this.odistxt_KeyUp);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(54, 47);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(43, 13);
+            this.label9.TabIndex = 105;
+            this.label9.Text = "Amount";
+            // 
+            // mrptxt
+            // 
+            this.mrptxt.Location = new System.Drawing.Point(103, 44);
+            this.mrptxt.Name = "mrptxt";
+            this.mrptxt.Size = new System.Drawing.Size(98, 20);
+            this.mrptxt.TabIndex = 104;
+            this.mrptxt.KeyUp += new System.Windows.Forms.KeyEventHandler(this.mrptxt_KeyUp);
             // 
             // spnl
             // 
@@ -526,101 +623,6 @@
             this.secbox.TabIndex = 1;
             this.secbox.SelectedIndexChanged += new System.EventHandler(this.secbox_SelectedIndexChanged);
             // 
-            // invcountlbl
-            // 
-            this.invcountlbl.AutoSize = true;
-            this.invcountlbl.Location = new System.Drawing.Point(968, 12);
-            this.invcountlbl.Name = "invcountlbl";
-            this.invcountlbl.Size = new System.Drawing.Size(128, 13);
-            this.invcountlbl.TabIndex = 29;
-            this.invcountlbl.Text = "Products being displayed:";
-            this.invcountlbl.Visible = false;
-            // 
-            // calbtn
-            // 
-            this.calbtn.Location = new System.Drawing.Point(214, 44);
-            this.calbtn.Name = "calbtn";
-            this.calbtn.Size = new System.Drawing.Size(95, 84);
-            this.calbtn.TabIndex = 107;
-            this.calbtn.Text = "Calculate";
-            this.calbtn.UseVisualStyleBackColor = true;
-            this.calbtn.Click += new System.EventHandler(this.calbtn_Click);
-            // 
-            // odistxt
-            // 
-            this.odistxt.Location = new System.Drawing.Point(103, 76);
-            this.odistxt.Name = "odistxt";
-            this.odistxt.Size = new System.Drawing.Size(54, 20);
-            this.odistxt.TabIndex = 106;
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(54, 79);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(44, 13);
-            this.label31.TabIndex = 110;
-            this.label31.Text = "Percent";
-            // 
-            // mrptxt
-            // 
-            this.mrptxt.Location = new System.Drawing.Point(103, 44);
-            this.mrptxt.Name = "mrptxt";
-            this.mrptxt.Size = new System.Drawing.Size(98, 20);
-            this.mrptxt.TabIndex = 104;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(54, 47);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(43, 13);
-            this.label9.TabIndex = 105;
-            this.label9.Text = "Amount";
-            // 
-            // pricetxt
-            // 
-            this.pricetxt.Location = new System.Drawing.Point(103, 107);
-            this.pricetxt.Name = "pricetxt";
-            this.pricetxt.Size = new System.Drawing.Size(98, 20);
-            this.pricetxt.TabIndex = 109;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(54, 110);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(37, 13);
-            this.label10.TabIndex = 108;
-            this.label10.Text = "Result";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(108, 5);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(148, 20);
-            this.label1.TabIndex = 111;
-            this.label1.Text = "Calculate Percentage";
-            // 
-            // perpnl
-            // 
-            this.perpnl.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.perpnl.Controls.Add(this.label31);
-            this.perpnl.Controls.Add(this.label1);
-            this.perpnl.Controls.Add(this.label10);
-            this.perpnl.Controls.Add(this.calbtn);
-            this.perpnl.Controls.Add(this.pricetxt);
-            this.perpnl.Controls.Add(this.odistxt);
-            this.perpnl.Controls.Add(this.label9);
-            this.perpnl.Controls.Add(this.mrptxt);
-            this.perpnl.Location = new System.Drawing.Point(857, 521);
-            this.perpnl.Name = "perpnl";
-            this.perpnl.Size = new System.Drawing.Size(335, 158);
-            this.perpnl.TabIndex = 112;
-            this.perpnl.Visible = false;
-            // 
             // inventory
             // 
             this.AcceptButton = this.listbtn;
@@ -640,10 +642,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dp)).EndInit();
             this.invpnl.ResumeLayout(false);
             this.invpnl.PerformLayout();
-            this.spnl.ResumeLayout(false);
-            this.spnl.PerformLayout();
             this.perpnl.ResumeLayout(false);
             this.perpnl.PerformLayout();
+            this.spnl.ResumeLayout(false);
+            this.spnl.PerformLayout();
             this.ResumeLayout(false);
 
         }

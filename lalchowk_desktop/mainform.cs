@@ -1972,7 +1972,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 catch (Exception ex)
                 {
                     obj.closeConnection(); con.Close();
-                    MessageBox.Show(ex.Message+"Something happened.\nPlease check your internet connection and click Refresh.\n\n", "Error!");
+                    MessageBox.Show("Something happened.\nPlease check your internet connection and click Refresh.\n\n", "Error!");
 
                     starterror = true;
 

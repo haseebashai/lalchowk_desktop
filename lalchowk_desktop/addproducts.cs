@@ -728,6 +728,11 @@ namespace Veiled_Kashmir_Admin_Panel
 
         }
 
+        private void catbox_TextChanged(object sender, EventArgs e)
+        {
+            catname.Visible = false;
+        }
+
         //private void catbox_Leave(object sender, EventArgs e)
         //{
         //    try
@@ -1067,7 +1072,7 @@ namespace Veiled_Kashmir_Admin_Panel
             }
             else
             {
-                if (nametxt.Text == "" || pidtxt.Text == "")
+                if (nametxt.Text == "" || pidtxt.Text == "" || stocktxt.Text=="")
                 {
                     MessageBox.Show("Enter details first.", "Error!");
                 }

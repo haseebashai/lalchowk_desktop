@@ -71,7 +71,19 @@
             this.pricelbl = new System.Windows.Forms.Label();
             this.plbl = new System.Windows.Forms.Label();
             this.profitlbl = new System.Windows.Forms.Label();
+            this.uslesspnl = new System.Windows.Forms.Panel();
+            this.perpnl = new System.Windows.Forms.Panel();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.calbtn = new System.Windows.Forms.Button();
+            this.pricetxt = new System.Windows.Forms.TextBox();
+            this.odistxt = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.mrptxt = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.orderdetailview)).BeginInit();
+            this.uslesspnl.SuspendLayout();
+            this.perpnl.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -135,7 +147,7 @@
             this.dtxt.Multiline = true;
             this.dtxt.Name = "dtxt";
             this.dtxt.Size = new System.Drawing.Size(204, 20);
-            this.dtxt.TabIndex = 64;
+            this.dtxt.TabIndex = 3;
             // 
             // label17
             // 
@@ -158,7 +170,7 @@
             this.billaddbtn.Name = "billaddbtn";
             this.billaddbtn.Primary = false;
             this.billaddbtn.Size = new System.Drawing.Size(230, 36);
-            this.billaddbtn.TabIndex = 62;
+            this.billaddbtn.TabIndex = 4;
             this.billaddbtn.Text = "confirm delivery and add bill";
             this.billaddbtn.UseVisualStyleBackColor = true;
             this.billaddbtn.Click += new System.EventHandler(this.billaddbtn_Click);
@@ -229,13 +241,13 @@
             this.addprobtn.AutoSize = true;
             this.addprobtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.addprobtn.Depth = 0;
-            this.addprobtn.Location = new System.Drawing.Point(465, 322);
+            this.addprobtn.Location = new System.Drawing.Point(335, 326);
             this.addprobtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.addprobtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.addprobtn.Name = "addprobtn";
             this.addprobtn.Primary = false;
             this.addprobtn.Size = new System.Drawing.Size(164, 36);
-            this.addprobtn.TabIndex = 87;
+            this.addprobtn.TabIndex = 2;
             this.addprobtn.Text = "add Product dealing";
             this.addprobtn.UseVisualStyleBackColor = true;
             this.addprobtn.Click += new System.EventHandler(this.addprobtn_Click);
@@ -295,7 +307,7 @@
             // 
             this.no.AutoSize = true;
             this.no.ForeColor = System.Drawing.Color.Black;
-            this.no.Location = new System.Drawing.Point(132, 280);
+            this.no.Location = new System.Drawing.Point(56, 20);
             this.no.Name = "no";
             this.no.Size = new System.Drawing.Size(40, 17);
             this.no.TabIndex = 109;
@@ -309,7 +321,7 @@
             this.yes.Checked = true;
             this.yes.CheckState = System.Windows.Forms.CheckState.Checked;
             this.yes.ForeColor = System.Drawing.Color.Black;
-            this.yes.Location = new System.Drawing.Point(82, 280);
+            this.yes.Location = new System.Drawing.Point(6, 20);
             this.yes.Name = "yes";
             this.yes.Size = new System.Drawing.Size(44, 17);
             this.yes.TabIndex = 108;
@@ -321,7 +333,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.ForeColor = System.Drawing.Color.Black;
-            this.label15.Location = new System.Drawing.Point(79, 260);
+            this.label15.Location = new System.Drawing.Point(3, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(86, 13);
             this.label15.TabIndex = 101;
@@ -345,22 +357,22 @@
             this.pickuptxt.Multiline = true;
             this.pickuptxt.Name = "pickuptxt";
             this.pickuptxt.Size = new System.Drawing.Size(204, 20);
-            this.pickuptxt.TabIndex = 103;
+            this.pickuptxt.TabIndex = 1;
             this.pickuptxt.TextChanged += new System.EventHandler(this.pickuptxt_TextChanged);
             // 
             // commentstxt
             // 
-            this.commentstxt.Location = new System.Drawing.Point(341, 223);
+            this.commentstxt.Location = new System.Drawing.Point(82, 279);
             this.commentstxt.Multiline = true;
             this.commentstxt.Name = "commentstxt";
-            this.commentstxt.Size = new System.Drawing.Size(204, 74);
+            this.commentstxt.Size = new System.Drawing.Size(204, 83);
             this.commentstxt.TabIndex = 107;
             // 
             // label22
             // 
             this.label22.AutoSize = true;
             this.label22.ForeColor = System.Drawing.Color.Black;
-            this.label22.Location = new System.Drawing.Point(79, 314);
+            this.label22.Location = new System.Drawing.Point(3, 54);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(74, 13);
             this.label22.TabIndex = 104;
@@ -370,7 +382,7 @@
             // 
             this.label23.AutoSize = true;
             this.label23.ForeColor = System.Drawing.Color.Black;
-            this.label23.Location = new System.Drawing.Point(338, 206);
+            this.label23.Location = new System.Drawing.Point(79, 262);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(56, 13);
             this.label23.TabIndex = 106;
@@ -378,7 +390,7 @@
             // 
             // paymenttxt
             // 
-            this.paymenttxt.Location = new System.Drawing.Point(82, 331);
+            this.paymenttxt.Location = new System.Drawing.Point(6, 71);
             this.paymenttxt.MaxLength = 10;
             this.paymenttxt.Multiline = true;
             this.paymenttxt.Name = "paymenttxt";
@@ -418,7 +430,7 @@
             this.billlbl.AutoSize = true;
             this.billlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.billlbl.ForeColor = System.Drawing.Color.Red;
-            this.billlbl.Location = new System.Drawing.Point(468, 364);
+            this.billlbl.Location = new System.Drawing.Point(338, 362);
             this.billlbl.Name = "billlbl";
             this.billlbl.Size = new System.Drawing.Size(105, 15);
             this.billlbl.TabIndex = 114;
@@ -505,12 +517,113 @@
             this.profitlbl.Size = new System.Drawing.Size(0, 13);
             this.profitlbl.TabIndex = 122;
             // 
+            // uslesspnl
+            // 
+            this.uslesspnl.Controls.Add(this.label15);
+            this.uslesspnl.Controls.Add(this.paymenttxt);
+            this.uslesspnl.Controls.Add(this.label22);
+            this.uslesspnl.Controls.Add(this.yes);
+            this.uslesspnl.Controls.Add(this.no);
+            this.uslesspnl.Location = new System.Drawing.Point(85, 340);
+            this.uslesspnl.Name = "uslesspnl";
+            this.uslesspnl.Size = new System.Drawing.Size(201, 39);
+            this.uslesspnl.TabIndex = 123;
+            this.uslesspnl.Visible = false;
+            // 
+            // perpnl
+            // 
+            this.perpnl.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.perpnl.Controls.Add(this.label31);
+            this.perpnl.Controls.Add(this.label4);
+            this.perpnl.Controls.Add(this.label10);
+            this.perpnl.Controls.Add(this.calbtn);
+            this.perpnl.Controls.Add(this.pricetxt);
+            this.perpnl.Controls.Add(this.odistxt);
+            this.perpnl.Controls.Add(this.label9);
+            this.perpnl.Controls.Add(this.mrptxt);
+            this.perpnl.Location = new System.Drawing.Point(422, 190);
+            this.perpnl.Name = "perpnl";
+            this.perpnl.Size = new System.Drawing.Size(260, 123);
+            this.perpnl.TabIndex = 124;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(6, 65);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(44, 13);
+            this.label31.TabIndex = 110;
+            this.label31.Text = "Percent";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(64, 5);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(126, 18);
+            this.label4.TabIndex = 111;
+            this.label4.Text = "Calculate Percentage";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(6, 96);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(37, 13);
+            this.label10.TabIndex = 108;
+            this.label10.Text = "Result";
+            // 
+            // calbtn
+            // 
+            this.calbtn.Location = new System.Drawing.Point(166, 39);
+            this.calbtn.Name = "calbtn";
+            this.calbtn.Size = new System.Drawing.Size(71, 64);
+            this.calbtn.TabIndex = 107;
+            this.calbtn.Text = "Calculate";
+            this.calbtn.UseVisualStyleBackColor = true;
+            this.calbtn.Click += new System.EventHandler(this.calbtn_Click);
+            // 
+            // pricetxt
+            // 
+            this.pricetxt.Location = new System.Drawing.Point(55, 93);
+            this.pricetxt.Name = "pricetxt";
+            this.pricetxt.Size = new System.Drawing.Size(98, 20);
+            this.pricetxt.TabIndex = 109;
+            // 
+            // odistxt
+            // 
+            this.odistxt.Location = new System.Drawing.Point(55, 62);
+            this.odistxt.Name = "odistxt";
+            this.odistxt.Size = new System.Drawing.Size(54, 20);
+            this.odistxt.TabIndex = 106;
+            this.odistxt.KeyUp += new System.Windows.Forms.KeyEventHandler(this.odistxt_KeyUp);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(6, 33);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(43, 13);
+            this.label9.TabIndex = 105;
+            this.label9.Text = "Amount";
+            // 
+            // mrptxt
+            // 
+            this.mrptxt.Location = new System.Drawing.Point(55, 30);
+            this.mrptxt.Name = "mrptxt";
+            this.mrptxt.Size = new System.Drawing.Size(98, 20);
+            this.mrptxt.TabIndex = 104;
+            this.mrptxt.KeyUp += new System.Windows.Forms.KeyEventHandler(this.mrptxt_KeyUp);
+            // 
             // addbill
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(671, 661);
+            this.Controls.Add(this.perpnl);
+            this.Controls.Add(this.uslesspnl);
             this.Controls.Add(this.profitlbl);
             this.Controls.Add(this.plbl);
             this.Controls.Add(this.pricelbl);
@@ -523,15 +636,10 @@
             this.Controls.Add(this.contacttxt);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.orderdetailview);
-            this.Controls.Add(this.no);
-            this.Controls.Add(this.yes);
-            this.Controls.Add(this.label15);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.pickuptxt);
             this.Controls.Add(this.commentstxt);
-            this.Controls.Add(this.label22);
             this.Controls.Add(this.label23);
-            this.Controls.Add(this.paymenttxt);
             this.Controls.Add(this.sendmailbtn);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.addprobtn);
@@ -560,6 +668,10 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Bill";
             ((System.ComponentModel.ISupportInitialize)(this.orderdetailview)).EndInit();
+            this.uslesspnl.ResumeLayout(false);
+            this.uslesspnl.PerformLayout();
+            this.perpnl.ResumeLayout(false);
+            this.perpnl.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -609,5 +721,15 @@
         private System.Windows.Forms.Label pricelbl;
         private System.Windows.Forms.Label plbl;
         private System.Windows.Forms.Label profitlbl;
+        private System.Windows.Forms.Panel uslesspnl;
+        private System.Windows.Forms.Panel perpnl;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button calbtn;
+        private System.Windows.Forms.TextBox pricetxt;
+        private System.Windows.Forms.TextBox odistxt;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox mrptxt;
     }
 }

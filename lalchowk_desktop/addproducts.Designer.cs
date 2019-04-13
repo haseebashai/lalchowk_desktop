@@ -717,6 +717,7 @@
             this.catbox.Name = "catbox";
             this.catbox.Size = new System.Drawing.Size(76, 20);
             this.catbox.TabIndex = 66;
+            this.catbox.TextChanged += new System.EventHandler(this.catbox_TextChanged);
             // 
             // pictxt
             // 

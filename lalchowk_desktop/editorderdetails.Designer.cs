@@ -81,6 +81,8 @@
             this.gifttxt = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.giftbox = new System.Windows.Forms.CheckBox();
+            this.mrplbl = new System.Windows.Forms.Label();
+            this.amlbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.orderdetailview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.refreshbtn)).BeginInit();
             this.SuspendLayout();
@@ -524,7 +526,7 @@
             this.profitlbl.AutoSize = true;
             this.profitlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.profitlbl.ForeColor = System.Drawing.Color.Black;
-            this.profitlbl.Location = new System.Drawing.Point(504, 16);
+            this.profitlbl.Location = new System.Drawing.Point(543, 16);
             this.profitlbl.Name = "profitlbl";
             this.profitlbl.Size = new System.Drawing.Size(0, 13);
             this.profitlbl.TabIndex = 124;
@@ -534,7 +536,7 @@
             this.dplbl.AutoSize = true;
             this.dplbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dplbl.ForeColor = System.Drawing.Color.Black;
-            this.dplbl.Location = new System.Drawing.Point(457, 16);
+            this.dplbl.Location = new System.Drawing.Point(496, 16);
             this.dplbl.Name = "dplbl";
             this.dplbl.Size = new System.Drawing.Size(0, 13);
             this.dplbl.TabIndex = 123;
@@ -575,6 +577,26 @@
             this.giftbox.Text = "Yes";
             this.giftbox.UseVisualStyleBackColor = true;
             // 
+            // mrplbl
+            // 
+            this.mrplbl.AutoSize = true;
+            this.mrplbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mrplbl.ForeColor = System.Drawing.Color.Black;
+            this.mrplbl.Location = new System.Drawing.Point(442, 16);
+            this.mrplbl.Name = "mrplbl";
+            this.mrplbl.Size = new System.Drawing.Size(0, 13);
+            this.mrplbl.TabIndex = 130;
+            // 
+            // amlbl
+            // 
+            this.amlbl.AutoSize = true;
+            this.amlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.amlbl.ForeColor = System.Drawing.Color.Black;
+            this.amlbl.Location = new System.Drawing.Point(280, 16);
+            this.amlbl.Name = "amlbl";
+            this.amlbl.Size = new System.Drawing.Size(0, 13);
+            this.amlbl.TabIndex = 129;
+            // 
             // editorderdetails
             // 
             this.AcceptButton = this.updbtn;
@@ -582,6 +604,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(628, 610);
+            this.Controls.Add(this.mrplbl);
+            this.Controls.Add(this.amlbl);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.giftbox);
             this.Controls.Add(this.label18);
@@ -700,5 +724,7 @@
         private System.Windows.Forms.TextBox gifttxt;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.CheckBox giftbox;
+        private System.Windows.Forms.Label mrplbl;
+        private System.Windows.Forms.Label amlbl;
     }
 }

@@ -38,13 +38,13 @@ namespace Veiled_Kashmir_Admin_Panel
                 try
                 {
                     aconn.Open();
-                    drcmd = new MySqlCommand("select count(orderid) from dealings where orderid='" + orderlbl + "'", aconn);
+                    drcmd = new MySqlCommand("select count(orderid) from dealing where orderid='" + orderlbl + "'", aconn);
                     dr = drcmd.ExecuteReader();
                     dr.Read();
                     int count = int.Parse(dr[0].ToString());
                     aconn.Close();
                     a.Result = count;
-                }catch { aconn.Close(); }
+                }catch(Exception ex) { MessageBox.Show(ex.Message); aconn.Close(); }
             };
             bill.RunWorkerCompleted += (o, b) =>
             {
@@ -58,7 +58,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     }
                     else { billlbl.Visible = false; }
                 }
-                catch { }
+                catch(Exception ex) { MessageBox.Show(ex.Message); }
             };
             bill.RunWorkerAsync();
 
@@ -407,6 +407,58 @@ namespace Veiled_Kashmir_Admin_Panel
                 profitlbl.Text = (int.Parse(pricelbl.Text) - int.Parse(dplbl.Text)).ToString();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+
+        private void calbtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                readpercent();
+            }
+            catch { }
+        }
+
+        private void readpercent()
+        {
+
+            if (int.Parse(odistxt.Text) < 10)
+            {
+                odistxt.Text = 0 + odistxt.Text;
+            }
+
+            string sub = "0." + odistxt.Text;
+
+            double sub2 = double.Parse(sub);
+
+            double n = double.Parse(mrptxt.Text);
+
+            n = n - (n * sub2);
+            pricetxt.Text = n.ToString();
+
+        }
+
+        private void odistxt_KeyUp(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyData == Keys.Enter)
+                {
+                    readpercent();
+                }
+            }
+            catch { }
+        }
+
+        private void mrptxt_KeyUp(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyData == Keys.Enter)
+                {
+                    readpercent();
+                }
+            }
+            catch { }
         }
 
         private void pickuptxt_TextChanged(object sender, EventArgs e)
