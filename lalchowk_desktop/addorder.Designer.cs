@@ -225,7 +225,6 @@
             // addorderbtn
             // 
             this.addorderbtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.addorderbtn.Enabled = false;
             this.addorderbtn.FlatAppearance.BorderColor = System.Drawing.Color.Red;
             this.addorderbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addorderbtn.Location = new System.Drawing.Point(680, 494);

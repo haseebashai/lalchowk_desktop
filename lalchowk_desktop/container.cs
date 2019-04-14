@@ -34,7 +34,9 @@ namespace Veiled_Kashmir_Admin_Panel
 
             try
             {
+                mainform mf = new mainform(this);
                 BackgroundWorker search = new BackgroundWorker();
+                search.WorkerReportsProgress = true;
                 search.DoWork += (o, a) =>
                 {
 
@@ -47,6 +49,7 @@ namespace Veiled_Kashmir_Admin_Panel
                         
                         con.Open();
                         cmd.CommandTimeout = 60;
+                        int i = 0;
                         MySqlDataReader data = cmd.ExecuteReader();
                         try
                         {
@@ -54,6 +57,8 @@ namespace Veiled_Kashmir_Admin_Panel
                             {
                                 string sname = data.GetString("tag");
                                 col1.Add(sname);
+                                i++;
+                                search.ReportProgress(i / 200);
                             }
                         }
                         catch (Exception ex) { MessageBox.Show("Network too slow. Product data download interrupted.\r\nUse old mode in Add Order page to add a new order","Error!"); }
@@ -62,9 +67,16 @@ namespace Veiled_Kashmir_Admin_Panel
                     }catch(Exception ex) { MessageBox.Show(ex.Message); }
 
                 };
+                search.ProgressChanged += (o, c) => 
+                {
+                    
+             //    plistlbl.Text = "Products list loading..." + c.ProgressPercentage + "%";
+
+                };
                 search.RunWorkerCompleted += (o, b) =>
                 {
                     userinfo.col = b.Result as AutoCompleteStringCollection;
+                 //   mf.plistlbl.Visible = false;
                 };
                 search.RunWorkerAsync();
             }

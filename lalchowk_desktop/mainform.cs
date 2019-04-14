@@ -1983,7 +1983,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void bgworker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            
+       
             placeddataview.Enabled = false;
             
             pageload.Value = e.ProgressPercentage;

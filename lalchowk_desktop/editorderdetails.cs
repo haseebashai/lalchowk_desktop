@@ -565,14 +565,17 @@ namespace Veiled_Kashmir_Admin_Panel
                     try
                     {
                         conn.Open();
-                        search.ReportProgress(30);
+                        //  search.ReportProgress(30);
+                        int i = 0;
                         MySqlDataReader data = cmd.ExecuteReader();
                         while (data.Read())
                         {
                             string sname = data.GetString("tag");
                             col1.Add(sname);
+                            i++;
+                            search.ReportProgress(i / 200);
                         }
-                        search.ReportProgress(90);
+                  //      search.ReportProgress(90);
                         conn.Close();
                         a.Result = col1;
                     }
@@ -581,18 +584,19 @@ namespace Veiled_Kashmir_Admin_Panel
                 };
                 search.ProgressChanged += (o, c) =>
                 {
-                    if (c.ProgressPercentage == 10)
-                    {
-                        loadinglbl.Text = "loading...10%";
-                    }
-                    else if (c.ProgressPercentage == 30)
-                    {
-                        loadinglbl.Text = "loading...30%";
-                    }
-                    else if (c.ProgressPercentage == 90)
-                    {
-                        loadinglbl.Text = "loading...90%";
-                    }
+                    loadinglbl.Text = "Loading..." + c.ProgressPercentage + "%";
+                    //if (c.ProgressPercentage == 10)
+                    //{
+                    //    loadinglbl.Text = "loading...10%";
+                    //}
+                    //else if (c.ProgressPercentage == 30)
+                    //{
+                    //    loadinglbl.Text = "loading...30%";
+                    //}
+                    //else if (c.ProgressPercentage == 90)
+                    //{
+                    //    loadinglbl.Text = "loading...90%";
+                    //}
 
                 };
 

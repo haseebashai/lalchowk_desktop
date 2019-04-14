@@ -159,6 +159,9 @@ namespace Veiled_Kashmir_Admin_Panel
                     DialogResult dgr = MessageBox.Show("Please ensure all the details are correct, it will reflect on the user account.\r\nDo you want to proceed ?", "Confirm!", MessageBoxButtons.YesNo);
                     if (dgr == DialogResult.Yes)
                     {
+                        StringBuilder add = new StringBuilder(add1txt.Text);
+                        add.Replace(@"\", @"\\").Replace("'", "\\'");
+
                         string pconf = "",gift="";
                         if (pcybox.Checked)
                             pconf = "1";
@@ -171,7 +174,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
                         string email = md5hash(emailtxt.Text);
                         string cmd = "INSERT INTO orders(`email`, `amount`,`timestamp`,`shipping`,`paymenttype`,`paymentconfirmed`, `transanctionid`,`itemcount`,`status`,`name`,`address1`,`address2`,`contact`,`pincode`,`city`,`loyaltybonus`,`deliveryguy`,`in_transit`,`alternate_contact`,`giftwrap`,`giftcharges`) values ('" + email + "','" + amounttxt.Text
-                            + "',DATE_ADD(CURRENT_TIMESTAMP, INTERVAL 750 MINUTE),'" + shiptxt.Text + "','"+ptypebox.Text+"','"+pconf+"','SW','" + counttxt.Text + "','" + statustxt.Text + "','" + nametxt.Text + "','" + add1txt.Text + "','" + add2txt.Text + "','" + contacttxt.Text + "','" + pintxt.Text + "','" + citytxt.Text 
+                            + "',DATE_ADD(CURRENT_TIMESTAMP, INTERVAL 750 MINUTE),'" + shiptxt.Text + "','"+ptypebox.Text+"','"+pconf+"','SW','" + counttxt.Text + "','" + statustxt.Text + "','" + nametxt.Text + "','" + add + "','" + add2txt.Text + "','" + contacttxt.Text + "','" + pintxt.Text + "','" + citytxt.Text 
                             + "','" + loyaltxt.Text + "','"+devtxt.Text+"','0','"+altcontxt.Text+"','"+gift+"','"+giftchtxt.Text+"')";
                         obj.nonQuery(cmd);
                         long orderid = userinfo.orid;
@@ -215,7 +218,7 @@ namespace Veiled_Kashmir_Admin_Panel
                         { MessageBox.Show(ex.ToString()); obj.closeConnection(); }
                         MessageBox.Show("Order added successfully.", "Success");
                         inventorydatagridview.Columns.Clear();
-                        addorderbtn.Enabled = false;
+                    //    addorderbtn.Enabled = false;
                         dp.Visible = false;
                     }
                    
@@ -451,7 +454,7 @@ namespace Veiled_Kashmir_Admin_Panel
                         counttxt.Text = count.ToString();
                     }
                     searchtxt.Text = "";
-                    addorderbtn.Enabled = true;
+                 //   addorderbtn.Enabled = true;
                       
                 }
             }catch(Exception ex) { MessageBox.Show(ex.Message); obj.closeConnection(); }
@@ -585,7 +588,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 search.DoWork += (o, a) =>
                 {
 
-                    search.ReportProgress(10);
+               //     search.ReportProgress(10);
                      AutoCompleteStringCollection col1 = new AutoCompleteStringCollection();
 
                     
@@ -595,7 +598,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     try
                     {
                         con.Open();
-                        search.ReportProgress(30);
+                   //     search.ReportProgress(30);
                         //int i = 0;
                         //using (var dr = cmd.ExecuteReader())
                         //{
@@ -612,14 +615,16 @@ namespace Veiled_Kashmir_Admin_Panel
                         //};
 
 
-                       
+                        int i = 0;
                         MySqlDataReader data = cmd.ExecuteReader();
                         while (data.Read())
                         {
                             string sname = data.GetString("tag");
                             col1.Add(sname);
+                            i++;
+                            search.ReportProgress(i/200);
                         }
-                        search.ReportProgress(90);
+                   //     search.ReportProgress(100);
                         con.Close();
                         a.Result = col1;
                     }
@@ -628,17 +633,22 @@ namespace Veiled_Kashmir_Admin_Panel
                 };
                 search.ProgressChanged += (o, c) =>
                 {
-                    if (c.ProgressPercentage == 10)
-                    {
-                        loadinglbl.Text = "loading...10%";
-                    }else if(c.ProgressPercentage == 30)
-                    {
-                        loadinglbl.Text = "loading...30%";
-                    }
-                    else if (c.ProgressPercentage == 90)
-                    {
-                        loadinglbl.Text = "loading...90%";
-                    }
+                    loadinglbl.Text = "Loading..." + c.ProgressPercentage + "%";
+
+                    //if (c.ProgressPercentage == 10)
+                    //{
+                    //    loadinglbl.Text = "loading...10%";
+                    //}else if(c.ProgressPercentage == 30)
+                    //{
+                    //    loadinglbl.Text = "loading...30%";
+                    //}else if (c.ProgressPercentage > 30)
+                    //{
+                    //    loadinglbl.Text = "loading..."+c.ProgressPercentage+"%";
+                    //}
+                    //else if (c.ProgressPercentage == 100)
+                    //{
+                    //    loadinglbl.Text = "loading...100%";
+                    //}
 
                 };
 

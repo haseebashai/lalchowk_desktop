@@ -335,6 +335,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 reqbtn.Enabled = true;
                 sellerbtn.Enabled = true;
                 upbookbtn.Enabled = true;
+                uppnl.BringToFront();
             };
             sellers.RunWorkerAsync();
 
