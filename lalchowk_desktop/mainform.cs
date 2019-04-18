@@ -794,6 +794,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     cselbtn.Visible = false;
                     selectlbl.Visible = false;
                     ordelbtn.Visible = false;
+                    canbtn.Visible = false;
                     num = 0;
                 }
                 catch { }
@@ -864,6 +865,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 cshipbtn.Visible = true;
                 cselbtn.Visible = true;
                 ordelbtn.Visible = true;
+                canbtn.Visible = true;
 
 
             }
@@ -1757,6 +1759,55 @@ namespace Veiled_Kashmir_Admin_Panel
             //    dg.Show();
             //    usb.Show();
             //}
+        }
+
+        private void canbtn_Click(object sender, EventArgs e)
+        {
+            if (num > 0)
+            {
+                try
+                {
+                    DialogResult dgr = MessageBox.Show("Do you want to cancel " + num + " selected order(s) ?", "Confirm!", MessageBoxButtons.YesNo);
+                    if (dgr == DialogResult.Yes)
+                    {
+                        Cursor = Cursors.WaitCursor;
+                        foreach (DataGridViewRow row in placeddataview.Rows)
+                        {
+                            if (row.Cells[1].Value != null && row.Cells[1].Value.Equals(true)) //0 is the column number of checkbox
+                            {
+
+                                string id = row.Cells["orderid"].Value.ToString();
+                                string cmd = "Update orders set status='Cancelled' where orderid='" + id + "'";
+                                obj.nonQuery(cmd);
+                               
+
+                            }
+                        }
+                        MessageBox.Show("Orders cancelled.");
+                        placedorders();
+                        placedh.Text = "Orders placed: " + placeddataview.RowCount;
+
+
+
+                        shippeddataview.Visible = true;
+                        ppnl.Visible = false;
+                        emailbtn.Visible = false;
+                        sendsmsbtn.Visible = false;
+                        cancelbtn.Visible = false;
+                        shippedh.Visible = true;
+                        selectlbl.Visible = false;
+                        num = 0;
+                        Cursor = Cursors.Arrow;
+                        ordelbtn.Visible = false;
+                        canbtn.Visible = false;
+                    }
+                }
+                catch (Exception ex) { obj.closeConnection(); MessageBox.Show(ex.Message); }
+                Cursor = Cursors.Arrow;
+                refreshbtn.Enabled = true;
+            }
+            else
+                MessageBox.Show("Please select the orders first.", "Error");
         }
 
         private void blogbtn_Click(object sender, EventArgs e)

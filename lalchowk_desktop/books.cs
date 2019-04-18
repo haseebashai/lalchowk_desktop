@@ -104,6 +104,11 @@ namespace Veiled_Kashmir_Admin_Panel
                     {
                         temailbtn.Visible = true;
                         emailtxt.Text = email;
+                        try
+                        {
+                            temailbtn_Click(null, null);
+                        }
+                        catch { MessageBox.Show("Please wait."); }
                     }
                     dpnl.Visible = true;
                 }
@@ -122,7 +127,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 string mail = (string)e.Result;
                 emailtxt.Text = mail;
                 temailbtn.Enabled = true;
-            }catch { }
+            }catch { temailbtn.Enabled = true; }
         }
 
         private void Trueemail_DoWork(object sender, DoWorkEventArgs e)
@@ -133,7 +138,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 string temail = dr[0].ToString();
                 e.Result = temail;
                 obj.closeConnection();
-            }catch { obj.closeConnection(); temailbtn.Enabled = true; }
+            }catch { obj.closeConnection();  }
         }
 
         bool check = false;

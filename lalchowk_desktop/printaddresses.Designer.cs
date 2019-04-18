@@ -47,6 +47,7 @@
             this.psetbtn = new System.Windows.Forms.Button();
             this.bbox = new System.Windows.Forms.CheckBox();
             this.addbtn = new System.Windows.Forms.Button();
+            this.frbtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // tpnl
@@ -209,11 +210,21 @@
             // 
             this.addbtn.Location = new System.Drawing.Point(13, 41);
             this.addbtn.Name = "addbtn";
-            this.addbtn.Size = new System.Drawing.Size(75, 23);
+            this.addbtn.Size = new System.Drawing.Size(105, 23);
             this.addbtn.TabIndex = 16;
-            this.addbtn.Text = "Add box";
+            this.addbtn.Text = "Add blank box";
             this.addbtn.UseVisualStyleBackColor = true;
             this.addbtn.Click += new System.EventHandler(this.addbtn_Click);
+            // 
+            // frbtn
+            // 
+            this.frbtn.Location = new System.Drawing.Point(124, 41);
+            this.frbtn.Name = "frbtn";
+            this.frbtn.Size = new System.Drawing.Size(104, 23);
+            this.frbtn.TabIndex = 17;
+            this.frbtn.Text = "Add FROM box";
+            this.frbtn.UseVisualStyleBackColor = true;
+            this.frbtn.Click += new System.EventHandler(this.frbtn_Click);
             // 
             // printaddresses
             // 
@@ -223,6 +234,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(818, 667);
+            this.Controls.Add(this.frbtn);
             this.Controls.Add(this.addbtn);
             this.Controls.Add(this.bbox);
             this.Controls.Add(this.psetbtn);
@@ -273,5 +285,6 @@
         private System.Windows.Forms.Button psetbtn;
         private System.Windows.Forms.CheckBox bbox;
         private System.Windows.Forms.Button addbtn;
+        private System.Windows.Forms.Button frbtn;
     }
 }

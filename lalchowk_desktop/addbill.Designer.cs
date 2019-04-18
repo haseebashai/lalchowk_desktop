@@ -541,9 +541,9 @@
             this.perpnl.Controls.Add(this.odistxt);
             this.perpnl.Controls.Add(this.label9);
             this.perpnl.Controls.Add(this.mrptxt);
-            this.perpnl.Location = new System.Drawing.Point(422, 190);
+            this.perpnl.Location = new System.Drawing.Point(437, 190);
             this.perpnl.Name = "perpnl";
-            this.perpnl.Size = new System.Drawing.Size(260, 123);
+            this.perpnl.Size = new System.Drawing.Size(245, 123);
             this.perpnl.TabIndex = 124;
             // 
             // label31
@@ -578,7 +578,7 @@
             // 
             this.calbtn.Location = new System.Drawing.Point(166, 39);
             this.calbtn.Name = "calbtn";
-            this.calbtn.Size = new System.Drawing.Size(71, 64);
+            this.calbtn.Size = new System.Drawing.Size(61, 64);
             this.calbtn.TabIndex = 107;
             this.calbtn.Text = "Calculate";
             this.calbtn.UseVisualStyleBackColor = true;

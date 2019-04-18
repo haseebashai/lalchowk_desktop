@@ -259,7 +259,7 @@
             // 
             this.nametxt.Location = new System.Drawing.Point(19, 146);
             this.nametxt.Name = "nametxt";
-            this.nametxt.Size = new System.Drawing.Size(205, 20);
+            this.nametxt.Size = new System.Drawing.Size(223, 20);
             this.nametxt.TabIndex = 1;
             this.nametxt.Leave += new System.EventHandler(this.nametxt_Leave);
             // 
@@ -294,6 +294,7 @@
             // 
             // colourtxt
             // 
+            this.colourtxt.Enabled = false;
             this.colourtxt.Location = new System.Drawing.Point(19, 238);
             this.colourtxt.Name = "colourtxt";
             this.colourtxt.Size = new System.Drawing.Size(134, 20);
@@ -314,7 +315,7 @@
             this.stocktxt.Location = new System.Drawing.Point(19, 288);
             this.stocktxt.Name = "stocktxt";
             this.stocktxt.Size = new System.Drawing.Size(73, 20);
-            this.stocktxt.TabIndex = 7;
+            this.stocktxt.TabIndex = 5;
             // 
             // label9
             // 
@@ -330,7 +331,7 @@
             this.mrptxt.Location = new System.Drawing.Point(466, 458);
             this.mrptxt.Name = "mrptxt";
             this.mrptxt.Size = new System.Drawing.Size(134, 20);
-            this.mrptxt.TabIndex = 21;
+            this.mrptxt.TabIndex = 19;
             // 
             // label10
             // 
@@ -346,7 +347,7 @@
             this.pricetxt.Location = new System.Drawing.Point(466, 507);
             this.pricetxt.Name = "pricetxt";
             this.pricetxt.Size = new System.Drawing.Size(134, 20);
-            this.pricetxt.TabIndex = 24;
+            this.pricetxt.TabIndex = 21;
             this.pricetxt.Leave += new System.EventHandler(this.pricetxt_Leave);
             // 
             // label11
@@ -363,7 +364,7 @@
             this.dealertxt.Location = new System.Drawing.Point(606, 556);
             this.dealertxt.Name = "dealertxt";
             this.dealertxt.Size = new System.Drawing.Size(134, 20);
-            this.dealertxt.TabIndex = 27;
+            this.dealertxt.TabIndex = 23;
             // 
             // label12
             // 
@@ -382,7 +383,7 @@
             this.desctxt.Name = "desctxt";
             this.desctxt.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.desctxt.Size = new System.Drawing.Size(283, 225);
-            this.desctxt.TabIndex = 19;
+            this.desctxt.TabIndex = 17;
             this.desctxt.Leave += new System.EventHandler(this.desctxt_Leave);
             // 
             // label13
@@ -399,7 +400,7 @@
             this.dname1txt.Location = new System.Drawing.Point(19, 399);
             this.dname1txt.Name = "dname1txt";
             this.dname1txt.Size = new System.Drawing.Size(134, 20);
-            this.dname1txt.TabIndex = 9;
+            this.dname1txt.TabIndex = 7;
             // 
             // label14
             // 
@@ -416,7 +417,7 @@
             this.dname1.Multiline = true;
             this.dname1.Name = "dname1";
             this.dname1.Size = new System.Drawing.Size(146, 37);
-            this.dname1.TabIndex = 10;
+            this.dname1.TabIndex = 8;
             // 
             // label15
             // 
@@ -433,7 +434,7 @@
             this.dname2.Multiline = true;
             this.dname2.Name = "dname2";
             this.dname2.Size = new System.Drawing.Size(146, 37);
-            this.dname2.TabIndex = 12;
+            this.dname2.TabIndex = 10;
             // 
             // label16
             // 
@@ -449,7 +450,7 @@
             this.dname2txt.Location = new System.Drawing.Point(19, 458);
             this.dname2txt.Name = "dname2txt";
             this.dname2txt.Size = new System.Drawing.Size(134, 20);
-            this.dname2txt.TabIndex = 11;
+            this.dname2txt.TabIndex = 9;
             // 
             // label17
             // 
@@ -466,7 +467,7 @@
             this.dname3.Multiline = true;
             this.dname3.Name = "dname3";
             this.dname3.Size = new System.Drawing.Size(149, 37);
-            this.dname3.TabIndex = 14;
+            this.dname3.TabIndex = 12;
             // 
             // label18
             // 
@@ -482,7 +483,7 @@
             this.dname3txt.Location = new System.Drawing.Point(19, 519);
             this.dname3txt.Name = "dname3txt";
             this.dname3txt.Size = new System.Drawing.Size(134, 20);
-            this.dname3txt.TabIndex = 13;
+            this.dname3txt.TabIndex = 11;
             // 
             // label19
             // 
@@ -499,7 +500,7 @@
             this.dname4.Multiline = true;
             this.dname4.Name = "dname4";
             this.dname4.Size = new System.Drawing.Size(149, 37);
-            this.dname4.TabIndex = 16;
+            this.dname4.TabIndex = 14;
             // 
             // label20
             // 
@@ -515,7 +516,7 @@
             this.dname4txt.Location = new System.Drawing.Point(19, 577);
             this.dname4txt.Name = "dname4txt";
             this.dname4txt.Size = new System.Drawing.Size(134, 20);
-            this.dname4txt.TabIndex = 15;
+            this.dname4txt.TabIndex = 13;
             // 
             // label21
             // 
@@ -532,7 +533,7 @@
             this.dname5.Multiline = true;
             this.dname5.Name = "dname5";
             this.dname5.Size = new System.Drawing.Size(149, 37);
-            this.dname5.TabIndex = 18;
+            this.dname5.TabIndex = 16;
             // 
             // label22
             // 
@@ -548,7 +549,7 @@
             this.dname5txt.Location = new System.Drawing.Point(19, 635);
             this.dname5txt.Name = "dname5txt";
             this.dname5txt.Size = new System.Drawing.Size(134, 20);
-            this.dname5txt.TabIndex = 17;
+            this.dname5txt.TabIndex = 15;
             // 
             // sizel
             // 
@@ -561,10 +562,11 @@
             // 
             // sizetxt
             // 
+            this.sizetxt.Enabled = false;
             this.sizetxt.Location = new System.Drawing.Point(126, 288);
             this.sizetxt.Name = "sizetxt";
             this.sizetxt.Size = new System.Drawing.Size(68, 20);
-            this.sizetxt.TabIndex = 8;
+            this.sizetxt.TabIndex = 66;
             // 
             // label24
             // 
@@ -577,11 +579,440 @@
             // 
             // brandtxt
             // 
+            this.brandtxt.AutoCompleteCustomSource.AddRange(new string[] {
+            "Gulshan Books",
+            "Pharos Media",
+            "Al-Mawrid",
+            "Faraan Foundation",
+            "Danish Sara",
+            "Pradeep Publications",
+            "Mamta Publications",
+            "NCERT",
+            "KBD",
+            "Little Brown Books",
+            "Bloomsbury",
+            "Maple Press",
+            "Speaking Tiger",
+            "Jaico",
+            "Simon & Schuster",
+            "Vintage Children\'s Classics",
+            "RHUK",
+            "Hodder And Stoughton",
+            "Penguin",
+            "Harper Collins",
+            "Fingerprint",
+            "Voyager",
+            "Hay House ",
+            "Picador",
+            "Corgi ",
+            "Allen Lane",
+            "Headline Book Publishing",
+            "Orion",
+            "Permanent Black",
+            "ReadaClassic.com",
+            "Matson",
+            "Manik",
+            "Red Label",
+            "Marvel",
+            "Imported",
+            "Tata",
+            "Hena",
+            "Golden Crown",
+            "Al-Birra",
+            "Jethot",
+            "Modest Attires",
+            "Bella",
+            "Wiley",
+            "Pearson",
+            "BPB",
+            "Lucent",
+            "Kalyani",
+            "Katsons",
+            "Oxford",
+            "PHI",
+            "Vrinda",
+            "Pearsoon",
+            "Universities Press",
+            "Made Easy",
+            "Mcgraw Hill",
+            "New Age",
+            "Arya Publications",
+            "Vikas",
+            "S Chand",
+            "Arihant",
+            "Kitab Mahal",
+            "Trueman",
+            "Vishaal",
+            "MTG",
+            "Khanna Publishers",
+            "Standard Book House",
+            "CBS",
+            "Elsevier",
+            "Wolter Kluwer",
+            "CRC",
+            "Wolters Kluwer",
+            "Jaypee",
+            "Rastogi",
+            "Prentice",
+            "Lippincott WW",
+            "APH",
+            "Das",
+            "Bhanot",
+            "Pulse",
+            "Bhalani",
+            "Pragati",
+            "Cengage",
+            "Krishna",
+            "Balaji",
+            "Bharti Bhawan",
+            "Dinesh",
+            "Universal",
+            "MBD",
+            "Modern",
+            "Cambridge",
+            "University Books",
+            "Upkar",
+            "Palaka",
+            "Nem Chand & Brothers",
+            "UBS",
+            "Charotar",
+            "Laxmi Publications",
+            "Dhanpat Rai",
+            "EBH",
+            "Rawat Publications",
+            "Trinity",
+            "Lexicon",
+            "Sphere",
+            "Macmillan",
+            "Peacock",
+            "Rawat",
+            "Palgrave",
+            "AMS",
+            "NBT",
+            "Random House",
+            "Aetiqad Publishing House",
+            "Sage",
+            "Pathfinder",
+            "Rupa",
+            "Rama Brothers",
+            "Sterling",
+            "Quaf Printers",
+            "FBD",
+            "ABC Publishing House",
+            "TFC",
+            "Firewall",
+            "Unique",
+            "Siasat Publications",
+            "Surjeet Publications",
+            "Eagle",
+            "Kapoor Sons",
+            "Kitabi Duniya",
+            "Orient Blackswan",
+            "Mamta",
+            "BR Publication",
+            "Vintage",
+            "Bisma Books",
+            "University of Minnesota Press",
+            "Educational Publishing House",
+            "Atlantic",
+            "Tawheed Publications",
+            "Vishal",
+            "R.Gupta",
+            "Allied",
+            "Bismah Kitab Ghar",
+            "KMS",
+            "Educational Publication House",
+            "Bantam",
+            "Partridge",
+            "Siyaq Publications",
+            "University Press",
+            "Signet",
+            "Hachette",
+            "ULP",
+            "Book Palace",
+            "Faber & Faber",
+            "Manas",
+            "Roli Books",
+            "Jehangir Publications",
+            "Unique Publishers",
+            "Quercus",
+            "Schuster",
+            "Lakshmi Publication",
+            "New Central Book",
+            "ALA",
+            "Al Hasanat",
+            "Jawahar Pub",
+            "Mazameen",
+            "Narosa",
+            "Arrow Books",
+            "Lexis Nexis",
+            "Indian Thought Publications",
+            "Spectrum",
+            "Routledge",
+            "MR Publications",
+            "SurjeetSurjeet Publications",
+            "Aleph",
+            "Darul Eshaat Mustafai",
+            "Academic",
+            "Zubaan",
+            "Adabi Duniya",
+            "Ballantine",
+            "Vermilion",
+            "Khaleel",
+            "Central Book Agency",
+            "Puffin Classics",
+            "Tulika Books",
+            "Blackie",
+            "Wattan",
+            "Manohar",
+            "Mnas Publications",
+            "Afzan",
+            "Pravalika",
+            "Pigeon",
+            "Darussalam",
+            "Adam Publishers",
+            "GRB",
+            "Maktaba Muslim",
+            "Darul Ilm",
+            "Foundation",
+            "NA",
+            "Manorama",
+            "Islamic Foundation Trust",
+            "Dhankar",
+            "SMP",
+            "Goodword",
+            "IIPH",
+            "Al Hidayah",
+            "IBS",
+            "Rawdah",
+            "Authentic Statements",
+            "Hadeeth Publications",
+            "Jamiah Media",
+            "Vinod",
+            "Afzan Publications",
+            "NCBA",
+            "Gryphon Books",
+            "Bluerose",
+            "S Book Center",
+            "Manshurat",
+            "Notion Press",
+            "Shankar",
+            "DUP",
+            "Harlequin",
+            "KBC Nano",
+            "B&A",
+            "Jain Brothers",
+            "Hope",
+            "OUP",
+            "Scholastic",
+            "VK",
+            "Sahih International",
+            "DGP",
+            "Geeta",
+            "Markaz Taymia",
+            "Little Scholarz",
+            "ABD",
+            "IMA",
+            "Islami Kitab Ghar",
+            "One World",
+            "IP",
+            "New Crescent",
+            "Mixed",
+            "MMI",
+            "Thomas Nelson",
+            "Aetimad",
+            "Printworld",
+            "UK Children",
+            "Grapevine India",
+            "Saraswati",
+            "MA",
+            "EBC",
+            "Narendera",
+            "RHI",
+            "Hawakal",
+            "Tranquebar",
+            "JAYKAY",
+            "Spirit",
+            "Maxford",
+            "DK",
+            "Techmedia",
+            "Aakash",
+            "Dhillon Publication House",
+            "Juggernaut",
+            "Westland",
+            "Central Law",
+            "Goyal",
+            "Jiwan",
+            "Rachna Sagar",
+            "Millat Publications",
+            "Blue Rose",
+            "Book Corporation",
+            "Gullybaba",
+            "Galgotia",
+            "PEEPEE",
+            "Oxford Medical",
+            "Ilmi Academy",
+            "Perseus",
+            "Free PR",
+            "Notionpress",
+            "GKP",
+            "Himalaya Publishing House",
+            "East-West Press",
+            "Narendra",
+            "Areeb Publications",
+            "Maktaba Islami",
+            "Potter/Tenspeed/Harmony",
+            "Qoumi Council",
+            "Mirza Arif Trust",
+            "Waqar Publications",
+            "Vanguard Books",
+            "Context",
+            "Maktabatul Irshad",
+            "Higher Publishers",
+            "Miraath",
+            "Supernova",
+            "IIIN",
+            "New Vishal",
+            "AITBS",
+            "Krieger Publication",
+            "Maktabah Al-Islami",
+            "VK Global",
+            "Embassy Books",
+            "Profile Books",
+            "MacLehose Press",
+            "Takbeer Publication",
+            "Roshaan Prints",
+            "Kitab Khana",
+            "Meezan Publishers",
+            "Authors Press",
+            "Om Books",
+            "Diamond Books",
+            "Vitasta",
+            "Unicorn Books",
+            "Al-Kitab",
+            "MTN",
+            "Darul Arfan",
+            "Sahitya Bhawan",
+            "Academic Publishing",
+            "Penram",
+            "Shibli National College",
+            "Commercial Law",
+            "Urdu Ghar",
+            "Maktaba Hani",
+            "Anjuman Taraqqi Urdu",
+            "Qualify KAS Academy",
+            "JP Nath",
+            "Aetiqaad Publishing",
+            "Harvill Secker",
+            "Alan Lane",
+            "MD Books",
+            "Computech",
+            "Lalchowk Publication",
+            "Dhillon",
+            "Central",
+            "MY Khan & Sons",
+            "Vikas Publishing",
+            "Daya Publishing",
+            "A&U",
+            "Virgin Books",
+            "Ebury Press",
+            "Virginia",
+            "Qudsi Publications",
+            "KNRN Publications",
+            "Surahee Publications",
+            "BSC",
+            "Firewall Media",
+            "Other Books",
+            "NR Publishing",
+            "YBD",
+            "BK Publications",
+            "Viva Books",
+            "Atlantic Books",
+            "Mathrubhumi",
+            "PBD",
+            "Disha",
+            "Central Law Publications",
+            "Allahabad Law Agency",
+            "Springer",
+            "Manjul Publishing House",
+            "SASA",
+            "Himalaya",
+            "Books & Allied",
+            "Modern Library",
+            "Maktaba Baitus Salam",
+            "NCPUL",
+            "Educreation",
+            "Lalchowk",
+            "Wajd",
+            "Mirwaiz Foundation",
+            "Al Manar",
+            "Oak Bridge",
+            "Al Faheem",
+            "Ghalib Institute",
+            "Maktaba Faiz",
+            "National Law Books Agency",
+            "Napoleon Hill Foundation",
+            "Cordova",
+            "Islamic Studies Research Academy",
+            "Freshcode Books",
+            "Sheikh Mukhtar Publications",
+            "Fullmarks",
+            "Maktaba Faheem",
+            "Kashmir Book Foundation",
+            "AskIslamPedia",
+            "Sahitya Academy",
+            "Takhleeqkar Publishers",
+            "National Council",
+            "Ghalib Academy",
+            "Darul Eshaat",
+            "MM Publications",
+            "Maktaba Jamia",
+            "Altis Vortex",
+            "Kiran",
+            "Chronicle Books",
+            "Farooq & Co",
+            "TarcherPerigee",
+            "Indo Persian Society",
+            "Wordsworth Editions",
+            "SBS",
+            "Local",
+            "Zirka Books",
+            "Vora Medical",
+            "Lieper Publications",
+            "Pradeep",
+            "Current Books",
+            "Darul Ibn Kathir",
+            "Darul Jadeed",
+            "Berrett-Koehler",
+            "Kushal Publication",
+            "Vardhan",
+            "Maktaba Al Haq",
+            "Maktaba Thanvi",
+            "Sanguine Multimedia Studies",
+            "DK Publications",
+            "Islamic Book Centre",
+            "Kutub Khana",
+            "Islamic Book Service",
+            "Fiqh Ul Hadith Publications",
+            "Dar Ibn Hazm",
+            "Ar-Risalah",
+            "Knopf Publishing Group",
+            "Noor Book Depot",
+            "Idara Kitab Ul Shifa",
+            "Jammu & Kashmir Islamic Research Center",
+            "Abdi Duniya",
+            "Government Publication",
+            "Eastern Book Company",
+            "Pulse Publications",
+            "Maktaba Al Usaid"});
+            this.brandtxt.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.brandtxt.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.brandtxt.Location = new System.Drawing.Point(19, 192);
             this.brandtxt.Name = "brandtxt";
             this.brandtxt.Size = new System.Drawing.Size(134, 20);
             this.brandtxt.TabIndex = 3;
             this.brandtxt.TextChanged += new System.EventHandler(this.brandtxt_TextChanged);
+            this.brandtxt.Leave += new System.EventHandler(this.brandtxt_Leave);
             // 
             // picdialog
             // 
@@ -609,7 +1040,7 @@
             this.addbtn.Name = "addbtn";
             this.addbtn.Primary = false;
             this.addbtn.Size = new System.Drawing.Size(104, 36);
-            this.addbtn.TabIndex = 28;
+            this.addbtn.TabIndex = 24;
             this.addbtn.Text = "Add Product";
             this.addbtn.UseVisualStyleBackColor = true;
             this.addbtn.Click += new System.EventHandler(this.addbtn_Click);
@@ -709,14 +1140,14 @@
             this.tagstxt.Location = new System.Drawing.Point(466, 405);
             this.tagstxt.Name = "tagstxt";
             this.tagstxt.Size = new System.Drawing.Size(212, 20);
-            this.tagstxt.TabIndex = 20;
+            this.tagstxt.TabIndex = 18;
             // 
             // catbox
             // 
             this.catbox.Location = new System.Drawing.Point(19, 346);
             this.catbox.Name = "catbox";
             this.catbox.Size = new System.Drawing.Size(76, 20);
-            this.catbox.TabIndex = 66;
+            this.catbox.TabIndex = 6;
             this.catbox.TextChanged += new System.EventHandler(this.catbox_TextChanged);
             // 
             // pictxt
@@ -724,7 +1155,7 @@
             this.pictxt.Location = new System.Drawing.Point(853, 315);
             this.pictxt.Name = "pictxt";
             this.pictxt.Size = new System.Drawing.Size(220, 20);
-            this.pictxt.TabIndex = 6;
+            this.pictxt.TabIndex = 64;
             // 
             // p2txt
             // 
@@ -1088,7 +1519,7 @@
             this.odisbtn.Location = new System.Drawing.Point(677, 458);
             this.odisbtn.Name = "odisbtn";
             this.odisbtn.Size = new System.Drawing.Size(63, 20);
-            this.odisbtn.TabIndex = 23;
+            this.odisbtn.TabIndex = 29;
             this.odisbtn.Text = "Calculate";
             this.odisbtn.UseVisualStyleBackColor = true;
             this.odisbtn.Click += new System.EventHandler(this.odisbtn_Click);
@@ -1098,7 +1529,8 @@
             this.odistxt.Location = new System.Drawing.Point(606, 458);
             this.odistxt.Name = "odistxt";
             this.odistxt.Size = new System.Drawing.Size(66, 20);
-            this.odistxt.TabIndex = 22;
+            this.odistxt.TabIndex = 20;
+            this.odistxt.KeyUp += new System.Windows.Forms.KeyEventHandler(this.odistxt_KeyUp);
             // 
             // label31
             // 
@@ -1114,7 +1546,7 @@
             this.dcbtn.Location = new System.Drawing.Point(537, 556);
             this.dcbtn.Name = "dcbtn";
             this.dcbtn.Size = new System.Drawing.Size(63, 20);
-            this.dcbtn.TabIndex = 26;
+            this.dcbtn.TabIndex = 30;
             this.dcbtn.Text = "Calculate";
             this.dcbtn.UseVisualStyleBackColor = true;
             this.dcbtn.Click += new System.EventHandler(this.dcbtn_Click);
@@ -1124,7 +1556,8 @@
             this.dctxt.Location = new System.Drawing.Point(466, 556);
             this.dctxt.Name = "dctxt";
             this.dctxt.Size = new System.Drawing.Size(66, 20);
-            this.dctxt.TabIndex = 25;
+            this.dctxt.TabIndex = 22;
+            this.dctxt.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dctxt_KeyUp);
             // 
             // label29
             // 

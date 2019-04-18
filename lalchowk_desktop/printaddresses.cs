@@ -131,6 +131,23 @@ namespace Veiled_Kashmir_Admin_Panel
             tpnl.Controls.Add(t1);
         }
 
+        private void frbtn_Click(object sender, EventArgs e)
+        {
+            TextBox t1 = new TextBox()
+            {
+                Text = "From:\r\nAsif\r\nLalchowk LLP\r\nHotel Bombay Gujrat\r\nLalchowk, 190001\r\n9906523492",
+                Multiline = true,
+                Size = new Size(int.Parse(xtxt.Text), int.Parse(ytxt.Text)),
+                Font = new Font(Font.FontFamily, 14, FontStyle.Regular),
+                BorderStyle = BorderStyle.None,
+                BackColor = Color.White,
+                ReadOnly = false,
+
+            };
+
+            tpnl.Controls.Add(t1);
+        }
+
         private void setbtn_Click(object sender, EventArgs e)
         {
             tpnl.Controls.Clear();

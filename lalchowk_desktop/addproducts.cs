@@ -12,6 +12,7 @@ using System.Text.RegularExpressions;
 using System.IO;
 using System.Net;
 using System.Threading;
+using System.Globalization;
 
 namespace Veiled_Kashmir_Admin_Panel
 {
@@ -41,7 +42,6 @@ namespace Veiled_Kashmir_Admin_Panel
             Cursor = Cursors.WaitCursor;
             bgworker.RunWorkerAsync();
 
-
       /*      
             String temp = dr[6].ToString();            
             daytxt.Text = temp.Substring(0, 2);
@@ -50,8 +50,8 @@ namespace Veiled_Kashmir_Admin_Panel
              */
         }
 
-      
 
+        AutoCompleteStringCollection col = new AutoCompleteStringCollection();
         private void bgworker_DoWork(object sender, DoWorkEventArgs e)
         {
             try
@@ -84,7 +84,31 @@ namespace Veiled_Kashmir_Admin_Panel
             dg.lbl.ForeColor = SystemColors.Highlight;
             dg.lbl.Text = "Add Products";
             Cursor = Cursors.Arrow;
-           
+            //try
+            //{
+               
+            //    BackgroundWorker brands = new BackgroundWorker();
+            //    brands.DoWork += (o, a) =>
+            //    {
+            //        dr = obj.Query("Select distinct brand from products where brand!=null");
+            //        while (dr.Read())
+            //        {
+            //            string sname = dr.GetString("brand");
+            //            col.Add(sname);
+            //            MessageBox.Show("here");
+            //        }
+            //        obj.closeConnection();
+            //        a.Result = col;
+            //    };
+            //    brands.RunWorkerCompleted += (o, b) =>
+            //    {
+
+            //        brandtxt.AutoCompleteCustomSource = b.Result as AutoCompleteStringCollection;
+            //    };
+            //    brands.RunWorkerAsync();
+            //}
+            //catch(Exception ex) { MessageBox.Show(ex.Message); obj.closeConnection(); }
+
         }
 
        
@@ -656,7 +680,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 int id = int.Parse(dr[0].ToString()) + 1;
                 obj.closeConnection();
                 pidtxt.Text = id.ToString();
-            }catch { obj.closeConnection(); }
+            }catch { obj.closeConnection(); Cursor = Cursors.Arrow; }
             Cursor = Cursors.Arrow;
         }
 
@@ -732,6 +756,60 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             catname.Visible = false;
         }
+
+        private void brandtxt_Leave(object sender, EventArgs e)
+        {
+            brandtxt.Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(brandtxt.Text.ToLower());
+        }
+
+        private void odistxt_KeyUp(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyData == Keys.Enter)
+                {
+                    if (int.Parse(odistxt.Text) < 10)
+                    {
+                        odistxt.Text = 0 + odistxt.Text;
+                    }
+
+                    string sub = "0." + odistxt.Text;
+
+                    double sub2 = double.Parse(sub);
+
+                    double n = double.Parse(mrptxt.Text);
+
+                    n = n - (n * sub2);
+                    pricetxt.Text = n.ToString();
+                }
+            }
+            catch { }
+        }
+
+        private void dctxt_KeyUp(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyData == Keys.Enter)
+                {
+                    if (int.Parse(dctxt.Text) < 10)
+                    {
+                        dctxt.Text = 0 + dctxt.Text;
+                    }
+
+                    string sub = "0." + dctxt.Text;
+
+                    double sub2 = double.Parse(sub);
+
+                    double n = double.Parse(mrptxt.Text);
+
+                    n = n - (n * sub2);
+                    dealertxt.Text = n.ToString();
+                }
+            }
+            catch { }
+        }
+
 
         //private void catbox_Leave(object sender, EventArgs e)
         //{
@@ -967,7 +1045,7 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             Cursor = Cursors.WaitCursor;
             try { 
-            dr = obj.Query("select detailname1,detailname2,detailname3,detailname4,detailname5 from products where categoryid='"+catbox.Text+"'");
+            dr = obj.Query("select detailname1,detailname2,detailname3,detailname4,detailname5 from products where categoryid='"+catbox.Text+"' order by productid desc");
             dr.Read();
             
             dname1txt.Text = dr["detailname1"].ToString();
