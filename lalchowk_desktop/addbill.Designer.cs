@@ -241,7 +241,7 @@
             this.addprobtn.AutoSize = true;
             this.addprobtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.addprobtn.Depth = 0;
-            this.addprobtn.Location = new System.Drawing.Point(335, 326);
+            this.addprobtn.Location = new System.Drawing.Point(341, 334);
             this.addprobtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.addprobtn.MouseState = MaterialSkin.MouseState.HOVER;
             this.addprobtn.Name = "addprobtn";
@@ -343,7 +343,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.ForeColor = System.Drawing.Color.Black;
-            this.label16.Location = new System.Drawing.Point(79, 207);
+            this.label16.Location = new System.Drawing.Point(79, 198);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(143, 13);
             this.label16.TabIndex = 102;
@@ -352,7 +352,7 @@
             // pickuptxt
             // 
             this.pickuptxt.BackColor = System.Drawing.SystemColors.Info;
-            this.pickuptxt.Location = new System.Drawing.Point(82, 224);
+            this.pickuptxt.Location = new System.Drawing.Point(82, 215);
             this.pickuptxt.MaxLength = 10;
             this.pickuptxt.Multiline = true;
             this.pickuptxt.Name = "pickuptxt";
@@ -362,7 +362,7 @@
             // 
             // commentstxt
             // 
-            this.commentstxt.Location = new System.Drawing.Point(82, 279);
+            this.commentstxt.Location = new System.Drawing.Point(82, 270);
             this.commentstxt.Multiline = true;
             this.commentstxt.Name = "commentstxt";
             this.commentstxt.Size = new System.Drawing.Size(204, 83);
@@ -382,7 +382,7 @@
             // 
             this.label23.AutoSize = true;
             this.label23.ForeColor = System.Drawing.Color.Black;
-            this.label23.Location = new System.Drawing.Point(79, 262);
+            this.label23.Location = new System.Drawing.Point(79, 253);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(56, 13);
             this.label23.TabIndex = 106;
@@ -430,7 +430,7 @@
             this.billlbl.AutoSize = true;
             this.billlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.billlbl.ForeColor = System.Drawing.Color.Red;
-            this.billlbl.Location = new System.Drawing.Point(338, 362);
+            this.billlbl.Location = new System.Drawing.Point(524, 343);
             this.billlbl.Name = "billlbl";
             this.billlbl.Size = new System.Drawing.Size(105, 15);
             this.billlbl.TabIndex = 114;
@@ -524,7 +524,7 @@
             this.uslesspnl.Controls.Add(this.label22);
             this.uslesspnl.Controls.Add(this.yes);
             this.uslesspnl.Controls.Add(this.no);
-            this.uslesspnl.Location = new System.Drawing.Point(85, 340);
+            this.uslesspnl.Location = new System.Drawing.Point(85, 331);
             this.uslesspnl.Name = "uslesspnl";
             this.uslesspnl.Size = new System.Drawing.Size(201, 39);
             this.uslesspnl.TabIndex = 123;
@@ -541,7 +541,7 @@
             this.perpnl.Controls.Add(this.odistxt);
             this.perpnl.Controls.Add(this.label9);
             this.perpnl.Controls.Add(this.mrptxt);
-            this.perpnl.Location = new System.Drawing.Point(437, 190);
+            this.perpnl.Location = new System.Drawing.Point(422, 190);
             this.perpnl.Name = "perpnl";
             this.perpnl.Size = new System.Drawing.Size(245, 123);
             this.perpnl.TabIndex = 124;

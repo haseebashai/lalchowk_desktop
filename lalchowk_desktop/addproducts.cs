@@ -938,7 +938,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 var request = (FtpWebRequest)WebRequest.Create(url + fileName);
 
                 request.Method = WebRequestMethods.Ftp.UploadFile;
-                request.Credentials = new NetworkCredential("lalchowk", "Lalchowk@123");
+                request.Credentials = new NetworkCredential("lalchowk", "Lalchowk@123uzmah");
                 request.UsePassive = true;
                 request.UseBinary = true;
                 request.KeepAlive = true;

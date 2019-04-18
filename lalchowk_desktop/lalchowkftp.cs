@@ -64,7 +64,7 @@ namespace Veiled_Kashmir_Admin_Panel
             
             var ftp = new FtpUtility();
             ftp.UserName = "Lalchowk";
-            ftp.Password = "Lalchowk@123";
+            ftp.Password = "Lalchowk@123uzmah";
             ftp.Path = ftppath;
             try
             {
@@ -157,7 +157,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     DialogResult dgr = MessageBox.Show("Delete following file ?\n\n" + filename, "Confirm!", MessageBoxButtons.YesNo);
                     if (dgr == DialogResult.Yes)
                     {
-                        DeleteFileOnFtpServer(new Uri(pathurl), "Lalchowk", "Lalchowk@123");
+                        DeleteFileOnFtpServer(new Uri(pathurl), "Lalchowk", "Lalchowk@123uzmah");
 
                         bw.RunWorkerAsync();
                         ftppic.Image = null;
@@ -194,7 +194,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     string ftpurl = pathurl.Replace("ftp://", "http://").Replace("httpdocs/", "");
                     ftppic.ImageLocation = ftpurl;
 
-                    NetworkCredential credentials = new NetworkCredential("Lalchowk", "Lalchowk@123");
+                    NetworkCredential credentials = new NetworkCredential("Lalchowk", "Lalchowk@123uzmah");
                     FtpWebRequest sizeRequest = (FtpWebRequest)WebRequest.Create(pathurl);
                     sizeRequest.Credentials = credentials;
                     sizeRequest.Method = WebRequestMethods.Ftp.GetFileSize;
@@ -267,7 +267,7 @@ namespace Veiled_Kashmir_Admin_Panel
             {
                 string url = pathurl;
                 
-                    NetworkCredential credentials = new NetworkCredential("Lalchowk", "Lalchowk@123");
+                    NetworkCredential credentials = new NetworkCredential("Lalchowk", "Lalchowk@123uzmah");
 
                 // Query size of the file to be downloaded
                 FtpWebRequest sizeRequest = (FtpWebRequest)WebRequest.Create(url);
@@ -405,7 +405,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 var request = (FtpWebRequest)WebRequest.Create(url + fileName);
 
                 request.Method = WebRequestMethods.Ftp.UploadFile;
-                request.Credentials = new NetworkCredential("lalchowk", "Lalchowk@123");
+                request.Credentials = new NetworkCredential("lalchowk", "Lalchowk@123uzmah");
                 request.UsePassive = true;
                 request.UseBinary = true;
                 request.KeepAlive = true;

@@ -601,7 +601,7 @@ namespace Veiled_Kashmir_Admin_Panel
                             if (ext != "")
                             {
 
-                                NetworkCredential credentials = new NetworkCredential("Lalchowk", "Lalchowk@123");
+                                NetworkCredential credentials = new NetworkCredential("Lalchowk", "Lalchowk@123uzmah");
 
                                 // Query size of the file to be downloaded
                                 FtpWebRequest sizeRequest = (FtpWebRequest)WebRequest.Create(url);
