@@ -1135,6 +1135,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 printadd2btn.Visible = false;
                 cselbtn.Visible = false;
                 cshipbtn.Visible = false;
+                canbtn.Visible = false;
                 cselbtn_Click(null, null);
             }
             else if (e.ColumnIndex == 1)
@@ -1351,6 +1352,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 cselbtn.Visible = false;
                 selectlbl.Visible = false;
                 ordelbtn.Visible = false;
+                canbtn.Visible = false;
                 num = 0;
                 placedh.Text = "Orders placed: " + placeddataview.RowCount;
 
@@ -1425,6 +1427,7 @@ namespace Veiled_Kashmir_Admin_Panel
                         cselbtn.Visible = false;
                         selectlbl.Visible = false;
                         ordelbtn.Visible = false;
+                        canbtn.Visible = false;
                         num = 0;
 
                     }
@@ -1454,6 +1457,7 @@ namespace Veiled_Kashmir_Admin_Panel
             cselbtn.Visible = false;
             selectlbl.Visible = false;
             ordelbtn.Visible = false;
+            canbtn.Visible = false;
             num = 0;
         }
 
@@ -1634,6 +1638,7 @@ namespace Veiled_Kashmir_Admin_Panel
                         num = 0;
                         Cursor = Cursors.Arrow;
                         ordelbtn.Visible = false;
+                        canbtn.Visible = false;
                     }
                 }
                 catch (Exception ex) { obj.closeConnection(); MessageBox.Show(ex.Message); }

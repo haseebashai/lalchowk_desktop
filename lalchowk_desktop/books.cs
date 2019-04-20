@@ -104,11 +104,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     {
                         temailbtn.Visible = true;
                         emailtxt.Text = email;
-                        try
-                        {
-                            temailbtn_Click(null, null);
-                        }
-                        catch { MessageBox.Show("Please wait."); }
+                      
                     }
                     dpnl.Visible = true;
                 }
