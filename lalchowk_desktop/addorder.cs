@@ -540,37 +540,46 @@ namespace Veiled_Kashmir_Admin_Panel
                     string email = md5hash(emailtxt.Text);
 
                     BackgroundWorker details = new BackgroundWorker();
-                    details.DoWork += (o, a) =>
+                    
+                        details.DoWork += (o, a) =>
                     {
-                        dr = obj.Query("Select name,address1,address2,contact,alternate_contact,city,pincode from addresses where email='" + email + "'");
-                        dr.Read();
-                        string name, address1, address2, contact, alternate_contact, city, pincode;
-                        name = dr[0].ToString();
-                        address1 = dr[1].ToString();
-                        address2 = dr[2].ToString();
-                        contact = dr[3].ToString();
-                        alternate_contact = dr[4].ToString();
-                        city = dr[5].ToString();
-                        pincode = dr[6].ToString();
-                        obj.closeConnection();
-                        object[] arg = { name, address1, address2, contact, alternate_contact, city, pincode };
-                        a.Result = arg;
+                        try
+                        {
+                            dr = obj.Query("Select name,address1,address2,contact,alternate_contact,city,pincode from addresses where email='" + email + "'");
+                            dr.Read();
+                            string name, address1, address2, contact, alternate_contact, city, pincode;
+                            name = dr[0].ToString();
+                            address1 = dr[1].ToString();
+                            address2 = dr[2].ToString();
+                            contact = dr[3].ToString();
+                            alternate_contact = dr[4].ToString();
+                            city = dr[5].ToString();
+                            pincode = dr[6].ToString();
+                            obj.closeConnection();
+                            object[] arg = { name, address1, address2, contact, alternate_contact, city, pincode };
+                            a.Result = arg;
+                        }
+                        catch { MessageBox.Show("User not found."); }
                     };
                     details.RunWorkerCompleted += (o, b) => 
                     {
-                        object[] arg = (object[])b.Result;
-                        nametxt.Text = arg[0].ToString();
-                        add1txt.Text = arg[1].ToString();
-                        add2txt.Text = arg[2].ToString();
-                        contacttxt.Text = arg[3].ToString();
-                        altcontxt.Text = arg[4].ToString();
-                        citytxt.Text = arg[5].ToString();
-                        pintxt.Text = arg[6].ToString();
-
+                        try
+                        {
+                            object[] arg = (object[])b.Result;
+                            nametxt.Text = arg[0].ToString();
+                            add1txt.Text = arg[1].ToString();
+                            add2txt.Text = arg[2].ToString();
+                            contacttxt.Text = arg[3].ToString();
+                            altcontxt.Text = arg[4].ToString();
+                            citytxt.Text = arg[5].ToString();
+                            pintxt.Text = arg[6].ToString();
+                        }
+                        catch { }
                     };
                     details.RunWorkerAsync();
+                    
                 }
-            }catch { obj.closeConnection(); }
+            }catch {obj.closeConnection(); }
         }
 
         private void refresh_Click(object sender, EventArgs e)
