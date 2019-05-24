@@ -90,6 +90,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 {
                     if (a.ProgressPercentage == 25)
                     {
+                        try { 
                         Object[] arg = (object[])a.UserState;
                         BindingSource bsource = arg[0] as BindingSource;
                         placeddataview.DataSource = bsource;
@@ -104,11 +105,13 @@ namespace Veiled_Kashmir_Admin_Panel
                         ship.DataPropertyName = "Ship";
                         ship.Text = "Ship";
                         placeddataview.Columns.Add(ship);
-
+                        }
+                        catch { }
                     }
                     else
                     if (a.ProgressPercentage == 50)
                     {
+                        try { 
                         Object[] arg = (object[])a.UserState;
                         BindingSource bsource = arg[0] as BindingSource;
                         shippeddataview.DataSource = bsource;
@@ -122,23 +125,28 @@ namespace Veiled_Kashmir_Admin_Panel
                         del.DataPropertyName = "Delivered";
                         del.Text = "Delivered";
                         shippeddataview.Columns.Add(del);
-
+                        }
+                        catch { }
                     }                   
                     else
                     if (a.ProgressPercentage == 75)
                     {
-                        Object[] arg = (object[])a.UserState;
-                        BindingSource bsource = arg[0] as BindingSource;
-                        deldataview.DataSource = bsource;
-                        dellbl.Visible = false;
-                        deldataview.Columns["email"].Visible = false;
-                        deldataview.Visible = true;
-                       
+                        try
+                        {
+                            Object[] arg = (object[])a.UserState;
+                            BindingSource bsource = arg[0] as BindingSource;
+                            deldataview.DataSource = bsource;
+                            dellbl.Visible = false;
+                            deldataview.Columns["email"].Visible = false;
+                            deldataview.Visible = true;
+                        }
+                        catch { }
 
                     }
                     else
                     if (a.ProgressPercentage == 90)
                     {
+                        try { 
                         Object[] arg = (object[])a.UserState;
                         BindingSource bsource = arg[0] as BindingSource;
                         alldataview.DataSource = bsource;
@@ -146,7 +154,8 @@ namespace Veiled_Kashmir_Admin_Panel
                         loadlbl.Text = "Health Orders";
                         alldataview.Columns["email"].Visible = false;
                         alldataview.Visible = true;
-                       
+                        }
+                        catch { }
 
                     }
 

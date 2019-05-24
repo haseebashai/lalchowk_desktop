@@ -915,7 +915,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 DataGridViewRow row = this.placeddataview.Rows[e.RowIndex];
                 if (row.Cells["giftwrap"].Value.ToString()=="True")
                 {
-                    MessageBox.Show("The user has requested gift wrap for the order.\r\n\r\nThe gift is from:  " + row.Cells["giftfrom"].Value.ToString() + " \r\nTo:\r\n" + row.Cells["giftto"].Value.ToString() + "With message: \r\n" + row.Cells["giftmsg"].Value.ToString());
+                    MessageBox.Show("The user has requested gift wrap for the order.\r\n\r\nThe gift is from:  " + row.Cells["giftfrom"].Value.ToString() + " \r\nTo:\r\n" + row.Cells["giftto"].Value.ToString() + "\r\nWith message: \r\n" + row.Cells["giftmsg"].Value.ToString());
                 }
 
             }

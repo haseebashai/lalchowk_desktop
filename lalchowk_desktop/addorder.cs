@@ -31,7 +31,8 @@ namespace Veiled_Kashmir_Admin_Panel
             //searchtxt.AutoCompleteMode = AutoCompleteMode.Suggest;
             //searchtxt.AutoCompleteSource = AutoCompleteSource.CustomSource;
             searchtxt.AutoCompleteCustomSource = userinfo.col;
-         
+            if (userinfo.col == null)
+                pllbl.Visible = true;
             //String[] _values = { "one", "two", "three", "tree", "four", "fivee ghj","haseeb ashai" };
 
          //   autotxt.Values = _values;
@@ -171,16 +172,18 @@ namespace Veiled_Kashmir_Admin_Panel
                             gift = "1";
                         else
                             gift = "0";
-
-                        string email = md5hash(emailtxt.Text);
-                        string cmd = "INSERT INTO orders(`email`, `amount`,`timestamp`,`shipping`,`paymenttype`,`paymentconfirmed`, `transanctionid`,`itemcount`,`status`,`name`,`address1`,`address2`,`contact`,`pincode`,`city`,`loyaltybonus`,`deliveryguy`,`in_transit`,`alternate_contact`,`giftwrap`,`giftcharges`) values ('" + email + "','" + amounttxt.Text
-                            + "',DATE_ADD(CURRENT_TIMESTAMP, INTERVAL 750 MINUTE),'" + shiptxt.Text + "','"+ptypebox.Text+"','"+pconf+"','SW','" + counttxt.Text + "','" + statustxt.Text + "','" + nametxt.Text + "','" + add + "','" + add2txt.Text + "','" + contacttxt.Text + "','" + pintxt.Text + "','" + citytxt.Text 
-                            + "','" + loyaltxt.Text + "','"+devtxt.Text+"','0','"+altcontxt.Text+"','"+gift+"','"+giftchtxt.Text+"')";
-                        obj.nonQuery(cmd);
+                       
+                            string email = md5hash(emailtxt.Text);
+                            string cmd = "INSERT INTO orders(`email`, `amount`,`timestamp`,`shipping`,`paymenttype`,`paymentconfirmed`, `transanctionid`,`itemcount`,`status`,`name`,`address1`,`address2`,`contact`,`pincode`,`city`,`loyaltybonus`,`deliveryguy`,`in_transit`,`alternate_contact`,`giftwrap`,`giftcharges`) values ('" + email + "','" + amounttxt.Text
+                                + "',DATE_ADD(CURRENT_TIMESTAMP, INTERVAL 750 MINUTE),'" + shiptxt.Text + "','" + ptypebox.Text + "','" + pconf + "','SW','" + counttxt.Text + "','" + statustxt.Text + "','" + nametxt.Text + "','" + add + "','" + add2txt.Text + "','" + contacttxt.Text + "','" + pintxt.Text + "','" + citytxt.Text
+                                + "','" + loyaltxt.Text + "','" + devtxt.Text + "','0','" + altcontxt.Text + "','" + gift + "','" + giftchtxt.Text + "')";
+                            obj.nonQuery(cmd);
+                                                  
                         long orderid = userinfo.orid;
+                        obj.closeConnection();
                         //    int orderid = obj.Count("SELECT LAST_INSERT_ID()");
 
-                        obj.closeConnection();
+
                         //pidtxt.Text = pidtxt.Text.Remove(pidtxt.Text.Length - 1);
                         //string[] pids = pidtxt.Text.Split(',');
                         //foreach (string pid in pids)
@@ -215,7 +218,7 @@ namespace Veiled_Kashmir_Admin_Panel
                             }
                         }
                         catch (Exception ex)
-                        { MessageBox.Show(ex.ToString()); obj.closeConnection(); }
+                        { obj.closeConnection(); }
                         MessageBox.Show("Order added successfully.", "Success");
                         inventorydatagridview.Columns.Clear();
                     //    addorderbtn.Enabled = false;
@@ -226,7 +229,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 }
                 // }
             }
-            catch (Exception ex) { MessageBox.Show(ex.Message); obj.closeConnection(); addorderbtn.Enabled = true; }
+            catch (Exception ex) { MessageBox.Show("Could not complete the process due to some error. Please try again.", "Error"); obj.closeConnection(); addorderbtn.Enabled = true; }
             Cursor = Cursors.Arrow;
         }
 
@@ -328,39 +331,42 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void addtocartbtn_Click(object sender, EventArgs e)
         {
-            if (inventorydatagridview.RowCount == 0)
+            try
             {
-                MessageBox.Show("Add Products First.", "Error!");
-            }
-            else
-            if (emailtxt.Text == "")
-            {
-                MessageBox.Show("Please enter user account email first.", "Error");
-            }
-            else
-            {
-                string email = md5hash(emailtxt.Text);
-
-                Cursor = Cursors.WaitCursor;
-                for (int i = 0; i < inventorydatagridview.RowCount; i++)
+                if (inventorydatagridview.RowCount == 0)
                 {
-                    try
-                    {
+                    MessageBox.Show("Add Products First.", "Error!");
+                }
+                else
+                if (emailtxt.Text == "")
+                {
+                    MessageBox.Show("Please enter user account email first.", "Error");
+                }
+                else
+                {
+                    string email = md5hash(emailtxt.Text);
 
-                        string cmd1 = "insert into cartitems(`email`,`productid`,`quantity`)values('" + email + "','" + inventorydatagridview.Rows[i].Cells[0].Value.ToString() +
-                        "','" + inventorydatagridview.Rows[i].Cells[5].Value.ToString() + "')";
-                        obj.nonQuery(cmd1);
+                    Cursor = Cursors.WaitCursor;
+                    for (int i = 0; i < inventorydatagridview.RowCount; i++)
+                    {
+                        try
+                        {
+
+                            string cmd1 = "insert into cartitems(`email`,`productid`,`quantity`)values('" + email + "','" + inventorydatagridview.Rows[i].Cells[0].Value.ToString() +
+                            "','" + inventorydatagridview.Rows[i].Cells[5].Value.ToString() + "')";
+                            obj.nonQuery(cmd1);
+
+                        }
+                        catch (Exception ex)
+                        { MessageBox.Show(ex.ToString()); obj.closeConnection(); }
 
                     }
-                    catch (Exception ex)
-                    { MessageBox.Show(ex.ToString()); obj.closeConnection(); }
-
+                    Cursor = Cursors.Arrow;
+                    MessageBox.Show("Items added to cart successfully.", "Success.");
+                    inventorydatagridview.Columns.Clear();
                 }
-                Cursor = Cursors.Arrow;
-                MessageBox.Show("Items added to cart successfully.", "Success.");
-                inventorydatagridview.Columns.Clear();
             }
-
+            catch { MessageBox.Show("Could not complete the process due to some error. Please try again.", "Error"); }
         }
 
     
@@ -457,7 +463,7 @@ namespace Veiled_Kashmir_Admin_Panel
                  //   addorderbtn.Enabled = true;
                       
                 }
-            }catch(Exception ex) { MessageBox.Show(ex.Message); obj.closeConnection(); }
+            }catch(Exception ex) { MessageBox.Show("Could not add the product due to some error. Please try again.","Error"); obj.closeConnection(); }
             Cursor = Cursors.Arrow;
         }
 
@@ -585,7 +591,7 @@ namespace Veiled_Kashmir_Admin_Panel
         private void refresh_Click(object sender, EventArgs e)
         {
             refresh.Enabled = false;
-
+            pllbl.Visible = false;
             loadinglbl.Visible = true;
             searchtxt.Enabled = false;
             try
@@ -637,7 +643,7 @@ namespace Veiled_Kashmir_Admin_Panel
                         con.Close();
                         a.Result = col1;
                     }
-                    catch(Exception ex) { MessageBox.Show(ex.ToString()); }
+                    catch(Exception ex) { MessageBox.Show("Could not load the list due to some error. Please try again.","Error"); pllbl.Visible = true; }
                     
                 };
                 search.ProgressChanged += (o, c) =>
@@ -676,7 +682,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 search.RunWorkerAsync();
 
             }
-            catch (Exception ex) { MessageBox.Show(ex.ToString()); con.Close(); }
+            catch (Exception ex) { pllbl.Visible = true; con.Close(); }
             
         }
 
