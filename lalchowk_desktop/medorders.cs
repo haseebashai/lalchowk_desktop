@@ -264,14 +264,14 @@ namespace Veiled_Kashmir_Admin_Panel
         int oid=0;
         private void placeddataview_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+          //  MessageBox.Show(e.ColumnIndex.ToString());
             try
             {
                 btpnl.Visible = true;
-                if (e.RowIndex >= 0 && e.ColumnIndex < 16)
+                if (e.RowIndex >= 0 && e.ColumnIndex < 18)
                 {
                     detailpnl.Visible =false;
-                    //  MessageBox.Show(e.ColumnIndex.ToString());
+                      
                     DataGridViewRow row = this.placeddataview.Rows[e.RowIndex];
                     oid = int.Parse(row.Cells["orderid"].Value.ToString());
                     dr = obj.Query("select url from lalchowk.image_uploads where oid ='"+oid+"';");
@@ -293,7 +293,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     msgtxt.Text = row.Cells["msg"].Value.ToString();
                     detailpnl.Visible = true;
                 }
-                else if(e.RowIndex>=0 && e.ColumnIndex == 16)
+                else if(e.RowIndex>=0 && e.ColumnIndex == 18)
                 {
 
                     

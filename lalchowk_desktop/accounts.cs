@@ -1129,10 +1129,32 @@ namespace Veiled_Kashmir_Admin_Panel
 
                         dr = obj.Query("SELECT sum(dp),sum(amount),count(orderid),sum(shipping) from medorders where status='Delivered' and deliverdate like '" + datemed + "-%'");
                         dr.Read();
-                        medp = int.Parse(dr[0].ToString());
+                        
+                        if (dr[0].ToString() == null || dr[0].ToString() == "")
+                        {
+                            medp = 0;
+                        }
+                        else
+                            medp = int.Parse(dr[0].ToString());
+                       
+                        if (dr[1].ToString() == null || dr[1].ToString() == "")
+                        {
+                            meds = 0;
+                        }
+                        else                          
                         meds = int.Parse(dr[1].ToString());
-                        medo = int.Parse(dr[2].ToString());
-                        medsh = int.Parse(dr[3].ToString());
+                        if (dr[2].ToString() == null || dr[2].ToString() == "")
+                        {
+                            medo = 0;
+                        }
+                        else
+                            medo = int.Parse(dr[2].ToString());
+                        if (dr[3].ToString() == null || dr[3].ToString() == "")
+                        {
+                            medsh = 0;
+                        }
+                        else
+                            medsh = int.Parse(dr[3].ToString());
                         obj.closeConnection();
                         //  MessageBox.Show(medp.ToString());
 

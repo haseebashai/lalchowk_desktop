@@ -167,13 +167,21 @@ namespace Veiled_Kashmir_Admin_Panel
                     
                     
                     obj.closeConnection();
-                  //  MessageBox.Show(giftch.ToString() );
+               //     MessageBox.Show(year + "-" + mon);
 
                     dr = obj.Query("SELECT sum(amount-dp) from medorders where status='Delivered' and deliverdate like '" + year+"-"+mon + "-%'");
                     dr.Read();
-                    int medp = int.Parse(dr[0].ToString());                 
+                    //  MessageBox.Show(dr[0].ToString()  );
+                    int medp = 0;
+                    if (dr[0].ToString() == null || dr[0].ToString() == "")
+                    {
+                         medp = 0;
+                    }
+                    else
+                     medp = int.Parse(dr[0].ToString());      
+                               
                     obj.closeConnection();
-               //     MessageBox.Show(giftch.ToString() + "    " + medp.ToString());
+                  //  MessageBox.Show(giftch.ToString() + "    " + medp.ToString());
 
 
                     object[] arg6 = { days,giftch,medp };
@@ -182,7 +190,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 }
                 catch(Exception ex)
                 {
-                  //  MessageBox.Show(ex.Message);
+                    MessageBox.Show(ex.ToString());
                 }
 
 
