@@ -43,7 +43,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
                     AutoCompleteStringCollection col1 = new AutoCompleteStringCollection();
 
-                    cmd = new MySqlCommand("Select concat_ws(' ',productname,'(',detail1,detail2,')','@',mrp,'#',productid) as tag from products where productid>9999", con);
+                    cmd = new MySqlCommand("Select concat_ws(' ',productname,'(',detail1,detail2,')','(',stock,')','@',mrp,'#',productid) as tag from products where productid>9999", con);
                     try
                     {
                         
