@@ -85,6 +85,9 @@ namespace Modest_Attires
                 altcontxt.Text = arg[17] as string;
                 gifttxt.Text = arg[18] as string;
                 string gift = arg[19] as string;
+                ointxt.Text = arg[20] as string;
+                landmarktxt.Text = arg[21] as string;
+                statetxt.Text = arg[22] as string;
 
                 orderdetailview.DataSource = bsource;
                 orderdetailview.Columns["size"].Visible = false;
@@ -163,7 +166,7 @@ namespace Modest_Attires
             {
                 obj.closeConnection();
                 conn.Close();
-                MessageBox.Show(ex.Message);
+              //  MessageBox.Show(ex.Message);
                 updbtn.Text = "Please Reload.";
                 updbtn.Enabled =false;
                 orderdetailview.Visible = false;
@@ -181,7 +184,7 @@ namespace Modest_Attires
             {
                 string orderid = e.Argument as string;
                
-                dr = obj.Query("select amount,shipping,name,address1,address2,pincode,contact,city,status,itemcount,deliveryguy,paymenttype,paymentconfirmed,shipdate,deliverdate,in_transit,alternate_contact,giftcharges,giftwrap from orders where orderid='" + orderid + "'");
+                dr = obj.Query("select amount,shipping,name,address1,address2,pincode,contact,city,status,itemcount,deliveryguy,paymenttype,paymentconfirmed,shipdate,deliverdate,in_transit,alternate_contact,giftcharges,giftwrap,info,landmark,state from orders where orderid='" + orderid + "'");
                 dr.Read();
                 string amount = dr[0].ToString();
                 string shipping = dr[1].ToString();
@@ -202,6 +205,9 @@ namespace Modest_Attires
                 string altcon = dr[16].ToString();
                 string gift = dr[17].ToString();
                 string giftwrap = dr[18].ToString();
+                string info = dr[19].ToString();
+                string landm = dr[20].ToString();
+                string state = dr[21].ToString();
 
                 obj.closeConnection();
 
@@ -213,7 +219,7 @@ namespace Modest_Attires
                 bsource.DataSource = dt;
 
 
-                object[] arg = {amount,shipping,name,add1,add2,pin,con,city,status,count,dguy,ptype,pconf,bsource,sdate,ddate,transit,altcon,gift,giftwrap};
+                object[] arg = {amount,shipping,name,add1,add2,pin,con,city,status,count,dguy,ptype,pconf,bsource,sdate,ddate,transit,altcon,gift,giftwrap,info,landm,state};
               
                 e.Result = arg;
 
@@ -246,6 +252,8 @@ namespace Modest_Attires
                         gift = "1";
                     else
                         gift = "0";
+                    StringBuilder info = new StringBuilder(ointxt.Text);
+                    info.Replace(@"'", "\\'").Replace(@"\", "\\");
 
 
                     if (deldttxt.Text == String.Empty)
@@ -254,7 +262,8 @@ namespace Modest_Attires
                         string cmd = "update orders set amount='" + amtxt.Text + "',shipping='" + shiptxt.Text + "',name='" + nametxt.Text + "',address1='" + add1txt.Text + "'" +
                         ",address2='" + add2txt.Text + "',pincode='" + pintxt.Text + "',contact='" + contxt.Text + "',city='" + citytxt.Text + "',status='" + statustxt.Text + "'" +
                         ",itemcount='" + counttxt.Text + "',deliveryguy='" + dguytxt.Text + "',paymenttype='" + ptypebox.Text + "',paymentconfirmed='" + pconf
-                        + "',deliverdate="+date+",in_transit='"+transit+"',alternate_contact='"+altcontxt.Text+"',giftcharges='"+gifttxt.Text+"',giftwrap='"+gift+"' where orderid='" + id + "'";
+                        + "',deliverdate="+date+",in_transit='"+transit+"',alternate_contact='"+altcontxt.Text+"',giftcharges='"+gifttxt.Text+"',giftwrap='"+gift+"',info='"+info
+                        +"',landmark='"+landmarktxt.Text+"',state='"+statetxt.Text+"' where orderid='" + id + "'";
                         obj.nonQuery(cmd);
                     }
                     else
@@ -265,7 +274,8 @@ namespace Modest_Attires
                         string cmd = "update orders set amount='" + amtxt.Text + "',shipping='" + shiptxt.Text + "',name='" + nametxt.Text + "',address1='" + add1txt.Text + "'" +
                             ",address2='" + add2txt.Text + "',pincode='" + pintxt.Text + "',contact='" + contxt.Text + "',city='" + citytxt.Text + "',status='" + statustxt.Text + "'" +
                             ",itemcount='" + counttxt.Text + "',deliveryguy='" + dguytxt.Text + "',paymenttype='" + ptypebox.Text + "',paymentconfirmed='" + pconf
-                            + "',deliverdate='" + date + "',in_transit='" + transit + "',alternate_contact='" + altcontxt.Text + "',giftcharges='" + gifttxt.Text + "',giftwrap='" + gift + "' where orderid='" + id + "'";
+                            + "',deliverdate='" + date + "',in_transit='" + transit + "',alternate_contact='" + altcontxt.Text + "',giftcharges='" + gifttxt.Text + "',giftwrap='" + gift + "',info='"+info
+                            + "',landmark='" + landmarktxt.Text + "',state='" + statetxt.Text + "' where orderid='" + id + "'";
                             obj.nonQuery(cmd);
                       
                         
@@ -334,7 +344,7 @@ namespace Modest_Attires
                 {
                     string orderid = a.Argument as string;
 
-                    dr = obj.Query("select amount,shipping,name,address1,address2,pincode,contact,city,status,itemcount,deliveryguy,paymenttype,paymentconfirmed,shipdate,deliverdate,in_transit,alternate_contact,giftcharges,giftwrap from orders where orderid='" + orderid + "'");
+                    dr = obj.Query("select amount,shipping,name,address1,address2,pincode,contact,city,status,itemcount,deliveryguy,paymenttype,paymentconfirmed,shipdate,deliverdate,in_transit,alternate_contact,giftcharges,giftwrap,info,landmark,state from orders where orderid='" + orderid + "'");
                     dr.Read();
                     string amount = dr[0].ToString();
                     string shipping = dr[1].ToString();
@@ -355,6 +365,9 @@ namespace Modest_Attires
                     string altcon = dr[16].ToString();
                     string gift = dr[17].ToString();
                     string giftwrap = dr[18].ToString();
+                    string info = dr[19].ToString();
+                    string landm = dr[20].ToString();
+                    string state = dr[21].ToString();
                     obj.closeConnection();
 
                     adap = new MySqlDataAdapter("SELECT * FROM orderdetails where orderid='" + orderid + "'", conn);
@@ -365,7 +378,7 @@ namespace Modest_Attires
                     bsource.DataSource = dt;
 
 
-                    object[] arg = { amount, shipping, name, add1, add2, pin, con, city, status, count, dguy, ptype, pconf, bsource, sdate, ddate, transit, altcon,gift,giftwrap };
+                    object[] arg = { amount, shipping, name, add1, add2, pin, con, city, status, count, dguy, ptype, pconf, bsource, sdate, ddate, transit, altcon,gift,giftwrap,info,landm,state };
 
                     a.Result = arg;
 
@@ -419,6 +432,9 @@ namespace Modest_Attires
                     altcontxt.Text = arg[17] as string;
                     gifttxt.Text = arg[18] as string;
                     string gift = arg[19] as string;
+                    ointxt.Text = arg[20] as string;
+                    landmarktxt.Text = arg[21] as string;
+                    statetxt.Text = arg[22] as string;
 
                     orderdetailview.DataSource = bsource;
                     orderdetailview.Columns["size"].Visible = false;

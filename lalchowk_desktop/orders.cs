@@ -99,6 +99,7 @@ namespace Modest_Attires
                     ordergridview.Columns["giftto"].Visible = false;
                     ordergridview.Columns["giftmsg"].Visible = false;
                     ordergridview.Columns["giftcharges"].Visible = false;
+                    ordergridview.Columns["info"].Visible = false;
                     panel1.Visible = true;
                  //   orlbl.Text = ordervar;
                  orlbl.Text= ordergridview.RowCount.ToString();
@@ -576,6 +577,7 @@ namespace Modest_Attires
                     ordergridview.Columns["giftto"].Visible = false;
                     ordergridview.Columns["giftmsg"].Visible = false;
                     ordergridview.Columns["giftcharges"].Visible = false;
+                    ordergridview.Columns["info"].Visible = false;
                 }
             }
             catch(Exception ex) { MessageBox.Show(ex.Message); };
@@ -612,6 +614,7 @@ namespace Modest_Attires
                 ordergridview.Columns["giftto"].Visible = false;
                 ordergridview.Columns["giftmsg"].Visible = false;
                 ordergridview.Columns["giftcharges"].Visible = false;
+                ordergridview.Columns["info"].Visible = false;
 
             }
             catch (Exception ex)
@@ -668,6 +671,7 @@ namespace Modest_Attires
                 ordergridview.Columns["giftto"].Visible = false;
                 ordergridview.Columns["giftmsg"].Visible = false;
                 ordergridview.Columns["giftcharges"].Visible = false;
+                ordergridview.Columns["info"].Visible = false;
                 panel1.Visible = true;
                 orlbl.Text = ordergridview.RowCount.ToString();
                 odplbl.Text = ordergridview.RowCount.ToString();

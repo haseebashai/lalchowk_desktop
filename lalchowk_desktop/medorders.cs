@@ -90,6 +90,7 @@ namespace Modest_Attires
                 {
                     if (a.ProgressPercentage == 25)
                     {
+                        try { 
                         Object[] arg = (object[])a.UserState;
                         BindingSource bsource = arg[0] as BindingSource;
                         placeddataview.DataSource = bsource;
@@ -104,11 +105,13 @@ namespace Modest_Attires
                         ship.DataPropertyName = "Ship";
                         ship.Text = "Ship";
                         placeddataview.Columns.Add(ship);
-
+                        }
+                        catch { }
                     }
                     else
                     if (a.ProgressPercentage == 50)
                     {
+                        try { 
                         Object[] arg = (object[])a.UserState;
                         BindingSource bsource = arg[0] as BindingSource;
                         shippeddataview.DataSource = bsource;
@@ -122,23 +125,28 @@ namespace Modest_Attires
                         del.DataPropertyName = "Delivered";
                         del.Text = "Delivered";
                         shippeddataview.Columns.Add(del);
-
+                        }
+                        catch { }
                     }                   
                     else
                     if (a.ProgressPercentage == 75)
                     {
-                        Object[] arg = (object[])a.UserState;
-                        BindingSource bsource = arg[0] as BindingSource;
-                        deldataview.DataSource = bsource;
-                        dellbl.Visible = false;
-                        deldataview.Columns["email"].Visible = false;
-                        deldataview.Visible = true;
-                       
+                        try
+                        {
+                            Object[] arg = (object[])a.UserState;
+                            BindingSource bsource = arg[0] as BindingSource;
+                            deldataview.DataSource = bsource;
+                            dellbl.Visible = false;
+                            deldataview.Columns["email"].Visible = false;
+                            deldataview.Visible = true;
+                        }
+                        catch { }
 
                     }
                     else
                     if (a.ProgressPercentage == 90)
                     {
+                        try { 
                         Object[] arg = (object[])a.UserState;
                         BindingSource bsource = arg[0] as BindingSource;
                         alldataview.DataSource = bsource;
@@ -146,7 +154,8 @@ namespace Modest_Attires
                         loadlbl.Text = "Health Orders";
                         alldataview.Columns["email"].Visible = false;
                         alldataview.Visible = true;
-                       
+                        }
+                        catch { }
 
                     }
 
@@ -255,14 +264,14 @@ namespace Modest_Attires
         int oid=0;
         private void placeddataview_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+          //  MessageBox.Show(e.ColumnIndex.ToString());
             try
             {
                 btpnl.Visible = true;
-                if (e.RowIndex >= 0 && e.ColumnIndex < 16)
+                if (e.RowIndex >= 0 && e.ColumnIndex < 18)
                 {
                     detailpnl.Visible =false;
-                    //  MessageBox.Show(e.ColumnIndex.ToString());
+                      
                     DataGridViewRow row = this.placeddataview.Rows[e.RowIndex];
                     oid = int.Parse(row.Cells["orderid"].Value.ToString());
                     dr = obj.Query("select url from lalchowk.image_uploads where oid ='"+oid+"';");
@@ -284,7 +293,7 @@ namespace Modest_Attires
                     msgtxt.Text = row.Cells["msg"].Value.ToString();
                     detailpnl.Visible = true;
                 }
-                else if(e.RowIndex>=0 && e.ColumnIndex == 16)
+                else if(e.RowIndex>=0 && e.ColumnIndex == 18)
                 {
 
                     

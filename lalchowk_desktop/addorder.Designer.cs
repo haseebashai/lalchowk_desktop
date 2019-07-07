@@ -84,6 +84,7 @@
             this.label19 = new System.Windows.Forms.Label();
             this.giftchtxt = new System.Windows.Forms.TextBox();
             this.giftbox = new System.Windows.Forms.CheckBox();
+            this.pllbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.inventorydatagridview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.refresh)).BeginInit();
@@ -634,12 +635,25 @@
             this.giftbox.Text = "Gift wrap";
             this.giftbox.UseVisualStyleBackColor = true;
             // 
+            // pllbl
+            // 
+            this.pllbl.AutoSize = true;
+            this.pllbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pllbl.ForeColor = System.Drawing.Color.Red;
+            this.pllbl.Location = new System.Drawing.Point(244, 11);
+            this.pllbl.Name = "pllbl";
+            this.pllbl.Size = new System.Drawing.Size(181, 13);
+            this.pllbl.TabIndex = 112;
+            this.pllbl.Text = "Product list not loaded, please reload";
+            this.pllbl.Visible = false;
+            // 
             // addorder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(921, 612);
+            this.Controls.Add(this.pllbl);
             this.Controls.Add(this.giftbox);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.giftchtxt);
@@ -762,5 +776,6 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox giftchtxt;
         private System.Windows.Forms.CheckBox giftbox;
+        private System.Windows.Forms.Label pllbl;
     }
 }

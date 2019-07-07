@@ -83,6 +83,12 @@
             this.giftbox = new System.Windows.Forms.CheckBox();
             this.mrplbl = new System.Windows.Forms.Label();
             this.amlbl = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.ointxt = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.statetxt = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.landmarktxt = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.orderdetailview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.refreshbtn)).BeginInit();
             this.SuspendLayout();
@@ -90,15 +96,15 @@
             // nametxt
             // 
             this.nametxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.nametxt.Location = new System.Drawing.Point(59, 252);
+            this.nametxt.Location = new System.Drawing.Point(37, 252);
             this.nametxt.Name = "nametxt";
-            this.nametxt.Size = new System.Drawing.Size(205, 20);
+            this.nametxt.Size = new System.Drawing.Size(168, 20);
             this.nametxt.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(59, 233);
+            this.label1.Location = new System.Drawing.Point(37, 233);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 1;
@@ -107,7 +113,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(391, 344);
+            this.label2.Location = new System.Drawing.Point(339, 347);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(48, 13);
             this.label2.TabIndex = 3;
@@ -116,7 +122,7 @@
             // shiptxt
             // 
             this.shiptxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.shiptxt.Location = new System.Drawing.Point(394, 363);
+            this.shiptxt.Location = new System.Drawing.Point(342, 366);
             this.shiptxt.Name = "shiptxt";
             this.shiptxt.Size = new System.Drawing.Size(45, 20);
             this.shiptxt.TabIndex = 8;
@@ -124,7 +130,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(307, 344);
+            this.label3.Location = new System.Drawing.Point(259, 347);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(43, 13);
             this.label3.TabIndex = 5;
@@ -133,7 +139,7 @@
             // amtxt
             // 
             this.amtxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.amtxt.Location = new System.Drawing.Point(310, 363);
+            this.amtxt.Location = new System.Drawing.Point(258, 366);
             this.amtxt.Name = "amtxt";
             this.amtxt.Size = new System.Drawing.Size(75, 20);
             this.amtxt.TabIndex = 7;
@@ -141,7 +147,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(270, 287);
+            this.label4.Location = new System.Drawing.Point(37, 287);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(24, 13);
             this.label4.TabIndex = 7;
@@ -150,7 +156,7 @@
             // citytxt
             // 
             this.citytxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.citytxt.Location = new System.Drawing.Point(270, 306);
+            this.citytxt.Location = new System.Drawing.Point(37, 306);
             this.citytxt.Name = "citytxt";
             this.citytxt.Size = new System.Drawing.Size(118, 20);
             this.citytxt.TabIndex = 4;
@@ -158,7 +164,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(394, 287);
+            this.label5.Location = new System.Drawing.Point(37, 347);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(46, 13);
             this.label5.TabIndex = 9;
@@ -167,7 +173,7 @@
             // pintxt
             // 
             this.pintxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.pintxt.Location = new System.Drawing.Point(394, 306);
+            this.pintxt.Location = new System.Drawing.Point(37, 366);
             this.pintxt.Name = "pintxt";
             this.pintxt.Size = new System.Drawing.Size(132, 20);
             this.pintxt.TabIndex = 5;
@@ -175,7 +181,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(58, 344);
+            this.label6.Location = new System.Drawing.Point(429, 287);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(44, 13);
             this.label6.TabIndex = 11;
@@ -184,15 +190,15 @@
             // contxt
             // 
             this.contxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.contxt.Location = new System.Drawing.Point(58, 363);
+            this.contxt.Location = new System.Drawing.Point(429, 306);
             this.contxt.Name = "contxt";
-            this.contxt.Size = new System.Drawing.Size(107, 20);
+            this.contxt.Size = new System.Drawing.Size(119, 20);
             this.contxt.TabIndex = 6;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(56, 290);
+            this.label7.Location = new System.Drawing.Point(470, 236);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(54, 13);
             this.label7.TabIndex = 13;
@@ -201,7 +207,7 @@
             // add2txt
             // 
             this.add2txt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.add2txt.Location = new System.Drawing.Point(59, 306);
+            this.add2txt.Location = new System.Drawing.Point(473, 252);
             this.add2txt.Name = "add2txt";
             this.add2txt.Size = new System.Drawing.Size(205, 20);
             this.add2txt.TabIndex = 3;
@@ -209,7 +215,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(274, 233);
+            this.label8.Location = new System.Drawing.Point(215, 233);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(54, 13);
             this.label8.TabIndex = 15;
@@ -218,7 +224,7 @@
             // add1txt
             // 
             this.add1txt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.add1txt.Location = new System.Drawing.Point(270, 252);
+            this.add1txt.Location = new System.Drawing.Point(211, 252);
             this.add1txt.Name = "add1txt";
             this.add1txt.Size = new System.Drawing.Size(256, 20);
             this.add1txt.TabIndex = 2;
@@ -227,7 +233,7 @@
             // 
             this.updbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.updbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.updbtn.Location = new System.Drawing.Point(453, 534);
+            this.updbtn.Location = new System.Drawing.Point(539, 534);
             this.updbtn.Name = "updbtn";
             this.updbtn.Size = new System.Drawing.Size(130, 50);
             this.updbtn.TabIndex = 16;
@@ -249,7 +255,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(147, 404);
+            this.label9.Location = new System.Drawing.Point(486, 347);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(37, 13);
             this.label9.TabIndex = 18;
@@ -258,7 +264,7 @@
             // statustxt
             // 
             this.statustxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.statustxt.Location = new System.Drawing.Point(147, 423);
+            this.statustxt.Location = new System.Drawing.Point(486, 366);
             this.statustxt.Name = "statustxt";
             this.statustxt.Size = new System.Drawing.Size(120, 20);
             this.statustxt.TabIndex = 10;
@@ -266,7 +272,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(58, 404);
+            this.label10.Location = new System.Drawing.Point(177, 347);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(58, 13);
             this.label10.TabIndex = 20;
@@ -275,15 +281,15 @@
             // counttxt
             // 
             this.counttxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.counttxt.Location = new System.Drawing.Point(58, 423);
+            this.counttxt.Location = new System.Drawing.Point(177, 366);
             this.counttxt.Name = "counttxt";
-            this.counttxt.Size = new System.Drawing.Size(83, 20);
+            this.counttxt.Size = new System.Drawing.Size(72, 20);
             this.counttxt.TabIndex = 9;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(58, 469);
+            this.label11.Location = new System.Drawing.Point(266, 410);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(67, 13);
             this.label11.TabIndex = 22;
@@ -292,15 +298,15 @@
             // dguytxt
             // 
             this.dguytxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.dguytxt.Location = new System.Drawing.Point(58, 488);
+            this.dguytxt.Location = new System.Drawing.Point(266, 429);
             this.dguytxt.Name = "dguytxt";
-            this.dguytxt.Size = new System.Drawing.Size(120, 20);
+            this.dguytxt.Size = new System.Drawing.Size(105, 20);
             this.dguytxt.TabIndex = 14;
             // 
             // pconflbl
             // 
             this.pconflbl.AutoSize = true;
-            this.pconflbl.Location = new System.Drawing.Point(413, 403);
+            this.pconflbl.Location = new System.Drawing.Point(151, 410);
             this.pconflbl.Name = "pconflbl";
             this.pconflbl.Size = new System.Drawing.Size(107, 13);
             this.pconflbl.TabIndex = 24;
@@ -309,7 +315,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(278, 400);
+            this.label13.Location = new System.Drawing.Point(38, 404);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(75, 13);
             this.label13.TabIndex = 26;
@@ -318,7 +324,7 @@
             // pcybox
             // 
             this.pcybox.AutoSize = true;
-            this.pcybox.Location = new System.Drawing.Point(417, 425);
+            this.pcybox.Location = new System.Drawing.Point(155, 432);
             this.pcybox.Name = "pcybox";
             this.pcybox.Size = new System.Drawing.Size(44, 17);
             this.pcybox.TabIndex = 12;
@@ -329,7 +335,7 @@
             // pcnbox
             // 
             this.pcnbox.AutoSize = true;
-            this.pcnbox.Location = new System.Drawing.Point(467, 425);
+            this.pcnbox.Location = new System.Drawing.Point(205, 432);
             this.pcnbox.Name = "pcnbox";
             this.pcnbox.Size = new System.Drawing.Size(40, 17);
             this.pcnbox.TabIndex = 13;
@@ -341,9 +347,9 @@
             // 
             this.ptypebox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ptypebox.FormattingEnabled = true;
-            this.ptypebox.Location = new System.Drawing.Point(277, 422);
+            this.ptypebox.Location = new System.Drawing.Point(37, 426);
             this.ptypebox.Name = "ptypebox";
-            this.ptypebox.Size = new System.Drawing.Size(121, 21);
+            this.ptypebox.Size = new System.Drawing.Size(96, 21);
             this.ptypebox.TabIndex = 11;
             // 
             // orderdetailview
@@ -353,7 +359,7 @@
             this.orderdetailview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.orderdetailview.Location = new System.Drawing.Point(12, 32);
             this.orderdetailview.Name = "orderdetailview";
-            this.orderdetailview.Size = new System.Drawing.Size(604, 111);
+            this.orderdetailview.Size = new System.Drawing.Size(696, 111);
             this.orderdetailview.TabIndex = 30;
             this.orderdetailview.Visible = false;
             this.orderdetailview.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.orderdetailview_CellValueChanged);
@@ -363,7 +369,7 @@
             // 
             this.deupdbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.deupdbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.deupdbtn.Location = new System.Drawing.Point(534, 149);
+            this.deupdbtn.Location = new System.Drawing.Point(626, 149);
             this.deupdbtn.Name = "deupdbtn";
             this.deupdbtn.Size = new System.Drawing.Size(82, 23);
             this.deupdbtn.TabIndex = 31;
@@ -377,7 +383,7 @@
             this.panel1.BackColor = System.Drawing.Color.Gainsboro;
             this.panel1.Location = new System.Drawing.Point(79, 212);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(390, 1);
+            this.panel1.Size = new System.Drawing.Size(590, 1);
             this.panel1.TabIndex = 32;
             // 
             // loadlbl
@@ -396,7 +402,7 @@
             this.refreshbtn.BackgroundImage = global::Modest_Attires.Properties.Resources.refresh;
             this.refreshbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.refreshbtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.refreshbtn.Location = new System.Drawing.Point(595, 6);
+            this.refreshbtn.Location = new System.Drawing.Point(687, 5);
             this.refreshbtn.Name = "refreshbtn";
             this.refreshbtn.Size = new System.Drawing.Size(21, 21);
             this.refreshbtn.TabIndex = 98;
@@ -407,7 +413,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(193, 469);
+            this.label12.Location = new System.Drawing.Point(384, 410);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(52, 13);
             this.label12.TabIndex = 100;
@@ -417,15 +423,15 @@
             // 
             this.shipdttxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.shipdttxt.Enabled = false;
-            this.shipdttxt.Location = new System.Drawing.Point(193, 488);
+            this.shipdttxt.Location = new System.Drawing.Point(384, 429);
             this.shipdttxt.Name = "shipdttxt";
-            this.shipdttxt.Size = new System.Drawing.Size(149, 20);
+            this.shipdttxt.Size = new System.Drawing.Size(129, 20);
             this.shipdttxt.TabIndex = 99;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(358, 469);
+            this.label14.Location = new System.Drawing.Point(525, 410);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(153, 13);
             this.label14.TabIndex = 102;
@@ -434,16 +440,16 @@
             // deldttxt
             // 
             this.deldttxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.deldttxt.Location = new System.Drawing.Point(358, 488);
+            this.deldttxt.Location = new System.Drawing.Point(525, 429);
             this.deldttxt.Name = "deldttxt";
-            this.deldttxt.Size = new System.Drawing.Size(168, 20);
+            this.deldttxt.Size = new System.Drawing.Size(153, 20);
             this.deldttxt.TabIndex = 15;
             this.deldttxt.TextChanged += new System.EventHandler(this.deldttxt_TextChanged);
             // 
             // transitbox
             // 
             this.transitbox.AutoSize = true;
-            this.transitbox.Location = new System.Drawing.Point(61, 552);
+            this.transitbox.Location = new System.Drawing.Point(37, 567);
             this.transitbox.Name = "transitbox";
             this.transitbox.Size = new System.Drawing.Size(44, 17);
             this.transitbox.TabIndex = 103;
@@ -453,7 +459,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(59, 530);
+            this.label15.Location = new System.Drawing.Point(35, 545);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(60, 13);
             this.label15.TabIndex = 104;
@@ -466,7 +472,7 @@
             this.searchtxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.searchtxt.Location = new System.Drawing.Point(12, 157);
             this.searchtxt.Name = "searchtxt";
-            this.searchtxt.Size = new System.Drawing.Size(495, 20);
+            this.searchtxt.Size = new System.Drawing.Size(531, 20);
             this.searchtxt.TabIndex = 105;
             // 
             // refresh
@@ -475,7 +481,7 @@
             this.refresh.Cursor = System.Windows.Forms.Cursors.Hand;
             this.refresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Italic | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.refresh.ForeColor = System.Drawing.Color.Blue;
-            this.refresh.Location = new System.Drawing.Point(447, 179);
+            this.refresh.Location = new System.Drawing.Point(483, 180);
             this.refresh.Name = "refresh";
             this.refresh.Size = new System.Drawing.Size(60, 13);
             this.refresh.TabIndex = 107;
@@ -507,7 +513,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(182, 344);
+            this.label17.Location = new System.Drawing.Point(556, 287);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(89, 13);
             this.label17.TabIndex = 111;
@@ -516,9 +522,9 @@
             // altcontxt
             // 
             this.altcontxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.altcontxt.Location = new System.Drawing.Point(180, 363);
+            this.altcontxt.Location = new System.Drawing.Point(554, 306);
             this.altcontxt.Name = "altcontxt";
-            this.altcontxt.Size = new System.Drawing.Size(107, 20);
+            this.altcontxt.Size = new System.Drawing.Size(124, 20);
             this.altcontxt.TabIndex = 110;
             // 
             // profitlbl
@@ -544,7 +550,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(447, 344);
+            this.label18.Location = new System.Drawing.Point(395, 347);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(65, 13);
             this.label18.TabIndex = 125;
@@ -553,7 +559,7 @@
             // gifttxt
             // 
             this.gifttxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.gifttxt.Location = new System.Drawing.Point(450, 363);
+            this.gifttxt.Location = new System.Drawing.Point(398, 366);
             this.gifttxt.Name = "gifttxt";
             this.gifttxt.Size = new System.Drawing.Size(76, 20);
             this.gifttxt.TabIndex = 126;
@@ -561,7 +567,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(147, 530);
+            this.label19.Location = new System.Drawing.Point(123, 545);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(52, 13);
             this.label19.TabIndex = 128;
@@ -570,7 +576,7 @@
             // giftbox
             // 
             this.giftbox.AutoSize = true;
-            this.giftbox.Location = new System.Drawing.Point(149, 552);
+            this.giftbox.Location = new System.Drawing.Point(125, 567);
             this.giftbox.Name = "giftbox";
             this.giftbox.Size = new System.Drawing.Size(44, 17);
             this.giftbox.TabIndex = 127;
@@ -597,13 +603,70 @@
             this.amlbl.Size = new System.Drawing.Size(0, 13);
             this.amlbl.TabIndex = 129;
             // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(37, 477);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(53, 13);
+            this.label20.TabIndex = 132;
+            this.label20.Text = "Order info";
+            // 
+            // ointxt
+            // 
+            this.ointxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.ointxt.Location = new System.Drawing.Point(37, 496);
+            this.ointxt.Name = "ointxt";
+            this.ointxt.Size = new System.Drawing.Size(468, 20);
+            this.ointxt.TabIndex = 131;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(286, 287);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(32, 13);
+            this.label21.TabIndex = 134;
+            this.label21.Text = "State";
+            // 
+            // statetxt
+            // 
+            this.statetxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.statetxt.Location = new System.Drawing.Point(286, 306);
+            this.statetxt.Name = "statetxt";
+            this.statetxt.Size = new System.Drawing.Size(137, 20);
+            this.statetxt.TabIndex = 133;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(162, 287);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(54, 13);
+            this.label22.TabIndex = 136;
+            this.label22.Text = "Landmark";
+            // 
+            // landmarktxt
+            // 
+            this.landmarktxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.landmarktxt.Location = new System.Drawing.Point(162, 306);
+            this.landmarktxt.Name = "landmarktxt";
+            this.landmarktxt.Size = new System.Drawing.Size(118, 20);
+            this.landmarktxt.TabIndex = 135;
+            // 
             // editorderdetails
             // 
             this.AcceptButton = this.updbtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(628, 610);
+            this.ClientSize = new System.Drawing.Size(720, 636);
+            this.Controls.Add(this.label22);
+            this.Controls.Add(this.landmarktxt);
+            this.Controls.Add(this.label21);
+            this.Controls.Add(this.statetxt);
+            this.Controls.Add(this.label20);
+            this.Controls.Add(this.ointxt);
             this.Controls.Add(this.mrplbl);
             this.Controls.Add(this.amlbl);
             this.Controls.Add(this.label19);
@@ -726,5 +789,11 @@
         private System.Windows.Forms.CheckBox giftbox;
         private System.Windows.Forms.Label mrplbl;
         private System.Windows.Forms.Label amlbl;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox ointxt;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox statetxt;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TextBox landmarktxt;
     }
 }

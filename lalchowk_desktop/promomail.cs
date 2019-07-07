@@ -172,21 +172,21 @@ namespace Modest_Attires
         private void shiplbtn_Click(object sender, EventArgs e)
         {
             subtxt.Text = "Your order has been dispatched!";
-            bodytxt.Text= "Dear " + name + ",\r\n\r\nYour order has been dispatched and will be reaching you soon.\r\nPlease keep your phone in reach.\r\n\r\nFor any other queries, you can also contact us on our WhatsApp/Phone number: 9906523492\r\n\r\nTeam Lalchowk";
+            bodytxt.Text= "Dear " + name + ",\r\n\r\nYour order has been dispatched and will be reaching you soon.\r\nPlease keep your phone in reach.\r\n\r\nFor further assistance, you can reach out to us on our WhatsApp/Phone number: 9906523492\r\n\r\nTeam Lalchowk";
 
         }
 
         private void shippbtn_Click(object sender, EventArgs e)
         {
             subtxt.Text = "Your order has been dispatched!";
-            bodytxt.Text = "Dear " + name + ",\r\n\r\nYour order has been dispatched via SpeedPost and will reach you in few days.\r\nYou can track your order on indiapost.gov.in using tracking number: \r\nPlease keep your phone in reach.\r\n\r\nFor any other queries, you can also contact us on our WhatsApp/Phone number: 9906523492\r\n\r\nTeam Lalchowk";
+            bodytxt.Text = "Dear " + name + ",\r\n\r\nYour order has been dispatched via SpeedPost and will reach you in few days.\r\nYou can track your order on indiapost.gov.in using tracking number: \r\nPlease keep your phone in reach.\r\n\r\nFor further assistance, you can reach out to us on our WhatsApp/Phone number: 9906523492\r\n\r\nTeam Lalchowk";
 
         }
 
         private void breqbtn_Click(object sender, EventArgs e)
         {
             subtxt.Text = "Your request has been processed!";
-           bodytxt.Text= "Dear " + name + ",\r\n\r\nYour requested book ' " + bname + " ' is currently not available.\r\nWe hope to serve you better next time.\r\nFor any other queries, you can also contact us on our WhatsApp/Phone number: 9906523492\r\n\r\nTeam Lalchowk";
+           bodytxt.Text= "Dear " + name + ",\r\n\r\nYour requested book ' " + bname + " ' is currently not available.\r\nWe hope to serve you better next time.\r\nFor further assistance, you can reach out to us on our WhatsApp/Phone number: 9906523492\r\n\r\nTeam Lalchowk";
 
         }
 
