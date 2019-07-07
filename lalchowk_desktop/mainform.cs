@@ -13,7 +13,7 @@ using System.Diagnostics;
 using System.Reflection;
 using Microsoft.VisualBasic;
 
-namespace Veiled_Kashmir_Admin_Panel
+namespace Modest_Attires
 {
 
     public partial class mainform : Form
@@ -1085,7 +1085,7 @@ namespace Veiled_Kashmir_Admin_Panel
             catch (Exception ex)
             {
                 obj.closeConnection();
-                con.Close();
+           //     con.Close();
                 MessageBox.Show( ex.Message, "Error!");
             }
             Cursor = Cursors.Arrow;
@@ -1186,7 +1186,8 @@ namespace Veiled_Kashmir_Admin_Panel
                     ppnl.Visible = false;
 
                     }
-                    catch { con.Close(); obj.closeConnection(); }
+                    catch { //con.Close();
+                    obj.closeConnection(); }
                 //}
                 Cursor = Cursors.Arrow;
             }
@@ -1366,17 +1367,18 @@ namespace Veiled_Kashmir_Admin_Panel
                 obj.closeConnection();
                 
 
-                aconn.Open();
-                cmd = new MySqlCommand("select count(did) from deliveries where status='delivered'", aconn);
-                dr = cmd.ExecuteReader();
-                dr.Read();
-                 billslbl.Text= dr[0].ToString();
-                aconn.Close();
+             //   aconn.Open();
+                //cmd = new MySqlCommand("select count(did) from deliveries where status='delivered'", aconn);
+                //dr = cmd.ExecuteReader();
+                //dr.Read();
+                // billslbl.Text= dr[0].ToString();
+               // aconn.Close();
 
 
 
             }
-            catch { con.Close(); aconn.Close(); }
+            catch { //con.Close(); aconn.Close(); 
+            }
             Cursor = Cursors.Arrow;
             refreshbtn.Enabled = true;
         }

@@ -1,4 +1,4 @@
-﻿namespace Veiled_Kashmir_Admin_Panel
+﻿namespace Modest_Attires
 {
     partial class addpictures
     {
@@ -125,7 +125,7 @@
             this.pic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pic.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pic.Image = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.industrial_safety_1492046_640;
+            this.pic.Image = global::Modest_Attires.Properties.Resources.industrial_safety_1492046_640;
             this.pic.Location = new System.Drawing.Point(355, 519);
             this.pic.Name = "pic";
             this.pic.Size = new System.Drawing.Size(115, 101);
@@ -194,7 +194,7 @@
             // 
             // refresh
             // 
-            this.refresh.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.refresh;
+            this.refresh.BackgroundImage = global::Modest_Attires.Properties.Resources.refresh;
             this.refresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.refresh.Cursor = System.Windows.Forms.Cursors.Hand;
             this.refresh.Location = new System.Drawing.Point(555, 3);

@@ -14,7 +14,7 @@ using System.Net;
 using System.Threading;
 using System.Globalization;
 
-namespace Veiled_Kashmir_Admin_Panel
+namespace Modest_Attires
 {
     public partial class addproducts : Form
     {
@@ -84,30 +84,46 @@ namespace Veiled_Kashmir_Admin_Panel
             dg.lbl.ForeColor = SystemColors.Highlight;
             dg.lbl.Text = "Add Products";
             Cursor = Cursors.Arrow;
-            //try
-            //{
-               
-            //    BackgroundWorker brands = new BackgroundWorker();
-            //    brands.DoWork += (o, a) =>
-            //    {
-            //        dr = obj.Query("Select distinct brand from products where brand!=null");
-            //        while (dr.Read())
-            //        {
-            //            string sname = dr.GetString("brand");
-            //            col.Add(sname);
-            //            MessageBox.Show("here");
-            //        }
-            //        obj.closeConnection();
-            //        a.Result = col;
-            //    };
-            //    brands.RunWorkerCompleted += (o, b) =>
-            //    {
+            try
+            {
 
-            //        brandtxt.AutoCompleteCustomSource = b.Result as AutoCompleteStringCollection;
-            //    };
-            //    brands.RunWorkerAsync();
-            //}
-            //catch(Exception ex) { MessageBox.Show(ex.Message); obj.closeConnection(); }
+                BackgroundWorker variants = new BackgroundWorker();
+                variants.DoWork += (o, a) =>
+                {
+                    dr = obj.Query("select concat(id,': ',name) as name from variantnames where id=1");
+                    DataTable dt = new DataTable();
+                    dt.Columns.Add("name", typeof(String));
+                    dt.Load(dr);
+                    obj.closeConnection();
+
+                    variant1list.DataSource = dt;
+
+                    
+                    obj.closeConnection();
+
+                    dr = obj.Query("select concat(id,': ',name) as name from variantnames where id=2");
+
+                    DataTable dt1 = new DataTable();
+                    dt1.Columns.Add("name", typeof(String));
+                    dt1.Load(dr);
+                    obj.closeConnection();
+
+                    variant2list.DataSource = dt1;
+
+                   
+                    obj.closeConnection();
+
+
+                
+                };
+                variants.RunWorkerCompleted += (o, b) =>
+                {
+                    variant1list.DisplayMember = "name";
+                    variant2list.DisplayMember = "name";
+                };
+                variants.RunWorkerAsync();
+            }
+            catch (Exception ex) { MessageBox.Show("Could not load the variant list, Please reopen the page.","Error"); obj.closeConnection(); }
 
         }
 
@@ -228,8 +244,8 @@ namespace Veiled_Kashmir_Admin_Panel
             nametxt.Text = "";
             desctxt.Text = "";
             brandtxt.Text = "";
-            colourtxt.Text = "";
-            sizetxt.Text = "";
+            //colourtxt.Text = "";
+            //sizetxt.Text = "";
             stocktxt.Text = "";
             dname1.Text = "";
             dname1txt.Text = "";
@@ -810,6 +826,45 @@ namespace Veiled_Kashmir_Admin_Panel
             catch { }
         }
 
+      
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+           
+            string id = variant1list.Text.Split(':')[0];
+           
+            dr = obj.Query("select concat(id,': ',variantvalue) as variantvalue from variantvalues where variantname_id='" + id + "'");
+           
+            DataTable dt = new DataTable();
+            dt.Columns.Add("variantvalue", typeof(String));
+            dt.Load(dr);
+            obj.closeConnection();
+
+            variant1values.DataSource = dt;
+
+            variant1values.DisplayMember = "variantvalue";
+            obj.closeConnection();
+        }
+
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string id = variant2list.Text.Split(':')[0];
+
+           
+            dr = obj.Query("select concat(id,': ',variantvalue) as variantvalue from variantvalues where variantname_id='" + id + "'");
+          
+            DataTable dt = new DataTable();
+            dt.Columns.Add("variantvalue", typeof(String));
+            dt.Load(dr);
+            obj.closeConnection();
+
+            variant2values.DataSource = dt;
+
+            variant2values.DisplayMember = "variantvalue";
+            obj.closeConnection();
+        }
+
 
         //private void catbox_Leave(object sender, EventArgs e)
         //{
@@ -1175,14 +1230,14 @@ namespace Veiled_Kashmir_Admin_Panel
 
                     supplierid = supplierlist.Text.Split(':')[0];
                         string size, dn5, d5, color, bran, desc;
-                        if (sizetxt.Text == "")
-                        {
-                            size = "NULL";
-                        }
-                        else
-                        {
-                            size = "'" + sizetxt.Text + "'";
-                        }
+                        //if (sizetxt.Text == "")
+                        //{
+                        //    size = "NULL";
+                        //}
+                        //else
+                        //{
+                        //    size = "'" + sizetxt.Text + "'";
+                        //}
                         if (dname5txt.Text == "")
                         {
                             dn5 = "NULL";
@@ -1199,14 +1254,14 @@ namespace Veiled_Kashmir_Admin_Panel
                         {
                             d5 = "'" + dname5.Text + "'";
                         }
-                        if (colourtxt.Text == "")
-                        {
-                            color = "NULL";
-                        }
-                        else
-                        {
-                            color = "'" + colourtxt.Text + "'";
-                        }
+                        //if (colourtxt.Text == "")
+                        //{
+                        //    color = "NULL";
+                        //}
+                        //else
+                        //{
+                        //    color = "'" + colourtxt.Text + "'";
+                        //}
                         if (brandname == "")
                         {
                             bran = "NULL";
@@ -1256,9 +1311,22 @@ namespace Veiled_Kashmir_Admin_Panel
                     {
                         try
                         {
-                            cmd = "insert into products (`productid`, `supplierid`, `productname`,`tags`, `groupid`,`categoryid`,`color`, `mrp`, `price`, `dealerprice`, `stock`, `description`, `detailname1`, `detailname2`, `detailname3`, `detailname4`,`detailname5`, `detail1`, `detail2`, `detail3`, `detail4`,`detail5`,`brand`,`size`,`requeststatus`,`timestampp`) " +
-                                "values ('" + pidtxt.Text + "','" + supplierid + "', '" + s + "','" + s + " " + author + " " + brandtxt.Text + " " + tagstxt.Text + "','" + gidtxt.Text + "', '" + catbox.Text + "'," + color + ",'" + mrptxt.Text + "','" + pricetxt.Text + "','" + dealertxt.Text + "','" + stocktxt.Text + "'," + desc + ",'" + dname1txt.Text + "','" + dname2txt.Text + "','" + dname3txt.Text + "','" + dname4txt.Text + "'," + dn5 + ",'" + author + "','" + dname2.Text + "','" + dname3.Text + "','" + dname4.Text + "'," + d5 + "," + bran + ","
-                                + size + ",'Approved',DATE_ADD(CURRENT_TIMESTAMP, INTERVAL 750 MINUTE))";
+                            string v1 = variant1list.Text.Split(':')[0];
+                            string v2 = variant2list.Text.Split(':')[0];
+                            string vv1 = variant1values.Text.Split(':')[0];
+                            string vv2 = variant2values.Text.Split(':')[0];
+
+                            cmd = "insert into products (`productid`, `supplierid`, `productname`,`tags`, `groupid`,`categoryid`, `mrp`, `price`, "+
+                                "`dealerprice`, `stock`, `description`, `detailname1`, `detailname2`, `detailname3`, `detailname4`,`detailname5`,"+
+                                " `detail1`, `detail2`, `detail3`, `detail4`,`detail5`,`brand`,`requeststatus`,`created_at`,`variant1`,`variant1value`,"+
+                                "`variant2`,`variant2value`) " +
+                                "values ('" + pidtxt.Text + "','" + supplierid + "', '" + s + "','" + s + " " + author + " " + brandtxt.Text 
+                                + " " + tagstxt.Text + "','" + gidtxt.Text + "', '" + catbox.Text 
+                                + "','" + mrptxt.Text + "','" + pricetxt.Text + "','" + dealertxt.Text + "','" + stocktxt.Text + "'," + desc 
+                                 + ",'" + dname1txt.Text + "','" + dname2txt.Text + "','" + dname3txt.Text + "','" + dname4txt.Text + "'," + dn5 
+                                 + ",'" + author + "','" + dname2.Text + "','" + dname3.Text + "','" + dname4.Text + "'," + d5 + "," + bran 
+                                 + ",'Approved',DATE_ADD(CURRENT_TIMESTAMP, INTERVAL 750 MINUTE),'" + v1 + "','" 
+                                 + vv1 + "','" + v2 + "','" + vv2 + "')";
                             obj.nonQuery(cmd);
                             obj.closeConnection();
 
@@ -1268,7 +1336,7 @@ namespace Veiled_Kashmir_Admin_Panel
                         catch (Exception ex)
                         {
                             obj.closeConnection();
-                            MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
+                            MessageBox.Show("Something happened, please try again.\n\n" + ex.ToString(), "Error!");
                         }
 
                     }

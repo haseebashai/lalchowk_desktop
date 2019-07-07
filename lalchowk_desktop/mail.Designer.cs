@@ -1,4 +1,4 @@
-﻿namespace Veiled_Kashmir_Admin_Panel
+﻿namespace Modest_Attires
 {
     partial class mail
     {
@@ -87,7 +87,7 @@
             // 
             // closebtn
             // 
-            this.closebtn.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.turn_on;
+            this.closebtn.BackgroundImage = global::Modest_Attires.Properties.Resources.turn_on;
             this.closebtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.closebtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.closebtn.Location = new System.Drawing.Point(591, 12);

@@ -1,4 +1,4 @@
-﻿namespace Veiled_Kashmir_Admin_Panel
+﻿namespace Modest_Attires
 {
     partial class accounts
     {
@@ -1780,7 +1780,7 @@
             // 
             // loadingaccpic
             // 
-            this.loadingaccpic.Image = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.loading;
+            this.loadingaccpic.Image = global::Modest_Attires.Properties.Resources.loading;
             this.loadingaccpic.Location = new System.Drawing.Point(363, 105);
             this.loadingaccpic.Name = "loadingaccpic";
             this.loadingaccpic.Size = new System.Drawing.Size(140, 86);

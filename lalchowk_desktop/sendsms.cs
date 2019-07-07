@@ -13,7 +13,7 @@ using System.IO;
 using MySql.Data.MySqlClient;
 using System.Runtime.InteropServices;
 
-namespace Veiled_Kashmir_Admin_Panel
+namespace Modest_Attires
 {
     public partial class sendsms : Form
     {

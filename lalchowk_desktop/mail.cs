@@ -12,7 +12,7 @@ using System.Net.Mail;
 using System.Collections;
 using MySql.Data.MySqlClient;
 
-namespace Veiled_Kashmir_Admin_Panel
+namespace Modest_Attires
 {
     public partial class mail : Form
     {

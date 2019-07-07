@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Veiled_Kashmir_Admin_Panel.Properties {
+namespace Modest_Attires.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

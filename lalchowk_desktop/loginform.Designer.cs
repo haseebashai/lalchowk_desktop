@@ -1,4 +1,4 @@
-﻿namespace Veiled_Kashmir_Admin_Panel
+﻿namespace Modest_Attires
 {
     partial class loginform
     {
@@ -30,13 +30,12 @@
         {
             this.usernametxt = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.pwdtxt = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.forgotbtn = new MaterialSkin.Controls.MaterialFlatButton();
-            this.loginbtn = new MaterialSkin.Controls.MaterialRaisedButton();
             this.label1 = new System.Windows.Forms.Label();
             this.error = new System.Windows.Forms.Label();
             this.namelbl = new System.Windows.Forms.Label();
             this.pwdlbl = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.loginbtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,34 +74,6 @@
             this.pwdtxt.UseSystemPasswordChar = false;
             this.pwdtxt.Enter += new System.EventHandler(this.pwdtxt_Enter);
             this.pwdtxt.Leave += new System.EventHandler(this.pwdtxt_Leave);
-            // 
-            // forgotbtn
-            // 
-            this.forgotbtn.AutoSize = true;
-            this.forgotbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.forgotbtn.Depth = 0;
-            this.forgotbtn.Location = new System.Drawing.Point(530, 416);
-            this.forgotbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.forgotbtn.MouseState = MaterialSkin.MouseState.HOVER;
-            this.forgotbtn.Name = "forgotbtn";
-            this.forgotbtn.Primary = false;
-            this.forgotbtn.Size = new System.Drawing.Size(148, 36);
-            this.forgotbtn.TabIndex = 5;
-            this.forgotbtn.Text = "FORGOT PASSWORD?";
-            this.forgotbtn.UseVisualStyleBackColor = true;
-            // 
-            // loginbtn
-            // 
-            this.loginbtn.Depth = 0;
-            this.loginbtn.Location = new System.Drawing.Point(703, 423);
-            this.loginbtn.MouseState = MaterialSkin.MouseState.HOVER;
-            this.loginbtn.Name = "loginbtn";
-            this.loginbtn.Primary = true;
-            this.loginbtn.Size = new System.Drawing.Size(75, 23);
-            this.loginbtn.TabIndex = 3;
-            this.loginbtn.Text = "login";
-            this.loginbtn.UseVisualStyleBackColor = true;
-            this.loginbtn.Click += new System.EventHandler(this.loginbtn_Click);
             // 
             // label1
             // 
@@ -149,13 +120,23 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.logoW2;
+            this.pictureBox1.Image = global::Modest_Attires.Properties.Resources.modest_logo;
             this.pictureBox1.Location = new System.Drawing.Point(582, 88);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(137, 102);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 11;
             this.pictureBox1.TabStop = false;
+            // 
+            // loginbtn
+            // 
+            this.loginbtn.Location = new System.Drawing.Point(703, 423);
+            this.loginbtn.Name = "loginbtn";
+            this.loginbtn.Size = new System.Drawing.Size(75, 23);
+            this.loginbtn.TabIndex = 12;
+            this.loginbtn.Text = "Login";
+            this.loginbtn.UseVisualStyleBackColor = true;
+            this.loginbtn.Click += new System.EventHandler(this.loginbtn_Click);
             // 
             // loginform
             // 
@@ -164,13 +145,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1198, 608);
+            this.Controls.Add(this.loginbtn);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pwdlbl);
             this.Controls.Add(this.namelbl);
             this.Controls.Add(this.error);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.loginbtn);
-            this.Controls.Add(this.forgotbtn);
             this.Controls.Add(this.pwdtxt);
             this.Controls.Add(this.usernametxt);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -186,12 +166,11 @@
         #endregion
         private MaterialSkin.Controls.MaterialSingleLineTextField usernametxt;
         private MaterialSkin.Controls.MaterialSingleLineTextField pwdtxt;
-        private MaterialSkin.Controls.MaterialFlatButton forgotbtn;
-        private MaterialSkin.Controls.MaterialRaisedButton loginbtn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label error;
         private System.Windows.Forms.Label namelbl;
         private System.Windows.Forms.Label pwdlbl;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button loginbtn;
     }
 }

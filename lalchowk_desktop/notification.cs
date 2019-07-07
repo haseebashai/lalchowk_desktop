@@ -12,7 +12,7 @@ using System.Net;
 using System.IO;
 using System.Security.Cryptography;
 
-namespace Veiled_Kashmir_Admin_Panel
+namespace Modest_Attires
 {
     public partial class notification : Form
     {

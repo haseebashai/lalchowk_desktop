@@ -1,4 +1,4 @@
-﻿namespace Veiled_Kashmir_Admin_Panel
+﻿namespace Modest_Attires
 {
     partial class cartitems
     {
@@ -379,7 +379,7 @@
             // 
             // refresh
             // 
-            this.refresh.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.refresh;
+            this.refresh.BackgroundImage = global::Modest_Attires.Properties.Resources.refresh;
             this.refresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.refresh.Cursor = System.Windows.Forms.Cursors.Hand;
             this.refresh.Location = new System.Drawing.Point(769, 6);

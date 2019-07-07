@@ -1,4 +1,4 @@
-﻿namespace Veiled_Kashmir_Admin_Panel
+﻿namespace Modest_Attires
 {
     partial class viewproducts
     {
@@ -28,175 +28,128 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.productsdataview = new System.Windows.Forms.DataGridView();
-            this.pic = new System.Windows.Forms.PictureBox();
-            this.updbtn = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.nametxt = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.idtxt = new System.Windows.Forms.TextBox();
-            this.delbtn = new System.Windows.Forms.Button();
             this.ppnl = new System.Windows.Forms.Panel();
-            this.refresh = new System.Windows.Forms.PictureBox();
+            this.variant1list = new System.Windows.Forms.ComboBox();
+            this.addbtn = new System.Windows.Forms.Button();
+            this.variantvaluetxt = new System.Windows.Forms.TextBox();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
-            ((System.ComponentModel.ISupportInitialize)(this.productsdataview)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic)).BeginInit();
+            this.variantdataview = new System.Windows.Forms.DataGridView();
+            this.variantvaluedataview = new System.Windows.Forms.DataGridView();
+            this.upbtn2 = new System.Windows.Forms.Button();
+            this.upbtn1 = new System.Windows.Forms.Button();
             this.ppnl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.refresh)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.variantdataview)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.variantvaluedataview)).BeginInit();
             this.SuspendLayout();
-            // 
-            // productsdataview
-            // 
-            this.productsdataview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.productsdataview.BackgroundColor = System.Drawing.Color.White;
-            this.productsdataview.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.productsdataview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.productsdataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.productsdataview.GridColor = System.Drawing.SystemColors.Control;
-            this.productsdataview.Location = new System.Drawing.Point(1, 35);
-            this.productsdataview.Name = "productsdataview";
-            this.productsdataview.Size = new System.Drawing.Size(755, 485);
-            this.productsdataview.TabIndex = 61;
-            this.productsdataview.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.productsdataview_CellClick);
-            this.productsdataview.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.productsdataview_CellClick);
-            // 
-            // pic
-            // 
-            this.pic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pic.Location = new System.Drawing.Point(762, 114);
-            this.pic.Name = "pic";
-            this.pic.Size = new System.Drawing.Size(172, 239);
-            this.pic.TabIndex = 63;
-            this.pic.TabStop = false;
-            // 
-            // updbtn
-            // 
-            this.updbtn.Location = new System.Drawing.Point(762, 359);
-            this.updbtn.Name = "updbtn";
-            this.updbtn.Size = new System.Drawing.Size(157, 118);
-            this.updbtn.TabIndex = 64;
-            this.updbtn.Text = "Update";
-            this.updbtn.UseVisualStyleBackColor = true;
-            this.updbtn.Click += new System.EventHandler(this.updbtn_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(271, 16);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(114, 13);
-            this.label3.TabIndex = 68;
-            this.label3.Text = "Filter by Product Name";
-            // 
-            // nametxt
-            // 
-            this.nametxt.Location = new System.Drawing.Point(389, 9);
-            this.nametxt.Name = "nametxt";
-            this.nametxt.Size = new System.Drawing.Size(187, 20);
-            this.nametxt.TabIndex = 67;
-            this.nametxt.TextChanged += new System.EventHandler(this.nametxt_TextChanged);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(55, 16);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 13);
-            this.label2.TabIndex = 66;
-            this.label2.Text = "Filter by ID";
-            // 
-            // idtxt
-            // 
-            this.idtxt.Location = new System.Drawing.Point(118, 9);
-            this.idtxt.Name = "idtxt";
-            this.idtxt.Size = new System.Drawing.Size(104, 20);
-            this.idtxt.TabIndex = 65;
-            this.idtxt.TextChanged += new System.EventHandler(this.idtxt_TextChanged);
-            // 
-            // delbtn
-            // 
-            this.delbtn.Location = new System.Drawing.Point(702, 526);
-            this.delbtn.Name = "delbtn";
-            this.delbtn.Size = new System.Drawing.Size(54, 23);
-            this.delbtn.TabIndex = 92;
-            this.delbtn.Text = "Delete";
-            this.delbtn.UseVisualStyleBackColor = true;
-            this.delbtn.Click += new System.EventHandler(this.delbtn_Click);
             // 
             // ppnl
             // 
-            this.ppnl.Controls.Add(this.refresh);
-            this.ppnl.Controls.Add(this.label2);
-            this.ppnl.Controls.Add(this.delbtn);
-            this.ppnl.Controls.Add(this.productsdataview);
-            this.ppnl.Controls.Add(this.label3);
-            this.ppnl.Controls.Add(this.pic);
-            this.ppnl.Controls.Add(this.nametxt);
-            this.ppnl.Controls.Add(this.updbtn);
-            this.ppnl.Controls.Add(this.idtxt);
+            this.ppnl.Controls.Add(this.upbtn1);
+            this.ppnl.Controls.Add(this.upbtn2);
+            this.ppnl.Controls.Add(this.variantvaluedataview);
+            this.ppnl.Controls.Add(this.variantdataview);
+            this.ppnl.Controls.Add(this.variant1list);
+            this.ppnl.Controls.Add(this.addbtn);
+            this.ppnl.Controls.Add(this.variantvaluetxt);
             this.ppnl.Location = new System.Drawing.Point(3, 2);
             this.ppnl.Name = "ppnl";
-            this.ppnl.Size = new System.Drawing.Size(1042, 610);
+            this.ppnl.Size = new System.Drawing.Size(941, 610);
             this.ppnl.TabIndex = 93;
-            this.ppnl.Visible = false;
             // 
-            // refresh
+            // variant1list
             // 
-            this.refresh.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.refresh;
-            this.refresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.refresh.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.refresh.Location = new System.Drawing.Point(735, 8);
-            this.refresh.Name = "refresh";
-            this.refresh.Size = new System.Drawing.Size(21, 21);
-            this.refresh.TabIndex = 93;
-            this.refresh.TabStop = false;
-            this.refresh.Click += new System.EventHandler(this.refresh_Click);
+            this.variant1list.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.variant1list.FormattingEnabled = true;
+            this.variant1list.Location = new System.Drawing.Point(237, 473);
+            this.variant1list.Name = "variant1list";
+            this.variant1list.Size = new System.Drawing.Size(102, 21);
+            this.variant1list.TabIndex = 125;
             // 
-            // bgworker
+            // addbtn
             // 
-            this.bgworker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker_DoWork);
-            this.bgworker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker_RunWorkerCompleted);
+            this.addbtn.Location = new System.Drawing.Point(407, 518);
+            this.addbtn.Name = "addbtn";
+            this.addbtn.Size = new System.Drawing.Size(116, 36);
+            this.addbtn.TabIndex = 123;
+            this.addbtn.Text = "Add Option";
+            this.addbtn.UseVisualStyleBackColor = true;
+            this.addbtn.Click += new System.EventHandler(this.addbtn_Click);
+            // 
+            // variantvaluetxt
+            // 
+            this.variantvaluetxt.Location = new System.Drawing.Point(389, 473);
+            this.variantvaluetxt.Name = "variantvaluetxt";
+            this.variantvaluetxt.Size = new System.Drawing.Size(134, 20);
+            this.variantvaluetxt.TabIndex = 116;
+            // 
+            // variantdataview
+            // 
+            this.variantdataview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.variantdataview.BackgroundColor = System.Drawing.Color.White;
+            this.variantdataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.variantdataview.Location = new System.Drawing.Point(9, 95);
+            this.variantdataview.Name = "variantdataview";
+            this.variantdataview.Size = new System.Drawing.Size(435, 231);
+            this.variantdataview.TabIndex = 126;
+            // 
+            // variantvaluedataview
+            // 
+            this.variantvaluedataview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.variantvaluedataview.BackgroundColor = System.Drawing.Color.White;
+            this.variantvaluedataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.variantvaluedataview.Location = new System.Drawing.Point(485, 96);
+            this.variantvaluedataview.Name = "variantvaluedataview";
+            this.variantvaluedataview.Size = new System.Drawing.Size(435, 231);
+            this.variantvaluedataview.TabIndex = 127;
+            // 
+            // upbtn2
+            // 
+            this.upbtn2.Location = new System.Drawing.Point(804, 333);
+            this.upbtn2.Name = "upbtn2";
+            this.upbtn2.Size = new System.Drawing.Size(116, 36);
+            this.upbtn2.TabIndex = 128;
+            this.upbtn2.Text = "Update";
+            this.upbtn2.UseVisualStyleBackColor = true;
+            this.upbtn2.Click += new System.EventHandler(this.upbtn2_Click);
+            // 
+            // upbtn1
+            // 
+            this.upbtn1.Location = new System.Drawing.Point(328, 332);
+            this.upbtn1.Name = "upbtn1";
+            this.upbtn1.Size = new System.Drawing.Size(116, 36);
+            this.upbtn1.TabIndex = 129;
+            this.upbtn1.Text = "Update";
+            this.upbtn1.UseVisualStyleBackColor = true;
+            this.upbtn1.Click += new System.EventHandler(this.upbtn1_Click);
             // 
             // viewproducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1162, 616);
+            this.ClientSize = new System.Drawing.Size(950, 616);
             this.ControlBox = false;
             this.Controls.Add(this.ppnl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "viewproducts";
             this.Text = "viewproducts";
-            ((System.ComponentModel.ISupportInitialize)(this.productsdataview)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic)).EndInit();
             this.ppnl.ResumeLayout(false);
             this.ppnl.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.refresh)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.variantdataview)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.variantvaluedataview)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView productsdataview;
-        private System.Windows.Forms.PictureBox pic;
-        private System.Windows.Forms.Button updbtn;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox nametxt;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox idtxt;
-        private System.Windows.Forms.Button delbtn;
         private System.Windows.Forms.Panel ppnl;
         private System.ComponentModel.BackgroundWorker bgworker;
-        private System.Windows.Forms.PictureBox refresh;
+        private System.Windows.Forms.Button addbtn;
+        private System.Windows.Forms.TextBox variantvaluetxt;
+        private System.Windows.Forms.ComboBox variant1list;
+        private System.Windows.Forms.DataGridView variantvaluedataview;
+        private System.Windows.Forms.DataGridView variantdataview;
+        private System.Windows.Forms.Button upbtn1;
+        private System.Windows.Forms.Button upbtn2;
     }
 }

@@ -11,7 +11,7 @@ using System.IO;
 using System.Net;
 using MySql.Data.MySqlClient;
 
-namespace Veiled_Kashmir_Admin_Panel
+namespace Modest_Attires
 {
 
     

@@ -13,7 +13,7 @@ using System.Net;
 using System.IO;
 
 
-namespace Veiled_Kashmir_Admin_Panel
+namespace Modest_Attires
 {
     public partial class addpictures : Form
     {

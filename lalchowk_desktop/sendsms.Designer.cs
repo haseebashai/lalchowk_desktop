@@ -1,4 +1,4 @@
-﻿namespace Veiled_Kashmir_Admin_Panel
+﻿namespace Modest_Attires
 {
     partial class sendsms
     {
@@ -193,7 +193,7 @@
             // 
             // arrow
             // 
-            this.arrow.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.arrow;
+            this.arrow.BackgroundImage = global::Modest_Attires.Properties.Resources.arrow;
             this.arrow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.arrow.Cursor = System.Windows.Forms.Cursors.Hand;
             this.arrow.Location = new System.Drawing.Point(254, 145);

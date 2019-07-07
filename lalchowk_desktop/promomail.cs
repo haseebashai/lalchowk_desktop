@@ -13,7 +13,7 @@ using System.Net;
 using System.IO;
 using System.Threading;
 
-namespace Veiled_Kashmir_Admin_Panel
+namespace Modest_Attires
 {
     public partial class promomail : Form
     {

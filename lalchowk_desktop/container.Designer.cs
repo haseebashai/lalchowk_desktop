@@ -1,4 +1,4 @@
-﻿namespace Veiled_Kashmir_Admin_Panel
+﻿namespace Modest_Attires
 {
     partial class container
     {
@@ -94,7 +94,7 @@
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "container";
-            this.Text = "Lalchowk Admin Panel";
+            this.Text = "Modest Attires";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.container_FormClosing);
             this.Load += new System.EventHandler(this.Homepage_Load);

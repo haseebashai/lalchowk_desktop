@@ -1,4 +1,4 @@
-﻿namespace Veiled_Kashmir_Admin_Panel
+﻿namespace Modest_Attires
 {
     partial class addcategories
     {
@@ -517,7 +517,7 @@
             this.spic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.spic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.spic.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.spic.Image = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.industrial_safety_1492046_640;
+            this.spic.Image = global::Modest_Attires.Properties.Resources.industrial_safety_1492046_640;
             this.spic.Location = new System.Drawing.Point(373, 33);
             this.spic.Name = "spic";
             this.spic.Size = new System.Drawing.Size(86, 74);
@@ -593,7 +593,7 @@
             // 
             // loadingaccpic
             // 
-            this.loadingaccpic.Image = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.loading;
+            this.loadingaccpic.Image = global::Modest_Attires.Properties.Resources.loading;
             this.loadingaccpic.Location = new System.Drawing.Point(186, 99);
             this.loadingaccpic.Name = "loadingaccpic";
             this.loadingaccpic.Size = new System.Drawing.Size(140, 86);
@@ -638,7 +638,7 @@
             // 
             // refresh
             // 
-            this.refresh.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.refresh;
+            this.refresh.BackgroundImage = global::Modest_Attires.Properties.Resources.refresh;
             this.refresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.refresh.Cursor = System.Windows.Forms.Cursors.Hand;
             this.refresh.Location = new System.Drawing.Point(1132, 0);

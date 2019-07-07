@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
-namespace Veiled_Kashmir_Admin_Panel
+namespace Modest_Attires
 {
     static class Program
     {
@@ -40,8 +40,8 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             //  conn = new MySqlConnection("SERVER=localhost;DATABASE=lalchowklocal;USER=root;PASSWORD=password1;");
 
-            conn = new MySqlConnection("SERVER=182.50.133.78;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah;Convert Zero Datetime=True");
-
+           // conn = new MySqlConnection("SERVER=182.50.133.78;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah;Convert Zero Datetime=True");
+            conn = new MySqlConnection("SERVER=103.53.43.82;DATABASE=modes43i_db;USER=modes43i;PASSWORD=Modest__123;Convert Zero Datetime=True");
         }
 
 
@@ -51,7 +51,7 @@ namespace Veiled_Kashmir_Admin_Panel
             try
             {
                 conn.Open();
-
+             
                 return true;
             }
             catch (MySqlException)
@@ -115,6 +115,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
             return (null);
         }
+       
 
         public int Count(String command)
         {

@@ -1,4 +1,4 @@
-﻿namespace Veiled_Kashmir_Admin_Panel
+﻿namespace Modest_Attires
 {
     partial class terms
     {
@@ -436,7 +436,7 @@
             // 
             // loadingpic
             // 
-            this.loadingpic.Image = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.loading;
+            this.loadingpic.Image = global::Modest_Attires.Properties.Resources.loading;
             this.loadingpic.Location = new System.Drawing.Point(96, 111);
             this.loadingpic.Name = "loadingpic";
             this.loadingpic.Size = new System.Drawing.Size(140, 86);

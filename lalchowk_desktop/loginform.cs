@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
-namespace Veiled_Kashmir_Admin_Panel
+namespace Modest_Attires
 {
     public partial class loginform : Form
     {
@@ -120,6 +120,6 @@ namespace Veiled_Kashmir_Admin_Panel
            */
         }
 
-       
+      
     }   
 }

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Veiled_Kashmir_Admin_Panel.Properties {
+namespace Modest_Attires.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Veiled_Kashmir_Admin_Panel.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Veiled_Kashmir_Admin_Panel.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Modest_Attires.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -65,7 +65,7 @@ namespace Veiled_Kashmir_Admin_Panel.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap _9895 {
             get {
-                object obj = ResourceManager.GetObject("9895", resourceCulture);
+                object obj = ResourceManager.GetObject("_9895", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -105,7 +105,7 @@ namespace Veiled_Kashmir_Admin_Panel.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap industrial_safety_1492046_640 {
             get {
-                object obj = ResourceManager.GetObject("industrial-safety-1492046_640", resourceCulture);
+                object obj = ResourceManager.GetObject("industrial_safety_1492046_640", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -233,6 +233,16 @@ namespace Veiled_Kashmir_Admin_Panel.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap modest_logo {
+            get {
+                object obj = ResourceManager.GetObject("modest_logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap refresh {
             get {
                 object obj = ResourceManager.GetObject("refresh", resourceCulture);
@@ -265,7 +275,7 @@ namespace Veiled_Kashmir_Admin_Panel.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap turn_on {
             get {
-                object obj = ResourceManager.GetObject("turn-on", resourceCulture);
+                object obj = ResourceManager.GetObject("turn_on", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -275,7 +285,7 @@ namespace Veiled_Kashmir_Admin_Panel.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap upload__1_ {
             get {
-                object obj = ResourceManager.GetObject("upload (1)", resourceCulture);
+                object obj = ResourceManager.GetObject("upload__1_", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -285,7 +295,7 @@ namespace Veiled_Kashmir_Admin_Panel.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap user_20 {
             get {
-                object obj = ResourceManager.GetObject("user-20", resourceCulture);
+                object obj = ResourceManager.GetObject("user_20", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -295,7 +305,7 @@ namespace Veiled_Kashmir_Admin_Panel.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap video_chat {
             get {
-                object obj = ResourceManager.GetObject("video-chat", resourceCulture);
+                object obj = ResourceManager.GetObject("video_chat", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

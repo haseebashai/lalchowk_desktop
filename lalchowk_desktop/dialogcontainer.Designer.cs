@@ -1,4 +1,4 @@
-﻿namespace Veiled_Kashmir_Admin_Panel
+﻿namespace Modest_Attires
 {
     partial class dialogcontainer
     {
@@ -94,7 +94,7 @@
             // 
             // loadingimage
             // 
-            this.loadingimage.Image = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.loading;
+            this.loadingimage.Image = global::Modest_Attires.Properties.Resources.loading;
             this.loadingimage.Location = new System.Drawing.Point(78, 3);
             this.loadingimage.Name = "loadingimage";
             this.loadingimage.Size = new System.Drawing.Size(40, 29);

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
-namespace Veiled_Kashmir_Admin_Panel
+namespace Modest_Attires
 {
     public partial class container : Form
     {
@@ -26,61 +26,61 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void Homepage_Load(object sender, EventArgs e)
         {
-            loginform lg = new loginform(this,this);
+            loginform lg = new loginform(this, this);
             lg.TopLevel = false;
             mainpnl.Controls.Clear();
             mainpnl.Controls.Add(lg);
             lg.Show();
 
-            try
-            {
-                mainform mf = new mainform(this);
-                BackgroundWorker search = new BackgroundWorker();
-                search.WorkerReportsProgress = true;
-                search.DoWork += (o, a) =>
-                {
+            //try
+            //{
+            //    mainform mf = new mainform(this);
+            //    BackgroundWorker search = new BackgroundWorker();
+            //    search.WorkerReportsProgress = true;
+            //    search.DoWork += (o, a) =>
+            //    {
 
 
-                    AutoCompleteStringCollection col1 = new AutoCompleteStringCollection();
+            //        AutoCompleteStringCollection col1 = new AutoCompleteStringCollection();
 
-                    cmd = new MySqlCommand("Select concat_ws(' ',productname,'(',detail1,detail2,')','@',mrp,'#',productid) as tag from products where productid>9999", con);
-                    try
-                    {
-                        
-                        con.Open();
-                        cmd.CommandTimeout = 60;
-                        int i = 0;
-                        MySqlDataReader data = cmd.ExecuteReader();
-                        try
-                        {
-                            while (data.Read())
-                            {
-                                string sname = data.GetString("tag");
-                                col1.Add(sname);
-                                i++;
-                                search.ReportProgress(i / 200);
-                            }
-                        }
-                        catch (Exception ex) { MessageBox.Show("Network too slow. Product data download interrupted.\r\nUse old mode in Add Order page to add a new order","Error!"); }
-                        con.Close();
-                        a.Result = col1;
-                    }catch(Exception ex) { MessageBox.Show(ex.Message); }
+            //        cmd = new MySqlCommand("Select concat_ws(' ',productname,'(',detail1,detail2,')','@',mrp,'#',productid) as tag from products where productid>9999", con);
+            //        try
+            //        {
 
-                };
-                search.ProgressChanged += (o, c) => 
-                {
-                    
-             //    plistlbl.Text = "Products list loading..." + c.ProgressPercentage + "%";
+            //            con.Open();
+            //            cmd.CommandTimeout = 60;
+            //            int i = 0;
+            //            MySqlDataReader data = cmd.ExecuteReader();
+            //            try
+            //            {
+            //                while (data.Read())
+            //                {
+            //                    string sname = data.GetString("tag");
+            //                    col1.Add(sname);
+            //                    i++;
+            //                    search.ReportProgress(i / 200);
+            //                }
+            //            }
+            //            catch (Exception ex) { MessageBox.Show("Network too slow. Product data download interrupted.\r\nUse old mode in Add Order page to add a new order","Error!"); }
+            //            con.Close();
+            //            a.Result = col1;
+            //        }catch(Exception ex) { MessageBox.Show(ex.Message); }
 
-                };
-                search.RunWorkerCompleted += (o, b) =>
-                {
-                    userinfo.col = b.Result as AutoCompleteStringCollection;
-                 //   mf.plistlbl.Visible = false;
-                };
-                search.RunWorkerAsync();
-            }
-            catch (Exception ex) { con.Close(); }// MessageBox.Show(ex.Message);
+            //    };
+            //    search.ProgressChanged += (o, c) => 
+            //    {
+
+            // //    plistlbl.Text = "Products list loading..." + c.ProgressPercentage + "%";
+
+            //    };
+            //    search.RunWorkerCompleted += (o, b) =>
+            //    {
+            //        userinfo.col = b.Result as AutoCompleteStringCollection;
+            //     //   mf.plistlbl.Visible = false;
+            //    };
+            //    search.RunWorkerAsync();
+            //}
+            //catch (Exception ex) { con.Close(); }// MessageBox.Show(ex.Message);
 
 
         }

@@ -1,4 +1,4 @@
-﻿namespace Veiled_Kashmir_Admin_Panel
+﻿namespace Modest_Attires
 {
     partial class editorderdetails
     {
@@ -393,7 +393,7 @@
             // 
             // refreshbtn
             // 
-            this.refreshbtn.BackgroundImage = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.refresh;
+            this.refreshbtn.BackgroundImage = global::Modest_Attires.Properties.Resources.refresh;
             this.refreshbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.refreshbtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.refreshbtn.Location = new System.Drawing.Point(595, 6);

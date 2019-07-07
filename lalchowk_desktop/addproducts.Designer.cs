@@ -1,4 +1,4 @@
-﻿namespace Veiled_Kashmir_Admin_Panel
+﻿namespace Modest_Attires
 {
     partial class addproducts
     {
@@ -44,8 +44,6 @@
             this.nametxt = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.colourtxt = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.stocktxt = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -76,14 +74,10 @@
             this.dname5 = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.dname5txt = new System.Windows.Forms.TextBox();
-            this.sizel = new System.Windows.Forms.Label();
-            this.sizetxt = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
             this.brandtxt = new System.Windows.Forms.TextBox();
             this.picdialog = new System.Windows.Forms.OpenFileDialog();
             this.label23 = new System.Windows.Forms.Label();
-            this.addbtn = new MaterialSkin.Controls.MaterialFlatButton();
-            this.cancelbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.label25 = new System.Windows.Forms.Label();
             this.gidtxt = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -117,6 +111,10 @@
             this.inclbl = new System.Windows.Forms.Label();
             this.inclbl2 = new System.Windows.Forms.Label();
             this.addppnl = new System.Windows.Forms.Panel();
+            this.variant2list = new System.Windows.Forms.ComboBox();
+            this.variant2values = new System.Windows.Forms.ComboBox();
+            this.variant1list = new System.Windows.Forms.ComboBox();
+            this.variant1values = new System.Windows.Forms.ComboBox();
             this.catname = new System.Windows.Forms.Label();
             this.odisbtn = new System.Windows.Forms.Button();
             this.odistxt = new System.Windows.Forms.TextBox();
@@ -133,6 +131,9 @@
             this.bgworker = new System.ComponentModel.BackgroundWorker();
             this.pictimer = new System.Windows.Forms.Timer(this.components);
             this.bguploadpic = new System.ComponentModel.BackgroundWorker();
+            this.label7 = new System.Windows.Forms.Label();
+            this.addbtn = new System.Windows.Forms.Button();
+            this.cancelbtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pic1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pic3)).BeginInit();
@@ -277,33 +278,16 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(16, 327);
+            this.label6.Location = new System.Drawing.Point(196, 329);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(79, 16);
             this.label6.TabIndex = 14;
             this.label6.Text = "Category ID";
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(19, 222);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(37, 13);
-            this.label7.TabIndex = 17;
-            this.label7.Text = "Colour";
-            // 
-            // colourtxt
-            // 
-            this.colourtxt.Enabled = false;
-            this.colourtxt.Location = new System.Drawing.Point(19, 238);
-            this.colourtxt.Name = "colourtxt";
-            this.colourtxt.Size = new System.Drawing.Size(134, 20);
-            this.colourtxt.TabIndex = 5;
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(19, 272);
+            this.label8.Location = new System.Drawing.Point(19, 332);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(35, 13);
             this.label8.TabIndex = 19;
@@ -312,7 +296,7 @@
             // stocktxt
             // 
             this.stocktxt.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.stocktxt.Location = new System.Drawing.Point(19, 288);
+            this.stocktxt.Location = new System.Drawing.Point(19, 348);
             this.stocktxt.Name = "stocktxt";
             this.stocktxt.Size = new System.Drawing.Size(73, 20);
             this.stocktxt.TabIndex = 5;
@@ -550,23 +534,6 @@
             this.dname5txt.Name = "dname5txt";
             this.dname5txt.Size = new System.Drawing.Size(134, 20);
             this.dname5txt.TabIndex = 15;
-            // 
-            // sizel
-            // 
-            this.sizel.AutoSize = true;
-            this.sizel.Location = new System.Drawing.Point(126, 272);
-            this.sizel.Name = "sizel";
-            this.sizel.Size = new System.Drawing.Size(27, 13);
-            this.sizel.TabIndex = 51;
-            this.sizel.Text = "Size";
-            // 
-            // sizetxt
-            // 
-            this.sizetxt.Enabled = false;
-            this.sizetxt.Location = new System.Drawing.Point(126, 288);
-            this.sizetxt.Name = "sizetxt";
-            this.sizetxt.Size = new System.Drawing.Size(68, 20);
-            this.sizetxt.TabIndex = 66;
             // 
             // label24
             // 
@@ -1029,38 +996,6 @@
             this.label23.TabIndex = 53;
             this.label23.Text = "Upload Pictures ";
             // 
-            // addbtn
-            // 
-            this.addbtn.AutoSize = true;
-            this.addbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.addbtn.Depth = 0;
-            this.addbtn.Location = new System.Drawing.Point(467, 608);
-            this.addbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.addbtn.MouseState = MaterialSkin.MouseState.HOVER;
-            this.addbtn.Name = "addbtn";
-            this.addbtn.Primary = false;
-            this.addbtn.Size = new System.Drawing.Size(104, 36);
-            this.addbtn.TabIndex = 24;
-            this.addbtn.Text = "Add Product";
-            this.addbtn.UseVisualStyleBackColor = true;
-            this.addbtn.Click += new System.EventHandler(this.addbtn_Click);
-            // 
-            // cancelbtn
-            // 
-            this.cancelbtn.AutoSize = true;
-            this.cancelbtn.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.cancelbtn.Depth = 0;
-            this.cancelbtn.Location = new System.Drawing.Point(627, 608);
-            this.cancelbtn.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.cancelbtn.MouseState = MaterialSkin.MouseState.HOVER;
-            this.cancelbtn.Name = "cancelbtn";
-            this.cancelbtn.Primary = false;
-            this.cancelbtn.Size = new System.Drawing.Size(64, 36);
-            this.cancelbtn.TabIndex = 55;
-            this.cancelbtn.Text = "Cancel";
-            this.cancelbtn.UseVisualStyleBackColor = true;
-            this.cancelbtn.Click += new System.EventHandler(this.cancelbtn_Click);
-            // 
             // label25
             // 
             this.label25.AutoSize = true;
@@ -1088,9 +1023,9 @@
             // 
             // fillbtn
             // 
-            this.fillbtn.Location = new System.Drawing.Point(126, 346);
+            this.fillbtn.Location = new System.Drawing.Point(281, 348);
             this.fillbtn.Name = "fillbtn";
-            this.fillbtn.Size = new System.Drawing.Size(124, 20);
+            this.fillbtn.Size = new System.Drawing.Size(63, 20);
             this.fillbtn.TabIndex = 59;
             this.fillbtn.Text = "Fill Details";
             this.fillbtn.UseVisualStyleBackColor = true;
@@ -1129,7 +1064,7 @@
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(463, 386);
+            this.label28.Location = new System.Drawing.Point(466, 402);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(31, 13);
             this.label28.TabIndex = 65;
@@ -1137,14 +1072,15 @@
             // 
             // tagstxt
             // 
-            this.tagstxt.Location = new System.Drawing.Point(466, 405);
+            this.tagstxt.Location = new System.Drawing.Point(503, 386);
+            this.tagstxt.Multiline = true;
             this.tagstxt.Name = "tagstxt";
-            this.tagstxt.Size = new System.Drawing.Size(212, 20);
+            this.tagstxt.Size = new System.Drawing.Size(243, 44);
             this.tagstxt.TabIndex = 18;
             // 
             // catbox
             // 
-            this.catbox.Location = new System.Drawing.Point(19, 346);
+            this.catbox.Location = new System.Drawing.Point(199, 348);
             this.catbox.Name = "catbox";
             this.catbox.Size = new System.Drawing.Size(76, 20);
             this.catbox.TabIndex = 6;
@@ -1170,7 +1106,7 @@
             this.pic2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pic2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pic2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pic2.Image = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.industrial_safety_1492046_640;
+            this.pic2.Image = global::Modest_Attires.Properties.Resources.industrial_safety_1492046_640;
             this.pic2.Location = new System.Drawing.Point(852, 356);
             this.pic2.Name = "pic2";
             this.pic2.Size = new System.Drawing.Size(95, 82);
@@ -1191,7 +1127,7 @@
             this.pic3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pic3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pic3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pic3.Image = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.industrial_safety_1492046_640;
+            this.pic3.Image = global::Modest_Attires.Properties.Resources.industrial_safety_1492046_640;
             this.pic3.Location = new System.Drawing.Point(978, 356);
             this.pic3.Name = "pic3";
             this.pic3.Size = new System.Drawing.Size(95, 82);
@@ -1205,7 +1141,7 @@
             this.pic5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pic5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pic5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pic5.Image = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.industrial_safety_1492046_640;
+            this.pic5.Image = global::Modest_Attires.Properties.Resources.industrial_safety_1492046_640;
             this.pic5.Location = new System.Drawing.Point(978, 486);
             this.pic5.Name = "pic5";
             this.pic5.Size = new System.Drawing.Size(95, 82);
@@ -1233,7 +1169,7 @@
             this.pic4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pic4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pic4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pic4.Image = global::Veiled_Kashmir_Admin_Panel.Properties.Resources.industrial_safety_1492046_640;
+            this.pic4.Image = global::Modest_Attires.Properties.Resources.industrial_safety_1492046_640;
             this.pic4.Location = new System.Drawing.Point(852, 486);
             this.pic4.Name = "pic4";
             this.pic4.Size = new System.Drawing.Size(95, 82);
@@ -1400,6 +1336,13 @@
             // 
             // addppnl
             // 
+            this.addppnl.Controls.Add(this.cancelbtn);
+            this.addppnl.Controls.Add(this.addbtn);
+            this.addppnl.Controls.Add(this.label7);
+            this.addppnl.Controls.Add(this.variant2list);
+            this.addppnl.Controls.Add(this.variant2values);
+            this.addppnl.Controls.Add(this.variant1list);
+            this.addppnl.Controls.Add(this.variant1values);
             this.addppnl.Controls.Add(this.catname);
             this.addppnl.Controls.Add(this.odisbtn);
             this.addppnl.Controls.Add(this.odistxt);
@@ -1445,9 +1388,7 @@
             this.addppnl.Controls.Add(this.pic3);
             this.addppnl.Controls.Add(this.label6);
             this.addppnl.Controls.Add(this.p3txt);
-            this.addppnl.Controls.Add(this.colourtxt);
             this.addppnl.Controls.Add(this.p2txt);
-            this.addppnl.Controls.Add(this.label7);
             this.addppnl.Controls.Add(this.pic2);
             this.addppnl.Controls.Add(this.stocktxt);
             this.addppnl.Controls.Add(this.catbox);
@@ -1470,17 +1411,13 @@
             this.addppnl.Controls.Add(this.label12);
             this.addppnl.Controls.Add(this.gidtxt);
             this.addppnl.Controls.Add(this.dname1txt);
-            this.addppnl.Controls.Add(this.cancelbtn);
             this.addppnl.Controls.Add(this.label13);
-            this.addppnl.Controls.Add(this.addbtn);
             this.addppnl.Controls.Add(this.dname1);
             this.addppnl.Controls.Add(this.label23);
             this.addppnl.Controls.Add(this.label14);
             this.addppnl.Controls.Add(this.pic1);
             this.addppnl.Controls.Add(this.dname2txt);
-            this.addppnl.Controls.Add(this.sizel);
             this.addppnl.Controls.Add(this.label16);
-            this.addppnl.Controls.Add(this.sizetxt);
             this.addppnl.Controls.Add(this.dname2);
             this.addppnl.Controls.Add(this.label24);
             this.addppnl.Controls.Add(this.label15);
@@ -1504,11 +1441,49 @@
             this.addppnl.Size = new System.Drawing.Size(1150, 668);
             this.addppnl.TabIndex = 88;
             // 
+            // variant2list
+            // 
+            this.variant2list.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.variant2list.FormattingEnabled = true;
+            this.variant2list.Location = new System.Drawing.Point(19, 290);
+            this.variant2list.Name = "variant2list";
+            this.variant2list.Size = new System.Drawing.Size(102, 21);
+            this.variant2list.TabIndex = 110;
+            this.variant2list.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
+            // 
+            // variant2values
+            // 
+            this.variant2values.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.variant2values.FormattingEnabled = true;
+            this.variant2values.Location = new System.Drawing.Point(140, 290);
+            this.variant2values.Name = "variant2values";
+            this.variant2values.Size = new System.Drawing.Size(102, 21);
+            this.variant2values.TabIndex = 111;
+            // 
+            // variant1list
+            // 
+            this.variant1list.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.variant1list.FormattingEnabled = true;
+            this.variant1list.Location = new System.Drawing.Point(19, 244);
+            this.variant1list.Name = "variant1list";
+            this.variant1list.Size = new System.Drawing.Size(102, 21);
+            this.variant1list.TabIndex = 107;
+            this.variant1list.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // variant1values
+            // 
+            this.variant1values.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.variant1values.FormattingEnabled = true;
+            this.variant1values.Location = new System.Drawing.Point(140, 244);
+            this.variant1values.Name = "variant1values";
+            this.variant1values.Size = new System.Drawing.Size(102, 21);
+            this.variant1values.TabIndex = 108;
+            // 
             // catname
             // 
             this.catname.AutoSize = true;
             this.catname.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.catname.Location = new System.Drawing.Point(257, 350);
+            this.catname.Location = new System.Drawing.Point(350, 355);
             this.catname.Name = "catname";
             this.catname.Size = new System.Drawing.Size(0, 13);
             this.catname.TabIndex = 106;
@@ -1582,9 +1557,9 @@
             // 
             this.getpidbtn.Location = new System.Drawing.Point(304, 222);
             this.getpidbtn.Name = "getpidbtn";
-            this.getpidbtn.Size = new System.Drawing.Size(134, 36);
+            this.getpidbtn.Size = new System.Drawing.Size(134, 24);
             this.getpidbtn.TabIndex = 98;
-            this.getpidbtn.Text = "Get last productid (available)";
+            this.getpidbtn.Text = "Get productid";
             this.getpidbtn.UseVisualStyleBackColor = true;
             this.getpidbtn.Click += new System.EventHandler(this.getpidbtn_Click);
             // 
@@ -1646,6 +1621,35 @@
             this.bguploadpic.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bguploadpic_ProgressChanged);
             this.bguploadpic.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bguploadpic_RunWorkerCompleted);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(19, 222);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(109, 13);
+            this.label7.TabIndex = 112;
+            this.label7.Text = "Select variant options";
+            // 
+            // addbtn
+            // 
+            this.addbtn.Location = new System.Drawing.Point(484, 607);
+            this.addbtn.Name = "addbtn";
+            this.addbtn.Size = new System.Drawing.Size(116, 36);
+            this.addbtn.TabIndex = 113;
+            this.addbtn.Text = "Add Product";
+            this.addbtn.UseVisualStyleBackColor = true;
+            this.addbtn.Click += new System.EventHandler(this.addbtn_Click);
+            // 
+            // cancelbtn
+            // 
+            this.cancelbtn.Location = new System.Drawing.Point(609, 607);
+            this.cancelbtn.Name = "cancelbtn";
+            this.cancelbtn.Size = new System.Drawing.Size(116, 36);
+            this.cancelbtn.TabIndex = 114;
+            this.cancelbtn.Text = "Clear";
+            this.cancelbtn.UseVisualStyleBackColor = true;
+            this.cancelbtn.Click += new System.EventHandler(this.cancelbtn_Click);
+            // 
             // addproducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1684,8 +1688,6 @@
         private System.Windows.Forms.TextBox nametxt;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox colourtxt;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox stocktxt;
         private System.Windows.Forms.Label label9;
@@ -1716,15 +1718,11 @@
         private System.Windows.Forms.TextBox dname5;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TextBox dname5txt;
-        private System.Windows.Forms.Label sizel;
-        private System.Windows.Forms.TextBox sizetxt;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.TextBox brandtxt;
         private System.Windows.Forms.OpenFileDialog picdialog;
         private System.Windows.Forms.PictureBox pic1;
         private System.Windows.Forms.Label label23;
-        private MaterialSkin.Controls.MaterialFlatButton addbtn;
-        private MaterialSkin.Controls.MaterialFlatButton cancelbtn;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.TextBox gidtxt;
         private System.Windows.Forms.Panel panel1;
@@ -1773,5 +1771,12 @@
         private System.Windows.Forms.TextBox odistxt;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label catname;
+        private System.Windows.Forms.ComboBox variant2list;
+        private System.Windows.Forms.ComboBox variant2values;
+        private System.Windows.Forms.ComboBox variant1list;
+        private System.Windows.Forms.ComboBox variant1values;
+        private System.Windows.Forms.Button cancelbtn;
+        private System.Windows.Forms.Button addbtn;
+        private System.Windows.Forms.Label label7;
     }
 }

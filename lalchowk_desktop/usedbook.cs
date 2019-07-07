@@ -12,7 +12,7 @@ using System.Text.RegularExpressions;
 using System.IO;
 using System.Net;
 
-namespace Veiled_Kashmir_Admin_Panel
+namespace Modest_Attires
 {
     public partial class usedbook : Form
     {

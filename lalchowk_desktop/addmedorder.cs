@@ -11,7 +11,7 @@ using MySql.Data.MySqlClient;
 using System.Security.Cryptography;
 using System.Globalization;
 
-namespace Veiled_Kashmir_Admin_Panel
+namespace Modest_Attires
 {
     public partial class addmedorder : Form
     {
