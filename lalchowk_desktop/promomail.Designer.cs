@@ -55,6 +55,7 @@
             this.bgworker1 = new System.ComponentModel.BackgroundWorker();
             this.epnl = new System.Windows.Forms.Panel();
             this.opnl = new System.Windows.Forms.Panel();
+            this.breqbtn = new System.Windows.Forms.Button();
             this.shippbtn = new System.Windows.Forms.Button();
             this.shiplbtn = new System.Windows.Forms.Button();
             this.feedbtn = new System.Windows.Forms.Button();
@@ -62,7 +63,7 @@
             this.checkattach = new System.Windows.Forms.CheckBox();
             this.attachtxt = new System.Windows.Forms.TextBox();
             this.attachdialog = new System.Windows.Forms.OpenFileDialog();
-            this.breqbtn = new System.Windows.Forms.Button();
+            this.medbtn = new System.Windows.Forms.Button();
             this.emaillistpnl.SuspendLayout();
             this.epnl.SuspendLayout();
             this.opnl.SuspendLayout();
@@ -342,15 +343,30 @@
             // 
             // opnl
             // 
+            this.opnl.Controls.Add(this.medbtn);
             this.opnl.Controls.Add(this.breqbtn);
             this.opnl.Controls.Add(this.shippbtn);
             this.opnl.Controls.Add(this.shiplbtn);
             this.opnl.Controls.Add(this.feedbtn);
-            this.opnl.Location = new System.Drawing.Point(558, 159);
+            this.opnl.Location = new System.Drawing.Point(507, 159);
             this.opnl.Name = "opnl";
-            this.opnl.Size = new System.Drawing.Size(383, 35);
+            this.opnl.Size = new System.Drawing.Size(434, 35);
             this.opnl.TabIndex = 91;
             this.opnl.Visible = false;
+            // 
+            // breqbtn
+            // 
+            this.breqbtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.breqbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.breqbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.breqbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.breqbtn.Location = new System.Drawing.Point(3, 6);
+            this.breqbtn.Name = "breqbtn";
+            this.breqbtn.Size = new System.Drawing.Size(88, 25);
+            this.breqbtn.TabIndex = 93;
+            this.breqbtn.Text = "Book Request";
+            this.breqbtn.UseVisualStyleBackColor = true;
+            this.breqbtn.Click += new System.EventHandler(this.breqbtn_Click);
             // 
             // shippbtn
             // 
@@ -358,9 +374,9 @@
             this.shippbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.shippbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.shippbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shippbtn.Location = new System.Drawing.Point(198, 6);
+            this.shippbtn.Location = new System.Drawing.Point(182, 6);
             this.shippbtn.Name = "shippbtn";
-            this.shippbtn.Size = new System.Drawing.Size(93, 25);
+            this.shippbtn.Size = new System.Drawing.Size(88, 25);
             this.shippbtn.TabIndex = 92;
             this.shippbtn.Text = "Shipped Postal";
             this.shippbtn.UseVisualStyleBackColor = true;
@@ -372,9 +388,9 @@
             this.shiplbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.shiplbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.shiplbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.shiplbtn.Location = new System.Drawing.Point(102, 6);
+            this.shiplbtn.Location = new System.Drawing.Point(94, 6);
             this.shiplbtn.Name = "shiplbtn";
-            this.shiplbtn.Size = new System.Drawing.Size(90, 25);
+            this.shiplbtn.Size = new System.Drawing.Size(85, 25);
             this.shiplbtn.TabIndex = 91;
             this.shiplbtn.Text = "Shipped Local";
             this.shiplbtn.UseVisualStyleBackColor = true;
@@ -386,9 +402,9 @@
             this.feedbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
             this.feedbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.feedbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.feedbtn.Location = new System.Drawing.Point(297, 6);
+            this.feedbtn.Location = new System.Drawing.Point(273, 6);
             this.feedbtn.Name = "feedbtn";
-            this.feedbtn.Size = new System.Drawing.Size(82, 25);
+            this.feedbtn.Size = new System.Drawing.Size(77, 25);
             this.feedbtn.TabIndex = 90;
             this.feedbtn.Text = "Feedback";
             this.feedbtn.UseVisualStyleBackColor = true;
@@ -398,7 +414,7 @@
             // 
             this.checkhtml.AutoSize = true;
             this.checkhtml.ForeColor = System.Drawing.Color.Black;
-            this.checkhtml.Location = new System.Drawing.Point(407, 173);
+            this.checkhtml.Location = new System.Drawing.Point(390, 173);
             this.checkhtml.Name = "checkhtml";
             this.checkhtml.Size = new System.Drawing.Size(78, 17);
             this.checkhtml.TabIndex = 3;
@@ -433,19 +449,19 @@
             // 
             this.attachdialog.Filter = "All Files|*.*|PDF|*.pdf|Excel|*.xls";
             // 
-            // breqbtn
+            // medbtn
             // 
-            this.breqbtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.breqbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
-            this.breqbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.breqbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.breqbtn.Location = new System.Drawing.Point(3, 6);
-            this.breqbtn.Name = "breqbtn";
-            this.breqbtn.Size = new System.Drawing.Size(93, 25);
-            this.breqbtn.TabIndex = 93;
-            this.breqbtn.Text = "Book Request";
-            this.breqbtn.UseVisualStyleBackColor = true;
-            this.breqbtn.Click += new System.EventHandler(this.breqbtn_Click);
+            this.medbtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.medbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.medbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.medbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.medbtn.Location = new System.Drawing.Point(352, 6);
+            this.medbtn.Name = "medbtn";
+            this.medbtn.Size = new System.Drawing.Size(77, 25);
+            this.medbtn.TabIndex = 94;
+            this.medbtn.Text = "Medicine";
+            this.medbtn.UseVisualStyleBackColor = true;
+            this.medbtn.Click += new System.EventHandler(this.medbtn_Click);
             // 
             // promomail
             // 
@@ -503,5 +519,6 @@
         private System.Windows.Forms.Button breqbtn;
         public System.Windows.Forms.TextBox bodytxt;
         public System.Windows.Forms.TextBox subtxt;
+        private System.Windows.Forms.Button medbtn;
     }
 }

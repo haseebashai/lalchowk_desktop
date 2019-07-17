@@ -183,6 +183,14 @@ namespace Veiled_Kashmir_Admin_Panel
 
         }
 
+        private void medbtn_Click(object sender, EventArgs e)
+        {
+            subtxt.Text = "This is regarding your medicine request on Lalchowk";
+            bodytxt.Text = "Dear " + name + ",\r\n\r\nThis is regarding your medicine request on Lalchowk.in\r\nIn order to process the order, we need to have a valid prescription from the doctor or a medicine name atleast. You have included neither of the two requirements, thus your request stands cancelled.\r\nIf you want to request again, please make sure you either upload a valid prescription or include medicine name(s)(prescription may be needed as well) in order for us to process the request.\r\n\r\nFor further assistance, you can reach out to us at our Phone/WhatsApp number: 9906523492\r\n\r\nTeam Lalchowk";
+
+
+        }
+
         private void breqbtn_Click(object sender, EventArgs e)
         {
             subtxt.Text = "Your request has been processed!";
