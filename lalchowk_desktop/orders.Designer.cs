@@ -54,6 +54,7 @@
             this.emailtxt = new System.Windows.Forms.TextBox();
             this.orderpnl = new System.Windows.Forms.Panel();
             this.dpnl = new System.Windows.Forms.Panel();
+            this.gmsgbtn = new System.Windows.Forms.Button();
             this.emailbtn = new System.Windows.Forms.Button();
             this.shipbtn = new System.Windows.Forms.Button();
             this.datelbl = new System.Windows.Forms.Label();
@@ -81,7 +82,6 @@
             this.loadinglbl = new System.Windows.Forms.Label();
             this.formlbl = new System.Windows.Forms.Label();
             this.bgworker = new System.ComponentModel.BackgroundWorker();
-            this.gmsgbtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.refresh)).BeginInit();
             this.orderpnl.SuspendLayout();
@@ -396,6 +396,19 @@
             this.dpnl.TabIndex = 26;
             this.dpnl.Visible = false;
             // 
+            // gmsgbtn
+            // 
+            this.gmsgbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.gmsgbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.gmsgbtn.Location = new System.Drawing.Point(987, 89);
+            this.gmsgbtn.Name = "gmsgbtn";
+            this.gmsgbtn.Size = new System.Drawing.Size(109, 42);
+            this.gmsgbtn.TabIndex = 37;
+            this.gmsgbtn.Text = "Check Gift Message";
+            this.gmsgbtn.UseVisualStyleBackColor = true;
+            this.gmsgbtn.Visible = false;
+            this.gmsgbtn.Click += new System.EventHandler(this.gmsgbtn_Click);
+            // 
             // emailbtn
             // 
             this.emailbtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
@@ -515,7 +528,7 @@
             this.cnfbtn.Name = "cnfbtn";
             this.cnfbtn.Size = new System.Drawing.Size(152, 35);
             this.cnfbtn.TabIndex = 15;
-            this.cnfbtn.Text = "Make Reciept";
+            this.cnfbtn.Text = "Print Reciept";
             this.cnfbtn.UseVisualStyleBackColor = true;
             this.cnfbtn.Click += new System.EventHandler(this.cnfbtn_Click);
             // 
@@ -629,6 +642,7 @@
             // 
             // orderdetailview
             // 
+            this.orderdetailview.AllowUserToAddRows = false;
             this.orderdetailview.BackgroundColor = System.Drawing.Color.White;
             this.orderdetailview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.orderdetailview.Location = new System.Drawing.Point(3, 241);
@@ -684,19 +698,6 @@
             // 
             this.bgworker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgworker_DoWork);
             this.bgworker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgworker_RunWorkerCompleted);
-            // 
-            // gmsgbtn
-            // 
-            this.gmsgbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
-            this.gmsgbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.gmsgbtn.Location = new System.Drawing.Point(987, 89);
-            this.gmsgbtn.Name = "gmsgbtn";
-            this.gmsgbtn.Size = new System.Drawing.Size(109, 42);
-            this.gmsgbtn.TabIndex = 37;
-            this.gmsgbtn.Text = "Check Gift Message";
-            this.gmsgbtn.UseVisualStyleBackColor = true;
-            this.gmsgbtn.Visible = false;
-            this.gmsgbtn.Click += new System.EventHandler(this.gmsgbtn_Click);
             // 
             // orders
             // 

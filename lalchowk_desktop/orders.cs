@@ -836,36 +836,59 @@ namespace Veiled_Kashmir_Admin_Panel
         }
 
         private void cnfbtn_Click(object sender, EventArgs e)
-        {try { 
-            DialogResult dr = MessageBox.Show("Open the bill format file and print the bill?\n", "Confirm", MessageBoxButtons.YesNo);
-            if (dr == DialogResult.Yes)
+        {
+            try
             {
-                
-               
 
-                OpenFileDialog bill = new OpenFileDialog();
-                bill.Filter = "All Files (*.*)|*.*";
-                bill.FilterIndex = 1;
 
-                if (bill.ShowDialog() == DialogResult.OK)
+                List<string> pname = new List<string>();
+                List<int> pid = new List<int>();
+                List<int> pquan = new List<int>();
+                List<int> punit = new List<int>();
+                List<int> pdisc = new List<int>();
+                List<int> ptotal = new List<int>();
+
+                foreach (DataGridViewRow row in orderdetailview.Rows)
                 {
-                    filename = bill.FileName;
+
+                    pname.Add(row.Cells["productname"].Value.ToString());
+                    pid.Add(Convert.ToInt32(row.Cells["productid"].Value.ToString()));
+                    pquan.Add(Convert.ToInt32(row.Cells["quantity"].Value.ToString()));
+                    punit.Add(Convert.ToInt32(row.Cells["mrp"].Value.ToString()));
+                    pdisc.Add(Convert.ToInt32(row.Cells["discount"].Value.ToString()));
+                    ptotal.Add(Convert.ToInt32(row.Cells["price"].Value.ToString()));
+
                 }
-                Process.Start(filename);
 
-                //  receipt rc = new receipt(orderid);
-                // rc.ShowDialog();
+                    //DialogResult dr = MessageBox.Show("Open the bill format file and print the bill?\n", "Confirm", MessageBoxButtons.YesNo);
+                    //if (dr == DialogResult.Yes)
+                    //{
 
-            }
 
-            
-            readorders();
-                ordergridview.DataSource = bsource;
-            }
+
+                    //    OpenFileDialog bill = new OpenFileDialog();
+                    //    bill.Filter = "All Files (*.*)|*.*";
+                    //    bill.FilterIndex = 1;
+
+                    //    if (bill.ShowDialog() == DialogResult.OK)
+                    //    {
+                    //        filename = bill.FileName;
+                    //    }
+                    //    Process.Start(filename);
+
+                     receipt rc = new receipt(name,add1,datelbl.Text, pid, pname,  pquan, punit,pdisc, ptotal, sumtotal, orderid, shipping);
+                     rc.ShowDialog();
+
+                    //}
+
+
+                    //readorders();
+                    //    ordergridview.DataSource = bsource;
+                }
             catch (Exception ex)
             {
 
-                MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
+                MessageBox.Show( ex.Message, "Error!");
             }
 
 
@@ -888,7 +911,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
 
             int sumtotal, orderid=0;
-        string orderidcount, contactlbl,name,encmail,giftfrom,giftto,giftmsg;
+        string orderidcount, contactlbl,name,encmail,giftfrom,giftto,giftmsg,add1;
         private void ordergridview_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -910,6 +933,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     encmail = row.Cells["email"].Value.ToString();
                     shipping = row.Cells["shipping"].Value.ToString();
                     name = row.Cells["name"].Value.ToString();
+                    add1 = row.Cells["address1"].Value.ToString();
                     addresstxt.Text = row.Cells["name"].Value.ToString()+"\r\n"+ row.Cells["address1"].Value.ToString() +" "+ row.Cells["address2"].Value.ToString()+ " " + row.Cells["landmark"].Value.ToString() +
                      "\r\n" + row.Cells["city"].Value.ToString()+", "+ row.Cells["pincode"].Value.ToString()+"\r\n"+ row.Cells["contact"].Value.ToString()+", "+ row.Cells["alternate_contact"].Value.ToString();
                     contactlbl = row.Cells["contact"].Value.ToString();
