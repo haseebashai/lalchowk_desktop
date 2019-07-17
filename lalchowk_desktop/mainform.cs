@@ -19,6 +19,7 @@ namespace Veiled_Kashmir_Admin_Panel
     public partial class mainform : Form
     {
 
+
         DBConnect obj = new DBConnect();
         MySqlConnection con = new MySqlConnection("SERVER=182.50.133.78;DATABASE=lalchowk;USER=lalchowk;PASSWORD=Lalchowk@123uzmah;Convert Zero Datetime=True");
         MySqlConnection aconn = new MySqlConnection("SERVER=182.50.133.78;DATABASE=lalchowk_ac;USER=lalchowkac;PASSWORD=Lalchowk@123uzmah;Convert Zero Datetime=True");
