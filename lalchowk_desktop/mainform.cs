@@ -1310,8 +1310,8 @@ namespace Veiled_Kashmir_Admin_Panel
                             {
 
                                 amount = int.Parse(row.Cells["amount"].Value.ToString()) + int.Parse(row.Cells["shipping"].Value.ToString())+ int.Parse(row.Cells["giftcharges"].Value.ToString());
-                                addresses.Add("ORD" + row.Cells["orderid"].Value.ToString() + "\r\n" + row.Cells["name"].Value.ToString() + "\r\n" + row.Cells["address1"].Value.ToString() + " " + row.Cells["address2"].Value.ToString() + ", "+ row.Cells["landmark"].Value.ToString() + "\r\n" + row.Cells["city"].Value.ToString() +
-                                   "\r\n" + row.Cells["contact"].Value.ToString() + ", " + row.Cells["alternate_contact"].Value.ToString() + "\r\n>> Please pay ₹ " + amount +"\r\nor mPay/Paytm the amount to 9796777058");
+                                addresses.Add("ORD" + row.Cells["orderid"].Value.ToString() + "\r\n" + row.Cells["name"].Value.ToString() + "\r\n" + row.Cells["address1"].Value.ToString() + " " + row.Cells["address2"].Value.ToString() + ", "+ row.Cells["landmark"].Value.ToString() + "\r\n"
+                                + row.Cells["contact"].Value.ToString() + ", " + row.Cells["alternate_contact"].Value.ToString() + "\r\n>> Please pay ₹ " + amount +"\r\nor mPay/Paytm the amount to 9796777058");
                                 add2 = true;
                             }
 

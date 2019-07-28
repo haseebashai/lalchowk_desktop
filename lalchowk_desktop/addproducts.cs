@@ -810,6 +810,18 @@ namespace Veiled_Kashmir_Admin_Panel
             catch { }
         }
 
+        private void nametxt_TextChanged(object sender, EventArgs e)
+        {
+            StringBuilder name = new StringBuilder(nametxt.Text);
+            name.Replace(@"\", @"\\").Replace("'", "\\'");
+
+            pictxt.Text = name + ".jpg";
+            p2txt.Text = name + "-2.jpg";
+            p3txt.Text = name + "-3.jpg";
+            p4txt.Text = name + "-4.jpg";
+            p5txt.Text = name + "-5.jpg";
+        }
+
 
         //private void catbox_Leave(object sender, EventArgs e)
         //{
@@ -838,11 +850,7 @@ namespace Veiled_Kashmir_Admin_Panel
         private void pidtxt_TextChanged(object sender, EventArgs e)
         {
             gidtxt.Text = pidtxt.Text;
-            pictxt.Text = pidtxt.Text + ".jpg";
-            p2txt.Text= pidtxt.Text + "-2.jpg";
-            p3txt.Text= pidtxt.Text + "-3.jpg";
-            p4txt.Text = pidtxt.Text + "-4.jpg";
-            p5txt.Text = pidtxt.Text + "-5.jpg";
+           
         }
 
         private void pic4_Click(object sender, EventArgs e)
@@ -1172,6 +1180,9 @@ namespace Veiled_Kashmir_Admin_Panel
                     StringBuilder author = new StringBuilder(dname1.Text);
                     author.Replace(@"\", @"\\");
                     author.Replace("'", "\\'");
+                    StringBuilder tags = new StringBuilder(tagstxt.Text);
+                    tags.Replace(@"\", @"\\");
+                    tags.Replace("'", "\\'");
 
                     supplierid = supplierlist.Text.Split(':')[0];
                         string size, dn5, d5, color, bran, desc;
@@ -1257,7 +1268,7 @@ namespace Veiled_Kashmir_Admin_Panel
                         try
                         {
                             cmd = "insert into products (`productid`, `supplierid`, `productname`,`tags`, `groupid`,`categoryid`,`color`, `mrp`, `price`, `dealerprice`, `stock`, `description`, `detailname1`, `detailname2`, `detailname3`, `detailname4`,`detailname5`, `detail1`, `detail2`, `detail3`, `detail4`,`detail5`,`brand`,`size`,`requeststatus`,`timestampp`) " +
-                                "values ('" + pidtxt.Text + "','" + supplierid + "', '" + s + "','" + s + " " + author + " " + brandtxt.Text + " " + tagstxt.Text + "','" + gidtxt.Text + "', '" + catbox.Text + "'," + color + ",'" + mrptxt.Text + "','" + pricetxt.Text + "','" + dealertxt.Text + "','" + stocktxt.Text + "'," + desc + ",'" + dname1txt.Text + "','" + dname2txt.Text + "','" + dname3txt.Text + "','" + dname4txt.Text + "'," + dn5 + ",'" + author + "','" + dname2.Text + "','" + dname3.Text + "','" + dname4.Text + "'," + d5 + "," + bran + ","
+                                "values ('" + pidtxt.Text + "','" + supplierid + "', '" + s + "','" + s + " " + author + " " + bran + " " + tags + " "+dname3.Text+" "+dname4.Text+" "+dname5.Text+"','" + gidtxt.Text + "', '" + catbox.Text + "'," + color + ",'" + mrptxt.Text + "','" + pricetxt.Text + "','" + dealertxt.Text + "','" + stocktxt.Text + "'," + desc + ",'" + dname1txt.Text + "','" + dname2txt.Text + "','" + dname3txt.Text + "','" + dname4txt.Text + "'," + dn5 + ",'" + author + "','" + dname2.Text + "','" + dname3.Text + "','" + dname4.Text + "'," + d5 + "," + bran + ","
                                 + size + ",'Approved',DATE_ADD(CURRENT_TIMESTAMP, INTERVAL 750 MINUTE))";
                             obj.nonQuery(cmd);
                             obj.closeConnection();

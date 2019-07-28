@@ -106,7 +106,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
                         Text = pname1[i],
                         Multiline = false,
-                        Size = new Size(244, 20),
+                        Size = new Size(259, 20),
                         Font = new Font(Font.FontFamily, 10, FontStyle.Regular),
                         BorderStyle = BorderStyle.None,
                         BackColor = Color.White,

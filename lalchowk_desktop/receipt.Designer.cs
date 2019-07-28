@@ -348,14 +348,14 @@
             this.cname.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.cname.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.cname.ForeColor = System.Drawing.Color.Transparent;
-            this.cname.Location = new System.Drawing.Point(118, 248);
+            this.cname.Location = new System.Drawing.Point(107, 248);
             this.cname.Name = "cname";
             this.cname.RowCount = 4;
             this.cname.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.cname.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.cname.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.cname.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.cname.Size = new System.Drawing.Size(245, 0);
+            this.cname.Size = new System.Drawing.Size(260, 0);
             this.cname.TabIndex = 123;
             // 
             // textBox3

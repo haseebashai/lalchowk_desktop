@@ -261,13 +261,14 @@
             this.nametxt.Name = "nametxt";
             this.nametxt.Size = new System.Drawing.Size(223, 20);
             this.nametxt.TabIndex = 1;
+            this.nametxt.TextChanged += new System.EventHandler(this.nametxt_TextChanged);
             this.nametxt.Leave += new System.EventHandler(this.nametxt_Leave);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(19, 130);
+            this.label5.Location = new System.Drawing.Point(19, 128);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(94, 16);
             this.label5.TabIndex = 13;
@@ -291,6 +292,7 @@
             this.label7.Size = new System.Drawing.Size(37, 13);
             this.label7.TabIndex = 17;
             this.label7.Text = "Colour";
+            this.label7.Visible = false;
             // 
             // colourtxt
             // 
@@ -299,6 +301,7 @@
             this.colourtxt.Name = "colourtxt";
             this.colourtxt.Size = new System.Drawing.Size(134, 20);
             this.colourtxt.TabIndex = 5;
+            this.colourtxt.Visible = false;
             // 
             // label8
             // 
@@ -559,6 +562,7 @@
             this.sizel.Size = new System.Drawing.Size(27, 13);
             this.sizel.TabIndex = 51;
             this.sizel.Text = "Size";
+            this.sizel.Visible = false;
             // 
             // sizetxt
             // 
@@ -567,6 +571,7 @@
             this.sizetxt.Name = "sizetxt";
             this.sizetxt.Size = new System.Drawing.Size(68, 20);
             this.sizetxt.TabIndex = 66;
+            this.sizetxt.Visible = false;
             // 
             // label24
             // 
@@ -1139,7 +1144,7 @@
             // 
             this.tagstxt.Location = new System.Drawing.Point(466, 405);
             this.tagstxt.Name = "tagstxt";
-            this.tagstxt.Size = new System.Drawing.Size(212, 20);
+            this.tagstxt.Size = new System.Drawing.Size(280, 20);
             this.tagstxt.TabIndex = 18;
             // 
             // catbox
