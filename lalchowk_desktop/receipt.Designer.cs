@@ -85,6 +85,7 @@
             this.cancelbtn = new MaterialSkin.Controls.MaterialFlatButton();
             this.ppdialog = new System.Windows.Forms.PrintPreviewDialog();
             this.printdoc = new System.Drawing.Printing.PrintDocument();
+            this.bankdtxt = new System.Windows.Forms.TextBox();
             this.receiptpnl.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -138,6 +139,7 @@
             // 
             // receiptpnl
             // 
+            this.receiptpnl.Controls.Add(this.bankdtxt);
             this.receiptpnl.Controls.Add(this.payabletxt);
             this.receiptpnl.Controls.Add(this.misctxt);
             this.receiptpnl.Controls.Add(this.shippingtxt);
@@ -818,6 +820,18 @@
             // 
             this.printdoc.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printdoc_PrintPage);
             // 
+            // bankdtxt
+            // 
+            this.bankdtxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.bankdtxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bankdtxt.Location = new System.Drawing.Point(7, 563);
+            this.bankdtxt.Multiline = true;
+            this.bankdtxt.Name = "bankdtxt";
+            this.bankdtxt.Size = new System.Drawing.Size(349, 73);
+            this.bankdtxt.TabIndex = 133;
+            this.bankdtxt.Text = "Bank details:\r\nJammu & Kashmir Bank\r\nA/C No.: 0777010100003803\r\nIFSC: JAKA0SSISGR" +
+    "";
+            // 
             // receipt
             // 
             this.AcceptButton = this.printbtn;
@@ -903,5 +917,6 @@
         private System.Windows.Forms.TextBox shippingtxt;
         private System.Windows.Forms.TextBox disctxt;
         private System.Windows.Forms.TextBox ordidtxt;
+        private System.Windows.Forms.TextBox bankdtxt;
     }
 }

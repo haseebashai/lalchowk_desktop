@@ -94,7 +94,7 @@
         "Entry"
         {
         "MsmKey" = "8:_AB968CCACCDDEE04CCF6186E12B4C077"
-        "OwnerKey" = "8:_880C4F8AEBF47A02C59A643E90E5B54E"
+        "OwnerKey" = "8:_F0733652B9BFF76FC2B9914842F78064"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -106,7 +106,7 @@
         "Entry"
         {
         "MsmKey" = "8:_AB968CCACCDDEE04CCF6186E12B4C077"
-        "OwnerKey" = "8:_F0733652B9BFF76FC2B9914842F78064"
+        "OwnerKey" = "8:_880C4F8AEBF47A02C59A643E90E5B54E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -130,55 +130,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_1F23393763B826FAADFB66C5E472429B"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_8586E9D72FDD6E2C26CB3B1CCA3CE94E"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_3D8118221D42B19634D956046935A474"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E8AE9DC011785F412B323F31500D032D"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_38C1F067AE04282617E2908D4F5DACEA"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_5D2FF2CC385B05DBFD527B072D79A8B5"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_AB968CCACCDDEE04CCF6186E12B4C077"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_028D807BB7F5648424C6EA5855E88A31"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_880C4F8AEBF47A02C59A643E90E5B54E"
+        "OwnerKey" = "8:_F0733652B9BFF76FC2B9914842F78064"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -190,7 +142,55 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_F0733652B9BFF76FC2B9914842F78064"
+        "OwnerKey" = "8:_880C4F8AEBF47A02C59A643E90E5B54E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_028D807BB7F5648424C6EA5855E88A31"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_AB968CCACCDDEE04CCF6186E12B4C077"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_5D2FF2CC385B05DBFD527B072D79A8B5"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_38C1F067AE04282617E2908D4F5DACEA"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_E8AE9DC011785F412B323F31500D032D"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_3D8118221D42B19634D956046935A474"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_8586E9D72FDD6E2C26CB3B1CCA3CE94E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_1F23393763B826FAADFB66C5E472429B"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -661,15 +661,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Lalchowk Admin Panel"
-        "ProductCode" = "8:{15F6A267-6B25-442D-8355-0E4407C0C828}"
-        "PackageCode" = "8:{C0FBC31E-BF08-45B4-ACF2-487E13D556F0}"
+        "ProductCode" = "8:{FA5BC048-463B-4DDF-9770-7961B21AF6FA}"
+        "PackageCode" = "8:{086A72D4-2F1C-4035-8943-02990E55190A}"
         "UpgradeCode" = "8:{B8A7C424-E711-4824-A69A-7F9AEDACE445}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.5"
+        "ProductVersion" = "8:1.6"
         "Manufacturer" = "8:Lifeclicks"
         "ARPHELPTELEPHONE" = "8:9906523492"
         "ARPHELPLINK" = "8:www.lalchowk.in"
