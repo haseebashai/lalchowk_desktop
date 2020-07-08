@@ -42,7 +42,7 @@ namespace Veiled_Kashmir_Admin_Panel
         //    }
         //}
 
-        int xpage=15, ypage = 24;
+        int xpage=15, ypage = 23;
         void printdoc_PrintPage(object sender, PrintPageEventArgs e)
         {
             e.Graphics.DrawImage(bmp, xpage, ypage);
@@ -135,7 +135,7 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             TextBox t1 = new TextBox()
             {
-                Text = "From:\r\nAsif\r\nLalchowk LLP\r\nHotel Bombay Gujrat\r\nLalchowk, 190001\r\n9906523492",
+                Text = "From:\r\nHaseeb\r\nLalchowk LLP\r\nHotel Bombay Gujrat\r\nLalchowk, 190001\r\n9906523492",
                 Multiline = true,
                 Size = new Size(int.Parse(xtxt.Text), int.Parse(ytxt.Text)),
                 Font = new Font(Font.FontFamily, 14, FontStyle.Regular),

@@ -1241,7 +1241,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
                             amount = int.Parse(row.Cells["amount"].Value.ToString()) + int.Parse(row.Cells["shipping"].Value.ToString());
                             addresses.Add("ORD" + row.Cells["orderid"].Value.ToString() + "\r\n" + row.Cells["name"].Value.ToString() + "\r\n" + row.Cells["address1"].Value.ToString() + " " + row.Cells["address2"].Value.ToString() +
-                               "\r\n" + row.Cells["contact"].Value.ToString() + "\r\n>> Please pay ₹" + amount+"\r\nor mPay/Paytm the amount to 9796777058");
+                               "\r\n" + row.Cells["contact"].Value.ToString() + "\r\n>> Please pay ₹" + amount+"\r\nor mPay the amount to 9906523492");
                             add = true;
                         }
 
@@ -1293,8 +1293,8 @@ namespace Veiled_Kashmir_Admin_Panel
                         {
                             if (row.Cells["paymentconfirmed"].Value.ToString() == "True"  && row.Cells["city"].Value.ToString()!="Srinagar")
                             {
-                                addresses.Add(row.Cells["name"].Value.ToString() + "\r\n" + row.Cells["address1"].Value.ToString() + " " + row.Cells["address2"].Value.ToString() +
-                               ", " + row.Cells["landmark"].Value.ToString() +"\r\n" + row.Cells["city"].Value.ToString() +", " + row.Cells["state"].Value.ToString() + "\r\nPin: " + row.Cells["pincode"].Value.ToString() + "\r\nContact: " + row.Cells["contact"].Value.ToString()+", " + row.Cells["alternate_contact"].Value.ToString());
+                                addresses.Add("To:"+"\r\n" + row.Cells["name"].Value.ToString() + "\r\n" + row.Cells["address1"].Value.ToString() + " " + row.Cells["address2"].Value.ToString() +
+                               ", Near " + row.Cells["landmark"].Value.ToString() +"\r\n" + row.Cells["city"].Value.ToString() +", " + row.Cells["state"].Value.ToString() + "\r\nPin: " + row.Cells["pincode"].Value.ToString() + "\r\nContact: " + row.Cells["contact"].Value.ToString()+", " + row.Cells["alternate_contact"].Value.ToString());
                                 add2 = true;
                             }
                             else if(row.Cells["paymentconfirmed"].Value.ToString() == "True")
@@ -1311,7 +1311,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
                                 amount = int.Parse(row.Cells["amount"].Value.ToString()) + int.Parse(row.Cells["shipping"].Value.ToString())+ int.Parse(row.Cells["giftcharges"].Value.ToString());
                                 addresses.Add("ORD" + row.Cells["orderid"].Value.ToString() + "\r\n" + row.Cells["name"].Value.ToString() + "\r\n" + row.Cells["address1"].Value.ToString() + " " + row.Cells["address2"].Value.ToString() + ", "+ row.Cells["landmark"].Value.ToString() + "\r\n"
-                                + row.Cells["contact"].Value.ToString() + ", " + row.Cells["alternate_contact"].Value.ToString() + "\r\n>> Please pay ₹ " + amount +"\r\nor mPay/Paytm the amount to 9796777058");
+                                + row.Cells["contact"].Value.ToString() + ", " + row.Cells["alternate_contact"].Value.ToString() + "\r\n>> Please pay ₹ " + amount +"\r\nor mPay the amount to 9906523492");
                                 add2 = true;
                             }
 

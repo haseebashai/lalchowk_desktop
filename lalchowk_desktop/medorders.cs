@@ -262,6 +262,7 @@ namespace Veiled_Kashmir_Admin_Panel
         //}
 
         int oid=0;
+        string mail = "", name = "";
         private void placeddataview_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
           //  MessageBox.Show(e.ColumnIndex.ToString());
@@ -274,6 +275,8 @@ namespace Veiled_Kashmir_Admin_Panel
                       
                     DataGridViewRow row = this.placeddataview.Rows[e.RowIndex];
                     oid = int.Parse(row.Cells["orderid"].Value.ToString());
+                    mail = row.Cells["mail"].ToString();
+                    name = row.Cells["name"].ToString();
                     dr = obj.Query("select url from lalchowk.image_uploads where oid ='"+oid+"';");
                     dr.Read();
                     string file = dr[0].ToString();
@@ -512,7 +515,29 @@ namespace Veiled_Kashmir_Admin_Panel
             edit.Show();
         }
 
-      
+        private void mailbtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                dialogcontainer dg = new dialogcontainer();
+                promomail pm = new promomail(mail, dg, name, "");
+                pm.TopLevel = false;
+                dg.Size = new Size(700, 715);
+                pm.epnl.Location = new Point(-300, 1);
+                pm.elistlbl.Text = "";
+
+                dg.dialogpnl.Controls.Add(pm);
+                pm.loadingdg();
+                pm.opnl.Visible = true;
+                dg.Text = "Send Email";
+
+                dg.Show();
+
+                pm.Show();
+            }
+            catch { }
+        }
+
         private void deldataview_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             try

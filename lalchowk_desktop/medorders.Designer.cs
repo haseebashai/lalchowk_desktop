@@ -55,11 +55,12 @@
             this.btpnl = new System.Windows.Forms.Panel();
             this.cancelbtn = new System.Windows.Forms.Button();
             this.detailpnl = new System.Windows.Forms.Panel();
+            this.contxt = new System.Windows.Forms.TextBox();
+            this.msgtxt = new System.Windows.Forms.TextBox();
+            this.nametxt = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.presdp = new System.Windows.Forms.PictureBox();
-            this.nametxt = new System.Windows.Forms.TextBox();
-            this.msgtxt = new System.Windows.Forms.TextBox();
-            this.contxt = new System.Windows.Forms.TextBox();
+            this.mailbtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.placeddataview)).BeginInit();
             this.medcontrol.SuspendLayout();
             this.placedpg.SuspendLayout();
@@ -310,6 +311,7 @@
             // 
             // btpnl
             // 
+            this.btpnl.Controls.Add(this.mailbtn);
             this.btpnl.Controls.Add(this.cancelbtn);
             this.btpnl.Controls.Add(this.editbtn);
             this.btpnl.Controls.Add(this.delorderbtn);
@@ -348,6 +350,34 @@
             this.detailpnl.TabIndex = 40;
             this.detailpnl.Visible = false;
             // 
+            // contxt
+            // 
+            this.contxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.contxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contxt.Location = new System.Drawing.Point(45, 102);
+            this.contxt.Name = "contxt";
+            this.contxt.Size = new System.Drawing.Size(253, 16);
+            this.contxt.TabIndex = 38;
+            // 
+            // msgtxt
+            // 
+            this.msgtxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.msgtxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.msgtxt.Location = new System.Drawing.Point(45, 175);
+            this.msgtxt.Multiline = true;
+            this.msgtxt.Name = "msgtxt";
+            this.msgtxt.Size = new System.Drawing.Size(253, 105);
+            this.msgtxt.TabIndex = 37;
+            // 
+            // nametxt
+            // 
+            this.nametxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.nametxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nametxt.Location = new System.Drawing.Point(45, 60);
+            this.nametxt.Name = "nametxt";
+            this.nametxt.Size = new System.Drawing.Size(253, 16);
+            this.nametxt.TabIndex = 36;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -367,33 +397,19 @@
             this.presdp.TabStop = false;
             this.presdp.Visible = false;
             // 
-            // nametxt
+            // mailbtn
             // 
-            this.nametxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.nametxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nametxt.Location = new System.Drawing.Point(45, 60);
-            this.nametxt.Name = "nametxt";
-            this.nametxt.Size = new System.Drawing.Size(253, 16);
-            this.nametxt.TabIndex = 36;
-            // 
-            // msgtxt
-            // 
-            this.msgtxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.msgtxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.msgtxt.Location = new System.Drawing.Point(45, 175);
-            this.msgtxt.Multiline = true;
-            this.msgtxt.Name = "msgtxt";
-            this.msgtxt.Size = new System.Drawing.Size(253, 105);
-            this.msgtxt.TabIndex = 37;
-            // 
-            // contxt
-            // 
-            this.contxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.contxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.contxt.Location = new System.Drawing.Point(45, 102);
-            this.contxt.Name = "contxt";
-            this.contxt.Size = new System.Drawing.Size(253, 16);
-            this.contxt.TabIndex = 38;
+            this.mailbtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.mailbtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.mailbtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.mailbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.mailbtn.Location = new System.Drawing.Point(181, 4);
+            this.mailbtn.Name = "mailbtn";
+            this.mailbtn.Size = new System.Drawing.Size(149, 24);
+            this.mailbtn.TabIndex = 40;
+            this.mailbtn.Text = "Send Mail";
+            this.mailbtn.UseVisualStyleBackColor = true;
+            this.mailbtn.Click += new System.EventHandler(this.mailbtn_Click);
             // 
             // medorders
             // 
@@ -455,5 +471,6 @@
         private System.Windows.Forms.TextBox contxt;
         private System.Windows.Forms.TextBox msgtxt;
         private System.Windows.Forms.TextBox nametxt;
+        private System.Windows.Forms.Button mailbtn;
     }
 }
