@@ -194,23 +194,23 @@ namespace Veiled_Kashmir_Admin_Panel
                     MessageBox.Show("Something happened, please try again.\n\n" + ex.Message.ToString(), "Error!");
                 }
 
-                DialogResult dgr = MessageBox.Show("Do you want to send feedback SMS?", "Confirm", MessageBoxButtons.YesNo);
-                {
-                    if (dgr == DialogResult.Yes)
-                    {
-                        dialogcontainer dg = new dialogcontainer();
-                        sendsms sms = new sendsms(contacttxt.Text, "", "");
-                        sms.TopLevel = false;
-                        dg.dialogpnl.Controls.Add(sms);
-                        dg.lbl.Text = "Send SMS";
-                        dg.Text = "Send SMS";
-                        dg.Size = new Size(600, 600);
-                        sms.numbertxt.Font = new Font("MS Sans Serif", 9, FontStyle.Regular);
-                        sms.smstxt.Text = "Dear " + cname + ", We would love to hear from you regarding your recent purchase and our services. Please click on the following link and leave your feedback. https://bit.ly/GetLalchowk";
-                        sms.smsnpnl.Visible = false;
-                        sms.txtpnl.Location = new Point(35, 10);
-                        dg.Show();
-                        sms.Show();
+                //DialogResult dgr = MessageBox.Show("Do you want to send feedback SMS?", "Confirm", MessageBoxButtons.YesNo);
+                //{
+                //    if (dgr == DialogResult.Yes)
+                //    {
+                //        dialogcontainer dg = new dialogcontainer();
+                //        sendsms sms = new sendsms(contacttxt.Text, "", "");
+                //        sms.TopLevel = false;
+                //        dg.dialogpnl.Controls.Add(sms);
+                //        dg.lbl.Text = "Send SMS";
+                //        dg.Text = "Send SMS";
+                //        dg.Size = new Size(600, 600);
+                //        sms.numbertxt.Font = new Font("MS Sans Serif", 9, FontStyle.Regular);
+                //        sms.smstxt.Text = "Dear " + cname + ", We would love to hear from you regarding your recent purchase and our services. Please click on the following link and leave your feedback. https://bit.ly/GetLalchowk";
+                //        sms.smsnpnl.Visible = false;
+                //        sms.txtpnl.Location = new Point(35, 10);
+                //        dg.Show();
+                //        sms.Show();
 
 
                         //dialogcontainer dg = new dialogcontainer();
@@ -228,12 +228,12 @@ namespace Veiled_Kashmir_Admin_Panel
                         //dg.Show();
 
                         //pm.Show();
-                    }
-                    else
-                    {
-                        Close();
-                    }
-                }
+                    //}
+                    //else
+                    //{
+                    //    Close();
+                    //}
+              //  }
                 Cursor = Cursors.Arrow;
                 Close();
             }
@@ -300,11 +300,13 @@ namespace Veiled_Kashmir_Admin_Panel
                                 string cmd = "update products set dealerprice= '" + orderdetailview.Rows[i].Cells[8].Value.ToString() + "' where productid='" + orderdetailview.Rows[i].Cells[2].Value.ToString() + "' ";
                                 obj.nonQuery(cmd);
                                 obj.closeConnection();
+                             
                             }
                             catch (Exception ex) { MessageBox.Show(ex.Message.ToString()); obj.closeConnection(); aconn.Close(); }
                         }
+                        billaddbtn_Click(null, null);
                     }
-                    MessageBox.Show("Product bill added.");
+                 //   MessageBox.Show("Product bill added.");
                     addprobtn.Enabled = false;
                 }
                 //Cursor = Cursors.WaitCursor;

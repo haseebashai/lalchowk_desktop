@@ -42,7 +42,7 @@ namespace Veiled_Kashmir_Admin_Panel
         //    }
         //}
 
-        int xpage=15, ypage = 23;
+        int xpage=12, ypage =16;
         void printdoc_PrintPage(object sender, PrintPageEventArgs e)
         {
             e.Graphics.DrawImage(bmp, xpage, ypage);
@@ -81,6 +81,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 pxtxt.Text = xpage.ToString();
                 pytxt.Text = ypage.ToString();
 
+                clbl.Text = count.ToString()+" addresses";
             //    MessageBox.Show(addresses1[i] + "1"+ " " +addresses1.Count);
 
 

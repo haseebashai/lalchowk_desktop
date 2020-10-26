@@ -48,6 +48,7 @@
             this.bbox = new System.Windows.Forms.CheckBox();
             this.addbtn = new System.Windows.Forms.Button();
             this.frbtn = new System.Windows.Forms.Button();
+            this.clbl = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // tpnl
@@ -226,6 +227,15 @@
             this.frbtn.UseVisualStyleBackColor = true;
             this.frbtn.Click += new System.EventHandler(this.frbtn_Click);
             // 
+            // clbl
+            // 
+            this.clbl.AutoSize = true;
+            this.clbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clbl.Location = new System.Drawing.Point(287, 15);
+            this.clbl.Name = "clbl";
+            this.clbl.Size = new System.Drawing.Size(0, 13);
+            this.clbl.TabIndex = 18;
+            // 
             // printaddresses
             // 
             this.AcceptButton = this.printbtn;
@@ -234,6 +244,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(818, 667);
+            this.Controls.Add(this.clbl);
             this.Controls.Add(this.frbtn);
             this.Controls.Add(this.addbtn);
             this.Controls.Add(this.bbox);
@@ -286,5 +297,6 @@
         private System.Windows.Forms.CheckBox bbox;
         private System.Windows.Forms.Button addbtn;
         private System.Windows.Forms.Button frbtn;
+        private System.Windows.Forms.Label clbl;
     }
 }
