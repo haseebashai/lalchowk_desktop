@@ -89,6 +89,8 @@
             this.statetxt = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.landmarktxt = new System.Windows.Forms.TextBox();
+            this.orderptxt = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.orderdetailview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.refreshbtn)).BeginInit();
             this.SuspendLayout();
@@ -654,6 +656,23 @@
             this.landmarktxt.Size = new System.Drawing.Size(118, 20);
             this.landmarktxt.TabIndex = 135;
             // 
+            // orderptxt
+            // 
+            this.orderptxt.AutoSize = true;
+            this.orderptxt.Location = new System.Drawing.Point(543, 496);
+            this.orderptxt.Name = "orderptxt";
+            this.orderptxt.Size = new System.Drawing.Size(0, 13);
+            this.orderptxt.TabIndex = 137;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(543, 477);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(73, 13);
+            this.label24.TabIndex = 138;
+            this.label24.Text = "Order platform";
+            // 
             // editorderdetails
             // 
             this.AcceptButton = this.updbtn;
@@ -661,6 +680,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(720, 636);
+            this.Controls.Add(this.label24);
+            this.Controls.Add(this.orderptxt);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.landmarktxt);
             this.Controls.Add(this.label21);
@@ -795,5 +816,7 @@
         private System.Windows.Forms.TextBox statetxt;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TextBox landmarktxt;
+        private System.Windows.Forms.Label orderptxt;
+        private System.Windows.Forms.Label label24;
     }
 }

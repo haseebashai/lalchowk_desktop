@@ -32,7 +32,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void readmsgs()
         {try {
-            dr = obj.Query("SELECT customer.mail,messages.*  FROM lalchowk.messages inner join customer on customer.email=messages.email order by messageid desc");
+            dr = obj.Query("SELECT customer.mail,messages.*  FROM lalchowk.messages inner join customer on customer.email=messages.email order by messageid desc limit 100");
             dt = new DataTable();
             dt.Load(dr);
             obj.closeConnection();

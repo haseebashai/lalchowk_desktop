@@ -579,7 +579,7 @@
             this.devtxt.Name = "devtxt";
             this.devtxt.Size = new System.Drawing.Size(95, 20);
             this.devtxt.TabIndex = 17;
-            this.devtxt.Text = "Suhaib";
+            this.devtxt.Text = "Zubair";
             // 
             // label18
             // 

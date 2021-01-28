@@ -42,7 +42,7 @@ namespace Veiled_Kashmir_Admin_Panel
             {
                 try
                 {
-                    adap = new MySqlDataAdapter("SELECT customer.mail,orders.*  FROM lalchowk.orders inner join customer on customer.email=orders.email order by orderid desc ;", conn);
+                    adap = new MySqlDataAdapter("SELECT customer.mail,orders.*  FROM lalchowk.orders inner join customer on customer.email=orders.email order by orderid desc limit 2000 ;", conn);
                     dt = new DataTable();
                     adap.Fill(dt);
                     obj.closeConnection();
@@ -592,7 +592,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
         private void readorders()
         {try { 
-            adap = new MySqlDataAdapter("SELECT customer.mail,orders.*  FROM lalchowk.orders inner join customer on customer.email=orders.email order by orderid desc;",conn);
+            adap = new MySqlDataAdapter("SELECT customer.mail,orders.*  FROM lalchowk.orders inner join customer on customer.email=orders.email order by orderid desc limit 2000;",conn);
             dt = new DataTable();
             adap.Fill(dt);
             obj.closeConnection();

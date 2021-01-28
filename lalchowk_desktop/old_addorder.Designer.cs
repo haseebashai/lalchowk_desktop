@@ -508,7 +508,7 @@
             this.devtxt.Name = "devtxt";
             this.devtxt.Size = new System.Drawing.Size(130, 20);
             this.devtxt.TabIndex = 145;
-            this.devtxt.Text = "Suhaib";
+            this.devtxt.Text = "Zubair";
             // 
             // ptypebox
             // 

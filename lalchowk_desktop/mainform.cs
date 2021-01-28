@@ -1393,7 +1393,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     DialogResult dgr = MessageBox.Show("Do you want to change the status of selected orders to shipped ?", "Confirm!", MessageBoxButtons.YesNo);
                     if (dgr == DialogResult.Yes)
                     {
-                        string input = Interaction.InputBox("Please Enter Delivery Guy info:", "Delivery info", "Suhaib", -1, -1);
+                        string input = Interaction.InputBox("Please Enter Delivery Guy info:", "Delivery info", "Zubair", -1, -1);
                         Cursor = Cursors.WaitCursor;
                         foreach (DataGridViewRow row in placeddataview.Rows)
                         {

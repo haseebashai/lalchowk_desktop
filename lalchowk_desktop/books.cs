@@ -61,7 +61,7 @@ namespace Veiled_Kashmir_Admin_Panel
         {
             try
             {
-                adap = new MySqlDataAdapter("select * from bookrequests order by id desc", con);
+                adap = new MySqlDataAdapter("select * from bookrequests order by id desc limit 300", con);
                 dt = new DataTable();
                 adap.Fill(dt);
                 bsource = new BindingSource();

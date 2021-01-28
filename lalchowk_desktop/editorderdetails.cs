@@ -44,7 +44,7 @@ namespace Veiled_Kashmir_Admin_Panel
 
             try
             {
-
+               
                 ptypebox.DisplayMember = "Text";
                 var items = new[]
                 {
@@ -64,7 +64,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 updbtn.Enabled = true;
 
                 object[] arg = (object[])e.Result;
-
+              //  MessageBox.Show(arg[23].ToString());
                 amtxt.Text = (string)arg[0];
                 shiptxt.Text = arg[1] as String;
                 nametxt.Text = arg[2] as String;
@@ -88,6 +88,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 ointxt.Text = arg[20] as string;
                 landmarktxt.Text = arg[21] as string;
                 statetxt.Text = arg[22] as string;
+                orderptxt.Text= arg[23] as string;
 
                 orderdetailview.DataSource = bsource;
                 orderdetailview.Columns["size"].Visible = false;
@@ -184,7 +185,7 @@ namespace Veiled_Kashmir_Admin_Panel
             {
                 string orderid = e.Argument as string;
                
-                dr = obj.Query("select amount,shipping,name,address1,address2,pincode,contact,city,status,itemcount,deliveryguy,paymenttype,paymentconfirmed,shipdate,deliverdate,in_transit,alternate_contact,giftcharges,giftwrap,info,landmark,state from orders where orderid='" + orderid + "'");
+                dr = obj.Query("select amount,shipping,name,address1,address2,pincode,contact,city,status,itemcount,deliveryguy,paymenttype,paymentconfirmed,shipdate,deliverdate,in_transit,alternate_contact,giftcharges,giftwrap,info,landmark,state,transanctionid from orders where orderid='" + orderid + "'");
                 dr.Read();
                 string amount = dr[0].ToString();
                 string shipping = dr[1].ToString();
@@ -208,6 +209,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 string info = dr[19].ToString();
                 string landm = dr[20].ToString();
                 string state = dr[21].ToString();
+                string tranid= dr[22].ToString();
 
                 obj.closeConnection();
 
@@ -219,7 +221,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 bsource.DataSource = dt;
 
 
-                object[] arg = {amount,shipping,name,add1,add2,pin,con,city,status,count,dguy,ptype,pconf,bsource,sdate,ddate,transit,altcon,gift,giftwrap,info,landm,state};
+                object[] arg = {amount,shipping,name,add1,add2,pin,con,city,status,count,dguy,ptype,pconf,bsource,sdate,ddate,transit,altcon,gift,giftwrap,info,landm,state,tranid};
               
                 e.Result = arg;
 
@@ -344,7 +346,7 @@ namespace Veiled_Kashmir_Admin_Panel
                 {
                     string orderid = a.Argument as string;
 
-                    dr = obj.Query("select amount,shipping,name,address1,address2,pincode,contact,city,status,itemcount,deliveryguy,paymenttype,paymentconfirmed,shipdate,deliverdate,in_transit,alternate_contact,giftcharges,giftwrap,info,landmark,state from orders where orderid='" + orderid + "'");
+                    dr = obj.Query("select amount,shipping,name,address1,address2,pincode,contact,city,status,itemcount,deliveryguy,paymenttype,paymentconfirmed,shipdate,deliverdate,in_transit,alternate_contact,giftcharges,giftwrap,info,landmark,state,transanctionid from orders where orderid='" + orderid + "'");
                     dr.Read();
                     string amount = dr[0].ToString();
                     string shipping = dr[1].ToString();
@@ -368,6 +370,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     string info = dr[19].ToString();
                     string landm = dr[20].ToString();
                     string state = dr[21].ToString();
+                    string tranid= dr[22].ToString();
                     obj.closeConnection();
 
                     adap = new MySqlDataAdapter("SELECT * FROM orderdetails where orderid='" + orderid + "'", conn);
@@ -378,7 +381,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     bsource.DataSource = dt;
 
 
-                    object[] arg = { amount, shipping, name, add1, add2, pin, con, city, status, count, dguy, ptype, pconf, bsource, sdate, ddate, transit, altcon,gift,giftwrap,info,landm,state };
+                    object[] arg = { amount, shipping, name, add1, add2, pin, con, city, status, count, dguy, ptype, pconf, bsource, sdate, ddate, transit, altcon,gift,giftwrap,info,landm,state,tranid };
 
                     a.Result = arg;
 
@@ -435,6 +438,7 @@ namespace Veiled_Kashmir_Admin_Panel
                     ointxt.Text = arg[20] as string;
                     landmarktxt.Text = arg[21] as string;
                     statetxt.Text = arg[22] as string;
+                    orderptxt.Text= arg[23] as string;
 
                     orderdetailview.DataSource = bsource;
                     orderdetailview.Columns["size"].Visible = false;
